@@ -1,295 +1,517 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798&quot;&quot;&amp;">
+  <meta charset="utf-8">
+  <title>python_async_spider_example | Hexo</title>
+  <meta name="keywords" content=" python spider async ">
+  <meta name="description" content="python_async_spider_example | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="this is a demo of spider about 17knovel 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python_async_spider_example">
-<meta property="og:url" content="http://example.com/2024/08/17/python-async-spider-example/index.html">
+<meta property="og:title" content="python_spider_17knovel">
+<meta property="og:url" content="http://example.com/2024/08/17/python-spider-17knovel/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798&quot;&quot;&amp;">
+<meta property="og:description" content="this is a demo of spider about 17knovel 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-17T07:09:50.000Z">
-<meta property="article:modified_time" content="2024-08-17T07:10:28.845Z">
+<meta property="article:published_time" content="2024-08-17T07:38:50.000Z">
+<meta property="article:modified_time" content="2024-08-17T07:40:31.149Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="python spider async">
+<meta property="article:tag" content="python spider 17knovel">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>python_async_spider_example</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
 
 
-    <!-- Umami Analytics -->
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github-gist.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
 
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
 <meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
 
-<body class="max-width mx-auto px3 ltr">
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
     
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/2024/08/17/python-mysql/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
         
+    
         
-        <li><a class="icon" aria-label="下一篇" href="/2024/08/17/go-spider/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+    
         
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/08/17/python-async-spider-example/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/08/17/python-async-spider-example/&text=python_async_spider_example"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/08/17/python-async-spider-example/&is_video=false&description=python_async_spider_example"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=python_async_spider_example&body=Check out this article: http://example.com/2024/08/17/python-async-spider-example/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/08/17/python-async-spider-example/&name=python_async_spider_example&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/08/17/python-async-spider-example/&t=python_async_spider_example"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(7)</small>
+            
+        </div>
+    </li>
+    
 </ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_word_count" value="3.1k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
 
     </div>
-    
-    
-  </span>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go spider http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>It's a try</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python spider 17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python spider async</a>
+            </li>
+        
+    </div>
+
 </div>
 
     
-    <div class="content index py4 ">
+    <nav id="title-list-nav">
         
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-spider-17knovel/"
+           data-tag="python spider 17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-redis/"
+           data-tag="python redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-mysql/"
+           data-tag="python mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-async-spider-example/"
+           data-tag="python spider async"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/go-spider/"
+           data-tag="go spider http"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/07/21/try/"
+           data-tag="It&#39;s a try"
+           data-author="" >
+            <span class="post-title" title="try">try</span>
+            <span class="post-date" title="2024-07-21 17:44:32">2024/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/07/21/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2024-07-21 17:16:40">2024/07/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-python-async-spider-example" class="article article-type-post" itemscope itemprop="blogPost">
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        python_async_spider_example
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">LiShun</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-08-17T07:09:50.000Z" class="dt-published" itemprop="datePublished">2024-08-17</time>
+        <h1 class="article-title">python_async_spider_example</h1>
+    
+    <div class="article-meta">
         
-      
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">python spider async</a>
+            
+        </span>
+        
     </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-17 15:10:28'>2024-08-17 15:09</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:516</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    异步函数版本</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    2024.8.15 文件加密 ----&gt; 或者采用了其他的编码</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">    <span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://www.9tata.cc/&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_first_m3u8_link_name</span>():</span><br><span class="line">    url = <span class="string">&quot;https://www.9tata.cc/play/14999-1-0.html&quot;</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(url,headers=headers,ssl=<span class="literal">False</span>) <span class="keyword">as</span> response:</span><br><span class="line">            tree = etree.HTML(<span class="keyword">await</span> response.text())</span><br><span class="line">            <span class="comment"># 获取name</span></span><br><span class="line">            name = tree.xpath(<span class="string">&quot;/html/body/div[2]/div[1]/h2/a[2]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">            <span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取m3u8实例</span></span><br><span class="line">            m38u = tree.xpath(<span class="string">&#x27;//*[@id=&quot;cms_player&quot;]/script[1]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">            <span class="comment"># print(m38u)</span></span><br><span class="line">            first_m3u8_link = re.findall(<span class="string">&#x27;now=&quot;(.*?m3u8)&quot;&#x27;</span>, m38u)[<span class="number">0</span>]</span><br><span class="line">            <span class="built_in">print</span>(first_m3u8_link)</span><br><span class="line">            <span class="keyword">return</span> first_m3u8_link,name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_second_m3u8_link</span>(<span class="params">first_m3u8_link</span>):</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(first_m3u8_link,ssl=<span class="literal">False</span>,headers=headers) <span class="keyword">as</span> res:</span><br><span class="line">            data = <span class="keyword">await</span> res.text()</span><br><span class="line">            <span class="comment"># split的模块有些问题提取不出来,还得用正则表达式</span></span><br><span class="line">            next_url = <span class="string">&quot;https://s1.fsvod1.com&quot;</span> + re.findall(<span class="string">&#x27;(/.*?m3u8)&#x27;</span>, data)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> next_url</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析ts文件</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">parse_ts</span>(<span class="params">second_m3u8_link</span>):</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(second_m3u8_link,ssl=<span class="literal">False</span>,headers=headers) <span class="keyword">as</span> res:</span><br><span class="line">            data = <span class="keyword">await</span> res.text()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 定义正则表达式模式</span></span><br><span class="line">            pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;^.*/([^\n/]+\.ts)$&#x27;</span>, re.MULTILINE)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 执行替换操作</span></span><br><span class="line">            new_text = pattern.sub(<span class="string">r&#x27;\1&#x27;</span>,data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./ts/index.m3u8&quot;</span>,<span class="string">&quot;w&quot;</span>)<span class="keyword">as</span> f:</span><br><span class="line">                f.write(new_text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            ret = re.findall(<span class="string">r&quot;\n(.*?\.ts)&quot;</span>,data)</span><br><span class="line">            <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主要的耗时步骤</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">download_ts</span>(<span class="params">p,ts</span>):</span><br><span class="line">    <span class="comment"># 下载一个ts文件</span></span><br><span class="line">    name = <span class="string">&quot;./ts/&quot;</span>+ts.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="built_in">print</span>(p+ts,<span class="string">&quot;开始下载&quot;</span>)</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(p+ts,ssl=<span class="literal">False</span>,headers=headers) <span class="keyword">as</span> res:</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(name, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="comment"># 避免 打开文件然后一顿操作,会降低运行速度</span></span><br><span class="line">                f.write(<span class="keyword">await</span> res.content.read())</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;ts&#125;</span>下载完成!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># 1. 爬取</span></span><br><span class="line">    first_m3u8_link,name = <span class="keyword">await</span> get_first_m3u8_link_name()</span><br><span class="line">    <span class="comment"># 2. 获取第二个m3u8链接</span></span><br><span class="line">    second_m3u8_link= <span class="keyword">await</span> get_second_m3u8_link(first_m3u8_link)</span><br><span class="line">    <span class="comment"># 3. 解析ts文件</span></span><br><span class="line">    ts_list = <span class="keyword">await</span> parse_ts(second_m3u8_link)</span><br><span class="line">    <span class="comment"># 4. 下载</span></span><br><span class="line">    <span class="built_in">print</span>(ts_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(ts_list))  <span class="comment"># 384</span></span><br><span class="line">    p = <span class="string">&quot;https://s1.fsvod1.com&quot;</span></span><br><span class="line">    tasks = [asyncio.create_task(download_ts(p,ts)) <span class="keyword">for</span> ts <span class="keyword">in</span> ts_list]</span><br><span class="line">    result = <span class="keyword">await</span> asyncio.gather(*tasks)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    asyncio.run(main())</span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;cost:&quot;</span>,end-start)  <span class="comment">#  cost: 21.449084281921387  # 459个文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
       
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/python-spider-async/" rel="tag">python spider async</a>
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lishun_71@qq.com </span>
     </div>
-
-
-    </div>
-  </header>
-  
-
-  <div class="content e-content" itemprop="articleBody">
-    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    异步函数版本</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    2024.8.15 文件加密 ----&gt; 或者采用了其他的编码</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">    <span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://www.9tata.cc/&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_first_m3u8_link_name</span>():</span><br><span class="line">    url = <span class="string">&quot;https://www.9tata.cc/play/14999-1-0.html&quot;</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(url,headers=headers,ssl=<span class="literal">False</span>) <span class="keyword">as</span> response:</span><br><span class="line">            tree = etree.HTML(<span class="keyword">await</span> response.text())</span><br><span class="line">            <span class="comment"># 获取name</span></span><br><span class="line">            name = tree.xpath(<span class="string">&quot;/html/body/div[2]/div[1]/h2/a[2]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">            <span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取m3u8实例</span></span><br><span class="line">            m38u = tree.xpath(<span class="string">&#x27;//*[@id=&quot;cms_player&quot;]/script[1]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">            <span class="comment"># print(m38u)</span></span><br><span class="line">            first_m3u8_link = re.findall(<span class="string">&#x27;now=&quot;(.*?m3u8)&quot;&#x27;</span>, m38u)[<span class="number">0</span>]</span><br><span class="line">            <span class="built_in">print</span>(first_m3u8_link)</span><br><span class="line">            <span class="keyword">return</span> first_m3u8_link,name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_second_m3u8_link</span>(<span class="params">first_m3u8_link</span>):</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(first_m3u8_link,ssl=<span class="literal">False</span>,headers=headers) <span class="keyword">as</span> res:</span><br><span class="line">            data = <span class="keyword">await</span> res.text()</span><br><span class="line">            <span class="comment"># split的模块有些问题提取不出来,还得用正则表达式</span></span><br><span class="line">            next_url = <span class="string">&quot;https://s1.fsvod1.com&quot;</span> + re.findall(<span class="string">&#x27;(/.*?m3u8)&#x27;</span>, data)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> next_url</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析ts文件</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">parse_ts</span>(<span class="params">second_m3u8_link</span>):</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(second_m3u8_link,ssl=<span class="literal">False</span>,headers=headers) <span class="keyword">as</span> res:</span><br><span class="line">            data = <span class="keyword">await</span> res.text()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 定义正则表达式模式</span></span><br><span class="line">            pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;^.*/([^\n/]+\.ts)$&#x27;</span>, re.MULTILINE)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 执行替换操作</span></span><br><span class="line">            new_text = pattern.sub(<span class="string">r&#x27;\1&#x27;</span>,data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./ts/index.m3u8&quot;</span>,<span class="string">&quot;w&quot;</span>)<span class="keyword">as</span> f:</span><br><span class="line">                f.write(new_text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            ret = re.findall(<span class="string">r&quot;\n(.*?\.ts)&quot;</span>,data)</span><br><span class="line">            <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主要的耗时步骤</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">download_ts</span>(<span class="params">p,ts</span>):</span><br><span class="line">    <span class="comment"># 下载一个ts文件</span></span><br><span class="line">    name = <span class="string">&quot;./ts/&quot;</span>+ts.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="built_in">print</span>(p+ts,<span class="string">&quot;开始下载&quot;</span>)</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(p+ts,ssl=<span class="literal">False</span>,headers=headers) <span class="keyword">as</span> res:</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(name, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="comment"># 避免 打开文件然后一顿操作,会降低运行速度</span></span><br><span class="line">                f.write(<span class="keyword">await</span> res.content.read())</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;ts&#125;</span>下载完成!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># 1. 爬取</span></span><br><span class="line">    first_m3u8_link,name = <span class="keyword">await</span> get_first_m3u8_link_name()</span><br><span class="line">    <span class="comment"># 2. 获取第二个m3u8链接</span></span><br><span class="line">    second_m3u8_link= <span class="keyword">await</span> get_second_m3u8_link(first_m3u8_link)</span><br><span class="line">    <span class="comment"># 3. 解析ts文件</span></span><br><span class="line">    ts_list = <span class="keyword">await</span> parse_ts(second_m3u8_link)</span><br><span class="line">    <span class="comment"># 4. 下载</span></span><br><span class="line">    <span class="built_in">print</span>(ts_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(ts_list))  <span class="comment"># 384</span></span><br><span class="line">    p = <span class="string">&quot;https://s1.fsvod1.com&quot;</span></span><br><span class="line">    tasks = [asyncio.create_task(download_ts(p,ts)) <span class="keyword">for</span> ts <span class="keyword">in</span> ts_list]</span><br><span class="line">    result = <span class="keyword">await</span> asyncio.gather(*tasks)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    asyncio.run(main())</span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;cost:&quot;</span>,end-start)  <span class="comment">#  cost: 21.449084281921387  # 459个文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-  </div>
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
-        
-      </ul>
-    </div>
+
+
 
     
-    
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/08/17/python-async-spider-example/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/08/17/python-async-spider-example/&text=python_async_spider_example"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/08/17/python-async-spider-example/&is_video=false&description=python_async_spider_example"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=python_async_spider_example&body=Check out this article: http://example.com/2024/08/17/python-async-spider-example/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/08/17/python-async-spider-example/&title=python_async_spider_example"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/08/17/python-async-spider-example/&name=python_async_spider_example&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/08/17/python-async-spider-example/&t=python_async_spider_example"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
+
+
 
     </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
     </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
 
-  </div>
+    </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2024
-    LiShun
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-    </div>
-    <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
-
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
 </html>

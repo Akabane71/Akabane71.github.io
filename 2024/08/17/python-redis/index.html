@@ -1,298 +1,520 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="python + redis —–&gt; redis 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+  <meta charset="utf-8">
+  <title>python_redis | Hexo</title>
+  <meta name="keywords" content=" python redis ">
+  <meta name="description" content="python_redis | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="this is a demo of spider about 17knovel 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python_redis">
-<meta property="og:url" content="http://example.com/2024/08/17/python-redis/index.html">
+<meta property="og:title" content="python_spider_17knovel">
+<meta property="og:url" content="http://example.com/2024/08/17/python-spider-17knovel/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="python + redis —–&gt; redis 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+<meta property="og:description" content="this is a demo of spider about 17knovel 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-17T07:20:28.000Z">
-<meta property="article:modified_time" content="2024-08-17T07:21:35.203Z">
+<meta property="article:published_time" content="2024-08-17T07:38:50.000Z">
+<meta property="article:modified_time" content="2024-08-17T07:40:31.149Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="python redis">
+<meta property="article:tag" content="python spider 17knovel">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>python_redis</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
 
 
-    <!-- Umami Analytics -->
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github-gist.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
 
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
 <meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
 
-<body class="max-width mx-auto px3 ltr">
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
     
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/2024/08/17/python-spider-17knovel/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
         
+    
         
-        <li><a class="icon" aria-label="下一篇" href="/2024/08/17/python-mysql/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+    
         
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/08/17/python-redis/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/08/17/python-redis/&text=python_redis"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/08/17/python-redis/&is_video=false&description=python_redis"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=python_redis&body=Check out this article: http://example.com/2024/08/17/python-redis/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/08/17/python-redis/&name=python_redis&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/08/17/python-redis/&t=python_redis"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(7)</small>
+            
+        </div>
+    </li>
+    
 </ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_word_count" value="3.1k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
 
     </div>
-    
-    
-  </span>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go spider http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>It's a try</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python spider 17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python spider async</a>
+            </li>
+        
+    </div>
+
 </div>
 
     
-    <div class="content index py4 ">
+    <nav id="title-list-nav">
         
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-spider-17knovel/"
+           data-tag="python spider 17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-redis/"
+           data-tag="python redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-mysql/"
+           data-tag="python mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/python-async-spider-example/"
+           data-tag="python spider async"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/17/go-spider/"
+           data-tag="go spider http"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/07/21/try/"
+           data-tag="It&#39;s a try"
+           data-author="" >
+            <span class="post-title" title="try">try</span>
+            <span class="post-date" title="2024-07-21 17:44:32">2024/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/07/21/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2024-07-21 17:16:40">2024/07/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-python-redis" class="article article-type-post" itemscope itemprop="blogPost">
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        python_redis
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">LiShun</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-08-17T07:20:28.000Z" class="dt-published" itemprop="datePublished">2024-08-17</time>
+        <h1 class="article-title">python_redis</h1>
+    
+    <div class="article-meta">
         
-      
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">python redis</a>
+            
+        </span>
+        
     </div>
-
-
-      
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/python-redis/" rel="tag">python redis</a>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-17 15:21:35'>2024-08-17 15:20</time>
+        
     </div>
-
-
+    <div class="article-meta">
+        
+        <span>字数:600</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
     </div>
-  </header>
-  
-
-  <div class="content e-content" itemprop="articleBody">
-    <p>python + redis —–&gt; redis</p>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>python + redis —–&gt; redis</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">redis值类型   对应python类型</span></span><br><span class="line"><span class="string">0 1       --&gt;   0 1</span></span><br><span class="line"><span class="string">数字       --》  int  float</span></span><br><span class="line"><span class="string">列表       --&gt;   列表</span></span><br><span class="line"><span class="string">字符串      --》  字节串</span></span><br><span class="line"><span class="string">哈希       --&gt;   字典</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; 通 用 类 型  &#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 通用指令</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generic</span>():</span><br><span class="line">    <span class="comment"># 通用指令</span></span><br><span class="line">    res = r.keys(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line">    <span class="built_in">print</span>(r.exists(<span class="string">&quot;name&quot;</span>))</span><br><span class="line">    r.delete(<span class="string">&quot;sset&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; 字 符 串 &#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 字符串指令</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">string</span>():</span><br><span class="line">    r.<span class="built_in">set</span>(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;zhaoliying&quot;</span>)</span><br><span class="line">    res = r.get(<span class="string">&quot;name&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res.decode())</span><br><span class="line">    r.mset(&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>&#125;)</span><br><span class="line">    <span class="built_in">print</span>(r.mget(<span class="string">&quot;a&quot;</span>, <span class="string">&#x27;b&#x27;</span>))</span><br><span class="line">    r.incrby(<span class="string">&#x27;a&#x27;</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">list_cmd</span>():</span><br><span class="line">    <span class="comment"># r.lpush(&quot;mylist&quot;,1,2,3,4,5) # 添加值</span></span><br><span class="line">    <span class="built_in">print</span>(r.lrange(<span class="string">&#x27;mylist&#x27;</span>, <span class="number">0</span>, -<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    r.lpop(<span class="string">&#x27;mylist&#x27;</span>)  <span class="comment"># 删除第一个</span></span><br><span class="line">    <span class="built_in">print</span>(r.llen(<span class="string">&#x27;mylist&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; 哈 希 表 &#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 哈希类型操作</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hash_cmd</span>():</span><br><span class="line">    <span class="comment"># r.hset(&quot;myhash&quot;,&quot;name&quot;,&quot;张三&quot;)</span></span><br><span class="line">    <span class="comment"># r.hset(&quot;myhash&quot;,mapping=&#123;&quot;age&quot;:10,&quot;score&quot;:8.8&#125;)</span></span><br><span class="line"></span><br><span class="line">    res = r.hget(<span class="string">&#x27;myhash&#x27;</span>, <span class="string">&quot;name&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res.decode())</span><br><span class="line"></span><br><span class="line">    res = r.hgetall(<span class="string">&#x27;myhash&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line">    r.hdel(<span class="string">&quot;myhash&quot;</span>, <span class="string">&quot;sex&quot;</span>)  <span class="comment"># 删除一个键值对</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; 集合 &#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">set_cmd</span>():</span><br><span class="line">    <span class="comment"># r.sadd(&quot;武将&quot;,&quot;张飞&quot;,&quot;赵云&quot;,&quot;周瑜&quot;,&quot;马超&quot;)</span></span><br><span class="line">    <span class="comment"># r.sadd(&quot;文臣&quot;,&quot;诸葛亮&quot;,&quot;周瑜&quot;,&quot;司马懿&quot;,&quot;郭嘉&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 返回一个集合</span></span><br><span class="line">    <span class="built_in">print</span>(r.smembers(<span class="string">&quot;武将&quot;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 求交集  并集</span></span><br><span class="line">    <span class="built_in">print</span>(&#123;i.decode() <span class="keyword">for</span> i <span class="keyword">in</span> r.sinter(<span class="string">&quot;武将&quot;</span>, <span class="string">&quot;文臣&quot;</span>)&#125;)</span><br><span class="line">    <span class="built_in">print</span>(&#123;i.decode() <span class="keyword">for</span> i <span class="keyword">in</span> r.sunion(<span class="string">&quot;武将&quot;</span>, <span class="string">&quot;文臣&quot;</span>)&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序集合</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sortedset_cmd</span>():</span><br><span class="line">    <span class="comment"># r.zadd(&quot;starset1&quot;,&#123;&quot;霍元甲&quot;:10,&quot;陈真&quot;:9&#125;)</span></span><br><span class="line">    <span class="comment"># r.zadd(&quot;starset2&quot;,&#123;&quot;李小龙&quot;:9.5,&quot;陈真&quot;:9&#125;)</span></span><br><span class="line"></span><br><span class="line">    res = r.zrange(<span class="string">&quot;starset1&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>, withscores=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 字典推导式  [(xx,8),()]</span></span><br><span class="line">    <span class="built_in">print</span>(&#123;k.decode(): <span class="built_in">float</span>(v) <span class="keyword">for</span> k, v <span class="keyword">in</span> res&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ZUNIONSTORE  newset  2   set1  set2  weights  0.6  0.8  aggregate  max</span></span><br><span class="line">    res = r.zunionstore(<span class="string">&quot;newset1&quot;</span>, &#123;<span class="string">&quot;starset1&quot;</span>: <span class="number">0.6</span>, <span class="string">&quot;starset2&quot;</span>: <span class="number">0.8</span>&#125;, aggregate=<span class="string">&quot;MAX&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res)  <span class="comment"># 新集合元素数量</span></span><br><span class="line">    res = r.zrange(<span class="string">&quot;newset1&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>, withscores=<span class="literal">True</span>)</span><br><span class="line">    <span class="built_in">print</span>(&#123;k.decode(): <span class="built_in">float</span>(v) <span class="keyword">for</span> k, v <span class="keyword">in</span> res&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 连接数据库 host  port  db  password  charset</span></span><br><span class="line">    r = redis.Redis(</span><br><span class="line">        host=<span class="string">&#x27;192.168.227.137&#x27;</span>,</span><br><span class="line">        port=<span class="number">6379</span>,</span><br><span class="line">        db=<span class="number">0</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数据操作  命令-》方法   命令参数-》方法参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 通用指令</span></span><br><span class="line">    <span class="comment"># generic()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 字符串指令</span></span><br><span class="line">    <span class="comment"># string()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 列表指令</span></span><br><span class="line">    <span class="comment"># list_cmd()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 哈希操作</span></span><br><span class="line">    <span class="comment"># hash_cmd()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 集合类型</span></span><br><span class="line">    <span class="comment"># set_cmd()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 有续集和</span></span><br><span class="line">    <span class="comment"># sortedset_cmd()</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;操作完成&#x27;</span>)</span><br><span class="line">    <span class="comment"># 关闭连接</span></span><br><span class="line">    r.close()</span><br></pre></td></tr></table></figure>
 
 
 
 
-  </div>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lishun_71@qq.com </span>
+    </div>
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
-        
-      </ul>
-    </div>
+
+
 
     
-    
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/08/17/python-redis/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/08/17/python-redis/&text=python_redis"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/08/17/python-redis/&is_video=false&description=python_redis"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=python_redis&body=Check out this article: http://example.com/2024/08/17/python-redis/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/08/17/python-redis/&title=python_redis"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/08/17/python-redis/&name=python_redis&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/08/17/python-redis/&t=python_redis"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
+
+
 
     </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
     </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
 
-  </div>
+    </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2024
-    LiShun
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-    </div>
-    <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
-
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
 </html>
