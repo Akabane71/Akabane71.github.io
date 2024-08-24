@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python_mysql | Hexo</title>
-  <meta name="keywords" content=" python , mysql ">
-  <meta name="description" content="python_mysql | Hexo">
+  <title>go-example | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="go-example | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="this is a demo of spider about 17knovel &quot;&quot;&quot;     练习；     17k 小说网         要求:             书架上的 n 本书 ;             按照章节进行爬取并存储到单独的文件夹中;我们就爬取前15章内容      -----&gt; 优化方向:  数据获取应该做成一个迭代器,文本内容过">
 <meta property="og:type" content="article">
@@ -320,41 +320,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Python/python-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-go-example" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python_mysql</h1>
+        <h1 class="article-title">go-example</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="Python">Python</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">python</a>
-            
-            <a class="color1">mysql</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:39:51'>2024-08-17 15:19</time>
+            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:49:44'>2024-08-24 15:49</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:230</span>
+        <span>字数:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -389,45 +372,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>python + mysql —-&gt; pymysql</p>
-<pre><code class="python">&#39;&#39;&#39;
-数据库连接处理
-1. 通过程序操作数据库会自动开启事务
-2， 如果数据表不支持事务则执行语句后立即生效
-3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚
-&#39;&#39;&#39;
-import pymysql
-
-# 连接数据库  连接本机库可以不写host port
-db = pymysql.connect(
-    host=&quot;localhost&quot;,
-    port=3306,
-    user=&#39;root&#39;,
-    password=&#39;200371&#39;,
-    database=&#39;stu&#39;,
-    charset=&#39;utf8&#39;
-)
-
-# 生成一个游标：调用sql语句得到执行结果集的对象
-cur = db.cursor()
-
-# 数据库写操作  增删改
-# 执行sql语句  class -&gt; InnoDB  hobby -&gt; MyISAM
-try:
-    sql = &#39;update class set score=100 where id=2;&#39;
-    cur.execute(sql)
-    sql = &#39;delete from class where socre&lt;60;&#39;
-    cur.execute(sql)
-    db.commit() # 事务提交
-except Exception as e:
-    print(e)
-    db.rollback() # 事务回滚
-
-# 关闭游标和数据库连接
-cur.close()
-db.close()
-</code></pre>
-
+        
       
        
     </div>
