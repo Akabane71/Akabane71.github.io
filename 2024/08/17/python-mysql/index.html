@@ -24,8 +24,6 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/github-gist.css?v=1.1.0" rel="stylesheet">
-
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -50,7 +48,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="true" />
+  <input id="theme_highlight_on" value="false" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -347,7 +345,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>python + mysql —-&gt; pymysql</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">数据库连接处理</span></span><br><span class="line"><span class="string">1. 通过程序操作数据库会自动开启事务</span></span><br><span class="line"><span class="string">2， 如果数据表不支持事务则执行语句后立即生效</span></span><br><span class="line"><span class="string">3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接数据库  连接本机库可以不写host port</span></span><br><span class="line">db = pymysql.connect(</span><br><span class="line">    host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">    port=<span class="number">3306</span>,</span><br><span class="line">    user=<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    password=<span class="string">&#x27;200371&#x27;</span>,</span><br><span class="line">    database=<span class="string">&#x27;stu&#x27;</span>,</span><br><span class="line">    charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一个游标：调用sql语句得到执行结果集的对象</span></span><br><span class="line">cur = db.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库写操作  增删改</span></span><br><span class="line"><span class="comment"># 执行sql语句  class -&gt; InnoDB  hobby -&gt; MyISAM</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    sql = <span class="string">&#x27;update class set score=100 where id=2;&#x27;</span></span><br><span class="line">    cur.execute(sql)</span><br><span class="line">    sql = <span class="string">&#x27;delete from class where socre&lt;60;&#x27;</span></span><br><span class="line">    cur.execute(sql)</span><br><span class="line">    db.commit() <span class="comment"># 事务提交</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(e)</span><br><span class="line">    db.rollback() <span class="comment"># 事务回滚</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭游标和数据库连接</span></span><br><span class="line">cur.close()</span><br><span class="line">db.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">数据库连接处理</span><br><span class="hljs-string">1. 通过程序操作数据库会自动开启事务</span><br><span class="hljs-string">2， 如果数据表不支持事务则执行语句后立即生效</span><br><span class="hljs-string">3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">import</span> pymysql<br><br><span class="hljs-comment"># 连接数据库  连接本机库可以不写host port</span><br>db = pymysql.connect(<br>    host=<span class="hljs-string">&quot;localhost&quot;</span>,<br>    port=<span class="hljs-number">3306</span>,<br>    user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>    password=<span class="hljs-string">&#x27;200371&#x27;</span>,<br>    database=<span class="hljs-string">&#x27;stu&#x27;</span>,<br>    charset=<span class="hljs-string">&#x27;utf8&#x27;</span><br>)<br><br><span class="hljs-comment"># 生成一个游标：调用sql语句得到执行结果集的对象</span><br>cur = db.cursor()<br><br><span class="hljs-comment"># 数据库写操作  增删改</span><br><span class="hljs-comment"># 执行sql语句  class -&gt; InnoDB  hobby -&gt; MyISAM</span><br><span class="hljs-keyword">try</span>:<br>    sql = <span class="hljs-string">&#x27;update class set score=100 where id=2;&#x27;</span><br>    cur.execute(sql)<br>    sql = <span class="hljs-string">&#x27;delete from class where socre&lt;60;&#x27;</span><br>    cur.execute(sql)<br>    db.commit() <span class="hljs-comment"># 事务提交</span><br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(e)<br>    db.rollback() <span class="hljs-comment"># 事务回滚</span><br><br><span class="hljs-comment"># 关闭游标和数据库连接</span><br>cur.close()<br>db.close()<br><br></code></pre></td></tr></table></figure>
 
 
 
@@ -498,16 +496,6 @@
     /*文章列表背景图*/
     
 
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
 
