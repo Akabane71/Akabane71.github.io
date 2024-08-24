@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>go-spider | Hexo</title>
-  <meta name="keywords" content=" go spider http ">
-  <meta name="description" content="go-spider | Hexo">
+  <title>hi | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="hi | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hi">
@@ -293,31 +293,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-go-spider" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-hi" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">go-spider</h1>
+        <h1 class="article-title">hi</h1>
     
     <div class="article-meta">
         
         
         
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color5">go spider http</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-08-17 11:55:22'>2024-08-17 11:54</time>
+            发布时间 : <time class="date" title='最后更新: 2024-08-24 12:38:52'>2024-08-24 12:38</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:394</span>
+        <span>字数:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -352,12 +345,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>豆瓣爬虫-try</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;github.com/antchfx/htmlquery&quot;</span><br>	<span class="hljs-string">&quot;io/ioutil&quot;</span><br>	<span class="hljs-string">&quot;net/http&quot;</span><br>	<span class="hljs-string">&quot;strings&quot;</span><br>)<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	豆瓣 top  爬取</span><br><span class="hljs-comment">	目标:</span><br><span class="hljs-comment">		1. 获取表单名称，评价分数，评论人数</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">	总结:</span><br><span class="hljs-comment">		1. go 无官方的 xpath库</span><br><span class="hljs-comment">		2. go 的http请求很原始</span><br><span class="hljs-comment">		3. github.com/antchfx/htmlquery 能用,但没python的 lxml 库爽</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">get_html_string</span><span class="hljs-params">()</span></span> <span class="hljs-type">string</span> &#123;<br>	url := <span class="hljs-string">&quot;https://movie.douban.com/top250&quot;</span><br><br>	<span class="hljs-comment">// 创建一个新的 http 请求, 方式为 GET</span><br>	req, err := http.NewRequest(http.MethodGet, url, <span class="hljs-literal">nil</span>)<br>	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>		fmt.Println(err)<br>	&#125;<br>	<span class="hljs-comment">// 设置 自定义 header</span><br>	req.Header.Set(<span class="hljs-string">&quot;User-Agent&quot;</span>, <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;</span>)<br><br>	<span class="hljs-comment">// 发起请求</span><br>	client := &amp;http.Client&#123;&#125;<br>	resp, err := client.Do(req)<br>	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>		fmt.Println(err)<br>	&#125;<br>	<span class="hljs-keyword">defer</span> resp.Body.Close()<br><br>	<span class="hljs-comment">// 检验状态响应码</span><br>	<span class="hljs-keyword">if</span> resp.StatusCode != http.StatusOK &#123;<br>		fmt.Printf(<span class="hljs-string">&quot;status code error: %d %s&quot;</span>, resp.StatusCode, resp.Status)<br>	&#125;<br><br>	<span class="hljs-comment">// 读取响应内容</span><br>	body, err := ioutil.ReadAll(resp.Body)<br>	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>		fmt.Println(err)<br>	&#125;<br>	<span class="hljs-comment">// 打印响应内容</span><br>	<span class="hljs-comment">//fmt.Printf(&quot;%s&quot;, string(body))</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-type">string</span>(body)<br>&#125;<br><br><span class="hljs-keyword">type</span> my_data <span class="hljs-keyword">struct</span> &#123;<br>	name   <span class="hljs-type">string</span><br>	people <span class="hljs-type">string</span><br>	url    <span class="hljs-type">string</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">get_items_xpath</span><span class="hljs-params">(html <span class="hljs-type">string</span>)</span></span> []my_data &#123;<br>	doc, err := htmlquery.Parse(strings.NewReader(html))<br>	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>		fmt.Println(err)<br>	&#125;<br><br>	<span class="hljs-comment">// 使用xpath查询元素</span><br>	lis := htmlquery.Find(doc, <span class="hljs-string">&quot;//*[@id=&#x27;content&#x27;]/div/div[1]/ol/li&quot;</span>)<br><br>	fmt.Println(<span class="hljs-built_in">len</span>(lis), lis)<br>	<span class="hljs-keyword">var</span> data []my_data<br>	<span class="hljs-keyword">for</span> _, li := <span class="hljs-keyword">range</span> lis &#123;<br>		nameNode := htmlquery.FindOne(li, <span class="hljs-string">`./div/div[2]/div[1]/a/span[1]/text()`</span>)<br>		peopleNode := htmlquery.FindOne(li, <span class="hljs-string">`./div/div[2]/div[2]/div/span[4]/text()`</span>)<br>		urlNode := htmlquery.FindOne(li, <span class="hljs-string">`./div/div[2]/div[1]/a/@href`</span>)<br>		name := htmlquery.InnerText(nameNode)<br>		people := htmlquery.InnerText(peopleNode)<br>		url := htmlquery.InnerText(urlNode)<br><br>		data = <span class="hljs-built_in">append</span>(data, my_data&#123;name, people, url&#125;)<br>	&#125;<br><br>	<span class="hljs-keyword">return</span> data<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	html_string := get_html_string()<br>	data := get_items_xpath(html_string)<br>	fmt.Println(data)<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-
-
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lishun_71@qq.com </span>
     </div>
