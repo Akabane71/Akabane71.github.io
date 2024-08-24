@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hexo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Hexo">
+  <title>go-spider | Hexo</title>
+  <meta name="keywords" content=" go , spider , http ">
+  <meta name="description" content="go-spider | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="python + mysql —-&gt; pymysql &#39;&#39;&#39; 数据库连接处理 1. 通过程序操作数据库会自动开启事务 2， 如果数据表不支持事务则执行语句后立即生效 3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚 &#39;&#39;&#39; import pymysql  # 连接数据库  连接本机库可以不写host port db &#x3D; pymy">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -308,12 +308,64 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Go/go-spider" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LiShun"><span class="toc-text">LiShun</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#About-Me"><span class="toc-text">About Me</span></a></li></ol>
+        <h1 class="article-title">go-spider</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Go">Go</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">go</a>
+            
+            <a class="color2">spider</a>
+            
+            <a class="color5">http</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:39:17'>2024-08-17 11:54</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:395</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -326,13 +378,119 @@
     }
 </style>
 </div>
-            <h1 id="LiShun"><a href="#LiShun" class="headerlink" title="LiShun"></a>LiShun</h1><p>github: <a target="_blank" rel="noopener" href="https://github.com/Akabane71">Akabane71 (github.com)</a></p>
-<p>blog:<a target="_blank" rel="noopener" href="https://akabane71.github.io/">https://Akabane71.github.io/</a></p>
-<h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1><p>A computer science student</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>豆瓣爬虫-try</p>
+<pre><code class="go">package main
 
-        </article>
-        
-        
+import (
+    &quot;fmt&quot;
+    &quot;github.com/antchfx/htmlquery&quot;
+    &quot;io/ioutil&quot;
+    &quot;net/http&quot;
+    &quot;strings&quot;
+)
+
+/*
+    豆瓣 top  爬取
+    目标:
+        1. 获取表单名称，评价分数，评论人数
+
+    总结:
+        1. go 无官方的 xpath库
+        2. go 的http请求很原始
+        3. github.com/antchfx/htmlquery 能用,但没python的 lxml 库爽
+*/
+
+func get_html_string() string &#123;
+    url := &quot;https://movie.douban.com/top250&quot;
+
+    // 创建一个新的 http 请求, 方式为 GET
+    req, err := http.NewRequest(http.MethodGet, url, nil)
+    if err != nil &#123;
+        fmt.Println(err)
+    &#125;
+    // 设置 自定义 header
+    req.Header.Set(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;)
+
+    // 发起请求
+    client := &amp;http.Client&#123;&#125;
+    resp, err := client.Do(req)
+    if err != nil &#123;
+        fmt.Println(err)
+    &#125;
+    defer resp.Body.Close()
+
+    // 检验状态响应码
+    if resp.StatusCode != http.StatusOK &#123;
+        fmt.Printf(&quot;status code error: %d %s&quot;, resp.StatusCode, resp.Status)
+    &#125;
+
+    // 读取响应内容
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil &#123;
+        fmt.Println(err)
+    &#125;
+    // 打印响应内容
+    //fmt.Printf(&quot;%s&quot;, string(body))
+    return string(body)
+&#125;
+
+type my_data struct &#123;
+    name   string
+    people string
+    url    string
+&#125;
+
+func get_items_xpath(html string) []my_data &#123;
+    doc, err := htmlquery.Parse(strings.NewReader(html))
+    if err != nil &#123;
+        fmt.Println(err)
+    &#125;
+
+    // 使用xpath查询元素
+    lis := htmlquery.Find(doc, &quot;//*[@id=&#39;content&#39;]/div/div[1]/ol/li&quot;)
+
+    fmt.Println(len(lis), lis)
+    var data []my_data
+    for _, li := range lis &#123;
+        nameNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/span[1]/text()`)
+        peopleNode := htmlquery.FindOne(li, `./div/div[2]/div[2]/div/span[4]/text()`)
+        urlNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/@href`)
+        name := htmlquery.InnerText(nameNode)
+        people := htmlquery.InnerText(peopleNode)
+        url := htmlquery.InnerText(urlNode)
+
+        data = append(data, my_data&#123;name, people, url&#125;)
+    &#125;
+
+    return data
+&#125;
+
+func main() &#123;
+    html_string := get_html_string()
+    data := get_items_xpath(html_string)
+    fmt.Println(data)
+&#125;
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -341,11 +499,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

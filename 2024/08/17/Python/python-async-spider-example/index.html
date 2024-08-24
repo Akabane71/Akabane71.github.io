@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hexo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Hexo">
+  <title>python_async_spider_example | Hexo</title>
+  <meta name="keywords" content=" spider , python , async ">
+  <meta name="description" content="python_async_spider_example | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="python + mysql —-&gt; pymysql &#39;&#39;&#39; 数据库连接处理 1. 通过程序操作数据库会自动开启事务 2， 如果数据表不支持事务则执行语句后立即生效 3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚 &#39;&#39;&#39; import pymysql  # 连接数据库  连接本机库可以不写host port db &#x3D; pymy">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -308,12 +308,64 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Python/python-async-spider-example" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LiShun"><span class="toc-text">LiShun</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#About-Me"><span class="toc-text">About Me</span></a></li></ol>
+        <h1 class="article-title">python_async_spider_example</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Python">Python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">spider</a>
+            
+            <a class="color2">python</a>
+            
+            <a class="color1">async</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:39:33'>2024-08-17 15:09</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:524</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -326,13 +378,124 @@
     }
 </style>
 </div>
-            <h1 id="LiShun"><a href="#LiShun" class="headerlink" title="LiShun"></a>LiShun</h1><p>github: <a target="_blank" rel="noopener" href="https://github.com/Akabane71">Akabane71 (github.com)</a></p>
-<p>blog:<a target="_blank" rel="noopener" href="https://akabane71.github.io/">https://Akabane71.github.io/</a></p>
-<h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1><p>A computer science student</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code class="python">&quot;&quot;&quot;
+    异步函数版本
 
-        </article>
-        
-        
+    2024.8.15 文件加密 ----&gt; 或者采用了其他的编码
+&quot;&quot;&quot;
+
+
+import re
+import os
+import time
+import asyncio
+import aiohttp
+
+import requests
+
+from lxml import etree
+
+headers = &#123;
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;,
+    &quot;referer&quot;: &quot;https://www.9tata.cc/&quot;
+&#125;
+async def get_first_m3u8_link_name():
+    url = &quot;https://www.9tata.cc/play/14999-1-0.html&quot;
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url,headers=headers,ssl=False) as response:
+            tree = etree.HTML(await response.text())
+            # 获取name
+            name = tree.xpath(&quot;/html/body/div[2]/div[1]/h2/a[2]/text()&quot;)[0]
+            print(name)
+
+            # 获取m3u8实例
+            m38u = tree.xpath(&#39;//*[@id=&quot;cms_player&quot;]/script[1]/text()&#39;)[0]
+            # print(m38u)
+            first_m3u8_link = re.findall(&#39;now=&quot;(.*?m3u8)&quot;&#39;, m38u)[0]
+            print(first_m3u8_link)
+            return first_m3u8_link,name
+
+
+async def get_second_m3u8_link(first_m3u8_link):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(first_m3u8_link,ssl=False,headers=headers) as res:
+            data = await res.text()
+            # split的模块有些问题提取不出来,还得用正则表达式
+            next_url = &quot;https://s1.fsvod1.com&quot; + re.findall(&#39;(/.*?m3u8)&#39;, data)[0]
+
+            return next_url
+
+# 解析ts文件
+async def parse_ts(second_m3u8_link):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(second_m3u8_link,ssl=False,headers=headers) as res:
+            data = await res.text()
+
+            # 定义正则表达式模式
+            pattern = re.compile(r&#39;^.*/([^\n/]+\.ts)$&#39;, re.MULTILINE)
+
+            # 执行替换操作
+            new_text = pattern.sub(r&#39;\1&#39;,data)
+
+            with open(&quot;./ts/index.m3u8&quot;,&quot;w&quot;)as f:
+                f.write(new_text)
+
+
+            ret = re.findall(r&quot;\n(.*?\.ts)&quot;,data)
+            return ret
+
+# 主要的耗时步骤
+async def download_ts(p,ts):
+    # 下载一个ts文件
+    name = &quot;./ts/&quot;+ts.split(&#39;/&#39;)[-1]
+    async with aiohttp.ClientSession() as session:
+        print(p+ts,&quot;开始下载&quot;)
+        async with session.get(p+ts,ssl=False,headers=headers) as res:
+            with open(name, &quot;wb&quot;) as f:
+                # 避免 打开文件然后一顿操作,会降低运行速度
+                f.write(await res.content.read())
+            print(f&quot;&#123;ts&#125;下载完成!&quot;)
+
+async def main():
+    # 1. 爬取
+    first_m3u8_link,name = await get_first_m3u8_link_name()
+    # 2. 获取第二个m3u8链接
+    second_m3u8_link= await get_second_m3u8_link(first_m3u8_link)
+    # 3. 解析ts文件
+    ts_list = await parse_ts(second_m3u8_link)
+    # 4. 下载
+    print(ts_list)
+    print(len(ts_list))  # 384
+    p = &quot;https://s1.fsvod1.com&quot;
+    tasks = [asyncio.create_task(download_ts(p,ts)) for ts in ts_list]
+    result = await asyncio.gather(*tasks)
+
+if __name__ == &#39;__main__&#39;:
+    start = time.time()
+    asyncio.run(main())
+    end = time.time()
+    print(f&quot;cost:&quot;,end-start)  #  cost: 21.449084281921387  # 459个文件
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -341,11 +504,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

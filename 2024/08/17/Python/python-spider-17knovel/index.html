@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hexo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Hexo">
+  <title>python_spider_17knovel | Hexo</title>
+  <meta name="keywords" content=" spider , python , 17knovel ">
+  <meta name="description" content="python_spider_17knovel | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="python + mysql —-&gt; pymysql &#39;&#39;&#39; 数据库连接处理 1. 通过程序操作数据库会自动开启事务 2， 如果数据表不支持事务则执行语句后立即生效 3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚 &#39;&#39;&#39; import pymysql  # 连接数据库  连接本机库可以不写host port db &#x3D; pymy">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -308,12 +308,64 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Python/python-spider-17knovel" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LiShun"><span class="toc-text">LiShun</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#About-Me"><span class="toc-text">About Me</span></a></li></ol>
+        <h1 class="article-title">python_spider_17knovel</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Python">Python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">spider</a>
+            
+            <a class="color2">python</a>
+            
+            <a class="color4">17knovel</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:40:29'>2024-08-17 15:38</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:881</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -326,13 +378,154 @@
     }
 </style>
 </div>
-            <h1 id="LiShun"><a href="#LiShun" class="headerlink" title="LiShun"></a>LiShun</h1><p>github: <a target="_blank" rel="noopener" href="https://github.com/Akabane71">Akabane71 (github.com)</a></p>
-<p>blog:<a target="_blank" rel="noopener" href="https://akabane71.github.io/">https://Akabane71.github.io/</a></p>
-<h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1><p>A computer science student</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this is a demo of spider about 17knovel</p>
+<pre><code class="python">&quot;&quot;&quot;
+    练习；
+    17k 小说网
+        要求:
+            书架上的 n 本书 ;
+            按照章节进行爬取并存储到单独的文件夹中;我们就爬取前15章内容
 
-        </article>
-        
-        
+    -----&gt; 优化方向:  数据获取应该做成一个迭代器,文本内容过大的时候,应该按需索取
+&quot;&quot;&quot;
+import os
+import time
+
+import requests
+from lxml import etree
+
+book_data = []
+
+header = &#123;
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;,
+    &quot;referer&quot;: &quot;https://user.17k.com/www/bookshelf/&quot;,
+    # 没法找到真正的登录入口 -----&gt; 只能凑合了
+    # URL 编码 ----&gt;  一些特殊的字符 采用 %数字
+    &quot;cookie&quot;:&quot;GUID=a28859ab-9982-4c22-bbf2-9adab3632f67; c_channel=0; c_csc=web; Hm_lvt_9793f42b498361373512340937deb2a0=1723358828,1723364404,1723366993,1723449913; HMACCOUNT=C8D3DE63DD2135E9; acw_tc=1a0c638417234526513274433e0096275e8bc883e58405690be4294f8ec677; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22a28859ab-9982-4c22-bbf2-9adab3632f67%22%2C%22%24device_id%22%3A%221913c804c2e589-0b20c44b5173c3-26001e51-3686400-1913c804c2fae5%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%2C%22first_id%22%3A%22a28859ab-9982-4c22-bbf2-9adab3632f67%22%7D; Hm_lpvt_9793f42b498361373512340937deb2a0=1723452655; acw_sc__v2=66b9ccf3971a4936cd99f9bb6be954ddd33790ac; accessToken=avatarUrl%3Dhttps%253A%252F%252Fcdn.static.17k.com%252Fuser%252Favatar%252F15%252F95%252F54%252F103705495.jpg-88x88%253Fv%253D1723364559000%26id%3D103705495%26nickname%3DAkabane71%26e%3D1739004659%26s%3D3b5857d00c5e80e6; ssxmod_itna=iqGxci0=eYqeq7KGHqvnp70hhxj20DRxY5oqbXdD/CQmDnqD=GFDK40ooSxDCYm0Ax+zoFh74qqzYn8ihwe8tGETKLKDEyPoDU4i8DCq4wdfDeetD5xGoDPxDeDACKiTDY4Dd06s5tDEDYQDYqGRDB60mqDffqGWGT=DmdiDGTIXD7QDIkt4DDNEmRxNn4RM/bR4ueDSGBt5CDtDjkTD/RDkoDU3X=H49MUHwc2aWM0qxBQD7LiBDYE0ReDHILN5q8Ga77DoD+h6QAprShm4G0wUhGDH+1GPQowjSYxHB4YlxD357H4aQiDD; ssxmod_itna2=iqGxci0=eYqeq7KGHqvnp70hhxj20DRxY5oqbNG9WylDBLeD5GaGYfdbGoAx82x=5XSxmKQwKhilHiOQa/R7XxiqR0f6jtYm1O2Gl8fPQ6eO2FU8gnwPkj62cww5lQMjuhvZZa/QE8dA7iYqRfLm4RxjI+INKfvLz3b8IWYhtdAzFbrRAoR7/n2iymWhQPd=NaajYenzDccaP1YFsr98Ecnh01ykcaazc6yzq/Hih77pw1gTTIOweKOpw/px8zAv1zjjg/P6MKnLv954qVn2H=AREEf87sYb/h0pbsYqKLdlLzsu6FyLxXHBx1r0fPiP=iXOiV6NVG0T2i5E4DQF4UrQSxqiGi7GlU7HC0aBB+fxof4Heb3h05CmQmxvWexm5doBPuAiYx/7i4b0rYiQugtMEObDDFqD+cPGF+8xE8rDxD==; tfstk=f52S9aw0IUY7_drj-bIqGgKM-ckQFz6NFHiLjkpyvYH8vvZLx2urT2PjHcUo98kz4rsQkPqrTYeQipZgx8SoLgDuqvDd7NWZduqoKnYvtx2SHtnaDDLJegrh6bkd7NW2jSbwfvFeDP04zo3mA0K-wyKAcDinpLhpeILxoDHKJy3KktnsYDdKvvhHAEiFNDE5DOwXUxIIIu3XCo2m2B3dIqJdd-i7cVE8XppLh0G7LK2QRPhz9lcgUuWBnYr_Mxn7JOQ-HlFbbbw55LunO-a7OzSetmNQvRDoCHB8cYgS68GkxL4TckFZG-SOIYM-yWkuYh_zc8azq-ZevIHSUSG_FABMy2P4fJiQKwXb5uFTJWsPLdu6VTABcfvKcVSfcBAExXXHlRE9rcG-m0BNciTXtbnmcaIfcBlSwmm4wisXPWf..&quot;
+&#125;
+
+&quot;&quot;&quot;
+    网站的cookies 是动态变化的, 所以要先模拟登录获取响应的 cookies
+&quot;&quot;&quot;
+session = requests.Session()
+# 模拟登录 拿到 对应的 cookies
+session.get(
+    url=&#39;https://api.17k.com/pv/log.php?Platform=Web&amp;Guid=a28859ab-9982-4c22-bbf2-9adab3632f67&amp;Uid=103705495&amp;Nickname=Akabane71&amp;cpsSource=0&amp;Channel=web&amp;callback=Q_jsonp_826718&#39;,
+    headers=header)
+
+# 获取书架上的数据
+def get_json_data():
+
+    rep = session.get(&#39;https://user.17k.com/ck/author2/shelf?page=1&amp;appKey=2406394919&#39;, headers=header)
+
+    json_data = rep.json()
+    items = json_data.get(&quot;data&quot;)
+    print(len(items))
+    for item in items:
+        book_name = item.get(&quot;bookName&quot;)
+        book_id = item.get(&quot;bookId&quot;)
+        data = &#123;
+            &quot;bookName&quot;: book_name,
+            &quot;bookId&quot;: book_id,
+        &#125;
+        book_data.append(data)
+        return
+
+
+# 用bookId来访问对应的页面
+def use_booId_get_html():
+    for data in book_data:
+        book_id = data[&quot;bookId&quot;]
+        url = f&quot;https://www.17k.com/list/&#123;book_id&#125;.html&quot;
+        # 延时
+        rep = session.get(url, headers=header)
+        tree = etree.HTML(rep.text)
+        get_chapter_data(tree)
+        time.sleep(2)
+        return
+
+
+book_chapter_data = []
+# 解析每个章节对应的url
+def get_chapter_data(tree):
+    a_items = tree.xpath(&quot;/html/body/div[5]/dl[1]/dd//a[position()&lt;16]&quot;)
+    for a_item in a_items:
+        href = &quot;https://www.17k.com&quot; + a_item.xpath(&quot;@href&quot;)[0]
+        book_chapter_data.append(href)
+        print(href)
+
+
+
+download_data = []
+# 解析每个章节的内容
+def get_chapter_title_text():
+    for href in book_chapter_data:
+        # 每次停留3s再去爬取
+        time.sleep(3)
+        res = session.get(href, headers=header)
+        res.encoding = &quot;utf8&quot;
+        tree = etree.HTML(res.content.decode(&quot;utf-8&quot;))
+        title = tree.xpath(&#39;//*[@id=&quot;readArea&quot;]/div[1]/h1/text()&#39;)[0]
+        print(title)
+        p_items = tree.xpath(&#39;//*[@id=&quot;readArea&quot;]/div[1]/div[2]//p&#39;)
+        # print(p_items)
+        # 清空
+        total_data = &#39;&#39;
+        for p_item in p_items:
+            total_data += p_item.xpath(&#39;text()&#39;)[0]+&quot;/n&quot;
+        # 内容乱码,需要js逆向
+        data = &#123;
+            &quot;title&quot;: title,
+            &quot;text&quot;: total_data
+        &#125;
+        download_data.append(data)
+
+
+# 持久化存储
+def save_book_data():
+    i = 1
+    for data in download_data:
+        title = data[&quot;title&quot;]
+        text = data[&quot;text&quot;]
+        datas = text.split(&quot;/n&quot;)
+        with open(f&quot;./book/&#123;i&#125; &#123;title&#125;.txt&quot;, &quot;w&quot;, encoding=&quot;utf8&quot;)as f:
+            f.write(f&quot;&#123;title&#125;\n&quot;)
+            for word in datas:
+                f.write(&quot;&#123;&#125;\n&quot;.format(word))
+        i += 1
+
+
+
+if __name__ == &#39;__main__&#39;:
+    # 1. 获取收藏栏数据
+    get_json_data()
+    # 2. 挨个解析数据
+    use_booId_get_html()
+    # 3. 访问具体的网页去获取具体的小说数据
+    get_chapter_title_text()
+    # 4. 持久化存储
+    save_book_data()
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -341,11 +534,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
