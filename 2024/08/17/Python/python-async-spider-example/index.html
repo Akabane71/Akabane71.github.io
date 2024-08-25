@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>python_async_spider_example | Akabane71</title>
-  <meta name="keywords" content=" python , spider , async ">
+  <meta name="keywords" content=" python , spider , async , m3u8 ">
   <meta name="description" content="python_async_spider_example | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="bilibili 视频爬取，低画质爬取 参考博客:https:&#x2F;&#x2F;blog.csdn.net&#x2F;knighthood2001&#x2F;article&#x2F;details&#x2F;139014757 主要的分析过程和思路都是参考的是他人的博客，自己加以验证 import re import json import tempfile # 临时文件 import subprocess  import requests fro">
@@ -163,7 +163,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="7">
-<input type="hidden" id="yelog_site_word_count" value="3.8k">
+<input type="hidden" id="yelog_site_word_count" value="4.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -222,6 +222,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -299,7 +303,7 @@
         
         <a  class="全部文章 Python "
            href="/2024/08/17/Python/python-async-spider-example/"
-           data-tag="python,spider,async"
+           data-tag="python,spider,async,m3u8"
            data-author="" >
             <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
             <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
@@ -358,17 +362,19 @@
             
             <a class="color1">async</a>
             
+            <a class="color5">m3u8</a>
+            
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:39:33'>2024-08-17 15:09</time>
+            发布时间 : <time class="date" title='最后更新: 2024-08-25 23:43:28'>2024-08-17 15:09</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:524</span>
+        <span>字数:809</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -403,15 +409,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code class="python">&quot;&quot;&quot;
+        <p>参考博客: <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36964509/article/details/140364392">https://blog.csdn.net/qq_36964509/article/details/140364392</a></p>
+<p>思路请看参考博客</p>
+<blockquote>
+<p>视频片段加密 —–&gt; 探寻解密方法 : 加密方法为 AES-128</p>
+<p>AES<br>   在加密视频流里常见的就是CBC模式<br>   解密需要:<br>        数据<br>        key 【密钥】<br>        iv 【初始偏移量】</p>
+<p>总结:<br>   key 要从index.m38u中获取<br>   iv &#x3D; b’0000000000000000’</p>
+</blockquote>
+<p>实现如下</p>
+<pre><code class="python">&quot;&quot;&quot;
     异步函数版本
 
-    2024.8.15 文件加密 ----&gt; 或者采用了其他的编码
+    2024.8.15 文件加密 ----&gt; 采用了AES-128 加密
 &quot;&quot;&quot;
 
-
 import re
-import os
 import time
 import asyncio
 import aiohttp
@@ -419,11 +431,19 @@ import aiohttp
 import requests
 
 from lxml import etree
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
 
 headers = &#123;
     &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;,
     &quot;referer&quot;: &quot;https://www.9tata.cc/&quot;
 &#125;
+
+
+# 解密偏移
+iv = b&#39;0000000000000000&#39;
+key = b&#39;&#39;
+
 async def get_first_m3u8_link_name():
     url = &quot;https://www.9tata.cc/play/14999-1-0.html&quot;
     async with aiohttp.ClientSession() as session:
@@ -462,12 +482,47 @@ async def parse_ts(second_m3u8_link):
             # 执行替换操作
             new_text = pattern.sub(r&#39;\1&#39;,data)
 
+            # 再将key 改为 本地的 key
+            new_text = re.sub(r&#39;URI=&quot;(.*)&quot;&#39;, r&#39;URI=&quot;key.key&quot;&#39;, new_text)
+
+            # 将 index.m3u8 存储到本地
             with open(&quot;./ts/index.m3u8&quot;,&quot;w&quot;)as f:
                 f.write(new_text)
 
-
+            # 解析出的
             ret = re.findall(r&quot;\n(.*?\.ts)&quot;,data)
-            return ret
+
+            url = &#39;https://s1.fsvod1.com&#39;
+            key_url = url + re.findall(r&#39;URI=&quot;(.*)&quot;&#39;,data)[0]
+
+            return ret,key_url
+
+# 存储并获取
+def get_key(key_url):
+    res = requests.get(key_url,headers=headers)
+    print(&#39;key : &#39;,res.content)
+    with open(&quot;./ts/key.key&quot;,&#39;wb&#39;) as f:
+        f.write(res.content)
+    return res.content
+
+
+# ts解密
+def decrypt(data, key):
+    # 创建 AES 解密器
+    cipher = AES.new(key, AES.MODE_CBC,iv)
+
+    # 解密数据
+    decrypted_data = cipher.decrypt(data)
+
+    # 去除填充
+    try:
+        dec_data = unpad(decrypted_data, AES.block_size)
+    except ValueError:
+        print(&quot;Padding is incorrect.&quot;)
+        return None
+
+    return dec_data
+
 
 # 主要的耗时步骤
 async def download_ts(p,ts):
@@ -476,24 +531,32 @@ async def download_ts(p,ts):
     async with aiohttp.ClientSession() as session:
         print(p+ts,&quot;开始下载&quot;)
         async with session.get(p+ts,ssl=False,headers=headers) as res:
+            res_bdata = await res.content.read()
+            res_bdata = decrypt(res_bdata,key=key)
             with open(name, &quot;wb&quot;) as f:
                 # 避免 打开文件然后一顿操作,会降低运行速度
-                f.write(await res.content.read())
+                f.write(res_bdata)
             print(f&quot;&#123;ts&#125;下载完成!&quot;)
 
 async def main():
+    global key # 全局变量
     # 1. 爬取
     first_m3u8_link,name = await get_first_m3u8_link_name()
     # 2. 获取第二个m3u8链接
     second_m3u8_link= await get_second_m3u8_link(first_m3u8_link)
-    # 3. 解析ts文件
-    ts_list = await parse_ts(second_m3u8_link)
-    # 4. 下载
+    # 3. 解析ts文件 ---&gt; 获取 各个url链接
+    ts_list,key_url = await parse_ts(second_m3u8_link)
+    # 4. 获取key
+    key = get_key(key_url)
+    # 5. 下载
     print(ts_list)
     print(len(ts_list))  # 384
     p = &quot;https://s1.fsvod1.com&quot;
     tasks = [asyncio.create_task(download_ts(p,ts)) for ts in ts_list]
     result = await asyncio.gather(*tasks)
+
+
+
 
 if __name__ == &#39;__main__&#39;:
     start = time.time()
