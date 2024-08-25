@@ -6,19 +6,18 @@
   <meta name="keywords" content="">
   <meta name="description" content="Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="this is a demo of spider about 17knovel &quot;&quot;&quot;     练习；     17k 小说网         要求:             书架上的 n 本书 ;             按照章节进行爬取并存储到单独的文件夹中;我们就爬取前15章内容      -----&gt; 优化方向:  数据获取应该做成一个迭代器,文本内容过">
+<meta name="description" content="[TOC] 关于python的import 是如何导入的，以及 探讨一下 _name__和  _main 是给什么鬼东西  if __name__ &#x3D;&#x3D; &#39;__main__&#39;:    1.  import 是怎么导入包的import 是从被执行文件[.py] 作为 目录开始 找其他文件 quetion:  在main.py 下导入 import  mysql.py 会不会报错？ 或">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python_spider_17knovel">
-<meta property="og:url" content="http://example.com/2024/08/17/Python/python-spider-17knovel/index.html">
+<meta property="og:title" content="python-import">
+<meta property="og:url" content="http://example.com/2024/08/25/python-import/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="this is a demo of spider about 17knovel &quot;&quot;&quot;     练习；     17k 小说网         要求:             书架上的 n 本书 ;             按照章节进行爬取并存储到单独的文件夹中;我们就爬取前15章内容      -----&gt; 优化方向:  数据获取应该做成一个迭代器,文本内容过">
+<meta property="og:description" content="[TOC] 关于python的import 是如何导入的，以及 探讨一下 _name__和  _main 是给什么鬼东西  if __name__ &#x3D;&#x3D; &#39;__main__&#39;:    1.  import 是怎么导入包的import 是从被执行文件[.py] 作为 目录开始 找其他文件 quetion:  在main.py 下导入 import  mysql.py 会不会报错？ 或">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-17T07:38:50.000Z">
-<meta property="article:modified_time" content="2024-08-24T07:40:29.400Z">
+<meta property="article:published_time" content="2024-08-25T10:18:36.000Z">
+<meta property="article:modified_time" content="2024-08-25T15:24:52.545Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="spider">
-<meta property="article:tag" content="17knovel">
+<meta property="article:tag" content="os">
 <meta name="twitter:card" content="summary">
 
 
@@ -108,7 +107,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(6)</small>
+                <small>(7)</small>
             
         </div>
     </li>
@@ -120,7 +119,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -163,8 +162,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="6">
-<input type="hidden" id="yelog_site_word_count" value="2.6k">
+<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_word_count" value="3.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -230,6 +229,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python</a>
             </li>
         
@@ -247,6 +250,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/python-import/"
+           data-tag="python,os"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
         
         
         <a  class="全部文章 "
