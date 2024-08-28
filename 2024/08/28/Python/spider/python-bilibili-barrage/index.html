@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python_mysql | Akabane71</title>
-  <meta name="keywords" content=" python , mysql ">
-  <meta name="description" content="python_mysql | Akabane71">
+  <title>python-bilibili-barrage | Akabane71</title>
+  <meta name="keywords" content=" python , spider ">
+  <meta name="description" content="python-bilibili-barrage | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="bilibili视频弹幕的爬取参考博客：   https:&#x2F;&#x2F;blog.muna.uk&#x2F;archives&#x2F;Bilibili_apis.html    https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;357392015    思路和这几个博客一样，但是解析部分有自己的内容 import requests from lxml import etree   &#39;&#39;&#39;">
 <meta property="og:type" content="article">
@@ -357,9 +357,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Python/python-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Python/spider/python-bilibili-barrage" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python_mysql</h1>
+        <h1 class="article-title">python-bilibili-barrage</h1>
     
     <div class="article-meta">
         
@@ -379,19 +379,19 @@
             
             <a class="color2">python</a>
             
-            <a class="color1">mysql</a>
+            <a class="color2">spider</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:39:51'>2024-08-17 15:19</time>
+            发布时间 : <time class="date" title='最后更新: 2024-08-28 16:04:46'>2024-08-28 16:01</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:230</span>
+        <span>字数:392</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -410,7 +410,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#bilibili%E8%A7%86%E9%A2%91%E5%BC%B9%E5%B9%95%E7%9A%84%E7%88%AC%E5%8F%96"><span class="toc-text">bilibili视频弹幕的爬取</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -426,43 +426,96 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>python + mysql —-&gt; pymysql</p>
-<pre><code class="python">&#39;&#39;&#39;
-数据库连接处理
-1. 通过程序操作数据库会自动开启事务
-2， 如果数据表不支持事务则执行语句后立即生效
-3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚
+        <h1 id="bilibili视频弹幕的爬取"><a href="#bilibili视频弹幕的爬取" class="headerlink" title="bilibili视频弹幕的爬取"></a>bilibili视频弹幕的爬取</h1><p>参考博客：</p>
+<ul>
+<li><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.muna.uk/archives/Bilibili_apis.html">https://blog.muna.uk/archives/Bilibili_apis.html</a></li>
+</ol>
+</li>
+<li><ol start="2">
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357392015">https://zhuanlan.zhihu.com/p/357392015</a></li>
+</ol>
+</li>
+</ul>
+<p>思路和这几个博客一样，但是解析部分有自己的内容</p>
+<pre><code>import requests
+from lxml import etree
+
+
 &#39;&#39;&#39;
-import pymysql
+    需求: 输入相应的bv号，直接下弹幕
+    
+    参考博客: 
+        # 如何获取 avid 和 cid
+        1. https://blog.muna.uk/archives/Bilibili_apis.html 
+        # 如何获取 评论  b站的一些api如何使用
+        2. https://zhuanlan.zhihu.com/p/357392015
 
-# 连接数据库  连接本机库可以不写host port
-db = pymysql.connect(
-    host=&quot;localhost&quot;,
-    port=3306,
-    user=&#39;root&#39;,
-    password=&#39;200371&#39;,
-    database=&#39;stu&#39;,
-    charset=&#39;utf8&#39;
-)
+    进一步升级:
+        1. 下载更多的弹幕【目前撑死就1200条】
+        2. 爬取多个视频的弹幕
+        3. 改写成为异步模式
+&#39;&#39;&#39;
 
-# 生成一个游标：调用sql语句得到执行结果集的对象
-cur = db.cursor()
+url = &#39;https://www.bilibili.com/&#39;
 
-# 数据库写操作  增删改
-# 执行sql语句  class -&gt; InnoDB  hobby -&gt; MyISAM
-try:
-    sql = &#39;update class set score=100 where id=2;&#39;
-    cur.execute(sql)
-    sql = &#39;delete from class where socre&lt;60;&#39;
-    cur.execute(sql)
-    db.commit() # 事务提交
-except Exception as e:
-    print(e)
-    db.rollback() # 事务回滚
+session = requests.session()
 
-# 关闭游标和数据库连接
-cur.close()
-db.close()
+
+barrages = []
+
+
+def get_barrage_data(bv,header):
+    new_url = f&#39;https://api.bilibili.com/x/web-interface/view/detail?bvid=&#123;bv&#125;&#39;
+    res = session.get(new_url, headers=header)
+    print(res.status_code)
+    data = res.json()
+    cid = data[&#39;data&#39;][&#39;View&#39;][&#39;cid&#39;]
+    print(&#39;cid为&#39;,cid)
+
+    barrage_url = f&#39;https://comment.bilibili.com/&#123;cid&#125;.xml&#39;
+    res = session.get(barrage_url,headers=header)
+    res.encoding = &#39;utf-8&#39;
+    print(res.status_code)
+
+    # 解析
+    parse_xml(res)
+
+
+# 解析 xml 文件
+def parse_xml(res):
+    xml_data = res.content
+
+    xml = etree.fromstring(xml_data)
+    divs = xml.xpath(&#39;//d&#39;)
+    print(len(divs))
+    for div in divs:
+        barrage = div.xpath(&quot;text()&quot;)[0]
+        print(div.xpath(&quot;text()&quot;)[0])
+        barrages.append(barrage)
+
+# 持久化存储
+def save_txt(bv):
+    with open(f&#39;./&#123;bv&#125;.txt&#39;,&#39;w&#39;,encoding=&#39;utf-8&#39;)as f:
+        for line in barrages:
+            f.writelines(line+&#39;\n&#39;)
+
+
+def main(bv):
+    headers = &#123;
+        &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;,
+        &#39;Referer&#39;: f&#39;https://www.bilibili.com/video/&#123;bv&#125;/?&#39;
+    &#125;
+    get_barrage_data(bv,headers)
+    save_txt(bv)
+
+
+
+
+
+if __name__ == &#39;__main__&#39;:
+    bv = &#39;BV137411B7mQ&#39;
+    main(bv)
 </code></pre>
 
       

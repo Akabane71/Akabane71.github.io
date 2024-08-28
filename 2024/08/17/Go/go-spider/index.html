@@ -6,15 +6,15 @@
   <meta name="keywords" content=" spider , go , http ">
   <meta name="description" content="go-spider | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="bilibili 视频爬取，低画质爬取 参考博客:https:&#x2F;&#x2F;blog.csdn.net&#x2F;knighthood2001&#x2F;article&#x2F;details&#x2F;139014757 主要的分析过程和思路都是参考的是他人的博客，自己加以验证 import re import json import tempfile # 临时文件 import subprocess  import requests fro">
+<meta name="description" content="bilibili视频弹幕的爬取参考博客：   https:&#x2F;&#x2F;blog.muna.uk&#x2F;archives&#x2F;Bilibili_apis.html    https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;357392015    思路和这几个博客一样，但是解析部分有自己的内容 import requests from lxml import etree   &#39;&#39;&#39;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python-bilibili">
-<meta property="og:url" content="http://example.com/2024/08/25/python-bilibili/index.html">
+<meta property="og:title" content="python-bilibili-barrage">
+<meta property="og:url" content="http://example.com/2024/08/28/Python/spider/python-bilibili-barrage/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="bilibili 视频爬取，低画质爬取 参考博客:https:&#x2F;&#x2F;blog.csdn.net&#x2F;knighthood2001&#x2F;article&#x2F;details&#x2F;139014757 主要的分析过程和思路都是参考的是他人的博客，自己加以验证 import re import json import tempfile # 临时文件 import subprocess  import requests fro">
+<meta property="og:description" content="bilibili视频弹幕的爬取参考博客：   https:&#x2F;&#x2F;blog.muna.uk&#x2F;archives&#x2F;Bilibili_apis.html    https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;357392015    思路和这几个博客一样，但是解析部分有自己的内容 import requests from lxml import etree   &#39;&#39;&#39;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-25T15:29:01.000Z">
-<meta property="article:modified_time" content="2024-08-25T15:32:16.673Z">
+<meta property="article:published_time" content="2024-08-28T08:01:25.000Z">
+<meta property="article:modified_time" content="2024-08-28T08:04:46.354Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="spider">
@@ -107,7 +107,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(7)</small>
+                <small>(8)</small>
             
         </div>
     </li>
@@ -119,7 +119,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -162,8 +162,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="7">
-<input type="hidden" id="yelog_site_word_count" value="4.1k">
+<input type="hidden" id="yelog_site_posts_number" value="8">
+<input type="hidden" id="yelog_site_word_count" value="4.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -217,6 +217,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>go</a>
             </li>
         
@@ -248,6 +256,10 @@
                 <i class="iconfont icon-tag"></i><a>spider</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
     </div>
 
 </div>
@@ -257,8 +269,17 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/25/python-bilibili/"
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
            data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
            data-author="" >
             <span class="post-title" title="python-bilibili">python-bilibili</span>
             <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
@@ -266,8 +287,8 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/25/python-import/"
-           data-tag="python,os"
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
            data-author="" >
             <span class="post-title" title="python-import">python-import</span>
             <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
@@ -275,7 +296,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/17/Python/python-spider-17knovel/"
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
            data-tag="python,spider,17knovel"
            data-author="" >
             <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
@@ -302,7 +323,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/17/Python/python-async-spider-example/"
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
            data-tag="python,spider,async,m3u8"
            data-author="" >
             <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>

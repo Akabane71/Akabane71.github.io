@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python_spider_17knovel | Akabane71</title>
-  <meta name="keywords" content=" python , spider , 17knovel ">
-  <meta name="description" content="python_spider_17knovel | Akabane71">
+  <title>python_async_spider_example | Akabane71</title>
+  <meta name="keywords" content=" python , spider , async , m3u8 ">
+  <meta name="description" content="python_async_spider_example | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="bilibili 视频爬取，低画质爬取 参考博客:https:&#x2F;&#x2F;blog.csdn.net&#x2F;knighthood2001&#x2F;article&#x2F;details&#x2F;139014757 主要的分析过程和思路都是参考的是他人的博客，自己加以验证 import re import json import tempfile # 临时文件 import subprocess  import requests fro">
+<meta name="description" content="bilibili视频弹幕的爬取参考博客：   https:&#x2F;&#x2F;blog.muna.uk&#x2F;archives&#x2F;Bilibili_apis.html    https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;357392015    思路和这几个博客一样，但是解析部分有自己的内容 import requests from lxml import etree   &#39;&#39;&#39;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python-bilibili">
-<meta property="og:url" content="http://example.com/2024/08/25/python-bilibili/index.html">
+<meta property="og:title" content="python-bilibili-barrage">
+<meta property="og:url" content="http://example.com/2024/08/28/Python/spider/python-bilibili-barrage/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="bilibili 视频爬取，低画质爬取 参考博客:https:&#x2F;&#x2F;blog.csdn.net&#x2F;knighthood2001&#x2F;article&#x2F;details&#x2F;139014757 主要的分析过程和思路都是参考的是他人的博客，自己加以验证 import re import json import tempfile # 临时文件 import subprocess  import requests fro">
+<meta property="og:description" content="bilibili视频弹幕的爬取参考博客：   https:&#x2F;&#x2F;blog.muna.uk&#x2F;archives&#x2F;Bilibili_apis.html    https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;357392015    思路和这几个博客一样，但是解析部分有自己的内容 import requests from lxml import etree   &#39;&#39;&#39;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-25T15:29:01.000Z">
-<meta property="article:modified_time" content="2024-08-25T15:32:16.673Z">
+<meta property="article:published_time" content="2024-08-28T08:01:25.000Z">
+<meta property="article:modified_time" content="2024-08-28T08:04:46.354Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="spider">
@@ -107,7 +107,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(7)</small>
+                <small>(8)</small>
             
         </div>
     </li>
@@ -119,7 +119,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -162,8 +162,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="7">
-<input type="hidden" id="yelog_site_word_count" value="4.1k">
+<input type="hidden" id="yelog_site_posts_number" value="8">
+<input type="hidden" id="yelog_site_word_count" value="4.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -217,6 +217,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>go</a>
             </li>
         
@@ -248,6 +256,10 @@
                 <i class="iconfont icon-tag"></i><a>spider</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
     </div>
 
 </div>
@@ -257,8 +269,17 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/25/python-bilibili/"
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
            data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
            data-author="" >
             <span class="post-title" title="python-bilibili">python-bilibili</span>
             <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
@@ -266,8 +287,8 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/25/python-import/"
-           data-tag="python,os"
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
            data-author="" >
             <span class="post-title" title="python-import">python-import</span>
             <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
@@ -275,7 +296,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/17/Python/python-spider-17knovel/"
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
            data-tag="python,spider,17knovel"
            data-author="" >
             <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
@@ -302,7 +323,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/17/Python/python-async-spider-example/"
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
            data-tag="python,spider,async,m3u8"
            data-author="" >
             <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
@@ -336,9 +357,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Python/python-spider-17knovel" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Python/spider/python-async-spider-example" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python_spider_17knovel</h1>
+        <h1 class="article-title">python_async_spider_example</h1>
     
     <div class="article-meta">
         
@@ -360,19 +381,21 @@
             
             <a class="color2">spider</a>
             
-            <a class="color4">17knovel</a>
+            <a class="color1">async</a>
+            
+            <a class="color5">m3u8</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:40:29'>2024-08-17 15:38</time>
+            发布时间 : <time class="date" title='最后更新: 2024-08-25 23:43:28'>2024-08-17 15:09</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:881</span>
+        <span>字数:809</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -407,133 +430,160 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>this is a demo of spider about 17knovel</p>
+        <p>参考博客: <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36964509/article/details/140364392">https://blog.csdn.net/qq_36964509/article/details/140364392</a></p>
+<p>思路请看参考博客</p>
+<blockquote>
+<p>视频片段加密 —–&gt; 探寻解密方法 : 加密方法为 AES-128</p>
+<p>AES<br>   在加密视频流里常见的就是CBC模式<br>   解密需要:<br>        数据<br>        key 【密钥】<br>        iv 【初始偏移量】</p>
+<p>总结:<br>   key 要从index.m38u中获取<br>   iv &#x3D; b’0000000000000000’</p>
+</blockquote>
+<p>实现如下</p>
 <pre><code class="python">&quot;&quot;&quot;
-    练习；
-    17k 小说网
-        要求:
-            书架上的 n 本书 ;
-            按照章节进行爬取并存储到单独的文件夹中;我们就爬取前15章内容
+    异步函数版本
 
-    -----&gt; 优化方向:  数据获取应该做成一个迭代器,文本内容过大的时候,应该按需索取
+    2024.8.15 文件加密 ----&gt; 采用了AES-128 加密
 &quot;&quot;&quot;
-import os
+
+import re
 import time
+import asyncio
+import aiohttp
 
 import requests
+
 from lxml import etree
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
 
-book_data = []
-
-header = &#123;
+headers = &#123;
     &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;,
-    &quot;referer&quot;: &quot;https://user.17k.com/www/bookshelf/&quot;,
-    # 没法找到真正的登录入口 -----&gt; 只能凑合了
-    # URL 编码 ----&gt;  一些特殊的字符 采用 %数字
-    &quot;cookie&quot;:&quot;GUID=a28859ab-9982-4c22-bbf2-9adab3632f67; c_channel=0; c_csc=web; Hm_lvt_9793f42b498361373512340937deb2a0=1723358828,1723364404,1723366993,1723449913; HMACCOUNT=C8D3DE63DD2135E9; acw_tc=1a0c638417234526513274433e0096275e8bc883e58405690be4294f8ec677; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22a28859ab-9982-4c22-bbf2-9adab3632f67%22%2C%22%24device_id%22%3A%221913c804c2e589-0b20c44b5173c3-26001e51-3686400-1913c804c2fae5%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%2C%22first_id%22%3A%22a28859ab-9982-4c22-bbf2-9adab3632f67%22%7D; Hm_lpvt_9793f42b498361373512340937deb2a0=1723452655; acw_sc__v2=66b9ccf3971a4936cd99f9bb6be954ddd33790ac; accessToken=avatarUrl%3Dhttps%253A%252F%252Fcdn.static.17k.com%252Fuser%252Favatar%252F15%252F95%252F54%252F103705495.jpg-88x88%253Fv%253D1723364559000%26id%3D103705495%26nickname%3DAkabane71%26e%3D1739004659%26s%3D3b5857d00c5e80e6; ssxmod_itna=iqGxci0=eYqeq7KGHqvnp70hhxj20DRxY5oqbXdD/CQmDnqD=GFDK40ooSxDCYm0Ax+zoFh74qqzYn8ihwe8tGETKLKDEyPoDU4i8DCq4wdfDeetD5xGoDPxDeDACKiTDY4Dd06s5tDEDYQDYqGRDB60mqDffqGWGT=DmdiDGTIXD7QDIkt4DDNEmRxNn4RM/bR4ueDSGBt5CDtDjkTD/RDkoDU3X=H49MUHwc2aWM0qxBQD7LiBDYE0ReDHILN5q8Ga77DoD+h6QAprShm4G0wUhGDH+1GPQowjSYxHB4YlxD357H4aQiDD; ssxmod_itna2=iqGxci0=eYqeq7KGHqvnp70hhxj20DRxY5oqbNG9WylDBLeD5GaGYfdbGoAx82x=5XSxmKQwKhilHiOQa/R7XxiqR0f6jtYm1O2Gl8fPQ6eO2FU8gnwPkj62cww5lQMjuhvZZa/QE8dA7iYqRfLm4RxjI+INKfvLz3b8IWYhtdAzFbrRAoR7/n2iymWhQPd=NaajYenzDccaP1YFsr98Ecnh01ykcaazc6yzq/Hih77pw1gTTIOweKOpw/px8zAv1zjjg/P6MKnLv954qVn2H=AREEf87sYb/h0pbsYqKLdlLzsu6FyLxXHBx1r0fPiP=iXOiV6NVG0T2i5E4DQF4UrQSxqiGi7GlU7HC0aBB+fxof4Heb3h05CmQmxvWexm5doBPuAiYx/7i4b0rYiQugtMEObDDFqD+cPGF+8xE8rDxD==; tfstk=f52S9aw0IUY7_drj-bIqGgKM-ckQFz6NFHiLjkpyvYH8vvZLx2urT2PjHcUo98kz4rsQkPqrTYeQipZgx8SoLgDuqvDd7NWZduqoKnYvtx2SHtnaDDLJegrh6bkd7NW2jSbwfvFeDP04zo3mA0K-wyKAcDinpLhpeILxoDHKJy3KktnsYDdKvvhHAEiFNDE5DOwXUxIIIu3XCo2m2B3dIqJdd-i7cVE8XppLh0G7LK2QRPhz9lcgUuWBnYr_Mxn7JOQ-HlFbbbw55LunO-a7OzSetmNQvRDoCHB8cYgS68GkxL4TckFZG-SOIYM-yWkuYh_zc8azq-ZevIHSUSG_FABMy2P4fJiQKwXb5uFTJWsPLdu6VTABcfvKcVSfcBAExXXHlRE9rcG-m0BNciTXtbnmcaIfcBlSwmm4wisXPWf..&quot;
+    &quot;referer&quot;: &quot;https://www.9tata.cc/&quot;
 &#125;
 
-&quot;&quot;&quot;
-    网站的cookies 是动态变化的, 所以要先模拟登录获取响应的 cookies
-&quot;&quot;&quot;
-session = requests.Session()
-# 模拟登录 拿到 对应的 cookies
-session.get(
-    url=&#39;https://api.17k.com/pv/log.php?Platform=Web&amp;Guid=a28859ab-9982-4c22-bbf2-9adab3632f67&amp;Uid=103705495&amp;Nickname=Akabane71&amp;cpsSource=0&amp;Channel=web&amp;callback=Q_jsonp_826718&#39;,
-    headers=header)
 
-# 获取书架上的数据
-def get_json_data():
+# 解密偏移
+iv = b&#39;0000000000000000&#39;
+key = b&#39;&#39;
 
-    rep = session.get(&#39;https://user.17k.com/ck/author2/shelf?page=1&amp;appKey=2406394919&#39;, headers=header)
+async def get_first_m3u8_link_name():
+    url = &quot;https://www.9tata.cc/play/14999-1-0.html&quot;
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url,headers=headers,ssl=False) as response:
+            tree = etree.HTML(await response.text())
+            # 获取name
+            name = tree.xpath(&quot;/html/body/div[2]/div[1]/h2/a[2]/text()&quot;)[0]
+            print(name)
 
-    json_data = rep.json()
-    items = json_data.get(&quot;data&quot;)
-    print(len(items))
-    for item in items:
-        book_name = item.get(&quot;bookName&quot;)
-        book_id = item.get(&quot;bookId&quot;)
-        data = &#123;
-            &quot;bookName&quot;: book_name,
-            &quot;bookId&quot;: book_id,
-        &#125;
-        book_data.append(data)
-        return
+            # 获取m3u8实例
+            m38u = tree.xpath(&#39;//*[@id=&quot;cms_player&quot;]/script[1]/text()&#39;)[0]
+            # print(m38u)
+            first_m3u8_link = re.findall(&#39;now=&quot;(.*?m3u8)&quot;&#39;, m38u)[0]
+            print(first_m3u8_link)
+            return first_m3u8_link,name
 
 
-# 用bookId来访问对应的页面
-def use_booId_get_html():
-    for data in book_data:
-        book_id = data[&quot;bookId&quot;]
-        url = f&quot;https://www.17k.com/list/&#123;book_id&#125;.html&quot;
-        # 延时
-        rep = session.get(url, headers=header)
-        tree = etree.HTML(rep.text)
-        get_chapter_data(tree)
-        time.sleep(2)
-        return
+async def get_second_m3u8_link(first_m3u8_link):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(first_m3u8_link,ssl=False,headers=headers) as res:
+            data = await res.text()
+            # split的模块有些问题提取不出来,还得用正则表达式
+            next_url = &quot;https://s1.fsvod1.com&quot; + re.findall(&#39;(/.*?m3u8)&#39;, data)[0]
+
+            return next_url
+
+# 解析ts文件
+async def parse_ts(second_m3u8_link):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(second_m3u8_link,ssl=False,headers=headers) as res:
+            data = await res.text()
+
+            # 定义正则表达式模式
+            pattern = re.compile(r&#39;^.*/([^\n/]+\.ts)$&#39;, re.MULTILINE)
+
+            # 执行替换操作
+            new_text = pattern.sub(r&#39;\1&#39;,data)
+
+            # 再将key 改为 本地的 key
+            new_text = re.sub(r&#39;URI=&quot;(.*)&quot;&#39;, r&#39;URI=&quot;key.key&quot;&#39;, new_text)
+
+            # 将 index.m3u8 存储到本地
+            with open(&quot;./ts/index.m3u8&quot;,&quot;w&quot;)as f:
+                f.write(new_text)
+
+            # 解析出的
+            ret = re.findall(r&quot;\n(.*?\.ts)&quot;,data)
+
+            url = &#39;https://s1.fsvod1.com&#39;
+            key_url = url + re.findall(r&#39;URI=&quot;(.*)&quot;&#39;,data)[0]
+
+            return ret,key_url
+
+# 存储并获取
+def get_key(key_url):
+    res = requests.get(key_url,headers=headers)
+    print(&#39;key : &#39;,res.content)
+    with open(&quot;./ts/key.key&quot;,&#39;wb&#39;) as f:
+        f.write(res.content)
+    return res.content
 
 
-book_chapter_data = []
-# 解析每个章节对应的url
-def get_chapter_data(tree):
-    a_items = tree.xpath(&quot;/html/body/div[5]/dl[1]/dd//a[position()&lt;16]&quot;)
-    for a_item in a_items:
-        href = &quot;https://www.17k.com&quot; + a_item.xpath(&quot;@href&quot;)[0]
-        book_chapter_data.append(href)
-        print(href)
+# ts解密
+def decrypt(data, key):
+    # 创建 AES 解密器
+    cipher = AES.new(key, AES.MODE_CBC,iv)
+
+    # 解密数据
+    decrypted_data = cipher.decrypt(data)
+
+    # 去除填充
+    try:
+        dec_data = unpad(decrypted_data, AES.block_size)
+    except ValueError:
+        print(&quot;Padding is incorrect.&quot;)
+        return None
+
+    return dec_data
 
 
+# 主要的耗时步骤
+async def download_ts(p,ts):
+    # 下载一个ts文件
+    name = &quot;./ts/&quot;+ts.split(&#39;/&#39;)[-1]
+    async with aiohttp.ClientSession() as session:
+        print(p+ts,&quot;开始下载&quot;)
+        async with session.get(p+ts,ssl=False,headers=headers) as res:
+            res_bdata = await res.content.read()
+            res_bdata = decrypt(res_bdata,key=key)
+            with open(name, &quot;wb&quot;) as f:
+                # 避免 打开文件然后一顿操作,会降低运行速度
+                f.write(res_bdata)
+            print(f&quot;&#123;ts&#125;下载完成!&quot;)
 
-download_data = []
-# 解析每个章节的内容
-def get_chapter_title_text():
-    for href in book_chapter_data:
-        # 每次停留3s再去爬取
-        time.sleep(3)
-        res = session.get(href, headers=header)
-        res.encoding = &quot;utf8&quot;
-        tree = etree.HTML(res.content.decode(&quot;utf-8&quot;))
-        title = tree.xpath(&#39;//*[@id=&quot;readArea&quot;]/div[1]/h1/text()&#39;)[0]
-        print(title)
-        p_items = tree.xpath(&#39;//*[@id=&quot;readArea&quot;]/div[1]/div[2]//p&#39;)
-        # print(p_items)
-        # 清空
-        total_data = &#39;&#39;
-        for p_item in p_items:
-            total_data += p_item.xpath(&#39;text()&#39;)[0]+&quot;/n&quot;
-        # 内容乱码,需要js逆向
-        data = &#123;
-            &quot;title&quot;: title,
-            &quot;text&quot;: total_data
-        &#125;
-        download_data.append(data)
+async def main():
+    global key # 全局变量
+    # 1. 爬取
+    first_m3u8_link,name = await get_first_m3u8_link_name()
+    # 2. 获取第二个m3u8链接
+    second_m3u8_link= await get_second_m3u8_link(first_m3u8_link)
+    # 3. 解析ts文件 ---&gt; 获取 各个url链接
+    ts_list,key_url = await parse_ts(second_m3u8_link)
+    # 4. 获取key
+    key = get_key(key_url)
+    # 5. 下载
+    print(ts_list)
+    print(len(ts_list))  # 384
+    p = &quot;https://s1.fsvod1.com&quot;
+    tasks = [asyncio.create_task(download_ts(p,ts)) for ts in ts_list]
+    result = await asyncio.gather(*tasks)
 
-
-# 持久化存储
-def save_book_data():
-    i = 1
-    for data in download_data:
-        title = data[&quot;title&quot;]
-        text = data[&quot;text&quot;]
-        datas = text.split(&quot;/n&quot;)
-        with open(f&quot;./book/&#123;i&#125; &#123;title&#125;.txt&quot;, &quot;w&quot;, encoding=&quot;utf8&quot;)as f:
-            f.write(f&quot;&#123;title&#125;\n&quot;)
-            for word in datas:
-                f.write(&quot;&#123;&#125;\n&quot;.format(word))
-        i += 1
 
 
 
 if __name__ == &#39;__main__&#39;:
-    # 1. 获取收藏栏数据
-    get_json_data()
-    # 2. 挨个解析数据
-    use_booId_get_html()
-    # 3. 访问具体的网页去获取具体的小说数据
-    get_chapter_title_text()
-    # 4. 持久化存储
-    save_book_data()
+    start = time.time()
+    asyncio.run(main())
+    end = time.time()
+    print(f&quot;cost:&quot;,end-start)  #  cost: 21.449084281921387  # 459个文件
 </code></pre>
 
       
