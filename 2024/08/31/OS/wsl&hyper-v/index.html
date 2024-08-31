@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WSL&amp;Hyper-v | Akabane71</title>
+  <meta name="keywords" content=" docker , wsl2 , hyper-v , linux , windows ">
+  <meta name="description" content="WSL&amp;Hyper-v | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="a">
+<meta property="og:url" content="http://example.com/2024/08/31/a/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/08/31/a/img/image-20240831224405142.png">
+<meta property="article:published_time" content="2024-08-31T14:41:32.000Z">
+<meta property="article:modified_time" content="2024-08-31T14:44:08.364Z">
+<meta property="article:author" content="LiShun">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/08/31/a/img/image-20240831224405142.png">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(14)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="14">
+<input type="hidden" id="yelog_site_word_count" value="6.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/31/a/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="a">a</span>
+            <span class="post-date" title="2024-08-31 22:41:32">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="docker,wsl2,hyper-v,linux,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="spider,python"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="spider,python,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili">python-bilibili</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="spider,python,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="spider,python,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,spider,http"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-OS/wsl&amp;hyper-v" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">WSL&amp;Hyper-v</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="OS">OS</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">docker</a>
+            
+            <a class="color5">wsl2</a>
+            
+            <a class="color3">hyper-v</a>
+            
+            <a class="color1">linux</a>
+            
+            <a class="color3">windows</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-31 22:04:41'>2024-08-31 19:55</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.3k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#wsl2hyper-v"><span class="toc-text"> WSL2&amp;Hyper-V</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wsl2"><span class="toc-text"> WSL2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E4%BB%80%E4%B9%88%E6%98%AF-wsl2"><span class="toc-text"> 1.1 什么是 WSL2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"><span class="toc-text"> 1.2 有什么不同？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD"><span class="toc-text"> 1.3 如何下载？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text"> 1.4 常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hyper-v"><span class="toc-text"> Hyper-V</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFhyper-v"><span class="toc-text"> 1. 什么是Hyper-V?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E5%BC%80%E5%90%AF-hyper-v"><span class="toc-text"> 2 如何下载&#x2F;开启 Hyper-v</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9hyper-v"><span class="toc-text"> 3 为什么选择Hyper-v</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E7%8E%B0%E6%9C%89%E4%BA%A7%E5%93%81%E6%AF%94%E8%BE%83"><span class="toc-text"> 3.1 现有产品比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#type-1-hypervisor"><span class="toc-text"> Type-1 Hypervisor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type-2-hypervisor"><span class="toc-text"> Type-2 Hypervisor</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-hyper-v%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text"> 3.2 Hyper-v对性能的影响</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88windows-%E4%B8%8B%E4%BD%BF%E7%94%A8-docker%E9%9C%80%E8%A6%81wsl2%E5%92%8Chyper-v"><span class="toc-text"> 为什么Windows 下使用 Docker需要WSL2和Hyper-V</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%8E%A9%E5%91%A2"><span class="toc-text"> 怎么玩呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-hyper-v-%E6%9B%BF%E6%8D%A2-vmware-workstation"><span class="toc-text"> 1. 使用 Hyper-v 替换 VMware Workstation</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#wsl2hyper-v"><span class="toc-text"> WSL2&amp;Hyper-V</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wsl2"><span class="toc-text"> WSL2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E4%BB%80%E4%B9%88%E6%98%AF-wsl2"><span class="toc-text"> 1.1 什么是 WSL2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"><span class="toc-text"> 1.2 有什么不同？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD"><span class="toc-text"> 1.3 如何下载？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text"> 1.4 常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hyper-v"><span class="toc-text"> Hyper-V</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFhyper-v"><span class="toc-text"> 1. 什么是Hyper-V?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E5%BC%80%E5%90%AF-hyper-v"><span class="toc-text"> 2 如何下载&#x2F;开启 Hyper-v</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9hyper-v"><span class="toc-text"> 3 为什么选择Hyper-v</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E7%8E%B0%E6%9C%89%E4%BA%A7%E5%93%81%E6%AF%94%E8%BE%83"><span class="toc-text"> 3.1 现有产品比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#type-1-hypervisor"><span class="toc-text"> Type-1 Hypervisor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type-2-hypervisor"><span class="toc-text"> Type-2 Hypervisor</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-hyper-v%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text"> 3.2 Hyper-v对性能的影响</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88windows-%E4%B8%8B%E4%BD%BF%E7%94%A8-docker%E9%9C%80%E8%A6%81wsl2%E5%92%8Chyper-v"><span class="toc-text"> 为什么Windows 下使用 Docker需要WSL2和Hyper-V</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%8E%A9%E5%91%A2"><span class="toc-text"> 怎么玩呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-hyper-v-%E6%9B%BF%E6%8D%A2-vmware-workstation"><span class="toc-text"> 1. 使用 Hyper-v 替换 VMware Workstation</span></a></li></ol></li></ol></div></p>
+<h1 id="wsl2hyper-v"><a class="markdownIt-Anchor" href="#wsl2hyper-v"></a> WSL2&amp;Hyper-V</h1>
+<p>本人在Windows上下载 Docker Desktop for Windows时，遇到了要开启 <strong>Hyper-V 和 WSL2</strong></p>
+<p>本人产生了浓厚的兴趣，并且想尝试研究学习一下</p>
+<h1 id="wsl2"><a class="markdownIt-Anchor" href="#wsl2"></a> WSL2</h1>
+<h2 id="11-什么是-wsl2"><a class="markdownIt-Anchor" href="#11-什么是-wsl2"></a> 1.1 什么是 WSL2</h2>
+<blockquote>
+<p>官方介绍:</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux Documentation | Microsoft Learn</a></p>
+</blockquote>
+<p>WSL 全称 :  <strong>Windows Subsystem for Linux Documentation</strong></p>
+<p><strong>概述</strong>：WSL 是微软在 Windows 10 中引入的一个兼容层，允许用户在不需要虚拟机或双启动的情况下运行 Linux 二进制可执行文件（ELF 格式）。</p>
+<p><strong>架构</strong>：WSL 通过将 Linux 的系统调用翻译成 Windows 内核的系统调用来工作，因此 Linux 程序能够在 Windows 上直接运行。WSL 不是真正的 Linux 内核，而是一个兼容层。</p>
+<p><strong>性能</strong>：由于没有完整的 Linux 内核，WSL 的性能在某些 I/O 密集型任务中可能会受到限制，但对于大多数开发任务已经足够。</p>
+<p>WSL2</p>
+<p><strong>概述</strong>：WSL2 是 WSL 的升级版本，旨在解决 WSL 的一些性能和兼容性问题。</p>
+<p><strong>架构</strong>：WSL2 引入了一个完整的 Linux 内核，运行在一个轻量级的虚拟机（Hyper-V）中。这意味着 WSL2 提供了与真实 Linux 环境更高的兼容性。</p>
+<p><strong>性能</strong>：由于使用了真正的 Linux 内核，WSL2 的 I/O 性能和整体兼容性显著提升，尤其是在处理文件系统和网络操作时。WSL2 的文件访问速度比 WSL 快得多，尤其是对大量小文件的操作。</p>
+<p><strong>存储</strong>：WSL2 使用虚拟硬盘（VHD）来存储文件，而不是直接在 Windows 文件系统上操作文件，这有助于提高性能和兼容性。</p>
+<h2 id="12-有什么不同"><a class="markdownIt-Anchor" href="#12-有什么不同"></a> 1.2 有什么不同？</h2>
+<p>WSL2 的技术是基于Hyper-v，并且Hyper-v是微软Windows专业版/旗舰版自带的</p>
+<p>开启WSL2虚拟化技术后，直接变成虚拟机了</p>
+<p><img src="D:%5CBlog%5Csource_posts%5COS%5Cimg%5Cimage-20240831212628317.png" alt="image-20240831212628317" /></p>
+<ol>
+<li>
+<p>优点: Linux可以直连显卡,可以使用CUDA</p>
+</li>
+<li>
+<p>有了这个可以在Windows下使用docker了</p>
+</li>
+<li>
+<p>可以直接在终端启动虚拟机bash，非常非常方便</p>
+</li>
+<li>
+<p>在Linux下使用windows软件，在windows上享受Linux库，比如深度学习的一些库</p>
+</li>
+</ol>
+<h2 id="13-如何下载"><a class="markdownIt-Anchor" href="#13-如何下载"></a> 1.3 如何下载？</h2>
+<blockquote>
+<p>官方文档:</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/wsl/install">Install WSL | Microsoft Learn</a></p>
+</blockquote>
+<pre class="highlight"><code class="powershell">wsl -<span class="hljs-literal">-install</span>
+</code></pre>
+<h2 id="14-常用命令"><a class="markdownIt-Anchor" href="#14-常用命令"></a> 1.4 常用命令</h2>
+<blockquote>
+<p>参考链接:</p>
+</blockquote>
+<h1 id="hyper-v"><a class="markdownIt-Anchor" href="#hyper-v"></a> Hyper-V</h1>
+<h2 id="1-什么是hyper-v"><a class="markdownIt-Anchor" href="#1-什么是hyper-v"></a> 1. 什么是Hyper-V?</h2>
+<blockquote>
+<p>维基百科介绍:</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/Hyper-V">Hyper-V - 维基百科，自由的百科全书 (wikipedia.org)</a></p>
+</blockquote>
+<p>旧称 <strong>Windows Server Virtualization</strong>, 是Microsoft的本地虚拟机管理程序，它可以在运行x86-64位的Windows上创建 虚拟机。</p>
+<blockquote>
+<p>官方文档:</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/">Introduction to Hyper-V on Windows | Microsoft Learn</a></p>
+</blockquote>
+<h2 id="2-如何下载开启-hyper-v"><a class="markdownIt-Anchor" href="#2-如何下载开启-hyper-v"></a> 2 如何下载/开启 Hyper-v</h2>
+<blockquote>
+<p>官方文档:</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v">Enable Hyper-V on Windows | Microsoft Learn</a></p>
+<p>官方中文文档:</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v">在 Windows 上启用 Hyper-V | Microsoft Learn</a></p>
+</blockquote>
+<p>by PowerShell</p>
+<ol>
+<li>以管理员身份打开PowerShell.</li>
+<li>允许以下代码</li>
+</ol>
+<pre class="highlight"><code class="powershell"><span class="hljs-built_in">Enable-WindowsOptionalFeature</span> <span class="hljs-literal">-Online</span> <span class="hljs-literal">-FeatureName</span> Microsoft<span class="hljs-literal">-Hyper</span><span class="hljs-literal">-V</span> <span class="hljs-literal">-All</span>
+</code></pre>
+<h2 id="3-为什么选择hyper-v"><a class="markdownIt-Anchor" href="#3-为什么选择hyper-v"></a> 3 为什么选择Hyper-v</h2>
+<h3 id="31-现有产品比较"><a class="markdownIt-Anchor" href="#31-现有产品比较"></a> 3.1 现有产品比较</h3>
+<blockquote>
+<p>参考视频:</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jj411b7j4/?spm_id_from=333.999.0.0&amp;vd_source=216bb918bc0207ec696c4cb7b601f9e7">为什么它是Windows最好的虚拟机? hyper-v虚拟机详细安装教程，虚拟机优劣对比，下载纯净版windows安装镜像_哔哩哔哩_bilibili</a></p>
+</blockquote>
+<p><img src="D:%5CBlog%5Csource_posts%5COS%5Cimg%5Cimage-20240831204514179.png" alt="image-20240831204514179" /></p>
+<ul>
+<li>VMware
+<ul>
+<li>使用成本： 高</li>
+<li>稳定性: 中</li>
+<li>性能: 中</li>
+</ul>
+</li>
+<li>Virtual Box
+<ul>
+<li>使用成本：free</li>
+<li>稳定性: 低</li>
+<li>性能: 低</li>
+</ul>
+</li>
+<li>Hyper-V
+<ul>
+<li>使用成本：低 / windows专业版【旗舰款】 、</li>
+<li>稳定性: 高</li>
+<li>性能: 高 / 并且支持GPU虚拟化技术</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意:  最新的VMware已经支持Hyper-V技术</p>
+</blockquote>
+<p>第一类和第二类Hypervisor解释</p>
+<blockquote>
+<p>参考博客:</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/626108752">Hyper-V与VMware Workstation对比 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<p><img src="D:%5CBlog%5Csource_posts%5COS%5Cimg%5Cimage-20240831205011453.png" alt="image-20240831205011453" /></p>
+<h4 id="type-1-hypervisor"><a class="markdownIt-Anchor" href="#type-1-hypervisor"></a> Type-1 Hypervisor</h4>
+<p>Type-1 Hypervisor本身就是一个基本的操作系统，我们在其上运行虚拟机。因此，运行此类Hypervisor的物理机只能用于虚拟化目的，不能用于其他目的。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>**性能出色：**不受操作系统固有限制的约束，故可以提供出色的性能。</li>
+<li>**高度安全：**由于直接在没有任何底层操作系统的物理硬件上运行，因此不会受到操作系统通常特有的缺陷和漏洞的影响。同时可以最大程度上确保每个虚拟机都与任何恶意软件活动隔离开来。</li>
+</ul>
+<p><strong>Type-1 Hypervisor 有</strong>：</p>
+<p>VMware vSphere with ESX/ESXi、<strong>Microsoft Hyper-V</strong>、Citrix Hypervisor (Xen Server)。</p>
+<h4 id="type-2-hypervisor"><a class="markdownIt-Anchor" href="#type-2-hypervisor"></a> Type-2 Hypervisor</h4>
+<p>这类Hypervisor托管在操作系统上，并且是作为一个软件运行在系统层上以启用虚拟化。</p>
+<p><strong>优势</strong></p>
+<ul>
+<li>**管理简单：**本质上也是管理控制台，无需安装单独的软件包来管理在type-2 hypervisor上运行的虚拟机。</li>
+<li>**方便测试：**便于测试新软件或研究项目，可以简单易行地运行具有不同操作系统的多个实例，来测试软件在各个环境中的工作方式。</li>
+</ul>
+<p><strong>Type-2 Hypervisor有：</strong></p>
+<p><strong>VMware Workstation Pro</strong>/ VMware Fusion、Oracle <strong>VirtualBox</strong> 等</p>
+<h3 id="32-hyper-v对性能的影响"><a class="markdownIt-Anchor" href="#32-hyper-v对性能的影响"></a> 3.2 Hyper-v对性能的影响</h3>
+<blockquote>
+<p>参考视频:</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aV4y1F7X3/?spm_id_from=333.788.recommend_more_video.0&amp;vd_source=216bb918bc0207ec696c4cb7b601f9e7">hyper-v对性能的影响_哔哩哔哩_bilibili</a></p>
+</blockquote>
+<p>结论： 开启 Hyper-v 虚拟化 CPU性能 损失大约在 **5%**左右</p>
+<h1 id="为什么windows-下使用-docker需要wsl2和hyper-v"><a class="markdownIt-Anchor" href="#为什么windows-下使用-docker需要wsl2和hyper-v"></a> 为什么Windows 下使用 Docker需要WSL2和Hyper-V</h1>
+<p>有了 WSL2 ， Windows内核和Linux内核  “平级”, 即弄一个虚拟机</p>
+<p><img src="D:%5CBlog%5Csource_posts%5COS%5Cimg%5Cimage-20240831212751507.png" alt="image-20240831212751507" /></p>
+<p>这样发明 在Linux 上的 Docker 技术 可以使用在 Windows电脑上</p>
+<blockquote>
+<p>参考博客:</p>
+<p><a target="_blank" rel="noopener" href="https://samkuo.me/post/2020/04/dev-env-docker-wsl2-k3d-vs-code/">Docker Desktop for WSL2 容器化開發環境 (samkuo.me)</a></p>
+</blockquote>
+<p>VS Code 的 Remote development 套件让 VS Code 可以使用容器方式來管理开发环境</p>
+<p>用docker来管理开发环境，非常非常nice</p>
+<h1 id="怎么玩呢"><a class="markdownIt-Anchor" href="#怎么玩呢"></a> 怎么玩呢？</h1>
+<h2 id="1-使用-hyper-v-替换-vmware-workstation"><a class="markdownIt-Anchor" href="#1-使用-hyper-v-替换-vmware-workstation"></a> 1. 使用 Hyper-v 替换 VMware Workstation</h2>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>

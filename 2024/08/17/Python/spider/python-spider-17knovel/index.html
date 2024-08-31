@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>python_spider_17knovel | Akabane71</title>
+  <meta name="keywords" content=" spider , python , 17knovel ">
+  <meta name="description" content="python_spider_17knovel | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="a">
+<meta property="og:url" content="http://example.com/2024/08/31/a/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/08/31/a/img/image-20240831224405142.png">
+<meta property="article:published_time" content="2024-08-31T14:41:32.000Z">
+<meta property="article:modified_time" content="2024-08-31T14:44:08.364Z">
+<meta property="article:author" content="LiShun">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/08/31/a/img/image-20240831224405142.png">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(14)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="14">
+<input type="hidden" id="yelog_site_word_count" value="6.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2024/08/31/a/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="a">a</span>
+            <span class="post-date" title="2024-08-31 22:41:32">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="docker,wsl2,hyper-v,linux,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="spider,python"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="spider,python,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili">python-bilibili</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="spider,python,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="spider,python,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,spider,http"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Python/spider/python-spider-17knovel" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">python_spider_17knovel</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Python">Python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">spider</a>
+            
+            <a class="color2">python</a>
+            
+            <a class="color4">17knovel</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:40:29'>2024-08-17 15:38</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:793</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this is a demo of spider about 17knovel</p>
+<pre class="highlight"><code class="python"><span class="hljs-string">"""
+    练习；
+    17k 小说网
+        要求:
+            书架上的 n 本书 ;
+            按照章节进行爬取并存储到单独的文件夹中;我们就爬取前15章内容
+
+    -----&gt; 优化方向:  数据获取应该做成一个迭代器,文本内容过大的时候,应该按需索取
+"""</span>
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
+
+book_data = []
+
+header = &#123;
+    <span class="hljs-string">"User-Agent"</span>: <span class="hljs-string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"</span>,
+    <span class="hljs-string">"referer"</span>: <span class="hljs-string">"https://user.17k.com/www/bookshelf/"</span>,
+    <span class="hljs-comment"># 没法找到真正的登录入口 -----&gt; 只能凑合了</span>
+    <span class="hljs-comment"># URL 编码 ----&gt;  一些特殊的字符 采用 %数字</span>
+    <span class="hljs-string">"cookie"</span>:<span class="hljs-string">"GUID=a28859ab-9982-4c22-bbf2-9adab3632f67; c_channel=0; c_csc=web; Hm_lvt_9793f42b498361373512340937deb2a0=1723358828,1723364404,1723366993,1723449913; HMACCOUNT=C8D3DE63DD2135E9; acw_tc=1a0c638417234526513274433e0096275e8bc883e58405690be4294f8ec677; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22a28859ab-9982-4c22-bbf2-9adab3632f67%22%2C%22%24device_id%22%3A%221913c804c2e589-0b20c44b5173c3-26001e51-3686400-1913c804c2fae5%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%2C%22first_id%22%3A%22a28859ab-9982-4c22-bbf2-9adab3632f67%22%7D; Hm_lpvt_9793f42b498361373512340937deb2a0=1723452655; acw_sc__v2=66b9ccf3971a4936cd99f9bb6be954ddd33790ac; accessToken=avatarUrl%3Dhttps%253A%252F%252Fcdn.static.17k.com%252Fuser%252Favatar%252F15%252F95%252F54%252F103705495.jpg-88x88%253Fv%253D1723364559000%26id%3D103705495%26nickname%3DAkabane71%26e%3D1739004659%26s%3D3b5857d00c5e80e6; ssxmod_itna=iqGxci0=eYqeq7KGHqvnp70hhxj20DRxY5oqbXdD/CQmDnqD=GFDK40ooSxDCYm0Ax+zoFh74qqzYn8ihwe8tGETKLKDEyPoDU4i8DCq4wdfDeetD5xGoDPxDeDACKiTDY4Dd06s5tDEDYQDYqGRDB60mqDffqGWGT=DmdiDGTIXD7QDIkt4DDNEmRxNn4RM/bR4ueDSGBt5CDtDjkTD/RDkoDU3X=H49MUHwc2aWM0qxBQD7LiBDYE0ReDHILN5q8Ga77DoD+h6QAprShm4G0wUhGDH+1GPQowjSYxHB4YlxD357H4aQiDD; ssxmod_itna2=iqGxci0=eYqeq7KGHqvnp70hhxj20DRxY5oqbNG9WylDBLeD5GaGYfdbGoAx82x=5XSxmKQwKhilHiOQa/R7XxiqR0f6jtYm1O2Gl8fPQ6eO2FU8gnwPkj62cww5lQMjuhvZZa/QE8dA7iYqRfLm4RxjI+INKfvLz3b8IWYhtdAzFbrRAoR7/n2iymWhQPd=NaajYenzDccaP1YFsr98Ecnh01ykcaazc6yzq/Hih77pw1gTTIOweKOpw/px8zAv1zjjg/P6MKnLv954qVn2H=AREEf87sYb/h0pbsYqKLdlLzsu6FyLxXHBx1r0fPiP=iXOiV6NVG0T2i5E4DQF4UrQSxqiGi7GlU7HC0aBB+fxof4Heb3h05CmQmxvWexm5doBPuAiYx/7i4b0rYiQugtMEObDDFqD+cPGF+8xE8rDxD==; tfstk=f52S9aw0IUY7_drj-bIqGgKM-ckQFz6NFHiLjkpyvYH8vvZLx2urT2PjHcUo98kz4rsQkPqrTYeQipZgx8SoLgDuqvDd7NWZduqoKnYvtx2SHtnaDDLJegrh6bkd7NW2jSbwfvFeDP04zo3mA0K-wyKAcDinpLhpeILxoDHKJy3KktnsYDdKvvhHAEiFNDE5DOwXUxIIIu3XCo2m2B3dIqJdd-i7cVE8XppLh0G7LK2QRPhz9lcgUuWBnYr_Mxn7JOQ-HlFbbbw55LunO-a7OzSetmNQvRDoCHB8cYgS68GkxL4TckFZG-SOIYM-yWkuYh_zc8azq-ZevIHSUSG_FABMy2P4fJiQKwXb5uFTJWsPLdu6VTABcfvKcVSfcBAExXXHlRE9rcG-m0BNciTXtbnmcaIfcBlSwmm4wisXPWf.."</span>
+&#125;
+
+<span class="hljs-string">"""
+    网站的cookies 是动态变化的, 所以要先模拟登录获取响应的 cookies
+"""</span>
+session = requests.Session()
+<span class="hljs-comment"># 模拟登录 拿到 对应的 cookies</span>
+session.get(
+    url=<span class="hljs-string">'https://api.17k.com/pv/log.php?Platform=Web&amp;Guid=a28859ab-9982-4c22-bbf2-9adab3632f67&amp;Uid=103705495&amp;Nickname=Akabane71&amp;cpsSource=0&amp;Channel=web&amp;callback=Q_jsonp_826718'</span>,
+    headers=header)
+
+<span class="hljs-comment"># 获取书架上的数据</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_json_data</span><span class="hljs-params">()</span>:</span>
+
+    rep = session.get(<span class="hljs-string">'https://user.17k.com/ck/author2/shelf?page=1&amp;appKey=2406394919'</span>, headers=header)
+
+    json_data = rep.json()
+    items = json_data.get(<span class="hljs-string">"data"</span>)
+    print(len(items))
+    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> items:
+        book_name = item.get(<span class="hljs-string">"bookName"</span>)
+        book_id = item.get(<span class="hljs-string">"bookId"</span>)
+        data = &#123;
+            <span class="hljs-string">"bookName"</span>: book_name,
+            <span class="hljs-string">"bookId"</span>: book_id,
+        &#125;
+        book_data.append(data)
+        <span class="hljs-keyword">return</span>
+
+
+<span class="hljs-comment"># 用bookId来访问对应的页面</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">use_booId_get_html</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> book_data:
+        book_id = data[<span class="hljs-string">"bookId"</span>]
+        url = <span class="hljs-string">f"https://www.17k.com/list/<span class="hljs-subst">&#123;book_id&#125;</span>.html"</span>
+        <span class="hljs-comment"># 延时</span>
+        rep = session.get(url, headers=header)
+        tree = etree.HTML(rep.text)
+        get_chapter_data(tree)
+        time.sleep(<span class="hljs-number">2</span>)
+        <span class="hljs-keyword">return</span>
+
+
+book_chapter_data = []
+<span class="hljs-comment"># 解析每个章节对应的url</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chapter_data</span><span class="hljs-params">(tree)</span>:</span>
+    a_items = tree.xpath(<span class="hljs-string">"/html/body/div[5]/dl[1]/dd//a[position()&lt;16]"</span>)
+    <span class="hljs-keyword">for</span> a_item <span class="hljs-keyword">in</span> a_items:
+        href = <span class="hljs-string">"https://www.17k.com"</span> + a_item.xpath(<span class="hljs-string">"@href"</span>)[<span class="hljs-number">0</span>]
+        book_chapter_data.append(href)
+        print(href)
+
+
+
+download_data = []
+<span class="hljs-comment"># 解析每个章节的内容</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chapter_title_text</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">for</span> href <span class="hljs-keyword">in</span> book_chapter_data:
+        <span class="hljs-comment"># 每次停留3s再去爬取</span>
+        time.sleep(<span class="hljs-number">3</span>)
+        res = session.get(href, headers=header)
+        res.encoding = <span class="hljs-string">"utf8"</span>
+        tree = etree.HTML(res.content.decode(<span class="hljs-string">"utf-8"</span>))
+        title = tree.xpath(<span class="hljs-string">'//*[@id="readArea"]/div[1]/h1/text()'</span>)[<span class="hljs-number">0</span>]
+        print(title)
+        p_items = tree.xpath(<span class="hljs-string">'//*[@id="readArea"]/div[1]/div[2]//p'</span>)
+        <span class="hljs-comment"># print(p_items)</span>
+        <span class="hljs-comment"># 清空</span>
+        total_data = <span class="hljs-string">''</span>
+        <span class="hljs-keyword">for</span> p_item <span class="hljs-keyword">in</span> p_items:
+            total_data += p_item.xpath(<span class="hljs-string">'text()'</span>)[<span class="hljs-number">0</span>]+<span class="hljs-string">"/n"</span>
+        <span class="hljs-comment"># 内容乱码,需要js逆向</span>
+        data = &#123;
+            <span class="hljs-string">"title"</span>: title,
+            <span class="hljs-string">"text"</span>: total_data
+        &#125;
+        download_data.append(data)
+
+
+<span class="hljs-comment"># 持久化存储</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">save_book_data</span><span class="hljs-params">()</span>:</span>
+    i = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> download_data:
+        title = data[<span class="hljs-string">"title"</span>]
+        text = data[<span class="hljs-string">"text"</span>]
+        datas = text.split(<span class="hljs-string">"/n"</span>)
+        <span class="hljs-keyword">with</span> open(<span class="hljs-string">f"./book/<span class="hljs-subst">&#123;i&#125;</span> <span class="hljs-subst">&#123;title&#125;</span>.txt"</span>, <span class="hljs-string">"w"</span>, encoding=<span class="hljs-string">"utf8"</span>)<span class="hljs-keyword">as</span> f:
+            f.write(<span class="hljs-string">f"<span class="hljs-subst">&#123;title&#125;</span>\n"</span>)
+            <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> datas:
+                f.write(<span class="hljs-string">"&#123;&#125;\n"</span>.format(word))
+        i += <span class="hljs-number">1</span>
+
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    <span class="hljs-comment"># 1. 获取收藏栏数据</span>
+    get_json_data()
+    <span class="hljs-comment"># 2. 挨个解析数据</span>
+    use_booId_get_html()
+    <span class="hljs-comment"># 3. 访问具体的网页去获取具体的小说数据</span>
+    get_chapter_title_text()
+    <span class="hljs-comment"># 4. 持久化存储</span>
+    save_book_data()
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>
