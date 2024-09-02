@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>go-spider | Akabane71</title>
-  <meta name="keywords" content=" go , spider , http ">
-  <meta name="description" content="go-spider | Akabane71">
+  <title>linux-arch | Akabane71</title>
+  <meta name="keywords" content=" linux , arch ">
+  <meta name="description" content="linux-arch | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Arch Linux1. 什么是 Arch Linux ？2. 为什么使用 Arch Linux ？3. 如何安装 Arch Liunx ？">
 <meta property="og:type" content="article">
@@ -525,9 +525,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Go/go-spider" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-linux-arch" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">go-spider</h1>
+        <h1 class="article-title">linux-arch</h1>
     
     <div class="article-meta">
         
@@ -537,7 +537,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Go">Go</a>
+            <a  data-rel="Linux">Linux</a>
             
         </span>
         
@@ -545,23 +545,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">go</a>
+            <a class="color1">linux</a>
             
-            <a class="color2">spider</a>
-            
-            <a class="color5">http</a>
+            <a class="color5">arch</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-08-24 15:44:54'>2024-08-17 11:54</time>
+            发布时间 : <time class="date" title='最后更新: 2024-09-01 20:40:08'>2024-09-01 16:50</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:395</span>
+        <span>字数:22</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -580,7 +578,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Arch-Linux"><span class="toc-text">Arch Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-Arch-Linux-%EF%BC%9F"><span class="toc-text">1. 什么是 Arch Linux ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-Arch-Linux-%EF%BC%9F"><span class="toc-text">2. 为什么使用 Arch Linux ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85-Arch-Liunx-%EF%BC%9F"><span class="toc-text">3. 如何安装 Arch Liunx ？</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -596,100 +594,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>豆瓣爬虫-try</p>
-<pre><code class="go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;github.com/antchfx/htmlquery&quot;
-    &quot;io/ioutil&quot;
-    &quot;net/http&quot;
-    &quot;strings&quot;
-)
-
-/*
-    豆瓣 top  爬取
-    目标:
-        1. 获取表单名称，评价分数，评论人数
-
-    总结:
-        1. go 无官方的 xpath库
-        2. go 的http请求很原始
-        3. github.com/antchfx/htmlquery 能用,但没python的 lxml 库爽
-*/
-
-func get_html_string() string &#123;
-    url := &quot;https://movie.douban.com/top250&quot;
-
-    // 创建一个新的 http 请求, 方式为 GET
-    req, err := http.NewRequest(http.MethodGet, url, nil)
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-    // 设置 自定义 header
-    req.Header.Set(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;)
-
-    // 发起请求
-    client := &amp;http.Client&#123;&#125;
-    resp, err := client.Do(req)
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-    defer resp.Body.Close()
-
-    // 检验状态响应码
-    if resp.StatusCode != http.StatusOK &#123;
-        fmt.Printf(&quot;status code error: %d %s&quot;, resp.StatusCode, resp.Status)
-    &#125;
-
-    // 读取响应内容
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-    // 打印响应内容
-    //fmt.Printf(&quot;%s&quot;, string(body))
-    return string(body)
-&#125;
-
-type my_data struct &#123;
-    name   string
-    people string
-    url    string
-&#125;
-
-func get_items_xpath(html string) []my_data &#123;
-    doc, err := htmlquery.Parse(strings.NewReader(html))
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-
-    // 使用xpath查询元素
-    lis := htmlquery.Find(doc, &quot;//*[@id=&#39;content&#39;]/div/div[1]/ol/li&quot;)
-
-    fmt.Println(len(lis), lis)
-    var data []my_data
-    for _, li := range lis &#123;
-        nameNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/span[1]/text()`)
-        peopleNode := htmlquery.FindOne(li, `./div/div[2]/div[2]/div/span[4]/text()`)
-        urlNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/@href`)
-        name := htmlquery.InnerText(nameNode)
-        people := htmlquery.InnerText(peopleNode)
-        url := htmlquery.InnerText(urlNode)
-
-        data = append(data, my_data&#123;name, people, url&#125;)
-    &#125;
-
-    return data
-&#125;
-
-func main() &#123;
-    html_string := get_html_string()
-    data := get_items_xpath(html_string)
-    fmt.Println(data)
-&#125;
-</code></pre>
-
+        <h1 id="Arch-Linux"><a href="#Arch-Linux" class="headerlink" title="Arch Linux"></a>Arch Linux</h1><h2 id="1-什么是-Arch-Linux-？"><a href="#1-什么是-Arch-Linux-？" class="headerlink" title="1. 什么是 Arch Linux ？"></a>1. 什么是 Arch Linux ？</h2><h2 id="2-为什么使用-Arch-Linux-？"><a href="#2-为什么使用-Arch-Linux-？" class="headerlink" title="2. 为什么使用 Arch Linux ？"></a>2. 为什么使用 Arch Linux ？</h2><h2 id="3-如何安装-Arch-Liunx-？"><a href="#3-如何安装-Arch-Liunx-？" class="headerlink" title="3. 如何安装 Arch Liunx ？"></a>3. 如何安装 Arch Liunx ？</h2>
       
        
     </div>
