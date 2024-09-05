@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>go-goroutine-tips | Akabane71</title>
+  <meta name="keywords" content=" go , channel , goroutine , tips ">
+  <meta name="description" content="go-goroutine-tips | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="HTTP 协议HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写。它的发展是万维网协会（World Wide Web Consortium）和Internet工作小组IETF（Internet Engineering Task Force）合作的结果，最终发布了一系列的RFC，RFC 1945定义了HTTP&#x2F;1.0版本。其中最著名的就是RFC 26">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-http">
+<meta property="og:url" content="http://example.com/2024/09/05/Go/go-http/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="HTTP 协议HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写。它的发展是万维网协会（World Wide Web Consortium）和Internet工作小组IETF（Internet Engineering Task Force）合作的结果，最终发布了一系列的RFC，RFC 1945定义了HTTP&#x2F;1.0版本。其中最著名的就是RFC 26">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/imgs/go-http/http-protocol.jpeg">
+<meta property="og:image" content="http://example.com/imgs/go-http/http-protocol-01.jpeg">
+<meta property="og:image" content="http://example.com/imgs/go-http/http-request.jpeg">
+<meta property="og:image" content="http://example.com/imgs/go-http/http-response.jpeg">
+<meta property="article:published_time" content="2024-09-05T14:24:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T14:24:30.762Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="http">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/go-http/http-protocol.jpeg">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(28)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(13)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(11)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="28">
+<input type="hidden" id="yelog_site_word_count" value="39.4k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ptzcap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-select/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select">go-select</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto">go-crypto</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-erypto">go-erypto</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           data-tag="go,json,base64,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="linux,arch"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="docker,wsl2,hyper-v,linux,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo,ptzcap"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili">python-bilibili</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,spider,http"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Go/go-goroutine-tips" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">go-goroutine-tips</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Go">Go</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">go</a>
+            
+            <a class="color3">channel</a>
+            
+            <a class="color5">goroutine</a>
+            
+            <a class="color5">tips</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-09-05 22:22:55'>2024-09-05 22:21</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.6k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">并发注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%B9%B6%E5%8F%91%E6%95%B0"><span class="toc-text">控制并发数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E7%9A%84%E5%AE%89%E5%85%A8%E9%80%80%E5%87%BA"><span class="toc-text">并发的安全退出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8context%E7%AE%A1%E7%90%86goroutine%E7%9A%84%E9%80%80%E5%87%BA"><span class="toc-text">使用context管理goroutine的退出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%B8%AD%E7%9A%84Pannic"><span class="toc-text">并发中的Pannic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8B%E5%88%B6%E7%9A%84%E4%BD%BF%E7%94%A8Goroutine-%E5%9B%9E%E8%B0%83%E4%B9%9F%E4%B8%8D%E9%94%99%E5%93%A6"><span class="toc-text">克制的使用Goroutine, 回调也不错哦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSP%E4%B8%8D%E6%98%AF%E5%85%A8%E9%83%A8"><span class="toc-text">CSP不是全部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A"><span class="toc-text">还有很多</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="并发注意事项"><a href="#并发注意事项" class="headerlink" title="并发注意事项"></a>并发注意事项</h1><h2 id="控制并发数"><a href="#控制并发数" class="headerlink" title="控制并发数"></a>控制并发数</h2><p>在Go语言中启动一个Goroutine不仅和调用函数一样简单，而且Goroutine之间调度代价也很低，这些因素极大地促进了并发编程的流行和发展。</p>
+<p>很多用户在适应了Go语言强大的并发特性之后，都倾向于编写最大并发的程序，因为这样似乎可以提供最大的性能</p>
+<p>遇事不决go一下:</p>
+<pre><code class="go">go func()
+</code></pre>
+<p>一个Goroutine会以一个很小的栈启动（可能是2KB或4KB）, 但是你的系统和调度器的能力总是有上限的, 在面对大规模的并发请求时(千万或者亿)我们是要考虑goroutine的销毁成本的。</p>
+<p>一个是使用goroutine pool控制gotourine数量, 另一个就是做好系统的限流与上限控制</p>
+<p>当然还有 更重要的一点, 管理好goroutine的退出, 不让goroutine泄露是很容量的。</p>
+<h2 id="并发的安全退出"><a href="#并发的安全退出" class="headerlink" title="并发的安全退出"></a>并发的安全退出</h2><p>有时候我们需要通知goroutine停止它正在干的事情，特别是当它工作在错误的方向上的时候。</p>
+<p>Go语言并没有提供在一个直接终止Goroutine的方法，由于这样会导致goroutine之间的共享变量处在未定义的状态上。但是如果我们想要退出两个或者任意多个Goroutine怎么办呢？</p>
+<p>我们可以 通过channel 发送退出信号</p>
+<p>比如:</p>
+<pre><code class="go">func worker(cannel chan struct&#123;&#125;) &#123;
+    for &#123;
+        select &#123;
+        default:
+            fmt.Println(&quot;hello&quot;)
+            time.Sleep(100 * time.Millisecond)
+        case &lt;-cannel:
+            // 退出
+        &#125;
+    &#125;
+&#125;
+
+func CancelWithChannel() &#123;
+    cannel := make(chan struct&#123;&#125;)
+    go worker(cannel)
+
+    time.Sleep(time.Second)
+    cannel &lt;- struct&#123;&#125;&#123;&#125;
+&#125;
+</code></pre>
+<p>当Goroutine收到退出指令, 退出时一般会进行一定的清理工作，但是退出的清理工作并不能保证被完成，<br>因为main线程并没有等待各个工作Goroutine退出工作完成的机制，我们可以结合<strong>sync.WaitGroup</strong>来改进</p>
+<pre><code class="go">func workerv2(wg *sync.WaitGroup, cancel chan bool) &#123;
+    defer wg.Done()
+
+    for &#123;
+        select &#123;
+        default:
+            fmt.Println(&quot;hello&quot;)
+            time.Sleep(100 * time.Millisecond)
+        case &lt;-cancel:
+            return
+        &#125;
+    &#125;
+&#125;
+
+func CancelWithDown() &#123;
+    cancel := make(chan bool)
+
+    var wg sync.WaitGroup
+    for i := 0; i &lt; 10; i++ &#123;
+        wg.Add(1)
+        go workerv2(&amp;wg, cancel)
+    &#125;
+
+    time.Sleep(time.Second)
+
+    // 发送退出信号
+    close(cancel)
+
+    // 等待goroutine 安全退出
+    wg.Wait()
+&#125;
+</code></pre>
+<h2 id="使用context管理goroutine的退出"><a href="#使用context管理goroutine的退出" class="headerlink" title="使用context管理goroutine的退出"></a>使用context管理goroutine的退出</h2><p>在Go1.7发布时，标准库增加了一个context包，用来简化对于处理单个请求的多个Goroutine之间与请求域的数据、超时和退出等操作，官方有博文对此做了专门介绍。我们可以用context包来重新实现前面的线程安全退出或超时的控制</p>
+<pre><code class="go">func workerV3(ctx context.Context, wg *sync.WaitGroup) error &#123;
+    defer wg.Done()
+
+    for &#123;
+        select &#123;
+        default:
+            fmt.Println(&quot;hello&quot;)
+            time.Sleep(100 * time.Millisecond)
+        case &lt;-ctx.Done():
+            return ctx.Err()
+        &#125;
+    &#125;
+&#125;
+func CancelWithCtx() &#123;
+    // 控制超时
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+
+    var wg sync.WaitGroup
+    for i := 0; i &lt; 10; i++ &#123;
+        wg.Add(1)
+        go workerV3(ctx, &amp;wg)
+    &#125;
+
+    time.Sleep(time.Second)
+
+    // 取出任务
+    cancel()
+
+    // 等待安全退出
+    wg.Wait()
+&#125;
+</code></pre>
+<h2 id="并发中的Pannic"><a href="#并发中的Pannic" class="headerlink" title="并发中的Pannic"></a>并发中的Pannic</h2><p>我们可以通过recover捕获异常避免程序崩溃，比如:</p>
+<pre><code class="go">func DealPanic() &#123;
+    defer func() &#123;
+        if err := recover(); err != nil &#123;
+            fmt.Println(err)
+        &#125;
+    &#125;()
+
+    arr := []int&#123;0&#125;
+    _ = arr[2]
+&#125;
+
+// 输出: runtime error: index out of range [2] with length 1
+</code></pre>
+<p>但是如果我们的错误是发生在Goroutine中喃?</p>
+<pre><code class="go">func DealPanicInG() &#123;
+    defer func() &#123;
+        if err := recover(); err != nil &#123;
+            fmt.Println(err)
+        &#125;
+    &#125;()
+
+    wg.Add(1)
+    go work()
+
+    wg.Wait()
+&#125;
+
+func work() &#123;
+    arr := []int&#123;0&#125;
+    _ = arr[2]
+    wg.Done()
+&#125;
+</code></pre>
+<p>结果没用, 程序还是panic了, 因为go的recover是针对 但goroutine的, 因此我们在写启动gorouite的适合,<br>不能 无脑 go func, 这样可能由于goroutine的异常 而让 整个程序崩溃掉</p>
+<p>go 的http库，是为每个请求启动一个Goroutine进行处理，我们看看他如何处理的:</p>
+<pre><code class="go">// Serve a new connection.
+func (c *conn) serve(ctx context.Context) &#123;
+    c.remoteAddr = c.rwc.RemoteAddr().String()
+    ctx = context.WithValue(ctx, LocalAddrContextKey, c.rwc.LocalAddr())
+    defer func() &#123;
+        if err := recover(); err != nil &amp;&amp; err != ErrAbortHandler &#123;
+            const size = 64 &lt;&lt; 10
+            buf := make([]byte, size)
+            buf = buf[:runtime.Stack(buf, false)]
+            c.server.logf(&quot;http: panic serving %v: %v\n%s&quot;, c.remoteAddr, err, buf)
+        &#125;
+        if !c.hijacked() &#123;
+            c.close()
+            c.setState(c.rwc, StateClosed, runHooks)
+        &#125;
+    &#125;()
+</code></pre>
+<p>他在goroutine的启动函数里面 专门做了recover, 用于捕获当前goroutine的异常, 那我们修改下我们的代码</p>
+<pre><code class="go">func DealPanicInGV2() &#123;
+    // 处理主Goroutine的异常
+    defer func() &#123;
+        if err := recover(); err != nil &#123;
+            fmt.Println(err)
+        &#125;
+    &#125;()
+
+    wg.Add(1)
+    go workV2()
+
+    wg.Wait()
+&#125;
+
+func workV2() &#123;
+    // 处理协程的异常
+    defer func() &#123;
+        wg.Done()
+
+        if err := recover(); err != nil &#123;
+            fmt.Println(err)
+        &#125;
+    &#125;()
+
+    arr := []int&#123;0&#125;
+    _ = arr[2]
+&#125;
+</code></pre>
+<h2 id="克制的使用Goroutine-回调也不错哦"><a href="#克制的使用Goroutine-回调也不错哦" class="headerlink" title="克制的使用Goroutine, 回调也不错哦"></a>克制的使用Goroutine, 回调也不错哦</h2><p>我们再讲CSP的时候, 有个<a href="./cspmodel/barrier.go">并行爬取网页的示例</a>, 使用的是channel来获取传递数据的, 我们现在使用回调来改写</p>
+<p>我们通过回调函数返回参数</p>
+<pre><code class="go">type SiteRespCallBack func(SiteResp)
+
+// 构造请求
+func doSiteRequest(cb SiteRespCallBack, url string) &#123;
+    res := SiteResp&#123;&#125;
+    startAt := time.Now()
+    defer func() &#123;
+        res.Cost = time.Since(startAt).Milliseconds()
+        cb(res)
+        wg.Done()
+    &#125;()
+
+    resp, err := client.Get(url)
+    if resp != nil &#123;
+        res.Status = resp.StatusCode
+    &#125;
+    if err != nil &#123;
+        res.Err = err
+        return
+    &#125;
+
+    // 站不处理结果
+    _, err = ioutil.ReadAll(resp.Body)
+    defer resp.Body.Close()
+    if err != nil &#123;
+        res.Err = err
+        return
+    &#125;
+
+    // res.Resp = string(byt)
+&#125;
+</code></pre>
+<p>主函数编写回调处理逻辑</p>
+<pre><code class="go">func CallBackMode() &#123;
+    endpoints := []string&#123;
+        &quot;https://www.baidu.com&quot;,
+        &quot;https://segmentfault.com/&quot;,
+        &quot;https://blog.csdn.net/&quot;,
+        &quot;https://www.jd.com/&quot;,
+    &#125;
+
+    // 一个endpoints返回一个结果, 缓冲可以确定
+    respChan := make(chan SiteResp, len(endpoints))
+    defer close(respChan)
+
+    ret := make([]SiteResp, 0, len(endpoints))
+    cb := func(resp SiteResp) &#123;
+        ret = append(ret, resp)
+    &#125;
+
+    // 并行爬取
+    for _, endpoints := range endpoints &#123;
+        wg.Add(1)
+        go doSiteRequest(cb, endpoints)
+    &#125;
+
+    // 等待结束
+    wg.Wait()
+
+    for _, v := range ret &#123;
+        fmt.Println(v)
+    &#125;
+&#125;
+</code></pre>
+<p>我们看看之前函数式编程的map</p>
+<pre><code class="go">func TestMap(t *testing.T) &#123;
+    list := []string&#123;&quot;abc&quot;, &quot;def&quot;, &quot;fqp&quot;&#125;
+    out := MapStrToUpper(list, func(item string) string &#123;
+        return strings.ToUpper(item)
+    &#125;)
+    fmt.Println(out)
+&#125;
+
+func MapStrToUpper(data []string, fn func(string) string) []string &#123;
+    newData := make([]string, 0, len(data))
+    for _, v := range data &#123;
+        newData = append(newData, fn(v))
+    &#125;
+
+    return newData
+&#125;
+</code></pre>
+<p>如果fn 是一个耗时的操作, 可以使用goroutine把它异步化, 函数式编程 + goroutine 也是很不错的一个方向(函数式并发) </p>
+<h2 id="CSP不是全部"><a href="#CSP不是全部" class="headerlink" title="CSP不是全部"></a>CSP不是全部</h2><p>比如大名鼎鼎的actor模型:</p>
+<p><img src="/../../imgs/go-goroutine-tips/actor.png"></p>
+<p>更多的可以看看七周七并发模型</p>
+<h2 id="还有很多"><a href="#还有很多" class="headerlink" title="还有很多"></a>还有很多</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b627ad47ecdd">高性能Go并发建议</a></li>
+</ul>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>
