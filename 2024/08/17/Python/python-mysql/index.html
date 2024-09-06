@@ -6,24 +6,22 @@
   <meta name="keywords" content=" python , mysql ">
   <meta name="description" content="python_mysql | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="HTTP 协议HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写。它的发展是万维网协会（World Wide Web Consortium）和Internet工作小组IETF（Internet Engineering Task Force）合作的结果，最终发布了一系列的RFC，RFC 1945定义了HTTP&#x2F;1.0版本。其中最著名的就是RFC 26">
+<meta name="description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go-http">
-<meta property="og:url" content="http://example.com/2024/09/05/Go/go-http/index.html">
+<meta property="og:title" content="go-zap">
+<meta property="og:url" content="http://example.com/2024/09/06/Go/go-zap/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="HTTP 协议HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写。它的发展是万维网协会（World Wide Web Consortium）和Internet工作小组IETF（Internet Engineering Task Force）合作的结果，最终发布了一系列的RFC，RFC 1945定义了HTTP&#x2F;1.0版本。其中最著名的就是RFC 26">
+<meta property="og:description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-protocol.jpeg">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-protocol-01.jpeg">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-request.jpeg">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-response.jpeg">
-<meta property="article:published_time" content="2024-09-05T14:24:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T14:24:30.762Z">
+<meta property="article:published_time" content="2024-09-06T13:07:57.000Z">
+<meta property="article:modified_time" content="2024-09-06T13:13:49.572Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="go">
-<meta property="article:tag" content="http">
+<meta property="article:tag" content="zap">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="lumberjack">
+<meta property="article:tag" content="gin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/go-http/http-protocol.jpeg">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -112,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(28)</small>
+                <small>(38)</small>
             
         </div>
     </li>
@@ -124,7 +122,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(9)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -139,7 +137,7 @@
         <div data-rel="Go">
             
             Go
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -154,7 +152,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -169,7 +167,7 @@
         <div data-rel="OS">
             
             OS
-            <small>(1)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -184,7 +182,7 @@
         <div data-rel="Spider">
             
             Spider
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -227,8 +225,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="39.4k">
+<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_word_count" value="60.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -302,7 +300,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -314,7 +320,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -322,7 +340,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -335,6 +361,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -362,11 +392,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>m3u8</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -383,6 +425,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -414,6 +460,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>select</a>
             </li>
         
@@ -431,6 +481,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -457,12 +515,106 @@
                 <i class="iconfont icon-tag"></i><a>yolo</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
     </div>
 
 </div>
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
         
         
         <a  class="全部文章 Go "
@@ -484,10 +636,10 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-select/"
+           href="/2024/09/05/Go/go-select-channel/"
            data-tag="go,channel,select"
            data-author="" >
-            <span class="post-title" title="go-select">go-select</span>
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
             <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
         </a>
         
@@ -708,7 +860,7 @@
         </a>
         
         
-        <a  class="全部文章 Go "
+        <a  class="全部文章 Spider "
            href="/2024/08/17/Go/go-spider/"
            data-tag="go,http,spider"
            data-author="" >

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>btrfs-ext4 | Akabane71</title>
+  <meta name="keywords" content=" ext4 , btrfs ">
+  <meta name="description" content="btrfs-ext4 | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-zap">
+<meta property="og:url" content="http://example.com/2024/09/06/Go/go-zap/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-06T13:07:57.000Z">
+<meta property="article:modified_time" content="2024-09-06T13:13:49.572Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="zap">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="lumberjack">
+<meta property="article:tag" content="gin">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(38)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(11)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spider">
+            
+            Spider
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_word_count" value="60.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ptzcap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-select-channel/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-hash">go-hash</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           data-tag="go,json,base64,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="arch,linux"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="linux,docker,wsl2,hyper-v,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo,ptzcap"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-video">python-bilibili-video</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,http,spider"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-OS/btrfs-ext4" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">btrfs-ext4</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="OS">OS</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">ext4</a>
+            
+            <a class="color1">btrfs</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-09-06 20:01:48'>2024-09-06 20:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 基本概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E6%A0%A1%E9%AA%8C"><span class="toc-text">2. 数据完整性与校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BF%AB%E7%85%A7%E4%B8%8E%E5%A4%87%E4%BB%BD"><span class="toc-text">3. 快照与备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AD%90%E5%8D%B7%E7%AE%A1%E7%90%86"><span class="toc-text">4. 子卷管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%A7%E8%83%BD"><span class="toc-text">5. 性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%8E%8B%E7%BC%A9%E6%94%AF%E6%8C%81"><span class="toc-text">6. 压缩支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-RAID-%E6%94%AF%E6%8C%81"><span class="toc-text">7. RAID 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%B1%95%E4%B8%8E%E6%94%B6%E7%BC%A9"><span class="toc-text">8. 文件系统扩展与收缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E6%9C%80%E5%A4%A7%E6%96%87%E4%BB%B6%E5%92%8C%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="toc-text">9. 最大文件和分区大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-text">10. 稳定性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E7%A4%BE%E5%8C%BA%E6%94%AF%E6%8C%81%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">11. 社区支持和应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ext4 和 Btrfs 是两种常见的 Linux 文件系统。虽然它们都用于存储和管理数据，但在设计目标、功能和使用场景上有很大的差异。下面是它们的详细对比：</p>
+<h3 id="1-基本概述"><a href="#1-基本概述" class="headerlink" title="1. 基本概述"></a>1. <strong>基本概述</strong></h3><ul>
+<li><p><strong>Ext4</strong>（Fourth Extended File System）：</p>
+<ul>
+<li>Ext4 是 Ext 系列文件系统的第四代，是目前大多数 Linux 发行版的默认文件系统。它是 Ext3 的改进版，专注于稳定性和性能。</li>
+<li>Ext4 被广泛使用，因其稳定、成熟、可靠，适合桌面和服务器环境，尤其是在不需要高级功能的场合。</li>
+</ul>
+</li>
+<li><p><strong>Btrfs</strong>（B-tree File System）：</p>
+<ul>
+<li>Btrfs 是一个更现代的文件系统，设计之初就考虑了更多的功能，例如快照、子卷、内置 RAID、透明压缩和数据校验等。它旨在替代 Ext 系列，成为下一代的默认 Linux 文件系统。</li>
+<li>Btrfs 更适合复杂存储环境，尤其是在需要高级存储功能的服务器、虚拟化或容器化应用中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-数据完整性与校验"><a href="#2-数据完整性与校验" class="headerlink" title="2. 数据完整性与校验"></a>2. <strong>数据完整性与校验</strong></h3><ul>
+<li><p><strong>Ext4</strong>：Ext4 文件系统没有内置的数据完整性校验功能，无法主动检测和修复数据损坏。如果磁盘或文件系统出现故障，数据可能会遭到破坏而不会被立即发现。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 具有内置的数据完整性校验功能，它为所有数据和元数据计算并存储校验和。当读取数据时，Btrfs 会验证数据的完整性，如果发现错误，并且系统配置了冗余机制（如 RAID 1），Btrfs 可以自动修复损坏的数据。</p>
+</li>
+</ul>
+<h3 id="3-快照与备份"><a href="#3-快照与备份" class="headerlink" title="3. 快照与备份"></a>3. <strong>快照与备份</strong></h3><ul>
+<li><p><strong>Ext4</strong>：Ext4 没有原生支持快照功能。如果需要快照功能，通常需要借助 LVM（逻辑卷管理器）等外部工具来创建卷级快照。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 原生支持快照功能，用户可以快速创建只读或可写的快照。快照是高效的备份方式，因为它不会复制整个文件系统，而是通过写时复制（COW）技术仅在数据发生更改时才占用额外的存储空间。</p>
+</li>
+</ul>
+<h3 id="4-子卷管理"><a href="#4-子卷管理" class="headerlink" title="4. 子卷管理"></a>4. <strong>子卷管理</strong></h3><ul>
+<li><p><strong>Ext4</strong>：Ext4 不支持子卷功能，它的分区和卷管理相对简单，每个分区独立管理，没有子卷的概念。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 支持子卷，子卷类似于独立的文件系统，但它们共享同一存储空间。子卷可以单独挂载、备份和管理，适合复杂的多用途系统或分区需求。</p>
+</li>
+</ul>
+<h3 id="5-性能"><a href="#5-性能" class="headerlink" title="5. 性能"></a>5. <strong>性能</strong></h3><ul>
+<li><p><strong>Ext4</strong>：在普通桌面和服务器环境中，Ext4 通常表现出良好的性能，特别是在处理小文件和元数据操作时。它经过多年优化，非常适合传统文件系统的使用场景。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 在处理大文件和复杂存储需求时表现较好，尤其是使用快照、子卷和压缩功能时。但在某些情况下（例如对元数据频繁进行小规模读写操作），Btrfs 的性能可能不如 Ext4 稳定。</p>
+</li>
+</ul>
+<h3 id="6-压缩支持"><a href="#6-压缩支持" class="headerlink" title="6. 压缩支持"></a>6. <strong>压缩支持</strong></h3><ul>
+<li><p><strong>Ext4</strong>：Ext4 不支持文件系统级别的透明压缩。如果需要压缩功能，必须使用外部工具（如 <code>gzip</code>、<code>bzip2</code>）对文件进行压缩处理。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 支持透明压缩功能，用户可以通过启用 Btrfs 的压缩选项来自动压缩文件数据。支持的压缩算法包括 zlib、LZO 和 ZSTD，能够节省存储空间并在一定程度上提升 I&#x2F;O 性能。</p>
+</li>
+</ul>
+<h3 id="7-RAID-支持"><a href="#7-RAID-支持" class="headerlink" title="7. RAID 支持"></a>7. <strong>RAID 支持</strong></h3><ul>
+<li><p><strong>Ext4</strong>：Ext4 不直接支持 RAID 功能。如果需要 RAID，通常使用软件 RAID（如 mdadm）或硬件 RAID 来实现。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 原生支持 RAID 功能，支持 RAID 0、RAID 1、RAID 5、RAID 6 和 RAID 10。用户可以直接在 Btrfs 中配置 RAID，无需借助外部工具。这使得 Btrfs 能够更轻松地在多磁盘环境中提供数据冗余和性能提升。</p>
+</li>
+</ul>
+<h3 id="8-文件系统扩展与收缩"><a href="#8-文件系统扩展与收缩" class="headerlink" title="8. 文件系统扩展与收缩"></a>8. <strong>文件系统扩展与收缩</strong></h3><ul>
+<li><p><strong>Ext4</strong>：Ext4 支持在线扩展文件系统大小，可以在文件系统挂载的情况下扩展其大小。但要收缩文件系统，必须在卸载分区后操作。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 支持在线扩展和收缩文件系统大小，无需卸载文件系统即可调整存储空间。这使得 Btrfs 更加灵活，适合动态调整存储需求的环境。</p>
+</li>
+</ul>
+<h3 id="9-最大文件和分区大小"><a href="#9-最大文件和分区大小" class="headerlink" title="9. 最大文件和分区大小"></a>9. <strong>最大文件和分区大小</strong></h3><ul>
+<li><p><strong>Ext4</strong>：</p>
+<ul>
+<li>最大单个文件大小：16TB</li>
+<li>最大分区大小：1EB（通常实际限制为 16TB）</li>
+</ul>
+</li>
+<li><p><strong>Btrfs</strong>：</p>
+<ul>
+<li>最大单个文件大小：16EB</li>
+<li>最大分区大小：16EB</li>
+<li>Btrfs 支持的最大文件和分区大小远超 Ext4，适合大规模存储场景。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-稳定性"><a href="#10-稳定性" class="headerlink" title="10. 稳定性"></a>10. <strong>稳定性</strong></h3><ul>
+<li><p><strong>Ext4</strong>：经过多年的使用和优化，Ext4 是一个非常稳定的文件系统，适用于生产环境，特别是桌面和服务器场景。Ext4 因其成熟性和可靠性，被认为是 Linux 中最稳定的文件系统之一。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 作为较新的文件系统，虽然具有很多强大的功能，但其某些功能（如 RAID 5 和 RAID 6）在某些情况下还存在稳定性问题。尽管如此，Btrfs 在一般应用场景中已经足够稳定，许多 Linux 发行版（如 openSUSE 和 Fedora）已经将其作为默认文件系统使用。</p>
+</li>
+</ul>
+<h3 id="11-社区支持和应用场景"><a href="#11-社区支持和应用场景" class="headerlink" title="11. 社区支持和应用场景"></a>11. <strong>社区支持和应用场景</strong></h3><ul>
+<li><p><strong>Ext4</strong>：由于其成熟性，Ext4 在桌面和服务器中被广泛使用，几乎所有 Linux 发行版都支持它。它是传统工作负载（如文件存储、简单服务器应用等）的首选文件系统。</p>
+</li>
+<li><p><strong>Btrfs</strong>：Btrfs 社区仍在积极开发中，虽然它在一些生产环境中被使用，但更多的是应用在需要高级功能（如快照、子卷、压缩、RAID 支持）的场景下。适合虚拟化、容器化环境以及数据中心等需要灵活存储管理的场景。</p>
+</li>
+</ul>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li><strong>Ext4</strong> 是一个成熟、稳定、高效的文件系统，适合大多数传统桌面和服务器环境。它简单易用，并且性能在常规工作负载下表现优异。</li>
+<li><strong>Btrfs</strong> 提供了更强大的功能，如快照、子卷、内置 RAID、透明压缩和数据校验等，非常适合复杂的存储需求和多磁盘环境。虽然 Btrfs 仍然存在一些稳定性问题（特别是在 RAID 5&#x2F;6 上），但在需要高级数据管理和灵活存储的场景中，Btrfs 是一个有力的选择。</li>
+</ul>
+<p>选择 Ext4 还是 Btrfs 取决于用户的具体需求。如果您需要简单、稳定的文件系统，Ext4 是不错的选择；如果您需要快照、压缩和 RAID 等高级功能，Btrfs 可能更适合。</p>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>

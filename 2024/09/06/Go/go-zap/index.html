@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>go-zap | Akabane71</title>
+  <meta name="keywords" content=" go , zap , log , lumberjack , gin ">
+  <meta name="description" content="go-zap | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-zap">
+<meta property="og:url" content="http://example.com/2024/09/06/Go/go-zap/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-06T13:07:57.000Z">
+<meta property="article:modified_time" content="2024-09-06T13:13:49.572Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="zap">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="lumberjack">
+<meta property="article:tag" content="gin">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(38)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(11)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spider">
+            
+            Spider
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_word_count" value="60.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ptzcap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-select-channel/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-hash">go-hash</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           data-tag="go,json,base64,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="arch,linux"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="linux,docker,wsl2,hyper-v,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo,ptzcap"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-video">python-bilibili-video</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,http,spider"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Go/go-zap" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">go-zap</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Go">Go</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">go</a>
+            
+            <a class="color4">zap</a>
+            
+            <a class="color4">log</a>
+            
+            <a class="color1">lumberjack</a>
+            
+            <a class="color4">gin</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-09-06 21:13:49'>2024-09-06 21:07</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.8k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#zap"><span class="toc-text">zap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-logger"><span class="toc-text">1. 创建一个简单的 logger</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E7%9A%84-logger"><span class="toc-text">2. 生产模式的 logger</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%87%AA%E5%AE%9A%E4%B9%89-logger-%E9%85%8D%E7%BD%AE"><span class="toc-text">3. 自定义 logger 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%BB%93%E6%9E%84%E5%8C%96%E6%97%A5%E5%BF%97"><span class="toc-text">4. 结构化日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84-Sugared-Logger"><span class="toc-text">5. 性能优化的 Sugared Logger</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zap-%E5%92%8C-lumberjack-%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">zap 和 lumberjack 结合使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E5%90%88%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-text">配合的优势</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zap%E5%92%8Clumberjack%E5%92%8Cgin%E6%A1%88%E4%BE%8B"><span class="toc-text">zap和lumberjack和gin案例</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="zap"><a href="#zap" class="headerlink" title="zap"></a>zap</h1><p><code>go-zap</code> 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 <code>go-zap</code> 的基本用法及其特性。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用以下命令安装 <code>go-zap</code>：</p>
+<pre><code class="bash">go get -u go.uber.org/zap
+</code></pre>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="1-创建一个简单的-logger"><a href="#1-创建一个简单的-logger" class="headerlink" title="1. 创建一个简单的 logger"></a>1. 创建一个简单的 logger</h4><p><code>zap</code> 提供了两种模式：<strong>开发模式</strong> 和 <strong>生产模式</strong>。开发模式输出格式更易于阅读，而生产模式则更加注重性能。</p>
+<pre><code class="go">package main
+
+import (
+    &quot;go.uber.org/zap&quot;
+)
+
+func main() &#123;
+    // 创建一个开发模式的 logger
+    logger, _ := zap.NewDevelopment()
+    defer logger.Sync() // 确保日志在程序结束时被刷新
+
+    logger.Info(&quot;This is an info message&quot;,
+        zap.String(&quot;key&quot;, &quot;value&quot;),
+    )
+&#125;
+</code></pre>
+<h4 id="2-生产模式的-logger"><a href="#2-生产模式的-logger" class="headerlink" title="2. 生产模式的 logger"></a>2. 生产模式的 logger</h4><p>生产模式的 logger 默认是 JSON 格式，适合在高性能环境下使用。</p>
+<pre><code class="go">package main
+
+import (
+    &quot;go.uber.org/zap&quot;
+)
+
+func main() &#123;
+    // 创建一个生产模式的 logger
+    logger, _ := zap.NewProduction()
+    defer logger.Sync()
+
+    logger.Info(&quot;Production log&quot;,
+        zap.String(&quot;status&quot;, &quot;success&quot;),
+    )
+&#125;
+</code></pre>
+<h4 id="3-自定义-logger-配置"><a href="#3-自定义-logger-配置" class="headerlink" title="3. 自定义 logger 配置"></a>3. 自定义 logger 配置</h4><p>你可以使用 <code>zap.Config</code> 来自定义 logger 的配置，比如设置日志级别、编码格式等。</p>
+<pre><code class="go">package main
+
+import (
+    &quot;go.uber.org/zap&quot;
+    &quot;go.uber.org/zap/zapcore&quot;
+)
+
+func main() &#123;
+    config := zap.NewProductionConfig()
+    config.Encoding = &quot;console&quot; // 将输出改为控制台格式
+    config.EncoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+
+    logger, _ := config.Build()
+    defer logger.Sync()
+
+    logger.Warn(&quot;This is a warning message&quot;)
+&#125;
+</code></pre>
+<h4 id="4-结构化日志"><a href="#4-结构化日志" class="headerlink" title="4. 结构化日志"></a>4. 结构化日志</h4><p><code>zap</code> 支持结构化日志，你可以通过 <code>zap.Field</code> 提供额外的上下文信息。</p>
+<pre><code class="go">package main
+
+import (
+    &quot;go.uber.org/zap&quot;
+)
+
+func main() &#123;
+    logger, _ := zap.NewProduction()
+    defer logger.Sync()
+
+    // 记录结构化日志
+    logger.Info(&quot;User logged in&quot;,
+        zap.String(&quot;username&quot;, &quot;john&quot;),
+        zap.Int(&quot;age&quot;, 28),
+        zap.Bool(&quot;isAdmin&quot;, false),
+    )
+&#125;
+</code></pre>
+<h4 id="5-性能优化的-Sugared-Logger"><a href="#5-性能优化的-Sugared-Logger" class="headerlink" title="5. 性能优化的 Sugared Logger"></a>5. 性能优化的 Sugared Logger</h4><p>如果你不需要每条日志都是结构化的，<code>zap</code> 也提供了一个更加灵活的 <code>SugaredLogger</code>，它使用 <code>fmt.Printf</code> 风格的日志记录方式。</p>
+<pre><code class="go">package main
+
+import (
+    &quot;go.uber.org/zap&quot;
+)
+
+func main() &#123;
+    logger, _ := zap.NewProduction()
+    sugar := logger.Sugar()
+    defer sugar.Sync()
+
+    // 使用 Sugared Logger 记录日志
+    sugar.Infof(&quot;User %s has logged in&quot;, &quot;john&quot;)
+&#125;
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>go-zap</code> 提供了高效的日志处理方案，特别适合需要处理大规模日志和追求高性能的应用。无论是在开发环境还是生产环境，它都能很好地满足不同场景下的需求。</p>
+<p>可以在 <a target="_blank" rel="noopener" href="https://github.com/uber-go/zap">zap GitHub 仓库</a> 以及 <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/zap">官方文档</a> 中找到更多详细的说明和使用案例【9†source】【10†source】.</p>
+<h1 id="zap-和-lumberjack-结合使用"><a href="#zap-和-lumberjack-结合使用" class="headerlink" title="zap 和 lumberjack 结合使用"></a>zap 和 lumberjack 结合使用</h1><p><code>zap</code> 和 <code>lumberjack</code> 可以结合使用来处理日志文件的滚动存储（即根据文件大小、时间等条件自动进行日志文件的切割）。<code>lumberjack</code> 提供了日志文件的滚动功能，而 <code>zap</code> 负责高效的日志记录。通过将 <code>lumberjack</code> 与 <code>zap</code> 的 <code>WriteSyncer</code> 结合使用，你可以在高效记录日志的同时，自动管理日志文件的大小和备份。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>首先，安装 <code>lumberjack</code>：</p>
+<pre><code class="bash">go get gopkg.in/natefinch/lumberjack.v2
+</code></pre>
+<p>接下来，通过代码将 <code>lumberjack</code> 和 <code>zap</code> 结合：</p>
+<pre><code class="go">package main
+
+import (
+    &quot;gopkg.in/natefinch/lumberjack.v2&quot;
+    &quot;go.uber.org/zap&quot;
+    &quot;go.uber.org/zap/zapcore&quot;
+    &quot;os&quot;
+)
+
+func main() &#123;
+    // 配置 lumberjack 用于日志切割
+    lumberjackLogger := &amp;lumberjack.Logger&#123;
+        Filename:   &quot;./logs/app.log&quot;, // 日志文件路径
+        MaxSize:    10,               // 每个日志文件最大10MB
+        MaxBackups: 3,                // 保留最多3个备份
+        MaxAge:     28,               // 保留28天的日志
+        Compress:   true,             // 启用压缩
+    &#125;
+
+    // 将 lumberjack 与 zap 结合
+    writeSyncer := zapcore.AddSync(lumberjackLogger)
+    encoder := zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())
+    core := zapcore.NewCore(encoder, writeSyncer, zapcore.InfoLevel)
+
+    logger := zap.New(core)
+    defer logger.Sync()
+
+    // 测试日志记录
+    logger.Info(&quot;This is a test log message&quot;,
+        zap.String(&quot;module&quot;, &quot;main&quot;),
+        zap.Int(&quot;line&quot;, 42),
+    )
+
+    logger.Error(&quot;This is an error message&quot;)
+&#125;
+</code></pre>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><strong>lumberjack.Logger</strong>: 配置了日志文件路径、最大文件大小、最大备份数量、最大保存天数和是否压缩等参数。</li>
+<li><strong>zapcore.AddSync</strong>: 将 <code>lumberjack.Logger</code> 和 <code>zap</code> 的 <code>WriteSyncer</code> 结合，用于日志文件的滚动。</li>
+<li><strong>zapcore.NewCore</strong>: 创建 <code>zap</code> 的核心，使用 JSON 编码格式，并指定日志级别。</li>
+</ol>
+<h3 id="配合的优势"><a href="#配合的优势" class="headerlink" title="配合的优势"></a>配合的优势</h3><ul>
+<li><strong>高效日志记录</strong>：<code>zap</code> 保证了高性能的日志记录。</li>
+<li><strong>日志滚动</strong>：通过 <code>lumberjack</code> 实现日志文件自动切割，避免日志文件过大。</li>
+</ul>
+<p>结合这两者可以在保持高效日志记录的同时，确保日志管理的简洁和自动化。你可以根据项目需求调整 <code>lumberjack</code> 的配置参数，满足特定的日志存储策略。</p>
+<p>有关更多详细说明，请参考 <a target="_blank" rel="noopener" href="https://pkg.go.dev/gopkg.in/natefinch/lumberjack.v2">lumberjack 官方文档</a> 和 <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/zap">zap 官方文档</a></p>
+<h1 id="zap和lumberjack和gin案例"><a href="#zap和lumberjack和gin案例" class="headerlink" title="zap和lumberjack和gin案例"></a>zap和lumberjack和gin案例</h1><p>代码如下</p>
+<pre><code class="go">package logger
+
+import (
+    &quot;github.com/gin-gonic/gin&quot;
+    &quot;github.com/spf13/viper&quot;
+    &quot;go.uber.org/zap&quot;
+    &quot;go.uber.org/zap/zapcore&quot;
+    &quot;gopkg.in/natefinch/lumberjack.v2&quot;
+    &quot;net&quot;
+    &quot;net/http&quot;
+    &quot;net/http/httputil&quot;
+    &quot;os&quot;
+    &quot;runtime/debug&quot;
+    &quot;strings&quot;
+    &quot;time&quot;
+)
+
+var lg *zap.Logger
+
+// Init 初始化Logger
+func Init(mode string) (err error) &#123;
+    writeSyncer := getLogWriter(
+        viper.GetString(&quot;log.filename&quot;),
+        viper.GetInt(&quot;log.max_size&quot;),
+        viper.GetInt(&quot;log.max_backups&quot;),
+        viper.GetInt(&quot;log.max_age&quot;),
+    ) // io.Writer
+    encoder := getEncoder() // 编码
+
+    var l = new(zapcore.Level)
+    err = l.UnmarshalText([]byte(viper.GetString(&quot;log.level&quot;)))
+    if err != nil &#123;
+        return
+    &#125;
+
+    var core zapcore.Core
+    if mode == &quot;dev&quot; &#123;
+        // 进入开发模式,日志输出到终端
+        consoleEnbcoder := zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
+        core = zapcore.NewTee(
+            zapcore.NewCore(encoder, writeSyncer, l))
+        zapcore.NewCore(consoleEnbcoder, zapcore.Lock(os.Stdout), zapcore.DebugLevel)
+
+    &#125; else &#123;
+        core = zapcore.NewCore(encoder, writeSyncer, l)
+    &#125;
+
+    lg = zap.New(core, zap.AddCaller())
+
+    // 将zap 库的 logger 全局化
+    zap.ReplaceGlobals(lg)
+    zap.L().Info(&quot;init logger success&quot;)
+
+    return
+&#125;
+
+func getEncoder() zapcore.Encoder &#123;
+    encoderConfig := zap.NewProductionEncoderConfig()
+    encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+    encoderConfig.TimeKey = &quot;time&quot;
+    encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder
+    encoderConfig.EncodeDuration = zapcore.SecondsDurationEncoder
+    encoderConfig.EncodeCaller = zapcore.ShortCallerEncoder
+    return zapcore.NewJSONEncoder(encoderConfig)
+&#125;
+
+func getLogWriter(filename string, maxSize, maxBackup, maxAge int) zapcore.WriteSyncer &#123;
+    lumberJackLogger := &amp;lumberjack.Logger&#123;
+        Filename:   filename,
+        MaxSize:    maxSize,
+        MaxBackups: maxBackup,
+        MaxAge:     maxAge,
+    &#125;
+    return zapcore.AddSync(lumberJackLogger)
+&#125;
+
+// GinLogger 接收gin框架默认的日志
+func GinLogger() gin.HandlerFunc &#123;
+    return func(c *gin.Context) &#123;
+        start := time.Now()
+        path := c.Request.URL.Path
+        query := c.Request.URL.RawQuery
+        c.Next()
+
+        cost := time.Since(start)
+        lg.Info(path,
+            zap.Int(&quot;status&quot;, c.Writer.Status()),
+            zap.String(&quot;method&quot;, c.Request.Method),
+            zap.String(&quot;path&quot;, path),
+            zap.String(&quot;query&quot;, query),
+            zap.String(&quot;ip&quot;, c.ClientIP()),
+            zap.String(&quot;user-agent&quot;, c.Request.UserAgent()),
+            zap.String(&quot;errors&quot;, c.Errors.ByType(gin.ErrorTypePrivate).String()),
+            zap.Duration(&quot;cost&quot;, cost),
+        )
+    &#125;
+&#125;
+
+// GinRecovery recover掉项目可能出现的panic，并使用zap记录相关日志
+func GinRecovery(stack bool) gin.HandlerFunc &#123;
+    return func(c *gin.Context) &#123;
+        defer func() &#123;
+            if err := recover(); err != nil &#123;
+                // Check for a broken connection, as it is not really a
+                // condition that warrants a panic stack trace.
+                var brokenPipe bool
+                if ne, ok := err.(*net.OpError); ok &#123;
+                    if se, ok := ne.Err.(*os.SyscallError); ok &#123;
+                        if strings.Contains(strings.ToLower(se.Error()), &quot;broken pipe&quot;) || strings.Contains(strings.ToLower(se.Error()), &quot;connection reset by peer&quot;) &#123;
+                            brokenPipe = true
+                        &#125;
+                    &#125;
+                &#125;
+
+                httpRequest, _ := httputil.DumpRequest(c.Request, false)
+                if brokenPipe &#123;
+                    lg.Error(c.Request.URL.Path,
+                        zap.Any(&quot;error&quot;, err),
+                        zap.String(&quot;request&quot;, string(httpRequest)),
+                    )
+                    // If the connection is dead, we can&#39;t write a status to it.
+                    c.Error(err.(error)) // nolint: errcheck
+                    c.Abort()
+                    return
+                &#125;
+
+                if stack &#123;
+                    lg.Error(&quot;[Recovery from panic]&quot;,
+                        zap.Any(&quot;error&quot;, err),
+                        zap.String(&quot;request&quot;, string(httpRequest)),
+                        zap.String(&quot;stack&quot;, string(debug.Stack())),
+                    )
+                &#125; else &#123;
+                    lg.Error(&quot;[Recovery from panic]&quot;,
+                        zap.Any(&quot;error&quot;, err),
+                        zap.String(&quot;request&quot;, string(httpRequest)),
+                    )
+                &#125;
+                c.AbortWithStatus(http.StatusInternalServerError)
+            &#125;
+        &#125;()
+        c.Next()
+    &#125;
+&#125;
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>

@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>python-venv-conda | Akabane71</title>
+  <meta name="keywords" content=" python , venv , conda ">
+  <meta name="description" content="python-venv-conda | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-zap">
+<meta property="og:url" content="http://example.com/2024/09/06/Go/go-zap/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-06T13:07:57.000Z">
+<meta property="article:modified_time" content="2024-09-06T13:13:49.572Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="zap">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="lumberjack">
+<meta property="article:tag" content="gin">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(38)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(11)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spider">
+            
+            Spider
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_word_count" value="60.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ptzcap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-select-channel/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-hash">go-hash</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           data-tag="go,json,base64,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="arch,linux"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="linux,docker,wsl2,hyper-v,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo,ptzcap"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-video">python-bilibili-video</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,http,spider"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Python/python-venv-conda" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">python-venv-conda</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Python">Python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">python</a>
+            
+            <a class="color5">venv</a>
+            
+            <a class="color1">conda</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-09-06 13:02:11'>2024-09-06 11:13</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:2.1k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#venv%E5%92%8Cconda%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">venv和conda的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#venv"><span class="toc-text">venv</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%8B%AC%E7%AB%8B%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-text">1. 独立的环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BD%BB%E9%87%8F%E7%BA%A7"><span class="toc-text">2. 轻量级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Python-%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-text">3. Python 包管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8"><span class="toc-text">4. 简单易用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-venv-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">使用 venv 创建虚拟环境的基本步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%99%90%E5%88%B6"><span class="toc-text">5. 限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#conda"><span class="toc-text">conda</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%8B%AC%E7%AB%8B%E7%9A%84%E7%8E%AF%E5%A2%83-1"><span class="toc-text">1. 独立的环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-text">2. 包管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%94%AF%E6%8C%81"><span class="toc-text">3. 跨平台支持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%81%B5%E6%B4%BB%E7%9A%84-Python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-text">4. 灵活的 Python 版本管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-text">5. 环境变量和配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7"><span class="toc-text">6. 可移植性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-conda-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">使用 conda 创建虚拟环境的基本步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#poetry"><span class="toc-text">poetry</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><code>什么是虚拟环境？</code></p>
+<p>虚拟环境是一个 Python 环境，其中安装的 Python 解释器、库和脚本与安装在其他虚拟环境中的那些是隔离的，而且（默认情况下）安装在系统 Python 中的任何库（即作为操作系统的一部分安装的库）也是隔离的。</p>
+<p><code>为什么需要虚拟环境？</code></p>
+<p> 这是由于 pip 的特性决定的，同一个环境下，仅允许安装每个包的一个版本。假设，这里有三个包，分别为：A、B 和 C。A 包依赖于 B 包的 v1.0 版本，而 C 包依赖于 B 包的 v2.0 版本。如果我安装了 v1.0 的 B 包，那么 C 包就无法使用；如果安装了 v2.0 的 B 包，那么 A 包就无法使用。因此，在同一个环境下，由于只能安装一个版本的 B 包，导致 A 包和 C 包无法同时使用。</p>
+<p>因此，我们需要创建多个 Python 的虚拟环境来解决上述问题。在环境 1 下安装 v1.0 的 B 包，然后就能使用 A 包，在环境 2 下安装 v2.0 的 B 包，就能使用 C 包。也就说，不同虚拟环境下的包是互不影响的，避免了包冲突问题。</p>
+<p>此外，我们推荐每进行一个新的项目开发，就创建一个仅适用于该项目的虚拟 Python 环境。这样有助于包管理，同时还能非常清晰地列出项目开发用到的所有包，生成一键安装清单，方便后期的部署或复现。</p>
+<h2 id="venv和conda的区别"><a href="#venv和conda的区别" class="headerlink" title="venv和conda的区别"></a><code>venv</code>和<code>conda</code>的区别</h2><p>be like this</p>
+<p><img src="/../../imgs/python-venv-conda/image-20240906125628715.png" alt="image-20240906125628715"></p>
+<h3 id="venv"><a href="#venv" class="headerlink" title="venv"></a><code>venv</code></h3><p><code>venv</code> 创建的虚拟环境是 Python 自带的一种轻量级虚拟环境管理工具，用于隔离项目之间的依赖。每个虚拟环境都有自己独立的 Python 解释器和库，从而避免在同一系统中不同项目之间的依赖冲突。<code>venv</code> 是 Python 3.3 之后内置的工具，它的功能相对简单，但足以应对大多数纯 Python 项目的需求。</p>
+<blockquote>
+<p>相当于创建了个独立的 <code>site-packages</code>，只能用本地有的python解释器</p>
+</blockquote>
+<p>目录结构</p>
+<pre><code>.venv
+    ├─pyvenv.cfg
+    ├─Include
+    ├─Lib
+    │  └─site-packages
+    │      ├─pip
+    │      ├─pip-20.2.3.dist-info
+    │      ├─pkg_resources
+    │      ├─setuptools-49.2.1.dist-info
+    │      ├─easy_install.py
+    │      └─__pycache__
+    └─Scripts
+    │  └─activate
+    │  └─activate.bat
+    │  └─Activate.ps1
+    │  └─deactivate.bat
+    │  └─easy_install-3.9.exe
+    │  └─easy_install.exe
+    │  └─pip.exe
+    │  └─pip3.9.exe
+    │  └─pip3.exe
+    │  └─python.exe
+    │  └─pythonw.exe
+</code></pre>
+<p><code>pyvenv.cfg</code> 是一个配置文件，包含三个参数：</p>
+<ul>
+<li><code>home</code>：指向运行命令的 Python 安装目录；</li>
+<li><code>include-system-site-packages</code>：是否使用系统 Python 环境中安装的包。默认是 <code>false</code>，即不使用；</li>
+<li><code>version</code>：Python 版本号。</li>
+</ul>
+<h4 id="1-独立的环境"><a href="#1-独立的环境" class="headerlink" title="1. 独立的环境"></a>1. <strong>独立的环境</strong></h4><p><code>venv</code> 创建的虚拟环境与系统 Python 环境隔离。虚拟环境中包含自己专属的 Python 解释器以及安装的依赖库。每个虚拟环境可以拥有不同的 Python 版本或依赖库，不会影响系统全局的 Python 环境。</p>
+<h4 id="2-轻量级"><a href="#2-轻量级" class="headerlink" title="2. 轻量级"></a>2. <strong>轻量级</strong></h4><p>与其他包管理工具（如 <code>conda</code>）相比，<code>venv</code> 非常轻量。它只处理 Python 环境和包，不涉及复杂的依赖管理或多语言支持。这使得它适用于不需要管理系统库或其他语言依赖的项目。</p>
+<h4 id="3-Python-包管理"><a href="#3-Python-包管理" class="headerlink" title="3. Python 包管理"></a>3. <strong>Python 包管理</strong></h4><p><code>venv</code> 的虚拟环境依赖于 <code>pip</code> 来管理 Python 包。所有安装的包都存放在虚拟环境的特定目录中，确保不同项目可以使用不同版本的库而不会发生冲突。</p>
+<h4 id="4-简单易用"><a href="#4-简单易用" class="headerlink" title="4. 简单易用"></a>4. <strong>简单易用</strong></h4><p><code>venv</code> 使用起来非常简单，几条命令就能完成虚拟环境的创建和管理。它特别适合小型项目或不依赖复杂包管理的场景。</p>
+<h4 id="使用-venv-创建虚拟环境的基本步骤："><a href="#使用-venv-创建虚拟环境的基本步骤：" class="headerlink" title="使用 venv 创建虚拟环境的基本步骤："></a>使用 <code>venv</code> 创建虚拟环境的基本步骤：</h4><ol>
+<li><p><strong>创建虚拟环境</strong>：</p>
+<pre><code class="bash">python -m venv myenv
+</code></pre>
+<p>这将会在当前目录下创建一个名为 <code>myenv</code> 的虚拟环境文件夹，里面包含独立的 Python 解释器和 <code>pip</code>。</p>
+</li>
+<li><p><strong>激活虚拟环境</strong>：</p>
+<ul>
+<li><p>在 Windows 上：</p>
+<pre><code class="bash">myenv\Scripts\activate
+</code></pre>
+</li>
+<li><p>在 macOS 和 Linux 上：</p>
+<pre><code class="bash">source myenv/bin/activate
+</code></pre>
+</li>
+</ul>
+<p>激活后，命令行提示符通常会显示虚拟环境的名称，表明你正在使用该环境。</p>
+</li>
+<li><p><strong>安装依赖包</strong>： 使用 <code>pip</code> 在虚拟环境中安装依赖包：</p>
+<pre><code class="bash">pip install numpy pandas
+</code></pre>
+</li>
+<li><p><strong>查看已安装的包</strong>： 可以通过 <code>pip list</code> 查看当前虚拟环境中安装的所有包：</p>
+<pre><code class="bash">pip list
+</code></pre>
+</li>
+<li><p><strong>退出虚拟环境</strong>： 当你不再需要使用虚拟环境时，可以通过以下命令退出虚拟环境：</p>
+<pre><code class="bash">deactivate
+</code></pre>
+</li>
+<li><p><strong>删除虚拟环境</strong>： 直接删除虚拟环境的文件夹即可：</p>
+<pre><code class="bash">rm -rf myenv
+</code></pre>
+</li>
+</ol>
+<h4 id="5-限制"><a href="#5-限制" class="headerlink" title="5. 限制"></a>5. <strong>限制</strong></h4><p><code>venv</code> 只管理 Python 解释器和相关包的虚拟环境，无法处理系统级的依赖库。</p>
+<p>与 <code>conda</code> 相比，<code>venv</code> 不能处理非 Python 语言的库，也不支持安装和管理系统依赖或二进制库。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><code>venv</code> 创建的虚拟环境是一种轻量、简单的工具，专注于 Python 项目之间的隔离。它的主要优势在于使用简单，适合那些只需要管理 Python 包和依赖的小型项目。如果你的项目不涉及多语言或复杂的依赖库，那么使用 <code>venv</code> 是一个快速有效的选择。</p>
+<h3 id="conda"><a href="#conda" class="headerlink" title="conda"></a><code>conda</code></h3><p><code>conda</code> 创建的虚拟环境是一种隔离的运行环境，主要用于项目中不同版本的库或依赖管理，确保项目在不受其他项目影响的情况下进行开发和运行。具体来说，<code>conda</code> 创建的虚拟环境具有以下特点：</p>
+<blockquote>
+<p>相当于创建了个独立的 <code>python环境</code>,可以用不同版本的python解释器</p>
+</blockquote>
+<h4 id="1-独立的环境-1"><a href="#1-独立的环境-1" class="headerlink" title="1. 独立的环境"></a>1. <strong>独立的环境</strong></h4><p><code>conda</code> 创建的每个虚拟环境都是独立的，包含自己专属的 Python 版本、依赖包、二进制库等。这种隔离确保了每个项目可以使用不同版本的库或工具，而不会影响系统或其他项目的环境。</p>
+<h4 id="2-包管理"><a href="#2-包管理" class="headerlink" title="2. 包管理"></a>2. <strong>包管理</strong></h4><p><code>conda</code> 创建的虚拟环境不仅可以管理 Python 包，还能管理 C、C++ 等其他语言的包以及二进制库。例如，你可以在同一个 <code>conda</code> 虚拟环境中安装 NumPy、Pandas 等 Python 库，同时也能安装 OpenCV 或其他依赖系统库的非 Python 包。</p>
+<h4 id="3-跨平台支持"><a href="#3-跨平台支持" class="headerlink" title="3. 跨平台支持"></a>3. <strong>跨平台支持</strong></h4><p><code>conda</code> 的虚拟环境在不同平台（Windows、Linux、macOS）上表现一致，支持多编译器和多平台的包管理，特别适合跨平台开发需求。</p>
+<h4 id="4-灵活的-Python-版本管理"><a href="#4-灵活的-Python-版本管理" class="headerlink" title="4. 灵活的 Python 版本管理"></a>4. <strong>灵活的 Python 版本管理</strong></h4><p><code>conda</code> 虚拟环境支持多个 Python 版本的并存。你可以为不同的项目创建使用不同版本 Python 的虚拟环境，比如一个项目使用 Python 3.8，而另一个项目则使用 Python 3.10，而不需要修改系统 Python 版本。</p>
+<h4 id="5-环境变量和配置"><a href="#5-环境变量和配置" class="headerlink" title="5. 环境变量和配置"></a>5. <strong>环境变量和配置</strong></h4><p><code>conda</code> 虚拟环境不仅管理包和依赖，还可以管理环境变量。某些包或工具依赖特定的环境变量，<code>conda</code> 可以为每个虚拟环境设置这些变量，并确保它们不影响其他环境。</p>
+<h4 id="6-可移植性"><a href="#6-可移植性" class="headerlink" title="6. 可移植性"></a>6. <strong>可移植性</strong></h4><p><code>conda</code> 创建的虚拟环境可以打包并在不同机器上复现。通过导出环境配置文件（<code>conda env export</code>），可以在另一台机器上快速安装并构建相同的开发环境。</p>
+<h4 id="使用-conda-创建虚拟环境的基本步骤："><a href="#使用-conda-创建虚拟环境的基本步骤：" class="headerlink" title="使用 conda 创建虚拟环境的基本步骤："></a>使用 <code>conda</code> 创建虚拟环境的基本步骤：</h4><ol>
+<li><p><strong>创建虚拟环境</strong>：</p>
+<pre><code class="bash">conda create -n myenv python=3.8
+</code></pre>
+<p>这里 <code>myenv</code> 是虚拟环境的名称，<code>python=3.8</code> 指定了使用 Python 3.8 版本。</p>
+</li>
+<li><p><strong>激活虚拟环境</strong>：</p>
+<pre><code class="bash">conda activate myenv
+</code></pre>
+</li>
+<li><p><strong>安装包</strong>：</p>
+<pre><code class="bash">conda install numpy pandas
+</code></pre>
+<p>可以通过 <code>conda install</code> 安装所需的库，也可以使用 <code>pip</code> 安装一些没有在 <code>conda</code> 仓库中的包。</p>
+</li>
+<li><p><strong>列出虚拟环境</strong>：</p>
+<pre><code class="bash">conda env list
+</code></pre>
+<p>可以查看所有创建的虚拟环境。</p>
+</li>
+<li><p><strong>删除虚拟环境</strong>：</p>
+<pre><code class="bash">conda remove --name myenv --all
+</code></pre>
+<p>删除虚拟环境时，使用 <code>--all</code> 参数清除该环境中的所有内容。</p>
+</li>
+</ol>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>conda</code> 创建的虚拟环境是一种强大且灵活的工具，能够管理 Python 版本、库、依赖项以及系统级包，提供跨平台的支持。它对于复杂项目和需要依赖管理的多语言开发环境非常有用，确保不同项目之间的依赖不会发生冲突。</p>
+<h2 id="poetry"><a href="#poetry" class="headerlink" title="poetry"></a><strong>poetry</strong></h2>
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>

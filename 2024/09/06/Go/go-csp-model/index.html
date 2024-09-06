@@ -2,28 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>go-select | Akabane71</title>
-  <meta name="keywords" content=" go , channel , select ">
-  <meta name="description" content="go-select | Akabane71">
+  <title>go-csp-model | Akabane71</title>
+  <meta name="keywords" content=" go , csp ">
+  <meta name="description" content="go-csp-model | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="HTTP 协议HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写。它的发展是万维网协会（World Wide Web Consortium）和Internet工作小组IETF（Internet Engineering Task Force）合作的结果，最终发布了一系列的RFC，RFC 1945定义了HTTP&#x2F;1.0版本。其中最著名的就是RFC 26">
+<meta name="description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go-http">
-<meta property="og:url" content="http://example.com/2024/09/05/Go/go-http/index.html">
+<meta property="og:title" content="go-zap">
+<meta property="og:url" content="http://example.com/2024/09/06/Go/go-zap/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="HTTP 协议HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写。它的发展是万维网协会（World Wide Web Consortium）和Internet工作小组IETF（Internet Engineering Task Force）合作的结果，最终发布了一系列的RFC，RFC 1945定义了HTTP&#x2F;1.0版本。其中最著名的就是RFC 26">
+<meta property="og:description" content="zapgo-zap 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 go-zap 的基本用法及其特性。 安装使用以下命令安装 go-zap： go get -u go.uber.org&#x2F;zap  基本使用1. 创建一个简单的 loggerzap 提供了两种模式：开发模式 和 生产模式。开发模式输出格式更易于阅读，而生产模">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-protocol.jpeg">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-protocol-01.jpeg">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-request.jpeg">
-<meta property="og:image" content="http://example.com/imgs/go-http/http-response.jpeg">
-<meta property="article:published_time" content="2024-09-05T14:24:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T14:24:30.762Z">
+<meta property="article:published_time" content="2024-09-06T13:07:57.000Z">
+<meta property="article:modified_time" content="2024-09-06T13:13:49.572Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="go">
-<meta property="article:tag" content="http">
+<meta property="article:tag" content="zap">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="lumberjack">
+<meta property="article:tag" content="gin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/go-http/http-protocol.jpeg">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -112,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(28)</small>
+                <small>(38)</small>
             
         </div>
     </li>
@@ -124,7 +122,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(9)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -139,7 +137,7 @@
         <div data-rel="Go">
             
             Go
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -154,7 +152,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -169,7 +167,7 @@
         <div data-rel="OS">
             
             OS
-            <small>(1)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -184,7 +182,7 @@
         <div data-rel="Spider">
             
             Spider
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -227,8 +225,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="39.4k">
+<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_word_count" value="60.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -302,7 +300,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -314,7 +320,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -322,7 +340,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -335,6 +361,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -362,11 +392,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>m3u8</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -383,6 +425,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -414,6 +460,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>select</a>
             </li>
         
@@ -431,6 +481,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -457,12 +515,106 @@
                 <i class="iconfont icon-tag"></i><a>yolo</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
     </div>
 
 </div>
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
         
         
         <a  class="全部文章 Go "
@@ -484,10 +636,10 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-select/"
+           href="/2024/09/05/Go/go-select-channel/"
            data-tag="go,channel,select"
            data-author="" >
-            <span class="post-title" title="go-select">go-select</span>
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
             <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
         </a>
         
@@ -708,7 +860,7 @@
         </a>
         
         
-        <a  class="全部文章 Go "
+        <a  class="全部文章 Spider "
            href="/2024/08/17/Go/go-spider/"
            data-tag="go,http,spider"
            data-author="" >
@@ -734,9 +886,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Go/go-select" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Go/go-csp-model" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">go-select</h1>
+        <h1 class="article-title">go-csp-model</h1>
     
     <div class="article-meta">
         
@@ -756,21 +908,19 @@
             
             <a class="color3">go</a>
             
-            <a class="color3">channel</a>
-            
-            <a class="color2">select</a>
+            <a class="color4">csp</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-09-05 22:20:54'>2024-09-05 22:20</time>
+            发布时间 : <time class="date" title='最后更新: 2024-09-06 20:42:23'>2024-09-06 20:41</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.7k</span>
+        <span>字数:2.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -789,7 +939,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Channel-%E4%B8%8E-Select"><span class="toc-text">Channel 与 Select</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="toc-text">基础用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Select%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-text">Select的顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BAselect%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="toc-text">为select设置超时时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-select%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-text">for select的性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSP%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">CSP并发设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Barrier-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Barrier 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pipeline-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Pipeline 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Producer-Consumer-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Producer&#x2F;Consumer 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pub-Sub-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Pub&#x2F;Sub 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workers-Pool-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Workers Pool 模式</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -805,210 +955,409 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Channel-与-Select"><a href="#Channel-与-Select" class="headerlink" title="Channel 与 Select"></a>Channel 与 Select</h1><p>上一节我们讲到的都是单个channel的使用场景, 如果我们想要同时操作多个channel，比如从ch1、ch2读数据, 我们应该如何处理?</p>
-<h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><p>Go提供了一个select语句块，它像switch一样工作，里面放一些case语句块，用来轮询每个case语句块的send或recv情况</p>
-<p><img src="/../../imgs/go-select/go-select.png"></p>
-<p>用法格式示例:</p>
-<pre><code class="go">select &#123;
-    // ch1有数据时，读取到v1变量中
-    case v1 := &lt;-ch1:
-        ...
-    // ch2有数据时，读取到v2变量中
-    case v2 := &lt;-ch2:
-        ...
-    // 所有case都不满足条件时，执行default
-    default:
-        ...
-&#125;
+        <h1 id="CSP并发设计模式"><a href="#CSP并发设计模式" class="headerlink" title="CSP并发设计模式"></a>CSP并发设计模式</h1><p>Go 是采用CSP编程思想的典范，它将CSP发挥到了极致, 因为Goroutine和Channel 就是这种思想的体现，Go 的设计者 Rob Pike有一句经典的名言</p>
+<pre><code>Do not communicate by sharing memory; instead, share memory by communicating.
 </code></pre>
-<p>defalut语句是可选的，不允许fall through行为，但允许case语句块为空块。select会被return、break关键字中断：return是退出整个函数，break是退出当前select</p>
-<p>select的行为模式主要是对channel是否可读进行轮询, 它的行为如下：</p>
+<p><img src="/../../imgs/go-csp-model/csp-model-c.png"></p>
+<p>这句话是说**<code>“不要使用共享内存通信，而是应该使用通信去共享内存”</code>**，Go 语言推荐我们使用通信来进行进程间同步消息,这样做有二点好处</p>
 <ul>
-<li>如果所有的case语句块评估时都被阻塞，则阻塞直到某个语句块可以被处理</li>
-<li>如果多个case同时满足条件，则随机选择一个进行处理，对于这一次的选择，其它的case都不会被阻塞，而是处理完被选中的case后进入下一轮select(如果select在循环中)或者结束select(如果select不在循环中或循环次数结束)</li>
-<li>如果存在default且其它case都不满足条件，则执行default。所以default必须要可执行而不能阻塞</li>
+<li><code>使用发送消息来同步信息相比于直接使用共享内存和互斥锁是一种更高级的抽象</code>，使用更高级的抽象能够为我们在程序设计上提供更好的封装，让程序的逻辑更加清晰</li>
+<li>消息发送在解耦方面与共享内存相比也有一定优势，我们可以将线程的职责分成生产者和消费者，并通过消息传递的方式将它们解耦，不需要再依赖共享内存</li>
 </ul>
-<p>比如 我们在 ch1,ch2,ch3中放入1，2，3, 然后我们select:</p>
-<pre><code class="go">func Basic1() &#123;
-    ch1, ch2, ch3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
-    ch1 &lt;- 1
-    ch2 &lt;- 2
-    ch3 &lt;- 3
+<p>下面我们接收基于CSP的几种常见设计模式</p>
+<h2 id="Barrier-模式"><a href="#Barrier-模式" class="headerlink" title="Barrier 模式"></a>Barrier 模式</h2><p>barrier 屏障模式故名思义就是一种屏障，用来阻塞直到聚合所有 goroutine 返回结果。 可以使用 channel 来实现</p>
+<p>使用场景</p>
+<ul>
+<li>多个网络请求并发，聚合结果</li>
+<li>粗粒度任务拆分并发执行，聚合结果</li>
+</ul>
+<p><img src="/../../imgs/go-csp-model/barrier.png"></p>
+<p>比如我们并行爬取网页:</p>
+<pre><code class="go">endpoints := []string&#123;
+    &quot;https://www.baidu.com&quot;, 
+    &quot;https://segmentfault.com/&quot;, 
+    &quot;https://blog.csdn.net/&quot;, 
+    &quot;https://www.jd.com/&quot;,
+    &#125;
+</code></pre>
+<p>示例如下:</p>
+<pre><code class="go">import (
+    &quot;fmt&quot;
+    &quot;io/ioutil&quot;
+    &quot;net/http&quot;
+    &quot;time&quot;
+)
 
-    select &#123;
-    case v := &lt;-ch1:
+var (
+    client = http.Client&#123;
+        Timeout: time.Duration(1 * time.Second),
+    &#125;
+)
+
+type SiteResp struct &#123;
+    Err    error
+    Resp   string
+    Status int
+    Cost   int64
+&#125;
+
+func BatchSiteReqeust() &#123;
+    endpoints := []string&#123;
+        &quot;https://www.baidu.com&quot;,
+        &quot;https://segmentfault.com/&quot;,
+        &quot;https://blog.csdn.net/&quot;,
+        &quot;https://www.jd.com/&quot;,
+    &#125;
+
+    // 一个endpoints返回一个结果, 缓冲可以确定
+    respChan := make(chan SiteResp, len(endpoints))
+    defer close(respChan)
+
+    // 并行爬取
+    for _, endpoints := range endpoints &#123;
+        go doSiteRequest(respChan, endpoints)
+    &#125;
+
+    // 聚合结果, 返回结束事件, 避免轮询
+    down := make(chan struct&#123;&#125;)
+    ret := make([]SiteResp, 0, len(endpoints))
+    go mergeResponse(respChan, &amp;ret, down)
+
+    // 等待结束
+    &lt;-down
+
+    for _, v := range ret &#123;
         fmt.Println(v)
-    case v := &lt;-ch2:
-        fmt.Println(v)
-    case v := &lt;-ch3:
-        fmt.Println(v)
-    default:
-        fmt.Println(&quot;default&quot;)
-    &#125;
-&#125;
-</code></pre>
-<p>大家猜猜这次select的结果是啥?</p>
-<p>我们select一次，只能从Ready的channel中随机挑选一个获取一个数据, 如果我们获取完所有的数据，就需要使用 for 进行轮询，比如</p>
-<pre><code class="go">func Basic2() &#123;
-    ch1, ch2 := make(chan int), make(chan int)
-    go pump1(ch1)
-    go pump2(ch2)
-    go suck(ch1, ch2)
-    time.Sleep(1 * time.Second)
-&#125;
-
-// 偶数channel
-func pump1(ch chan int) &#123;
-    for i := 0; i &lt;= 30; i++ &#123;
-        if i%2 == 0 &#123;
-            ch &lt;- i
-        &#125;
     &#125;
 &#125;
 
-// 奇数channel
-func pump2(ch chan int) &#123;
-    for i := 0; i &lt;= 30; i++ &#123;
-        if i%2 == 1 &#123;
-            ch &lt;- i
-        &#125;
-    &#125;
-&#125;
-
-// 处理ch1和ch2中的数据
-func suck(ch1 chan int, ch2 chan int) &#123;
-    for &#123;
-        select &#123;
-        case v := &lt;-ch1:
-            fmt.Printf(&quot;recv on ch1: %d\n&quot;, v)
-        case v := &lt;-ch2:
-            fmt.Printf(&quot;recv on ch2: %d\n&quot;, v)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<h2 id="Select的顺序"><a href="#Select的顺序" class="headerlink" title="Select的顺序"></a>Select的顺序</h2><p>select 在挑选就绪case分支的时候是随机化的， 这是他和swich的case不同的地方:<br><img src="/../../imgs/go-select/rand-select.png"></p>
-<p>我们结合for循环来看一个样列:</p>
-<p>我有3个带缓冲的channel: a, b ,c 依然往他们里面放入 A, B, C 然后我们通过select打印出所有收到的数据</p>
-<pre><code class="go">package selectio
-
-import &quot;fmt&quot;
-
-func SelectOrder() &#123;
-    // 我们只在一个执行体(Goroutine)中完成
-    // 所以需要channel是带缓冲的
-    a := make(chan string, 100)
-    b := make(chan string, 100)
-    c := make(chan string, 100)
-
-    // 依次往a, b, c 中放入数据
-    for i := 0; i &lt; 10; i++ &#123;
-        a &lt;- &quot;A&quot;
-        b &lt;- &quot;B&quot;
-        c &lt;- &quot;C&quot;
-    &#125;
-
-    for i := 0; i &lt; 10; i++ &#123;
-        select &#123;
-        case v := &lt;-a:
-            fmt.Println(v)
-        case v := &lt;-b:
-            fmt.Println(v)
-        case v := &lt;-c:
-            fmt.Println(v)
-        default:
-            fmt.Println(&quot;Default&quot;)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<h2 id="为select设置超时时间"><a href="#为select设置超时时间" class="headerlink" title="为select设置超时时间"></a>为select设置超时时间</h2><p>谁也无法保证某些情况下的select是否会永久阻塞。很多时候都需要设置一下select的超时时间，可以借助time包的After()实现</p>
-<pre><code class="go">func After(d Duration) &lt;-chan Time
-</code></pre>
-<p>After()函数接受一个时长d，然后它After()等待d时长，等待时间到后，将等待完成时所处时间点写入到channel中并返回这个只读channel</p>
-<p>下面是一个例子, 1s后会收到一个事件</p>
-<pre><code class="go">func TestTimeAfter(t *testing.T) &#123;
-    fmt.Println(time.Now())
-
-    a := time.After(1 * time.Second)
-    fmt.Println(&lt;-a)
-&#125;
-</code></pre>
-<p>比如我们ch1等待 结果的返回, 如果超时我们就退出不等待了</p>
-<pre><code class="go">func SelectTimeout() &#123;
-    ch1 := make(chan string)
-
-    // 激活一个goroutine，但5秒之后才发送数据
-    go func() &#123;
-        time.Sleep(5 * time.Second)
-        ch1 &lt;- &quot;put value into ch1&quot;
+func mergeResponse(resp &lt;-chan SiteResp, ret *[]SiteResp, down chan struct&#123;&#125;) &#123;
+    defer func() &#123;
+        down &lt;- struct&#123;&#125;&#123;&#125;
     &#125;()
 
-    select &#123;
-    case val := &lt;-ch1:
-        fmt.Println(&quot;recv value from ch1:&quot;, val)
-        return
+    count := 0
+    for v := range resp &#123;
+        *ret = append(*ret, v)
+        count++
 
-    // 只等待3秒，然后就结束
-    case &lt;-time.After(3 * time.Second):
-        fmt.Println(&quot;3 second over, timeover&quot;)
+        // 填充完成,  返回
+        if count == cap(*ret) &#123;
+            return
+        &#125;
+    &#125;
+
+&#125;
+
+// 构造请求
+func doSiteRequest(out chan&lt;- SiteResp, url string) &#123;
+    res := SiteResp&#123;&#125;
+    startAt := time.Now()
+    defer func() &#123;
+        res.Cost = time.Since(startAt).Milliseconds()
+        out &lt;- res
+    &#125;()
+
+    resp, err := client.Get(url)
+    if resp != nil &#123;
+        res.Status = resp.StatusCode
+    &#125;
+    if err != nil &#123;
+        res.Err = err
+        return
+    &#125;
+
+    // 站不处理结果
+    _, err = ioutil.ReadAll(resp.Body)
+    defer resp.Body.Close()
+    if err != nil &#123;
+        res.Err = err
+        return
+    &#125;
+
+    // res.Resp = string(byt)
+&#125;
+</code></pre>
+<h2 id="Pipeline-模式"><a href="#Pipeline-模式" class="headerlink" title="Pipeline 模式"></a>Pipeline 模式</h2><p>可以利用多核的优势把一段粗粒度逻辑分解成多个 goroutine 执行</p>
+<p><img src="/../../imgs/go-csp-model/pipeline.png"></p>
+<p>这个图不是很能表达并行的概念，其实三个 goroutine 是同时执行的，通过 buffer channel 将三者串起来，只要前序 goroutine 处理完一部分数据，就往下传递，达到并行的目的</p>
+<p>以下是一个示例，第一个函数getRandNum()用于生成随机整数，并将生成的整数放进第一个channel ch1中，第二个函数addRandNum()用于接收ch1中的数据(来自第一个函数)，将其输出，然后对接收的值加1后放进第二个channel ch2中，第三个函数printRes接收ch2中的数据并将其输出</p>
+<p>如果将函数认为是Linux的命令，则类似于下面的命令行：ch1相当于第一个管道，ch2相当于第二个管道</p>
+<pre><code>getRandNum | addRandNum | printRes
+</code></pre>
+<p>代码如下:</p>
+<pre><code class="go">import (
+    &quot;fmt&quot;
+    &quot;math/rand&quot;
+    &quot;sync&quot;
+)
+
+var wg sync.WaitGroup
+
+func PipelineMode() &#123;
+    wg.Add(3)
+    // 创建两个channel
+    ch1 := make(chan int)
+    ch2 := make(chan int)
+
+    // 3个goroutine并行
+    go getRandNum(ch1)
+    go addRandNum(ch1, ch2)
+    go printRes(ch2)
+
+    wg.Wait()
+&#125;
+
+func getRandNum(out chan&lt;- int) &#123;
+    // defer the wg.Done()
+    defer wg.Done()
+
+    var random int
+    // 总共生成10个随机数
+    for i := 0; i &lt; 10; i++ &#123;
+        // 生成[0,30)之间的随机整数并放进channel out
+        random = rand.Intn(30)
+        out &lt;- random
+    &#125;
+    close(out)
+&#125;
+
+func addRandNum(in &lt;-chan int, out chan&lt;- int) &#123;
+    defer wg.Done()
+    for v := range in &#123;
+        // 输出从第一个channel中读取到的数据
+        // 并将值+1后放进第二个channel中
+        fmt.Println(&quot;before +1:&quot;, v)
+        out &lt;- (v + 1)
+    &#125;
+    close(out)
+&#125;
+
+func printRes(in &lt;-chan int) &#123;
+    defer wg.Done()
+    for v := range in &#123;
+        fmt.Println(&quot;after +1:&quot;, v)
     &#125;
 &#125;
 </code></pre>
-<h2 id="for-select的性能"><a href="#for-select的性能" class="headerlink" title="for select的性能"></a>for select的性能</h2><p>我们先聊下，channel的性能:</p>
-<p>channel本质上就是一个 mutex 锁加上一个环状缓存、 一个发送方队列和一个接收方队列</p>
-<pre><code class="go">// src/runtime/chan.go
-type hchan struct &#123;
-    qcount   uint           // 队列中的所有数据数
-    dataqsiz uint           // 环形队列的大小
-    buf      unsafe.Pointer // 指向大小为 dataqsiz 的数组
-    elemsize uint16         // 元素大小
-    closed   uint32         // 是否关闭
-    elemtype *_type         // 元素类型
-    sendx    uint           // 发送索引
-    recvx    uint           // 接收索引
-    recvq    waitq          // recv 等待列表，即（ &lt;-ch ）
-    sendq    waitq          // send 等待列表，即（ ch&lt;- ）
-    lock mutex
+<p>其实写锁 就是独占锁</p>
+<h2 id="Producer-Consumer-模式"><a href="#Producer-Consumer-模式" class="headerlink" title="Producer&#x2F;Consumer 模式"></a>Producer&#x2F;Consumer 模式</h2><p>Producer&#x2F;Consumer 模式, 也就是我们常见的生产者消费者模型, 该模式主要通过平衡生产线程和消费线程的工作能力来提高程序的整体处理数据的速度</p>
+<p>简单地说，就是生产者生产一些数据，然后放到成果队列中，同时消费者从成果队列中来取这些数据。这样就让生产消费变成了异步的两个过程</p>
+<pre><code class="go">func ProducerConsumerMode() &#123;
+    ch := make(chan int, 64) // 成果队列
+
+    go Producer(3, ch) // 生成 3 的倍数的序列
+    go Producer(5, ch) // 生成 5 的倍数的序列
+    go Consumer(ch)    // 消费 生成的队列
+
+    // 运行一定时间后退出
+    time.Sleep(5 * time.Second)
 &#125;
-type waitq struct &#123; // 等待队列 sudog 双向队列
-    first *sudog
-    last  *sudog
+
+// 生产者: 生成 factor 整数倍的序列
+func Producer(factor int, out chan&lt;- int) &#123;
+    maxCount := 0
+
+    for i := 0; ; i++ &#123;
+        out &lt;- i * factor
+
+        // 最多生成10个
+        maxCount++
+        if maxCount &gt; 10 &#123;
+            break
+        &#125;
+    &#125;
+&#125;
+
+// 消费者
+func Consumer(in &lt;-chan int) &#123;
+    for v := range in &#123;
+        fmt.Println(v)
+    &#125;
 &#125;
 </code></pre>
-<p><img src="/../../imgs/go-select/chan-struct.png"></p>
-<p>由于channel是一种线性结构, 多个Goroutine同时操作它时为了保证顺序, 所以操作过程必须加锁:</p>
-<p>发送过程包含三个步骤：</p>
-<ul>
-<li>持有锁</li>
-<li>入队，拷贝要发送的数据<ul>
-<li>找到是否有正在阻塞的接收方，是则直接发送</li>
-<li>找到是否有空余的缓存，是则存入</li>
-<li>阻塞直到被唤醒</li>
-</ul>
-</li>
-<li>释放锁</li>
-</ul>
-<p>接收过程也包含三个步骤:</p>
-<ul>
-<li>上锁</li>
-<li>从缓存中出队，拷贝要接收的数据<ul>
-<li>如果 Channel 已被关闭，且 Channel 没有数据，立刻返回</li>
-<li>如果存在正在阻塞的发送方，说明缓存已满，从缓存队头取一个数据，再复始一个阻塞的发送方</li>
-<li>否则，检查缓存，如果缓存中仍有数据，则从缓存中读取，读取过程会将队列中的数据拷贝一份到接收方的执行栈中</li>
-<li>没有能接受的数据，阻塞当前的接收方 Goroutine</li>
-</ul>
-</li>
-<li>解锁</li>
-</ul>
-<p>考虑到整个 Channel 操作带锁的成本较高，官方也曾考虑过使用无锁 Channel 的设计, 但由于年代久远(2014)，该改进仍处于搁置状态 <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/8899">runtime: lock-free channels</a></p>
-<p>那 for select性能如何喃?</p>
-<p>我们通过 for轮询 加上 select 随机挑选, 实现了多个channel数据的接收, 从这个过程中可以得知 for select的时间复杂度是O(n)的</p>
-<p>综上所述, for select 的channel模型, 并不适合 核心高性能 的地方, 为了绕开该坑，还是得从应用设计出发, 比如直接实现调度管理</p>
-<p>如何绕开？, 资源竞争的时候如何高效加锁或者无锁？, 这将是下一小结的内容</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://golang.design/under-the-hood/zh-cn/part2runtime/ch09lang/chan/">Channel 与 Select</a></li>
-</ul>
+<h2 id="Pub-Sub-模式"><a href="#Pub-Sub-模式" class="headerlink" title="Pub&#x2F;Sub 模式"></a>Pub&#x2F;Sub 模式</h2><p><img src="/../../imgs/go-csp-model/pub-sub.png"></p>
+<p>pub&#x2F;sub 也就是发布订阅模型, 在这个模型中，消息生产者成为发布者（publisher），而消息消费者则成为订阅者（subscriber），生产者和消费者是M:N的关系。在传统生产者和消费者模型中，是将消息发送到一个队列中，而发布订阅模型则是将消息发布给一个主题</p>
+<p>我们先定义Publisher, publisher的核心是维护一个订阅者队列, 好方便通过这个管道通知订阅者</p>
+<pre><code class="go">type (
+    subscriber chan interface&#123;&#125;         // 订阅者为一个管道
+    handleFunc func(v interface&#123;&#125;) bool // 订阅者处理消息的函数, bool是方便判断是否处理成功, 这里不作retry实现
+)
+
+// 发布者对象
+type Publisher struct &#123;
+    m           sync.RWMutex              // 读写锁, 因为publisher允许被并发使用
+    buffer      int                       // 订阅队列的缓存大小
+    timeout     time.Duration             // 发布超时时间
+    subscribers map[subscriber]handleFunc // 订阅者信息
+&#125;
+</code></pre>
+<p>publisher的核心是 发布数据,  这里是实现Publish方法</p>
+<pre><code class="go">// 发布一个主题, 往每个订阅者的管道中发送信息
+func (p *Publisher) Publish(v interface&#123;&#125;) &#123;
+    p.m.RLock()
+    defer p.m.RUnlock()
+
+    var wg sync.WaitGroup
+    for sub, topic := range p.subscribers &#123;
+        wg.Add(1)
+        go p.sendTopic(sub, topic, v, &amp;wg)
+    &#125;
+    wg.Wait()
+&#125;
+
+// 发送主题，可以容忍一定的超时
+func (p *Publisher) sendTopic(
+    sub subscriber, topic topicFunc, v interface&#123;&#125;, wg *sync.WaitGroup,
+) &#123;
+    defer wg.Done()
+    if topic != nil &amp;&amp; !topic(v) &#123;
+        return
+    &#125;
+
+    select &#123;
+    case sub &lt;- v:
+    case &lt;-time.After(p.timeout):
+    &#125;
+&#125;
+</code></pre>
+<p>然后我们实现 添加订阅者的方法, 订阅者的核心逻辑 就是为该订阅者生成管道, 供他订阅消息</p>
+<pre><code class="go">// 添加一个新的订阅者，订阅过滤器筛选后的主题
+func (p *Publisher) SubscribeTopic(topic handleFunc) chan interface&#123;&#125; &#123;
+   ch := make(chan interface&#123;&#125;, p.buffer)
+   p.m.Lock()
+   p.subscribers[ch] = topic
+   p.m.Unlock()
+   return ch
+&#125;
+
+// 退出订阅
+func (p *Publisher) Evict(sub chan interface&#123;&#125;) &#123;
+   p.m.Lock()
+   defer p.m.Unlock()
+
+   delete(p.subscribers, sub)
+   close(sub)
+&#125;
+</code></pre>
+<p> 最后我们实现一个关闭方法, 通知定制者，该频道(topic)已经关闭</p>
+<pre><code class="go">// 关闭发布者对象，同时关闭所有的订阅者管道。
+func (p *Publisher) Close() &#123;
+   p.m.Lock()
+   defer p.m.Unlock()
+
+   for sub := range p.subscribers &#123;
+       delete(p.subscribers, sub)
+       close(sub)
+   &#125;
+&#125;
+</code></pre>
+<p>这样我们就利用channel实现了一个简单的发布订阅模式, 测试下:</p>
+<pre><code class="go">func TestPubSubMode(t *testing.T) &#123;
+    p := NewPublisher(100*time.Millisecond, 10)
+    defer p.Close()
+
+    // 订阅所有
+    all := p.Subscribe()
+
+    // 通过过滤订阅一部分信息
+    golang := p.SubscribeTopic(func(v interface&#123;&#125;) bool &#123;
+        if s, ok := v.(string); ok &#123;
+            return strings.Contains(s, &quot;golang&quot;)
+        &#125;
+        return false
+    &#125;)
+
+    // 发布者 发布信息
+    p.Publish(&quot;hello,   python!&quot;)
+    p.Publish(&quot;godbybe, python!&quot;)
+    p.Publish(&quot;hello,   golang!&quot;)
+
+    // 订阅者查看消息
+    go func() &#123;
+        for msg := range all &#123;
+            fmt.Println(&quot;all:&quot;, msg)
+        &#125;
+    &#125;()
+
+    // 订阅者查看消息
+    go func() &#123;
+        for msg := range golang &#123;
+            fmt.Println(&quot;golang:&quot;, msg)
+        &#125;
+    &#125;()
+
+    // 运行一定时间后退出
+    time.Sleep(3 * time.Second)
+&#125;
+</code></pre>
+<h2 id="Workers-Pool-模式"><a href="#Workers-Pool-模式" class="headerlink" title="Workers Pool 模式"></a>Workers Pool 模式</h2><p>在 Go 中 goroutine 已经足够轻量，甚至 net&#x2F;http server 的处理方式也是 goroutine-per-connection 的，所以比起其他语言来说可能场景稍微少一些。每个 goroutine 的初始内存消耗在 2~8kb，当我们有大批量任务的时候，需要起很多 goroutine 来处理，这会给系统代理很大的内存开销和 GC 压力，这个时候就可以考虑一下协程池</p>
+<p>这个部分基础部分已经介绍过:</p>
+<pre><code class="go">import (
+    &quot;fmt&quot;
+    &quot;math/rand&quot;
+    &quot;sync&quot;
+    &quot;time&quot;
+)
+
+type Task struct &#123;
+    ID         int
+    JobID      int
+    Status     string
+    CreateTime time.Time
+&#125;
+
+func (t *Task) Run() &#123;
+    sleep := rand.Intn(1000)
+    time.Sleep(time.Duration(sleep) * time.Millisecond)
+    t.Status = &quot;Completed&quot;
+&#125;
+
+var wg sync.WaitGroup
+
+// worker的数量，即使用多少goroutine执行任务
+const workerNum = 3
+
+func RunTaskWithPool() &#123;
+    wg.Add(workerNum)
+
+    // 创建容量为10的buffered channel
+    taskQueue := make(chan *Task, 10)
+
+    // 激活goroutine，执行任务
+    for workID := 1; workID &lt;= workerNum; workID++ &#123;
+        go worker(taskQueue, workID)
+    &#125;
+
+    produceTask(taskQueue)
+
+    wg.Wait()
+
+    //记得关闭channel
+    close(taskQueue)
+&#125;
+
+func produceTask(out chan&lt;- *Task) &#123;
+    // 将待执行任务放进buffered channel，共15个任务
+    for i := 1; i &lt;= 15; i++ &#123;
+        out &lt;- &amp;Task&#123;
+            ID:         i,
+            JobID:      100 + i,
+            CreateTime: time.Now(),
+        &#125;
+    &#125;
+&#125;
+
+// 从buffered channel中读取任务，并执行任务
+func worker(in &lt;-chan *Task, workID int) &#123;
+    defer wg.Done()
+    for v := range in &#123;
+        fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+        v.Run()
+        fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+    &#125;
+&#125;
+</code></pre>
 
       
        
