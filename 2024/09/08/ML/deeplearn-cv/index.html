@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>deeplearn-cv | Akabane71</title>
+  <meta name="keywords" content=" python , pytorch , cv ">
+  <meta name="description" content="deeplearn-cv | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="[toc] 传统CNN网络学习记录 CNN卷积神经网络算法原理CNN结构全连接神经网络的整体结构  全连接神经网络的结构单元 神经元的数学表达式为· ​							$a &#x3D; h(w*x+b)$ 为什么要加入激活函数? 这里我们考虑把线性函数 $ℎ(𝑥)&#x3D;𝑐𝑥$ 作为 激活函数，把 $𝑦(𝑥)&#x3D;ℎ(ℎ(ℎ(𝑥)))$ 的运算 对应3层神经网络，这个运算会进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="deeplearn-cv">
+<meta property="og:url" content="http://example.com/2024/09/08/ML/deeplearn-cv/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="[toc] 传统CNN网络学习记录 CNN卷积神经网络算法原理CNN结构全连接神经网络的整体结构  全连接神经网络的结构单元 神经元的数学表达式为· ​							$a &#x3D; h(w*x+b)$ 为什么要加入激活函数? 这里我们考虑把线性函数 $ℎ(𝑥)&#x3D;𝑐𝑥$ 作为 激活函数，把 $𝑦(𝑥)&#x3D;ℎ(ℎ(ℎ(𝑥)))$ 的运算 对应3层神经网络，这个运算会进">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908155521888.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908155532331.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908155603892.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908155724536.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908160616237.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908161144681.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908161307611.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908161435997.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908161446375.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908161459316.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908135229571.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908135250525.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908134834921.png">
+<meta property="og:image" content="http://example.com/imgs/deeplearn-cv/image-20240908134911244.png">
+<meta property="article:published_time" content="2024-09-08T05:39:19.000Z">
+<meta property="article:modified_time" content="2024-09-08T08:16:59.696Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="cv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/deeplearn-cv/image-20240908155521888.png">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(44)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(11)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="ML">
+            
+            ML
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spider">
+            
+            Spider
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="44">
+<input type="hidden" id="yelog_site_word_count" value="67.5k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>air</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>config</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>makefile</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ptzcap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pytorch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>scaffold</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2024/09/08/ML/deeplearn-cv/"
+           data-tag="python,pytorch,cv"
+           data-author="" >
+            <span class="post-title" title="deeplearn-cv">deeplearn-cv</span>
+            <span class="post-date" title="2024-09-08 13:39:19">2024/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/07/Tools/windows-makefile/"
+           data-tag="windows,makefile"
+           data-author="" >
+            <span class="post-title" title="windows-makefile">windows-makefile</span>
+            <span class="post-date" title="2024-09-07 14:36:40">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/07/OS/config-file-type/"
+           data-tag="config"
+           data-author="" >
+            <span class="post-title" title="config-file-type">config-file-type</span>
+            <span class="post-date" title="2024-09-07 09:50:30">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/07/OS/log/"
+           data-tag="log"
+           data-author="" >
+            <span class="post-title" title="log">log</span>
+            <span class="post-date" title="2024-09-07 09:47:29">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-air/"
+           data-tag="go,air"
+           data-author="" >
+            <span class="post-title" title="go-air">go-air</span>
+            <span class="post-date" title="2024-09-06 21:33:55">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/gin/go-gin-scaffold/"
+           data-tag="go,gin,scaffold"
+           data-author="" >
+            <span class="post-title" title="go-gin-scaffold">go-gin-scaffold</span>
+            <span class="post-date" title="2024-09-06 21:21:07">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-select-channel/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-hash">go-hash</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           data-tag="go,json,base64,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="arch,linux"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="linux,docker,wsl2,hyper-v,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo,ptzcap"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-video">python-bilibili-video</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,http,spider"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ML/deeplearn-cv" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">deeplearn-cv</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="ML">ML</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">python</a>
+            
+            <a class="color3">pytorch</a>
+            
+            <a class="color3">cv</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-09-08 16:16:59'>2024-09-08 13:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:3.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-text">CNN卷积神经网络算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN%E7%BB%93%E6%9E%84"><span class="toc-text">CNN结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">全连接神经网络的整体结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%93%E6%9E%84%E5%8D%95%E5%85%83"><span class="toc-text">全连接神经网络的结构单元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8A%A0%E5%85%A5%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">为什么要加入激活函数?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sigmoid%E5%87%BD%E6%95%B0"><span class="toc-text">Sigmoid函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tanh%E5%87%BD%E6%95%B0"><span class="toc-text">Tanh函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReLU%E5%87%BD%E6%95%B0"><span class="toc-text">ReLU函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leaky-ReLU%E5%87%BD%E6%95%B0"><span class="toc-text">Leaky ReLU函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95"><span class="toc-text">前向传播算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-text">梯度下降法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LeNet-AleNet"><span class="toc-text">LeNet&amp;AleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LeNet-5"><span class="toc-text">LeNet-5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AleNet"><span class="toc-text">AleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dropout"><span class="toc-text">Dropout</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VGG-16"><span class="toc-text">VGG-16</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GoogLeNet"><span class="toc-text">GoogLeNet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ResNet"><span class="toc-text">ResNet</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B"><span class="toc-text">代码如下</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-text">CNN卷积神经网络算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN%E7%BB%93%E6%9E%84"><span class="toc-text">CNN结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">全连接神经网络的整体结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%93%E6%9E%84%E5%8D%95%E5%85%83"><span class="toc-text">全连接神经网络的结构单元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8A%A0%E5%85%A5%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">为什么要加入激活函数?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sigmoid%E5%87%BD%E6%95%B0"><span class="toc-text">Sigmoid函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tanh%E5%87%BD%E6%95%B0"><span class="toc-text">Tanh函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReLU%E5%87%BD%E6%95%B0"><span class="toc-text">ReLU函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leaky-ReLU%E5%87%BD%E6%95%B0"><span class="toc-text">Leaky ReLU函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95"><span class="toc-text">前向传播算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-text">梯度下降法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LeNet-AleNet"><span class="toc-text">LeNet&amp;AleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LeNet-5"><span class="toc-text">LeNet-5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AleNet"><span class="toc-text">AleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dropout"><span class="toc-text">Dropout</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VGG-16"><span class="toc-text">VGG-16</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GoogLeNet"><span class="toc-text">GoogLeNet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ResNet"><span class="toc-text">ResNet</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B"><span class="toc-text">代码如下</span></a></li></ol></li></ol></li></ol></li></ol></div></p>
+<p>传统CNN网络学习记录</p>
+<h1 id="CNN卷积神经网络算法原理"><a href="#CNN卷积神经网络算法原理" class="headerlink" title="CNN卷积神经网络算法原理"></a>CNN卷积神经网络算法原理</h1><h2 id="CNN结构"><a href="#CNN结构" class="headerlink" title="CNN结构"></a>CNN结构</h2><h3 id="全连接神经网络的整体结构"><a href="#全连接神经网络的整体结构" class="headerlink" title="全连接神经网络的整体结构"></a>全连接神经网络的整体结构</h3><p><img src="/../../imgs/deeplearn-cv/image-20240908155521888.png" alt="image-20240908155521888"></p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908155532331.png" alt="image-20240908155532331"></p>
+<h3 id="全连接神经网络的结构单元"><a href="#全连接神经网络的结构单元" class="headerlink" title="全连接神经网络的结构单元"></a>全连接神经网络的结构单元</h3><p><img src="/../../imgs/deeplearn-cv/image-20240908155603892.png" alt="image-20240908155603892"></p>
+<p>神经元的数学表达式为·</p>
+<p>​							<strong>$a &#x3D; h(w*x+b)$</strong></p>
+<h3 id="为什么要加入激活函数"><a href="#为什么要加入激活函数" class="headerlink" title="为什么要加入激活函数?"></a>为什么要加入激活函数?</h3><p><img src="/../../imgs/deeplearn-cv/image-20240908155724536.png" alt="image-20240908155724536"></p>
+<p>这里我们考虑把线性函数 $ℎ(𝑥)&#x3D;𝑐𝑥$ 作为 激活函数，把 $𝑦(𝑥)&#x3D;ℎ(ℎ(ℎ(𝑥)))$ 的运算 对应3层神经网络，这个运算会进行 $y(x)&#x3D;c<em>c</em>c*x$的乘法运算，但是同 样的处理可以由$𝑦(𝑥)&#x3D;𝑎𝑥$（注意，这里 $ a&#x3D;𝑐∗∗3$）一次乘法运算（既没有隐藏 层的神经网络）来表示。</p>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><h3 id="Sigmoid函数"><a href="#Sigmoid函数" class="headerlink" title="Sigmoid函数"></a>Sigmoid函数</h3><p><strong>Sigmoid函数的公式和导数如式表示:</strong></p>
+<p>​					$y&#x3D;\frac{1}{1+e^-z}$  ——-&gt;   $y’&#x3D;y(1-y)$</p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908160616237.png" alt="image-20240908160616237"></p>
+<p><strong>Sigmoid函数优点</strong>:</p>
+<ol>
+<li>简单、非常适合分类任务</li>
+</ol>
+<p><strong>Sigmoid函数缺点</strong></p>
+<ol>
+<li>反向传播训练时有梯度消失的问题；</li>
+<li>输出值区间为(0,1)，关于0不对称；</li>
+<li>梯度更新在不同方向走得太远，使得优化难度 增大，训练耗时</li>
+</ol>
+<h3 id="Tanh函数"><a href="#Tanh函数" class="headerlink" title="Tanh函数"></a>Tanh函数</h3><p><strong>Tanh函数和公式和导数如式所示：</strong></p>
+<p>​		$y &#x3D; \frac{e^z - e^-z}{e^z + e^-z}$ ——-&gt; $y‘ &#x3D; 1 -y^2$</p>
+<p><strong>Tanh函数优点</strong>:</p>
+<ol>
+<li><p>解决了Sigmoid函数输出值非0对称的问题</p>
+</li>
+<li><p>训练比Sigmoid函数快，更容易收敛；</p>
+</li>
+</ol>
+<p><strong>Tanh函数缺点：</strong></p>
+<ol>
+<li>反向传播训练时有梯度消失的问题；</li>
+<li>Tanh函数和Sigmoid函数非常相似。</li>
+</ol>
+<h3 id="ReLU函数"><a href="#ReLU函数" class="headerlink" title="ReLU函数"></a>ReLU函数</h3><p><strong>ReLU函数的公式和导数如式所示:</strong></p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908161144681.png" alt="image-20240908161144681"></p>
+<p><strong>ReLU函数优点：</strong></p>
+<ol>
+<li>解决了梯度消失的问题；</li>
+<li>计算更为简单，没有Sigmoid函数和Tanh函数 的指数运算；</li>
+</ol>
+<p><strong>ReLU函数缺点:</strong></p>
+<ol>
+<li>训练时可能出现神经元死亡；</li>
+</ol>
+<h3 id="Leaky-ReLU函数"><a href="#Leaky-ReLU函数" class="headerlink" title="Leaky ReLU函数"></a>Leaky ReLU函数</h3><p><strong>Leaky ReLU函数的公式和导数如式所示：</strong></p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908161307611.png" alt="image-20240908161307611"></p>
+<p><strong>Leaky ReLU函数优点：</strong></p>
+<ol>
+<li>解决了ReLU的神经元死亡问题;</li>
+</ol>
+<p><strong>Leaky ReLU函数缺点：</strong></p>
+<ol>
+<li>无法为正负输入值提供一致的关系预测（不同区间函数不同）</li>
+</ol>
+<h2 id="前向传播算法"><a href="#前向传播算法" class="headerlink" title="前向传播算法"></a>前向传播算法</h2><p><img src="/../../imgs/deeplearn-cv/image-20240908161435997.png" alt="image-20240908161435997"></p>
+<ol>
+<li><p><img src="/../../imgs/deeplearn-cv/image-20240908161446375.png" alt="image-20240908161446375"></p>
+</li>
+<li><p><img src="/../../imgs/deeplearn-cv/image-20240908161459316.png" alt="image-20240908161459316"></p>
+</li>
+</ol>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><h1 id="LeNet-AleNet"><a href="#LeNet-AleNet" class="headerlink" title="LeNet&amp;AleNet"></a>LeNet&amp;AleNet</h1><h2 id="LeNet-5"><a href="#LeNet-5" class="headerlink" title="LeNet-5"></a>LeNet-5</h2><p>结构图</p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908135229571.png" alt="image-20240908135229571"></p>
+<pre><code class="python">import torch
+from torch import nn
+from torchsummary import summary
+import torch.nn.functional as F
+
+
+
+
+&#39;&#39;&#39;
+第1层输入层： Input为227×227×3
+
+第2层卷积层： Input为227×227×3，卷积核为11×11×3× 96 ；stride=4，output为55×55×96
+第3层最大池化层： Input为55×55×96，池化感受野为3×3，stride=2，output为27×27×96
+
+第4层卷积层： Input为27×27×96，卷积核为5×5×96× 256 ；stride=1，padding=2 ，output为27×27×256
+第5层最大池化层： Input为27×27×256，池化感受野为3 ×3，stride=2，output为13×13×256
+
+第6层卷积层： Input为13×13×256，卷积核为3×3×256 × 384，stride=1，padding=1，output 为13×13×384
+
+第7层卷积层： Input为13×13×384，卷积核为3×3×384 × 384，stride=1，padding=1，output 为13×13×384。
+
+第8层卷积层： Input 13×13×384，卷积核为3×3×384 × 256，stride=1，padding=1，output 为13×13×256
+
+第9层最大池化层： Input为13×13×256，池化感受野为3 ×3，stride=2，output 为6×6×256，Flatten操作，通过展平得到9216个数据后与之后的全连接层相连。
+
+第10～12层全连接层：第10~12层神经元个数分别为4096，4096，1000。其中前两层在使用relu后还使用了Dropout对神经元随机失活，最后一层全连接层用softmax输出1000个分类（这里要说的是，softmax输出1000个分类原因是当时该网络设计是为了参加
+ImageNet这个比赛，该比赛最后是对1000个物体进行分类）
+
+&#39;&#39;&#39;
+
+
+&#39;&#39;&#39;
+in_channels 
+out_channels 
+kernel_size  
+stride  步幅
+padding 填充
+
+&#39;&#39;&#39;
+
+class AlexNet(nn.Module):
+    def __init__(self):
+        # 继承
+        super(AlexNet,self).__init__()
+        self.relu = nn.ReLU() # 定义激活函数
+        self.c1 = nn.Conv2d(in_channels=1,out_channels=96,kernel_size=11,stride=4)
+        self.s2 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.c3 = nn.Conv2d(in_channels=96,out_channels=256,kernel_size=5,padding=2)
+        self.s4 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.c5 = nn.Conv2d(in_channels=256,out_channels=384,kernel_size=3,padding=1)
+        self.c6 = nn.Conv2d(in_channels=384, out_channels=384, kernel_size=3, padding=1)
+        self.c7 = nn.Conv2d(in_channels=384, out_channels=256, kernel_size=3, padding=1)
+        self.s8 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.flatten = nn.Flatten()
+        # 全连接层
+        self.f1 = nn.Linear(in_features=6*6*256,out_features=4096)
+        self.f2 = nn.Linear(in_features=4096,out_features=4096)
+        self.f3 = nn.Linear(in_features=4096,out_features=10) # 最后的输出为任务而定
+
+    def forward(self,x):
+        # 每次经过卷积都应该有个relu函数激活
+        x = self.relu(self.c1(x))
+        x = self.s2(x)
+        x = self.relu(self.c3(x))
+        x = self.s4(x)
+        x = self.relu(self.c5(x))
+        x = self.relu(self.c6(x))
+        x = self.relu(self.c7(x))
+        x = self.s8(x)
+
+        x = self.flatten(x)
+
+        x = self.relu(self.f1(x))
+        x = F.dropout(x,0.5) # 神经元随机失活，有0.5的神经元失活
+        x = self.relu(self.f2(x))
+        x = F.dropout(x,0.5)
+        x = self.f3(x)
+        return x
+
+if __name__ == &#39;__main__&#39;:
+    device = torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+    model = AlexNet()
+    model = model.to(device)
+    print(summary(model,(1,227,227)))
+</code></pre>
+<h2 id="AleNet"><a href="#AleNet" class="headerlink" title="AleNet"></a>AleNet</h2><p>结构图如下</p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908135250525.png" alt="image-20240908135250525"></p>
+<h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><p>随机失活，随机【临时】删除掉网络的一部分</p>
+<pre><code class="python">import torch
+from torch import nn
+from torchsummary import summary
+import torch.nn.functional as F
+
+
+
+
+&#39;&#39;&#39;
+第1层输入层： Input为227×227×3
+
+第2层卷积层： Input为227×227×3，卷积核为11×11×3× 96 ；stride=4，output为55×55×96
+第3层最大池化层： Input为55×55×96，池化感受野为3×3，stride=2，output为27×27×96
+
+第4层卷积层： Input为27×27×96，卷积核为5×5×96× 256 ；stride=1，padding=2 ，output为27×27×256
+第5层最大池化层： Input为27×27×256，池化感受野为3 ×3，stride=2，output为13×13×256
+
+第6层卷积层： Input为13×13×256，卷积核为3×3×256 × 384，stride=1，padding=1，output 为13×13×384
+
+第7层卷积层： Input为13×13×384，卷积核为3×3×384 × 384，stride=1，padding=1，output 为13×13×384。
+
+第8层卷积层： Input 13×13×384，卷积核为3×3×384 × 256，stride=1，padding=1，output 为13×13×256
+
+第9层最大池化层： Input为13×13×256，池化感受野为3 ×3，stride=2，output 为6×6×256，Flatten操作，通过展平得到9216个数据后与之后的全连接层相连。
+
+第10～12层全连接层：第10~12层神经元个数分别为4096，4096，1000。其中前两层在使用relu后还使用了Dropout对神经元随机失活，最后一层全连接层用softmax输出1000个分类（这里要说的是，softmax输出1000个分类原因是当时该网络设计是为了参加
+ImageNet这个比赛，该比赛最后是对1000个物体进行分类）
+
+&#39;&#39;&#39;
+
+
+&#39;&#39;&#39;
+in_channels 
+out_channels 
+kernel_size  
+stride  步幅
+padding 填充
+
+&#39;&#39;&#39;
+
+class AlexNet(nn.Module):
+    def __init__(self):
+        # 继承
+        super(AlexNet,self).__init__()
+        self.relu = nn.ReLU() # 定义激活函数
+        self.c1 = nn.Conv2d(in_channels=1,out_channels=96,kernel_size=11,stride=4)
+        self.s2 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.c3 = nn.Conv2d(in_channels=96,out_channels=256,kernel_size=5,padding=2)
+        self.s4 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.c5 = nn.Conv2d(in_channels=256,out_channels=384,kernel_size=3,padding=1)
+        self.c6 = nn.Conv2d(in_channels=384, out_channels=384, kernel_size=3, padding=1)
+        self.c7 = nn.Conv2d(in_channels=384, out_channels=256, kernel_size=3, padding=1)
+        self.s8 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.flatten = nn.Flatten()
+        # 全连接层
+        self.f1 = nn.Linear(in_features=6*6*256,out_features=4096)
+        self.f2 = nn.Linear(in_features=4096,out_features=4096)
+        self.f3 = nn.Linear(in_features=4096,out_features=10) # 最后的输出为任务而定
+
+    def forward(self,x):
+        # 每次经过卷积都应该有个relu函数激活
+        x = self.relu(self.c1(x))
+        x = self.s2(x)
+        x = self.relu(self.c3(x))
+        x = self.s4(x)
+        x = self.relu(self.c5(x))
+        x = self.relu(self.c6(x))
+        x = self.relu(self.c7(x))
+        x = self.s8(x)
+
+        x = self.flatten(x)
+
+        x = self.relu(self.f1(x))
+        x = F.dropout(x,0.5) # 神经元随机失活，有0.5的神经元失活
+        x = self.relu(self.f2(x))
+        x = F.dropout(x,0.5)
+        x = self.f3(x)
+        return x
+
+if __name__ == &#39;__main__&#39;:
+    device = torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+    model = AlexNet()
+    model = model.to(device)
+    print(summary(model,(1,227,227)))
+</code></pre>
+<h2 id="VGG-16"><a href="#VGG-16" class="headerlink" title="VGG-16"></a>VGG-16</h2><pre><code class="python">import torch
+from torch import nn # 撰写网络
+from torchsummary import summary # 验证
+
+&quot;使用nn.Sequential来模块化定义&quot;
+
+class VGG16(nn.Module):
+    def __init__(self):
+        super(VGG16,self).__init__()
+        # nn.Sequential 是序列的意思
+        self.block1 = nn.Sequential(
+            nn.Conv2d(in_channels=1,out_channels=64,kernel_size=3,padding=1,stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+        )
+        self.block2 = nn.Sequential(
+            nn.Conv2d(in_channels=64,out_channels=128,kernel_size=3,padding=1,stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+        )
+        self.block3 = nn.Sequential(
+            nn.Conv2d(in_channels=128,out_channels=256,kernel_size=3,padding=1,stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+        )
+        self.block4 = nn.Sequential(
+            nn.Conv2d(in_channels=256,out_channels=512,kernel_size=3,padding=1,stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+        )
+        self.block5 = nn.Sequential(
+            nn.Conv2d(in_channels=512,out_channels=512,kernel_size=3,padding=1,stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1, stride=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+        )
+        # 全连接层
+        self.block6 = nn.Sequential(
+            nn.Flatten(), # 展开
+            nn.Linear(in_features=7*7*512,out_features=4096),
+            nn.ReLU(),
+            nn.Linear(in_features=4096,out_features=4096),
+            nn.ReLU(),
+            nn.Linear(in_features=4096,out_features=10),
+        )
+
+        # 参数初始化
+        for m in self.modules():
+            if isinstance(m,nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight,nonlinearity=&#39;relu&#39;)
+                if m.bias is not None:
+                    nn.init.constant_(m.bias,0)
+            elif isinstance(m, nn.Linear):
+                nn.init.normal_(m.weight,0,0.01)
+                if m.bias is not None:
+                    nn.init.constant_(m.bias,0)
+
+    def forward(self,x):
+        x = self.block1(x)
+        x = self.block2(x)
+        x = self.block3(x)
+        x = self.block4(x)
+        x = self.block5(x)
+        x = self.block6(x)
+
+        return x
+
+if __name__ == &#39;__main__&#39;:
+    device = torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+    model = VGG16().to(device)
+    print(summary(model,(1,224,224)))
+</code></pre>
+<h1 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h1><p>GoogLeNet 提出</p>
+<pre><code class="python">import torch
+from torch import nn
+from torchsummary import summary
+
+&#39;&#39;&#39;Inception模块来实现模块化搭建&#39;&#39;&#39;
+class Inception(nn.Module):
+    def __init__(self,in_channels,c1,c2,c3,c4): # c1,c2,c3,c4为输出通道数和输出通道数的数量
+        super(Inception,self).__init__()
+        self.rulu = nn.ReLU()
+
+        # 路线1,单1*1卷积层
+        self.p1 = nn.Conv2d(in_channels=in_channels,out_channels=c1,kernel_size=1)
+
+        # 路线2, 1*1卷积，3*3卷积
+        self.p2_1 = nn.Conv2d(in_channels=in_channels,out_channels=c2[0],kernel_size=1)
+        self.p2_2 = nn.Conv2d(in_channels=c2[0],out_channels=c2[1],kernel_size=3,padding=1)
+
+        # 路线3, 1*1卷积，5*5卷积
+        self.p3_1 = nn.Conv2d(in_channels=in_channels,out_channels=c3[0],kernel_size=1)
+        self.p3_2 = nn.Conv2d(in_channels=c3[0],out_channels=c3[1],kernel_size=5,padding=2)
+
+        # 路径4,  3*3最大池化,1*1卷积
+        self.p4_1 = nn.MaxPool2d(kernel_size=3,padding=1,stride=1) # 池化的步幅会和kernel_size相等
+        self.p4_2 = nn.Conv2d(in_channels=in_channels,out_channels=c4,kernel_size=1)
+
+    # 因为是并行的结构
+    def forward(self,x):
+        p1 = self.rulu(self.p1(x))
+        # 路径2
+        p2 = self.rulu(self.p2_2(self.rulu(self.p2_1(x))))
+        # 路线3
+        p3 = self.rulu(self.p3_2(self.rulu(self.p3_1(x))))
+        # 路线4
+        p4 = self.rulu(self.p4_2(self.p4_1(x)))
+
+        return torch.cat((p1,p2,p3,p4),dim=1) # 特征融合,dim=1指定为通道
+
+class GoogLeNet(nn.Module):
+    def __init__(self,Inception):
+        super(GoogLeNet,self).__init__()
+        # 模块1
+        self.b1 = nn.Sequential(
+            nn.Conv2d(in_channels=1,out_channels=64,kernel_size=7,stride=2,padding=3),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3,padding=1,stride=2)
+        )
+
+        # 模块2
+        self.b2 = nn.Sequential(
+            nn.Conv2d(in_channels=64,out_channels=64,kernel_size=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=64, out_channels=192, kernel_size=3,padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3,padding=1,stride=2)
+        )
+
+        &#39;&#39;&#39;以池化层为结尾作为区分&#39;&#39;&#39;
+        # 搭建Inception模块
+        self.b3 = nn.Sequential(
+            Inception(192,64, (96,128), (16,32), 32),
+            Inception(256,128, (128,192), (32,96), 64),
+            nn.MaxPool2d(kernel_size=3,padding=1,stride=2),
+        )
+
+        #  5个Inception
+        self.b4 = nn.Sequential(
+            Inception(480,192, (96,208), (16,48), 64),
+            Inception(512,160, (112,224), (24,64), 64),
+            Inception(512,128, (128, 256), (24, 64), 64),
+            Inception(512,112, (128, 288), (32, 64), 64),
+            Inception(528,256, (160, 320), (32, 128), 128),
+            nn.MaxPool2d(kernel_size=3,padding=1,stride=2),
+        )
+
+        # 2个Inception
+        self.b5 = nn.Sequential(
+            Inception(832,256,(160,320),(32,128),128),
+            Inception(832,384,(192,384),(48,128),128),
+            nn.AdaptiveAvgPool2d((1,1)), # 全局平均池化
+            nn.Flatten(),
+            # 全连接层
+            nn.Linear(1024,10)
+
+        )
+
+        # 模型初始化
+        for m in self.modules():
+            if isinstance(m,nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight,mode=&#39;fan_out&#39;,nonlinearity=&#39;relu&#39;)
+                if m.bias is not None:
+                    nn.init.constant_(m.bias,0)
+
+                elif isinstance(m,nn.Linear):
+                    nn.init.normal_(m.weight,0,0.01) # 线性全连接层使用正态分布来初始化参数
+                    if m.bias is not None:
+                        nn.init.constant_(m.bias,0)
+    # 前向传播
+    def forward(self,x):
+        x = self.b1(x)
+        x = self.b2(x)
+        x = self.b3(x)
+        x = self.b4(x)
+        x = self.b5(x)
+        return x
+
+
+&#39;&#39;&#39;模型测试&#39;&#39;&#39;
+if __name__ == &#39;__main__&#39;:
+    device = torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cup&#39;)
+    model = GoogLeNet(Inception).to(device)
+    print(summary(model,(1,224,224)))
+</code></pre>
+<h1 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h1><p>ResNet 残差网络，提出残差单元和凯明初始化</p>
+<p>网络结构 ResNet-5</p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908134834921.png" alt="image-20240908134834921"></p>
+<p><code>残差块:</code></p>
+<p><img src="/../../imgs/deeplearn-cv/image-20240908134911244.png" alt="image-20240908134911244"></p>
+<h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><pre><code class="python">import torch
+from torch import nn
+from torchsummary import summary
+import torch.nn.functional as F
+
+
+
+
+&#39;&#39;&#39;
+第1层输入层： Input为227×227×3
+
+第2层卷积层： Input为227×227×3，卷积核为11×11×3× 96 ；stride=4，output为55×55×96
+第3层最大池化层： Input为55×55×96，池化感受野为3×3，stride=2，output为27×27×96
+
+第4层卷积层： Input为27×27×96，卷积核为5×5×96× 256 ；stride=1，padding=2 ，output为27×27×256
+第5层最大池化层： Input为27×27×256，池化感受野为3 ×3，stride=2，output为13×13×256
+
+第6层卷积层： Input为13×13×256，卷积核为3×3×256 × 384，stride=1，padding=1，output 为13×13×384
+
+第7层卷积层： Input为13×13×384，卷积核为3×3×384 × 384，stride=1，padding=1，output 为13×13×384。
+
+第8层卷积层： Input 13×13×384，卷积核为3×3×384 × 256，stride=1，padding=1，output 为13×13×256
+
+第9层最大池化层： Input为13×13×256，池化感受野为3 ×3，stride=2，output 为6×6×256，Flatten操作，通过展平得到9216个数据后与之后的全连接层相连。
+
+第10～12层全连接层：第10~12层神经元个数分别为4096，4096，1000。其中前两层在使用relu后还使用了Dropout对神经元随机失活，最后一层全连接层用softmax输出1000个分类（这里要说的是，softmax输出1000个分类原因是当时该网络设计是为了参加
+ImageNet这个比赛，该比赛最后是对1000个物体进行分类）
+
+&#39;&#39;&#39;
+
+
+&#39;&#39;&#39;
+in_channels 
+out_channels 
+kernel_size  
+stride  步幅
+padding 填充
+
+&#39;&#39;&#39;
+
+class AlexNet(nn.Module):
+    def __init__(self):
+        # 继承
+        super(AlexNet,self).__init__()
+        self.relu = nn.ReLU() # 定义激活函数
+        self.c1 = nn.Conv2d(in_channels=1,out_channels=96,kernel_size=11,stride=4)
+        self.s2 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.c3 = nn.Conv2d(in_channels=96,out_channels=256,kernel_size=5,padding=2)
+        self.s4 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.c5 = nn.Conv2d(in_channels=256,out_channels=384,kernel_size=3,padding=1)
+        self.c6 = nn.Conv2d(in_channels=384, out_channels=384, kernel_size=3, padding=1)
+        self.c7 = nn.Conv2d(in_channels=384, out_channels=256, kernel_size=3, padding=1)
+        self.s8 = nn.MaxPool2d(kernel_size=3,stride=2)
+        self.flatten = nn.Flatten()
+        # 全连接层
+        self.f1 = nn.Linear(in_features=6*6*256,out_features=4096)
+        self.f2 = nn.Linear(in_features=4096,out_features=4096)
+        self.f3 = nn.Linear(in_features=4096,out_features=10) # 最后的输出为任务而定
+
+    def forward(self,x):
+        # 每次经过卷积都应该有个relu函数激活
+        x = self.relu(self.c1(x))
+        x = self.s2(x)
+        x = self.relu(self.c3(x))
+        x = self.s4(x)
+        x = self.relu(self.c5(x))
+        x = self.relu(self.c6(x))
+        x = self.relu(self.c7(x))
+        x = self.s8(x)
+
+        x = self.flatten(x)
+
+        x = self.relu(self.f1(x))
+        x = F.dropout(x,0.5) # 神经元随机失活，有0.5的神经元失活
+        x = self.relu(self.f2(x))
+        x = F.dropout(x,0.5)
+        x = self.f3(x)
+        return x
+
+if __name__ == &#39;__main__&#39;:
+    device = torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+    model = AlexNet()
+    model = model.to(device)
+    print(summary(model,(1,227,227)))
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>
