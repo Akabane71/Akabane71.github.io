@@ -2,27 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>go-viper | Akabane71</title>
-  <meta name="keywords" content=" go , viper ">
-  <meta name="description" content="go-viper | Akabane71">
+  <title>python-basics | Akabane71</title>
+  <meta name="keywords" content=" python , lterator , generatord ">
+  <meta name="description" content="python-basics | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="gRPC的四种模式 简单模式    服务端模式    客户端模式    双向模式     Go代码演示如下proto文件syntax &#x3D; &quot;proto3&quot;;  option go_package&#x3D;&quot;.;proto&quot;;  service Greeter &#123;   &#x2F;&#x2F; 使用服务端地流模式   rpc GetStream(StreamReqData) r">
+<meta name="description" content="迭代器 (Lterator)迭代器（Iterator）是一个对象，它实现了特定的协议，使得可以逐个访问其包含的元素，而无需直接访问它们的内部结构。迭代器在 Python 中是一种非常重要的概念，主要用于处理序列（如列表、元组、字典等）和流（如文件）的元素。 迭代器的基本概念： 迭代器协议： 迭代器必须实现两个方法： __iter__()：返回迭代器对象自身。 __next__()：返回下一个元素，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grpc-4models">
-<meta property="og:url" content="http://example.com/2024/10/04/Go/grpc/grpc-4models/index.html">
+<meta property="og:title" content="python-basics">
+<meta property="og:url" content="http://example.com/2024/11/04/Python/basics/python-basics/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="gRPC的四种模式 简单模式    服务端模式    客户端模式    双向模式     Go代码演示如下proto文件syntax &#x3D; &quot;proto3&quot;;  option go_package&#x3D;&quot;.;proto&quot;;  service Greeter &#123;   &#x2F;&#x2F; 使用服务端地流模式   rpc GetStream(StreamReqData) r">
+<meta property="og:description" content="迭代器 (Lterator)迭代器（Iterator）是一个对象，它实现了特定的协议，使得可以逐个访问其包含的元素，而无需直接访问它们的内部结构。迭代器在 Python 中是一种非常重要的概念，主要用于处理序列（如列表、元组、字典等）和流（如文件）的元素。 迭代器的基本概念： 迭代器协议： 迭代器必须实现两个方法： __iter__()：返回迭代器对象自身。 __next__()：返回下一个元素，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161135738.png">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161151963.png">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161156411.png">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161201663.png">
-<meta property="article:published_time" content="2024-10-04T08:10:01.000Z">
-<meta property="article:modified_time" content="2024-10-04T08:14:12.365Z">
+<meta property="article:published_time" content="2024-11-04T01:47:48.000Z">
+<meta property="article:modified_time" content="2024-11-04T01:59:52.875Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="gRPC">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="lterator">
+<meta property="article:tag" content="generatord">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/grpc-4models/image-20241004161135738.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -111,7 +108,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(53)</small>
+                <small>(60)</small>
             
         </div>
     </li>
@@ -123,7 +120,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -138,7 +135,7 @@
         <div data-rel="Go">
             
             Go
-            <small>(15)</small>
+            <small>(16)</small>
         </div>
         
     </li>
@@ -153,7 +150,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -198,7 +195,7 @@
         <div data-rel="OS">
             
             OS
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -228,7 +225,22 @@
         <div data-rel="Tools">
             
             Tools
-            <small>(5)</small>
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Web">
+            
+            Web
+            <small>(1)</small>
         </div>
         
     </li>
@@ -256,8 +268,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="53">
-<input type="hidden" id="yelog_site_word_count" value="76.6k">
+<input type="hidden" id="yelog_site_posts_number" value="60">
+<input type="hidden" id="yelog_site_word_count" value="81.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -359,6 +371,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>concurrent</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>conda</a>
             </li>
         
@@ -407,6 +423,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>generatord</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gin</a>
             </li>
         
@@ -424,6 +444,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>grpc</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -447,6 +471,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>interceptor</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>json</a>
             </li>
         
@@ -456,6 +484,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lterator</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -480,6 +512,18 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>metadata</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microservices</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>monolithic applications</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -599,6 +643,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>websocket</a>
             </li>
         
@@ -628,6 +676,69 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/11/04/Python/basics/python-basics/"
+           data-tag="python,lterator,generatord"
+           data-author="" >
+            <span class="post-title" title="python-basics">python-basics</span>
+            <span class="post-date" title="2024-11-04 09:47:48">2024/11/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/10/30/OS/concurrency-models/"
+           data-tag="go,python,concurrent"
+           data-author="" >
+            <span class="post-title" title="concurrency_models">concurrency_models</span>
+            <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/10/12/Linux/docker/"
+           data-tag="linux,docker"
+           data-author="" >
+            <span class="post-title" title="docker">docker</span>
+            <span class="post-date" title="2024-10-12 16:13:56">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/10/12/Tools/docker-gpu-cuda/"
+           data-tag="docker,wsl2,windows"
+           data-author="" >
+            <span class="post-title" title="docker-gpu-cuda">docker-gpu-cuda</span>
+            <span class="post-date" title="2024-10-12 11:03:04">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2024/10/07/Web/monoliths-to-microservices/"
+           data-tag="web,monolithic applications,microservices"
+           data-author="" >
+            <span class="post-title" title="monoliths-to-microservices">monoliths-to-microservices</span>
+            <span class="post-date" title="2024-10-07 18:57:23">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/10/05/Go/grpc/grpc-interceptor/"
+           data-tag="go,grpc,interceptor"
+           data-author="" >
+            <span class="post-title" title="grpc-interceptor">grpc-interceptor</span>
+            <span class="post-date" title="2024-10-05 11:17:28">2024/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/10/05/Go/grpc/grpc-metadata/"
+           data-tag="go,grpc,metadata"
+           data-author="" >
+            <span class="post-title" title="grpc-metadata">grpc-metadata</span>
+            <span class="post-date" title="2024-10-05 10:52:03">2024/10/05</span>
+        </a>
         
         
         <a  class="全部文章 Go "
@@ -748,7 +859,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/06/Go/go-air/"
+           href="/2024/09/06/Go/config/go-air/"
            data-tag="go,air"
            data-author="" >
             <span class="post-title" title="go-air">go-air</span>
@@ -766,7 +877,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/06/Go/go-zap/"
+           href="/2024/09/06/Go/config/go-zap/"
            data-tag="go,zap,log,lumberjack,gin"
            data-author="" >
             <span class="post-title" title="go-zap">go-zap</span>
@@ -1027,7 +1138,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/08/28/Go/go-viper/"
+           href="/2024/08/28/Go/config/go-viper/"
            data-tag="go,viper"
            data-author="" >
             <span class="post-title" title="go-viper">go-viper</span>
@@ -1124,9 +1235,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Go/go-viper" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Python/basics/python-basics" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">go-viper</h1>
+        <h1 class="article-title">python-basics</h1>
     
     <div class="article-meta">
         
@@ -1136,7 +1247,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Go">Go</a>
+            <a  data-rel="Python">Python</a>
             
         </span>
         
@@ -1144,21 +1255,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">go</a>
+            <a class="color2">python</a>
             
-            <a class="color1">viper</a>
+            <a class="color4">lterator</a>
+            
+            <a class="color1">generatord</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-09-06 21:07:34'>2024-08-28 16:55</time>
+            发布时间 : <time class="date" title='最后更新: 2024-11-04 09:59:52'>2024-11-04 09:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:887</span>
+        <span>字数:1.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1177,7 +1290,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Viper"><span class="toc-text">Viper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-text">主要特性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">1. 读取配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE"><span class="toc-text">2. 通过环境变量获取配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">3. 设置默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%83%AD%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">4. 热加载配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8-Lterator"><span class="toc-text">迭代器 (Lterator)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">迭代器的基本概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-text">优点：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8-Generator"><span class="toc-text">生成器(Generator)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-text">生成器的特点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A-1"><span class="toc-text">优点：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">map 关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9A"><span class="toc-text">注意事项：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zip-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">zip 关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">示例：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%80%94%EF%BC%9A"><span class="toc-text">用途：</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1193,127 +1306,178 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Viper"><span class="toc-text">Viper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-text">主要特性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">1. 读取配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE"><span class="toc-text">2. 通过环境变量获取配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">3. 设置默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%83%AD%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">4. 热加载配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></div></p>
-<h1 id="Viper"><a href="#Viper" class="headerlink" title="Viper"></a>Viper</h1><blockquote>
-<p>官方文档</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/spf13/viper">spf13&#x2F;viper: Go configuration with fangs (github.com)</a></p>
-</blockquote>
-<p><code>go-viper</code> 是 Go 语言中常用的配置管理库，它可以帮助开发者轻松地处理应用程序中的配置文件、环境变量、命令行参数等。<code>viper</code> 的设计使其能够支持多种配置格式，灵活且易于使用。</p>
-<h3 id="主要特性："><a href="#主要特性：" class="headerlink" title="主要特性："></a>主要特性：</h3><ol>
-<li><strong>多种配置格式支持</strong>：支持 JSON、TOML、YAML、HCL、TOML、Java properties 等多种格式的配置文件。</li>
-<li><strong>环境变量支持</strong>：可以直接从系统环境变量中读取配置。</li>
-<li><strong>命令行参数集成</strong>：与 <code>flag</code> 包结合，支持从命令行参数获取配置。</li>
-<li><strong>热重载配置</strong>：支持配置文件的动态更新，无需重启应用程序。</li>
-<li><strong>嵌套配置</strong>：支持深度嵌套的配置结构，便于复杂应用的管理。</li>
-<li><strong>默认值设置</strong>：可以为未提供的配置项设置默认值。</li>
-<li><strong>配置文件的优先级管理</strong>：支持多种配置源（文件、环境变量、命令行参数等）并根据优先级读取。</li>
+        <h1 id="迭代器-Lterator"><a href="#迭代器-Lterator" class="headerlink" title="迭代器 (Lterator)"></a>迭代器 (Lterator)</h1><p>迭代器（Iterator）是一个对象，它实现了特定的协议，使得可以逐个访问其包含的元素，而无需直接访问它们的内部结构。迭代器在 Python 中是一种非常重要的概念，主要用于处理序列（如列表、元组、字典等）和流（如文件）的元素。</p>
+<h2 id="迭代器的基本概念："><a href="#迭代器的基本概念：" class="headerlink" title="迭代器的基本概念："></a>迭代器的基本概念：</h2><ol>
+<li><strong>迭代器协议</strong>：<ul>
+<li>迭代器必须实现两个方法：<ul>
+<li><code>__iter__()</code>：返回迭代器对象自身。</li>
+<li><code>__next__()</code>：返回下一个元素，如果没有元素可返回，则引发 <code>StopIteration</code> 异常。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>可迭代对象</strong>：<ul>
+<li>可迭代对象是实现了 <code>__iter__()</code> 方法的对象，如列表、元组、字典、集合等。这些对象可以通过调用 <code>iter()</code> 函数转换为迭代器。</li>
+</ul>
+</li>
 </ol>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>你可以通过 <code>go get</code> 来安装 <code>viper</code>：</p>
-<pre><code class="bash">go get github.com/spf13/viper
+<pre><code class="python"># 自定义迭代器
+class MyIterator:
+    def __init__(self, data):
+        self.data = data
+        self.index = 0
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.index &lt; len(self.data):
+            result = self.data[self.index]
+            self.index += 1
+            return result
+        else:
+            raise StopIteration
+
+# 使用自定义迭代器
+my_iter = MyIterator([1, 2, 3])
+for item in my_iter:
+    print(item)  # 输出: 1 2 3
 </code></pre>
-<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="1-读取配置文件"><a href="#1-读取配置文件" class="headerlink" title="1. 读取配置文件"></a>1. 读取配置文件</h4><pre><code class="go">package main
+<h2 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h2><ul>
+<li><strong>节省内存</strong>：迭代器在每次调用时生成下一个值，而不是一次性加载所有数据，因此在处理大型数据集时更加高效。</li>
+<li><strong>简化代码</strong>：可以使用 <code>for</code> 循环来遍历迭代器，使代码更加简洁。</li>
+</ul>
+<h1 id="生成器-Generator"><a href="#生成器-Generator" class="headerlink" title="生成器(Generator)"></a>生成器(Generator)</h1><p>生成器（Generator）是 Python 中的一种特殊类型的迭代器，用于创建可迭代对象。生成器使用 <code>yield</code> 关键字来生成值，每次调用生成器时，会返回一个值并保存其状态，这样在下次调用时可以从上次返回的地方继续执行。</p>
+<h2 id="生成器的特点："><a href="#生成器的特点：" class="headerlink" title="生成器的特点："></a>生成器的特点：</h2><ol>
+<li><strong>惰性求值</strong>：生成器在需要时生成值，而不是一次性生成所有值，因此可以有效地节省内存。</li>
+<li><strong>简洁的语法</strong>：生成器函数的定义类似于普通函数，但使用 <code>yield</code> 而不是 <code>return</code>，使得代码更加简洁易懂。</li>
+</ol>
+<pre><code class="python">def simple_generator():
+    yield 1
+    yield 2
+    yield 3
 
-import (
-    &quot;fmt&quot;
-    &quot;github.com/spf13/viper&quot;
-)
+# 创建生成器对象
+gen = simple_generator()
 
-func main() &#123;
-    // 设置配置文件名（不需要文件扩展名）
-    viper.SetConfigName(&quot;config&quot;)
-    // 设置配置文件路径
-    viper.AddConfigPath(&quot;.&quot;)
-    // 配置文件格式 (例如: &quot;yaml&quot;, &quot;json&quot;)
-    viper.SetConfigType(&quot;yaml&quot;)
-
-    // 读取配置文件
-    err := viper.ReadInConfig()
-    if err != nil &#123;
-        panic(fmt.Errorf(&quot;无法读取配置文件: %s \n&quot;, err))
-    &#125;
-
-    // 读取配置项
-    port := viper.GetInt(&quot;server.port&quot;)
-    fmt.Printf(&quot;Server port: %d\n&quot;, port)
-&#125;
+# 使用生成器
+print(next(gen))  # 输出: 1
+print(next(gen))  # 输出: 2
+print(next(gen))  # 输出: 3
+# print(next(gen))  # 引发 StopIteration 异常
 </code></pre>
-<p>在上述代码中，我们读取了一个名为 <code>config.yaml</code> 的配置文件，该文件可以包含如下内容：</p>
-<pre><code class="yaml">server:
-  port: 8080
+<p><strong>使用 <code>for</code> 循环遍历生成器：</strong></p>
+<pre><code class="python">for value in simple_generator():
+    print(value)
+# 输出:
+# 1
+# 2
+# 3
 </code></pre>
-<h4 id="2-通过环境变量获取配置"><a href="#2-通过环境变量获取配置" class="headerlink" title="2. 通过环境变量获取配置"></a>2. 通过环境变量获取配置</h4><p><code>viper</code> 支持从环境变量中获取配置项，通常用于在不同环境（开发、测试、生产）下运行应用时动态加载配置信息。</p>
-<pre><code class="go">package main
+<p><strong>生成器表达式：</strong></p>
+<p>除了使用函数定义生成器外，Python 还支持生成器表达式，这是一种更简洁的创建生成器的方法，类似于列表推导式，但用圆括号代替方括号。</p>
+<pre><code class="python"># 生成器表达式
+gen_exp = (x * x for x in range(5))
 
-import (
-    &quot;fmt&quot;
-    &quot;github.com/spf13/viper&quot;
-)
-
-func main() &#123;
-    // 绑定环境变量
-    viper.AutomaticEnv()
-
-    // 设置环境变量前缀
-    viper.SetEnvPrefix(&quot;app&quot;)
-
-    // 读取环境变量
-    port := viper.GetInt(&quot;PORT&quot;)
-    fmt.Printf(&quot;Server port from env: %d\n&quot;, port)
-&#125;
+for value in gen_exp:
+    print(value)
+# 输出:
+# 0
+# 1
+# 4
+# 9
+# 16
 </code></pre>
-<p>在终端中设置环境变量并运行：</p>
-<pre><code class="bash">export APP_PORT=9090
-go run main.go
+<h2 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h2><ul>
+<li><strong>节省内存</strong>：由于生成器只在需要时生成数据，因此在处理大型数据集时更加高效。</li>
+<li><strong>更好的性能</strong>：生成器的实现通常比列表更快，因为它们不需要存储整个列表，只需跟踪当前状态。</li>
+</ul>
+<p>生成器在需要处理大量数据、流数据或需要延迟计算的场景中非常有用。</p>
+<h1 id="map-关键字"><a href="#map-关键字" class="headerlink" title="map 关键字"></a>map 关键字</h1><p>在 Python 中，<code>map()</code> 是一个内置函数，用于将指定函数应用于可迭代对象（如列表、元组等）的每个元素，并返回一个迭代器。它常用于对数据进行批量处理或转换。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code class="python">map(function, iterable, ...)
 </code></pre>
-<p>输出将会是：</p>
-<pre><code>Server port from env: 9090
+<ul>
+<li><p><code>function</code>：一个函数，用于处理可迭代对象中的每个元素。</p>
+</li>
+<li><p><code>iterable</code>：一个或多个可迭代对象（如列表、元组等）。</p>
+</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ol>
+<li><strong>对单个可迭代对象应用函数</strong>：</li>
+</ol>
+<pre><code class="python">def square(x):
+    return x ** 2
+
+numbers = [1, 2, 3, 4, 5]
+result = map(square, numbers)
+print(list(result))  # 输出: [1, 4, 9, 16, 25]
 </code></pre>
-<h4 id="3-设置默认值"><a href="#3-设置默认值" class="headerlink" title="3. 设置默认值"></a>3. 设置默认值</h4><p>如果配置项不存在，可以通过 <code>viper</code> 设置默认值。</p>
-<pre><code class="go">package main
+<ol start="2">
+<li><strong>对多个可迭代对象应用函数</strong>：</li>
+</ol>
+<pre><code class="python">def add(x, y):
+    return x + y
 
-import (
-    &quot;fmt&quot;
-    &quot;github.com/spf13/viper&quot;
-)
-
-func main() &#123;
-    // 设置默认值
-    viper.SetDefault(&quot;server.port&quot;, 3000)
-
-    // 读取配置项
-    port := viper.GetInt(&quot;server.port&quot;)
-    fmt.Printf(&quot;Default Server port: %d\n&quot;, port)
-&#125;
+a = [1, 2, 3]
+b = [4, 5, 6]
+result = map(add, a, b)
+print(list(result))  # 输出: [5, 7, 9]
 </code></pre>
-<h4 id="4-热加载配置文件"><a href="#4-热加载配置文件" class="headerlink" title="4. 热加载配置文件"></a>4. 热加载配置文件</h4><p><code>viper</code> 支持热加载配置文件，适用于需要动态更新配置的场景。例如，在开发服务器中更新配置时无需重启。</p>
-<pre><code class="go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;github.com/spf13/viper&quot;
-    &quot;time&quot;
-)
-
-func main() &#123;
-    viper.SetConfigFile(&quot;config.yaml&quot;)
-    viper.WatchConfig()
-
-    viper.OnConfigChange(func(e fsnotify.Event) &#123;
-        fmt.Println(&quot;Config file changed:&quot;, e.Name)
-    &#125;)
-
-    err := viper.ReadInConfig()
-    if err != nil &#123;
-        panic(fmt.Errorf(&quot;Fatal error config file: %w \n&quot;, err))
-    &#125;
-
-    for &#123;
-        fmt.Println(&quot;Server port:&quot;, viper.GetInt(&quot;server.port&quot;))
-        time.Sleep(time.Second * 5)
-    &#125;
-&#125;
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ul>
+<li><code>map()</code> 返回的是一个迭代器，因此通常需要使用 <code>list()</code> 或 <code>for</code> 循环来遍历结果。</li>
+<li>可以使用 <code>lambda</code> 表达式与 <code>map()</code> 结合，以简化代码：</li>
+</ul>
+<pre><code class="python">numbers = [1, 2, 3, 4, 5]
+result = map(lambda x: x ** 2, numbers)
+print(list(result))  # 输出: [1, 4, 9, 16, 25]
 </code></pre>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>viper</code> 提供了一个强大且灵活的配置管理方案，支持多种配置源和动态配置更新，是 Go 项目中常用的库之一。在实际项目中，可以将其与 <code>cobra</code> 等命令行工具结合使用，来实现更复杂的配置管理和应用控制。</p>
+<h1 id="zip-关键字"><a href="#zip-关键字" class="headerlink" title="zip 关键字"></a>zip 关键字</h1><p>在 Python 中，<code>zip</code> 是一个内置函数，用于将多个可迭代对象（如列表、元组等）聚合在一起，生成一个由元组组成的迭代器。每个元组的第 i 个元素来自所有可迭代对象的第 i 个元素。</p>
+<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><pre><code class="python">zip(*iterables)
+</code></pre>
+<ul>
+<li><code>iterables</code>：一个或多个可迭代对象（如列表、元组等）。</li>
+</ul>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><ol>
+<li><strong>基本用法</strong>：</li>
+</ol>
+<pre><code class="python">a = [1, 2, 3]
+b = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+result = zip(a, b)
+
+# 转换为列表以查看结果
+print(list(result))  # 输出: [(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#39;)]
+</code></pre>
+<ol start="2">
+<li><strong>处理多个可迭代对象</strong>：</li>
+</ol>
+<pre><code class="python">names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
+scores = [85, 90, 95]
+combined = zip(names, scores)
+
+print(list(combined))  # 输出: [(&#39;Alice&#39;, 85), (&#39;Bob&#39;, 90), (&#39;Charlie&#39;, 95)]
+</code></pre>
+<ol start="3">
+<li><strong>不同长度的可迭代对象</strong>：<br>当输入的可迭代对象长度不一致时，<code>zip</code> 会根据最短的可迭代对象进行聚合，超出部分会被忽略。</li>
+</ol>
+<pre><code class="python">a = [1, 2]
+b = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+result = zip(a, b)
+
+print(list(result))  # 输出: [(1, &#39;a&#39;), (2, &#39;b&#39;)]
+</code></pre>
+<ol start="4">
+<li><strong>解压缩</strong>：<br><code>zip</code> 也可以用于解压缩操作，即将一个由元组组成的可迭代对象分开。</li>
+</ol>
+<pre><code class="python">pairs = [(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#39;)]
+numbers, letters = zip(*pairs)
+
+print(numbers)  # 输出: (1, 2, 3)
+print(letters)  # 输出: (&#39;a&#39;, &#39;b&#39;, &#39;c&#39;)
+</code></pre>
+<h2 id="用途："><a href="#用途：" class="headerlink" title="用途："></a>用途：</h2><ul>
+<li><code>zip</code> 函数常用于将相关数据组合在一起，便于进行迭代处理。例如，在处理多组数据时，可以使用 <code>zip</code> 同时迭代多个列表。</li>
+<li>适用于数据分析和处理，例如结合特征和标签等。</li>
+</ul>
 
       
        

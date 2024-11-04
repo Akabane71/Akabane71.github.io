@@ -6,23 +6,20 @@
   <meta name="keywords" content=" config ">
   <meta name="description" content="config-file-type | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="gRPC的四种模式 简单模式    服务端模式    客户端模式    双向模式     Go代码演示如下proto文件syntax &#x3D; &quot;proto3&quot;;  option go_package&#x3D;&quot;.;proto&quot;;  service Greeter &#123;   &#x2F;&#x2F; 使用服务端地流模式   rpc GetStream(StreamReqData) r">
+<meta name="description" content="迭代器 (Lterator)迭代器（Iterator）是一个对象，它实现了特定的协议，使得可以逐个访问其包含的元素，而无需直接访问它们的内部结构。迭代器在 Python 中是一种非常重要的概念，主要用于处理序列（如列表、元组、字典等）和流（如文件）的元素。 迭代器的基本概念： 迭代器协议： 迭代器必须实现两个方法： __iter__()：返回迭代器对象自身。 __next__()：返回下一个元素，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grpc-4models">
-<meta property="og:url" content="http://example.com/2024/10/04/Go/grpc/grpc-4models/index.html">
+<meta property="og:title" content="python-basics">
+<meta property="og:url" content="http://example.com/2024/11/04/Python/basics/python-basics/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="gRPC的四种模式 简单模式    服务端模式    客户端模式    双向模式     Go代码演示如下proto文件syntax &#x3D; &quot;proto3&quot;;  option go_package&#x3D;&quot;.;proto&quot;;  service Greeter &#123;   &#x2F;&#x2F; 使用服务端地流模式   rpc GetStream(StreamReqData) r">
+<meta property="og:description" content="迭代器 (Lterator)迭代器（Iterator）是一个对象，它实现了特定的协议，使得可以逐个访问其包含的元素，而无需直接访问它们的内部结构。迭代器在 Python 中是一种非常重要的概念，主要用于处理序列（如列表、元组、字典等）和流（如文件）的元素。 迭代器的基本概念： 迭代器协议： 迭代器必须实现两个方法： __iter__()：返回迭代器对象自身。 __next__()：返回下一个元素，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161135738.png">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161151963.png">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161156411.png">
-<meta property="og:image" content="http://example.com/imgs/grpc-4models/image-20241004161201663.png">
-<meta property="article:published_time" content="2024-10-04T08:10:01.000Z">
-<meta property="article:modified_time" content="2024-10-04T08:14:12.365Z">
+<meta property="article:published_time" content="2024-11-04T01:47:48.000Z">
+<meta property="article:modified_time" content="2024-11-04T01:59:52.875Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="gRPC">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="lterator">
+<meta property="article:tag" content="generatord">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/grpc-4models/image-20241004161135738.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -111,7 +108,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(53)</small>
+                <small>(60)</small>
             
         </div>
     </li>
@@ -123,7 +120,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -138,7 +135,7 @@
         <div data-rel="Go">
             
             Go
-            <small>(15)</small>
+            <small>(16)</small>
         </div>
         
     </li>
@@ -153,7 +150,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -198,7 +195,7 @@
         <div data-rel="OS">
             
             OS
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -228,7 +225,22 @@
         <div data-rel="Tools">
             
             Tools
-            <small>(5)</small>
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Web">
+            
+            Web
+            <small>(1)</small>
         </div>
         
     </li>
@@ -256,8 +268,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="53">
-<input type="hidden" id="yelog_site_word_count" value="76.6k">
+<input type="hidden" id="yelog_site_posts_number" value="60">
+<input type="hidden" id="yelog_site_word_count" value="81.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -359,6 +371,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>concurrent</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>conda</a>
             </li>
         
@@ -407,6 +423,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>generatord</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gin</a>
             </li>
         
@@ -424,6 +444,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>grpc</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -447,6 +471,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>interceptor</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>json</a>
             </li>
         
@@ -456,6 +484,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lterator</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -480,6 +512,18 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>metadata</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microservices</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>monolithic applications</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -599,6 +643,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>websocket</a>
             </li>
         
@@ -628,6 +676,69 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/11/04/Python/basics/python-basics/"
+           data-tag="python,lterator,generatord"
+           data-author="" >
+            <span class="post-title" title="python-basics">python-basics</span>
+            <span class="post-date" title="2024-11-04 09:47:48">2024/11/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/10/30/OS/concurrency-models/"
+           data-tag="go,python,concurrent"
+           data-author="" >
+            <span class="post-title" title="concurrency_models">concurrency_models</span>
+            <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/10/12/Linux/docker/"
+           data-tag="linux,docker"
+           data-author="" >
+            <span class="post-title" title="docker">docker</span>
+            <span class="post-date" title="2024-10-12 16:13:56">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/10/12/Tools/docker-gpu-cuda/"
+           data-tag="docker,wsl2,windows"
+           data-author="" >
+            <span class="post-title" title="docker-gpu-cuda">docker-gpu-cuda</span>
+            <span class="post-date" title="2024-10-12 11:03:04">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2024/10/07/Web/monoliths-to-microservices/"
+           data-tag="web,monolithic applications,microservices"
+           data-author="" >
+            <span class="post-title" title="monoliths-to-microservices">monoliths-to-microservices</span>
+            <span class="post-date" title="2024-10-07 18:57:23">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/10/05/Go/grpc/grpc-interceptor/"
+           data-tag="go,grpc,interceptor"
+           data-author="" >
+            <span class="post-title" title="grpc-interceptor">grpc-interceptor</span>
+            <span class="post-date" title="2024-10-05 11:17:28">2024/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/10/05/Go/grpc/grpc-metadata/"
+           data-tag="go,grpc,metadata"
+           data-author="" >
+            <span class="post-title" title="grpc-metadata">grpc-metadata</span>
+            <span class="post-date" title="2024-10-05 10:52:03">2024/10/05</span>
+        </a>
         
         
         <a  class="全部文章 Go "
@@ -748,7 +859,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/06/Go/go-air/"
+           href="/2024/09/06/Go/config/go-air/"
            data-tag="go,air"
            data-author="" >
             <span class="post-title" title="go-air">go-air</span>
@@ -766,7 +877,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/06/Go/go-zap/"
+           href="/2024/09/06/Go/config/go-zap/"
            data-tag="go,zap,log,lumberjack,gin"
            data-author="" >
             <span class="post-title" title="go-zap">go-zap</span>
@@ -1027,7 +1138,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/08/28/Go/go-viper/"
+           href="/2024/08/28/Go/config/go-viper/"
            data-tag="go,viper"
            data-author="" >
             <span class="post-title" title="go-viper">go-viper</span>
