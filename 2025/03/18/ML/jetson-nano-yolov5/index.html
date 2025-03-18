@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jetson_nano_yolov5 | Akabane71</title>
+  <meta name="keywords" content=" python , pytorch , jetson_nano , yolov5 ">
+  <meta name="description" content="jetson_nano_yolov5 | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="[TOC] Jetson Nano 的初始化1. 安装镜像系统  Jetson Nano 的各个组件所对应的位置  2. 安装jetson-stats工具 使用jetson-stats工具来实时监控系统的各项性能和各种指标，官网链接为  https:&#x2F;&#x2F;github.com&#x2F;rbonghi&#x2F;jetson_stats 安装命令如下： sudo -H pip3 install -U jetson-st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jetson_nano_yolov5">
+<meta property="og:url" content="http://example.com/2025/03/18/ML/jetson-nano-yolov5/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="[TOC] Jetson Nano 的初始化1. 安装镜像系统  Jetson Nano 的各个组件所对应的位置  2. 安装jetson-stats工具 使用jetson-stats工具来实时监控系统的各项性能和各种指标，官网链接为  https:&#x2F;&#x2F;github.com&#x2F;rbonghi&#x2F;jetson_stats 安装命令如下： sudo -H pip3 install -U jetson-st">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/14a76c30b7104a889f635c7bae86ed81.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123194719007.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123194616530.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123201016015.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123201727374.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123223549879.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/F3AD191EA3AFFC6A61402E3CDBF13C35.jpg">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123220925290.png">
+<meta property="article:published_time" content="2025-03-18T02:31:50.000Z">
+<meta property="article:modified_time" content="2025-03-18T02:33:17.315Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="jetson_nano">
+<meta property="article:tag" content="yolov5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ucc.alicdn.com/pic/developer-ecology/14a76c30b7104a889f635c7bae86ed81.png">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(75)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(13)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(17)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Algorithm">
+            
+            Algorithm
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="CPP">
+            
+            CPP
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Docker">
+            
+            Docker
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="ML">
+            
+            ML
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Ros">
+            
+            Ros
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spider">
+            
+            Spider
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Web">
+            
+            Web
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="75">
+<input type="hidden" id="yelog_site_word_count" value="98.6k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>17knovel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3d-slam</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>air</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ascii</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>C++</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>concurrent</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>config</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cpp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>enccode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>env</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gbk</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>generatord</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>grpc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>imu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>interceptor</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jetson_nano</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>joy_controller</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lidar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lite3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lterator</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>makefile</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>metadata</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microservices</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>monolithic applications</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>move_base</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>navigation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node_package</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>occupancy_grid_map</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>opencv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PATH</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ptzcap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pytorch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>resolver</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ros</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ros1</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>scaffold</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>scrapy</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>slam</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>snowflake</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>software</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tensorRT</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>topic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utf8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uuid</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vcpkg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>visual studio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vscode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolov5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/03/18/ML/jetson-nano-yolov5/"
+           data-tag="python,pytorch,jetson_nano,yolov5"
+           data-author="" >
+            <span class="post-title" title="jetson_nano_yolov5">jetson_nano_yolov5</span>
+            <span class="post-date" title="2025-03-18 10:31:50">2025/03/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2025/03/13/Go/grpc/grpc-resolver/"
+           data-tag="go,grpc,resolver"
+           data-author="" >
+            <span class="post-title" title="grpc-resolver">grpc-resolver</span>
+            <span class="post-date" title="2025-03-13 10:27:49">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/06-ros1-navigation/"
+           data-tag="ros,navigation,move_base"
+           data-author="" >
+            <span class="post-title" title="06-ros1-navigation">06-ros1-navigation</span>
+            <span class="post-date" title="2025-03-10 09:54:01">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/05-ros1-message-package/"
+           data-tag="ros,message"
+           data-author="" >
+            <span class="post-title" title="05-ros1-message_package">05-ros1-message_package</span>
+            <span class="post-date" title="2025-03-10 09:53:37">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
+           data-tag="ros,slam,occupancy_grid_map"
+           data-author="" >
+            <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
+            <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/03-ros1-robot-move/"
+           data-tag="ros,lidar,imu"
+           data-author="" >
+            <span class="post-title" title="03-ros1-robot_move">03-ros1-robot_move</span>
+            <span class="post-date" title="2025-03-10 09:52:09">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/02-ros1-node-package/"
+           data-tag="ros,node_package,topic,message"
+           data-author="" >
+            <span class="post-title" title="02-ros1-node-package">02-ros1-node-package</span>
+            <span class="post-date" title="2025-03-10 09:51:49">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/01-ros1-install-conifg/"
+           data-tag="ros,vscode"
+           data-author="" >
+            <span class="post-title" title="01-ros1-install-conifg">01-ros1-install-conifg</span>
+            <span class="post-date" title="2025-03-10 09:50:38">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/ros1-xbox-joy/"
+           data-tag="ros,lite3,joy_controller"
+           data-author="" >
+            <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
+            <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2025/02/28/C++/tensorRT-cpp/"
+           data-tag="cpp,tensorRT,deeplearn"
+           data-author="" >
+            <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
+            <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/02/16/Tools/visual-studio/"
+           data-tag="visual studio,cpp"
+           data-author="" >
+            <span class="post-title" title="visual-studio">visual-studio</span>
+            <span class="post-date" title="2025-02-16 09:23:48">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/02/06/Tools/vscode-vcpkg/"
+           data-tag="windows,C++,vcpkg"
+           data-author="" >
+            <span class="post-title" title="vscode-vcpkg">vscode-vcpkg</span>
+            <span class="post-date" title="2025-02-06 15:20:15">2025/02/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2024/12/20/Ros/ros1-3d-slam/"
+           data-tag="ros1,3d-slam"
+           data-author="" >
+            <span class="post-title" title="ros1-3d-slam">ros1-3d-slam</span>
+            <span class="post-date" title="2024-12-20 16:45:26">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2024/12/20/Ros/ros1-lite3/"
+           data-tag="ros,slam,lite3"
+           data-author="" >
+            <span class="post-title" title="ros1-lite3">ros1-lite3</span>
+            <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2024/11/13/Docker/docker-mysql/"
+           data-tag="mysql,docker"
+           data-author="" >
+            <span class="post-title" title="docker-mysql">docker-mysql</span>
+            <span class="post-date" title="2024-11-13 14:52:16">2024/11/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/11/04/Python/basics/python-basics/"
+           data-tag="python,lterator,generatord"
+           data-author="" >
+            <span class="post-title" title="python-basics">python-basics</span>
+            <span class="post-date" title="2024-11-04 09:47:48">2024/11/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/10/30/OS/concurrency-models/"
+           data-tag="go,python,concurrent"
+           data-author="" >
+            <span class="post-title" title="concurrency_models">concurrency_models</span>
+            <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/10/12/Linux/docker/"
+           data-tag="linux,docker"
+           data-author="" >
+            <span class="post-title" title="docker">docker</span>
+            <span class="post-date" title="2024-10-12 16:13:56">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/10/12/Tools/docker-gpu-cuda/"
+           data-tag="docker,wsl2,windows"
+           data-author="" >
+            <span class="post-title" title="docker-gpu-cuda">docker-gpu-cuda</span>
+            <span class="post-date" title="2024-10-12 11:03:04">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2024/10/07/Web/monoliths-to-microservices/"
+           data-tag="web,monolithic applications,microservices"
+           data-author="" >
+            <span class="post-title" title="monoliths-to-microservices">monoliths-to-microservices</span>
+            <span class="post-date" title="2024-10-07 18:57:23">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/10/05/Go/grpc/grpc-interceptor/"
+           data-tag="go,grpc,interceptor"
+           data-author="" >
+            <span class="post-title" title="grpc-interceptor">grpc-interceptor</span>
+            <span class="post-date" title="2024-10-05 11:17:28">2024/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/10/05/Go/grpc/grpc-metadata/"
+           data-tag="go,grpc,metadata"
+           data-author="" >
+            <span class="post-title" title="grpc-metadata">grpc-metadata</span>
+            <span class="post-date" title="2024-10-05 10:52:03">2024/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/10/04/Go/grpc/grpc-4models/"
+           data-tag="gRPC"
+           data-author="" >
+            <span class="post-title" title="grpc-4models">grpc-4models</span>
+            <span class="post-date" title="2024-10-04 16:10:01">2024/10/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/10/03/OS/env-PATH/"
+           data-tag="env,PATH"
+           data-author="" >
+            <span class="post-title" title="env-PATH">env-PATH</span>
+            <span class="post-date" title="2024-10-03 11:03:32">2024/10/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Algorithm "
+           href="/2024/09/28/Algorithm/uuid-snowflake/"
+           data-tag="uuid,snowflake"
+           data-author="" >
+            <span class="post-title" title="uuid-snowflake">uuid-snowflake</span>
+            <span class="post-date" title="2024-09-28 22:17:00">2024/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/26/OS/sys-shell/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="sys-shell">sys-shell</span>
+            <span class="post-date" title="2024-09-26 23:41:59">2024/09/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/23/OS/about-encode/"
+           data-tag="base64,enccode,utf8,gbk,unicode,ascii"
+           data-author="" >
+            <span class="post-title" title="about-encode">about-encode</span>
+            <span class="post-date" title="2024-09-23 09:33:46">2024/09/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/20/Python/spider/python-scrapy/"
+           data-tag="python,spider,scrapy"
+           data-author="" >
+            <span class="post-title" title="python-scrapy">python-scrapy</span>
+            <span class="post-date" title="2024-09-20 15:20:08">2024/09/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/16/Tools/docker-wsl2/"
+           data-tag="docker,wsl2"
+           data-author="" >
+            <span class="post-title" title="docker-wsl2">docker-wsl2</span>
+            <span class="post-date" title="2024-09-16 10:10:47">2024/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/11/Tools/good-software/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="good-software">good-software</span>
+            <span class="post-date" title="2024-09-11 17:22:49">2024/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2024/09/11/C++/cplus-module/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cplus-module">cplus-module</span>
+            <span class="post-date" title="2024-09-11 08:39:43">2024/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2024/09/08/ML/deeplearn-cv/"
+           data-tag="python,pytorch,cv"
+           data-author="" >
+            <span class="post-title" title="deeplearn-cv">deeplearn-cv</span>
+            <span class="post-date" title="2024-09-08 13:39:19">2024/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/07/Tools/windows-makefile/"
+           data-tag="windows,makefile"
+           data-author="" >
+            <span class="post-title" title="windows-makefile">windows-makefile</span>
+            <span class="post-date" title="2024-09-07 14:36:40">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/07/OS/config-file-type/"
+           data-tag="config"
+           data-author="" >
+            <span class="post-title" title="config-file-type">config-file-type</span>
+            <span class="post-date" title="2024-09-07 09:50:30">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/07/OS/log/"
+           data-tag="log"
+           data-author="" >
+            <span class="post-title" title="log">log</span>
+            <span class="post-date" title="2024-09-07 09:47:29">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/config/go-air/"
+           data-tag="go,air"
+           data-author="" >
+            <span class="post-title" title="go-air">go-air</span>
+            <span class="post-date" title="2024-09-06 21:33:55">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/gin/go-gin-scaffold/"
+           data-tag="go,gin,scaffold"
+           data-author="" >
+            <span class="post-title" title="go-gin-scaffold">go-gin-scaffold</span>
+            <span class="post-date" title="2024-09-06 21:21:07">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/config/go-zap/"
+           data-tag="go,zap,log,lumberjack,gin"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-select-channel/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-hash">go-hash</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           data-tag="go,json,base64,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="arch,linux"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="linux,docker,wsl2,hyper-v,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="tools,goland,pycharm,docker"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/29/python-EagleEyeSystem/"
+           data-tag="python,opencv,yolo,ptzcap"
+           data-author="" >
+            <span class="post-title" title="python-EagleEyeSystem">python-EagleEyeSystem</span>
+            <span class="post-date" title="2024-08-29 14:59:09">2024/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/config/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-video">python-bilibili-video</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider,17knovel"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Go/go-spider/"
+           data-tag="go,http,spider"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ML/jetson-nano-yolov5" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">jetson_nano_yolov5</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="ML">ML</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">python</a>
+            
+            <a class="color3">pytorch</a>
+            
+            <a class="color2">jetson_nano</a>
+            
+            <a class="color2">yolov5</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-03-18 10:33:17'>2025-03-18 10:31</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:4.3k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jetson-Nano-%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">Jetson Nano 的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F%E7%B3%BB%E7%BB%9F"><span class="toc-text">1. 安装镜像系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85jetson-stats%E5%B7%A5%E5%85%B7"><span class="toc-text">2. 安装jetson-stats工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8Bcuda%E7%89%88%E6%9C%AC%E5%92%8C%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-text">3. 查看cuda版本和相关信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B5%8B%E8%AF%95%E5%AE%98%E6%96%B9demo"><span class="toc-text">4. 测试官方demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jetson-Nano-Yolov5-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C"><span class="toc-text">Jetson Nano Yolov5 部署手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Yolov5%E7%9A%84%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="toc-text">1. Yolov5的版本选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9YOLOv5-v6-1"><span class="toc-text">选择YOLOv5 v6.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Conda-%E7%AE%A1%E7%90%86%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-text">2. Conda 管理虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-torch%E5%92%8Ctorchvision%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-text">3. torch和torchvision的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%8B%E8%BD%BDpytorch-1-9-0-py36"><span class="toc-text">3.1. 下载pytorch-1.9.0-py36</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%89%E8%A3%85torchvision-0-10-0"><span class="toc-text">3.2. 安装torchvision-0.10.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%B5%8B%E8%AF%95pytorch%E5%92%8Ctorchvision"><span class="toc-text">3.3. 测试pytorch和torchvision</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%8B%E8%BD%BDYolov5%E5%B9%B6%E6%9F%A5%E7%9C%8B%E6%89%80%E9%9C%80%E5%BA%93"><span class="toc-text">4. 下载Yolov5并查看所需库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%B8%8B%E8%BD%BDyolo%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">4.1. 下载yolo相关的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%B8%8B%E8%BD%BDyolo%E6%89%80%E9%9C%80%E7%9A%84%E7%9B%B8%E5%85%B3%E5%BA%93%E5%B9%B6%E7%BC%96%E8%AF%91matplotlib"><span class="toc-text">4.2.下载yolo所需的相关库并编译matplotlib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-opencv"><span class="toc-text">4.3.opencv</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%90%E8%A1%8Cyolov5"><span class="toc-text">5. 运行yolov5</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YOLOv5%E8%AE%AD%E7%BB%83%E5%92%8C%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C"><span class="toc-text">YOLOv5训练和使用手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%BA%E7%8E%B0%E4%BA%86torch%E5%92%8Ctorchvision%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-text">1. 出现了torch和torchvision的错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83"><span class="toc-text">2. 如何训练</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pytorch%E4%B8%8EONNX"><span class="toc-text">Pytorch与ONNX</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFONNX%EF%BC%9F"><span class="toc-text">1. 什么是ONNX？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E4%B8%8B%E8%BD%BD"><span class="toc-text">1.1下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8BONNX%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">2.怎么查看ONNX文件的输入输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ONNX%E5%9F%BA%E7%A1%80"><span class="toc-text">3.ONNX基础</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85torchvision%E7%9A%84%E6%97%B6%E5%80%99"><span class="toc-text">1. 安装torchvision的时候</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9C%A8%E5%AE%89%E8%A3%85torchvision%E7%9B%AE%E5%BD%95%E4%B8%8B%E8%BF%9B%E5%85%A5python%E5%B9%B6%E4%B8%94%E8%B0%83%E7%94%A8torchvision"><span class="toc-text">2.在安装torchvision目录下进入python并且调用torchvision</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85opencv%E5%90%8E%E7%BC%96%E8%AF%91%E5%8D%A1%E6%AD%BB%EF%BC%9F"><span class="toc-text">3. 安装opencv后编译卡死？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-opencv-python%E7%BC%96%E8%AF%91%E5%88%B0%E6%9C%80%E5%90%8E%E5%A4%B1%E8%B4%A5"><span class="toc-text">4. opencv-python编译到最后失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%89%A7%E8%A1%8Cyolo%E7%9A%84%E9%A2%84%E6%B5%8B%E8%AF%AD%E5%8F%A5%E6%8A%A5%E9%94%99"><span class="toc-text">5.执行yolo的预测语句报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-opencv%E6%91%84%E5%83%8F%E5%A4%B4%E6%88%90%E5%8A%9F%E8%B0%83%E7%94%A8%E4%BD%86%E6%98%AF%E7%BB%88%E7%AB%AF%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%94%BB%E9%9D%A2"><span class="toc-text">6.opencv摄像头成功调用但是终端不显示画面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jetson-Nano-%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">Jetson Nano 的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F%E7%B3%BB%E7%BB%9F"><span class="toc-text">1. 安装镜像系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85jetson-stats%E5%B7%A5%E5%85%B7"><span class="toc-text">2. 安装jetson-stats工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8Bcuda%E7%89%88%E6%9C%AC%E5%92%8C%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-text">3. 查看cuda版本和相关信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B5%8B%E8%AF%95%E5%AE%98%E6%96%B9demo"><span class="toc-text">4. 测试官方demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jetson-Nano-Yolov5-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C"><span class="toc-text">Jetson Nano Yolov5 部署手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Yolov5%E7%9A%84%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="toc-text">1. Yolov5的版本选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9YOLOv5-v6-1"><span class="toc-text">选择YOLOv5 v6.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Conda-%E7%AE%A1%E7%90%86%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-text">2. Conda 管理虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-torch%E5%92%8Ctorchvision%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-text">3. torch和torchvision的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%8B%E8%BD%BDpytorch-1-9-0-py36"><span class="toc-text">3.1. 下载pytorch-1.9.0-py36</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%89%E8%A3%85torchvision-0-10-0"><span class="toc-text">3.2. 安装torchvision-0.10.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%B5%8B%E8%AF%95pytorch%E5%92%8Ctorchvision"><span class="toc-text">3.3. 测试pytorch和torchvision</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%8B%E8%BD%BDYolov5%E5%B9%B6%E6%9F%A5%E7%9C%8B%E6%89%80%E9%9C%80%E5%BA%93"><span class="toc-text">4. 下载Yolov5并查看所需库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%B8%8B%E8%BD%BDyolo%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">4.1. 下载yolo相关的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%B8%8B%E8%BD%BDyolo%E6%89%80%E9%9C%80%E7%9A%84%E7%9B%B8%E5%85%B3%E5%BA%93%E5%B9%B6%E7%BC%96%E8%AF%91matplotlib"><span class="toc-text">4.2.下载yolo所需的相关库并编译matplotlib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-opencv"><span class="toc-text">4.3.opencv</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%90%E8%A1%8Cyolov5"><span class="toc-text">5. 运行yolov5</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YOLOv5%E8%AE%AD%E7%BB%83%E5%92%8C%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C"><span class="toc-text">YOLOv5训练和使用手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%BA%E7%8E%B0%E4%BA%86torch%E5%92%8Ctorchvision%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-text">1. 出现了torch和torchvision的错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83"><span class="toc-text">2. 如何训练</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pytorch%E4%B8%8EONNX"><span class="toc-text">Pytorch与ONNX</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFONNX%EF%BC%9F"><span class="toc-text">1. 什么是ONNX？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E4%B8%8B%E8%BD%BD"><span class="toc-text">1.1下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8BONNX%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">2.怎么查看ONNX文件的输入输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ONNX%E5%9F%BA%E7%A1%80"><span class="toc-text">3.ONNX基础</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85torchvision%E7%9A%84%E6%97%B6%E5%80%99"><span class="toc-text">1. 安装torchvision的时候</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9C%A8%E5%AE%89%E8%A3%85torchvision%E7%9B%AE%E5%BD%95%E4%B8%8B%E8%BF%9B%E5%85%A5python%E5%B9%B6%E4%B8%94%E8%B0%83%E7%94%A8torchvision"><span class="toc-text">2.在安装torchvision目录下进入python并且调用torchvision</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85opencv%E5%90%8E%E7%BC%96%E8%AF%91%E5%8D%A1%E6%AD%BB%EF%BC%9F"><span class="toc-text">3. 安装opencv后编译卡死？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-opencv-python%E7%BC%96%E8%AF%91%E5%88%B0%E6%9C%80%E5%90%8E%E5%A4%B1%E8%B4%A5"><span class="toc-text">4. opencv-python编译到最后失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%89%A7%E8%A1%8Cyolo%E7%9A%84%E9%A2%84%E6%B5%8B%E8%AF%AD%E5%8F%A5%E6%8A%A5%E9%94%99"><span class="toc-text">5.执行yolo的预测语句报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-opencv%E6%91%84%E5%83%8F%E5%A4%B4%E6%88%90%E5%8A%9F%E8%B0%83%E7%94%A8%E4%BD%86%E6%98%AF%E7%BB%88%E7%AB%AF%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%94%BB%E9%9D%A2"><span class="toc-text">6.opencv摄像头成功调用但是终端不显示画面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></div></p>
+<h1 id="Jetson-Nano-的初始化"><a href="#Jetson-Nano-的初始化" class="headerlink" title="Jetson Nano 的初始化"></a>Jetson Nano 的初始化</h1><h2 id="1-安装镜像系统"><a href="#1-安装镜像系统" class="headerlink" title="1. 安装镜像系统"></a>1. 安装镜像系统</h2><blockquote>
+</blockquote>
+<p>Jetson Nano 的各个组件所对应的位置</p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/14a76c30b7104a889f635c7bae86ed81.png" alt="image-20220323094903676.png"></p>
+<h2 id="2-安装jetson-stats工具"><a href="#2-安装jetson-stats工具" class="headerlink" title="2. 安装jetson-stats工具"></a>2. 安装jetson-stats工具</h2><blockquote>
+<p>使用jetson-stats工具来实时监控系统的各项性能和各种指标，官网链接为</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/rbonghi/jetson_stats">https://github.com/rbonghi/jetson_stats</a></p>
+<p>安装命令如下：</p>
+<pre><code>sudo -H pip3 install -U jetson-stats
+</code></pre>
+<p>如果没有pip3就使用如下命令：</p>
+<pre><code>sudo apt-get install  python3-pip
+</code></pre>
+<p>安装完成后，reboot你的系统后，使用jtop命令就可以运行了</p>
+<pre><code>sudo jtop
+</code></pre>
+<h2 id="3-查看cuda版本和相关信息"><a href="#3-查看cuda版本和相关信息" class="headerlink" title="3. 查看cuda版本和相关信息"></a>3. 查看cuda版本和相关信息</h2><p>先进入控制栏查看cuda目录</p>
+<blockquote>
+<p>cd &#x2F;usr&#x2F;local&#x2F;cuda&#x2F;bin</p>
+<p>.&#x2F;nvcc -V</p>
+</blockquote>
+<p>将nvcc添加到环境变量</p>
+<pre><code>sudo vim ~/.bashrc #进入目录的末尾添加如下几行
+
+# Add this to your .bashrc file
+export CUDA_HOME=/usr/local/cuda
+
+# Adds the CUDA compiler to the PATH
+export PATH=$CUDA_HOME/bin:$PATH
+
+# Adds the libraries
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+</code></pre>
+<blockquote>
+<p>其中有一段会让你输入下载的目标目录，按照喜好选择</p>
+</blockquote>
+<p>然后编译</p>
+<pre><code>source ~/.bashrc
+nvcc -V # 来查看cuda的版本信息
+</code></pre>
+<h2 id="4-测试官方demo"><a href="#4-测试官方demo" class="headerlink" title="4. 测试官方demo"></a>4. 测试官方demo</h2><h1 id="Jetson-Nano-Yolov5-部署手册"><a href="#Jetson-Nano-Yolov5-部署手册" class="headerlink" title="Jetson Nano Yolov5 部署手册"></a>Jetson Nano Yolov5 部署手册</h1><h2 id="1-Yolov5的版本选择"><a href="#1-Yolov5的版本选择" class="headerlink" title="1. Yolov5的版本选择"></a>1. Yolov5的版本选择</h2><blockquote>
+<p>Yolov5的官网：</p>
+<p>​	pytorch版本</p>
+<p>​	<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5">ultralytics&#x2F;yolov5: YOLOv5 🚀 in PyTorch &gt; ONNX &gt; CoreML &gt; TFLite (github.com)</a></p>
+<h2 id="选择YOLOv5-v6-1"><a href="#选择YOLOv5-v6-1" class="headerlink" title="选择YOLOv5 v6.1"></a>选择YOLOv5 v6.1</h2></blockquote>
+<h2 id="2-Conda-管理虚拟环境"><a href="#2-Conda-管理虚拟环境" class="headerlink" title="2. Conda 管理虚拟环境"></a>2. Conda 管理虚拟环境</h2><p>下载方式</p>
+<pre><code>wget -c https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-aarch64.sh
+bash Anaconda3-2021.05-Linux-aarch64.sh
+
+
+/home/ysc/anaconda3/bin
+</code></pre>
+<blockquote>
+<p>使用conda 来管理虚拟环境，</p>
+<p>下载方法：</p>
+</blockquote>
+<p><strong>conda创建环境和删除环境的操作</strong></p>
+<pre><code>conda create -n name python=xx -y  # 创建环境，并指定python版本
+conda remove -n name --all  # 彻底删除
+conda activate name   #  激活环境
+</code></pre>
+<p><strong>创建虚拟环境</strong></p>
+<pre><code>conda create -n yolo python=3.6
+conda activate yolo
+which python
+which pip
+</code></pre>
+<blockquote>
+<ul>
+<li>which python</li>
+</ul>
+<p>结果如下</p>
+<p>&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;bin&#x2F;python</p>
+<ul>
+<li>which pip</li>
+</ul>
+<p>结果如下</p>
+<p>&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;bin&#x2F;pip</p>
+</blockquote>
+<p><strong>显示虚拟环境列表</strong></p>
+<pre><code class="pytho">conda env list
+</code></pre>
+<h2 id="3-torch和torchvision的选择"><a href="#3-torch和torchvision的选择" class="headerlink" title="3. torch和torchvision的选择"></a>3. torch和torchvision的选择</h2><blockquote>
+<p>torch 版本： <strong>pytorch-1.9.0-py36</strong> </p>
+<p>torchviosion 版本： <strong>torchvision-0.10.0</strong></p>
+</blockquote>
+<h3 id="3-1-下载pytorch-1-9-0-py36"><a href="#3-1-下载pytorch-1-9-0-py36" class="headerlink" title="3.1. 下载pytorch-1.9.0-py36"></a>3.1. 下载<strong>pytorch-1.9.0-py36</strong></h3><blockquote>
+<p>本地或者网络获取</p>
+<p><a target="_blank" rel="noopener" href="https://nvidia.box.com/shared/static/h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl?spm=a2c6h.12873639.article-detail.17.b4bd7194M2LZsU&file=h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl">https://nvidia.box.com/shared/static/h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl?spm=a2c6h.12873639.article-detail.17.b4bd7194M2LZsU&amp;file=h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl</a></p>
+</blockquote>
+<pre><code>wget https://nvidia.box.com/shared/static/h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl -O torch-1.9.0-cp36-cp36m-linux_aarch64.whl  # 从网上下载
+
+sudo apt-get install libopenblas-base libopenmpi-dev  #安装
+
+pip3 install Cython -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip3 install numpy==1.19.3 torch-1.9.0-cp36-cp36m-linux_aarch64.whl -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+</code></pre>
+<h3 id="3-2-安装torchvision-0-10-0"><a href="#3-2-安装torchvision-0-10-0" class="headerlink" title="3.2. 安装torchvision-0.10.0"></a>3.2. 安装torchvision-0.10.0</h3><blockquote>
+<p>我们同样可以从git上获取到相关的版本</p>
+</blockquote>
+<pre><code>wget https://github.com/pytorch/vision/archive/refs/tags/v0.10.0.tar.gz #下载torchvision-0.10.0的源码
+
+gzip -d v0.10.0.tar.gz
+
+tar -xvf v0.10.0.tar
+
+cd v0.10.0/
+
+export BUILD_VERSION=0.10.0
+
+sudo &quot;填写witch python的地址&quot; setup.py install
+# 编译的时间比较长，请耐心等待
+
+#这里我们使用的是conda创建的环境，那么想要把torcvision编译到我们创建的环境，又想要使用sudo权限，就要这样运行命令！因为编译安装的时候，存在需要sudo权限的操作，别问我为什么知道，因为我编译了好几次。
+</code></pre>
+<h3 id="3-3-测试pytorch和torchvision"><a href="#3-3-测试pytorch和torchvision" class="headerlink" title="3.3. 测试pytorch和torchvision"></a>3.3. 测试pytorch和torchvision</h3><pre><code># 验证pytorch
+import torch
+print(torch.__version__)
+print(&#39;CUDA available: &#39; + str(torch.cuda.is_available()))
+print(&#39;cuDNN version: &#39; + str(torch.backends.cudnn.version()))
+a = torch.cuda.FloatTensor(2).zero_()
+print(&#39;Tensor a = &#39; + str(a))
+b = torch.randn(2).cuda()
+print(&#39;Tensor b = &#39; + str(b))
+c = a + b
+print(&#39;Tensor c = &#39; + str(c))
+
+
+# 验证torchvision
+import torchvision
+print(torchvision.__version__)
+</code></pre>
+<p>验证pytorch结果</p>
+<p><img src="/../../imgs/jetson-nano-yolov5/image-20231123194719007.png" alt="image-20231123194719007"></p>
+<p>验证torchvision 结果</p>
+<p><img src="/../../imgs/jetson-nano-yolov5/image-20231123194616530.png" alt="image-20231123194616530"></p>
+<h2 id="4-下载Yolov5并查看所需库"><a href="#4-下载Yolov5并查看所需库" class="headerlink" title="4. 下载Yolov5并查看所需库"></a>4. 下载Yolov5并查看所需库</h2><ul>
+<li>下面的所有操作一行代码就能实现：</li>
+</ul>
+<pre><code>pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --verbose
+也能看到安装的进度
+</code></pre>
+<h3 id="4-1-下载yolo相关的文件"><a href="#4-1-下载yolo相关的文件" class="headerlink" title="4.1. 下载yolo相关的文件"></a>4.1. 下载yolo相关的文件</h3><p>建议提前准备好文件夹来存放yolo文件</p>
+<pre><code>wget https://github.com/ultralytics/yolov5/archive/refs/tags/v6.1.tar.gz
+gzip -d v6.1.tar.gz
+tar -xvf v6.1.tar
+cd yolov5-6.1/
+vim requirements.txt
+</code></pre>
+<p>在需要安装的依赖包文件中，我们可以看到Base、Logging、Export、Extras等组件列表</p>
+<p>最核心的就是Base</p>
+<p>内部包含：</p>
+<ul>
+<li>matplotlib&gt;&#x3D;3.2.2</li>
+<li>numpy&gt;&#x3D;1.18.5</li>
+<li>opencv-python&gt;&#x3D;4.1.2</li>
+<li>Pillow&gt;&#x3D;7.1.2</li>
+<li>PyYAML&gt;&#x3D;5.3.1</li>
+<li>requests&gt;&#x3D;2.23.0</li>
+<li>scipy&gt;&#x3D;1.4.1</li>
+<li>torch&gt;&#x3D;1.7.0</li>
+<li>torchvision&gt;&#x3D;0.8.1</li>
+<li>tqdm&gt;&#x3D;4.41.0</li>
+</ul>
+<p>然后就是其他组件</p>
+<ul>
+<li>tensorboard&gt;&#x3D;2.4.1</li>
+<li>pandas&gt;&#x3D;1.1.4</li>
+<li>seaborn&gt;&#x3D;0.11.0</li>
+<li>thop # FLOPs computation</li>
+</ul>
+<blockquote>
+<p>来查看当前环境有哪些包</p>
+</blockquote>
+<pre><code>pip list
+</code></pre>
+<h3 id="4-2-下载yolo所需的相关库并编译matplotlib"><a href="#4-2-下载yolo所需的相关库并编译matplotlib" class="headerlink" title="4.2.下载yolo所需的相关库并编译matplotlib"></a>4.2.下载yolo所需的相关库并编译matplotlib</h3><blockquote>
+<p>在安装matplotlib之前要先安装一些组件，不然会报错，matplotlib安装起来比较麻烦，编译需要一些时间，请耐心等待</p>
+</blockquote>
+<pre><code>sudo apt-get install libfreetype6-dev
+sudo apt-get install pkg-config
+
+pip3 install matplotlib PyYAML requests seaborn tqdm tensorboard thop  -i https://mirrors.aliyun.com/pypi/simple/      # 使用国内的镜像源，下载更快
+</code></pre>
+<blockquote>
+<p>成功</p>
+<p><img src="/../../imgs/jetson-nano-yolov5/image-20231123201016015.png" alt="image-20231123201016015"></p>
+</blockquote>
+<h3 id="4-3-opencv"><a href="#4-3-opencv" class="headerlink" title="4.3.opencv"></a>4.3.opencv</h3><blockquote>
+<p>opencv下降和编译巨花费时间，请耐心等待(大约2h)</p>
+</blockquote>
+<pre><code>pip install opencv-python==4.5.5.64 -i https://pypi.tuna.tsinghua.edu.cn/simple --verbose
+
+# --verbose 追踪安装过程，会显示编译进度，至少有一个盼头
+</code></pre>
+<blockquote>
+<p>运行效果如下，（多少还是有些盼头了）</p>
+<p><img src="/../../imgs/jetson-nano-yolov5/image-20231123201727374.png" alt="image-20231123201727374"></p>
+</blockquote>
+<blockquote>
+<p>成功编译：</p>
+</blockquote>
+<h2 id="5-运行yolov5"><a href="#5-运行yolov5" class="headerlink" title="5. 运行yolov5"></a>5. 运行yolov5</h2><blockquote>
+<p>如果没设置代理，建议在官网下载权重文件，导入到当前目录下</p>
+</blockquote>
+<pre><code># 执行预测代码
+python detect.py --weights yolov5n.pt --source data/images/bus.jpg
+</code></pre>
+<p>结果如下：</p>
+<p><img src="/../../imgs/jetson-nano-yolov5/image-20231123223549879.png" alt="image-20231123223549879"></p>
+<p><img src="/../../imgs/jetson-nano-yolov5/F3AD191EA3AFFC6A61402E3CDBF13C35.jpg" alt="img"></p>
+<h1 id="YOLOv5训练和使用手册"><a href="#YOLOv5训练和使用手册" class="headerlink" title="YOLOv5训练和使用手册"></a>YOLOv5训练和使用手册</h1><blockquote>
+<p>作为yolov5训练学习手册，记录本人使用yolo过程中遇到的一些问题</p>
+</blockquote>
+<h2 id="1-出现了torch和torchvision的错误"><a href="#1-出现了torch和torchvision的错误" class="headerlink" title="1. 出现了torch和torchvision的错误"></a>1. 出现了torch和torchvision的错误</h2><blockquote>
+<p>错误出现的原因是torch-cuda和torchvision-cuda没配对</p>
+<p>一定要cuda版本对应相应的cuda版本！！</p>
+</blockquote>
+<p>拿cpu跑100轮费时间6hours</p>
+<h2 id="2-如何训练"><a href="#2-如何训练" class="headerlink" title="2. 如何训练"></a>2. 如何训练</h2><blockquote>
+<p>参考链接：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/didiaopao/article/details/119954291">目标检测—教你利用yolov5训练自己的目标检测模型_路 blog . csdn . net &#x2F; didiaopao &#x2F; category _113216-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/didiaopao/article/details/119808973?spm=1001.2014.3001.5501">目标检测—利用labelimg制作自己的深度学习目标检测数据集_目标检测利用labeling制作-CSDN博客</a></li>
+</ol>
+</blockquote>
+<pre><code># 训练集的目录结构
+- VOCdevkit
+    - images
+        - train
+        - val
+    - labels
+        - train
+        - val
+        
+</code></pre>
+<h1 id="Pytorch与ONNX"><a href="#Pytorch与ONNX" class="headerlink" title="Pytorch与ONNX"></a>Pytorch与ONNX</h1><h2 id="1-什么是ONNX？"><a href="#1-什么是ONNX？" class="headerlink" title="1. 什么是ONNX？"></a>1. 什么是ONNX？</h2><h3 id="1-1下载"><a href="#1-1下载" class="headerlink" title="1.1下载"></a>1.1下载</h3><pre><code>pip install onnxruntime -i https://mirrors.aliyun.com/pypi/simple/
+</code></pre>
+<h2 id="2-怎么查看ONNX文件的输入输出"><a href="#2-怎么查看ONNX文件的输入输出" class="headerlink" title="2.怎么查看ONNX文件的输入输出"></a>2.怎么查看ONNX文件的输入输出</h2><pre><code class="python">import onnxruntime
+
+def main(onnx_model_path):
+    # 创建ONNX运行时的InferenceSession
+    ort_session = onnxruntime.InferenceSession(onnx_model_path)
+
+    # 打印模型的输入和输出节点
+    print(&quot;Model input nodes:&quot;)
+    for node in ort_session.get_inputs():
+        print(&quot;  &quot;, node.name, node.shape)
+
+    print(&quot;\nModel output nodes:&quot;)
+    for node in ort_session.get_outputs():
+        print(&quot;  &quot;, node.name, node.shape)
+
+if __name__ == &quot;__main__&quot;:
+    path = &#39;./yolov8n.onnx&#39;
+    main(path)
+</code></pre>
+<h2 id="3-ONNX基础"><a href="#3-ONNX基础" class="headerlink" title="3.ONNX基础"></a>3.ONNX基础</h2><h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="1-安装torchvision的时候"><a href="#1-安装torchvision的时候" class="headerlink" title="1. 安装torchvision的时候"></a>1. 安装torchvision的时候</h2><blockquote>
+<p>编译过程，出现了卡住的情况</p>
+<p>报错如下：</p>
+<p>gcc -pthread -B &#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;compiler_compat -Wl,–sysroot&#x3D;&#x2F; -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -DWITH_CUDA -I&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;vision-0.10.0&#x2F;torchvision&#x2F;csrc -I&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;torch&#x2F;include -I&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;torch&#x2F;include&#x2F;torch&#x2F;csrc&#x2F;api&#x2F;include -I&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;torch&#x2F;include&#x2F;TH -I&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;torch&#x2F;include&#x2F;THC -I&#x2F;usr&#x2F;local&#x2F;cuda&#x2F;include -I&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;include&#x2F;python3.6m -c &#x2F;home&#x2F;lishun&#x2F;下载&#x2F;vision-0.10.0&#x2F;torchvision&#x2F;csrc&#x2F;ops&#x2F;roi_pool.cpp -o build&#x2F;temp.linux-aarch64-3.6&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;vision-0.10.0&#x2F;torchvision&#x2F;csrc&#x2F;ops&#x2F;roi_pool.o -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE&#x3D;”_gcc” -DPYBIND11_STDLIB&#x3D;”_libstdcpp” -DPYBIND11_BUILD_ABI&#x3D;”_cxxabi1011” -DTORCH_EXTENSION_NAME&#x3D;_C -D_GLIBCXX_USE_CXX11_ABI&#x3D;1 -std&#x3D;c++14<br>cc1plus: warning: command line option ‘-Wstrict-prototypes’ is valid for C&#x2F;ObjC but not for C++</p>
+</blockquote>
+<pre><code>报错的原因
+GPT的回答：
+你看到的警告表明选项-Wstrict-prototypes适用于C/ObjC，而不适用于C++。当在C++编译中使用一个本来是为C代码设计的命令行选项时，就会出现这种警告。
+
+在你的情况下，似乎在你的编译命令中包含了这个选项：
+-Wstrict-prototypes
+为了解决这个警告，你可以移除或替换掉这个选项，因为它对C++代码不适用。如果你需要对C++代码进行严格的原型检查，你可以在C文件中使用-Wstrict-prototypes，在C++文件中使用-Wstrict-prototypes -Wstrict-prototypes。
+
+在你提供的编译命令中，不清楚为什么会包含这个选项，因为它通常用于检查C代码中的函数原型，而你的源文件（roi_pool.cpp）是一个C++文件。
+
+因此，你可以尝试移除这个特定的选项，看看是否解决了警告：
+</code></pre>
+<pre><code>解决方法：
+gcc -pthread -B /home/lishun/下载/data/app/anconda/envs/yolo/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -fPIC -DWITH_CUDA -I/home/lishun/下载/vision-0.10.0/torchvision/csrc -I/home/lishun/下载/data/app/anconda/envs/yolo/lib/python3.6/site-packages/torch/include -I/home/lishun/下载/data/app/anconda/envs/yolo/lib/python3.6/site-packages/torch/include/torch/csrc/api/include -I/home/lishun/下载/data/app/anconda/envs/yolo/lib/python3.6/site-packages/torch/include/TH -I/home/lishun/下载/data/app/anconda/envs/yolo/lib/python3.6/site-packages/torch/include/THC -I/usr/local/cuda/include -I/home/lishun/下载/data/app/anconda/envs/yolo/include/python3.6m -c /home/lishun/下载/vision-0.10.0/torchvision/csrc/ops/roi_pool.cpp -o build/temp.linux-aarch64-3.6/home/lishun/下载/vision-0.10.0/torchvision/csrc/ops/roi_pool.o -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=&quot;_gcc&quot; -DPYBIND11_STDLIB=&quot;_libstdcpp&quot; -DPYBIND11_BUILD_ABI=&quot;_cxxabi1011&quot; -DTORCH_EXTENSION_NAME=_C -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++14
+</code></pre>
+<p><strong>放置不管也可以的，不影响使用的</strong></p>
+<p>或者去这位老哥的帖子去看看<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8106258/cc1plus-warning-command-line-option-wstrict-prototypes-is-valid-for-ada-c-o">https://stackoverflow.com/questions/8106258/cc1plus-warning-command-line-option-wstrict-prototypes-is-valid-for-ada-c-o</a></p>
+<h2 id="2-在安装torchvision目录下进入python并且调用torchvision"><a href="#2-在安装torchvision目录下进入python并且调用torchvision" class="headerlink" title="2.在安装torchvision目录下进入python并且调用torchvision"></a>2.在安装torchvision目录下进入python并且调用torchvision</h2><blockquote>
+<p>python</p>
+<p>import torchvision</p>
+<p>报错如下：（警告）</p>
+<p>&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;vision-0.10.0&#x2F;torchvision&#x2F;<strong>init</strong>.py:26: UserWarning: You are importing torchvision within its own root folder (&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;vision-0.10.0).<strong>This is not expected to work and may give errors. Please exit the torchvision project source and relaunch your python interpreter.<br>warnings.warn(message.format(os.getcwd()))</strong></p>
+</blockquote>
+<pre><code>GPT回答：
+这个警告表明你在torchvision项目的根文件夹中（/home/lishun/下载/vision-0.10.0）导入了torchvision模块。这可能导致问题，因为在同一个项目中直接导入可能引起命名空间的混淆。
+
+为了解决这个问题，你可以按照警告中的建议，在退出torchvision项目源码目录后，重新启动你的 Python 解释器。换句话说，确保你在导入 torchvision 之前不在 torchvision 项目的根文件夹中。
+</code></pre>
+<p>解决方法：</p>
+<pre><code>不在torchvision目录下执行该命令
+</code></pre>
+<h2 id="3-安装opencv后编译卡死？"><a href="#3-安装opencv后编译卡死？" class="headerlink" title="3. 安装opencv后编译卡死？"></a>3. 安装opencv后编译卡死？</h2><blockquote>
+<p>Linux编译opencv需要很长的时间，我们可能认为他卡死了，用下列方法就能追踪他的安装过程了</p>
+</blockquote>
+<pre><code>pip install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple --verbose
+</code></pre>
+<h2 id="4-opencv-python编译到最后失败"><a href="#4-opencv-python编译到最后失败" class="headerlink" title="4. opencv-python编译到最后失败"></a>4. opencv-python编译到最后失败</h2><blockquote>
+<p>报错如下：</p>
+<p>cmake-install&#x2F;share&#x2F;opencv4&#x2F;lbpcascades&#x2F;lbpcascade_silverware.xml<br>Copying files from CMake output<br>creating directory _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2<br>copying _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;python&#x2F;cv2&#x2F;python-3&#x2F;cv2.abi3.so -&gt; _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2&#x2F;cv2.abi3.so<br>copying _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;python&#x2F;cv2&#x2F;<strong>init</strong>.py -&gt; _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2&#x2F;<strong>init</strong>.py<br>copying _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;python&#x2F;cv2&#x2F;load_config_py2.py -&gt; _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2&#x2F;load_config_py2.py<br>copying _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;python&#x2F;cv2&#x2F;load_config_py3.py -&gt; _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2&#x2F;load_config_py3.py<br>copying _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;python&#x2F;cv2&#x2F;config.py -&gt; _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2&#x2F;config.py<br>copying _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;python&#x2F;cv2&#x2F;config-3.py -&gt; _skbuild&#x2F;linux-aarch64-3.6&#x2F;cmake-install&#x2F;cv2&#x2F;config-3.py<br>Traceback (most recent call last):<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;pep517&#x2F;in_process&#x2F;_in_process.py”, line 363, in <module><br>main()<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;pep517&#x2F;in_process&#x2F;_in_process.py”, line 345, in main<br>json_out[‘return_val’] &#x3D; hook(**hook_input[‘kwargs’])<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;pep517&#x2F;in_process&#x2F;_in_process.py”, line 262, in build_wheel<br>metadata_directory)<br>File “&#x2F;tmp&#x2F;pip-build-env-wj3dpx0y&#x2F;overlay&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;setuptools&#x2F;build_meta.py”, line 231, in build_wheel<br>wheel_directory, config_settings)<br>File “&#x2F;tmp&#x2F;pip-build-env-wj3dpx0y&#x2F;overlay&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;setuptools&#x2F;build_meta.py”, line 215, in _build_with_temp_dir<br>self.run_setup()<br>File “&#x2F;tmp&#x2F;pip-build-env-wj3dpx0y&#x2F;overlay&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;setuptools&#x2F;build_meta.py”, line 268, in run_setup<br>self).run_setup(setup_script&#x3D;setup_script)<br>File “&#x2F;tmp&#x2F;pip-build-env-wj3dpx0y&#x2F;overlay&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;setuptools&#x2F;build_meta.py”, line 158, in run_setup<br>exec(compile(code, <strong>file</strong>, ‘exec’), locals())<br>File “setup.py”, line 535, in <module><br>main()<br>File “setup.py”, line 309, in main<br>cmake_source_dir&#x3D;cmake_source_dir,<br>File “&#x2F;tmp&#x2F;pip-build-env-wj3dpx0y&#x2F;overlay&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;skbuild&#x2F;setuptools_wrap.py”, line 683, in setup<br>cmake_install_dir,<br><strong>File “setup.py”, line 448, in _classify_installed_files_override<br>raise Exception(“Not found: ‘%s’” % relpath_re)<br>Exception: Not found: ‘python&#x2F;cv2&#x2F;py.typed’<br>Building wheel for opencv-python (pyproject.toml) … error<br>ERROR: Failed building wheel for opencv-python<br>Failed to build opencv-python<br>ERROR: Could not build wheels for opencv-python, which is required to install pyproject.toml-based projects</strong></p>
+</blockquote>
+<pre><code>gpt对于回答：
+
+这个错误信息表明在尝试编译安装 opencv-python 时出现了问题。具体而言，它报告了一个找不到文件 &#39;python/cv2/py.typed&#39; 的异常。
+
+查阅了博客之后发现可能得原因是
+opencv版本太高了，无法和python3.6配合使用
+</code></pre>
+<p>解决方法：</p>
+<pre><code>pip install opencv-python==4.5.5.64 -i https://pypi.tuna.tsinghua.edu.cn/simple --verbose
+</code></pre>
+<p>运行结果如下</p>
+<p><img src="/../../imgs/jetson-nano-yolov5/image-20231123220925290.png" alt="image-20231123220925290"></p>
+<h2 id="5-执行yolo的预测语句报错"><a href="#5-执行yolo的预测语句报错" class="headerlink" title="5.执行yolo的预测语句报错"></a>5.执行yolo的预测语句报错</h2><blockquote>
+<p>执行这句话</p>
+<pre><code>python detect.py --weights yolov5n.pt --source data/images/bus.jpg
+</code></pre>
+</blockquote>
+<blockquote>
+<p>报错如下</p>
+<p>CONTRIBUTING.md  detect.py   export.py   LICENSE  README.md         setup.cfg  tutorial.ipynb  val.py<br>data             Dockerfile  hubconf.py  models   requirements.txt  train.py   utils<br>(yolo) lishun@lishun-desktop:~&#x2F;yolo&#x2F;yolov5-6.1$ python detect.py –weights yolov5n.pt –source data&#x2F;images&#x2F;bus.jpg<br>Matplotlib is building the font cache; this may take a moment.<br>Downloading <a target="_blank" rel="noopener" href="https://ultralytics.com/assets/Arial.ttf">https://ultralytics.com/assets/Arial.ttf</a> to &#x2F;home&#x2F;lishun&#x2F;.config&#x2F;Ultralytics&#x2F;Arial.ttf…<br>Traceback (most recent call last):<br>File “detect.py”, line 42, in <module><br> from models.common import DetectMultiBackend<br>File “&#x2F;home&#x2F;lishun&#x2F;yolo&#x2F;yolov5-6.1&#x2F;models&#x2F;common.py”, line 27, in <module><br> from utils.plots import Annotator, colors, save_one_box<br>File “&#x2F;home&#x2F;lishun&#x2F;yolo&#x2F;yolov5-6.1&#x2F;utils&#x2F;plots.py”, line 65, in <module><br> class Annotator:<br>File “&#x2F;home&#x2F;lishun&#x2F;yolo&#x2F;yolov5-6.1&#x2F;utils&#x2F;plots.py”, line 67, in Annotator<br> check_pil_font()  # download TTF if necessary<br>File “&#x2F;home&#x2F;lishun&#x2F;yolo&#x2F;yolov5-6.1&#x2F;utils&#x2F;plots.py”, line 60, in check_pil_font<br> return ImageFont.truetype(str(font), size)<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 797, in truetype<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 794, in freetype<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 198, in <strong>init</strong><br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;_util.py”, line 19, in <strong>getattr</strong><br>File “&#x2F;home&#x2F;lishun&#x2F;yolo&#x2F;yolov5-6.1&#x2F;utils&#x2F;plots.py”, line 56, in check_pil_font<br> return ImageFont.truetype(str(font) if font.exists() else font.name, size)<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 797, in truetype<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 794, in freetype<br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 198, in <strong>init</strong><br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;_util.py”, line 19, in <strong>getattr</strong><br>File “&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;Pillow-10.1.0-py3.6-linux-aarch64.egg&#x2F;PIL&#x2F;ImageFont.py”, line 48, in <module><br>ImportError: cannot import name ‘_imagingft’</p>
+</blockquote>
+<blockquote>
+<p>gpt 的回答如下</p>
+<p>看起来你在运行 YOLOv5 的检测脚本 (<code>detect.py</code>) 时遇到了与 Pillow 库相关的问题。错误具体涉及到 Pillow 库中 <code>_imagingft</code> 模块的导入。</p>
+</blockquote>
+<p>解决方法：</p>
+<blockquote>
+<p>卸载重装</p>
+</blockquote>
+<pre><code>1.先删除pillow
+pip3 uninstall pillow
+
+2.重新安装pillow并且加上些参数
+pip3 install pillow --no-cache-dir
+</code></pre>
+<h2 id="6-opencv摄像头成功调用但是终端不显示画面"><a href="#6-opencv摄像头成功调用但是终端不显示画面" class="headerlink" title="6.opencv摄像头成功调用但是终端不显示画面"></a>6.opencv摄像头成功调用但是终端不显示画面</h2><blockquote>
+<p>问题描述：：</p>
+<p>opencv成功调用了摄像头，但是终端直接卡死，也不显示画面</p>
+</blockquote>
+<blockquote>
+<p>可能原因分析：</p>
+<ol>
+<li>没加sudo，没访问摄像头的权限</li>
+<li>没加全局utf-8编码</li>
+<li>opencv存在问题，需要重新编译</li>
+</ol>
+</blockquote>
+<pre><code># 解决方法
+sudo python
+</code></pre>
+<p>可以成功调用</p>
+<p>但是又出现新的问题：</p>
+<blockquote>
+<p>sudo python 指向的的python是</p>
+<p>​	&#x2F;usr&#x2F;bin&#x2F;python</p>
+<p>但是conda中yolo的python环境是</p>
+<p>&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;bin&#x2F;python</p>
+</blockquote>
+<blockquote>
+<p>解决方法，重新搭建吧，没解决</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+</blockquote>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+    
+    #post .index {
+        background: url(https://i.loli.net/2019/07/22/5d3521411f3f169375.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>

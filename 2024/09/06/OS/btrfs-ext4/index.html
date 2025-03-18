@@ -6,47 +6,30 @@
   <meta name="keywords" content=" ext4 , btrfs ">
   <meta name="description" content="btrfs-ext4 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ROS 的导航系统架构图  矩形为 节点 椭圆为 内部组件 —-&gt; 启动会自动建立  翻译成人话 —– &gt;    local_costmap 局部地图 global_costmap 全局地图  move_base,年轻人的第一次导航move_base 节点 输入 map_server  建立好的地图，由我们手动输入其中   sensor_sources 输入  仿真机器人模型自己提供了">
+<meta name="description" content="[TOC] Jetson Nano 的初始化1. 安装镜像系统  Jetson Nano 的各个组件所对应的位置  2. 安装jetson-stats工具 使用jetson-stats工具来实时监控系统的各项性能和各种指标，官网链接为  https:&#x2F;&#x2F;github.com&#x2F;rbonghi&#x2F;jetson_stats 安装命令如下： sudo -H pip3 install -U jetson-st">
 <meta property="og:type" content="article">
-<meta property="og:title" content="06-ros1-navigation">
-<meta property="og:url" content="http://example.com/2025/03/10/Ros/LearnNote/06-ros1-navigation/index.html">
+<meta property="og:title" content="jetson_nano_yolov5">
+<meta property="og:url" content="http://example.com/2025/03/18/ML/jetson-nano-yolov5/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="ROS 的导航系统架构图  矩形为 节点 椭圆为 内部组件 —-&gt; 启动会自动建立  翻译成人话 —– &gt;    local_costmap 局部地图 global_costmap 全局地图  move_base,年轻人的第一次导航move_base 节点 输入 map_server  建立好的地图，由我们手动输入其中   sensor_sources 输入  仿真机器人模型自己提供了">
+<meta property="og:description" content="[TOC] Jetson Nano 的初始化1. 安装镜像系统  Jetson Nano 的各个组件所对应的位置  2. 安装jetson-stats工具 使用jetson-stats工具来实时监控系统的各项性能和各种指标，官网链接为  https:&#x2F;&#x2F;github.com&#x2F;rbonghi&#x2F;jetson_stats 安装命令如下： sudo -H pip3 install -U jetson-st">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241121105937466.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241121110630745.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122095742722-1732240820804.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122100010855.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122100121426.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122101733885.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122102203121.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122102353929.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122102547130.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122103019614.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122103135312.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122103735886.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122104258767.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122103855978.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122110053057.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122103954908.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241122110732911.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110219452.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110329946.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110611691.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110631752.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110721114.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110921615.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124110813724.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124112845649.png">
-<meta property="og:image" content="http://example.com/imgs/06-ros1-navigation/image-20241124113637493.png">
-<meta property="article:published_time" content="2025-03-10T01:54:01.000Z">
-<meta property="article:modified_time" content="2025-03-10T02:01:01.357Z">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/14a76c30b7104a889f635c7bae86ed81.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123194719007.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123194616530.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123201016015.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123201727374.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123223549879.png">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/F3AD191EA3AFFC6A61402E3CDBF13C35.jpg">
+<meta property="og:image" content="http://example.com/imgs/jetson-nano-yolov5/image-20231123220925290.png">
+<meta property="article:published_time" content="2025-03-18T02:31:50.000Z">
+<meta property="article:modified_time" content="2025-03-18T02:33:17.315Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="ros">
-<meta property="article:tag" content="navigation">
-<meta property="article:tag" content="move_base">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="jetson_nano">
+<meta property="article:tag" content="yolov5">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/06-ros1-navigation/image-20241121105937466.png">
+<meta name="twitter:image" content="https://ucc.alicdn.com/pic/developer-ecology/14a76c30b7104a889f635c7bae86ed81.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -135,7 +118,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(73)</small>
+                <small>(75)</small>
             
         </div>
     </li>
@@ -162,7 +145,7 @@
         <div data-rel="Go">
             
             Go
-            <small>(16)</small>
+            <small>(17)</small>
         </div>
         
     </li>
@@ -237,7 +220,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -340,8 +323,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="73">
-<input type="hidden" id="yelog_site_word_count" value="91.9k">
+<input type="hidden" id="yelog_site_posts_number" value="75">
+<input type="hidden" id="yelog_site_word_count" value="98.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -567,6 +550,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jetson_nano</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>joy_controller</a>
             </li>
         
@@ -707,6 +694,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>resolver</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ros</a>
             </li>
         
@@ -823,6 +814,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolov5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>zap</a>
             </li>
         
@@ -832,6 +827,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/03/18/ML/jetson-nano-yolov5/"
+           data-tag="python,pytorch,jetson_nano,yolov5"
+           data-author="" >
+            <span class="post-title" title="jetson_nano_yolov5">jetson_nano_yolov5</span>
+            <span class="post-date" title="2025-03-18 10:31:50">2025/03/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2025/03/13/Go/grpc/grpc-resolver/"
+           data-tag="go,grpc,resolver"
+           data-author="" >
+            <span class="post-title" title="grpc-resolver">grpc-resolver</span>
+            <span class="post-date" title="2025-03-13 10:27:49">2025/03/13</span>
+        </a>
         
         
         <a  class="全部文章 Ros "
