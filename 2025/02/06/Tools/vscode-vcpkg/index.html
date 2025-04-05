@@ -6,15 +6,44 @@
   <meta name="keywords" content=" windows , C++ , vcpkg ">
   <meta name="description" content="vscode-vcpkg | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="硬件设备 绝影云深处 lite3   建图场所 学校工业中心 —-&gt; 室内场景     slam vlp16雷达  启动雷达节点脚本   slam算法的效果对比 因为机器狗的算力限制和一些个人能力问题， 对比了几个主流的算法，最终挑选了faster-lio作为建图算法  运行速度快 对算力资源要求不高 实时性强 易于部署   fast-lio2faster-liopoint-liofaste">
 <meta property="og:type" content="article">
-<meta property="og:title" content="load_balancing">
-<meta property="og:url" content="http://example.com/2025/03/20/Web/load-balancing/index.html">
+<meta property="og:title" content="ros1-lite3-slam">
+<meta property="og:url" content="http://example.com/2025/04/05/Ros/ros1-lite3-slam&nav/index.html">
 <meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="硬件设备 绝影云深处 lite3   建图场所 学校工业中心 —-&gt; 室内场景     slam vlp16雷达  启动雷达节点脚本   slam算法的效果对比 因为机器狗的算力限制和一些个人能力问题， 对比了几个主流的算法，最终挑选了faster-lio作为建图算法  运行速度快 对算力资源要求不高 实时性强 易于部署   fast-lio2faster-liopoint-liofaste">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-20T06:07:42.000Z">
-<meta property="article:modified_time" content="2025-03-20T06:07:42.829Z">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87.jpg">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/bg1.jpg">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/bg2.jpg">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/bg3.jpg">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316144655474.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316144737359.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316144749249.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/lite3_pcd.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/pcd2grid.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/csf.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/csf_gridmap.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/ransac.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/ransac_gridmap.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/svm.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/kmeans.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316150305149.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316161507261.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20241121105937466.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316150857261.png">
+<meta property="og:image" content="http://example.com/imgs/ros1-lite3-slam&nav/image-20250316151018242.png">
+<meta property="article:published_time" content="2025-04-05T11:21:55.000Z">
+<meta property="article:modified_time" content="2025-04-05T11:24:56.449Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="slam">
+<meta property="article:tag" content="lite3">
+<meta property="article:tag" content="ros1">
+<meta property="article:tag" content="nav">
+<meta property="article:tag" content="pcd filtrer">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/ros1-lite3-slam&nav/%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87.jpg">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -103,7 +132,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(77)</small>
+                <small>(79)</small>
             
         </div>
     </li>
@@ -175,7 +204,7 @@
         <div data-rel="CPP">
             
             CPP
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -235,7 +264,7 @@
         <div data-rel="Ros">
             
             Ros
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -308,8 +337,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="77">
-<input type="hidden" id="yelog_site_word_count" value="98.6k">
+<input type="hidden" id="yelog_site_posts_number" value="79">
+<input type="hidden" id="yelog_site_word_count" value="101.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -619,6 +648,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nav</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>navigation</a>
             </li>
         
@@ -640,6 +673,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PATH</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pcd filtrer</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -743,6 +780,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>uefi</a>
             </li>
         
@@ -816,6 +857,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
+           data-tag="slam,lite3,ros1,nav,pcd filtrer"
+           data-author="" >
+            <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
+            <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2025/03/31/C++/ue/ue-cpp-learn-01/"
+           data-tag="cpp"
+           data-author="" >
+            <span class="post-title" title="ue_cpp_learn_01">ue_cpp_learn_01</span>
+            <span class="post-date" title="2025-03-31 09:39:32">2025/03/31</span>
+        </a>
         
         
         <a  class="全部文章 "
@@ -1108,7 +1167,7 @@
         
         <a  class="全部文章 CPP "
            href="/2024/09/11/C++/cplus-module/"
-           data-tag=""
+           data-tag="cpp,ue"
            data-author="" >
             <span class="post-title" title="cplus-module">cplus-module</span>
             <span class="post-date" title="2024-09-11 08:39:43">2024/09/11</span>
