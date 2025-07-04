@@ -6,25 +6,20 @@
   <meta name="keywords" content=" Linux , Python , ML , Azure ">
   <meta name="description" content="Azure-Paraformer-train | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="funasr paraformer 介绍funasr 框架介绍paraformer 模型paraformer 数据准备数据格式要求paraformer-16k模型 训练的音频文件最好大小一致，比较均匀，音频长度在一定范围，不然会炸炉子  我寻找到的数据：  16khz采样率 单通道 3-20s左右的.wav音频文件    数据转换脚本划分脚本Azure 虚拟机azure 虚拟机价格查询 去官网查看">
+<meta name="description" content="使用mcp工具的agent实例项目介绍MCP (model context proto) 大模型上下文协议 允许大模型识别工具,大模型调用工具的能力是function call 赋予的. 目前MCP支持三种模式,stdio,sse,stream-http. 项目结构:local_server.py main.py .env  服务端import os import ast import opera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure-Paraformer-train">
-<meta property="og:url" content="http://example.com/2025/07/03/ML/azure-paraformer-train/index.html">
+<meta property="og:title" content="python-agent-mcp">
+<meta property="og:url" content="http://example.com/2025/06/08/Python/agent/python-agent-mcp/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="funasr paraformer 介绍funasr 框架介绍paraformer 模型paraformer 数据准备数据格式要求paraformer-16k模型 训练的音频文件最好大小一致，比较均匀，音频长度在一定范围，不然会炸炉子  我寻找到的数据：  16khz采样率 单通道 3-20s左右的.wav音频文件    数据转换脚本划分脚本Azure 虚拟机azure 虚拟机价格查询 去官网查看">
+<meta property="og:description" content="使用mcp工具的agent实例项目介绍MCP (model context proto) 大模型上下文协议 允许大模型识别工具,大模型调用工具的能力是function call 赋予的. 目前MCP支持三种模式,stdio,sse,stream-http. 项目结构:local_server.py main.py .env  服务端import os import ast import opera">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/azure-paraformer-train/image-20250703193921685.png">
-<meta property="og:image" content="http://example.com/imgs/azure-paraformer-train/image-20250703103535212.png">
-<meta property="og:image" content="http://example.com/imgs/azure-paraformer-train/image-20250703114445702.png">
-<meta property="article:published_time" content="2025-07-03T01:41:16.000Z">
-<meta property="article:modified_time" content="2025-07-03T11:39:23.145Z">
+<meta property="article:published_time" content="2025-06-08T02:47:28.000Z">
+<meta property="article:modified_time" content="2025-06-14T13:53:52.129Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="ML">
-<meta property="article:tag" content="Azure">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="agent">
+<meta property="article:tag" content="mcp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/azure-paraformer-train/image-20250703193921685.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -319,7 +314,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="81">
-<input type="hidden" id="yelog_site_word_count" value="105.3k">
+<input type="hidden" id="yelog_site_word_count" value="108.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1643,12 +1638,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-03 19:39:23'>2025-07-03 09:41</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-04 11:19:36'>2025-07-03 09:41</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:661</span>
+        <span>字数:3.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1667,7 +1662,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#funasr-paraformer-%E4%BB%8B%E7%BB%8D"><span class="toc-text">funasr paraformer 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#funasr-%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D"><span class="toc-text">funasr 框架介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#paraformer-%E6%A8%A1%E5%9E%8B"><span class="toc-text">paraformer 模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#paraformer-%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-text">paraformer 数据准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82"><span class="toc-text">数据格式要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC"><span class="toc-text">数据转换脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%92%E5%88%86%E8%84%9A%E6%9C%AC"><span class="toc-text">划分脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Azure-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">Azure 虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#azure-%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BB%B7%E6%A0%BC%E6%9F%A5%E8%AF%A2"><span class="toc-text">azure 虚拟机价格查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%B8%A6-nv-gpu%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">选择带 nv gpu的虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-nv-%E9%A9%B1%E5%8A%A8"><span class="toc-text">安装 nv 驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cudatoolkit-%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%EF%BC%9F"><span class="toc-text">cudatoolkit 是否需要安装？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%E5%87%86%E5%A4%87"><span class="toc-text">python环境依赖准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pytroch"><span class="toc-text">pytroch</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83"><span class="toc-text">开始训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nvtop"><span class="toc-text">nvtop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%AD%98%E5%8D%A0%E7%94%A8%E5%88%86%E6%9E%90"><span class="toc-text">显存占用分析</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#funasr-paraformer-%E4%BB%8B%E7%BB%8D"><span class="toc-text">funasr paraformer 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#funasr-%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D"><span class="toc-text">funasr 框架介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#paraformer-%E6%A8%A1%E5%9E%8B"><span class="toc-text">paraformer 模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#paraformer-%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-text">paraformer 数据准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82"><span class="toc-text">数据格式要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A"><span class="toc-text">案例：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%BA%90%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2"><span class="toc-text">1. 源数据转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-tsv%E8%BD%AC%E4%B8%BAjsonl"><span class="toc-text">2. tsv转为jsonl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4"><span class="toc-text">3. 数据过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%88%92%E5%88%86train-val"><span class="toc-text">4. 划分train&#x2F;val</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Azure-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">Azure 虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Azure-%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BB%B7%E6%A0%BC%E6%9F%A5%E8%AF%A2"><span class="toc-text">Azure 虚拟机价格查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%B8%A6-nv-gpu-%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">选择带 nv gpu 的虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-nv-%E9%A9%B1%E5%8A%A8"><span class="toc-text">安装 nv 驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cudatoolkit-%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%EF%BC%9F"><span class="toc-text">cudatoolkit 是否需要安装？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%E5%87%86%E5%A4%87"><span class="toc-text">python环境依赖准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pytroch"><span class="toc-text">pytroch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#funasr-%E7%9B%B8%E5%85%B3"><span class="toc-text">funasr 相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6ok%EF%BC%9F"><span class="toc-text">测试环境是否ok？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83"><span class="toc-text">开始训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvtop"><span class="toc-text">nvtop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%AD%98%E5%8D%A0%E7%94%A8%E5%88%86%E6%9E%90"><span class="toc-text">显存占用分析</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1690,17 +1685,224 @@
 <li>16khz采样率</li>
 <li>单通道</li>
 <li>3-20s左右的.wav音频文件</li>
-<li></li>
 </ul>
 </blockquote>
-<h3 id="数据转换脚本"><a href="#数据转换脚本" class="headerlink" title="数据转换脚本"></a>数据转换脚本</h3><h3 id="划分脚本"><a href="#划分脚本" class="headerlink" title="划分脚本"></a>划分脚本</h3><h2 id="Azure-虚拟机"><a href="#Azure-虚拟机" class="headerlink" title="Azure 虚拟机"></a>Azure 虚拟机</h2><h3 id="azure-虚拟机价格查询"><a href="#azure-虚拟机价格查询" class="headerlink" title="azure 虚拟机价格查询"></a>azure 虚拟机价格查询</h3><blockquote>
+<p>训练的 jsonl 数据形如：</p>
+<pre><code class="jsonl">&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696072.wav&quot;, &quot;target&quot;: &quot;But then something even more extraordinary happened.&quot;&#125;
+&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696165.wav&quot;, &quot;target&quot;: &quot;The division was then commanded by Major General John Hawkesworth.&quot;&#125;
+&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696166.wav&quot;, &quot;target&quot;: &quot;Her husband was Li Shi, the last emperor of Cheng Han.&quot;&#125;
+&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696167.wav&quot;, &quot;target&quot;: &quot;London advances against Ludington, Michigan, champions of the Central League.&quot;&#125;
+&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696168.wav&quot;, &quot;target&quot;: &quot;But his books were never best-sellers.&quot;&#125;
+&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696169.wav&quot;, &quot;target&quot;: &quot;No new team would replace them.&quot;&#125;
+</code></pre>
+<h3 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h3><ul>
+<li>数据来源<ul>
+<li><a target="_blank" rel="noopener" href="https://commonvoice.mozilla.org/zh-CN/datasets">Common Voice</a></li>
+</ul>
+</li>
+</ul>
+<p>选择的是 cv-corpus-22.0-delta-2025-06-20大约 2w6k 条的 mp3 数据</p>
+<h4 id="1-源数据转换"><a href="#1-源数据转换" class="headerlink" title="1. 源数据转换"></a>1. 源数据转换</h4><blockquote>
+<p><strong>目的： 将数据初步转化为符合训练条件的数据</strong></p>
+</blockquote>
+<p>由于训练要求的数据是16khz，单通道的 wav 格式数据</p>
+<p>而 torchaudio 不支持 mp3 文件</p>
+<p>所以需要借助 <strong>FFmpeg</strong> 来进行数据转换</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://ffmpeg.org/">FFmpeg</a></p>
+</blockquote>
+<ul>
+<li>Linux</li>
+<li>Windows<ul>
+<li>去官网下载 <strong>zip</strong> 包，找个目录解压，将 <strong>bin</strong> 目录加入的 <strong>PATH</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code class="bash">ffmpeg -version
+</code></pre>
+<p><img src="/../../imgs/azure-paraformer-train/image-20250704101845782.png" alt="image-20250704101845782"></p>
+<blockquote>
+<p>可以运行，显示版本号就没问题</p>
+</blockquote>
+<p><strong>mp3 ——-&gt; 16khz,单通道 wav</strong> </p>
+<ul>
+<li><strong>python</strong></li>
+</ul>
+<blockquote>
+<p>使用 python 的多进程池来 并发处理 各个文件</p>
+</blockquote>
+<pre><code class="python">import os
+import subprocess
+from concurrent.futures import ThreadPoolExecutor
+
+# 多进程，使用 ffmpeg 将 mp3 转换为 wav 格式
+def convert(mp3_path, wav_path):
+    subprocess.run([
+        &quot;ffmpeg&quot;, &quot;-y&quot;, &quot;-i&quot;, mp3_path,
+        &quot;-acodec&quot;, &quot;pcm_s16le&quot;, &quot;-ac&quot;, &quot;1&quot;, &quot;-ar&quot;, &quot;16000&quot;, wav_path
+    ])
+
+mp3_dir = r&quot;&quot;
+wav_dir = r&quot;&quot;
+os.makedirs(wav_dir, exist_ok=True)
+
+files = [f for f in os.listdir(mp3_dir) if f.lower().endswith(&quot;.mp3&quot;)]
+with ThreadPoolExecutor(max_workers=8) as pool:
+    for f in files:
+        mp3_path = os.path.join(mp3_dir, f)
+        wav_path = os.path.join(wav_dir, os.path.splitext(f)[0] + &quot;.wav&quot;)
+        pool.submit(convert, mp3_path, wav_path)
+</code></pre>
+<p>OR</p>
+<ul>
+<li><strong>bash</strong></li>
+</ul>
+<pre><code class="bash">mkdir -p ../wav
+ls *.mp3 | xargs -P 8 -I&#123;&#125; ffmpeg -y -i &quot;&#123;&#125;&quot; -acodec pcm_s16le -ac 1 -ar 16000 &quot;../wav/&#123;&#125;.wav&quot;
+</code></pre>
+<p>转化时间可能有点久，需要一定的时间</p>
+<h4 id="2-tsv转为jsonl"><a href="#2-tsv转为jsonl" class="headerlink" title="2. tsv转为jsonl"></a>2. tsv转为jsonl</h4><blockquote>
+</blockquote>
+<pre><code class="python">import csv
+import json
+
+def tsv_to_jsonl(tsv_path, jsonl_path,data_path):
+    count = 0
+    with open(tsv_path, &#39;r&#39;, encoding=&#39;utf-8&#39;) as fin, open(jsonl_path, &#39;w&#39;, encoding=&#39;utf-8&#39;) as fout:
+        reader = csv.DictReader(fin, delimiter=&#39;\t&#39;)
+        for row in reader:
+            audio_path = row.get(&quot;path&quot;, &quot;&quot;).strip()
+            text = row.get(&quot;sentence&quot;, &quot;&quot;).strip()
+            if not audio_path or not text:
+                print(f&quot;跳过缺失字段的行: &#123;row&#125;&quot;)
+                continue
+            #
+            audio_path = audio_path.replace(&quot;.mp3&quot;,&quot;.wav&quot;)
+            json_obj = &#123;
+                &quot;source&quot;: f&quot;&#123;data_path&#125;&quot;+audio_path,
+                &quot;target&quot;: text
+            &#125;
+            fout.write(json.dumps(json_obj, ensure_ascii=False) + &#39;\n&#39;)
+            count += 1
+    print(f&quot;转换完成，共写入 &#123;count&#125; 条记录到 &#123;jsonl_path&#125;&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    tsv_file = &quot;../exp/tsv/other.tsv&quot;         # 替换为你的文件名
+    jsonl_file = &quot;data.jsonl&quot;     # 输出文件名
+    data_path = &quot;/&quot; # data的绝对路径
+    tsv_to_jsonl(tsv_file, jsonl_file,data_path)
+</code></pre>
+<h4 id="3-数据过滤"><a href="#3-数据过滤" class="headerlink" title="3. 数据过滤"></a>3. 数据过滤</h4><blockquote>
+<p>数据集中有一些比较大的mp3文件，要将其过滤掉，太大的文件在训练的时候会 <strong>炸炉子</strong>（cuda out of memory）</p>
+<p>目的： 删除过大的wav文件，我从大小的角度剔除文件，可以调整 <strong>size</strong></p>
+</blockquote>
+<pre><code class="python">import os
+
+def list_large_wavs(folder, size_mb=1):
+    wav_files = []
+    for root, _, files in os.walk(folder):
+        for f in files:
+            if f.lower().endswith(&#39;.wav&#39;):
+                path = os.path.join(root, f)
+                if os.path.getsize(path) &gt; size_mb * 1024 *1024:
+                    wav_files.append(f)
+    return wav_files
+
+if __name__ == &quot;__main__&quot;:
+    folder = input(&quot;请输入要扫描的文件夹路径: &quot;).strip()
+    large_wavs = list_large_wavs(folder, size_mb=1)
+
+    with open(&quot;delete.txt&quot;, &quot;w&quot;) as f:
+        for wav in large_wavs:
+            f.write(wav + &quot;\n&quot;)
+</code></pre>
+<p>将需要剔除的数据过滤出来，在jsonl中过滤掉或者删除掉</p>
+<ul>
+<li>剔除脚本</li>
+</ul>
+<pre><code class="python">import json
+import os
+
+# 配置文件路径
+jsonl_path = &quot;./data.jsonl&quot;         # 原始jsonl文件
+delete_txt = &quot;delete.txt&quot;          # 包含要删除的文件名
+output_path = &quot;filtered.jsonl&quot;    # 输出的新jsonl文件
+
+# 读取要删除的文件名集合
+with open(delete_txt, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    delete_set = set(line.strip() for line in f if line.strip())
+
+with open(jsonl_path, &quot;r&quot;, encoding=&quot;utf-8&quot;) as fin, \
+     open(output_path, &quot;w&quot;, encoding=&quot;utf-8&quot;) as fout:
+    for line in fin:
+        obj = json.loads(line)
+        wav_name = os.path.basename(obj.get(&quot;source&quot;, &quot;&quot;))
+        if wav_name not in delete_set:
+            fout.write(line)
+
+print(f&quot;过滤完成，结果已保存到 &#123;output_path&#125;&quot;)
+</code></pre>
+<h4 id="4-划分train-val"><a href="#4-划分train-val" class="headerlink" title="4. 划分train&#x2F;val"></a>4. 划分train&#x2F;val</h4><pre><code class="python">import json
+import random
+
+
+def split_jsonl(input_path, train_path, val_path, val_ratio=0.1, seed=42):
+    # 读取所有数据
+    with open(input_path, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+        data = [json.loads(line) for line in f if line.strip()]
+
+    # 打乱数据顺序
+    random.seed(seed)
+    random.shuffle(data)
+
+    # 按比例划分
+    val_size = int(len(data) * val_ratio)
+    val_data = data[:val_size]
+    train_data = data[val_size:]
+
+    # 写入train.jsonl
+    with open(train_path, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f_train:
+        for item in train_data:
+            f_train.write(json.dumps(item, ensure_ascii=False) + &#39;\n&#39;)
+
+    # 写入val.jsonl
+    with open(val_path, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f_val:
+        for item in val_data:
+            f_val.write(json.dumps(item, ensure_ascii=False) + &#39;\n&#39;)
+
+    print(f&quot;总样本数: &#123;len(data)&#125;&quot;)
+    print(f&quot;训练集: &#123;len(train_data)&#125; 条 -&gt; &#123;train_path&#125;&quot;)
+    print(f&quot;验证集: &#123;len(val_data)&#125; 条 -&gt; &#123;val_path&#125;&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    split_jsonl(
+        input_path=&quot;./filtered.jsonl&quot;,
+        train_path=&quot;../datas/en/train.jsonl&quot;,
+        val_path=&quot;../datas/en/val.jsonl&quot;,
+        val_ratio=0.1,  # 可修改为0.2或其他值
+        seed=42  # 设置种子以确保结果可复现
+    )
+</code></pre>
+<h2 id="Azure-虚拟机"><a href="#Azure-虚拟机" class="headerlink" title="Azure 虚拟机"></a>Azure 虚拟机</h2><h3 id="Azure-虚拟机价格查询"><a href="#Azure-虚拟机价格查询" class="headerlink" title="Azure 虚拟机价格查询"></a>Azure 虚拟机价格查询</h3><p>Azure 的各种价格查询 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/pricing/">Azure Pricing Overview | Microsoft Azure</a></p>
+<blockquote>
 <p>去官网查看价格对比</p>
 <p><a target="_blank" rel="noopener" href="https://azure.microsoft.com/zh-cn/pricing/details/virtual-machines/linux/?cdn=disable#pricing">定价 - Linux 虚拟机 | Microsoft Azure</a></p>
 </blockquote>
 <p>我租用的虚拟机为  <strong>Standard NC24ads A100 v4 (24 vcpu，220 GiB 内存)</strong></p>
 <p>价格为：</p>
 <p><img src="/../../imgs/azure-paraformer-train/image-20250703193921685.png" alt="image-20250703193921685"></p>
-<h3 id="选择带-nv-gpu的虚拟机"><a href="#选择带-nv-gpu的虚拟机" class="headerlink" title="选择带 nv gpu的虚拟机"></a>选择带 nv gpu的虚拟机</h3><h3 id="安装-nv-驱动"><a href="#安装-nv-驱动" class="headerlink" title="安装 nv 驱动"></a>安装 nv 驱动</h3><blockquote>
+<h3 id="选择带-nv-gpu-的虚拟机"><a href="#选择带-nv-gpu-的虚拟机" class="headerlink" title="选择带 nv gpu 的虚拟机"></a>选择带 nv gpu 的虚拟机</h3><p><img src="/../../imgs/azure-paraformer-train/image-20250704095127243.png" alt="image-20250704095127243"></p>
+<blockquote>
+<p>类型选择GPU,直接筛选出来</p>
+</blockquote>
+<p>Tips：</p>
+<ul>
+<li>azure虚拟机部署的区域不同，vm的可用性可能不一样，比如有些地方的同型号虚拟机是没有配额的</li>
+<li>其余选择默认的</li>
+<li>磁盘容量可以适当扩大</li>
+</ul>
+<h3 id="安装-nv-驱动"><a href="#安装-nv-驱动" class="headerlink" title="安装 nv 驱动"></a>安装 nv 驱动</h3><blockquote>
 <p>在过去要先卸载原有驱动再安装，但是现在是2025，最新的 Ubuntu 24.04 LTS Server 已经可以一键安装了，有手就行！！</p>
 </blockquote>
 <blockquote>
@@ -1764,16 +1966,394 @@
 <p>选择一下对应的即可</p>
 <p><img src="/../../imgs/azure-paraformer-train/image-20250703103535212.png" alt="image-20250703103535212"></p>
 <ul>
-<li>推荐</li>
+<li>推荐uv下载</li>
 </ul>
-<pre><code>
+<pre><code class="bash">uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 </code></pre>
-<h2 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h2><h3 id="nvtop"><a href="#nvtop" class="headerlink" title="nvtop"></a>nvtop</h3><p>不用手动不停地按 <strong>nvidia-smi</strong></p>
+<h3 id="funasr-相关"><a href="#funasr-相关" class="headerlink" title="funasr 相关"></a>funasr 相关</h3><blockquote>
+<p>下载 funasr</p>
+</blockquote>
+<pre><code class="bash">uv pip install -U funasr
+</code></pre>
+<blockquote>
+<p>模型源下载</p>
+</blockquote>
+<pre><code class="bash">uv pip install -U modelscope huggingface_hub
+</code></pre>
+<h3 id="测试环境是否ok？"><a href="#测试环境是否ok？" class="headerlink" title="测试环境是否ok？"></a>测试环境是否ok？</h3><ul>
+<li>测试cuda是否ok?</li>
+</ul>
+<pre><code class="python">import torch
+
+if torch.cuda.is_available():
+    print(&quot;CUDA is available.&quot;)
+    print(f&quot;Device count: &#123;torch.cuda.device_count()&#125;&quot;)
+    print(f&quot;Current device: &#123;torch.cuda.current_device()&#125;&quot;)
+    print(f&quot;Device name: &#123;torch.cuda.get_device_name(torch.cuda.current_device())&#125;&quot;)
+else:
+    print(&quot;CUDA is not available.&quot;)
+</code></pre>
+<blockquote>
+<p>运行显示 cuda is aviable 即证明 pytorch cuda runtime 安装成功</p>
+</blockquote>
+<ul>
+<li>测试funasr是否ok?</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+这个脚本也能执行
+funasr ++model=paraformer-zh ++vad_model=&quot;fsmn-vad&quot; ++punc_model=&quot;ct-punc&quot; ++input=vad_example.wav
+&quot;&quot;&quot;
+
+from funasr import AutoModel
+
+model = AutoModel(
+    model=&quot;paraformer-zh&quot;,
+    vad_model=&quot;fsmn-vad&quot;,
+    punc_model=&quot;ct-punc&quot;
+)
+# 准备一个 1.wav 文件测试一下
+res = model.generate(input=f&quot;exp/1.wav&quot;)
+print(res)
+</code></pre>
+<blockquote>
+<p>初次会下载 paraformer-zh 模型，然后加载推理，最终效果为：</p>
+</blockquote>
+<p><img src="/../../imgs/azure-paraformer-train/image-20250704104919343.png" alt="image-20250704104919343"></p>
+<p>运行成功！</p>
+<h2 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h2><h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><p>训练的目录结构：</p>
+<p><strong>— datas</strong></p>
+<p><strong>— train_ds.py</strong></p>
+<p><strong>— finetune.sh</strong></p>
+<hr>
+<ul>
+<li>拷贝官方的 train_ds.py</li>
+</ul>
+<pre><code class="python">#!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
+
+import os
+import sys
+import torch
+import torch.nn as nn
+import hydra
+import logging
+import time
+import argparse
+from io import BytesIO
+
+from contextlib import nullcontext
+import torch.distributed as dist
+
+from omegaconf import DictConfig, OmegaConf
+from torch.cuda.amp import autocast, GradScaler
+from torch.nn.parallel import DistributedDataParallel as DDP
+from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
+from torch.distributed.algorithms.join import Join
+from torch.distributed.fsdp.sharded_grad_scaler import ShardedGradScaler
+from funasr.train_utils.average_nbest_models import average_checkpoints
+
+from funasr.register import tables
+from funasr.optimizers import optim_classes
+from funasr.train_utils.trainer_ds import Trainer
+from funasr.schedulers import scheduler_classes
+from funasr.train_utils.initialize import initialize
+from funasr.download.download_model_from_hub import download_model
+from funasr.models.lora.utils import mark_only_lora_as_trainable
+from funasr.train_utils.set_all_random_seed import set_all_random_seed
+from funasr.train_utils.load_pretrained_model import load_pretrained_model
+from funasr.utils.misc import prepare_model_dir
+from funasr.train_utils.model_summary import model_summary
+from funasr import AutoModel
+
+try:
+    import deepspeed
+except:
+    deepspeed = None
+
+
+@hydra.main(config_name=None, version_base=None)
+def main_hydra(kwargs: DictConfig):
+    if kwargs.get(&quot;debug&quot;, False):
+        import pdb
+
+        pdb.set_trace()
+
+    assert &quot;model&quot; in kwargs
+    if &quot;model_conf&quot; not in kwargs:
+        logging.info(&quot;download models from model hub: &#123;&#125;&quot;.format(kwargs.get(&quot;hub&quot;, &quot;ms&quot;)))
+        kwargs = download_model(is_training=kwargs.get(&quot;is_training&quot;, True), **kwargs)
+
+    main(**kwargs)
+
+
+def main(**kwargs):
+
+    # set random seed
+    set_all_random_seed(kwargs.get(&quot;seed&quot;, 0))
+    torch.backends.cudnn.enabled = kwargs.get(&quot;cudnn_enabled&quot;, torch.backends.cudnn.enabled)
+    torch.backends.cudnn.benchmark = kwargs.get(&quot;cudnn_benchmark&quot;, torch.backends.cudnn.benchmark)
+    torch.backends.cudnn.deterministic = kwargs.get(&quot;cudnn_deterministic&quot;, True)
+    # open tf32
+    torch.backends.cuda.matmul.allow_tf32 = kwargs.get(&quot;enable_tf32&quot;, True)
+
+    rank = int(os.environ.get(&quot;RANK&quot;, 0))
+    local_rank = int(os.environ.get(&quot;LOCAL_RANK&quot;, 0))
+    world_size = int(os.environ.get(&quot;WORLD_SIZE&quot;, 1))
+
+    if local_rank == 0:
+        tables.print()
+
+    use_ddp = world_size &gt; 1
+    use_fsdp = kwargs.get(&quot;use_fsdp&quot;, False)
+    use_deepspeed = kwargs.get(&quot;use_deepspeed&quot;, False)
+    if use_deepspeed:
+        logging.info(f&quot;use_deepspeed: &#123;use_deepspeed&#125;&quot;)
+        deepspeed.init_distributed(dist_backend=kwargs.get(&quot;backend&quot;, &quot;nccl&quot;))
+    elif use_ddp or use_fsdp:
+        logging.info(f&quot;use_ddp: &#123;use_ddp&#125;, use_fsdp: &#123;use_fsdp&#125;&quot;)
+        dist.init_process_group(
+            backend=kwargs.get(&quot;backend&quot;, &quot;nccl&quot;),
+            init_method=&quot;env://&quot;,
+        )
+        torch.cuda.set_device(local_rank)
+
+    # rank = dist.get_rank()
+
+    logging.info(&quot;Build model, frontend, tokenizer&quot;)
+    device = kwargs.get(&quot;device&quot;, &quot;cuda&quot;)
+    kwargs[&quot;device&quot;] = &quot;cpu&quot;
+    model = AutoModel(**kwargs)
+
+    # save config.yaml
+    if rank == 0:
+        prepare_model_dir(**kwargs)
+
+    # parse kwargs
+    kwargs = model.kwargs
+    kwargs[&quot;device&quot;] = device
+    tokenizer = kwargs[&quot;tokenizer&quot;]
+    frontend = kwargs[&quot;frontend&quot;]
+    model = model.model
+    del kwargs[&quot;model&quot;]
+
+    # freeze_param
+    freeze_param = kwargs.get(&quot;freeze_param&quot;, None)
+    if freeze_param is not None:
+        if &quot;,&quot; in freeze_param:
+            freeze_param = eval(freeze_param)
+        if not isinstance(freeze_param, (list, tuple)):
+            freeze_param = (freeze_param,)
+        logging.info(&quot;freeze_param is not None: %s&quot;, freeze_param)
+        for t in freeze_param:
+            for k, p in model.named_parameters():
+                if k.startswith(t + &quot;.&quot;) or k == t:
+                    logging.info(f&quot;Setting &#123;k&#125;.requires_grad = False&quot;)
+                    p.requires_grad = False
+    if local_rank == 0:
+        logging.info(f&quot;&#123;model_summary(model)&#125;&quot;)
+
+    trainer = Trainer(
+        rank=rank,
+        local_rank=local_rank,
+        world_size=world_size,
+        use_ddp=use_ddp,
+        use_fsdp=use_fsdp,
+        device=kwargs[&quot;device&quot;],
+        excludes=kwargs.get(&quot;excludes&quot;, None),
+        output_dir=kwargs.get(&quot;output_dir&quot;, &quot;./exp&quot;),
+        **kwargs.get(&quot;train_conf&quot;),
+    )
+
+    model = trainer.warp_model(model, **kwargs)
+
+    kwargs[&quot;device&quot;] = int(os.environ.get(&quot;LOCAL_RANK&quot;, 0))
+    trainer.device = int(os.environ.get(&quot;LOCAL_RANK&quot;, 0))
+
+    model, optim, scheduler = trainer.warp_optim_scheduler(model, **kwargs)
+
+    # dataset
+    logging.info(&quot;Build dataloader&quot;)
+    dataloader_class = tables.dataloader_classes.get(
+        kwargs[&quot;dataset_conf&quot;].get(&quot;dataloader&quot;, &quot;DataloaderMapStyle&quot;)
+    )
+    dataloader = dataloader_class(**kwargs)
+    # dataloader_tr, dataloader_val = dataloader_class(**kwargs)
+
+    scaler = GradScaler(enabled=True) if trainer.use_fp16 or trainer.use_bf16 else None
+    scaler = ShardedGradScaler(enabled=trainer.use_fp16) if trainer.use_fsdp else scaler
+
+    trainer.resume_checkpoint(
+        model=model,
+        optim=optim,
+        scheduler=scheduler,
+        scaler=scaler,
+    )
+
+    dataloader_tr, dataloader_val = None, None
+    for epoch in range(trainer.start_epoch, trainer.max_epoch):
+        time1 = time.perf_counter()
+
+        for data_split_i in range(trainer.start_data_split_i, dataloader.data_split_num):
+            time_slice_i = time.perf_counter()
+
+            dataloader_tr, dataloader_val = dataloader.build_iter(
+                epoch, data_split_i=data_split_i, start_step=trainer.start_step
+            )
+
+            trainer.train_epoch(
+                model=model,
+                optim=optim,
+                scheduler=scheduler,
+                scaler=scaler,
+                dataloader_train=dataloader_tr,
+                dataloader_val=dataloader_val,
+                epoch=epoch,
+                data_split_i=data_split_i,
+                data_split_num=dataloader.data_split_num,
+                start_step=trainer.start_step,
+            )
+            trainer.start_step = 0
+
+            device = next(model.parameters()).device
+            if device.type == &quot;cuda&quot;:
+                with torch.cuda.device(device):
+                    torch.cuda.empty_cache()
+
+            time_escaped = (time.perf_counter() - time_slice_i) / 3600.0
+            logging.info(
+                f&quot;\n\nrank: &#123;local_rank&#125;, &quot;
+                f&quot;time_escaped_epoch: &#123;time_escaped:.3f&#125; hours, &quot;
+                f&quot;estimated to finish &#123;dataloader.data_split_num&#125; data_slices, remaining: &#123;dataloader.data_split_num-data_split_i&#125; slices, &#123;(dataloader.data_split_num-data_split_i)*time_escaped:.3f&#125; hours, &quot;
+                f&quot;epoch: &#123;trainer.max_epoch - epoch&#125; epochs, &#123;((trainer.max_epoch - epoch - 1)*dataloader.data_split_num + dataloader.data_split_num-data_split_i)*time_escaped:.3f&#125; hours\n&quot;
+            )
+
+        trainer.start_data_split_i = 0
+        trainer.validate_epoch(model=model, dataloader_val=dataloader_val, epoch=epoch + 1)
+        scheduler.step()
+        trainer.step_in_epoch = 0
+        trainer.save_checkpoint(
+            epoch + 1, model=model, optim=optim, scheduler=scheduler, scaler=scaler
+        )
+
+        time2 = time.perf_counter()
+        time_escaped = (time2 - time1) / 3600.0
+        logging.info(
+            f&quot;\n\nrank: &#123;local_rank&#125;, &quot;
+            f&quot;time_escaped_epoch: &#123;time_escaped:.3f&#125; hours, &quot;
+            f&quot;estimated to finish &#123;trainer.max_epoch&#125; &quot;
+            f&quot;epoch: &#123;(trainer.max_epoch - epoch) * time_escaped:.3f&#125; hours\n&quot;
+        )
+        trainer.train_acc_avg = 0.0
+        trainer.train_loss_avg = 0.0
+
+    if trainer.rank == 0:
+        average_checkpoints(
+            trainer.output_dir, trainer.avg_nbest_model, use_deepspeed=trainer.use_deepspeed
+        )
+
+    trainer.close()
+
+
+if __name__ == &quot;__main__&quot;:
+    main_hydra()
+</code></pre>
+<ul>
+<li>finetune.sh</li>
+</ul>
+<pre><code class="bash"># Copyright FunASR (https://github.com/alibaba-damo-academy/FunASR). All Rights Reserved.
+#  MIT License  (https://opensource.org/licenses/MIT)
+
+workspace=`pwd`
+
+# which gpu to train or finetune
+export CUDA_VISIBLE_DEVICES=&quot;0&quot;
+gpu_num=$(echo $CUDA_VISIBLE_DEVICES | awk -F &quot;,&quot; &#39;&#123;print NF&#125;&#39;)
+
+# model_name from model_hub, or model_dir in local path
+
+## option 1, download model automatically
+model_name_or_model_dir=&quot;iic/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch&quot;
+
+## option 2, download model by git
+#local_path_root=$&#123;workspace&#125;/modelscope_models
+#mkdir -p $&#123;local_path_root&#125;/$&#123;model_name_or_model_dir&#125;
+#git clone https://www.modelscope.cn/$&#123;model_name_or_model_dir&#125;.git $&#123;local_path_root&#125;/$&#123;model_name_or_model_dir&#125;
+#model_name_or_model_dir=$&#123;local_path_root&#125;/$&#123;model_name_or_model_dir&#125;
+
+
+# data dir, which contains: train.json, val.json
+data_dir=&quot;../datas/en&quot;
+
+train_data=&quot;$&#123;data_dir&#125;/train.jsonl&quot;
+val_data=&quot;$&#123;data_dir&#125;/val.jsonl&quot;
+
+# generate train.jsonl and val.jsonl from wav.scp and text.txt
+# scp2jsonl \
+# ++scp_file_list=&#39;[&quot;../../../data/list/train_wav.scp&quot;, &quot;../../../data/list/train_text.txt&quot;]&#39; \
+# ++data_type_list=&#39;[&quot;source&quot;, &quot;target&quot;]&#39; \
+# ++jsonl_file_out=&quot;$&#123;train_data&#125;&quot;
+
+# scp2jsonl \
+# ++scp_file_list=&#39;[&quot;../../../data/list/val_wav.scp&quot;, &quot;../../../data/list/val_text.txt&quot;]&#39; \
+# ++data_type_list=&#39;[&quot;source&quot;, &quot;target&quot;]&#39; \
+# ++jsonl_file_out=&quot;$&#123;val_data&#125;&quot;
+
+
+# exp output dir
+output_dir=&quot;./outputs&quot;
+log_file=&quot;$&#123;output_dir&#125;/log.txt&quot;
+
+deepspeed_config=$&#123;workspace&#125;/ds_stage1.json
+
+mkdir -p $&#123;output_dir&#125;
+echo &quot;log_file: $&#123;log_file&#125;&quot;
+
+DISTRIBUTED_ARGS=&quot;
+    --nnodes $&#123;WORLD_SIZE:-1&#125; \
+    --nproc_per_node $gpu_num \
+    --node_rank $&#123;RANK:-0&#125; \
+    --master_addr $&#123;MASTER_ADDR:-127.0.0.1&#125; \
+    --master_port $&#123;MASTER_PORT:-26669&#125;
+&quot;
+
+echo $DISTRIBUTED_ARGS
+
+torchrun $DISTRIBUTED_ARGS \
+./train_ds.py \
+++model=&quot;$&#123;model_name_or_model_dir&#125;&quot; \
+++train_data_set_list=&quot;$&#123;train_data&#125;&quot; \
+++valid_data_set_list=&quot;$&#123;val_data&#125;&quot; \
+++dataset=&quot;AudioDataset&quot; \
+++dataset_conf.index_ds=&quot;IndexDSJsonl&quot; \
+++dataset_conf.data_split_num=1 \
+++dataset_conf.batch_sampler=&quot;BatchSampler&quot; \
+++dataset_conf.batch_size=100  \
+++dataset_conf.sort_size=1024 \
+++dataset_conf.batch_type=&quot;token&quot; \
+++dataset_conf.num_workers=4 \
+++train_conf.max_epoch=50 \
+++train_conf.log_interval=1 \
+++train_conf.resume=true \
+++train_conf.validate_interval=2000 \
+++train_conf.save_checkpoint_interval=2000 \
+++train_conf.keep_nbest_models=20 \
+++train_conf.avg_nbest_model=10 \
+++train_conf.use_deepspeed=false \
+++train_conf.deepspeed_config=$&#123;deepspeed_config&#125; \
+++optim_conf.lr=0.0002 \
+++output_dir=&quot;$&#123;output_dir&#125;&quot; &amp;&gt; $&#123;log_file&#125; | tee &quot;$&#123;log_file&#125;&quot;
+</code></pre>
+<blockquote>
+<p>模型参数需要根据需求来修改</p>
+</blockquote>
+<h3 id="nvtop"><a href="#nvtop" class="headerlink" title="nvtop"></a>nvtop</h3><p>不用手动不停地按 <strong>nvidia-smi</strong></p>
 <pre><code class="bash">apt install nvtop
 </code></pre>
 <blockquote>
-<p>训练的占用情况</p>
+<p>查看训练cuda的占用情况</p>
 </blockquote>
+<pre><code class="bash">nvtop
+</code></pre>
 <p><img src="/../../imgs/azure-paraformer-train/image-20250703114445702.png" alt="image-20250703114445702"></p>
 <h3 id="显存占用分析"><a href="#显存占用分析" class="headerlink" title="显存占用分析"></a>显存占用分析</h3><blockquote>
 <p>数据为 16khz采样率、单通道、时长为3-20s左右长度的 wav音频文件</p>
