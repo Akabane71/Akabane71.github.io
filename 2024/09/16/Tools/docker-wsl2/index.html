@@ -1766,7 +1766,7 @@
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-关闭运行的虚拟机"><a href="#1-关闭运行的虚拟机" class="headerlink" title="1. 关闭运行的虚拟机"></a>1. 关闭运行的虚拟机</h3><ol>
 <li>查看虚拟机的运行情况</li>
 </ol>
-<pre><code class="powershell">wsl -l -v
+<pre><code class="language-powershell">wsl -l -v
 </code></pre>
 <blockquote>
 <p>替换的时候要完完全全地关闭虚拟机</p>
@@ -1776,7 +1776,7 @@
 <ol start="2">
 <li>关闭虚拟机</li>
 </ol>
-<pre><code class="powershell">wsl --shutdown
+<pre><code class="language-powershell">wsl --shutdown
 </code></pre>
 <p>显示如下情况才能操作</p>
 <p><img src="/../../imgs/docker-wsl2/image-20240916102043905.png" alt="image-20240916102043905"></p>
@@ -1784,7 +1784,7 @@
 <li>迁移的目标目录下打开powershell</li>
 </ol>
 <p>比如我的目录为  <strong>D:\DockerImages</strong></p>
-<pre><code class="powershell">wsl --export docker-desktop docker-desktop.tar
+<pre><code class="language-powershell">wsl --export docker-desktop docker-desktop.tar
 </code></pre>
 <blockquote>
 <p>后面的参数表示导出的文件名称，是相对路径</p>
@@ -1792,12 +1792,12 @@
 <ol start="2">
 <li>注销系统</li>
 </ol>
-<pre><code class="powershell">wsl --unregister docker-desktop
+<pre><code class="language-powershell">wsl --unregister docker-desktop
 </code></pre>
 <ol start="3">
 <li>重新创建</li>
 </ol>
-<pre><code class="powershell">wsl --import docker-desktop D:\DockerImages\docker-desktop docker-desktop.tar
+<pre><code class="language-powershell">wsl --import docker-desktop D:\DockerImages\docker-desktop docker-desktop.tar
 </code></pre>
 <blockquote>
 <p>命令从左往右依次出现的为:</p>
@@ -1807,7 +1807,7 @@
 </blockquote>
 <p>导入以后，在相应的两个<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?q=%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6&zhida_source=entity&is_preview=1">目标文件</a>夹里就会显示出后缀为.vhdx的<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?q=%E8%99%9A%E6%8B%9F%E7%A3%81%E7%9B%98&zhida_source=entity&is_preview=1">虚拟磁盘</a>，大小和之前导出的两个tar相比量级相同，会大一些。</p>
 <p>再次启动Docker，短暂等待之后坐下小鲸鱼变绿，说明迁移成功，软件没受影响。</p>
-<h3 id="3-下载几个镜像文件看看是否还下在C盘"><a href="#3-下载几个镜像文件看看是否还下在C盘" class="headerlink" title="3. 下载几个镜像文件看看是否还下在C盘"></a>3. 下载几个镜像文件看看是否还下在C盘</h3><pre><code class="powershell">docker pull ubuntu
+<h3 id="3-下载几个镜像文件看看是否还下在C盘"><a href="#3-下载几个镜像文件看看是否还下在C盘" class="headerlink" title="3. 下载几个镜像文件看看是否还下在C盘"></a>3. 下载几个镜像文件看看是否还下在C盘</h3><pre><code class="language-powershell">docker pull ubuntu
 </code></pre>
 <blockquote>
 <p>参考文章:</p>
@@ -1819,7 +1819,7 @@
 </blockquote>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>开启Hyper-V 下载 WSL2</p>
 <p>使用命令来安装</p>
-<pre><code class="powershell">Start-Process -FilePath &quot;D:\Buffer_Download\Docker Desktop Installer.exe&quot; -ArgumentList &quot;install&quot;, &quot;--installation-dir=D:\Docker&quot;
+<pre><code class="language-powershell">Start-Process -FilePath &quot;D:\Buffer_Download\Docker Desktop Installer.exe&quot; -ArgumentList &quot;install&quot;, &quot;--installation-dir=D:\Docker&quot;
 </code></pre>
 <blockquote>
 <p>参数解析</p>

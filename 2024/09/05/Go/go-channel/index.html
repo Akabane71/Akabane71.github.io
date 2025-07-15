@@ -1770,15 +1770,15 @@
 </ul>
 <p>因此我们可以把channel当作队列来使用, 这也是Goroutine的通信方式，理解比较直观。</p>
 <h2 id="发送与接收消息"><a href="#发送与接收消息" class="headerlink" title="发送与接收消息"></a>发送与接收消息</h2><p>channel是指针类型的数据类型，使用 chan表示, 通过make来分配内存。例如</p>
-<pre><code class="go">ch := make(chan int)
+<pre><code class="language-go">ch := make(chan int)
 </code></pre>
 <p>这表示创建一个channel，这个channel中只能保存int类型的数据。也就是说一端只能向此channel中放进int类型的值，另一端只能从此channel中读出int类型的值。</p>
 <p>需要注意，chan TYPE才表示channel的类型。所以其作为参数或返回值时，需指定为xxx chan int类似的格式</p>
 <p>1.往channel中发送消息</p>
-<pre><code class="go">ch &lt;- VALUE
+<pre><code class="language-go">ch &lt;- VALUE
 </code></pre>
 <p>2.从channel中获取消息</p>
-<pre><code class="go">&lt;-ch               // 取出消息，直接扔掉
+<pre><code class="language-go">&lt;-ch               // 取出消息，直接扔掉
 value := &lt;-ch      // 从ch中读取一个值并保存到value变量中
 value,ok = &lt;-ch    // 从ch读取一个值，判断是否读取成功，如果成功则保存到value变量中
 for v := range ch  // 通过for range语法来取值, 知道ch关闭时退出循环
@@ -1789,98 +1789,98 @@ for v := range ch  // 通过for range语法来取值, 知道ch关闭时退出循
 <li>recv: 当ch出现在&lt;-的右边</li>
 </ul>
 <p>比如: alice -&gt; bob 发送一个消息(hello, this is alice)</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;time&quot;
+	&quot;fmt&quot;
+	&quot;time&quot;
 )
 
 // sender 不停的想chann里面发送数据
 func sender(ch chan string) &#123;
-    ch &lt;- &quot;hello&quot;
-    ch &lt;- &quot;this&quot;
-    ch &lt;- &quot;is&quot;
-    ch &lt;- &quot;alice&quot;
+	ch &lt;- &quot;hello&quot;
+	ch &lt;- &quot;this&quot;
+	ch &lt;- &quot;is&quot;
+	ch &lt;- &quot;alice&quot;
 &#125;
 
 // recver 循环读取chan里面的数据，直到channel关闭
 func recver(ch chan string) &#123;
-    for v := range ch &#123;
-        fmt.Println(v)
-    &#125;
+	for v := range ch &#123;
+		fmt.Println(v)
+	&#125;
 &#125;
 
 func main() &#123;
-    ch := make(chan string)
-    go sender(ch) // sender goroutine
-    go recver(ch) // recver goroutine
+	ch := make(chan string)
+	go sender(ch) // sender goroutine
+	go recver(ch) // recver goroutine
 
-    // 这个可以使用同步组 waitGroup来进行同步等待
-    time.Sleep(1 * time.Second)
+	// 这个可以使用同步组 waitGroup来进行同步等待
+	time.Sleep(1 * time.Second)
 &#125;
 </code></pre>
 <h2 id="关闭channel"><a href="#关闭channel" class="headerlink" title="关闭channel"></a>关闭channel</h2><p>上面是最基础的一套逻辑, 那我们如何来处理 通话结束喃?(sender退出)</p>
 <p>我们可以在消费发送完了过后，发送一条特别的消息用于说明此次通信结束，比如EOF</p>
-<pre><code class="go">// sender 不停的想chann里面发送数据
+<pre><code class="language-go">// sender 不停的想chann里面发送数据
 func sender(ch chan string) &#123;
-    ch &lt;- &quot;hello&quot;
-    ch &lt;- &quot;this&quot;
-    ch &lt;- &quot;is&quot;
-    ch &lt;- &quot;alice&quot;
+	ch &lt;- &quot;hello&quot;
+	ch &lt;- &quot;this&quot;
+	ch &lt;- &quot;is&quot;
+	ch &lt;- &quot;alice&quot;
 
-    // 发送通话结束
-    ch &lt;- &quot;EOF&quot;
-    close(ch)
+	// 发送通话结束
+	ch &lt;- &quot;EOF&quot;
+	close(ch)
 &#125;
 
 // recver 循环读取chan里面的数据，直到channel关闭
 func recver(ch chan string) &#123;
-    for v := range ch &#123;
-        // 处理通话结束
-        if v == &quot;EOF&quot; &#123;
-            return
-        &#125;
-        fmt.Println(v)
-    &#125;
+	for v := range ch &#123;
+		// 处理通话结束
+		if v == &quot;EOF&quot; &#123;
+			return
+		&#125;
+		fmt.Println(v)
+	&#125;
 &#125;
 
 func main() &#123;
-    ch := make(chan string)
-    go sender(ch) // sender goroutine
-    go recver(ch) // recver goroutine
+	ch := make(chan string)
+	go sender(ch) // sender goroutine
+	go recver(ch) // recver goroutine
 
-    // 这个可以使用同步组 waitGroup来进行同步等待
-    time.Sleep(1 * time.Second)
+	// 这个可以使用同步组 waitGroup来进行同步等待
+	time.Sleep(1 * time.Second)
 &#125;
 </code></pre>
 <p>这样的话, 是不是就完整了？ 我们似乎忘了挂电话这个逻辑, 对比与channel 就是我们忘记关闭channel了, 如果我们只申请，不关闭的话，会造成内存泄露(chan 没有被释放)</p>
 <p>我们使用close这个内置函数来关闭channel:</p>
-<pre><code class="go">close(ch)
+<pre><code class="language-go">close(ch)
 </code></pre>
 <p>结合我们上面的逻辑, 就是需要sender方来关闭channel(sender 挂电话)</p>
-<pre><code class="go">// sender 不停的想chann里面发送数据
+<pre><code class="language-go">// sender 不停的想chann里面发送数据
 func sender(ch chan string) &#123;
-    ch &lt;- &quot;hello&quot;
-    ch &lt;- &quot;this&quot;
-    ch &lt;- &quot;is&quot;
-    ch &lt;- &quot;alice&quot;
-    // 发送通话结束
-    ch &lt;- &quot;EOF&quot;
-    close(ch)
+	ch &lt;- &quot;hello&quot;
+	ch &lt;- &quot;this&quot;
+	ch &lt;- &quot;is&quot;
+	ch &lt;- &quot;alice&quot;
+	// 发送通话结束
+	ch &lt;- &quot;EOF&quot;
+	close(ch)
 &#125;
 </code></pre>
 <p>如果由recver提前把通道关闭了，会发生什么?</p>
-<pre><code class="go">// recver 循环读取chan里面的数据，直到channel关闭
+<pre><code class="language-go">// recver 循环读取chan里面的数据，直到channel关闭
 func recver(ch chan string) &#123;
-    for v := range ch &#123;
-        // 处理通话结束
-        if v == &quot;hello&quot; &#123;
-            close(ch)
-            return
-        &#125;
-        fmt.Println(v)
-    &#125;
+	for v := range ch &#123;
+		// 处理通话结束
+		if v == &quot;hello&quot; &#123;
+			close(ch)
+			return
+		&#125;
+		fmt.Println(v)
+	&#125;
 &#125;
 </code></pre>
 <p>send方会panic, 导致sender方崩溃掉:</p>
@@ -1888,9 +1888,9 @@ func recver(ch chan string) &#123;
 
 goroutine 18 [running]:
 main.sender(0xc00008c060)
-    /Users/g7/Workspace/go-course/day10/channel/basic/basic.go:10 +0x55
+	/Users/g7/Workspace/go-course/day10/channel/basic/basic.go:10 +0x55
 created by main.main
-    /Users/g7/Workspace/go-course/day10/channel/basic/basic.go:32 +0x5c
+	/Users/g7/Workspace/go-course/day10/channel/basic/basic.go:32 +0x5c
 exit status 2
 </code></pre>
 <p>因此我们在关闭channel时 有如下注意事项:</p>
@@ -1900,7 +1900,7 @@ exit status 2
 <li>如果使用close()，建议条件允许的情况下加上defer, 只在sender端上显式使用close()关闭channel。因为关闭通道意味着没有数据再需要发送</li>
 </ul>
 <h2 id="无缓冲管道-unbuffered-channel"><a href="#无缓冲管道-unbuffered-channel" class="headerlink" title="无缓冲管道(unbuffered channel)"></a>无缓冲管道(unbuffered channel)</h2><p><img src="/../../imgs/go-channel/unbuffered.jpeg"></p>
-<pre><code class="go">ch := make(chan int)
+<pre><code class="language-go">ch := make(chan int)
 </code></pre>
 <p>像上面这种 直接创建出来, 没有指定容量的channel 我们就叫做无缓冲管道,</p>
 <p>无缓冲管道特点: </p>
@@ -1909,35 +1909,35 @@ exit status 2
 <li>receiver端一直阻塞，直到sender端向channel发送了一个数据</li>
 </ul>
 <p>我们可以看出来无缓冲管道是 阻塞的, 常用于同步通信模式, 比如 我们利用这个特性来编写一个同步等待</p>
-<pre><code class="go">// recver 循环读取chan里面的数据，直到channel关闭
+<pre><code class="language-go">// recver 循环读取chan里面的数据，直到channel关闭
 func recver(ch chan string, down chan struct&#123;&#125;) &#123;
-    defer func() &#123;
-        down &lt;- struct&#123;&#125;&#123;&#125;
-    &#125;()
+	defer func() &#123;
+		down &lt;- struct&#123;&#125;&#123;&#125;
+	&#125;()
 
-    for v := range ch &#123;
-        // 处理通话结束
-        if v == &quot;EOF&quot; &#123;
-            return
-        &#125;
-        fmt.Println(v)
-    &#125;
+	for v := range ch &#123;
+		// 处理通话结束
+		if v == &quot;EOF&quot; &#123;
+			return
+		&#125;
+		fmt.Println(v)
+	&#125;
 &#125;
 
 func main() &#123;
-    ch := make(chan string)
+	ch := make(chan string)
 
-    down := make(chan struct&#123;&#125;)
-    go sender(ch)       // sender goroutine
-    go recver(ch, down) // recver goroutine
+	down := make(chan struct&#123;&#125;)
+	go sender(ch)       // sender goroutine
+	go recver(ch, down) // recver goroutine
 
-    &lt;-down
+	&lt;-down
 &#125;
 </code></pre>
 <blockquote>
 <p>同步编程案例: 利用unbuffered同步的特性，我们可以完成多个协程间的同步协作, 比如之前讲的: 协程A和B交替打印内容</p>
 </blockquote>
-<pre><code class="go">func A() &#123;
+<pre><code class="language-go">func A() &#123;
     fmt.Print(&quot;1&quot;)
     fmt.Print(&quot;2&quot;)
     fmt.Print(&quot;3&quot;)
@@ -1950,57 +1950,57 @@ func B() &#123;
 &#125;
 </code></pre>
 <p>具体过程:</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;time&quot;
+	&quot;fmt&quot;
+	&quot;time&quot;
 )
 
 func A(startA, startB chan struct&#123;&#125;) &#123;
-    a := []string&#123;&quot;1&quot;, &quot;2&quot;, &quot;3&quot;&#125;
-    index := 0
-    for range startA &#123;
-        if index &gt; 2 &#123;
-            return
-        &#125;
-        fmt.Println(a[index])
-        index++
-        startB &lt;- struct&#123;&#125;&#123;&#125;
-    &#125;
+	a := []string&#123;&quot;1&quot;, &quot;2&quot;, &quot;3&quot;&#125;
+	index := 0
+	for range startA &#123;
+		if index &gt; 2 &#123;
+			return
+		&#125;
+		fmt.Println(a[index])
+		index++
+		startB &lt;- struct&#123;&#125;&#123;&#125;
+	&#125;
 &#125;
 
 func B(startA, startB chan struct&#123;&#125;) &#123;
-    b := []string&#123;&quot;x&quot;, &quot;y&quot;, &quot;z&quot;&#125;
-    index := 0
-    for range startB &#123;
-        fmt.Println(b[index])
-        index++
-        startA &lt;- struct&#123;&#125;&#123;&#125;
-    &#125;
+	b := []string&#123;&quot;x&quot;, &quot;y&quot;, &quot;z&quot;&#125;
+	index := 0
+	for range startB &#123;
+		fmt.Println(b[index])
+		index++
+		startA &lt;- struct&#123;&#125;&#123;&#125;
+	&#125;
 &#125;
 
 func main() &#123;
-    startA, startB := make(chan struct&#123;&#125;), make(chan struct&#123;&#125;)
-    go A(startA, startB)
-    go B(startA, startB)
+	startA, startB := make(chan struct&#123;&#125;), make(chan struct&#123;&#125;)
+	go A(startA, startB)
+	go B(startA, startB)
 
-    startA &lt;- struct&#123;&#125;&#123;&#125;
-    time.Sleep(1 * time.Second)
+	startA &lt;- struct&#123;&#125;&#123;&#125;
+	time.Sleep(1 * time.Second)
 &#125;
 </code></pre>
 <h2 id="同步的噩梦"><a href="#同步的噩梦" class="headerlink" title="同步的噩梦"></a>同步的噩梦</h2><p>我们在一个协程里面 使用同步管道发送信息如下:</p>
-<pre><code class="go">func TestDeadLock(t *testing.T) &#123;
-    ch := make(chan string)
-    // send
-    &#123;
-        ch &lt;- &quot;hello&quot;
-    &#125;
+<pre><code class="language-go">func TestDeadLock(t *testing.T) &#123;
+	ch := make(chan string)
+	// send
+	&#123;
+		ch &lt;- &quot;hello&quot;
+	&#125;
 
-    // receive
-    &#123;
-        fmt.Println(&lt;-ch)
-    &#125;
+	// receive
+	&#123;
+		fmt.Println(&lt;-ch)
+	&#125;
 &#125;
 </code></pre>
 <p>当channel的某一端(sender&#x2F;receiver)期待另一端的(receiver&#x2F;sender)操作，另一端正好在期待本端的操作时，也就是说两端都因为对方而使得自己当前处于阻塞状态，这时将会出现死锁问题。</p>
@@ -2009,31 +2009,31 @@ func main() &#123;
 <ol>
 <li>将其中一方变成一个协程, 这样就是A-&gt;B, 就不是死循环了</li>
 </ol>
-<pre><code class="go">func TestDeadLockV1(t *testing.T) &#123;
-    ch := make(chan string)
-    // send
-    go func() &#123;
-        ch &lt;- &quot;hello&quot;
-    &#125;()
+<pre><code class="language-go">func TestDeadLockV1(t *testing.T) &#123;
+	ch := make(chan string)
+	// send
+	go func() &#123;
+		ch &lt;- &quot;hello&quot;
+	&#125;()
 
-    // receive
-    &#123;
-        fmt.Println(&lt;-ch)
-    &#125;
+	// receive
+	&#123;
+		fmt.Println(&lt;-ch)
+	&#125;
 &#125;
 </code></pre>
 <p>当然还有一种方式 使用带缓冲管道</p>
-<pre><code class="go">func TestDeadLockV2(t *testing.T) &#123;
-    ch := make(chan string, 1)
-    // send
-    &#123;
-        ch &lt;- &quot;hello&quot;
-    &#125;
+<pre><code class="language-go">func TestDeadLockV2(t *testing.T) &#123;
+	ch := make(chan string, 1)
+	// send
+	&#123;
+		ch &lt;- &quot;hello&quot;
+	&#125;
 
-    // receive
-    &#123;
-        fmt.Println(&lt;-ch)
-    &#125;
+	// receive
+	&#123;
+		fmt.Println(&lt;-ch)
+	&#125;
 &#125;
 </code></pre>
 <h2 id="带缓冲管道-buffered-channel"><a href="#带缓冲管道-buffered-channel" class="headerlink" title="带缓冲管道(buffered channel )"></a>带缓冲管道(buffered channel )</h2><p><img src="/../../imgs/go-channel/buffered.jpeg"></p>
@@ -2043,7 +2043,7 @@ func main() &#123;
 <li>length：表示buffered channel当前已缓冲多少个数据</li>
 </ul>
 <p>创建buffered channel的方式为make(chan TYPE,CAP), 比如我们创建一个容量为5的 int chan:</p>
-<pre><code class="go">ch := make(chan int, 5)
+<pre><code class="language-go">ch := make(chan int, 5)
 len(ch)  // 通过len 获取channel当前已缓冲的数据个数
 </code></pre>
 <p>sender端可以向channel中send多个数据(只要channel容量未满)，容量满之前不会阻塞<br>receiver端按照队列的方式(FIFO,先进先出)从buffered channel中按序receive其中数据</p>
@@ -2053,61 +2053,61 @@ len(ch)  // 通过len 获取channel当前已缓冲的数据个数
 <li>满了之后是 阻塞的, 是同步模式</li>
 </ul>
 <p>对比我们之前的例子, 现在就不是打电话了， 现在就是短信, 或者留言:</p>
-<pre><code class="go">// 沿用之前同步模式的例子, 现在我们把信道改成 带缓冲的
+<pre><code class="language-go">// 沿用之前同步模式的例子, 现在我们把信道改成 带缓冲的
 func BufferedChan() &#123;
-    ch := make(chan string, 5)
+	ch := make(chan string, 5)
 
-    down := make(chan struct&#123;&#125;)
-    go sender(ch)       // sender goroutine
-    go recver(ch, down) // recver goroutine
+	down := make(chan struct&#123;&#125;)
+	go sender(ch)       // sender goroutine
+	go recver(ch, down) // recver goroutine
 
-    &lt;-down
+	&lt;-down
 &#125;
 </code></pre>
 <p>猜猜recver能获取到消息吗?</p>
 <p>由于是异步的, 我们需要等到recver把消息处理完成后 才能关闭，如果我们提前关闭，而recver还没有取出消息，就会导致消息丢失，因此我们需要怎么办?</p>
 <p>我们处理完成后给sender发送一条消息，告诉他 已经处理完成:</p>
-<pre><code class="go">package basic
+<pre><code class="language-go">package basic
 
 import &quot;fmt&quot;
 
 func senderV2(ch chan string, down chan struct&#123;&#125;) &#123;
-    ch &lt;- &quot;hello&quot;
-    ch &lt;- &quot;this&quot;
-    ch &lt;- &quot;is&quot;
-    ch &lt;- &quot;alice&quot;
-    // 发送通话结束
-    ch &lt;- &quot;EOF&quot;
+	ch &lt;- &quot;hello&quot;
+	ch &lt;- &quot;this&quot;
+	ch &lt;- &quot;is&quot;
+	ch &lt;- &quot;alice&quot;
+	// 发送通话结束
+	ch &lt;- &quot;EOF&quot;
 
-    // 同步模式等待recver 处理完成
-    &lt;-down
-    // 处理完成后关闭channel
-    close(ch)
+	// 同步模式等待recver 处理完成
+	&lt;-down
+	// 处理完成后关闭channel
+	close(ch)
 &#125;
 
 // recver 循环读取chan里面的数据，直到channel关闭
 func recverV2(ch chan string, down chan struct&#123;&#125;) &#123;
-    defer func() &#123;
-        down &lt;- struct&#123;&#125;&#123;&#125;
-    &#125;()
+	defer func() &#123;
+		down &lt;- struct&#123;&#125;&#123;&#125;
+	&#125;()
 
-    for v := range ch &#123;
-        // 处理通话结束
-        if v == &quot;EOF&quot; &#123;
-            return
-        &#125;
-        fmt.Println(v)
-    &#125;
+	for v := range ch &#123;
+		// 处理通话结束
+		if v == &quot;EOF&quot; &#123;
+			return
+		&#125;
+		fmt.Println(v)
+	&#125;
 &#125;
 
 func BufferedChan() &#123;
-    ch := make(chan string, 5)
+	ch := make(chan string, 5)
 
-    down := make(chan struct&#123;&#125;)
-    go senderV2(ch, down) // sender goroutine
-    go recverV2(ch, down) // recver goroutine
+	down := make(chan struct&#123;&#125;)
+	go senderV2(ch, down) // sender goroutine
+	go recverV2(ch, down) // recver goroutine
 
-    &lt;-down
+	&lt;-down
 &#125;
 </code></pre>
 <blockquote>
@@ -2122,26 +2122,26 @@ func BufferedChan() &#123;
 <li>队列容量为10, 也就是最多只允许10个任务进行排队</li>
 <li>任务的执行方式很简单：随机睡眠0-1秒钟，并将任务标记为完成。</li>
 </ul>
-<pre><code class="go">package chnanel
+<pre><code class="language-go">package chnanel
 
 import (
-    &quot;fmt&quot;
-    &quot;math/rand&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+	&quot;fmt&quot;
+	&quot;math/rand&quot;
+	&quot;sync&quot;
+	&quot;time&quot;
 )
 
 type Task struct &#123;
-    ID         int
-    JobID      int
-    Status     string
-    CreateTime time.Time
+	ID         int
+	JobID      int
+	Status     string
+	CreateTime time.Time
 &#125;
 
 func (t *Task) Run() &#123;
-    sleep := rand.Intn(1000)
-    time.Sleep(time.Duration(sleep) * time.Millisecond)
-    t.Status = &quot;Completed&quot;
+	sleep := rand.Intn(1000)
+	time.Sleep(time.Duration(sleep) * time.Millisecond)
+	t.Status = &quot;Completed&quot;
 &#125;
 
 var wg sync.WaitGroup
@@ -2150,39 +2150,39 @@ var wg sync.WaitGroup
 const workerNum = 3
 
 func RunTaskWithPool() &#123;
-    wg.Add(workerNum)
+	wg.Add(workerNum)
 
-    // 创建容量为10的buffered channel
-    taskQueue := make(chan *Task, 10)
+	// 创建容量为10的buffered channel
+	taskQueue := make(chan *Task, 10)
 
-    // 激活goroutine，执行任务
-    for workID := 0; workID &lt;= workerNum; workID++ &#123;
-        go worker(taskQueue, workID)
-    &#125;
+	// 激活goroutine，执行任务
+	for workID := 0; workID &lt;= workerNum; workID++ &#123;
+		go worker(taskQueue, workID)
+	&#125;
 
-    // 将待执行任务放进buffered channel，共15个任务
-    for i := 1; i &lt;= 15; i++ &#123;
-        taskQueue &lt;- &amp;Task&#123;
-            ID:         i,
-            JobID:      100 + i,
-            CreateTime: time.Now(),
-        &#125;
-    &#125;
+	// 将待执行任务放进buffered channel，共15个任务
+	for i := 1; i &lt;= 15; i++ &#123;
+		taskQueue &lt;- &amp;Task&#123;
+			ID:         i,
+			JobID:      100 + i,
+			CreateTime: time.Now(),
+		&#125;
+	&#125;
 
-    wg.Wait()
+	wg.Wait()
 
-    //记得关闭channel
-    close(taskQueue)
+	//记得关闭channel
+	close(taskQueue)
 &#125;
 
 // 从buffered channel中读取任务，并执行任务
 func worker(in chan *Task, workID int) &#123;
-    defer wg.Done()
-    for v := range in &#123;
-        fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
-        v.Run()
-        fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
-    &#125;
+	defer wg.Done()
+	for v := range in &#123;
+		fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+		v.Run()
+		fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+	&#125;
 &#125;
 </code></pre>
 <h2 id="channel的方向"><a href="#channel的方向" class="headerlink" title="channel的方向"></a>channel的方向</h2><p>准确来说，channel是有方向的(数据流向), 如果我们错误的使用了, 比如本来是要从channel中读取数据的，但是我们去错误的进行了写操作，这很容易造成死锁.</p>
@@ -2192,25 +2192,25 @@ func worker(in chan *Task, workID int) &#123;
 <li>out chan&lt;- int：表示channel out通道只用于发送数据</li>
 </ul>
 <p>我们优化下我们之前的worker, 因为之前的worker, 如果是可以执行写的</p>
-<pre><code class="go">func produceTask(out chan&lt;- *Task) &#123;
-    // 将待执行任务放进buffered channel，共15个任务
-    for i := 1; i &lt;= 15; i++ &#123;
-        out &lt;- &amp;Task&#123;
-            ID:         i,
-            JobID:      100 + i,
-            CreateTime: time.Now(),
-        &#125;
-    &#125;
+<pre><code class="language-go">func produceTask(out chan&lt;- *Task) &#123;
+	// 将待执行任务放进buffered channel，共15个任务
+	for i := 1; i &lt;= 15; i++ &#123;
+		out &lt;- &amp;Task&#123;
+			ID:         i,
+			JobID:      100 + i,
+			CreateTime: time.Now(),
+		&#125;
+	&#125;
 &#125;
 
 // 从buffered channel中读取任务，并执行任务
 func worker(in &lt;-chan *Task, workID int) &#123;
-    defer wg.Done()
-    for v := range in &#123;
-        fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
-        v.Run()
-        fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
-    &#125;
+	defer wg.Done()
+	for v := range in &#123;
+		fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+		v.Run()
+		fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+	&#125;
 &#125;
 </code></pre>
 <h2 id="思考？-如何参考最新版的调度器实现一个新版本"><a href="#思考？-如何参考最新版的调度器实现一个新版本" class="headerlink" title="思考？ 如何参考最新版的调度器实现一个新版本"></a>思考？ 如何参考最新版的调度器实现一个新版本</h2><p><img src="/../../imgs/go-channel/go-gpm.jpg"></p>

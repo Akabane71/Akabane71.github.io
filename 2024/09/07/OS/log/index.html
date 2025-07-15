@@ -1787,7 +1787,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="日志等级顺序总结："><a href="#日志等级顺序总结：" class="headerlink" title="日志等级顺序总结："></a>日志等级顺序总结：</h3><pre><code class="bash">TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL &lt; PANIC
+<h3 id="日志等级顺序总结："><a href="#日志等级顺序总结：" class="headerlink" title="日志等级顺序总结："></a>日志等级顺序总结：</h3><pre><code class="language-bash">TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL &lt; PANIC
 </code></pre>
 <p>通常情况下，日志系统会根据设置的日志等级过滤日志输出，只有大于或等于设定等级的日志会被输出。比如，如果日志等级设置为 <code>WARN</code>，则 <code>TRACE</code>、<code>DEBUG</code>、<code>INFO</code> 的日志不会被输出，但 <code>WARN</code>、<code>ERROR</code> 和 <code>FATAL</code> 级别的日志会被记录。</p>
 

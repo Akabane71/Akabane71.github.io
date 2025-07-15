@@ -1765,7 +1765,7 @@
 <li><p><strong>特点</strong>：简洁易读，常用于简单的配置管理。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="ini">[Database]
+<pre><code class="language-ini">[Database]
 user=root
 password=1234
 host=localhost
@@ -1783,7 +1783,7 @@ port=3306
 <li><p><strong>特点</strong>：结构化且可读性强，适合配置层次较深的复杂系统。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="yaml">database:
+<pre><code class="language-yaml">database:
   user: root
   password: 1234
   host: localhost
@@ -1801,7 +1801,7 @@ port=3306
 <li><p><strong>特点</strong>：人类可读，同时便于机器解析，结构化强，广泛用于配置、数据传输等场景。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="json">&#123;
+<pre><code class="language-json">&#123;
   &quot;database&quot;: &#123;
     &quot;user&quot;: &quot;root&quot;,
     &quot;password&quot;: &quot;1234&quot;,
@@ -1822,7 +1822,7 @@ port=3306
 <li><p><strong>特点</strong>：可扩展性强，结构化数据较复杂，但可读性比 YAML 和 JSON 稍差。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="xml">&lt;database&gt;
+<pre><code class="language-xml">&lt;database&gt;
   &lt;user&gt;root&lt;/user&gt;
   &lt;password&gt;1234&lt;/password&gt;
   &lt;host&gt;localhost&lt;/host&gt;
@@ -1841,7 +1841,7 @@ port=3306
 <li><p><strong>特点</strong>：可读性强，适合人类手动编辑，支持时间、数组等数据类型。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="toml">[database]
+<pre><code class="language-toml">[database]
 user = &quot;root&quot;
 password = &quot;1234&quot;
 host = &quot;localhost&quot;
@@ -1859,7 +1859,7 @@ port = 3306
 <li><p><strong>特点</strong>：格式简单，键值对分隔符为等号 <code>=</code>，井号 <code>#</code> 表示注释。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="properties">database.user=root
+<pre><code class="language-properties">database.user=root
 database.password=1234
 database.host=localhost
 database.port=3306
@@ -1876,7 +1876,7 @@ database.port=3306
 <li><p><strong>特点</strong>：简单明了，常用于存储环境变量。</p>
 </li>
 <li><p><strong>示例</strong>：</p>
-<pre><code class="env">DATABASE_USER=root
+<pre><code class="language-env">DATABASE_USER=root
 DATABASE_PASSWORD=1234
 DATABASE_HOST=localhost
 DATABASE_PORT=3306
@@ -1889,7 +1889,7 @@ DATABASE_PORT=3306
 <li><strong>文件扩展名</strong>：无固定扩展名，通常以 YAML 格式存储。</li>
 <li><strong>特点</strong>：Kubernetes 的 <code>ConfigMap</code> 和 <code>Secret</code> 是用于存储配置信息的资源类型，<code>ConfigMap</code> 用于存储非机密数据，<code>Secret</code> 用于存储敏感信息。</li>
 <li><strong>使用场景</strong>：Kubernetes 集群中管理应用程序的配置和机密数据。</li>
-<li><strong>示例</strong>：<pre><code class="yaml">apiVersion: v1
+<li><strong>示例</strong>：<pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-config

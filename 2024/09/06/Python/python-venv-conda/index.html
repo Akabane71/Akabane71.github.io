@@ -1809,37 +1809,37 @@
 <h4 id="4-简单易用"><a href="#4-简单易用" class="headerlink" title="4. 简单易用"></a>4. <strong>简单易用</strong></h4><p><code>venv</code> 使用起来非常简单，几条命令就能完成虚拟环境的创建和管理。它特别适合小型项目或不依赖复杂包管理的场景。</p>
 <h4 id="使用-venv-创建虚拟环境的基本步骤："><a href="#使用-venv-创建虚拟环境的基本步骤：" class="headerlink" title="使用 venv 创建虚拟环境的基本步骤："></a>使用 <code>venv</code> 创建虚拟环境的基本步骤：</h4><ol>
 <li><p><strong>创建虚拟环境</strong>：</p>
-<pre><code class="bash">python -m venv myenv
+<pre><code class="language-bash">python -m venv myenv
 </code></pre>
 <p>这将会在当前目录下创建一个名为 <code>myenv</code> 的虚拟环境文件夹，里面包含独立的 Python 解释器和 <code>pip</code>。</p>
 </li>
 <li><p><strong>激活虚拟环境</strong>：</p>
 <ul>
 <li><p>在 Windows 上：</p>
-<pre><code class="bash">myenv\Scripts\activate
+<pre><code class="language-bash">myenv\Scripts\activate
 </code></pre>
 </li>
 <li><p>在 macOS 和 Linux 上：</p>
-<pre><code class="bash">source myenv/bin/activate
+<pre><code class="language-bash">source myenv/bin/activate
 </code></pre>
 </li>
 </ul>
 <p>激活后，命令行提示符通常会显示虚拟环境的名称，表明你正在使用该环境。</p>
 </li>
 <li><p><strong>安装依赖包</strong>： 使用 <code>pip</code> 在虚拟环境中安装依赖包：</p>
-<pre><code class="bash">pip install numpy pandas
+<pre><code class="language-bash">pip install numpy pandas
 </code></pre>
 </li>
 <li><p><strong>查看已安装的包</strong>： 可以通过 <code>pip list</code> 查看当前虚拟环境中安装的所有包：</p>
-<pre><code class="bash">pip list
+<pre><code class="language-bash">pip list
 </code></pre>
 </li>
 <li><p><strong>退出虚拟环境</strong>： 当你不再需要使用虚拟环境时，可以通过以下命令退出虚拟环境：</p>
-<pre><code class="bash">deactivate
+<pre><code class="language-bash">deactivate
 </code></pre>
 </li>
 <li><p><strong>删除虚拟环境</strong>： 直接删除虚拟环境的文件夹即可：</p>
-<pre><code class="bash">rm -rf myenv
+<pre><code class="language-bash">rm -rf myenv
 </code></pre>
 </li>
 </ol>
@@ -1858,26 +1858,26 @@
 <h4 id="6-可移植性"><a href="#6-可移植性" class="headerlink" title="6. 可移植性"></a>6. <strong>可移植性</strong></h4><p><code>conda</code> 创建的虚拟环境可以打包并在不同机器上复现。通过导出环境配置文件（<code>conda env export</code>），可以在另一台机器上快速安装并构建相同的开发环境。</p>
 <h4 id="使用-conda-创建虚拟环境的基本步骤："><a href="#使用-conda-创建虚拟环境的基本步骤：" class="headerlink" title="使用 conda 创建虚拟环境的基本步骤："></a>使用 <code>conda</code> 创建虚拟环境的基本步骤：</h4><ol>
 <li><p><strong>创建虚拟环境</strong>：</p>
-<pre><code class="bash">conda create -n myenv python=3.8
+<pre><code class="language-bash">conda create -n myenv python=3.8
 </code></pre>
 <p>这里 <code>myenv</code> 是虚拟环境的名称，<code>python=3.8</code> 指定了使用 Python 3.8 版本。</p>
 </li>
 <li><p><strong>激活虚拟环境</strong>：</p>
-<pre><code class="bash">conda activate myenv
+<pre><code class="language-bash">conda activate myenv
 </code></pre>
 </li>
 <li><p><strong>安装包</strong>：</p>
-<pre><code class="bash">conda install numpy pandas
+<pre><code class="language-bash">conda install numpy pandas
 </code></pre>
 <p>可以通过 <code>conda install</code> 安装所需的库，也可以使用 <code>pip</code> 安装一些没有在 <code>conda</code> 仓库中的包。</p>
 </li>
 <li><p><strong>列出虚拟环境</strong>：</p>
-<pre><code class="bash">conda env list
+<pre><code class="language-bash">conda env list
 </code></pre>
 <p>可以查看所有创建的虚拟环境。</p>
 </li>
 <li><p><strong>删除虚拟环境</strong>：</p>
-<pre><code class="bash">conda remove --name myenv --all
+<pre><code class="language-bash">conda remove --name myenv --all
 </code></pre>
 <p>删除虚拟环境时，使用 <code>--all</code> 参数清除该环境中的所有内容。</p>
 </li>

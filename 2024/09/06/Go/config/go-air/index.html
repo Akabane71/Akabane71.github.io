@@ -1760,16 +1760,16 @@
       
         <h1 id="Air"><a href="#Air" class="headerlink" title="Air"></a>Air</h1><p><code>Air</code> 是一个用于 Go 项目的热加载工具，能够在代码变动时自动编译并重启程序，从而极大地提高开发效率。下面是 <code>Air</code> 的使用方法：</p>
 <h2 id="1-安装-Air"><a href="#1-安装-Air" class="headerlink" title="1. 安装 Air"></a>1. 安装 <code>Air</code></h2><p>你可以通过以下命令来安装 <code>Air</code>：</p>
-<pre><code class="bash">curl -fLo air https://raw.githubusercontent.com/cosmtrek/air/master/install.sh &amp;&amp; chmod +x air &amp;&amp; mv air /usr/local/bin/
+<pre><code class="language-bash">curl -fLo air https://raw.githubusercontent.com/cosmtrek/air/master/install.sh &amp;&amp; chmod +x air &amp;&amp; mv air /usr/local/bin/
 </code></pre>
 <p>或者使用 Go 来安装：</p>
-<pre><code class="bash">go install github.com/cosmtrek/air@latest
+<pre><code class="language-bash">go install github.com/cosmtrek/air@latest
 </code></pre>
 <h2 id="2-配置-Air"><a href="#2-配置-Air" class="headerlink" title="2. 配置 Air"></a>2. 配置 <code>Air</code></h2><p><code>Air</code> 会自动检测项目中的 <code>.air.toml</code> 配置文件。如果你的项目中没有该文件，你可以通过以下命令生成默认的配置文件：</p>
-<pre><code class="bash">air init
+<pre><code class="language-bash">air init
 </code></pre>
 <p>生成的 <code>.air.toml</code> 文件会包含如下配置项：</p>
-<pre><code class="toml">root = &quot;.&quot;
+<pre><code class="language-toml">root = &quot;.&quot;
 testdata_dir = &quot;testdata&quot;
 tmp_dir = &quot;tmp&quot;
 
@@ -1823,10 +1823,10 @@ tmp_dir = &quot;tmp&quot;
 </code></pre>
 <p>你可以根据需要修改 <code>.air.toml</code> 文件。例如，你可以指定需要监控的文件夹、忽略的文件夹、构建参数等。</p>
 <h2 id="3-运行-Air"><a href="#3-运行-Air" class="headerlink" title="3. 运行 Air"></a>3. 运行 <code>Air</code></h2><p>完成配置后，使用以下命令启动 <code>Air</code>：</p>
-<pre><code class="bash">air
+<pre><code class="language-bash">air
 </code></pre>
 <p>当代码文件发生变化时，<code>Air</code> 会自动编译并重启程序。你会在终端中看到类似如下的输出：</p>
-<pre><code class="bash">watching .
+<pre><code class="language-bash">watching .
 ! Main program running...
 </code></pre>
 <h2 id="4-实时查看文件变化"><a href="#4-实时查看文件变化" class="headerlink" title="4. 实时查看文件变化"></a>4. 实时查看文件变化</h2><p><code>Air</code> 会持续监控项目文件夹的变化，并在发生变动时重新编译和运行项目，无需手动重启服务器或重新运行命令。</p>

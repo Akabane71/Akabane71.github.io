@@ -1767,39 +1767,39 @@
 </ul>
 <h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p>MD5即Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。是计算机广泛使用的杂凑算法之一（又译摘要算法、哈希算法），主流编程语言普遍已有MD5实现。将数据（如汉字）运算为另一固定长度值，是杂凑算法的基础原理，MD5的前身有MD2、MD3和MD4</p>
 <p>由于MD5已经被破解了(中国山东大学的王小云教授破解)</p>
-<pre><code class="go">import (
-    &quot;crypto/md5&quot;
-    &quot;fmt&quot;
+<pre><code class="language-go">import (
+	&quot;crypto/md5&quot;
+	&quot;fmt&quot;
 )
 
 func main() &#123;
     // 最基础的使用方式: Sum 返回数据的MD5校验和
-    fmt.Printf(&quot;%x\n&quot;, md5.Sum([]byte(&quot;测试数据&quot;)))
+	fmt.Printf(&quot;%x\n&quot;, md5.Sum([]byte(&quot;测试数据&quot;)))
 &#125;
 </code></pre>
 <h2 id="SHA-1"><a href="#SHA-1" class="headerlink" title="SHA-1"></a>SHA-1</h2><p>在1993年，安全散列算法（SHA）由美国国家标准和技术协会(NIST)提出，并作为联邦信息处理标准（FIPS PUB 180）公布；1995年又发布了一个修订版FIPS PUB 180-1，通常称之为SHA-1。SHA-1是基于MD4算法的，并且它的设计在很大程度上是模仿MD4的。现在已成为公认的最安全的散列算法之一，并被广泛使用。</p>
 <p>SHA-1是一种数据加密算法，该算法的思想是接收一段明文，然后以一种不可逆的方式将它转换成一段（通常更小）密文，也可以简单的理解为取一串输入码（称为预映射或信息），并把它们转化为长度较短、位数固定的输出序列即散列值（也称为信息摘要或信息认证代码）的过程。<br>该算法输入报文的最大长度不超过264位，产生的输出是一个160位的报文摘要。输入是按512 位的分组进行处理的。SHA-1是不可逆的、防冲突，并具有良好的雪崩效应。</p>
 <p>sha1是SHA家族的五个算法之一(其它四个是SHA-224、SHA-256、SHA-384，和SHA-512)</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;crypto/sha1&quot;
-    &quot;fmt&quot;
-    &quot;io&quot;
+	&quot;crypto/sha1&quot;
+	&quot;fmt&quot;
+	&quot;io&quot;
 )
 // sha1散列算法
 func sha1Hash(msg string) (hashData []byte) &#123;
-    h := sha1.New()
-    io.WriteString(h, msg)
-    hashData = h.Sum(nil)
-    return
+	h := sha1.New()
+	io.WriteString(h, msg)
+	hashData = h.Sum(nil)
+	return
 &#125;
 
 func main() &#123;
-    msg := &quot;This is the message to hash!&quot;
-    // sha1
-    sha1Data := sha1Hash(msg)
-    fmt.Printf(&quot;SHA1: %x\n&quot;, sha1Data)
+	msg := &quot;This is the message to hash!&quot;
+	// sha1
+	sha1Data := sha1Hash(msg)
+	fmt.Printf(&quot;SHA1: %x\n&quot;, sha1Data)
 &#125;
 </code></pre>
 <p>SHA-1与MD5的比较:</p>
@@ -1810,28 +1810,28 @@ func main() &#123;
 <li>速度：在相同的硬件上，SHA-1的运行速度比MD5慢</li>
 </ul>
 <h2 id="HMac"><a href="#HMac" class="headerlink" title="HMac"></a>HMac</h2><p>Hmac算法也是一种哈希算法，它可以利用MD5或SHA1等哈希算法。不同的是，Hmac还需要一个密钥, 只要密钥发生了变化，那么同样的输入数据也会得到不同的签名，因此，可以把Hmac理解为用随机数“增强”的哈希算法</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;crypto/hmac&quot;
-    &quot;fmt&quot;
-    &quot;io&quot;
+	&quot;crypto/hmac&quot;
+	&quot;fmt&quot;
+	&quot;io&quot;
 )
 
 // 使用sha1的Hmac散列算法
 func hmacHash(msg string, key string) (hashData []byte) &#123;
-    k := []byte(key)
-    mac := hmac.New(sha1.New, k)
-    io.WriteString(mac, msg)
-    hashData = mac.Sum(nil)
-    return
+	k := []byte(key)
+	mac := hmac.New(sha1.New, k)
+	io.WriteString(mac, msg)
+	hashData = mac.Sum(nil)
+	return
 &#125;
 
 func main() &#123;
-    msg := &quot;This is the message to hash!&quot;
-    // hmac
-    hmacData := hmacHash(msg, &quot;The key string!&quot;)
-    fmt.Printf(&quot;HMAC: %x\n&quot;, hmacData)
+	msg := &quot;This is the message to hash!&quot;
+	// hmac
+	hmacData := hmacHash(msg, &quot;The key string!&quot;)
+	fmt.Printf(&quot;HMAC: %x\n&quot;, hmacData)
 &#125;
 </code></pre>
 <h2 id="你觉得上面这些算法好吗？"><a href="#你觉得上面这些算法好吗？" class="headerlink" title="你觉得上面这些算法好吗？"></a>你觉得上面这些算法好吗？</h2><p>如果你使用的是MD5算法来加密你的口令，你的口令长度只有小写字母再加上数字，假设口令的长度是6位，那么在目前一台比较新一点的PC机上，穷举所有的口令只需要40秒钟。几乎有90%以上的用户只用小写字母和数字来组织其口令。对于6位长度的密码只需要最多40秒就可以破解了，这可能会吓到你</p>
@@ -1848,7 +1848,7 @@ func main() &#123;
 <li>salt: 盐，一个128bits随机字符串，22字符</li>
 <li>myHash: 经过明文密码password和盐salt进行hash，个人的理解是默认10次下 ，循环加盐hash10次，得到myHash</li>
 </ul>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;fmt&quot;
@@ -1884,82 +1884,82 @@ func main() &#123;
 <li>修改密码时，禁止使用最近已经使用过的密码</li>
 <li>能校验密码</li>
 </ul>
-<pre><code class="go">// NewHashedPassword 生产hash后的密码对象
+<pre><code class="language-go">// NewHashedPassword 生产hash后的密码对象
 func NewHashedPassword(password string) (*Password, error) &#123;
-    bytes, err := bcrypt.GenerateFromPassword([]byte(password), 10)
-    if err != nil &#123;
-        return nil, err
-    &#125;
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 10)
+	if err != nil &#123;
+		return nil, err
+	&#125;
 
-    return &amp;Password&#123;
-        Password: string(bytes),
-        CreateAt: ftime.Now().Timestamp(),
-        UpdateAt: ftime.Now().Timestamp(),
-    &#125;, nil
+	return &amp;Password&#123;
+		Password: string(bytes),
+		CreateAt: ftime.Now().Timestamp(),
+		UpdateAt: ftime.Now().Timestamp(),
+	&#125;, nil
 &#125;
 
 type Password struct &#123;
-    // hash过后的密码
-    Password string
-    // 密码创建时间
-    CreateAt int64
-    // 密码更新时间
-    UpdateAt int64
-    // 密码需要被重置
-    NeedReset bool
-    // 需要重置的原因
-    ResetReason string
-    // 历史密码
-    History []string
-    // 是否过期
-    IsExpired bool
+	// hash过后的密码
+	Password string
+	// 密码创建时间
+	CreateAt int64
+	// 密码更新时间
+	UpdateAt int64
+	// 密码需要被重置
+	NeedReset bool
+	// 需要重置的原因
+	ResetReason string
+	// 历史密码
+	History []string
+	// 是否过期
+	IsExpired bool
 &#125;
 </code></pre>
-<pre><code class="go">// Update 更新密码
+<pre><code class="language-go">// Update 更新密码
 func (p *Password) Update(new *Password, maxHistory uint, needReset bool) &#123;
-    p.rotaryHistory(maxHistory)
-    p.Password = new.Password
-    p.NeedReset = needReset
-    p.UpdateAt = ftime.Now().Timestamp()
-    if !needReset &#123;
-        p.ResetReason = &quot;&quot;
-    &#125;
+	p.rotaryHistory(maxHistory)
+	p.Password = new.Password
+	p.NeedReset = needReset
+	p.UpdateAt = ftime.Now().Timestamp()
+	if !needReset &#123;
+		p.ResetReason = &quot;&quot;
+	&#125;
 &#125;
 
 // IsHistory 检测是否是历史密码
 func (p *Password) IsHistory(password string) bool &#123;
-    for _, pass := range p.History &#123;
-        err := bcrypt.CompareHashAndPassword([]byte(pass), []byte(password))
-        if err == nil &#123;
-            return true
-        &#125;
-    &#125;
+	for _, pass := range p.History &#123;
+		err := bcrypt.CompareHashAndPassword([]byte(pass), []byte(password))
+		if err == nil &#123;
+			return true
+		&#125;
+	&#125;
 
-    return false
+	return false
 &#125;
 
 // HistoryCount 保存了几个历史密码
 func (p *Password) HistoryCount() int &#123;
-    return len(p.History)
+	return len(p.History)
 &#125;
 
 func (p *Password) rotaryHistory(maxHistory uint) &#123;
-    if uint(p.HistoryCount()) &lt; maxHistory &#123;
-        p.History = append(p.History, p.Password)
-    &#125; else &#123;
-        remainHistry := p.History[:maxHistory]
-        p.History = []string&#123;p.Password&#125;
-        p.History = append(p.History, remainHistry...)
-    &#125;
+	if uint(p.HistoryCount()) &lt; maxHistory &#123;
+		p.History = append(p.History, p.Password)
+	&#125; else &#123;
+		remainHistry := p.History[:maxHistory]
+		p.History = []string&#123;p.Password&#125;
+		p.History = append(p.History, remainHistry...)
+	&#125;
 &#125;
 
 // CheckPassword 判断password 是否正确
 func (p *Password) CheckPassword(password string) error &#123;
-    err := bcrypt.CompareHashAndPassword([]byte(p.Password), []byte(password))
-    if err != nil &#123;
-        return exception.NewUnauthorized(&quot;user or password not connrect&quot;)
-    &#125;
-    return nil
+	err := bcrypt.CompareHashAndPassword([]byte(p.Password), []byte(password))
+	if err != nil &#123;
+		return exception.NewUnauthorized(&quot;user or password not connrect&quot;)
+	&#125;
+	return nil
 &#125;
 </code></pre>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>

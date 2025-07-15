@@ -1800,17 +1800,17 @@
 <p>启动后画面呈现这样</p>
 <p><img src="/../../../imgs/03-ros1-robot-move/image-20241118103322285.png" alt="image-20241118103322285"></p>
 <p>启动运动控制实例程序</p>
-<pre><code class="bash">rosrun wpr_simulation demo_vel_ctrl
+<pre><code class="language-bash">rosrun wpr_simulation demo_vel_ctrl
 </code></pre>
 <p>运行完之后，这个机器人会一直往前前进</p>
 <h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p><img src="/../../../imgs/03-ros1-robot-move/image-20241118103805628.png" alt="image-20241118103805628"></p>
 <ol>
 <li>创建在<code>catkin_ws/src</code>下创建 pkg</li>
 </ol>
-<pre><code class="bash">caktin_create_pkg vel_pkg roscpp rospy geometry_msgs 
+<pre><code class="language-bash">caktin_create_pkg vel_pkg roscpp rospy geometry_msgs 
 </code></pre>
 <h2 id="C-实现"><a href="#C-实现" class="headerlink" title="C++实现"></a>C++实现</h2><p><code>vel_node.cpp</code></p>
-<pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;geometry_msgs/Twist.h&gt;
 
 int main(int argc, char** argv) &#123;
@@ -1838,7 +1838,7 @@ int main(int argc, char** argv) &#123;
 &#125;
 </code></pre>
 <p>直接旋转起来了+往前前进</p>
-<h2 id="Python实现"><a href="#Python实现" class="headerlink" title="Python实现"></a>Python实现</h2><pre><code class="python">#!/usr/bin/env python3
+<h2 id="Python实现"><a href="#Python实现" class="headerlink" title="Python实现"></a>Python实现</h2><pre><code class="language-python">#!/usr/bin/env python3
 # coding=utf-8
 
 import rospy
@@ -1897,7 +1897,7 @@ if __name__ == &quot;__main__&quot;:
 </li>
 </ul>
 <h1 id="使用-RViz-观察传感器数据"><a href="#使用-RViz-观察传感器数据" class="headerlink" title="使用 RViz 观察传感器数据"></a>使用 <code>RViz</code> 观察传感器数据</h1><p>使用之前的</p>
-<pre><code class="bash">roslaunch wpr_simulation wpb_simple.launch
+<pre><code class="language-bash">roslaunch wpr_simulation wpb_simple.launch
 </code></pre>
 <p>打开 <code>RViz</code></p>
 <pre><code>rviz
@@ -1930,13 +1930,13 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 <h2 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++实现"></a>C++实现</h2><p><img src="/../../../imgs/03-ros1-robot-move/image-20241119093248330.png" alt="image-20241119093248330"></p>
 <p>创建 <code>lidar_ppkg</code> </p>
-<pre><code class="bash">catkin_create_pkg lidar_pkg rospy roscpp sensor_msgs
+<pre><code class="language-bash">catkin_create_pkg lidar_pkg rospy roscpp sensor_msgs
 </code></pre>
 <p>创建</p>
 <ul>
 <li><code>lidar_node.cpp</code></li>
 </ul>
-<pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;sensor_msgs/LaserScan.h&gt;
 
 
@@ -1985,7 +1985,7 @@ if __name__ == &quot;__main__&quot;:
 <h1 id="实现雷达运动避障"><a href="#实现雷达运动避障" class="headerlink" title="实现雷达运动避障"></a>实现雷达运动避障</h1><p><img src="/../../../imgs/03-ros1-robot-move/image-20241119110615947.png" alt="image-20241119110615947"></p>
 <h2 id="C-实现-2"><a href="#C-实现-2" class="headerlink" title="C++实现"></a>C++实现</h2><p><img src="/../../../imgs/03-ros1-robot-move/image-20241119110716410.png" alt="image-20241119110716410"></p>
 <p>前方避障</p>
-<pre><code class="bash">#include &lt;ros/ros.h&gt;
+<pre><code class="language-bash">#include &lt;ros/ros.h&gt;
 #include &lt;sensor_msgs/LaserScan.h&gt;
 #include &lt;geometry_msgs/Twist.h&gt;
 
@@ -2062,12 +2062,12 @@ int main(int argc,char *argv[])
 <h3 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++实现"></a>C++实现</h3><p>29节</p>
 <p><img src="/../../../imgs/03-ros1-robot-move/image-20241119113730752.png" alt="image-20241119113730752"></p>
 <p>创建 <code>imu_pkg</code> 节点</p>
-<pre><code class="bash">catkin_craete_pkg imu_pkg rospy roscpp sensor_msgs 
+<pre><code class="language-bash">catkin_craete_pkg imu_pkg rospy roscpp sensor_msgs 
 </code></pre>
 <ul>
 <li><code>imu_node.cpp</code></li>
 </ul>
-<pre><code class="c++">#include &lt;ros/ros.h&gt;
+<pre><code class="language-c++">#include &lt;ros/ros.h&gt;
 #include &lt;sensor_msgs/Imu.h&gt;
 #include &lt;tf/tf.h&gt;
 
@@ -2104,7 +2104,7 @@ int main(int argc, char *argv[])
 &#125;
 </code></pre>
 <p><code>CMakeLists.txt</code></p>
-<pre><code class="cmake">add_executable(imu_node src/imu_node.cpp)
+<pre><code class="language-cmake">add_executable(imu_node src/imu_node.cpp)
 add_dependencies(imu_node $&#123;$&#123;PROJECT_NAME&#125;_EXPORTED_TARGETS&#125; $&#123;catkin_EXPORTED_TARGETS&#125;)
 target_link_libraries(imu_node
   $&#123;catkin_LIBRARIES&#125;
@@ -2114,7 +2114,7 @@ target_link_libraries(imu_node
 <h3 id="Python实现-3"><a href="#Python实现-3" class="headerlink" title="Python实现"></a>Python实现</h3><ul>
 <li><code>imu_node.py</code></li>
 </ul>
-<pre><code class="python">#!/usr/bin/env python3
+<pre><code class="language-python">#!/usr/bin/env python3
 #coding=utf-8
 import rospy
 from sensor_msgs.msg import Imu
@@ -2152,7 +2152,7 @@ if __name__==&quot;__main__&quot;:
 <h2 id="IMU航向锁定"><a href="#IMU航向锁定" class="headerlink" title="IMU航向锁定"></a>IMU航向锁定</h2><p><img src="/../../../imgs/03-ros1-robot-move/image-20241119214130187.png" alt="image-20241119214130187"></p>
 <h3 id="C-实现-4"><a href="#C-实现-4" class="headerlink" title="C++实现"></a>C++实现</h3><p>让机器人 可以始终保持一个方向</p>
 <p><code>imu_node.cpp</code></p>
-<pre><code class="c++">#include &lt;ros/ros.h&gt;
+<pre><code class="language-c++">#include &lt;ros/ros.h&gt;
 #include &lt;sensor_msgs/Imu.h&gt;
 #include &lt;tf/tf.h&gt;
 #include &lt;geometry_msgs/Twist.h&gt;
@@ -2204,7 +2204,7 @@ int main(int argc, char *argv[])
 &#125;
 </code></pre>
 <h3 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h3><p><code>imu_node.py</code></p>
-<pre><code class="python">#!/usr/bin/env python3
+<pre><code class="language-python">#!/usr/bin/env python3
 #coding=utf-8
 import rospy
 from sensor_msgs.msg import Imu

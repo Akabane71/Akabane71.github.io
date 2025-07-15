@@ -1766,7 +1766,7 @@
 <h2 id="Python协程"><a href="#Python协程" class="headerlink" title="Python协程"></a>Python协程</h2><p>协程，又称微线程，纤程。英文名Coroutine。一句话说明什么是线程：协程是一种用户态的轻量级线程。</p>
 <p>协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈。因此：</p>
 <p>协程能保留上一次调用时的状态（即所有局部状态的一个特定组合），每次过程重入时，就相当于进入上一次调用的状态，换种说法：进入上一次离开时所处逻辑流的位置。</p>
-<h2 id="【1】yield与协程"><a href="#【1】yield与协程" class="headerlink" title="【1】yield与协程"></a>【1】yield与协程</h2><pre><code class="python">def foo():
+<h2 id="【1】yield与协程"><a href="#【1】yield与协程" class="headerlink" title="【1】yield与协程"></a>【1】yield与协程</h2><pre><code class="language-python">def foo():
     print(&quot;OK1&quot;)
     yield 100  # 切换: 保存/恢复的功能
     print(&quot;OK2&quot;)
@@ -1798,7 +1798,7 @@ print(ret2)
 <p>为了简化并更好地标识异步IO，从<a target="_blank" rel="noopener" href="http://www.zzvips.com/article/123934.html">Python</a> 3.5开始引入了新的语法<a target="_blank" rel="noopener" href="http://www.zzvips.com/article/98814.html">async</a>和<a target="_blank" rel="noopener" href="http://www.zzvips.com/article/120838.html">await</a>，可以让coroutine的代码更简洁易读。</p>
 <p>asyncio 被用作多个提供高性能 Python 异步框架的基础，包括网络和网站服务，数据库连接库，分布式任务队列等等。</p>
 <p>asyncio 往往是构建 IO 密集型和高层级 <strong>结构化</strong> 网络代码的最佳选择。</p>
-<pre><code class="python">import asyncio
+<pre><code class="language-python">import asyncio
 
 
 async def task(i):
@@ -1817,7 +1817,7 @@ loop.run_until_complete(asyncio.wait(tasks))
 loop.close()
 </code></pre>
 <p><code>task</code>: 任务,对<strong>协程对象</strong>的进一步封装,包含任务的各个状态;asyncio.Task是Future的一个子类，用于实现协作式多任务的库，且Task对象不能用户手动实例化，通过下面2个函数<code>loop.create_task() 或 asyncio.ensure_future()</code>创建。</p>
-<pre><code class="python">import asyncio, time
+<pre><code class="language-python">import asyncio, time
 
 
 async def work(i, n):  # 使用async关键字定义异步函数
@@ -1844,7 +1844,7 @@ for task in tasks:
 <h2 id="【3】3-8版本"><a href="#【3】3-8版本" class="headerlink" title="【3】3.8版本+"></a>【3】3.8版本+</h2><blockquote>
 <p><code>async.run()</code> 运行协程<br><code>async.create_task()</code>创建task<br><code>async.gather()</code>获取返回值</p>
 </blockquote>
-<pre><code class="python">import asyncio, time
+<pre><code class="language-python">import asyncio, time
 
 async def work(i, n):  # 使用async关键字定义异步函数
     print(&#39;任务&#123;&#125;等待: &#123;&#125;秒&#39;.format(i, n))
@@ -1873,7 +1873,7 @@ for task in tasks:
 <p>asyncio.create_task() 函数在 Python 3.7 中被加入。</p>
 </blockquote>
 <p><code>asyncio.gather</code>方法</p>
-<pre><code class="python"># 用gather()收集返回值
+<pre><code class="language-python"># 用gather()收集返回值
 
 import asyncio, time
 
@@ -1903,7 +1903,7 @@ print(&#39;运行时间: &#39;, time.time() - start_time)
 </code></pre>
 <h2 id="【4】aiohttp"><a href="#【4】aiohttp" class="headerlink" title="【4】aiohttp"></a>【4】aiohttp</h2><p>我们之前学习过爬虫最重要的模块requests，但它是阻塞式的发起请求，每次请求发起后需阻塞等待其返回响应，不能做其他的事情。本文要介绍的aiohttp可以理解成是和requests对应Python异步网络请求库，它是基于 asyncio 的异步模块，可用于实现异步爬虫，有点就是更快于 requests 的同步爬虫。安装方式，pip install aiohttp。</p>
 <p>aiohttp是一个为Python提供异步HTTP 客户端&#x2F;服务端编程，基于<code>asyncio</code>的异步库。asyncio可以实现单线程并发IO操作，其实现了TCP、UDP、SSL等协议，aiohttp就是基于asyncio实现的http框架。</p>
-<pre><code class="python">import aiohttp
+<pre><code class="language-python">import aiohttp
 import asyncio
 
 async def main():
@@ -1913,7 +1913,7 @@ async def main():
 
 asyncio.run(main())
 </code></pre>
-<h2 id="【5】应用案例（异步爬虫）"><a href="#【5】应用案例（异步爬虫）" class="headerlink" title="【5】应用案例（异步爬虫）"></a>【5】应用案例（异步爬虫）</h2><h3 id="（1）异步爬取斗图网"><a href="#（1）异步爬取斗图网" class="headerlink" title="（1）异步爬取斗图网"></a>（1）异步爬取斗图网</h3><pre><code class="python">import aiohttp
+<h2 id="【5】应用案例（异步爬虫）"><a href="#【5】应用案例（异步爬虫）" class="headerlink" title="【5】应用案例（异步爬虫）"></a>【5】应用案例（异步爬虫）</h2><h3 id="（1）异步爬取斗图网"><a href="#（1）异步爬取斗图网" class="headerlink" title="（1）异步爬取斗图网"></a>（1）异步爬取斗图网</h3><pre><code class="language-python">import aiohttp
 import asyncio
 import os
 from lxml import etree
@@ -1957,7 +1957,7 @@ if __name__ == &#39;__main__&#39;:
 </code></pre>
 <p><img src="/../../imgs/python-asyncio/image-20230314115717115-8766239.png" alt="image-20230314115717115"></p>
 <h3 id="（2）异步爬取m3u8视频"><a href="#（2）异步爬取m3u8视频" class="headerlink" title="（2）异步爬取m3u8视频"></a>（2）异步爬取m3u8视频</h3><p><strong>m3u8串行爬取版本</strong></p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 import re
 import os
 
@@ -2000,7 +2000,7 @@ with open(name, &quot;ab&quot;) as f:
         print(f&quot;&#123;ts&#125;下载完成！&quot;)
 </code></pre>
 <p><strong>m3u8并发爬取版本</strong></p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 import re
 import os
 import aiohttp

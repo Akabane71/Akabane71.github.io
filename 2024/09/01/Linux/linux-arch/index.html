@@ -1790,7 +1790,7 @@
 <li>安装系统</li>
 </ol>
 <h2 id="前期准备工作"><a href="#前期准备工作" class="headerlink" title="前期准备工作"></a>前期准备工作</h2><p>使用<code>ping</code>检擦网络连接</p>
-<pre><code class="bash">ping archlinux.org
+<pre><code class="language-bash">ping archlinux.org
 </code></pre>
 <h2 id="分区-以SATA为例"><a href="#分区-以SATA为例" class="headerlink" title="分区[以SATA为例]"></a>分区[以SATA为例]</h2><blockquote>
 <p>工具选择</p>
@@ -1801,9 +1801,9 @@
 <li>新手推荐</li>
 </ul>
 </blockquote>
-<pre><code class="zsh">lsblk # 显示当前分区情况
+<pre><code class="language-zsh">lsblk # 显示当前分区情况
 </code></pre>
-<pre><code class="zsh">cfidsk /dev/sda # 对安装 archlinux 的磁盘分区
+<pre><code class="language-zsh">cfidsk /dev/sda # 对安装 archlinux 的磁盘分区
 </code></pre>
 <h3 id="分区模式"><a href="#分区模式" class="headerlink" title="分区模式"></a>分区模式</h3><ul>
 <li><p>UEFI + GPT模式</p>
@@ -1851,7 +1851,7 @@
 <p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%88%86%E5%8C%BA">分区 - Arch Linux 中文维基 (archlinuxcn.org)</a></p>
 </blockquote>
 <h3 id="Btrfs文件系统"><a href="#Btrfs文件系统" class="headerlink" title="Btrfs文件系统"></a>Btrfs文件系统</h3><h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><h2 id="下载必要工具"><a href="#下载必要工具" class="headerlink" title="下载必要工具"></a>下载必要工具</h2><h2 id="完成安装"><a href="#完成安装" class="headerlink" title="完成安装"></a>完成安装</h2><p>查看系统信息</p>
-<pre><code class="bash">fastefetch 
+<pre><code class="language-bash">fastefetch 
 </code></pre>
 <p><img src="/../../imgs/linux-arch/image-20240904203806791.png" alt="image-20240904203806791"></p>
 <h1 id="安装桌面环境"><a href="#安装桌面环境" class="headerlink" title="安装桌面环境"></a>安装桌面环境</h1><blockquote>
@@ -1955,44 +1955,44 @@
 </ol>
 <h3 id="2-Pacman-的常用命令："><a href="#2-Pacman-的常用命令：" class="headerlink" title="2. Pacman 的常用命令："></a>2. Pacman 的常用命令：</h3><ol>
 <li><p><strong>同步软件仓库数据库并更新系统</strong>：</p>
-<pre><code class="bash">sudo pacman -Syu
+<pre><code class="language-bash">sudo pacman -Syu
 </code></pre>
 </li>
 </ol>
 <p>该命令会同步仓库数据库，并更新所有已安装的软件包到最新版本。</p>
 <ol start="2">
 <li><p><strong>安装软件包</strong>：</p>
-<pre><code class="bash">sudo pacman -S 软件包名
+<pre><code class="language-bash">sudo pacman -S 软件包名
 </code></pre>
 <p>这会从 Arch 官方仓库中安装指定的软件包。</p>
 </li>
 <li><p><strong>卸载软件包</strong>：</p>
-<pre><code class="bash">sudo pacman -R 软件包名
+<pre><code class="language-bash">sudo pacman -R 软件包名
 </code></pre>
 <p>这会卸载指定的软件包，但不会删除它的依赖项。</p>
 </li>
 <li><p><strong>卸载软件包及其依赖项</strong>：</p>
-<pre><code class="bash">sudo pacman -Rs 软件包名
+<pre><code class="language-bash">sudo pacman -Rs 软件包名
 </code></pre>
 <p>卸载软件包及其不再被其他程序使用的依赖项。</p>
 </li>
 <li><p><strong>搜索软件包</strong>：</p>
-<pre><code class="bash">pacman -Ss 关键词
+<pre><code class="language-bash">pacman -Ss 关键词
 </code></pre>
 <p>该命令会在软件仓库中搜索符合关键词的软件包。</p>
 </li>
 <li><p><strong>查看已安装的软件包</strong>：</p>
-<pre><code class="bash">pacman -Q
+<pre><code class="language-bash">pacman -Q
 </code></pre>
 <p>列出系统中所有已安装的软件包。</p>
 </li>
 <li><p><strong>显示特定软件包的详细信息</strong>：</p>
-<pre><code class="bash">pacman -Qi 软件包名
+<pre><code class="language-bash">pacman -Qi 软件包名
 </code></pre>
 <p>查看某个已安装的软件包的详细信息，包括版本号、安装日期、依赖关系等。</p>
 </li>
 <li><p><strong>清理未使用的软件包缓存</strong>：</p>
-<pre><code class="bash">sudo pacman -Sc
+<pre><code class="language-bash">sudo pacman -Sc
 </code></pre>
 <p>清理本地存储的旧版或不再需要的软件包缓存，以节省硬盘空间。</p>
 </li>

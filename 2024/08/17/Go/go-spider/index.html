@@ -1761,96 +1761,96 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>豆瓣爬虫-try</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;github.com/antchfx/htmlquery&quot;
-    &quot;io/ioutil&quot;
-    &quot;net/http&quot;
-    &quot;strings&quot;
+	&quot;fmt&quot;
+	&quot;github.com/antchfx/htmlquery&quot;
+	&quot;io/ioutil&quot;
+	&quot;net/http&quot;
+	&quot;strings&quot;
 )
 
 /*
-    豆瓣 top  爬取
-    目标:
-        1. 获取表单名称，评价分数，评论人数
+	豆瓣 top  爬取
+	目标:
+		1. 获取表单名称，评价分数，评论人数
 
-    总结:
-        1. go 无官方的 xpath库
-        2. go 的http请求很原始
-        3. github.com/antchfx/htmlquery 能用,但没python的 lxml 库爽
+	总结:
+		1. go 无官方的 xpath库
+		2. go 的http请求很原始
+		3. github.com/antchfx/htmlquery 能用,但没python的 lxml 库爽
 */
 
 func get_html_string() string &#123;
-    url := &quot;https://movie.douban.com/top250&quot;
+	url := &quot;https://movie.douban.com/top250&quot;
 
-    // 创建一个新的 http 请求, 方式为 GET
-    req, err := http.NewRequest(http.MethodGet, url, nil)
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-    // 设置 自定义 header
-    req.Header.Set(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;)
+	// 创建一个新的 http 请求, 方式为 GET
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil &#123;
+		fmt.Println(err)
+	&#125;
+	// 设置 自定义 header
+	req.Header.Set(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36&quot;)
 
-    // 发起请求
-    client := &amp;http.Client&#123;&#125;
-    resp, err := client.Do(req)
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-    defer resp.Body.Close()
+	// 发起请求
+	client := &amp;http.Client&#123;&#125;
+	resp, err := client.Do(req)
+	if err != nil &#123;
+		fmt.Println(err)
+	&#125;
+	defer resp.Body.Close()
 
-    // 检验状态响应码
-    if resp.StatusCode != http.StatusOK &#123;
-        fmt.Printf(&quot;status code error: %d %s&quot;, resp.StatusCode, resp.Status)
-    &#125;
+	// 检验状态响应码
+	if resp.StatusCode != http.StatusOK &#123;
+		fmt.Printf(&quot;status code error: %d %s&quot;, resp.StatusCode, resp.Status)
+	&#125;
 
-    // 读取响应内容
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
-    // 打印响应内容
-    //fmt.Printf(&quot;%s&quot;, string(body))
-    return string(body)
+	// 读取响应内容
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil &#123;
+		fmt.Println(err)
+	&#125;
+	// 打印响应内容
+	//fmt.Printf(&quot;%s&quot;, string(body))
+	return string(body)
 &#125;
 
 type my_data struct &#123;
-    name   string
-    people string
-    url    string
+	name   string
+	people string
+	url    string
 &#125;
 
 func get_items_xpath(html string) []my_data &#123;
-    doc, err := htmlquery.Parse(strings.NewReader(html))
-    if err != nil &#123;
-        fmt.Println(err)
-    &#125;
+	doc, err := htmlquery.Parse(strings.NewReader(html))
+	if err != nil &#123;
+		fmt.Println(err)
+	&#125;
 
-    // 使用xpath查询元素
-    lis := htmlquery.Find(doc, &quot;//*[@id=&#39;content&#39;]/div/div[1]/ol/li&quot;)
+	// 使用xpath查询元素
+	lis := htmlquery.Find(doc, &quot;//*[@id=&#39;content&#39;]/div/div[1]/ol/li&quot;)
 
-    fmt.Println(len(lis), lis)
-    var data []my_data
-    for _, li := range lis &#123;
-        nameNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/span[1]/text()`)
-        peopleNode := htmlquery.FindOne(li, `./div/div[2]/div[2]/div/span[4]/text()`)
-        urlNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/@href`)
-        name := htmlquery.InnerText(nameNode)
-        people := htmlquery.InnerText(peopleNode)
-        url := htmlquery.InnerText(urlNode)
+	fmt.Println(len(lis), lis)
+	var data []my_data
+	for _, li := range lis &#123;
+		nameNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/span[1]/text()`)
+		peopleNode := htmlquery.FindOne(li, `./div/div[2]/div[2]/div/span[4]/text()`)
+		urlNode := htmlquery.FindOne(li, `./div/div[2]/div[1]/a/@href`)
+		name := htmlquery.InnerText(nameNode)
+		people := htmlquery.InnerText(peopleNode)
+		url := htmlquery.InnerText(urlNode)
 
-        data = append(data, my_data&#123;name, people, url&#125;)
-    &#125;
+		data = append(data, my_data&#123;name, people, url&#125;)
+	&#125;
 
-    return data
+	return data
 &#125;
 
 func main() &#123;
-    html_string := get_html_string()
-    data := get_items_xpath(html_string)
-    fmt.Println(data)
+	html_string := get_html_string()
+	data := get_items_xpath(html_string)
+	fmt.Println(data)
 &#125;
 </code></pre>
 

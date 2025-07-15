@@ -1767,9 +1767,9 @@
 <li><strong>系统与应用程序的通信</strong>：应用程序通过环境变量可以获取系统的一些全局信息，如操作系统类型、系统语言、临时目录位置等，帮助程序根据不同环境做出适应性调整。</li>
 </ol>
 <h2 id="常见使用环境变量的例子："><a href="#常见使用环境变量的例子：" class="headerlink" title="常见使用环境变量的例子："></a>常见使用环境变量的例子：</h2><ul>
-<li>**<code>PATH</code>**：最常见的环境变量之一，存储了系统可执行文件的搜索路径。配置<code>PATH</code>可以让你在命令行直接运行可执行文件而不需要输入其完整路径。</li>
-<li>**<code>JAVA_HOME</code>**：指定Java安装目录的环境变量，便于各种Java开发工具找到Java安装路径。</li>
-<li>**<code>PYTHONPATH</code>**：Python的搜索路径，通过配置它可以让Python知道在哪里寻找模块或包。</li>
+<li><strong><code>PATH</code></strong>：最常见的环境变量之一，存储了系统可执行文件的搜索路径。配置<code>PATH</code>可以让你在命令行直接运行可执行文件而不需要输入其完整路径。</li>
+<li><strong><code>JAVA_HOME</code></strong>：指定Java安装目录的环境变量，便于各种Java开发工具找到Java安装路径。</li>
+<li><strong><code>PYTHONPATH</code></strong>：Python的搜索路径，通过配置它可以让Python知道在哪里寻找模块或包。</li>
 </ul>
 <p>总结来说，配置环境变量可以帮助我们简化系统管理和软件开发，减少重复配置的工作，并提高系统的灵活性和可维护性。</p>
 <h1 id="PATH"><a href="#PATH" class="headerlink" title="PATH"></a>PATH</h1><p><code>PATH</code> 是操作系统中的一个环境变量，它指定了系统查找可执行文件的目录列表。当你在命令行或终端中输入一个命令时，操作系统会依次在 <code>PATH</code> 变量中定义的目录中查找该命令的可执行文件。如果找到了可执行文件，操作系统就会运行它；如果没有找到，则会报出“命令未找到”的错误。</p>
@@ -1780,27 +1780,27 @@
 </ul>
 <p><code>PATH</code> 的格式：</p>
 <p>在 <strong>Linux&#x2F;macOS</strong> 中，<code>PATH</code> 变量中的目录是用冒号 <code>:</code> 分隔的。</p>
-<pre><code class="bash">/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+<pre><code class="language-bash">/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 </code></pre>
 <p>在 <strong>Windows</strong> 中，目录是用分号 <code>;</code> 分隔的。</p>
-<pre><code class="bash">C:\Windows\System32;C:\Windows;C:\Program Files\Go\bin
+<pre><code class="language-bash">C:\Windows\System32;C:\Windows;C:\Program Files\Go\bin
 </code></pre>
 <h2 id="修改-PATH-变量："><a href="#修改-PATH-变量：" class="headerlink" title="修改 PATH 变量："></a>修改 <code>PATH</code> 变量：</h2><ol>
-<li><p>**临时修改 <code>PATH</code>**：</p>
+<li><p><strong>临时修改 <code>PATH</code></strong>：</p>
 <ul>
 <li><p>Linux&#x2F;macOS</p>
 <p>：可以在命令行中直接修改：</p>
-<pre><code class="bash">export PATH=$PATH:/new/directory/path
+<pre><code class="language-bash">export PATH=$PATH:/new/directory/path
 </code></pre>
 </li>
 <li><p>Windows</p>
 <p>：可以通过命令提示符修改：</p>
-<pre><code class="bash">set PATH=%PATH%;C:\new\directory\path
+<pre><code class="language-bash">set PATH=%PATH%;C:\new\directory\path
 </code></pre>
 </li>
 </ul>
 </li>
-<li><p>**永久修改 <code>PATH</code>**：</p>
+<li><p><strong>永久修改 <code>PATH</code></strong>：</p>
 <ul>
 <li><strong>Linux&#x2F;macOS</strong>：编辑 <code>~/.bashrc</code> 或 <code>~/.zshrc</code> 文件，并添加 <code>export PATH=$PATH:/new/directory/path</code>，然后执行 <code>source ~/.bashrc</code> 来使其生效。</li>
 <li><strong>Windows</strong>：通过“系统属性” -&gt; “高级系统设置” -&gt; “环境变量”来永久修改 <code>PATH</code>。</li>
@@ -1808,7 +1808,7 @@
 </li>
 </ol>
 <h2 id="查看PATH"><a href="#查看PATH" class="headerlink" title="查看PATH"></a>查看<code>PATH</code></h2><p>使用python来查看系统的PATH</p>
-<pre><code class="python">import os
+<pre><code class="language-python">import os
 
 # 获取PATH环境变量
 path_variable = os.environ.get(&#39;PATH&#39;)

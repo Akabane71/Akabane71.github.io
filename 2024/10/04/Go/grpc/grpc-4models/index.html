@@ -1774,7 +1774,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="Go代码演示如下"><a href="#Go代码演示如下" class="headerlink" title="Go代码演示如下"></a>Go代码演示如下</h1><h2 id="proto文件"><a href="#proto文件" class="headerlink" title="proto文件"></a>proto文件</h2><pre><code class="protobuf">syntax = &quot;proto3&quot;;
+<h1 id="Go代码演示如下"><a href="#Go代码演示如下" class="headerlink" title="Go代码演示如下"></a>Go代码演示如下</h1><h2 id="proto文件"><a href="#proto文件" class="headerlink" title="proto文件"></a>proto文件</h2><pre><code class="language-protobuf">syntax = &quot;proto3&quot;;
 
 option go_package=&quot;.;proto&quot;;
 
@@ -1794,264 +1794,264 @@ message StreamResData &#123;
   string data = 1;
 &#125;
 </code></pre>
-<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><pre><code class="go">package main
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;go-grpc/stream_grpc_test/proto&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;io&quot;
-    &quot;log&quot;
-    &quot;net&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+	&quot;fmt&quot;
+	&quot;go-grpc/stream_grpc_test/proto&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;io&quot;
+	&quot;log&quot;
+	&quot;net&quot;
+	&quot;sync&quot;
+	&quot;time&quot;
 )
 
 const PORT = &quot;:8888&quot;
 
 type server struct &#123;
-    proto.UnimplementedGreeterServer
+	proto.UnimplementedGreeterServer
 &#125;
 
 // GetStream 服务端流模式
 func (s *server) GetStream(req *proto.StreamReqData, res proto.Greeter_GetStreamServer) error &#123;
-    log.Printf(&quot;Received GetStream request: %v&quot;, req.Data)
-    i := 0
-    for &#123;
-        err := res.Send(&amp;proto.StreamResData&#123;Data: fmt.Sprintf(&quot;Current time: %v&quot;, time.Now())&#125;)
-        if err != nil &#123;
-            log.Printf(&quot;Error sending stream data: %v&quot;, err)
-            return err
-        &#125;
-        time.Sleep(time.Second)
-        i++
-        if i &gt; 10 &#123;
-            log.Println(&quot;Stream completed.&quot;)
-            break
-        &#125;
-    &#125;
-    return nil
+	log.Printf(&quot;Received GetStream request: %v&quot;, req.Data)
+	i := 0
+	for &#123;
+		err := res.Send(&amp;proto.StreamResData&#123;Data: fmt.Sprintf(&quot;Current time: %v&quot;, time.Now())&#125;)
+		if err != nil &#123;
+			log.Printf(&quot;Error sending stream data: %v&quot;, err)
+			return err
+		&#125;
+		time.Sleep(time.Second)
+		i++
+		if i &gt; 10 &#123;
+			log.Println(&quot;Stream completed.&quot;)
+			break
+		&#125;
+	&#125;
+	return nil
 &#125;
 
 // PutStream 客户端流模式
 func (s *server) PutStream(cliStr proto.Greeter_PutStreamServer) error &#123;
-    log.Println(&quot;PutStream started&quot;)
-    for &#123;
-        req, err := cliStr.Recv()
-        if err == io.EOF &#123;
-            log.Println(&quot;Client finished sending stream data.&quot;)
-            return cliStr.SendAndClose(&amp;proto.StreamResData&#123;Data: &quot;Received all client stream data.&quot;&#125;)
-        &#125;
-        if err != nil &#123;
-            log.Printf(&quot;Error receiving client stream data: %v&quot;, err)
-            return err
-        &#125;
-        log.Printf(&quot;Received from client: %v&quot;, req.Data)
-    &#125;
+	log.Println(&quot;PutStream started&quot;)
+	for &#123;
+		req, err := cliStr.Recv()
+		if err == io.EOF &#123;
+			log.Println(&quot;Client finished sending stream data.&quot;)
+			return cliStr.SendAndClose(&amp;proto.StreamResData&#123;Data: &quot;Received all client stream data.&quot;&#125;)
+		&#125;
+		if err != nil &#123;
+			log.Printf(&quot;Error receiving client stream data: %v&quot;, err)
+			return err
+		&#125;
+		log.Printf(&quot;Received from client: %v&quot;, req.Data)
+	&#125;
 &#125;
 
 // AllStream 双向流
 func (s *server) AllStream(allStr proto.Greeter_AllStreamServer) error &#123;
-    log.Println(&quot;AllStream started&quot;)
-    var wg sync.WaitGroup
-    wg.Add(2)
+	log.Println(&quot;AllStream started&quot;)
+	var wg sync.WaitGroup
+	wg.Add(2)
 
-    // 接受客户端的流
-    go func() &#123;
-        defer wg.Done()
-        for &#123;
-            data, err := allStr.Recv()
-            if err == io.EOF &#123;
-                log.Println(&quot;Client finished sending in AllStream.&quot;)
-                break
-            &#125;
-            if err != nil &#123;
-                log.Printf(&quot;Error receiving from client: %v&quot;, err)
-                break
-            &#125;
-            log.Printf(&quot;Received from client: %v&quot;, data.Data)
-        &#125;
-    &#125;()
+	// 接受客户端的流
+	go func() &#123;
+		defer wg.Done()
+		for &#123;
+			data, err := allStr.Recv()
+			if err == io.EOF &#123;
+				log.Println(&quot;Client finished sending in AllStream.&quot;)
+				break
+			&#125;
+			if err != nil &#123;
+				log.Printf(&quot;Error receiving from client: %v&quot;, err)
+				break
+			&#125;
+			log.Printf(&quot;Received from client: %v&quot;, data.Data)
+		&#125;
+	&#125;()
 
-    // 发送数据给客户端
-    go func() &#123;
-        defer wg.Done()
-        for i := 0; i &lt;= 10; i++ &#123;
-            data := &amp;proto.StreamResData&#123;
-                Data: fmt.Sprintf(&quot;Server data %d&quot;, i),
-            &#125;
-            err := allStr.Send(data)
-            if err != nil &#123;
-                log.Printf(&quot;Error sending to client: %v&quot;, err)
-                break
-            &#125;
-            time.Sleep(time.Second)
-        &#125;
-        log.Println(&quot;Server finished sending in AllStream.&quot;)
-    &#125;()
+	// 发送数据给客户端
+	go func() &#123;
+		defer wg.Done()
+		for i := 0; i &lt;= 10; i++ &#123;
+			data := &amp;proto.StreamResData&#123;
+				Data: fmt.Sprintf(&quot;Server data %d&quot;, i),
+			&#125;
+			err := allStr.Send(data)
+			if err != nil &#123;
+				log.Printf(&quot;Error sending to client: %v&quot;, err)
+				break
+			&#125;
+			time.Sleep(time.Second)
+		&#125;
+		log.Println(&quot;Server finished sending in AllStream.&quot;)
+	&#125;()
 
-    wg.Wait()
-    return nil
+	wg.Wait()
+	return nil
 &#125;
 
 func main() &#123;
-    // 启动TCP监听
-    lis, err := net.Listen(&quot;tcp&quot;, PORT)
-    if err != nil &#123;
-        log.Fatalf(&quot;Failed to listen: %v&quot;, err)
-    &#125;
-    defer lis.Close()
+	// 启动TCP监听
+	lis, err := net.Listen(&quot;tcp&quot;, PORT)
+	if err != nil &#123;
+		log.Fatalf(&quot;Failed to listen: %v&quot;, err)
+	&#125;
+	defer lis.Close()
 
-    // 创建gRPC服务器
-    grpcServer := grpc.NewServer()
+	// 创建gRPC服务器
+	grpcServer := grpc.NewServer()
 
-    // 注册服务
-    proto.RegisterGreeterServer(grpcServer, &amp;server&#123;&#125;)
+	// 注册服务
+	proto.RegisterGreeterServer(grpcServer, &amp;server&#123;&#125;)
 
-    // 启动gRPC服务
-    log.Printf(&quot;gRPC server listening on %s&quot;, PORT)
-    if err := grpcServer.Serve(lis); err != nil &#123;
-        log.Fatalf(&quot;Failed to serve: %v&quot;, err)
-    &#125;
+	// 启动gRPC服务
+	log.Printf(&quot;gRPC server listening on %s&quot;, PORT)
+	if err := grpcServer.Serve(lis); err != nil &#123;
+		log.Fatalf(&quot;Failed to serve: %v&quot;, err)
+	&#125;
 &#125;
 </code></pre>
-<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><pre><code class="go">package main
+<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><pre><code class="language-go">package main
 
 import (
-    &quot;context&quot;
-    &quot;fmt&quot;
-    &quot;go-grpc/stream_grpc_test/proto&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;google.golang.org/grpc/credentials/insecure&quot;
-    &quot;io&quot;
-    &quot;log&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;go-grpc/stream_grpc_test/proto&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/credentials/insecure&quot;
+	&quot;io&quot;
+	&quot;log&quot;
+	&quot;sync&quot;
+	&quot;time&quot;
 )
 
 // 创建 gRPC 连接，减少重复代码
 func createConnection() (*grpc.ClientConn, error) &#123;
-    conn, err := grpc.Dial(&quot;127.0.0.1:8888&quot;, grpc.WithTransportCredentials(insecure.NewCredentials()))
-    if err != nil &#123;
-        return nil, err
-    &#125;
-    return conn, nil
+	conn, err := grpc.Dial(&quot;127.0.0.1:8888&quot;, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil &#123;
+		return nil, err
+	&#125;
+	return conn, nil
 &#125;
 
 // 服务端流模式
 func stream_server() &#123;
-    conn, err := createConnection()
-    if err != nil &#123;
-        log.Fatalf(&quot;Failed to create connection: %v&quot;, err)
-    &#125;
-    defer conn.Close()
+	conn, err := createConnection()
+	if err != nil &#123;
+		log.Fatalf(&quot;Failed to create connection: %v&quot;, err)
+	&#125;
+	defer conn.Close()
 
-    c := proto.NewGreeterClient(conn)
-    res, err := c.GetStream(context.Background(), &amp;proto.StreamReqData&#123;
-        Data: &quot;DJ&quot;,
-    &#125;)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error calling GetStream: %v&quot;, err)
-    &#125;
+	c := proto.NewGreeterClient(conn)
+	res, err := c.GetStream(context.Background(), &amp;proto.StreamReqData&#123;
+		Data: &quot;DJ&quot;,
+	&#125;)
+	if err != nil &#123;
+		log.Fatalf(&quot;Error calling GetStream: %v&quot;, err)
+	&#125;
 
-    for &#123;
-        resp, err := res.Recv()
-        if err == io.EOF &#123;
-            log.Println(&quot;Stream ended&quot;)
-            break
-        &#125;
-        if err != nil &#123;
-            log.Fatalf(&quot;Error receiving stream: %v&quot;, err)
-        &#125;
-        fmt.Println(resp)
-    &#125;
+	for &#123;
+		resp, err := res.Recv()
+		if err == io.EOF &#123;
+			log.Println(&quot;Stream ended&quot;)
+			break
+		&#125;
+		if err != nil &#123;
+			log.Fatalf(&quot;Error receiving stream: %v&quot;, err)
+		&#125;
+		fmt.Println(resp)
+	&#125;
 &#125;
 
 // 客户端流模式
 func stream_client() &#123;
-    conn, err := createConnection()
-    if err != nil &#123;
-        log.Fatalf(&quot;Failed to create connection: %v&quot;, err)
-    &#125;
-    defer conn.Close()
+	conn, err := createConnection()
+	if err != nil &#123;
+		log.Fatalf(&quot;Failed to create connection: %v&quot;, err)
+	&#125;
+	defer conn.Close()
 
-    c := proto.NewGreeterClient(conn)
-    puts, err := c.PutStream(context.Background())
-    if err != nil &#123;
-        log.Fatalf(&quot;Error starting PutStream: %v&quot;, err)
-    &#125;
+	c := proto.NewGreeterClient(conn)
+	puts, err := c.PutStream(context.Background())
+	if err != nil &#123;
+		log.Fatalf(&quot;Error starting PutStream: %v&quot;, err)
+	&#125;
 
-    for i := 0; i &lt;= 10; i++ &#123;
-        data := &amp;proto.StreamReqData&#123;
-            Data: fmt.Sprintf(&quot;Client time: %v&quot;, time.Now()),
-        &#125;
-        if err := puts.Send(data); err != nil &#123;
-            log.Fatalf(&quot;Error sending to stream: %v&quot;, err)
-        &#125;
-        time.Sleep(time.Second)
-    &#125;
+	for i := 0; i &lt;= 10; i++ &#123;
+		data := &amp;proto.StreamReqData&#123;
+			Data: fmt.Sprintf(&quot;Client time: %v&quot;, time.Now()),
+		&#125;
+		if err := puts.Send(data); err != nil &#123;
+			log.Fatalf(&quot;Error sending to stream: %v&quot;, err)
+		&#125;
+		time.Sleep(time.Second)
+	&#125;
 
-    // 结束流并关闭连接
-    if _, err := puts.CloseAndRecv(); err != nil &#123;
-        log.Fatalf(&quot;Error closing client stream: %v&quot;, err)
-    &#125;
+	// 结束流并关闭连接
+	if _, err := puts.CloseAndRecv(); err != nil &#123;
+		log.Fatalf(&quot;Error closing client stream: %v&quot;, err)
+	&#125;
 &#125;
 
 // 双向流模式
 func stream_all() &#123;
-    conn, err := createConnection()
-    if err != nil &#123;
-        log.Fatalf(&quot;Failed to create connection: %v&quot;, err)
-    &#125;
-    defer conn.Close()
+	conn, err := createConnection()
+	if err != nil &#123;
+		log.Fatalf(&quot;Failed to create connection: %v&quot;, err)
+	&#125;
+	defer conn.Close()
 
-    c := proto.NewGreeterClient(conn)
-    allStr, err := c.AllStream(context.Background())
-    if err != nil &#123;
-        log.Fatalf(&quot;Error starting AllStream: %v&quot;, err)
-    &#125;
+	c := proto.NewGreeterClient(conn)
+	allStr, err := c.AllStream(context.Background())
+	if err != nil &#123;
+		log.Fatalf(&quot;Error starting AllStream: %v&quot;, err)
+	&#125;
 
-    wg := sync.WaitGroup&#123;&#125;
-    wg.Add(2)
+	wg := sync.WaitGroup&#123;&#125;
+	wg.Add(2)
 
-    // 发送数据
-    go func() &#123;
-        defer wg.Done()
-        for i := 0; i &lt;= 10; i++ &#123;
-            err := allStr.Send(&amp;proto.StreamReqData&#123;Data: fmt.Sprintf(&quot;Client send %v&quot;, i)&#125;)
-            if err != nil &#123;
-                log.Printf(&quot;Error sending stream data: %v&quot;, err)
-                break
-            &#125;
-            time.Sleep(time.Second)
-        &#125;
-        // 在发送结束后，调用 CloseSend 通知服务端发送完毕
-        allStr.CloseSend()
-    &#125;()
+	// 发送数据
+	go func() &#123;
+		defer wg.Done()
+		for i := 0; i &lt;= 10; i++ &#123;
+			err := allStr.Send(&amp;proto.StreamReqData&#123;Data: fmt.Sprintf(&quot;Client send %v&quot;, i)&#125;)
+			if err != nil &#123;
+				log.Printf(&quot;Error sending stream data: %v&quot;, err)
+				break
+			&#125;
+			time.Sleep(time.Second)
+		&#125;
+		// 在发送结束后，调用 CloseSend 通知服务端发送完毕
+		allStr.CloseSend()
+	&#125;()
 
-    // 接收数据
-    go func() &#123;
-        defer wg.Done()
-        for &#123;
-            data, err := allStr.Recv()
-            if err == io.EOF &#123; // 结束的标志
-                log.Println(&quot;Stream ended&quot;)
-                break
-            &#125;
-            if err != nil &#123;
-                log.Printf(&quot;Error receiving stream data: %v&quot;, err)
-                break
-            &#125;
-            fmt.Println(&quot;Received from server:&quot;, data.Data)
-        &#125;
-    &#125;()
+	// 接收数据
+	go func() &#123;
+		defer wg.Done()
+		for &#123;
+			data, err := allStr.Recv()
+			if err == io.EOF &#123; // 结束的标志
+				log.Println(&quot;Stream ended&quot;)
+				break
+			&#125;
+			if err != nil &#123;
+				log.Printf(&quot;Error receiving stream data: %v&quot;, err)
+				break
+			&#125;
+			fmt.Println(&quot;Received from server:&quot;, data.Data)
+		&#125;
+	&#125;()
 
-    wg.Wait()
+	wg.Wait()
 &#125;
 
 func main() &#123;
-    // 测试双向流模式
-    stream_all()
+	// 测试双向流模式
+	stream_all()
 &#125;
 </code></pre>
 

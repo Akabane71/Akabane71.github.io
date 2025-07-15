@@ -1760,11 +1760,11 @@
       
         <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#requests%E6%A8%A1%E5%9D%97"><span class="toc-text">requests模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%901%E3%80%91requests%E6%94%AF%E6%8C%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">【1】requests支持的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%902%E3%80%91requests%E7%9A%84%E5%93%8D%E5%BA%94%E4%BF%A1%E6%81%AF"><span class="toc-text">【2】requests的响应信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-text">1. 基本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E7%A0%81"><span class="toc-text">2. 编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87%E3%80%81%E8%A7%86%E9%A2%91"><span class="toc-text">3. 下载图片、视频</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%903%E3%80%91requests%E7%9A%84%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-text">【3】requests的请求参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%8F%82%E6%95%B0"><span class="toc-text">1. 请求头参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-text">2. 请求参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AF%B7%E6%B1%82%E4%BD%93%E6%95%B0%E6%8D%AE"><span class="toc-text">3. 请求体数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%904%E3%80%91Cookie%E4%B8%8ESession"><span class="toc-text">【4】Cookie与Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%905%E3%80%91%E4%BB%A3%E7%90%86IP"><span class="toc-text">【5】代理IP</span></a></li></ol></div></p>
 <h2 id="requests模块"><a href="#requests模块" class="headerlink" title="requests模块"></a>requests模块</h2><p>requests 作为一个专门为「人类」编写的 HTTP 请求库，其易用性很强，因此在推出之后就迅速成为 Python 中首选的 HTTP 请求库。requests 库的最大特点是提供了简单易用的 API，让编程人员可以轻松地提高效率。由于 requests 不是 Python 的标准库，因此在使用之前需要进行安装：</p>
-<pre><code class="python">pip install requests
+<pre><code class="language-python">pip install requests
 </code></pre>
 <p>通过 requests 可以完成各种类型的 HTTP 请求，包括 HTTP、HTTPS、HTTP1.0、HTTP1.1 及各种请求方法。requests 库支持的 HTTP 方法。</p>
 <h2 id="【1】requests支持的方法"><a href="#【1】requests支持的方法" class="headerlink" title="【1】requests支持的方法"></a>【1】requests支持的方法</h2><p>requests模块支持的请求：</p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 requests.get(&quot;http://httpbin.org/get&quot;)
 requests.post(&quot;http://httpbin.org/post&quot;)
 requests.put(&quot;http://httpbin.org/put&quot;)
@@ -1782,22 +1782,22 @@ requests.options(&quot;http://httpbin.org/get&quot;)　　
 <p>■ delete——发送一个 DELETE 请求，向指定资源发送一个删除请求。</p>
 </blockquote>
 <p>可以看到，requests 使用与 HTTP 请求方法同名的 API 来提供相应的 HTTP 请求服务，从而降低了编程人员的学习和记忆成本。另外，这些 API 方法都调用同一个基础方法，因此在调用参数的使用上也基本保持一致。</p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 
 res = requests.get(&quot;https://www.taobao.com/&quot;)
 # print(res.text)
 with open(&quot;taobao.html&quot;, &quot;wb&quot;) as f:
     f.write(res.content)
 </code></pre>
-<h2 id="【2】requests的响应信息"><a href="#【2】requests的响应信息" class="headerlink" title="【2】requests的响应信息"></a>【2】requests的响应信息</h2><h3 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h3><pre><code class="python">print(respone.status_code)
+<h2 id="【2】requests的响应信息"><a href="#【2】requests的响应信息" class="headerlink" title="【2】requests的响应信息"></a>【2】requests的响应信息</h2><h3 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h3><pre><code class="language-python">print(respone.status_code)
 print(respone.headers)
 print(respone.text)　
 print(response.json)
 </code></pre>
-<h3 id="2-编码"><a href="#2-编码" class="headerlink" title="2. 编码"></a>2. 编码</h3><pre><code class="python">print(respone.content)　
+<h3 id="2-编码"><a href="#2-编码" class="headerlink" title="2. 编码"></a>2. 编码</h3><pre><code class="language-python">print(respone.content)　
 print(response.encoding)
 </code></pre>
-<h3 id="3-下载图片、视频"><a href="#3-下载图片、视频" class="headerlink" title="3. 下载图片、视频"></a>3. 下载图片、视频</h3><pre><code class="python"># 下载图片
+<h3 id="3-下载图片、视频"><a href="#3-下载图片、视频" class="headerlink" title="3. 下载图片、视频"></a>3. 下载图片、视频</h3><pre><code class="language-python"># 下载图片
 import requests
 
 res = requests.get(&quot;https://img0.baidu.com/it/u=3330672963,1063627283&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=281&quot;)
@@ -1817,7 +1817,7 @@ with open(&quot;梨视频.mp4&quot;, &quot;wb&quot;) as f:
 <h2 id="【3】requests的请求参数"><a href="#【3】requests的请求参数" class="headerlink" title="【3】requests的请求参数"></a>【3】requests的请求参数</h2><h3 id="1-请求头参数"><a href="#1-请求头参数" class="headerlink" title="1. 请求头参数"></a>1. 请求头参数</h3><p><strong>（1）UA反爬</strong></p>
 <p>访问百度首页的新闻信息</p>
 <p><img src="/../../imgs/python-requests/image-20230223115221367-7124342.png" alt="image-20230223115221367"></p>
-<pre><code class="python"># 爬取百度首页
+<pre><code class="language-python"># 爬取百度首页
 
 res = requests.get(&quot;https://www.baidu.com/&quot;)
 res.encoding = &quot;utf8&quot;
@@ -1827,13 +1827,13 @@ with open(&quot;baidu.html&quot;, &quot;wb&quot;) as f:
 <p>结果是：</p>
 <p><img src="/../../imgs/python-requests/image-20230223115250466-7124374.png" alt="image-20230223115250466"></p>
 <p>这里就涉及到了最简单的UA反爬，百度服务器通过UA请求头辨别是否为正常请求用户，所以为了攻破这个简单的反爬，只需要在requests请求中加入UA请求头即可。</p>
-<pre><code class="python">res = requests.get(&quot;https://www.baidu.com/&quot;, headers=&#123;
+<pre><code class="language-python">res = requests.get(&quot;https://www.baidu.com/&quot;, headers=&#123;
     &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36&quot;
 &#125;)
 </code></pre>
 <p><img src="/../../imgs/python-requests/image-20230223121431343-7125672.png" alt="image-20230223121431343"></p>
 <p>基于xpath解析新闻数据：</p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 from lxml import etree
 
 # 百度首页
@@ -1851,7 +1851,7 @@ for item in items:
     print(title, href)
 </code></pre>
 <p><strong>（2）Referer反爬</strong></p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 
 # https://movie.douban.com/explore
 
@@ -1866,7 +1866,7 @@ items = res.json()[&#39;items&#39;]
 for m in items:
     print(m.get(&#39;title&#39;))
 </code></pre>
-<h3 id="2-请求参数"><a href="#2-请求参数" class="headerlink" title="2. 请求参数"></a>2. 请求参数</h3><pre><code class="python">import requests
+<h3 id="2-请求参数"><a href="#2-请求参数" class="headerlink" title="2. 请求参数"></a>2. 请求参数</h3><pre><code class="language-python">import requests
 
 # https://movie.douban.com/explore
 
@@ -1886,7 +1886,7 @@ for m in items:
 </code></pre>
 <h3 id="3-请求体数据"><a href="#3-请求体数据" class="headerlink" title="3. 请求体数据"></a>3. 请求体数据</h3><p><img src="/../../imgs/python-requests/image-20230223155201118.png" alt="image-20230223155201118"></p>
 <p><img src="/../../imgs/python-requests/image-20230223155213986-7138735.png" alt="image-20230223155213986"></p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 
 while 1:
     kd = input(&quot;请输入翻译内容:&quot;)
@@ -1899,7 +1899,7 @@ while 1:
 </code></pre>
 <h2 id="【4】Cookie与Session"><a href="#【4】Cookie与Session" class="headerlink" title="【4】Cookie与Session"></a>【4】Cookie与Session</h2><p><strong>（1）cookie的玩法</strong></p>
 <p><img src="/../../imgs/python-requests/image-20240905190102249.png" alt="image-20240905190102249"></p>
-<pre><code class="python"># server.py
+<pre><code class="language-python"># server.py
 from flask import Flask, request, make_response, render_template
 import json
 
@@ -1946,7 +1946,7 @@ def books():
 if __name__ == &#39;__main__&#39;:
     app.run()  # 默认端口号
 </code></pre>
-<pre><code class="html"># index.html
+<pre><code class="language-html"># index.html
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -1972,7 +1972,7 @@ if __name__ == &#39;__main__&#39;:
 &lt;/html&gt;
 </code></pre>
 <p><strong>（2）爬虫的cookie应用</strong></p>
-<pre><code class="python"># 请求cookie
+<pre><code class="language-python"># 请求cookie
 requests.get(url=&quot;&quot;, headers=&#123;&#125;, cookies=&#123;&#125;)
 # 响应cookie
 print(respone.cookies)
@@ -1980,7 +1980,7 @@ print(respone.cookies.get_dict())
 print(respone.cookies.items())
 </code></pre>
 <p>session对象:该对象和requests模块用法几乎一致.如果在请求的过程中产生了cookie,如果该请求使用session发起的,则cookie会被自动存储到session中.</p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 
 headers = &#123;
     &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36&#39;,
@@ -1996,7 +1996,7 @@ res = requests.get(url, headers=headers, cookies=cookies)
 print(res.content.decode())
 </code></pre>
 <p><strong>（2）session对象</strong></p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 
 headers = &#123;
     &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36&#39;,
@@ -2010,9 +2010,9 @@ url = &#39;https://stock.xueqiu.com/v5/stock/batch/quote.json?symbol=SH000001,SZ
 res = session.get(url, headers=headers)
 print(res.json())
 </code></pre>
-<h2 id="【5】代理IP"><a href="#【5】代理IP" class="headerlink" title="【5】代理IP"></a>【5】代理IP</h2><p><strong>代理IP：</strong>反反爬使用代理ip是非常必要的一种反反爬的方式，但是即使使用了代理ip，对方服务器任然会有很多的方式来检测我们是否是一个爬虫，比如：一段时间内，检测IP访问的频率，访问太多频繁会屏蔽；检查Cookie，User-Agent，Referer等header参数，若没有则屏蔽；服务方购买所有代理提供商，加入到反爬虫数据库里，若检测是代理则屏蔽等。所以更好的方式在使用代理ip的时候使用随机的方式进行选择使用，不要每次都用一个代理ip</p>
+<h2 id="【5】代理IP"><a href="#【5】代理IP" class="headerlink" title="【5】代理IP"></a>【5】代理IP</h2><p>**代理IP：**反反爬使用代理ip是非常必要的一种反反爬的方式，但是即使使用了代理ip，对方服务器任然会有很多的方式来检测我们是否是一个爬虫，比如：一段时间内，检测IP访问的频率，访问太多频繁会屏蔽；检查Cookie，User-Agent，Referer等header参数，若没有则屏蔽；服务方购买所有代理提供商，加入到反爬虫数据库里，若检测是代理则屏蔽等。所以更好的方式在使用代理ip的时候使用随机的方式进行选择使用，不要每次都用一个代理ip</p>
 <p><img src="/../../imgs/python-requests/f8bf93f9d650bdbcec1ae2dbd46a07f6.png" alt="f8bf93f9d650bdbcec1ae2dbd46a07f6"></p>
-<pre><code class="python">res = requests.get(&quot;http://httpbin.org/ip&quot;,
+<pre><code class="language-python">res = requests.get(&quot;http://httpbin.org/ip&quot;,
                    proxies=&#123;
                        &quot;http&quot;: &quot;101.132.25.152:50001&quot;
                    &#125;
@@ -2020,7 +2020,7 @@ print(res.json())
 
 print(res.text)
 </code></pre>
-<p><strong>代理ip池的更新：</strong>购买的代理ip很多时候大部分(超过60%)可能都没办法使用，这个时候就需要通过程序去检测哪些可用，把不能用的删除掉。</p>
+<p>**代理ip池的更新：**购买的代理ip很多时候大部分(超过60%)可能都没办法使用，这个时候就需要通过程序去检测哪些可用，把不能用的删除掉。</p>
 <p>免费代理IP：<a target="_blank" rel="noopener" href="https://www.kuaidaili.com/free/inha/">https://www.kuaidaili.com/free/inha/</a></p>
 
       

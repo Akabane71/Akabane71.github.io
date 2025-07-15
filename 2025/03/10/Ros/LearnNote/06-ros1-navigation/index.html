@@ -1800,18 +1800,18 @@
 </li>
 </ul>
 <h2 id="仿真环境"><a href="#仿真环境" class="headerlink" title="仿真环境"></a>仿真环境</h2><p>下载项目仓库 <code>catkin_ws/src</code> 相关的依赖</p>
-<pre><code class="bash">git clone https://github.com/6-robot/wpb_home.git
+<pre><code class="language-bash">git clone https://github.com/6-robot/wpb_home.git
 </code></pre>
 <p>下载相关的依赖</p>
-<pre><code class="bash">cd wpb_home/wpb_home_bringup/scripts/
+<pre><code class="language-bash">cd wpb_home/wpb_home_bringup/scripts/
 </code></pre>
 <p>回到 <code>catkin_ws</code> 进行编译</p>
-<pre><code class="bash">catkin_make
+<pre><code class="language-bash">catkin_make
 </code></pre>
 <ul>
 <li>开始仿真</li>
 </ul>
-<pre><code class="bash">roslaunch wpr_simulation wpb_gmapping.launch
+<pre><code class="language-bash">roslaunch wpr_simulation wpb_gmapping.launch
 </code></pre>
 <ul>
 <li>使用键盘操作</li>
@@ -1833,7 +1833,7 @@
 <li>amcl 定位节点</li>
 </ol>
 <p><code>nav.launch</code></p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
     &lt;!--- Run move_base --&gt;
     &lt;node pkg=&quot;move_base&quot; type=&quot;move_base&quot; name=&quot;move_base&quot;&gt;
         &lt;rosparam file=&quot;$(find wpb_home_tutorials)/nav_lidar/costmap_common_params.yaml&quot; command=&quot;load&quot; ns=&quot;global_costmap&quot; /&gt;
@@ -1855,24 +1855,24 @@
 &lt;/launch&gt;
 </code></pre>
 <h3 id="move-base"><a href="#move-base" class="headerlink" title="move_base"></a>move_base</h3><p>创建软件包 <code>nav_pkg</code></p>
-<pre><code class="bash">catkin_create_pkg nav_pkg roscpp rospy move_base_msgs actionlib
+<pre><code class="language-bash">catkin_create_pkg nav_pkg roscpp rospy move_base_msgs actionlib
 </code></pre>
 <p>参考的文件为  <code>wpr_simulation/launch/wpb_demo_nav.launch</code></p>
-<h3 id="map-server"><a href="#map-server" class="headerlink" title="map_server"></a>map_server</h3><pre><code class="xml">&lt;!-- Run map server --&gt;
+<h3 id="map-server"><a href="#map-server" class="headerlink" title="map_server"></a>map_server</h3><pre><code class="language-xml">&lt;!-- Run map server --&gt;
 &lt;node pkg=&quot;map_server&quot; type=&quot;map_server&quot; name=&quot;map_server&quot; args=&quot;$(find wpr_simulation)/maps/map.yaml&quot;/&gt;
 </code></pre>
-<h3 id="amcl"><a href="#amcl" class="headerlink" title="amcl"></a>amcl</h3><pre><code class="xml">&lt;!--- Run AMCL --&gt;
+<h3 id="amcl"><a href="#amcl" class="headerlink" title="amcl"></a>amcl</h3><pre><code class="language-xml">&lt;!--- Run AMCL --&gt;
 &lt;node pkg=&quot;amcl&quot; type=&quot;amcl&quot; name=&quot;amcl&quot;/&gt;
 </code></pre>
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
 <li>启动导航节点</li>
 </ul>
-<pre><code class="bash">roslaunch nav_pkg nav.launch
+<pre><code class="language-bash">roslaunch nav_pkg nav.launch
 </code></pre>
 <ul>
 <li>启动rviz</li>
 </ul>
-<pre><code class="bash">rviz
+<pre><code class="language-bash">rviz
 </code></pre>
 <h1 id="全局规划器-global-planner"><a href="#全局规划器-global-planner" class="headerlink" title="全局规划器 global_planner"></a>全局规划器 global_planner</h1><ul>
 <li><p>深度优先</p>
@@ -1952,8 +1952,8 @@
 <blockquote>
 <p>我们看看 move_base 的参数</p>
 </blockquote>
-<pre><code class="bash">&lt;node pkg=&quot;move_base&quot; type=&quot;move_base&quot; name=&quot;move_base&quot;&gt;
-    &lt;rosparam file=&quot;$(find wpb_home_tutorials)/nav_lidar/costmap_common_params.yaml&quot; command=&quot;load&quot; ns=&quot;global_costmap&quot; /&gt;
+<pre><code class="language-bash">&lt;node pkg=&quot;move_base&quot; type=&quot;move_base&quot; name=&quot;move_base&quot;&gt;
+	&lt;rosparam file=&quot;$(find wpb_home_tutorials)/nav_lidar/costmap_common_params.yaml&quot; command=&quot;load&quot; ns=&quot;global_costmap&quot; /&gt;
         &lt;rosparam file=&quot;$(find wpb_home_tutorials)/nav_lidar/costmap_common_params.yaml&quot; command=&quot;load&quot; ns=&quot;local_costmap&quot; /&gt;
         &lt;rosparam file=&quot;$(find wpb_home_tutorials)/nav_lidar/global_costmap_params.yaml&quot; command=&quot;load&quot; /&gt;
         &lt;rosparam file=&quot;$(find wpb_home_tutorials)/nav_lidar/local_costmap_params.yaml&quot; command=&quot;load&quot; /&gt;
@@ -1971,7 +1971,7 @@
 <h4 id="costmap-common-params-yaml"><a href="#costmap-common-params-yaml" class="headerlink" title="costmap_common_params.yaml"></a>costmap_common_params.yaml</h4><ul>
 <li><img src="/../../../imgs/06-ros1-navigation/image-20241122103735886.png" alt="image-20241122103735886"></li>
 </ul>
-<pre><code class="yaml">robot_radius: 0.25
+<pre><code class="language-yaml">robot_radius: 0.25
 inflation_radius: 0.5
 obstacle_range: 1.0
 raytrace_range: 6.0
@@ -2014,7 +2014,7 @@ base_lidar: &#123;
 <h4 id="global-costmap-params-yaml"><a href="#global-costmap-params-yaml" class="headerlink" title="global_costmap_params.yaml"></a>global_costmap_params.yaml</h4><ul>
 <li><img src="/../../../imgs/06-ros1-navigation/image-20241122103855978.png" alt="image-20241122103855978"></li>
 </ul>
-<pre><code class="yaml">global_costmap:
+<pre><code class="language-yaml">global_costmap:
   global_frame: map
   robot_base_frame: base_footprint
   static_map: true
@@ -2038,7 +2038,7 @@ base_lidar: &#123;
 <h4 id="local-costmap-params-yaml"><a href="#local-costmap-params-yaml" class="headerlink" title="local_costmap_params.yaml"></a>local_costmap_params.yaml</h4><ul>
 <li><img src="/../../../imgs/06-ros1-navigation/image-20241122103954908.png" alt="image-20241122103954908"></li>
 </ul>
-<pre><code class="yaml">local_costmap:
+<pre><code class="language-yaml">local_costmap:
   global_frame: odom
   robot_base_frame: base_footprint
   static_map: false

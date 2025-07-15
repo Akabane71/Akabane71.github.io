@@ -1765,16 +1765,16 @@
 <h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><p>Go提供了一个select语句块，它像switch一样工作，里面放一些case语句块，用来轮询每个case语句块的send或recv情况</p>
 <p><img src="/../../imgs/go-select/go-select.png"></p>
 <p>用法格式示例:</p>
-<pre><code class="go">select &#123;
-    // ch1有数据时，读取到v1变量中
-    case v1 := &lt;-ch1:
-        ...
-    // ch2有数据时，读取到v2变量中
-    case v2 := &lt;-ch2:
-        ...
-    // 所有case都不满足条件时，执行default
-    default:
-        ...
+<pre><code class="language-go">select &#123;
+	// ch1有数据时，读取到v1变量中
+	case v1 := &lt;-ch1:
+		...
+	// ch2有数据时，读取到v2变量中
+	case v2 := &lt;-ch2:
+		...
+	// 所有case都不满足条件时，执行default
+	default:
+		...
 &#125;
 </code></pre>
 <p>defalut语句是可选的，不允许fall through行为，但允许case语句块为空块。select会被return、break关键字中断：return是退出整个函数，break是退出当前select</p>
@@ -1785,151 +1785,151 @@
 <li>如果存在default且其它case都不满足条件，则执行default。所以default必须要可执行而不能阻塞</li>
 </ul>
 <p>比如 我们在 ch1,ch2,ch3中放入1，2，3, 然后我们select:</p>
-<pre><code class="go">func Basic1() &#123;
-    ch1, ch2, ch3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
-    ch1 &lt;- 1
-    ch2 &lt;- 2
-    ch3 &lt;- 3
+<pre><code class="language-go">func Basic1() &#123;
+	ch1, ch2, ch3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
+	ch1 &lt;- 1
+	ch2 &lt;- 2
+	ch3 &lt;- 3
 
-    select &#123;
-    case v := &lt;-ch1:
-        fmt.Println(v)
-    case v := &lt;-ch2:
-        fmt.Println(v)
-    case v := &lt;-ch3:
-        fmt.Println(v)
-    default:
-        fmt.Println(&quot;default&quot;)
-    &#125;
+	select &#123;
+	case v := &lt;-ch1:
+		fmt.Println(v)
+	case v := &lt;-ch2:
+		fmt.Println(v)
+	case v := &lt;-ch3:
+		fmt.Println(v)
+	default:
+		fmt.Println(&quot;default&quot;)
+	&#125;
 &#125;
 </code></pre>
 <p>大家猜猜这次select的结果是啥?</p>
 <p>我们select一次，只能从Ready的channel中随机挑选一个获取一个数据, 如果我们获取完所有的数据，就需要使用 for 进行轮询，比如</p>
-<pre><code class="go">func Basic2() &#123;
-    ch1, ch2 := make(chan int), make(chan int)
-    go pump1(ch1)
-    go pump2(ch2)
-    go suck(ch1, ch2)
-    time.Sleep(1 * time.Second)
+<pre><code class="language-go">func Basic2() &#123;
+	ch1, ch2 := make(chan int), make(chan int)
+	go pump1(ch1)
+	go pump2(ch2)
+	go suck(ch1, ch2)
+	time.Sleep(1 * time.Second)
 &#125;
 
 // 偶数channel
 func pump1(ch chan int) &#123;
-    for i := 0; i &lt;= 30; i++ &#123;
-        if i%2 == 0 &#123;
-            ch &lt;- i
-        &#125;
-    &#125;
+	for i := 0; i &lt;= 30; i++ &#123;
+		if i%2 == 0 &#123;
+			ch &lt;- i
+		&#125;
+	&#125;
 &#125;
 
 // 奇数channel
 func pump2(ch chan int) &#123;
-    for i := 0; i &lt;= 30; i++ &#123;
-        if i%2 == 1 &#123;
-            ch &lt;- i
-        &#125;
-    &#125;
+	for i := 0; i &lt;= 30; i++ &#123;
+		if i%2 == 1 &#123;
+			ch &lt;- i
+		&#125;
+	&#125;
 &#125;
 
 // 处理ch1和ch2中的数据
 func suck(ch1 chan int, ch2 chan int) &#123;
-    for &#123;
-        select &#123;
-        case v := &lt;-ch1:
-            fmt.Printf(&quot;recv on ch1: %d\n&quot;, v)
-        case v := &lt;-ch2:
-            fmt.Printf(&quot;recv on ch2: %d\n&quot;, v)
-        &#125;
-    &#125;
+	for &#123;
+		select &#123;
+		case v := &lt;-ch1:
+			fmt.Printf(&quot;recv on ch1: %d\n&quot;, v)
+		case v := &lt;-ch2:
+			fmt.Printf(&quot;recv on ch2: %d\n&quot;, v)
+		&#125;
+	&#125;
 &#125;
 </code></pre>
 <h2 id="Select的顺序"><a href="#Select的顺序" class="headerlink" title="Select的顺序"></a>Select的顺序</h2><p>select 在挑选就绪case分支的时候是<strong>随机化的</strong>， 这是他和swich的case不同的地方:<br><img src="/../../imgs/go-select/rand-select.png"></p>
 <p>我们结合for循环来看一个样列:</p>
 <p>我有3个带缓冲的channel: a, b ,c 依然往他们里面放入 A, B, C 然后我们通过select打印出所有收到的数据</p>
-<pre><code class="go">package selectio
+<pre><code class="language-go">package selectio
 
 import &quot;fmt&quot;
 
 func SelectOrder() &#123;
-    // 我们只在一个执行体(Goroutine)中完成
-    // 所以需要channel是带缓冲的
-    a := make(chan string, 100)
-    b := make(chan string, 100)
-    c := make(chan string, 100)
+	// 我们只在一个执行体(Goroutine)中完成
+	// 所以需要channel是带缓冲的
+	a := make(chan string, 100)
+	b := make(chan string, 100)
+	c := make(chan string, 100)
 
-    // 依次往a, b, c 中放入数据
-    for i := 0; i &lt; 10; i++ &#123;
-        a &lt;- &quot;A&quot;
-        b &lt;- &quot;B&quot;
-        c &lt;- &quot;C&quot;
-    &#125;
+	// 依次往a, b, c 中放入数据
+	for i := 0; i &lt; 10; i++ &#123;
+		a &lt;- &quot;A&quot;
+		b &lt;- &quot;B&quot;
+		c &lt;- &quot;C&quot;
+	&#125;
 
-    for i := 0; i &lt; 10; i++ &#123;
-        select &#123;
-        case v := &lt;-a:
-            fmt.Println(v)
-        case v := &lt;-b:
-            fmt.Println(v)
-        case v := &lt;-c:
-            fmt.Println(v)
-        default:
-            fmt.Println(&quot;Default&quot;)
-        &#125;
-    &#125;
+	for i := 0; i &lt; 10; i++ &#123;
+		select &#123;
+		case v := &lt;-a:
+			fmt.Println(v)
+		case v := &lt;-b:
+			fmt.Println(v)
+		case v := &lt;-c:
+			fmt.Println(v)
+		default:
+			fmt.Println(&quot;Default&quot;)
+		&#125;
+	&#125;
 &#125;
 </code></pre>
 <h2 id="为select设置超时时间"><a href="#为select设置超时时间" class="headerlink" title="为select设置超时时间"></a>为select设置超时时间</h2><p>谁也无法保证某些情况下的select是否会永久阻塞。很多时候都需要设置一下select的超时时间，可以借助time包的After()实现</p>
-<pre><code class="go">func After(d Duration) &lt;-chan Time
+<pre><code class="language-go">func After(d Duration) &lt;-chan Time
 </code></pre>
 <p>After()函数接受一个时长d，然后它After()等待d时长，等待时间到后，将等待完成时所处时间点写入到channel中并返回这个只读channel</p>
 <p>下面是一个例子, 1s后会收到一个事件</p>
-<pre><code class="go">func TestTimeAfter(t *testing.T) &#123;
-    fmt.Println(time.Now())
+<pre><code class="language-go">func TestTimeAfter(t *testing.T) &#123;
+	fmt.Println(time.Now())
 
-    a := time.After(1 * time.Second)
-    fmt.Println(&lt;-a)
+	a := time.After(1 * time.Second)
+	fmt.Println(&lt;-a)
 &#125;
 </code></pre>
 <p>比如我们ch1等待 结果的返回, 如果超时我们就退出不等待了</p>
-<pre><code class="go">func SelectTimeout() &#123;
-    ch1 := make(chan string)
+<pre><code class="language-go">func SelectTimeout() &#123;
+	ch1 := make(chan string)
 
-    // 激活一个goroutine，但5秒之后才发送数据
-    go func() &#123;
-        time.Sleep(5 * time.Second)
-        ch1 &lt;- &quot;put value into ch1&quot;
-    &#125;()
+	// 激活一个goroutine，但5秒之后才发送数据
+	go func() &#123;
+		time.Sleep(5 * time.Second)
+		ch1 &lt;- &quot;put value into ch1&quot;
+	&#125;()
 
-    select &#123;
-    case val := &lt;-ch1:
-        fmt.Println(&quot;recv value from ch1:&quot;, val)
-        return
+	select &#123;
+	case val := &lt;-ch1:
+		fmt.Println(&quot;recv value from ch1:&quot;, val)
+		return
 
-    // 只等待3秒，然后就结束
-    case &lt;-time.After(3 * time.Second):
-        fmt.Println(&quot;3 second over, timeover&quot;)
-    &#125;
+	// 只等待3秒，然后就结束
+	case &lt;-time.After(3 * time.Second):
+		fmt.Println(&quot;3 second over, timeover&quot;)
+	&#125;
 &#125;
 </code></pre>
 <h2 id="for-select的性能"><a href="#for-select的性能" class="headerlink" title="for select的性能"></a>for select的性能</h2><p>我们先聊下，channel的性能:</p>
 <p>channel本质上就是一个 mutex 锁加上一个环状缓存、 一个发送方队列和一个接收方队列</p>
-<pre><code class="go">// src/runtime/chan.go
+<pre><code class="language-go">// src/runtime/chan.go
 type hchan struct &#123;
-    qcount   uint           // 队列中的所有数据数
-    dataqsiz uint           // 环形队列的大小
-    buf      unsafe.Pointer // 指向大小为 dataqsiz 的数组
-    elemsize uint16         // 元素大小
-    closed   uint32         // 是否关闭
-    elemtype *_type         // 元素类型
-    sendx    uint           // 发送索引
-    recvx    uint           // 接收索引
-    recvq    waitq          // recv 等待列表，即（ &lt;-ch ）
-    sendq    waitq          // send 等待列表，即（ ch&lt;- ）
-    lock mutex
+	qcount   uint           // 队列中的所有数据数
+	dataqsiz uint           // 环形队列的大小
+	buf      unsafe.Pointer // 指向大小为 dataqsiz 的数组
+	elemsize uint16         // 元素大小
+	closed   uint32         // 是否关闭
+	elemtype *_type         // 元素类型
+	sendx    uint           // 发送索引
+	recvx    uint           // 接收索引
+	recvq    waitq          // recv 等待列表，即（ &lt;-ch ）
+	sendq    waitq          // send 等待列表，即（ ch&lt;- ）
+	lock mutex
 &#125;
 type waitq struct &#123; // 等待队列 sudog 双向队列
-    first *sudog
-    last  *sudog
+	first *sudog
+	last  *sudog
 &#125;
 </code></pre>
 <p><img src="/../../imgs/go-select/chan-struct.png"></p>

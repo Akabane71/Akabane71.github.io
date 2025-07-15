@@ -1788,7 +1788,7 @@
 </ul>
 </blockquote>
 <h2 id="1-1-为什么会报错？"><a href="#1-1-为什么会报错？" class="headerlink" title="1.1 为什么会报错？"></a>1.1 为什么会报错？</h2><p>python的 import 是将 被执行的py文件 作为 工作目录,即sys.path的第一个</p>
-<pre><code class="Python">import sys
+<pre><code class="language-Python">import sys
 print(&quot;sys_path&quot;,sys.path)
 for i in sys.path:
 print(i)
@@ -1816,7 +1816,7 @@ E:\Pycharm\PyCharm 2023.2.1\plugins\python\helpers\pycharm_matplotlib_backend
 <h2 id="1-2-我想导入，该如何操作呢"><a href="#1-2-我想导入，该如何操作呢" class="headerlink" title="1.2 我想导入，该如何操作呢?"></a>1.2 我想导入，该如何操作呢?</h2><blockquote>
 <p>自定义路径即可，将sys.path[0] 修改成为自己想要的目录即可</p>
 </blockquote>
-<pre><code class="python"># 自定义路径
+<pre><code class="language-python"># 自定义路径
 import os
 import sys
 
@@ -1835,21 +1835,21 @@ print(sys.path[0])
 <h1 id="2-name-是个什么玩意"><a href="#2-name-是个什么玩意" class="headerlink" title="2. _name_ 是个什么玩意"></a>2. _<em>name</em>_ 是个什么玩意</h1><blockquote>
 <p>__name__是 python的一个关键字,表示当前文件是什么</p>
 </blockquote>
-<pre><code class="python">print(__name__)
+<pre><code class="language-python">print(__name__)
 </code></pre>
 <p>执行结果如下:</p>
 <blockquote>
 <p>_<em>main</em>_</p>
 </blockquote>
 <p><strong>当你启动py文件的时候，这个启动文件会被标识为_<strong>main</strong>.其余则为对应的.py文件</strong></p>
-<pre><code class="python">if __name__ == &quot;__main__&quot;:
-    pass
+<pre><code class="language-python">if __name__ == &quot;__main__&quot;:
+	pass
 </code></pre>
 <p>这句话就是在判断 是不是启动文件，如果不是启动文件，则不会执行</p>
 <p>这样就可以保证  只有 启动的py 文件 才会执行</p>
 <h1 id="3-file-的优雅使用方法"><a href="#3-file-的优雅使用方法" class="headerlink" title="3. __file__的优雅使用方法"></a>3. __<em>file</em>__的优雅使用方法</h1><p>__file__是 python 的内置全局变量</p>
 <p>_<em>file_</em> 存储的是正在执行的Python文件路径</p>
-<pre><code class="python">print(__file__)
+<pre><code class="language-python">print(__file__)
 
 
 print(os.path.dirname(__file__)) # 获取程序所在文件位置
@@ -1866,21 +1866,20 @@ data_path = os.path.dirname(__file__)
 <ul>
 <li>目录结构</li>
 </ul>
-<p>	</p>
 <blockquote>
 <p><img src="/../../imgs/python-import/image-20240923221107039.png" alt="image-20240923221107039"></p>
 <p>AudioFiles中存放了静态资源</p>
 <p>Audio写了对应的类，Audio要导入AudioFiles对于的相对路径</p>
 </blockquote>
 <p>直接写Audio和AudioFiles只有测试能过，放入到包里就会出问题</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><pre><code class="python"># 该资源的绝对路径
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><pre><code class="language-python"># 该资源的绝对路径
 code_path = os.path.dirname(os.path.abspath(__file__))
 </code></pre>
 <p>我只要有了其绝对路径不就没事了吗。手动写太愚蠢，还得是自动获取比较优雅！</p>
 <blockquote>
 <p>虽然写的一坨但是还是能实现自己的需求</p>
 </blockquote>
-<pre><code class="python">import os
+<pre><code class="language-python">import os
 
 import pyaudio
 from pydub import AudioSegment

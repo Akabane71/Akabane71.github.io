@@ -1780,7 +1780,7 @@
 </ul>
 </blockquote>
 <p>训练的 jsonl 数据形如：</p>
-<pre><code class="jsonl">&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696072.wav&quot;, &quot;target&quot;: &quot;But then something even more extraordinary happened.&quot;&#125;
+<pre><code class="language-jsonl">&#123;&quot;source&quot;: &quot;wav/common_voice_en_42696072.wav&quot;, &quot;target&quot;: &quot;But then something even more extraordinary happened.&quot;&#125;
 &#123;&quot;source&quot;: &quot;wav/common_voice_en_42696165.wav&quot;, &quot;target&quot;: &quot;The division was then commanded by Major General John Hawkesworth.&quot;&#125;
 &#123;&quot;source&quot;: &quot;wav/common_voice_en_42696166.wav&quot;, &quot;target&quot;: &quot;Her husband was Li Shi, the last emperor of Cheng Han.&quot;&#125;
 &#123;&quot;source&quot;: &quot;wav/common_voice_en_42696167.wav&quot;, &quot;target&quot;: &quot;London advances against Ludington, Michigan, champions of the Central League.&quot;&#125;
@@ -1809,7 +1809,7 @@
 <blockquote>
 <p>Ubuntu Server </p>
 </blockquote>
-<pre><code class="bash">sudo apt install ffmpeg
+<pre><code class="language-bash">sudo apt install ffmpeg
 </code></pre>
 <ul>
 <li>Windows<ul>
@@ -1817,7 +1817,7 @@
 </ul>
 </li>
 </ul>
-<pre><code class="bash">ffmpeg -version
+<pre><code class="language-bash">ffmpeg -version
 </code></pre>
 <p><img src="/../../imgs/azure-paraformer-train/image-20250704101845782.png" alt="image-20250704101845782"></p>
 <blockquote>
@@ -1830,7 +1830,7 @@
 <blockquote>
 <p>使用 python 的多进程池来 并发处理 各个文件</p>
 </blockquote>
-<pre><code class="python">import os
+<pre><code class="language-python">import os
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
 
@@ -1856,13 +1856,13 @@ with ThreadPoolExecutor(max_workers=8) as pool:
 <ul>
 <li><strong>bash</strong></li>
 </ul>
-<pre><code class="bash">mkdir -p ../wav
+<pre><code class="language-bash">mkdir -p ../wav
 ls *.mp3 | xargs -P 8 -I&#123;&#125; ffmpeg -y -i &quot;&#123;&#125;&quot; -acodec pcm_s16le -ac 1 -ar 16000 &quot;../wav/&#123;&#125;.wav&quot;
 </code></pre>
 <p>转化时间可能有点久，需要一定的时间</p>
 <h4 id="2-tsv转为jsonl"><a href="#2-tsv转为jsonl" class="headerlink" title="2. tsv转为jsonl"></a>2. tsv转为jsonl</h4><blockquote>
 </blockquote>
-<pre><code class="python">import csv
+<pre><code class="language-python">import csv
 import json
 
 def tsv_to_jsonl(tsv_path, jsonl_path,data_path):
@@ -1895,7 +1895,7 @@ if __name__ == &quot;__main__&quot;:
 <p>数据集中有一些比较大的mp3文件，要将其过滤掉，太大的文件在训练的时候会 <strong>炸炉子</strong> <strong>（cuda out of memory）</strong></p>
 <p>目的： 删除过大的wav文件，我从大小的角度剔除文件，可以调整 <strong>size</strong></p>
 </blockquote>
-<pre><code class="python">import os
+<pre><code class="language-python">import os
 
 def list_large_wavs(folder, size_mb=1):
     wav_files = []
@@ -1919,7 +1919,7 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li>剔除脚本</li>
 </ul>
-<pre><code class="python">import json
+<pre><code class="language-python">import json
 import os
 
 # 配置文件路径
@@ -1941,7 +1941,7 @@ with open(jsonl_path, &quot;r&quot;, encoding=&quot;utf-8&quot;) as fin, \
 
 print(f&quot;过滤完成，结果已保存到 &#123;output_path&#125;&quot;)
 </code></pre>
-<h4 id="4-划分train-val"><a href="#4-划分train-val" class="headerlink" title="4. 划分train&#x2F;val"></a>4. 划分train&#x2F;val</h4><pre><code class="python">import json
+<h4 id="4-划分train-val"><a href="#4-划分train-val" class="headerlink" title="4. 划分train&#x2F;val"></a>4. 划分train&#x2F;val</h4><pre><code class="language-python">import json
 import random
 
 
@@ -2013,7 +2013,7 @@ if __name__ == &quot;__main__&quot;:
 <ol>
 <li>先查看自己电脑上是否有显卡:</li>
 </ol>
-<pre><code class="bash">lspci | grep -i NVIDIA
+<pre><code class="language-bash">lspci | grep -i NVIDIA
 </code></pre>
 <p>一般情况都有，没有显卡建议重新创建一下虚拟机了</p>
 <blockquote>
@@ -2022,22 +2022,22 @@ if __name__ == &quot;__main__&quot;:
 <ol start="2">
 <li>安装 <code>ubuntu-drivers</code> 实用工具:</li>
 </ol>
-<pre><code class="bash">sudo apt update &amp;&amp; sudo apt install -y ubuntu-drivers-common
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install -y ubuntu-drivers-common
 </code></pre>
 <ol start="3">
 <li>安装最新的 NV 驱动:</li>
 </ol>
-<pre><code class="bash">sudo ubuntu-drivers install
+<pre><code class="language-bash">sudo ubuntu-drivers install
 </code></pre>
 <ol start="4">
 <li>安装 GPU 驱动程序后重新启动 VM：</li>
 </ol>
-<pre><code class="bash">sudo reboot
+<pre><code class="language-bash">sudo reboot
 </code></pre>
 <ol start="5">
 <li>验证是否已正确识别 GPU（重启后）：</li>
 </ol>
-<pre><code class="bash">nvidia-smi
+<pre><code class="language-bash">nvidia-smi
 </code></pre>
 <h3 id="cudatoolkit-cuDNN-是否需要安装？"><a href="#cudatoolkit-cuDNN-是否需要安装？" class="headerlink" title="cudatoolkit &#x2F;cuDNN 是否需要安装？"></a>cudatoolkit &#x2F;cuDNN 是否需要安装？</h3><blockquote>
 <p>在过去 nv 驱动安装起来很麻烦，cudatoolkit &#x2F;cuDNN 安装起来更是烦人【现在一键傻瓜式安装】</p>
@@ -2074,22 +2074,22 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li>推荐uv下载</li>
 </ul>
-<pre><code class="bash">uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+<pre><code class="language-bash">uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 </code></pre>
 <h3 id="funasr-相关"><a href="#funasr-相关" class="headerlink" title="funasr 相关"></a>funasr 相关</h3><blockquote>
 <p>下载 funasr</p>
 </blockquote>
-<pre><code class="bash">uv pip install -U funasr
+<pre><code class="language-bash">uv pip install -U funasr
 </code></pre>
 <blockquote>
 <p>模型源下载</p>
 </blockquote>
-<pre><code class="bash">uv pip install -U modelscope huggingface_hub
+<pre><code class="language-bash">uv pip install -U modelscope huggingface_hub
 </code></pre>
 <h3 id="测试环境是否ok？"><a href="#测试环境是否ok？" class="headerlink" title="测试环境是否ok？"></a>测试环境是否ok？</h3><ul>
 <li>测试cuda是否ok?</li>
 </ul>
-<pre><code class="python">import torch
+<pre><code class="language-python">import torch
 
 if torch.cuda.is_available():
     print(&quot;CUDA is available.&quot;)
@@ -2105,7 +2105,7 @@ else:
 <ul>
 <li>测试funasr是否ok?</li>
 </ul>
-<pre><code class="python">&quot;&quot;&quot;
+<pre><code class="language-python">&quot;&quot;&quot;
 这个脚本也能执行
 funasr ++model=paraformer-zh ++vad_model=&quot;fsmn-vad&quot; ++punc_model=&quot;ct-punc&quot; ++input=vad_example.wav
 &quot;&quot;&quot;
@@ -2134,7 +2134,7 @@ print(res)
 <ul>
 <li>拷贝官方的 train_ds.py</li>
 </ul>
-<pre><code class="python">#!/usr/bin/env python3
+<pre><code class="language-python">#!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
 import os
@@ -2366,7 +2366,7 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li>finetune.sh</li>
 </ul>
-<pre><code class="bash"># Copyright FunASR (https://github.com/alibaba-damo-academy/FunASR). All Rights Reserved.
+<pre><code class="language-bash"># Copyright FunASR (https://github.com/alibaba-damo-academy/FunASR). All Rights Reserved.
 #  MIT License  (https://opensource.org/licenses/MIT)
 
 workspace=`pwd`
@@ -2453,12 +2453,12 @@ torchrun $DISTRIBUTED_ARGS \
 <p>模型参数需要根据需求来修改</p>
 </blockquote>
 <h3 id="nvtop"><a href="#nvtop" class="headerlink" title="nvtop"></a>nvtop</h3><p>不用手动不停地按 <strong>nvidia-smi</strong></p>
-<pre><code class="bash">apt install nvtop
+<pre><code class="language-bash">apt install nvtop
 </code></pre>
 <blockquote>
 <p>查看训练cuda的占用情况</p>
 </blockquote>
-<pre><code class="bash">nvtop
+<pre><code class="language-bash">nvtop
 </code></pre>
 <p><img src="/../../imgs/azure-paraformer-train/image-20250703114445702.png" alt="image-20250703114445702"></p>
 <h3 id="显存占用分析"><a href="#显存占用分析" class="headerlink" title="显存占用分析"></a>显存占用分析</h3><blockquote>

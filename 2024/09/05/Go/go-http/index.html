@@ -1806,7 +1806,7 @@
 </tr>
 </tbody></table>
 <h3 id="统一资源定位符-URI"><a href="#统一资源定位符-URI" class="headerlink" title="统一资源定位符: URI"></a>统一资源定位符: URI</h3><p>URL由三部分组成：资源类型、存放资源的主机域名、资源文件名</p>
-<pre><code class="sh">protocol :// hostname[:port] / path / [?parameters]#fragment
+<pre><code class="language-sh">protocol :// hostname[:port] / path / [?parameters]#fragment
 </code></pre>
 <p>比如: <a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1603848351636567407&wfr=spider&for=pc">https://baijiahao.baidu.com/s?id=1603848351636567407&amp;wfr=spider&amp;for=pc</a></p>
 <ul>
@@ -1855,24 +1855,24 @@
 </ul>
 <h3 id="响应实体"><a href="#响应实体" class="headerlink" title="响应实体"></a>响应实体</h3><p>响应实体中包含的就是客户端从服务器中获取的数据了。数据的格式和长度都会在响应体中描述</p>
 <h2 id="实战验证"><a href="#实战验证" class="headerlink" title="实战验证"></a>实战验证</h2><p>基于标准库写个简单的http 接口服务</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;net/http&quot;
+	&quot;fmt&quot;
+	&quot;net/http&quot;
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) &#123;
-    fmt.Fprintln(w, &quot;hello, world&quot;)
+	fmt.Fprintln(w, &quot;hello, world&quot;)
 &#125;
 
 func main() &#123;
-    http.HandleFunc(&quot;/&quot;, IndexHandler)
-    http.ListenAndServe(&quot;:8080&quot;, nil)
+	http.HandleFunc(&quot;/&quot;, IndexHandler)
+	http.ListenAndServe(&quot;:8080&quot;, nil)
 &#125;
 </code></pre>
 <p>启动后使用telent来进行验证</p>
-<pre><code class="sh">$telnet localhost 8080
+<pre><code class="language-sh">$telnet localhost 8080
 Trying ::1...
 Connected to localhost.
 Escape character is &#39;^]&#39;.

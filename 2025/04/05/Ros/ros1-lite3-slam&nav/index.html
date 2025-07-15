@@ -1802,7 +1802,7 @@
 <p>使用 octomap_server 来转化的</p>
 </blockquote>
 <p>脚本如下 pcd2grid.launch 文件</p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
     &lt;!-- 静态 TF：map -&gt; base_footprint（如果你用 base_footprint） --&gt;
     &lt;node pkg=&quot;tf&quot; type=&quot;static_transform_publisher&quot; name=&quot;static_tf_map_base&quot; args=&quot;0 0 0 0 0 0 map base_footprint 100&quot;/&gt;
 
@@ -1811,7 +1811,7 @@
         &lt;param name=&quot;filter_leaf_size_m&quot; value=&quot;0.05&quot;/&gt;
         &lt;param name=&quot;frame_id&quot; type=&quot;string&quot; value=&quot;map&quot;/&gt;
         &lt;param name=&quot;base_frame_id&quot; value=&quot;base_footprint&quot;/&gt;
-        
+		
         &lt;param name=&quot;pointcloud_min_z&quot; value=&quot;-1.0&quot;/&gt;
         &lt;param name=&quot;pointcloud_max_z&quot; value=&quot;2.0&quot;/&gt;
         &lt;param name=&quot;occupancy_min_z&quot; value=&quot;-0.1&quot;/&gt;
@@ -1839,7 +1839,7 @@
 <blockquote>
 <p>使用的库为： <a target="_blank" rel="noopener" href="https://github.com/jianboqi/CSF">https://github.com/jianboqi/CSF</a></p>
 </blockquote>
-<pre><code class="python">import open3d as o3d
+<pre><code class="language-python">import open3d as o3d
 import numpy as np
 import CSF  # pip install cloth-simulation-filter
 
@@ -1978,7 +1978,7 @@ if __name__ == &#39;__main__&#39;:
 <p><img src="/../../imgs/ros1-lite3-slam&nav/csf_gridmap.png" alt="csf_gridmap"></p>
 <h4 id="RANSAC"><a href="#RANSAC" class="headerlink" title="RANSAC"></a>RANSAC</h4><p><strong>RANSAC 是一种“用少数点猜模型、用多数点投票验证”的鲁棒拟合方法</strong>，适合在含噪声的数据中找到最优几何结构（如地面、直线、平面等）。</p>
 <p>代码如下</p>
-<pre><code class="python">import open3d as o3d
+<pre><code class="language-python">import open3d as o3d
 import numpy as np
 # import CSF  # pyCSF 库
 
@@ -2185,7 +2185,7 @@ if __name__ == &quot;__main__&quot;:
 <td>当前路径的“总成本”预估</td>
 </tr>
 </tbody></table>
-<pre><code class="bash">1. 将起点加入 open 列表（待探索）
+<pre><code class="language-bash">1. 将起点加入 open 列表（待探索）
 2. 重复以下步骤，直到 open 列表为空或找到终点：
     a. 从 open 中选出 f(n) 最小的节点 n
     b. 若 n 是终点，结束，路径找到

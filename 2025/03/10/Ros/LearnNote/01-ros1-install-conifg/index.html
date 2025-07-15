@@ -1762,7 +1762,7 @@
 <ul>
 <li>下载方式 —&gt; 使用鱼香ros下载工具，别折磨自己</li>
 </ul>
-<pre><code class="bash">wget http://fishros.com/install -O fishros &amp;&amp; . fishros
+<pre><code class="language-bash">wget http://fishros.com/install -O fishros &amp;&amp; . fishros
 </code></pre>
 <p>选择 <strong><code>Noetic</code></strong> </p>
 <h2 id="工作空间"><a href="#工作空间" class="headerlink" title="工作空间"></a>工作空间</h2><p>目录名称</p>
@@ -1797,18 +1797,18 @@
 <ul>
 <li>运行编译好的ros程序</li>
 </ul>
-<pre><code class="bash">roslaunch wpr_simulation wpb_simple.launch
+<pre><code class="language-bash">roslaunch wpr_simulation wpb_simple.launch
 </code></pre>
 <ul>
 <li>运行控制软件</li>
 </ul>
-<pre><code class="bash">rosrun rqt_robot_steering rqt_robot_steering
+<pre><code class="language-bash">rosrun rqt_robot_steering rqt_robot_steering
 </code></pre>
 <p><img src="/../../../imgs/01-ros1-install-conifg/image-20241117115007475.png" alt="image-20241117115007475"></p>
 <ul>
 <li>将工作环境加入到终端脚本<code>./bashrc</code>中</li>
 </ul>
-<pre><code class="bash">vim ~/.bashrc
+<pre><code class="language-bash">vim ~/.bashrc
 </code></pre>
 <p>添加</p>
 <pre><code>source ~/catkin_ws/devel/setup.bash
@@ -1873,7 +1873,7 @@ https://index.ros.org/repos/page/1/time/
 <p><img src="/../../../imgs/01-ros1-install-conifg/image-20241119104647574.png" alt="image-20241119104647574"></p>
 <p>或者将<code>.vscode</code> 中的 <code>settings.json</code> </p>
 <p><img src="/../../../imgs/01-ros1-install-conifg/image-20241119225806827.png" alt="image-20241119225806827"></p>
-<pre><code class="json">&quot;C_Cpp.intelliSenseEngine&quot;: &quot;Tag Parser&quot;,
+<pre><code class="language-json">&quot;C_Cpp.intelliSenseEngine&quot;: &quot;Tag Parser&quot;,
 </code></pre>
 <ul>
 <li>方法2</li>

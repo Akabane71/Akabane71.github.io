@@ -1768,8 +1768,8 @@
       
         <h1 id="关于字符编码哪些事"><a href="#关于字符编码哪些事" class="headerlink" title="关于字符编码哪些事"></a>关于字符编码哪些事</h1><p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E5%93%AA%E4%BA%9B%E4%BA%8B"><span class="toc-text">关于字符编码哪些事</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%84%E4%B8%AA%E7%BC%96%E7%A0%81%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">各个编码的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ASCII"><span class="toc-text">ASCII</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GBK"><span class="toc-text">GBK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base64"><span class="toc-text">Base64</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86"><span class="toc-text">编码原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%8F%E4%B9%89"><span class="toc-text">意义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-text">Unicode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Unicode%E9%97%AE%E9%A2%98"><span class="toc-text">Unicode问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UTF8"><span class="toc-text">UTF8</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-text">编码规则</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">系统的编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></div></p>
 <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>数据在计算机中是使用 <strong>二进制</strong> 来存储的</p>
-<p><strong>字符集（Charset）：</strong>是一个系统支持的所有抽象字符的集合。字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等。</p>
-<p><strong>字符编码（Character Encoding）：</strong>是一套法则，使用该法则能够对自然语言的字符的一个集合（如字母表或音节表），与其他东西的一个集合（如号码或电脉冲）进行配对。</p>
+<p>**字符集（Charset）：**是一个系统支持的所有抽象字符的集合。字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等。</p>
+<p>**字符编码（Character Encoding）：**是一套法则，使用该法则能够对自然语言的字符的一个集合（如字母表或音节表），与其他东西的一个集合（如号码或电脉冲）进行配对。</p>
 <p>什么是 编码 ?</p>
 <blockquote>
 <p>f( 字符 ) &#x3D; 二进制 —–&gt; 这个过程就是编码 encode</p>
@@ -1782,7 +1782,7 @@
 <blockquote>
 <p>0000 0000 —-&gt; 1111 1111</p>
 </blockquote>
-<p><img src="https://th.bing.com/th/id/R.da310e141fa527e943947e338b128abe?rik=HOedOgelDOXBiQ&riu=http://api.fly63.com/vue_blog/public/Uploads/20181031/5bd931ecb8ae6.jpg&ehk=VlZdRqfFkhEsRpILTddMNu3jxOj8K1Ol47KYN4SGftI=&risl=&pid=ImgRaw&r=0" alt="ascii码表/ascii编码_最全的ASCII码对照表"></p>
+<p><img src="https://th.bing.com/th/id/R.da310e141fa527e943947e338b128abe?rik=HOedOgelDOXBiQ&riu=http://api.fly63.com/vue_blog/public/Uploads/20181031/5bd931ecb8ae6.jpg&ehk=VlZdRqfFkhEsRpILTddMNu3jxOj8K1Ol47KYN4SGftI=&risl=&pid=ImgRaw&r=0" alt="ascii码表&#x2F;ascii编码_最全的ASCII码对照表"></p>
 <p>例如</p>
 <blockquote>
 <p>SPACE (空格键) ——-&gt; 0010000</p>
@@ -1794,7 +1794,7 @@
 <p>但是他支持 很多国家的语言，like 数学符号、罗马希腊的 字母、日文的假名们都编进去了</p>
 </blockquote>
 <h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>Base64编码，是由64个字符组成编码集：<strong>26个大写字母A<del>Z，26个小写字母a</del>z，10个数字0~9，符号“+”与符号“&#x2F;”</strong>。Base64编码的基本思路是<strong>将原始数据的三个字节拆分转化为四个字节</strong>，然后根据Base64的对应表，得到对应的编码数据。</p>
-<p>当原始数据凑不够三个字节时，编码结果中会使用额外的<strong>符号“&#x3D;”</strong>来表示这种情况。</p>
+<p>当原始数据凑不够三个字节时，编码结果中会使用额外的**符号“&#x3D;”**来表示这种情况。</p>
 <p>针对字节编码</p>
 <h3 id="编码原理"><a href="#编码原理" class="headerlink" title="编码原理"></a>编码原理</h3><p><img src="/../../imgs/about-encode/v2-d11e217c2bad5a99a0ab4afcf69f6345_1440w-2587693.webp" alt="v2-d11e217c2bad5a99a0ab4afcf69f6345_1440w-2587693"></p>
 <p>一个Base64字符实际上代表着6个二进制位(bit)，<strong>4个Base64字符对应3字节字符串&#x2F;二进制数据。</strong></p>
@@ -1848,7 +1848,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="UTF8"><a href="#UTF8" class="headerlink" title="UTF8"></a>UTF8</h2><p><strong>互联网的普及，强烈要求出现一种统一的编码方式。</strong>UTF-8 就是在互联网上使用最广的一种 Unicode 的实现方式。其他实现方式还包括 UTF-16（字符用两个字节或四个字节表示）和 UTF-32（字符用四个字节表示），不过在互联网上基本不用。重复一遍，这里的关系是，UTF-8 是 Unicode 的实现方式之一。</p>
+<h2 id="UTF8"><a href="#UTF8" class="headerlink" title="UTF8"></a>UTF8</h2><p>**互联网的普及，强烈要求出现一种统一的编码方式。**UTF-8 就是在互联网上使用最广的一种 Unicode 的实现方式。其他实现方式还包括 UTF-16（字符用两个字节或四个字节表示）和 UTF-32（字符用四个字节表示），不过在互联网上基本不用。重复一遍，这里的关系是，UTF-8 是 Unicode 的实现方式之一。</p>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
 <li>UTF8是 Unicode 的一种具体存储实现方式（即编码方案）。</li>
 <li>可变长的编码，使用<strong>1~4</strong>个字节来表示一个符号，根据不同的符号而改变字节长度</li>

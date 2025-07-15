@@ -1801,12 +1801,12 @@
 <h3 id="map-pub-node-cpp"><a href="#map-pub-node-cpp" class="headerlink" title="map_pub_node.cpp"></a>map_pub_node.cpp</h3><ul>
 <li><code>创建软件包</code></li>
 </ul>
-<pre><code class="bash">catkin_create_pkg map_pkg rospy roscpp nav_msgs
+<pre><code class="language-bash">catkin_create_pkg map_pkg rospy roscpp nav_msgs
 </code></pre>
 <ul>
 <li>map_pub_node.cpp</li>
 </ul>
-<pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;nav_msgs/OccupancyGrid.h&gt;
 
 int main(int argc, char *argv[])
@@ -1846,14 +1846,14 @@ int main(int argc, char *argv[])
 
 </code></pre>
 <h3 id="CmakeList-txt"><a href="#CmakeList-txt" class="headerlink" title="CmakeList.txt"></a>CmakeList.txt</h3><p>末尾添加上</p>
-<pre><code class="cmake">add_executable(map_pub_node src/map_pub_node.cpp)
+<pre><code class="language-cmake">add_executable(map_pub_node src/map_pub_node.cpp)
 add_dependencies(map_pub_node $&#123;$&#123;PROJECT_NAME&#125;_EXPORTED_TARGETS&#125; $&#123;catkin_EXPORTED_TARGETS&#125;)
 target_link_libraries(map_pub_node
   $&#123;catkin_LIBRARIES&#125;
 )
 </code></pre>
 <h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120102929694.png" alt="image-20241120102929694"></p>
-<h2 id="Python实现"><a href="#Python实现" class="headerlink" title="Python实现"></a>Python实现</h2><h3 id="map-pub-node-py"><a href="#map-pub-node-py" class="headerlink" title="map_pub_node.py"></a>map_pub_node.py</h3><pre><code class="python">#!/usr/bin/env python3
+<h2 id="Python实现"><a href="#Python实现" class="headerlink" title="Python实现"></a>Python实现</h2><h3 id="map-pub-node-py"><a href="#map-pub-node-py" class="headerlink" title="map_pub_node.py"></a>map_pub_node.py</h3><pre><code class="language-python">#!/usr/bin/env python3
 # coding = utf-8
 import rospy
 from nav_msgs.msg import OccupancyGrid
@@ -1895,28 +1895,28 @@ if __name__ == &quot;__main__&quot;:
 <h2 id="Hector-Mapping-年轻人的第一次SLAM建图"><a href="#Hector-Mapping-年轻人的第一次SLAM建图" class="headerlink" title="Hector_Mapping 年轻人的第一次SLAM建图"></a>Hector_Mapping 年轻人的第一次SLAM建图</h2><p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120112818245.png" alt="image-20241120112818245"></p>
 <p>SLAM节点，我们直接复用别人的 SLAM ，等我们学会了再去研究这个节点写吧！！！<code>复用！</code></p>
 <h3 id="下载-与-启动仿真环境"><a href="#下载-与-启动仿真环境" class="headerlink" title="下载 与 启动仿真环境"></a>下载 与 启动仿真环境</h3><p><strong>Hector_mapping 下载</strong></p>
-<pre><code class="bash">sudo apt install ros-noetic-hector-mapping
+<pre><code class="language-bash">sudo apt install ros-noetic-hector-mapping
 </code></pre>
-<pre><code class="bash">roslaunch wpr_simulation wpb_stage_slam.launch
+<pre><code class="language-bash">roslaunch wpr_simulation wpb_stage_slam.launch
 </code></pre>
 <p>启动slam建图程序</p>
-<pre><code class="bash">rosrun hector_mapping hector_mapping
+<pre><code class="language-bash">rosrun hector_mapping hector_mapping
 </code></pre>
 <p>启动 <code>rviz</code> 程序</p>
-<pre><code class="bash">rviz
+<pre><code class="language-bash">rviz
 </code></pre>
 <p>启动控制程序</p>
-<pre><code class="bash">rosrun rqt_robot_steering rqt_robot_steering 
+<pre><code class="language-bash">rosrun rqt_robot_steering rqt_robot_steering 
 </code></pre>
 <p>使用控制程序来控制其运动</p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120115636642.png" alt="image-20241120115636642"></p>
 <h3 id="通过launch文件来启动Hector-Mapping建图"><a href="#通过launch文件来启动Hector-Mapping建图" class="headerlink" title="通过launch文件来启动Hector_Mapping建图"></a>通过launch文件来启动Hector_Mapping建图</h3><p>创建  <code>slam_pkg</code> 包</p>
-<pre><code class="bash">catkin_create_pkg slam_pkg roscpp rospy std_msgs
+<pre><code class="language-bash">catkin_create_pkg slam_pkg roscpp rospy std_msgs
 </code></pre>
 <p>将这些指令全部写入到一个launch文件中</p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120145927894.png" alt="image-20241120145927894"></p>
 <p><strong>hector.launch</strong></p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
     &lt;include file=&quot;$(find wpr_simulation)/launch/wpb_stage_slam.launch&quot; /&gt;
 
     &lt;node pkg=&quot;hector_mapping&quot; type=&quot;hector_mapping&quot; name=&quot;hector_mapping&quot; /&gt;
@@ -1935,13 +1935,13 @@ if __name__ == &quot;__main__&quot;:
 <h4 id="保存-rviz-配置"><a href="#保存-rviz-配置" class="headerlink" title="保存 rviz 配置"></a>保存 <code>rviz</code> 配置</h4><p>在rviz下，选择  <code>save config as </code> </p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120153539827.png" alt="image-20241120153539827"></p>
 <p>存储到</p>
-<pre><code class="bash">~/catkin_ws/src/slam_pkg/rviz/
+<pre><code class="language-bash">~/catkin_ws/src/slam_pkg/rviz/
 </code></pre>
 <p>rviz 加载配置信息启动</p>
-<pre><code class="bash">rosrun rviz rviz -d /home/ysc/catkin_ws/src/slam_pkg/rviz/slam.rviz 
+<pre><code class="language-bash">rosrun rviz rviz -d /home/ysc/catkin_ws/src/slam_pkg/rviz/slam.rviz 
 </code></pre>
 <h4 id="修改-launch信息"><a href="#修改-launch信息" class="headerlink" title="修改 launch信息"></a>修改 launch信息</h4><p><strong>hector.launch</strong></p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
     &lt;!-- 载入机器人 和 SLAM 的仿真场景  --&gt;
     &lt;!-- 实体机器人就启动实体的启动程序 --&gt;
     &lt;include file=&quot;$(find wpr_simulation)/launch/wpb_stage_slam.launch&quot; /&gt;
@@ -1959,7 +1959,7 @@ if __name__ == &quot;__main__&quot;:
 <h2 id="Hector-Mapping-参数"><a href="#Hector-Mapping-参数" class="headerlink" title="Hector_Mapping 参数"></a>Hector_Mapping 参数</h2><p>我们修改 这几个参数</p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120155055171.png" alt="image-20241120155055171"></p>
 <p>修改 <code>hector.launch</code></p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
     &lt;!-- 载入机器人 和 SLAM 的仿真场景  --&gt;
     &lt;!-- 实体机器人就启动实体的启动程序 --&gt;
     &lt;include file=&quot;$(find wpr_simulation)/launch/wpb_stage_slam.launch&quot; /&gt;
@@ -1981,7 +1981,7 @@ if __name__ == &quot;__main__&quot;:
 <h3 id="怎么看出差距"><a href="#怎么看出差距" class="headerlink" title="怎么看出差距"></a>怎么看出差距</h3><p>比较一下呗</p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120155535233.png" alt="image-20241120155535233"></p>
 <p>创建一个 <code>companies.launch</code> </p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
 
   &lt;!-- 第一个 Hector_Mapping 建图节点 --&gt;
   &lt;group ns=&quot;slam_1&quot;&gt;
@@ -2106,10 +2106,10 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 </li>
 </ul>
-<h3 id="查看-tf-话题"><a href="#查看-tf-话题" class="headerlink" title="查看  /tf 话题"></a>查看  <code>/tf</code> 话题</h3><pre><code class="bash">rostopic echo /tf
+<h3 id="查看-tf-话题"><a href="#查看-tf-话题" class="headerlink" title="查看  /tf 话题"></a>查看  <code>/tf</code> 话题</h3><pre><code class="language-bash">rostopic echo /tf
 </code></pre>
 <h3 id="查看各个tf的父子关系"><a href="#查看各个tf的父子关系" class="headerlink" title="查看各个tf的父子关系"></a>查看各个tf的父子关系</h3><p> <code>tf tree</code> </p>
-<pre><code class="bash">rosrun rqt_tf_tree rqt_tf_tree
+<pre><code class="language-bash">rosrun rqt_tf_tree rqt_tf_tree
 </code></pre>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120163336002.png" alt="image-20241120163336002"></p>
 <h1 id="里程计-odom"><a href="#里程计-odom" class="headerlink" title="里程计 odom"></a>里程计 odom</h1><blockquote>
@@ -2118,7 +2118,7 @@ if __name__ == &quot;__main__&quot;:
 </blockquote>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120163501854.png" alt="image-20241120163501854"></p>
 <p>开启一个仿真程序</p>
-<pre><code class="bash">roslaunch wpr_simulation wpb_corridor_hector.launch
+<pre><code class="language-bash">roslaunch wpr_simulation wpb_corridor_hector.launch
 </code></pre>
 <p>这个建图会出现 <code>机器人还在走，但是 rviz 图不更新了</code> </p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120163917156.png" alt="image-20241120163917156"></p>
@@ -2165,7 +2165,7 @@ if __name__ == &quot;__main__&quot;:
 <li>base_link —&gt; odom</li>
 <li>&#x2F;scan （话题）</li>
 </ul>
-<h2 id="启动仿真环境"><a href="#启动仿真环境" class="headerlink" title="启动仿真环境"></a>启动仿真环境</h2><pre><code class="bash">roslaunch wpr_simulation wpb_stage_robocup.launch
+<h2 id="启动仿真环境"><a href="#启动仿真环境" class="headerlink" title="启动仿真环境"></a>启动仿真环境</h2><pre><code class="language-bash">roslaunch wpr_simulation wpb_stage_robocup.launch
 </code></pre>
 <p>这样的场景</p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120171601455.png" alt="image-20241120171601455"></p>
@@ -2173,23 +2173,23 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li>查看消息话题</li>
 </ul>
-<pre><code class="bash">rostopic list
+<pre><code class="language-bash">rostopic list
 </code></pre>
 <ul>
 <li>查看tf 树</li>
 </ul>
-<pre><code class="bash">rosrun rqt_tf_tree rqt_tf_tree
+<pre><code class="language-bash">rosrun rqt_tf_tree rqt_tf_tree
 </code></pre>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241120171741636.png" alt="image-20241120171741636"></p>
 <p>都符合需求</p>
-<h2 id="启动Gampping节点"><a href="#启动Gampping节点" class="headerlink" title="启动Gampping节点"></a>启动Gampping节点</h2><pre><code class="bash">rosrun gmapping slam_gmapping
+<h2 id="启动Gampping节点"><a href="#启动Gampping节点" class="headerlink" title="启动Gampping节点"></a>启动Gampping节点</h2><pre><code class="language-bash">rosrun gmapping slam_gmapping
 </code></pre>
 <p>启动 <code>rviz</code></p>
 <p>运行键盘控制机器人节点</p>
-<pre><code class="bash">rosrun wpr_simulation keyboard_vel_ctrl
+<pre><code class="language-bash">rosrun wpr_simulation keyboard_vel_ctrl
 </code></pre>
 <h2 id="编写launch文件一键启动Gampping建图"><a href="#编写launch文件一键启动Gampping建图" class="headerlink" title="编写launch文件一键启动Gampping建图"></a>编写launch文件一键启动Gampping建图</h2><p>创建文件  <code>slam_pkg</code></p>
-<pre><code class="bash">catkin_create_pkg slam_pkg roscpp rospy std_msgs
+<pre><code class="language-bash">catkin_create_pkg slam_pkg roscpp rospy std_msgs
 </code></pre>
 <h3 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h3><p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241121095633074.png" alt="image-20241121095633074"></p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241121100256025.png" alt="image-20241121100256025"></p>
@@ -2206,7 +2206,7 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 </blockquote>
 <p><code>gampping.launch</code> 内容</p>
-<pre><code class="xml">&lt;launch&gt;
+<pre><code class="language-xml">&lt;launch&gt;
     &lt;!-- 载入机器人 和 SLAM 的仿真场景  --&gt;
     &lt;!-- 实体机器人就启动实体的启动程序 --&gt;
     &lt;include file=&quot;$(find wpr_simulation)/launch/wpb_stage_robocup.launch&quot; /&gt;
@@ -2228,7 +2228,7 @@ if __name__ == &quot;__main__&quot;:
 <h1 id="如何保存建立好的地图"><a href="#如何保存建立好的地图" class="headerlink" title="如何保存建立好的地图"></a>如何保存建立好的地图</h1><h2 id="map-server"><a href="#map-server" class="headerlink" title="map_server"></a>map_server</h2><blockquote>
 <p>将节点保存到地图里</p>
 </blockquote>
-<pre><code class="bash">rosrun map_server map_server -f 【文件名称】
+<pre><code class="language-bash">rosrun map_server map_server -f 【文件名称】
 </code></pre>
 <p>地图文件就长这样</p>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241121102534183.png" alt="image-20241121102534183"></p>
@@ -2247,7 +2247,7 @@ if __name__ == &quot;__main__&quot;:
 </li>
 </ul>
 <h2 id="加载地图"><a href="#加载地图" class="headerlink" title="加载地图"></a>加载地图</h2><p>在终端上运行，map.yaml 文件里</p>
-<pre><code class="bash">rosrun map_server map_server map.yaml
+<pre><code class="language-bash">rosrun map_server map_server map.yaml
 </code></pre>
 <p><img src="/../../../imgs/04-ros1-occupancy-grid-map/image-20241121103321951.png" alt="image-20241121103321951"></p>
 <p>直接载入成功</p>

@@ -1775,7 +1775,7 @@
 </ul>
 </li>
 </ol>
-<pre><code class="python"># 自定义迭代器
+<pre><code class="language-python"># 自定义迭代器
 class MyIterator:
     def __init__(self, data):
         self.data = data
@@ -1806,7 +1806,7 @@ for item in my_iter:
 <li><strong>惰性求值</strong>：生成器在需要时生成值，而不是一次性生成所有值，因此可以有效地节省内存。</li>
 <li><strong>简洁的语法</strong>：生成器函数的定义类似于普通函数，但使用 <code>yield</code> 而不是 <code>return</code>，使得代码更加简洁易懂。</li>
 </ol>
-<pre><code class="python">def simple_generator():
+<pre><code class="language-python">def simple_generator():
     yield 1
     yield 2
     yield 3
@@ -1821,7 +1821,7 @@ print(next(gen))  # 输出: 3
 # print(next(gen))  # 引发 StopIteration 异常
 </code></pre>
 <p><strong>使用 <code>for</code> 循环遍历生成器：</strong></p>
-<pre><code class="python">for value in simple_generator():
+<pre><code class="language-python">for value in simple_generator():
     print(value)
 # 输出:
 # 1
@@ -1830,7 +1830,7 @@ print(next(gen))  # 输出: 3
 </code></pre>
 <p><strong>生成器表达式：</strong></p>
 <p>除了使用函数定义生成器外，Python 还支持生成器表达式，这是一种更简洁的创建生成器的方法，类似于列表推导式，但用圆括号代替方括号。</p>
-<pre><code class="python"># 生成器表达式
+<pre><code class="language-python"># 生成器表达式
 gen_exp = (x * x for x in range(5))
 
 for value in gen_exp:
@@ -1848,7 +1848,7 @@ for value in gen_exp:
 </ul>
 <p>生成器在需要处理大量数据、流数据或需要延迟计算的场景中非常有用。</p>
 <h1 id="map-关键字"><a href="#map-关键字" class="headerlink" title="map 关键字"></a>map 关键字</h1><p>在 Python 中，<code>map()</code> 是一个内置函数，用于将指定函数应用于可迭代对象（如列表、元组等）的每个元素，并返回一个迭代器。它常用于对数据进行批量处理或转换。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code class="python">map(function, iterable, ...)
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code class="language-python">map(function, iterable, ...)
 </code></pre>
 <ul>
 <li><p><code>function</code>：一个函数，用于处理可迭代对象中的每个元素。</p>
@@ -1859,7 +1859,7 @@ for value in gen_exp:
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ol>
 <li><strong>对单个可迭代对象应用函数</strong>：</li>
 </ol>
-<pre><code class="python">def square(x):
+<pre><code class="language-python">def square(x):
     return x ** 2
 
 numbers = [1, 2, 3, 4, 5]
@@ -1869,7 +1869,7 @@ print(list(result))  # 输出: [1, 4, 9, 16, 25]
 <ol start="2">
 <li><strong>对多个可迭代对象应用函数</strong>：</li>
 </ol>
-<pre><code class="python">def add(x, y):
+<pre><code class="language-python">def add(x, y):
     return x + y
 
 a = [1, 2, 3]
@@ -1881,12 +1881,12 @@ print(list(result))  # 输出: [5, 7, 9]
 <li><code>map()</code> 返回的是一个迭代器，因此通常需要使用 <code>list()</code> 或 <code>for</code> 循环来遍历结果。</li>
 <li>可以使用 <code>lambda</code> 表达式与 <code>map()</code> 结合，以简化代码：</li>
 </ul>
-<pre><code class="python">numbers = [1, 2, 3, 4, 5]
+<pre><code class="language-python">numbers = [1, 2, 3, 4, 5]
 result = map(lambda x: x ** 2, numbers)
 print(list(result))  # 输出: [1, 4, 9, 16, 25]
 </code></pre>
 <h1 id="zip-关键字"><a href="#zip-关键字" class="headerlink" title="zip 关键字"></a>zip 关键字</h1><p>在 Python 中，<code>zip</code> 是一个内置函数，用于将多个可迭代对象（如列表、元组等）聚合在一起，生成一个由元组组成的迭代器。每个元组的第 i 个元素来自所有可迭代对象的第 i 个元素。</p>
-<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><pre><code class="python">zip(*iterables)
+<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><pre><code class="language-python">zip(*iterables)
 </code></pre>
 <ul>
 <li><code>iterables</code>：一个或多个可迭代对象（如列表、元组等）。</li>
@@ -1894,7 +1894,7 @@ print(list(result))  # 输出: [1, 4, 9, 16, 25]
 <h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><ol>
 <li><strong>基本用法</strong>：</li>
 </ol>
-<pre><code class="python">a = [1, 2, 3]
+<pre><code class="language-python">a = [1, 2, 3]
 b = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 result = zip(a, b)
 
@@ -1904,7 +1904,7 @@ print(list(result))  # 输出: [(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#
 <ol start="2">
 <li><strong>处理多个可迭代对象</strong>：</li>
 </ol>
-<pre><code class="python">names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
+<pre><code class="language-python">names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
 scores = [85, 90, 95]
 combined = zip(names, scores)
 
@@ -1913,7 +1913,7 @@ print(list(combined))  # 输出: [(&#39;Alice&#39;, 85), (&#39;Bob&#39;, 90), (&
 <ol start="3">
 <li><strong>不同长度的可迭代对象</strong>：<br>当输入的可迭代对象长度不一致时，<code>zip</code> 会根据最短的可迭代对象进行聚合，超出部分会被忽略。</li>
 </ol>
-<pre><code class="python">a = [1, 2]
+<pre><code class="language-python">a = [1, 2]
 b = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 result = zip(a, b)
 
@@ -1922,7 +1922,7 @@ print(list(result))  # 输出: [(1, &#39;a&#39;), (2, &#39;b&#39;)]
 <ol start="4">
 <li><strong>解压缩</strong>：<br><code>zip</code> 也可以用于解压缩操作，即将一个由元组组成的可迭代对象分开。</li>
 </ol>
-<pre><code class="python">pairs = [(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#39;)]
+<pre><code class="language-python">pairs = [(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#39;)]
 numbers, letters = zip(*pairs)
 
 print(numbers)  # 输出: (1, 2, 3)

@@ -1769,7 +1769,7 @@
 <p><img src="/../../../imgs/02-ros1-node-package/image-20241117135422283.png" alt="image-20241117135422283"></p>
 <h2 id="节点-node"><a href="#节点-node" class="headerlink" title="节点 node"></a>节点 node</h2><p><img src="/../../../imgs/02-ros1-node-package/image-20241117135713240.png" alt="image-20241117135713240"></p>
 <h1 id="年轻人的第一个node和pkg"><a href="#年轻人的第一个node和pkg" class="headerlink" title="年轻人的第一个node和pkg"></a>年轻人的第一个node和pkg</h1><p>在 <code>~/catkin_ws/src/</code> 目录下 输入</p>
-<pre><code class="bash">catkin_create_pkg ssr_pkg rospy roscpp std_msgs
+<pre><code class="language-bash">catkin_create_pkg ssr_pkg rospy roscpp std_msgs
 </code></pre>
 <blockquote>
 <p>注解</p>
@@ -1869,7 +1869,7 @@ int main(int args,char const *args[])
 <ul>
 <li><code>chao_node.cpp</code></li>
 </ul>
-<pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;std_msgs/String.h&gt;
 
 int main(int argc, char *argv[])
@@ -1898,7 +1898,7 @@ int main(int argc, char *argv[])
 <ul>
 <li>li_node.py</li>
 </ul>
-<pre><code class="python">#!/usr/bin/env python3
+<pre><code class="language-python">#!/usr/bin/env python3
 # coding=utf-8
 
 import rospy
@@ -1932,7 +1932,7 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li><code>yao_node.cpp</code></li>
 </ul>
-<pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;std_msgs/String.h&gt;
 
 int main(int argc, char *argv[])
@@ -1967,7 +1967,7 @@ int main(int argc, char *argv[])
 <ul>
 <li><code>ma_node.cpp</code></li>
 </ul>
-<pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;std_msgs/String.h&gt;
 
 
@@ -2037,7 +2037,7 @@ if __name__ == &quot;__main__&quot;:
 <h4 id="查看现有的话题"><a href="#查看现有的话题" class="headerlink" title="查看现有的话题"></a>查看现有的话题</h4><ul>
 <li>列出当前系统中所有活跃着的话题</li>
 </ul>
-<pre><code class="bash">rostopic list
+<pre><code class="language-bash">rostopic list
 </code></pre>
 <h4 id="查看话题中的消息"><a href="#查看话题中的消息" class="headerlink" title="查看话题中的消息"></a>查看话题中的消息</h4><ul>
 <li>显示指定话题中发送的消息包内容</li>
@@ -2053,16 +2053,16 @@ if __name__ == &quot;__main__&quot;:
 <pre><code>rostopic hz xxx
 </code></pre>
 <h3 id="查询当前活跃的topic"><a href="#查询当前活跃的topic" class="headerlink" title="查询当前活跃的topic"></a>查询当前活跃的topic</h3><p>图形化显示当前系统活跃的节点以及节点间的话题通讯关系</p>
-<pre><code class="bash">rqt_graph
+<pre><code class="language-bash">rqt_graph
 </code></pre>
 <p><img src="/../../../imgs/02-ros1-node-package/image-20241117171129749.png" alt="image-20241117171129749"></p>
-<h3 id="使用lanuch来启动"><a href="#使用lanuch来启动" class="headerlink" title="使用lanuch来启动"></a>使用lanuch来启动</h3><pre><code class="xml">&lt;launch&gt;
-    
-    &lt;node pkg=&quot;ssr_pkg&quot; type=&quot;yao_node&quot; name=&quot;yao_node&quot; /&gt;
-    
-    &lt;node pkg=&quot;ssr_pkg&quot; type=&quot;chao_node&quot; name=&quot;chao_node&quot; launch-prefix=&quot;gnome-terminal -e&quot; /&gt;
-    
-    &lt;node pkg=&quot;atr_pkg&quot; type=&quot;ma_node&quot; name=&quot;ma_node&quot; /&gt;
+<h3 id="使用lanuch来启动"><a href="#使用lanuch来启动" class="headerlink" title="使用lanuch来启动"></a>使用lanuch来启动</h3><pre><code class="language-xml">&lt;launch&gt;
+	
+	&lt;node pkg=&quot;ssr_pkg&quot; type=&quot;yao_node&quot; name=&quot;yao_node&quot; /&gt;
+	
+	&lt;node pkg=&quot;ssr_pkg&quot; type=&quot;chao_node&quot; name=&quot;chao_node&quot; launch-prefix=&quot;gnome-terminal -e&quot; /&gt;
+	
+	&lt;node pkg=&quot;atr_pkg&quot; type=&quot;ma_node&quot; name=&quot;ma_node&quot; /&gt;
 
 
 &lt;/launch&gt;
@@ -2092,12 +2092,12 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 <p>例如</p>
 <pre><code>&lt;launch&gt;
-    
-    &lt;node pkg=&quot;ssr_pkg&quot; type=&quot;yao_node&quot; name=&quot;yao_node&quot; /&gt;
-    
-    &lt;node pkg=&quot;ssr_pkg&quot; type=&quot;chao_node&quot; name=&quot;chao_node&quot; launch-prefix=&quot;gnome-terminal -e&quot; /&gt;
-    
-    &lt;node pkg=&quot;atr_pkg&quot; type=&quot;ma_node&quot; name=&quot;ma_node&quot; /&gt;
+	
+	&lt;node pkg=&quot;ssr_pkg&quot; type=&quot;yao_node&quot; name=&quot;yao_node&quot; /&gt;
+	
+	&lt;node pkg=&quot;ssr_pkg&quot; type=&quot;chao_node&quot; name=&quot;chao_node&quot; launch-prefix=&quot;gnome-terminal -e&quot; /&gt;
+	
+	&lt;node pkg=&quot;atr_pkg&quot; type=&quot;ma_node&quot; name=&quot;ma_node&quot; /&gt;
 
 
 &lt;/launch&gt;

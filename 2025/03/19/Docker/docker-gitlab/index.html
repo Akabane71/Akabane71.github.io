@@ -1761,7 +1761,7 @@
         <h2 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h2><h2 id="1-gitlab一些设置"><a href="#1-gitlab一些设置" class="headerlink" title="1. gitlab一些设置"></a>1. gitlab一些设置</h2><h3 id="1-允许用户注册"><a href="#1-允许用户注册" class="headerlink" title="1.允许用户注册"></a>1.允许用户注册</h3><ul>
 <li>在 <strong>gitlab.rb</strong> 中加上这个</li>
 </ul>
-<pre><code class="rb">gitlab_rails[&#39;gitlab_signup_enabled&#39;] = true
+<pre><code class="language-rb">gitlab_rails[&#39;gitlab_signup_enabled&#39;] = true
 </code></pre>
 <p>访问 admin 用户管理页面</p>
 <pre><code>http://localhost:8929/admin
@@ -1774,7 +1774,7 @@
 <ul>
 <li>docker-compose.yml</li>
 </ul>
-<pre><code class="yml">services:
+<pre><code class="language-yml">services:
   gitlab_runner:
     image: gitlab/gitlab-runner:latest
     container_name: gitlab_runner
@@ -1786,7 +1786,7 @@
 <ul>
 <li>运行</li>
 </ul>
-<pre><code class="shell">docker-compose up -d
+<pre><code class="language-shell">docker-compose up -d
 </code></pre>
 <h3 id="注册gitlab-runner"><a href="#注册gitlab-runner" class="headerlink" title="注册gitlab-runner"></a>注册gitlab-runner</h3><ul>
 <li>进入容器内执行命令</li>
@@ -1823,7 +1823,7 @@ python3.8
 <ul>
 <li>main.py</li>
 </ul>
-<pre><code class="python">def add(a, b):
+<pre><code class="language-python">def add(a, b):
     return a + b
 
 if __name__ == &quot;__main__&quot;:
@@ -1833,7 +1833,7 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li>.gitlab-ci.yml</li>
 </ul>
-<pre><code class="yml">stages:
+<pre><code class="language-yml">stages:
   - run
 
 run-app:

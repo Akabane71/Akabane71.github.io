@@ -1798,7 +1798,7 @@
 * 3 官网链接
     https://docs.scrapy.org/en/latest/topics/commands.html
 </code></pre>
-<h2 id="3-创建项目"><a href="#3-创建项目" class="headerlink" title="3. 创建项目"></a>3. 创建项目</h2><pre><code class="bash">scrapy startproject xxx
+<h2 id="3-创建项目"><a href="#3-创建项目" class="headerlink" title="3. 创建项目"></a>3. 创建项目</h2><pre><code class="language-bash">scrapy startproject xxx
 cd xxx
 scrapy genspider xxxx xxx.com
 </code></pre>
@@ -1827,7 +1827,7 @@ scrapy genspider xxxx xxx.com
 </code></pre>
 <p><strong>优雅的方法</strong></p>
 <p>在根目录下创建一个 bin.py 文件</p>
-<pre><code class="python">from scrapy.cmdline import execute
+<pre><code class="language-python">from scrapy.cmdline import execute
 execute([&#39;scrapy&#39;, &#39;crawl&#39;, &#39;xxx&#39;, &quot;--nolog&quot;])
 </code></pre>
 <h2 id="6-settings-配置文件"><a href="#6-settings-配置文件" class="headerlink" title="6. settings 配置文件"></a>6. settings 配置文件</h2><h5 id="1-为什么项目中需要配置文件"><a href="#1-为什么项目中需要配置文件" class="headerlink" title="1. 为什么项目中需要配置文件"></a>1. 为什么项目中需要配置文件</h5><p>在配置文件中存放一些公共变量，在后续的项目中方便修改，如：本地测试数据库和部署服务器的数据库不一致</p>
@@ -1837,7 +1837,7 @@ execute([&#39;scrapy&#39;, &#39;crawl&#39;, &#39;xxx&#39;, &quot;--nolog&quot;])
 <li>导入即可使用</li>
 </ol>
 </blockquote>
-<h5 id="3-settings-py中的重点字段和含义"><a href="#3-settings-py中的重点字段和含义" class="headerlink" title="3. settings.py中的重点字段和含义"></a>3. settings.py中的重点字段和含义</h5><pre><code class="apl">- USER_AGENT 设置ua
+<h5 id="3-settings-py中的重点字段和含义"><a href="#3-settings-py中的重点字段和含义" class="headerlink" title="3. settings.py中的重点字段和含义"></a>3. settings.py中的重点字段和含义</h5><pre><code class="language-apl">- USER_AGENT 设置ua
 
 - ROBOTSTXT_OBEY 是否遵守robots协议，默认是遵守
 
@@ -1869,7 +1869,7 @@ execute([&#39;scrapy&#39;, &#39;crawl&#39;, &#39;xxx&#39;, &quot;--nolog&quot;])
 - FEED_EXPORT_ENCODING=&#39;UTF-8&#39; 保存的是unicode编码字符转为utf8
 </code></pre>
 <h1 id="Spider类"><a href="#Spider类" class="headerlink" title="Spider类"></a>Spider类</h1><p>Spiders是定义如何抓取某个站点（或一组站点）的类，包括如何执行爬行（即跟随链接）以及如何从其页面中提取结构化数据（即抓取项目）。换句话说，Spiders是您为特定站点（或者在某些情况下，一组站点）爬网和解析页面定义自定义行为的地方。　</p>
-<pre><code class="apl">1、 生成初始的Requests来爬取第一个URLS，并且标识一个回调函数
+<pre><code class="language-apl">1、 生成初始的Requests来爬取第一个URLS，并且标识一个回调函数
      第一个请求定义在start_requests()方法内默认从start_urls列表中获得url地址来生成Request请求，
      默认的回调函数是parse方法。回调函数在下载完成返回response时自动触发
 
@@ -1891,7 +1891,7 @@ execute([&#39;scrapy&#39;, &#39;crawl&#39;, &#39;xxx&#39;, &quot;--nolog&quot;])
 <h1 id="Item"><a href="#Item" class="headerlink" title="Item"></a>Item</h1><p>抓取的主要目标是从非结构化源（通常是网页）中提取结构化数据。Scrapy爬虫可以像Python一样返回提取的数据。虽然方便和熟悉，但很容易在字段名称中输入拼写错误或返回不一致的数据，尤其是在具有许多爬虫的较大项目中。</p>
 <p>为了定义通用输出数据格式，Scrapy提供了Item类。 Item对象是用于收集抓取数据的简单容器。它们提供类似字典的 API，并具有用于声明其可用字段的方便语法。</p>
 <h3 id="1、声明项目"><a href="#1、声明项目" class="headerlink" title="1、声明项目"></a>1、声明项目</h3><p>使用简单的类定义语法和Field 对象声明项。这是一个例子：</p>
-<pre><code class="python">import scrapy
+<pre><code class="language-python">import scrapy
  
 class Product(scrapy.Item):
     name = scrapy.Field()
@@ -1915,7 +1915,7 @@ class Product(scrapy.Item):
 <li>storing the scraped item in a database</li>
 </ul>
 </blockquote>
-<h3 id="1-编写自己的项目管道"><a href="#1-编写自己的项目管道" class="headerlink" title="1 编写自己的项目管道"></a>1 编写自己的项目管道</h3><pre><code class="python">&#39;&#39;&#39;
+<h3 id="1-编写自己的项目管道"><a href="#1-编写自己的项目管道" class="headerlink" title="1 编写自己的项目管道"></a>1 编写自己的项目管道</h3><pre><code class="language-python">&#39;&#39;&#39;
 每个项管道组件都是一个必须实现以下方法的Python类：
 
 process_item（self，项目，spider）
@@ -1937,7 +1937,7 @@ from_crawler（cls，crawler ）
 &#39;&#39;&#39;
 </code></pre>
 <h3 id="2-项目管道示例"><a href="#2-项目管道示例" class="headerlink" title="2 项目管道示例"></a>2 项目管道示例</h3><h4 id="1-价格验证和丢弃物品没有价格"><a href="#1-价格验证和丢弃物品没有价格" class="headerlink" title="(1) 价格验证和丢弃物品没有价格"></a>(1) 价格验证和丢弃物品没有价格</h4><p>让我们看看下面的假设管道，它调整 <code>price</code>那些不包含增值税（<code>price_excludes_vat</code>属性）的项目的属性，并删除那些不包含价格的项目：</p>
-<pre><code class="python">from scrapy.exceptions import DropItem
+<pre><code class="language-python">from scrapy.exceptions import DropItem
  
 class PricePipeline(object):
  
@@ -1953,7 +1953,7 @@ class PricePipeline(object):
 </code></pre>
 <h4 id="2-将项目写入JSON文件"><a href="#2-将项目写入JSON文件" class="headerlink" title="(2) 将项目写入JSON文件"></a>(2) 将项目写入JSON文件</h4><p>以下管道将所有已删除的项目（来自所有spider）存储到一个<code>items.jl</code>文件中，每行包含一个以JSON格式序列化的项目：</p>
 <p>注意JsonWriterPipeline的目的只是介绍如何编写项目管道。如果您确实要将所有已删除的项目存储到JSON文件中，则应使用Feed导出。</p>
-<pre><code class="python">import json
+<pre><code class="language-python">import json
  
 class JsonWriterPipeline(object):
  
@@ -1969,7 +1969,7 @@ class JsonWriterPipeline(object):
         return item
 </code></pre>
 <h4 id="3-将项目写入数据库（网易新闻应用）"><a href="#3-将项目写入数据库（网易新闻应用）" class="headerlink" title="(3) 将项目写入数据库（网易新闻应用）"></a>(3) 将项目写入数据库（网易新闻应用）</h4><p>在这个例子中，我们将使用<a target="_blank" rel="noopener" href="https://api.mongodb.org/python/current/">pymongo</a>将项目写入<a target="_blank" rel="noopener" href="https://www.mongodb.org/">MongoDB</a>。MongoDB地址和数据库名称在Scrapy设置中指定; MongoDB集合以item类命名。</p>
-<pre><code class="python">from scrapy.exceptions import DropItem
+<pre><code class="language-python">from scrapy.exceptions import DropItem
 import pymongo
 
 
@@ -2020,7 +2020,7 @@ class MongoPipeline(object):
 <p>具体来说，<code>from_crawler</code> 方法接收一个 <code>crawler</code> 参数，这是当前 Crawler 实例的引用。您可以使用 <code>crawler.settings</code> 访问 Scrapy 的全局配置变量，还可以使用 <code>crawler.signals</code> 注册信号处理程序，以及使用 <code>crawler.engine</code> 和 <code>crawler.spider</code> 访问其他 Scrapy 子系统和资源。</p>
 <p>因此，在 <code>from_crawler</code> 中，您可以使用更多的 Scrapy 资源，并根据需要动态地配置中间件。这使得中间件更加灵活和可扩展，可以适应多种场景和需求。</p>
 <h4 id="4-重复过滤"><a href="#4-重复过滤" class="headerlink" title="(4) 重复过滤"></a>(4) 重复过滤</h4><p>一个过滤器，用于查找重复项目，并删除已处理的项目。假设我们的项目具有唯一ID，但我们的蜘蛛会返回具有相同ID的多个项目：</p>
-<pre><code class="python">from scrapy.exceptions import DropItem
+<pre><code class="language-python">from scrapy.exceptions import DropItem
  
 class DuplicatesPipeline(object):
  
@@ -2035,7 +2035,7 @@ class DuplicatesPipeline(object):
             return item
 </code></pre>
 <h3 id="3-激活项目管道组件"><a href="#3-激活项目管道组件" class="headerlink" title="3 激活项目管道组件"></a>3 激活项目管道组件</h3><p>要激活Item Pipeline组件，必须将其类添加到<code>settings.py</code>的 <a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/settings.html#std:setting-ITEM_PIPELINES"><code>ITEM_PIPELINES</code></a>设置中，如下例所示：</p>
-<pre><code class="python">ITEM_PIPELINES = &#123;
+<pre><code class="language-python">ITEM_PIPELINES = &#123;
     &#39;myproject.pipelines.PricePipeline&#39;: 300,
     &#39;myproject.pipelines.JsonWriterPipeline&#39;: 800,
     &quot;NewsPro.pipelines.MongoPipeline&quot;: 500,
@@ -2043,7 +2043,7 @@ class DuplicatesPipeline(object):
 </code></pre>
 <p>您在此设置中为类分配的整数值决定了它们运行的顺序：项目从较低值到较高值类进行。习惯上在0-1000范围内定义这些数字。</p>
 <h1 id="下载中间件"><a href="#下载中间件" class="headerlink" title="下载中间件"></a>下载中间件</h1><p><img src="/../../../imgs/python-scrapy/image-20230411154516741-1726831071529.png" alt="image-20230411154516741"></p>
-<pre><code class="python">class MyDownMiddleware(object):
+<pre><code class="language-python">class MyDownMiddleware(object):
     def process_request(self, request, spider):
         &quot;&quot;&quot;
         请求需要被下载时，经过所有下载器中间件的process_request调用

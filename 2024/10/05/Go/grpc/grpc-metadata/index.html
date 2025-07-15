@@ -1771,7 +1771,7 @@
 <p>而在gRPC中也需要有这样的机制进行验证，但显然不能放在.proto文件当中，因为这部分暴露了实际的消息</p>
 <p>比如JWT，cookies，这些写在.proto文件中不好。而且.proto文件中写的是业务逻辑，而不是其他的校验逻辑。</p>
 <h1 id="metadata机制"><a href="#metadata机制" class="headerlink" title="metadata机制"></a>metadata机制</h1><p>metadata相当于 http中的 请求头，里面携带着</p>
-<h2 id="proto文件"><a href="#proto文件" class="headerlink" title="proto文件"></a>proto文件</h2><pre><code class="protobuf">syntax = &quot;proto3&quot;;
+<h2 id="proto文件"><a href="#proto文件" class="headerlink" title="proto文件"></a>proto文件</h2><pre><code class="language-protobuf">syntax = &quot;proto3&quot;;
 
 option go_package = &quot;.;proto&quot;;
 
@@ -1788,158 +1788,158 @@ message HelloResponse &#123;
   string  message = 1;
 &#125;
 </code></pre>
-<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><pre><code class="go">package main
+<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><pre><code class="language-go">package main
 
 import (
-    &quot;context&quot;
-    &quot;fmt&quot;
-    &quot;go-grpc/grpc_metadata/proto&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;google.golang.org/grpc/credentials/insecure&quot;
-    &quot;google.golang.org/grpc/metadata&quot;
-    &quot;time&quot;
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;go-grpc/grpc_metadata/proto&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/credentials/insecure&quot;
+	&quot;google.golang.org/grpc/metadata&quot;
+	&quot;time&quot;
 )
 
 const (
-    timestampFormat = time.StampNano
+	timestampFormat = time.StampNano
 )
 
 // 调用的话 直接 拷贝一份 .proto 文件
 // 然后 生成相关的代码  【千万千万不要修改代码!】
 
 func main() &#123;
-    conn, err := grpc.NewClient(&quot;127.0.0.1:8888&quot;, grpc.WithTransportCredentials(insecure.NewCredentials()))
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    defer conn.Close()
+	conn, err := grpc.NewClient(&quot;127.0.0.1:8888&quot;, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	defer conn.Close()
 
-    c := proto.NewGreeterClient(conn)
+	c := proto.NewGreeterClient(conn)
 
-    // metadata
-    // New 和 Pairs 都可以
-    md := metadata.Pairs(
-        &quot;timestamp&quot;, time.Now().Format(timestampFormat),
-        &quot;name&quot;, &quot;LiShun&quot;,
-        &quot;age&quot;, &quot;21&quot;)
+	// metadata
+	// New 和 Pairs 都可以
+	md := metadata.Pairs(
+		&quot;timestamp&quot;, time.Now().Format(timestampFormat),
+		&quot;name&quot;, &quot;LiShun&quot;,
+		&quot;age&quot;, &quot;21&quot;)
 
-    //md := metadata.New(map[string]string&#123;
-    //	&quot;timestamp&quot;: time.Now().Format(timestampFormat),
-    //&#125;)
+	//md := metadata.New(map[string]string&#123;
+	//	&quot;timestamp&quot;: time.Now().Format(timestampFormat),
+	//&#125;)
 
-    // 会返回一个 context.Background()
-    ctx := metadata.NewOutgoingContext(context.Background(), md)
+	// 会返回一个 context.Background()
+	ctx := metadata.NewOutgoingContext(context.Background(), md)
 
-    // 调用
-    res, err := c.SayHello(ctx, &amp;proto.HelloRequest&#123;
-        Name: &quot;LiShun&quot;,
-    &#125;)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Println(res.Message)
+	// 调用
+	res, err := c.SayHello(ctx, &amp;proto.HelloRequest&#123;
+		Name: &quot;LiShun&quot;,
+	&#125;)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Println(res.Message)
 &#125;
 </code></pre>
 <p>另一种方法</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;context&quot;
-    &quot;fmt&quot;
-    &quot;go-grpc/grpc_interpretor/proto&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;google.golang.org/grpc/credentials/insecure&quot;
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;go-grpc/grpc_interpretor/proto&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/credentials/insecure&quot;
 )
 
 type CustomCredential struct &#123;
 &#125;
 
 func (c *CustomCredential) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) &#123;
-    return map[string]string&#123;
-        &quot;appid&quot;:  &quot;101010&quot;,
-        &quot;appkey&quot;: &quot;i am a key&quot;,
-    &#125;, nil
+	return map[string]string&#123;
+		&quot;appid&quot;:  &quot;101010&quot;,
+		&quot;appkey&quot;: &quot;i am a key&quot;,
+	&#125;, nil
 &#125;
 
 // RequireTransportSecurity 传输需不需要安全协议
 func (c *CustomCredential) RequireTransportSecurity() bool &#123;
-    return false
+	return false
 &#125;
 
 func main() &#123;
 
-    var opts []grpc.DialOption
-    opts = append(opts, grpc.WithTransportCredentials(insecure.NewCredentials()))
-    // 传输 metadata的另一种方法
-    opts = append(opts, grpc.WithPerRPCCredentials(&amp;CustomCredential&#123;&#125;))
+	var opts []grpc.DialOption
+	opts = append(opts, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	// 传输 metadata的另一种方法
+	opts = append(opts, grpc.WithPerRPCCredentials(&amp;CustomCredential&#123;&#125;))
 
-    conn, err := grpc.NewClient(&quot;127.0.0.1:8888&quot;, opts...)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    defer conn.Close()
+	conn, err := grpc.NewClient(&quot;127.0.0.1:8888&quot;, opts...)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	defer conn.Close()
 
-    c := proto.NewGreeterClient(conn)
-    res, err := c.SayHello(context.Background(), &amp;proto.HelloRequest&#123;
-        Name: &quot;LiShun&quot;,
-    &#125;)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Println(res.Message)
+	c := proto.NewGreeterClient(conn)
+	res, err := c.SayHello(context.Background(), &amp;proto.HelloRequest&#123;
+		Name: &quot;LiShun&quot;,
+	&#125;)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Println(res.Message)
 
 &#125;
 </code></pre>
-<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><pre><code class="go">package main
+<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><pre><code class="language-go">package main
 
 import (
-    &quot;context&quot;
-    &quot;fmt&quot;
-    &quot;go-grpc/grpc_metadata/proto&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;google.golang.org/grpc/metadata&quot;
-    &quot;log&quot;
-    &quot;net&quot;
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;go-grpc/grpc_metadata/proto&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/metadata&quot;
+	&quot;log&quot;
+	&quot;net&quot;
 )
 
 type Server struct &#123;
-    proto.UnimplementedGreeterServer // 嵌入这个方法,这样我们就不需要手动实现了
+	proto.UnimplementedGreeterServer // 嵌入这个方法,这样我们就不需要手动实现了
 &#125;
 
 // 限制死,context可以限制时间
 
 func (s *Server) SayHello(ctx context.Context, req *proto.HelloRequest) (*proto.HelloResponse, error) &#123;
-    // 检验 metadata
-    md, ok := metadata.FromIncomingContext(ctx)
-    if !ok &#123;
-        fmt.Println(&quot;get metadata failed&quot;, ok)
-        return &amp;proto.HelloResponse&#123;Message: &quot;校验未通过&quot;&#125;, nil
-    &#125; // 校验未通过
+	// 检验 metadata
+	md, ok := metadata.FromIncomingContext(ctx)
+	if !ok &#123;
+		fmt.Println(&quot;get metadata failed&quot;, ok)
+		return &amp;proto.HelloResponse&#123;Message: &quot;校验未通过&quot;&#125;, nil
+	&#125; // 校验未通过
 
-    // 校验通过
-    for key, val := range md &#123;
-        fmt.Println(key, val)
-    &#125;
+	// 校验通过
+	for key, val := range md &#123;
+		fmt.Println(key, val)
+	&#125;
 
-    return &amp;proto.HelloResponse&#123;
-        Message: &quot;hello &quot; + req.Name + &quot; &quot; + md.Get(&quot;timestamp&quot;)[0],
-    &#125;, nil
+	return &amp;proto.HelloResponse&#123;
+		Message: &quot;hello &quot; + req.Name + &quot; &quot; + md.Get(&quot;timestamp&quot;)[0],
+	&#125;, nil
 &#125;
 
 func main() &#123;
-    // 1. 实例化一个 grpc 的 server
-    g := grpc.NewServer()
-    // 2. 注册
-    proto.RegisterGreeterServer(g, &amp;Server&#123;&#125;)
-    // 3. 启动,绑定端口
-    lis, err := net.Listen(&quot;tcp&quot;, &quot;127.0.0.1:8888&quot;)
-    if err != nil &#123;
-        log.Fatalf(&quot;failed to listen: %v&quot;, err)
-    &#125;
-    err = g.Serve(lis)
-    if err != nil &#123;
-        log.Fatalf(&quot;failed to serve: %v&quot;, err)
-    &#125;
+	// 1. 实例化一个 grpc 的 server
+	g := grpc.NewServer()
+	// 2. 注册
+	proto.RegisterGreeterServer(g, &amp;Server&#123;&#125;)
+	// 3. 启动,绑定端口
+	lis, err := net.Listen(&quot;tcp&quot;, &quot;127.0.0.1:8888&quot;)
+	if err != nil &#123;
+		log.Fatalf(&quot;failed to listen: %v&quot;, err)
+	&#125;
+	err = g.Serve(lis)
+	if err != nil &#123;
+		log.Fatalf(&quot;failed to serve: %v&quot;, err)
+	&#125;
 &#125;
 </code></pre>
 

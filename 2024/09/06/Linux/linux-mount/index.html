@@ -1772,9 +1772,9 @@
 <h3 id="挂载的常用命令："><a href="#挂载的常用命令：" class="headerlink" title="挂载的常用命令："></a>挂载的常用命令：</h3><ol>
 <li><p><strong>挂载命令（mount）</strong>：</p>
 <ul>
-<li>语法：<pre><code class="bash">sudo mount [选项] 设备名 挂载点
+<li>语法：<pre><code class="language-bash">sudo mount [选项] 设备名 挂载点
 </code></pre>
-例如，将一个 USB 设备挂载到 <code>/mnt/usb</code>：<pre><code class="bash">sudo mount /dev/sdb1 /mnt/usb
+例如，将一个 USB 设备挂载到 <code>/mnt/usb</code>：<pre><code class="language-bash">sudo mount /dev/sdb1 /mnt/usb
 </code></pre>
 <ul>
 <li><code>/dev/sdb1</code> 是设备名称，表示第二块硬盘的第一个分区。</li>
@@ -1785,18 +1785,18 @@
 </li>
 <li><p><strong>查看挂载信息</strong>：</p>
 <ul>
-<li>使用 <code>mount</code> 命令不带任何参数时，会显示当前所有挂载的文件系统和挂载点：<pre><code class="bash">mount
+<li>使用 <code>mount</code> 命令不带任何参数时，会显示当前所有挂载的文件系统和挂载点：<pre><code class="language-bash">mount
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p><strong>取消挂载（umount）</strong>：</p>
 <ul>
-<li>语法：<pre><code class="bash">sudo umount 挂载点
+<li>语法：<pre><code class="language-bash">sudo umount 挂载点
 </code></pre>
-例如，取消挂载 <code>/mnt/usb</code>：<pre><code class="bash">sudo umount /mnt/usb
+例如，取消挂载 <code>/mnt/usb</code>：<pre><code class="language-bash">sudo umount /mnt/usb
 </code></pre>
-或者取消挂载 <code>/dev/sdb1</code>：<pre><code class="bash">sudo umount /dev/sdb1
+或者取消挂载 <code>/dev/sdb1</code>：<pre><code class="language-bash">sudo umount /dev/sdb1
 </code></pre>
 </li>
 </ul>
@@ -1813,20 +1813,20 @@
 <h3 id="常见的挂载应用场景："><a href="#常见的挂载应用场景：" class="headerlink" title="常见的挂载应用场景："></a>常见的挂载应用场景：</h3><ol>
 <li><strong>挂载 USB 驱动器</strong>：插入 USB 驱动器后，您可以手动挂载该驱动器，以便在系统中访问其文件内容。</li>
 <li><strong>挂载外部硬盘</strong>：将外部硬盘或 SSD 挂载到系统中的某个目录，使其数据可以被访问。</li>
-<li><strong>挂载 ISO 文件</strong>：ISO 文件是光盘镜像文件，您可以通过 <code>mount</code> 命令将其作为虚拟文件系统挂载，查看其中的内容。例如：<pre><code class="bash">sudo mount -o loop /path/to/file.iso /mnt/iso
+<li><strong>挂载 ISO 文件</strong>：ISO 文件是光盘镜像文件，您可以通过 <code>mount</code> 命令将其作为虚拟文件系统挂载，查看其中的内容。例如：<pre><code class="language-bash">sudo mount -o loop /path/to/file.iso /mnt/iso
 </code></pre>
 </li>
 <li><strong>挂载网络文件系统</strong>：使用 NFS 或 SMB 协议将网络上的远程文件系统挂载到本地，便于跨网络访问文件。</li>
 </ol>
 <h3 id="挂载的选项和功能："><a href="#挂载的选项和功能：" class="headerlink" title="挂载的选项和功能："></a>挂载的选项和功能：</h3><p>挂载命令支持许多选项，允许用户控制挂载文件系统的行为。例如：</p>
 <ul>
-<li>**<code>-o ro</code>**：只读挂载文件系统，确保无法对挂载设备上的文件进行写操作。</li>
-<li>**<code>-o rw</code>**：读写挂载文件系统，允许读取和写入数据（这是默认选项）。</li>
-<li>**<code>-o loop</code>**：挂载一个文件作为文件系统，例如挂载一个 ISO 镜像文件。</li>
-<li>**<code>-t</code>**：指定文件系统类型，例如 <code>ext4</code>、<code>vfat</code>、<code>ntfs</code> 等。</li>
+<li><strong><code>-o ro</code></strong>：只读挂载文件系统，确保无法对挂载设备上的文件进行写操作。</li>
+<li><strong><code>-o rw</code></strong>：读写挂载文件系统，允许读取和写入数据（这是默认选项）。</li>
+<li><strong><code>-o loop</code></strong>：挂载一个文件作为文件系统，例如挂载一个 ISO 镜像文件。</li>
+<li><strong><code>-t</code></strong>：指定文件系统类型，例如 <code>ext4</code>、<code>vfat</code>、<code>ntfs</code> 等。</li>
 </ul>
 <p>例如，挂载一个 NTFS 格式的外部硬盘：</p>
-<pre><code class="bash">sudo mount -t ntfs /dev/sdb1 /mnt/usb
+<pre><code class="language-bash">sudo mount -t ntfs /dev/sdb1 /mnt/usb
 </code></pre>
 <h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>挂载是 Linux 中连接存储设备或文件系统的关键操作，它将设备上的数据映射到系统的文件目录树上，使得文件系统能够通过目录路径访问。Linux 提供了灵活的挂载功能，支持多种存储设备和文件系统类型，且可以通过命令行轻松管理挂载操作。</p>
 

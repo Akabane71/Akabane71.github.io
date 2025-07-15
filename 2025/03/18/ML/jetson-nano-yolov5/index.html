@@ -1844,7 +1844,7 @@ which pip
 <p>&#x2F;home&#x2F;lishun&#x2F;下载&#x2F;data&#x2F;app&#x2F;anconda&#x2F;envs&#x2F;yolo&#x2F;bin&#x2F;pip</p>
 </blockquote>
 <p><strong>显示虚拟环境列表</strong></p>
-<pre><code class="pytho">conda env list
+<pre><code class="language-pytho">conda env list
 </code></pre>
 <h2 id="3-torch和torchvision的选择"><a href="#3-torch和torchvision的选择" class="headerlink" title="3. torch和torchvision的选择"></a>3. torch和torchvision的选择</h2><blockquote>
 <p>torch 版本： <strong>pytorch-1.9.0-py36</strong> </p>
@@ -1995,17 +1995,17 @@ python detect.py --weights yolov5n.pt --source data/images/bus.jpg
 </blockquote>
 <pre><code># 训练集的目录结构
 - VOCdevkit
-    - images
-        - train
-        - val
+	- images
+		- train
+		- val
     - labels
-        - train
-        - val
-        
+    	- train
+    	- val
+    	
 </code></pre>
 <h1 id="Pytorch与ONNX"><a href="#Pytorch与ONNX" class="headerlink" title="Pytorch与ONNX"></a>Pytorch与ONNX</h1><h2 id="1-什么是ONNX？"><a href="#1-什么是ONNX？" class="headerlink" title="1. 什么是ONNX？"></a>1. 什么是ONNX？</h2><h3 id="1-1下载"><a href="#1-1下载" class="headerlink" title="1.1下载"></a>1.1下载</h3><pre><code>pip install onnxruntime -i https://mirrors.aliyun.com/pypi/simple/
 </code></pre>
-<h2 id="2-怎么查看ONNX文件的输入输出"><a href="#2-怎么查看ONNX文件的输入输出" class="headerlink" title="2.怎么查看ONNX文件的输入输出"></a>2.怎么查看ONNX文件的输入输出</h2><pre><code class="python">import onnxruntime
+<h2 id="2-怎么查看ONNX文件的输入输出"><a href="#2-怎么查看ONNX文件的输入输出" class="headerlink" title="2.怎么查看ONNX文件的输入输出"></a>2.怎么查看ONNX文件的输入输出</h2><pre><code class="language-python">import onnxruntime
 
 def main(onnx_model_path):
     # 创建ONNX运行时的InferenceSession

@@ -1762,7 +1762,7 @@
 <h1 id="反射-Reflect"><a href="#反射-Reflect" class="headerlink" title="反射 Reflect"></a>反射 Reflect</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>何为反射？在<strong>运行期</strong>，语言提供可以获取对象的类型、内存结构等信息的能力。就如同照镜子一样，通 过反射看到自身的特征。</p>
 <h2 id="类型Type"><a href="#类型Type" class="headerlink" title="类型Type"></a>类型Type</h2><p>使用TypeOf可以获取类型信息，其签名为 <code>func reflect.TypeOf(i any) Type</code> 。Type是一个接口， 定义了很多方法可供调用。</p>
 <p>reflect&#x2F;type.go&#x2F;Type定义</p>
-<pre><code class="go">type Type interface &#123;
+<pre><code class="language-go">type Type interface &#123;
     Method(int) Method // 字典序索引获取方法
     NumMethod() int // 方法的个数
     MethodByName(string) (Method, bool) //  根据名字获取方法
@@ -1776,7 +1776,7 @@
     AssignableTo(u Type) bool // 该类型是否能赋值给另一种类型u
     ConvertibleTo(u Type) bool // 该类型是否转换为另一种类型u
     
-    Elem() Type // 解析指针，如果Kind不是Array、Chan、Map、Pointer、Slice则panic
+	Elem() Type // 解析指针，如果Kind不是Array、Chan、Map、Pointer、Slice则panic
 
     // 结构体
     Field(i int) StructField // 结构体索引i的字段
@@ -1798,7 +1798,7 @@
 <ul>
 <li>Elem(),返回Array、Chan、Map、Pointer、Slice类型的元素的类型，因为容器类型是壳，，如同 一个盒子，如果你关心盒子里面的东西的类型，就需要Elem()。</li>
 </ul>
-<pre><code class="go">
+<pre><code class="language-go">
 </code></pre>
 <p>输出如下：</p>
 <pre><code>[3]int, array

@@ -1813,7 +1813,7 @@
 </tbody></table>
 <h3 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h3><p>时间戳 + MAC地址</p>
 <p>简单的模拟：</p>
-<pre><code class="python">import time
+<pre><code class="language-python">import time
 import random
 import uuid as py_uuid
 import struct
@@ -1871,7 +1871,7 @@ if __name__ == &quot;__main__&quot;:
 <li><strong>工作节点ID</strong>：通常分为5位数据中心ID和5位机器ID，支持32个数据中心×32台机器</li>
 <li><strong>序列号</strong>：每毫秒重新计数，支持单机每毫秒4096个ID生成</li>
 </ol>
-<h3 id="案例：-1"><a href="#案例：-1" class="headerlink" title="案例："></a>案例：</h3><pre><code class="python">
+<h3 id="案例：-1"><a href="#案例：-1" class="headerlink" title="案例："></a>案例：</h3><pre><code class="language-python">
 class SimpleSnowflake:
     &quot;&quot;&quot;简单版 Snowflake 算法实现（64位整数）&quot;&quot;&quot;
     def __init__(self, datacenter_id=0, worker_id=0):

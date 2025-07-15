@@ -1794,7 +1794,7 @@
 <h3 id="geometry-msgs"><a href="#geometry-msgs" class="headerlink" title="geometry_msgs"></a>geometry_msgs</h3><p><img src="/../../../imgs/05-ros1-message-package/image-20241119232057166.png" alt="image-20241119232057166"></p>
 <h3 id="sensor-msgs"><a href="#sensor-msgs" class="headerlink" title="sensor_msgs"></a>sensor_msgs</h3><p><img src="/../../../imgs/05-ros1-message-package/image-20241119232511339.png" alt="image-20241119232511339"></p>
 <h1 id="自定义消息"><a href="#自定义消息" class="headerlink" title="自定义消息"></a>自定义消息</h1><h2 id="ROS生成自定义消息包"><a href="#ROS生成自定义消息包" class="headerlink" title="ROS生成自定义消息包"></a>ROS生成自定义消息包</h2><p>所谓的消息包 也是一个 普通的 <code>pkg</code></p>
-<h3 id="msg-Carry-msg"><a href="#msg-Carry-msg" class="headerlink" title="msg/Carry.msg"></a><code>msg/Carry.msg</code></h3><pre><code class="bash">catkin_create_pkg qq_msgs roscpp rospy std_msgs message_generation message_runtime 
+<h3 id="msg-Carry-msg"><a href="#msg-Carry-msg" class="headerlink" title="msg/Carry.msg"></a><code>msg/Carry.msg</code></h3><pre><code class="language-bash">catkin_create_pkg qq_msgs roscpp rospy std_msgs message_generation message_runtime 
 </code></pre>
 <p>创建一个 <code>msg</code> 的目录</p>
 <p>里面存放 <code>Carry.msg</code> 消息文件</p>
@@ -1805,7 +1805,7 @@ string daata
 <h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a><code>CMakeLists.txt</code></h3><p><img src="/../../../imgs/05-ros1-message-package/image-20241120000955153.png" alt="image-20241120000955153"></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120000917234.png" alt="image-20241120000917234"></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120000901536.png" alt="image-20241120000901536"></p>
-<pre><code class="cmake"># 添加消息类型
+<pre><code class="language-cmake"># 添加消息类型
 add_message_files(
   FILES
   Carry.msg
@@ -1825,17 +1825,17 @@ generate_messages(
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241119235433571.png" alt="image-20241119235433571"></p>
 <h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a><code>编译</code></h3><p>进入到 <code>~/catkin_ws</code> 目录下</p>
 <p>输入</p>
-<pre><code class="bash">catkin_make
+<pre><code class="language-bash">catkin_make
 </code></pre>
 <ul>
 <li><code>查看</code></li>
 </ul>
-<pre><code class="bash">rosmsg show qq_msgs/Carry
+<pre><code class="language-bash">rosmsg show qq_msgs/Carry
 </code></pre>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120001807610.png" alt="image-20241120001807610"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../imgs/05-ros1-message-package/image-20241120000736670.png" alt="image-20241120000736670"></p>
 <h1 id="C-实现-自定义消息"><a href="#C-实现-自定义消息" class="headerlink" title="C++实现 自定义消息"></a>C++实现 自定义消息</h1><p>我们使用 <code>ssr_msg</code> 来进行实验</p>
-<h2 id="发布者节点"><a href="#发布者节点" class="headerlink" title="发布者节点"></a>发布者节点</h2><h3 id="chao-node-cpp"><a href="#chao-node-cpp" class="headerlink" title="chao_node.cpp"></a>chao_node.cpp</h3><pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<h2 id="发布者节点"><a href="#发布者节点" class="headerlink" title="发布者节点"></a>发布者节点</h2><h3 id="chao-node-cpp"><a href="#chao-node-cpp" class="headerlink" title="chao_node.cpp"></a>chao_node.cpp</h3><pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;std_msgs/String.h&gt;
 #include &lt;qq_msgs/Carry.h&gt;
 
@@ -1861,13 +1861,13 @@ int main(int argc, char *argv[])
 </code></pre>
 <h3 id="CmakeList-txt"><a href="#CmakeList-txt" class="headerlink" title="CmakeList.txt"></a>CmakeList.txt</h3><p><img src="/../../../imgs/05-ros1-message-package/image-20241120002506992.png" alt="image-20241120002506992"></p>
 <p>在chao_node 的后面加上  <code>add_dependencies</code> </p>
-<pre><code class="cmake">add_dependencies(chao_node qq_msgs_generate_messages_cpp)
+<pre><code class="language-cmake">add_dependencies(chao_node qq_msgs_generate_messages_cpp)
 </code></pre>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120002631603.png" alt="image-20241120002631603"></p>
 <h3 id="package-xml-1"><a href="#package-xml-1" class="headerlink" title="package.xml"></a>package.xml</h3><p>确保 <code>build_depend</code> 和 <code>exec_depend</code> 中包含了 <strong><code>qq_msgs</code></strong></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120003008348.png" alt="image-20241120003008348"></p>
 <h2 id="订阅者节点"><a href="#订阅者节点" class="headerlink" title="订阅者节点"></a>订阅者节点</h2><p>选择之前的工作目录  <strong><code>atr_pkg</code></strong></p>
-<h3 id="ma-node-cpp"><a href="#ma-node-cpp" class="headerlink" title="ma_node.cpp"></a>ma_node.cpp</h3><pre><code class="cpp">#include &lt;ros/ros.h&gt;
+<h3 id="ma-node-cpp"><a href="#ma-node-cpp" class="headerlink" title="ma_node.cpp"></a>ma_node.cpp</h3><pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
 #include &lt;std_msgs/String.h&gt;
 #include &lt;qq_msgs/Carry.h&gt;
 
@@ -1905,14 +1905,14 @@ int main(int argc,char *argv[])
 <h3 id="CmakeList-txt-1"><a href="#CmakeList-txt-1" class="headerlink" title="CmakeList.txt"></a>CmakeList.txt</h3><p>添加<code> qq_msgs</code></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120003955255.png" alt="image-20241120003955255"></p>
 <p>添加 依赖 </p>
-<pre><code class="bash">ma_node qq_msgs_generate_messages_cpp
+<pre><code class="language-bash">ma_node qq_msgs_generate_messages_cpp
 </code></pre>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120004026051.png" alt="image-20241120004026051"></p>
 <h3 id="package-xml-2"><a href="#package-xml-2" class="headerlink" title="package.xml"></a>package.xml</h3><p>确保 <code>build_depend</code> 和 <code>exec_depend</code> 中包含了 <strong><code>qq_msgs</code></strong></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120003008348-1732034588314.png" alt="image-20241120003008348"></p>
 <h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p><img src="/../../../imgs/05-ros1-message-package/image-20241120004719502.png" alt="image-20241120004719502"></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120004209710.png" alt="image-20241120004209710"></p>
-<h1 id="Python实现-自定义消息"><a href="#Python实现-自定义消息" class="headerlink" title="Python实现 自定义消息"></a>Python实现 自定义消息</h1><h2 id="发布者节点-1"><a href="#发布者节点-1" class="headerlink" title="发布者节点"></a>发布者节点</h2><h3 id="chao-node-py"><a href="#chao-node-py" class="headerlink" title="chao_node.py"></a><code>chao_node.py</code></h3><pre><code class="python">#!/usr/bin/env python3
+<h1 id="Python实现-自定义消息"><a href="#Python实现-自定义消息" class="headerlink" title="Python实现 自定义消息"></a>Python实现 自定义消息</h1><h2 id="发布者节点-1"><a href="#发布者节点-1" class="headerlink" title="发布者节点"></a>发布者节点</h2><h3 id="chao-node-py"><a href="#chao-node-py" class="headerlink" title="chao_node.py"></a><code>chao_node.py</code></h3><pre><code class="language-python">#!/usr/bin/env python3
 # coding=utf-8
 
 import rospy
@@ -1942,7 +1942,7 @@ if __name__ == &quot;__main__&quot;:
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120003955255-1732035459758.png" alt="image-20241120003955255"></p>
 <h3 id="package-xml-3"><a href="#package-xml-3" class="headerlink" title="package.xml"></a><code>package.xml</code></h3><p>确保 <code>build_depend</code> 和 <code>exec_depend</code> 中包含了 <strong><code>qq_msgs</code></strong></p>
 <p><img src="/../../../imgs/05-ros1-message-package/image-20241120003008348-1732035628626.png" alt="image-20241120003008348"></p>
-<h2 id="订阅者节点-1"><a href="#订阅者节点-1" class="headerlink" title="订阅者节点"></a>订阅者节点</h2><h3 id="ma-node-py"><a href="#ma-node-py" class="headerlink" title="ma_node.py"></a><code>ma_node.py</code></h3><pre><code class="python">#!/usr/bin/env python3
+<h2 id="订阅者节点-1"><a href="#订阅者节点-1" class="headerlink" title="订阅者节点"></a>订阅者节点</h2><h3 id="ma-node-py"><a href="#ma-node-py" class="headerlink" title="ma_node.py"></a><code>ma_node.py</code></h3><pre><code class="language-python">#!/usr/bin/env python3
 # coding=utf-8
 
 import rospy

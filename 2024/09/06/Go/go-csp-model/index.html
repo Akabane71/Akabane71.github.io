@@ -1776,7 +1776,7 @@
 </ul>
 <p><img src="/../../imgs/go-csp-model/barrier.png"></p>
 <p>比如我们并行爬取网页:</p>
-<pre><code class="go">endpoints := []string&#123;
+<pre><code class="language-go">endpoints := []string&#123;
     &quot;https://www.baidu.com&quot;, 
     &quot;https://segmentfault.com/&quot;, 
     &quot;https://blog.csdn.net/&quot;, 
@@ -1784,101 +1784,101 @@
     &#125;
 </code></pre>
 <p>示例如下:</p>
-<pre><code class="go">import (
-    &quot;fmt&quot;
-    &quot;io/ioutil&quot;
-    &quot;net/http&quot;
-    &quot;time&quot;
+<pre><code class="language-go">import (
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;net/http&quot;
+	&quot;time&quot;
 )
 
 var (
-    client = http.Client&#123;
-        Timeout: time.Duration(1 * time.Second),
-    &#125;
+	client = http.Client&#123;
+		Timeout: time.Duration(1 * time.Second),
+	&#125;
 )
 
 type SiteResp struct &#123;
-    Err    error
-    Resp   string
-    Status int
-    Cost   int64
+	Err    error
+	Resp   string
+	Status int
+	Cost   int64
 &#125;
 
 func BatchSiteReqeust() &#123;
-    endpoints := []string&#123;
-        &quot;https://www.baidu.com&quot;,
-        &quot;https://segmentfault.com/&quot;,
-        &quot;https://blog.csdn.net/&quot;,
-        &quot;https://www.jd.com/&quot;,
-    &#125;
+	endpoints := []string&#123;
+		&quot;https://www.baidu.com&quot;,
+		&quot;https://segmentfault.com/&quot;,
+		&quot;https://blog.csdn.net/&quot;,
+		&quot;https://www.jd.com/&quot;,
+	&#125;
 
-    // 一个endpoints返回一个结果, 缓冲可以确定
-    respChan := make(chan SiteResp, len(endpoints))
-    defer close(respChan)
+	// 一个endpoints返回一个结果, 缓冲可以确定
+	respChan := make(chan SiteResp, len(endpoints))
+	defer close(respChan)
 
-    // 并行爬取
-    for _, endpoints := range endpoints &#123;
-        go doSiteRequest(respChan, endpoints)
-    &#125;
+	// 并行爬取
+	for _, endpoints := range endpoints &#123;
+		go doSiteRequest(respChan, endpoints)
+	&#125;
 
-    // 聚合结果, 返回结束事件, 避免轮询
-    down := make(chan struct&#123;&#125;)
-    ret := make([]SiteResp, 0, len(endpoints))
-    go mergeResponse(respChan, &amp;ret, down)
+	// 聚合结果, 返回结束事件, 避免轮询
+	down := make(chan struct&#123;&#125;)
+	ret := make([]SiteResp, 0, len(endpoints))
+	go mergeResponse(respChan, &amp;ret, down)
 
-    // 等待结束
-    &lt;-down
+	// 等待结束
+	&lt;-down
 
-    for _, v := range ret &#123;
-        fmt.Println(v)
-    &#125;
+	for _, v := range ret &#123;
+		fmt.Println(v)
+	&#125;
 &#125;
 
 func mergeResponse(resp &lt;-chan SiteResp, ret *[]SiteResp, down chan struct&#123;&#125;) &#123;
-    defer func() &#123;
-        down &lt;- struct&#123;&#125;&#123;&#125;
-    &#125;()
+	defer func() &#123;
+		down &lt;- struct&#123;&#125;&#123;&#125;
+	&#125;()
 
-    count := 0
-    for v := range resp &#123;
-        *ret = append(*ret, v)
-        count++
+	count := 0
+	for v := range resp &#123;
+		*ret = append(*ret, v)
+		count++
 
-        // 填充完成,  返回
-        if count == cap(*ret) &#123;
-            return
-        &#125;
-    &#125;
+		// 填充完成,  返回
+		if count == cap(*ret) &#123;
+			return
+		&#125;
+	&#125;
 
 &#125;
 
 // 构造请求
 func doSiteRequest(out chan&lt;- SiteResp, url string) &#123;
-    res := SiteResp&#123;&#125;
-    startAt := time.Now()
-    defer func() &#123;
-        res.Cost = time.Since(startAt).Milliseconds()
-        out &lt;- res
-    &#125;()
+	res := SiteResp&#123;&#125;
+	startAt := time.Now()
+	defer func() &#123;
+		res.Cost = time.Since(startAt).Milliseconds()
+		out &lt;- res
+	&#125;()
 
-    resp, err := client.Get(url)
-    if resp != nil &#123;
-        res.Status = resp.StatusCode
-    &#125;
-    if err != nil &#123;
-        res.Err = err
-        return
-    &#125;
+	resp, err := client.Get(url)
+	if resp != nil &#123;
+		res.Status = resp.StatusCode
+	&#125;
+	if err != nil &#123;
+		res.Err = err
+		return
+	&#125;
 
-    // 站不处理结果
-    _, err = ioutil.ReadAll(resp.Body)
-    defer resp.Body.Close()
-    if err != nil &#123;
-        res.Err = err
-        return
-    &#125;
+	// 站不处理结果
+	_, err = ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	if err != nil &#123;
+		res.Err = err
+		return
+	&#125;
 
-    // res.Resp = string(byt)
+	// res.Resp = string(byt)
 &#125;
 </code></pre>
 <h2 id="Pipeline-模式"><a href="#Pipeline-模式" class="headerlink" title="Pipeline 模式"></a>Pipeline 模式</h2><p>可以利用多核的优势把一段粗粒度逻辑分解成多个 goroutine 执行</p>
@@ -1889,231 +1889,231 @@ func doSiteRequest(out chan&lt;- SiteResp, url string) &#123;
 <pre><code>getRandNum | addRandNum | printRes
 </code></pre>
 <p>代码如下:</p>
-<pre><code class="go">import (
-    &quot;fmt&quot;
-    &quot;math/rand&quot;
-    &quot;sync&quot;
+<pre><code class="language-go">import (
+	&quot;fmt&quot;
+	&quot;math/rand&quot;
+	&quot;sync&quot;
 )
 
 var wg sync.WaitGroup
 
 func PipelineMode() &#123;
-    wg.Add(3)
-    // 创建两个channel
-    ch1 := make(chan int)
-    ch2 := make(chan int)
+	wg.Add(3)
+	// 创建两个channel
+	ch1 := make(chan int)
+	ch2 := make(chan int)
 
-    // 3个goroutine并行
-    go getRandNum(ch1)
-    go addRandNum(ch1, ch2)
-    go printRes(ch2)
+	// 3个goroutine并行
+	go getRandNum(ch1)
+	go addRandNum(ch1, ch2)
+	go printRes(ch2)
 
-    wg.Wait()
+	wg.Wait()
 &#125;
 
 func getRandNum(out chan&lt;- int) &#123;
-    // defer the wg.Done()
-    defer wg.Done()
+	// defer the wg.Done()
+	defer wg.Done()
 
-    var random int
-    // 总共生成10个随机数
-    for i := 0; i &lt; 10; i++ &#123;
-        // 生成[0,30)之间的随机整数并放进channel out
-        random = rand.Intn(30)
-        out &lt;- random
-    &#125;
-    close(out)
+	var random int
+	// 总共生成10个随机数
+	for i := 0; i &lt; 10; i++ &#123;
+		// 生成[0,30)之间的随机整数并放进channel out
+		random = rand.Intn(30)
+		out &lt;- random
+	&#125;
+	close(out)
 &#125;
 
 func addRandNum(in &lt;-chan int, out chan&lt;- int) &#123;
-    defer wg.Done()
-    for v := range in &#123;
-        // 输出从第一个channel中读取到的数据
-        // 并将值+1后放进第二个channel中
-        fmt.Println(&quot;before +1:&quot;, v)
-        out &lt;- (v + 1)
-    &#125;
-    close(out)
+	defer wg.Done()
+	for v := range in &#123;
+		// 输出从第一个channel中读取到的数据
+		// 并将值+1后放进第二个channel中
+		fmt.Println(&quot;before +1:&quot;, v)
+		out &lt;- (v + 1)
+	&#125;
+	close(out)
 &#125;
 
 func printRes(in &lt;-chan int) &#123;
-    defer wg.Done()
-    for v := range in &#123;
-        fmt.Println(&quot;after +1:&quot;, v)
-    &#125;
+	defer wg.Done()
+	for v := range in &#123;
+		fmt.Println(&quot;after +1:&quot;, v)
+	&#125;
 &#125;
 </code></pre>
 <p>其实写锁 就是独占锁</p>
 <h2 id="Producer-Consumer-模式"><a href="#Producer-Consumer-模式" class="headerlink" title="Producer&#x2F;Consumer 模式"></a>Producer&#x2F;Consumer 模式</h2><p>Producer&#x2F;Consumer 模式, 也就是我们常见的生产者消费者模型, 该模式主要通过平衡生产线程和消费线程的工作能力来提高程序的整体处理数据的速度</p>
 <p>简单地说，就是生产者生产一些数据，然后放到成果队列中，同时消费者从成果队列中来取这些数据。这样就让生产消费变成了异步的两个过程</p>
-<pre><code class="go">func ProducerConsumerMode() &#123;
-    ch := make(chan int, 64) // 成果队列
+<pre><code class="language-go">func ProducerConsumerMode() &#123;
+	ch := make(chan int, 64) // 成果队列
 
-    go Producer(3, ch) // 生成 3 的倍数的序列
-    go Producer(5, ch) // 生成 5 的倍数的序列
-    go Consumer(ch)    // 消费 生成的队列
+	go Producer(3, ch) // 生成 3 的倍数的序列
+	go Producer(5, ch) // 生成 5 的倍数的序列
+	go Consumer(ch)    // 消费 生成的队列
 
-    // 运行一定时间后退出
-    time.Sleep(5 * time.Second)
+	// 运行一定时间后退出
+	time.Sleep(5 * time.Second)
 &#125;
 
 // 生产者: 生成 factor 整数倍的序列
 func Producer(factor int, out chan&lt;- int) &#123;
-    maxCount := 0
+	maxCount := 0
 
-    for i := 0; ; i++ &#123;
-        out &lt;- i * factor
+	for i := 0; ; i++ &#123;
+		out &lt;- i * factor
 
-        // 最多生成10个
-        maxCount++
-        if maxCount &gt; 10 &#123;
-            break
-        &#125;
-    &#125;
+		// 最多生成10个
+		maxCount++
+		if maxCount &gt; 10 &#123;
+			break
+		&#125;
+	&#125;
 &#125;
 
 // 消费者
 func Consumer(in &lt;-chan int) &#123;
-    for v := range in &#123;
-        fmt.Println(v)
-    &#125;
+	for v := range in &#123;
+		fmt.Println(v)
+	&#125;
 &#125;
 </code></pre>
 <h2 id="Pub-Sub-模式"><a href="#Pub-Sub-模式" class="headerlink" title="Pub&#x2F;Sub 模式"></a>Pub&#x2F;Sub 模式</h2><p><img src="/../../imgs/go-csp-model/pub-sub.png"></p>
 <p>pub&#x2F;sub 也就是发布订阅模型, 在这个模型中，消息生产者成为发布者（publisher），而消息消费者则成为订阅者（subscriber），生产者和消费者是M:N的关系。在传统生产者和消费者模型中，是将消息发送到一个队列中，而发布订阅模型则是将消息发布给一个主题</p>
 <p>我们先定义Publisher, publisher的核心是维护一个订阅者队列, 好方便通过这个管道通知订阅者</p>
-<pre><code class="go">type (
-    subscriber chan interface&#123;&#125;         // 订阅者为一个管道
-    handleFunc func(v interface&#123;&#125;) bool // 订阅者处理消息的函数, bool是方便判断是否处理成功, 这里不作retry实现
+<pre><code class="language-go">type (
+	subscriber chan interface&#123;&#125;         // 订阅者为一个管道
+	handleFunc func(v interface&#123;&#125;) bool // 订阅者处理消息的函数, bool是方便判断是否处理成功, 这里不作retry实现
 )
 
 // 发布者对象
 type Publisher struct &#123;
-    m           sync.RWMutex              // 读写锁, 因为publisher允许被并发使用
-    buffer      int                       // 订阅队列的缓存大小
-    timeout     time.Duration             // 发布超时时间
-    subscribers map[subscriber]handleFunc // 订阅者信息
+	m           sync.RWMutex              // 读写锁, 因为publisher允许被并发使用
+	buffer      int                       // 订阅队列的缓存大小
+	timeout     time.Duration             // 发布超时时间
+	subscribers map[subscriber]handleFunc // 订阅者信息
 &#125;
 </code></pre>
 <p>publisher的核心是 发布数据,  这里是实现Publish方法</p>
-<pre><code class="go">// 发布一个主题, 往每个订阅者的管道中发送信息
+<pre><code class="language-go">// 发布一个主题, 往每个订阅者的管道中发送信息
 func (p *Publisher) Publish(v interface&#123;&#125;) &#123;
-    p.m.RLock()
-    defer p.m.RUnlock()
+	p.m.RLock()
+	defer p.m.RUnlock()
 
-    var wg sync.WaitGroup
-    for sub, topic := range p.subscribers &#123;
-        wg.Add(1)
-        go p.sendTopic(sub, topic, v, &amp;wg)
-    &#125;
-    wg.Wait()
+	var wg sync.WaitGroup
+	for sub, topic := range p.subscribers &#123;
+		wg.Add(1)
+		go p.sendTopic(sub, topic, v, &amp;wg)
+	&#125;
+	wg.Wait()
 &#125;
 
 // 发送主题，可以容忍一定的超时
 func (p *Publisher) sendTopic(
-    sub subscriber, topic topicFunc, v interface&#123;&#125;, wg *sync.WaitGroup,
+	sub subscriber, topic topicFunc, v interface&#123;&#125;, wg *sync.WaitGroup,
 ) &#123;
-    defer wg.Done()
-    if topic != nil &amp;&amp; !topic(v) &#123;
-        return
-    &#125;
+	defer wg.Done()
+	if topic != nil &amp;&amp; !topic(v) &#123;
+		return
+	&#125;
 
-    select &#123;
-    case sub &lt;- v:
-    case &lt;-time.After(p.timeout):
-    &#125;
+	select &#123;
+	case sub &lt;- v:
+	case &lt;-time.After(p.timeout):
+	&#125;
 &#125;
 </code></pre>
 <p>然后我们实现 添加订阅者的方法, 订阅者的核心逻辑 就是为该订阅者生成管道, 供他订阅消息</p>
-<pre><code class="go">// 添加一个新的订阅者，订阅过滤器筛选后的主题
+<pre><code class="language-go">// 添加一个新的订阅者，订阅过滤器筛选后的主题
 func (p *Publisher) SubscribeTopic(topic handleFunc) chan interface&#123;&#125; &#123;
-   ch := make(chan interface&#123;&#125;, p.buffer)
-   p.m.Lock()
-   p.subscribers[ch] = topic
-   p.m.Unlock()
-   return ch
+ch := make(chan interface&#123;&#125;, p.buffer)
+p.m.Lock()
+p.subscribers[ch] = topic
+p.m.Unlock()
+return ch
 &#125;
 
 // 退出订阅
 func (p *Publisher) Evict(sub chan interface&#123;&#125;) &#123;
-   p.m.Lock()
-   defer p.m.Unlock()
+p.m.Lock()
+defer p.m.Unlock()
 
-   delete(p.subscribers, sub)
-   close(sub)
+delete(p.subscribers, sub)
+close(sub)
 &#125;
 </code></pre>
 <p> 最后我们实现一个关闭方法, 通知定制者，该频道(topic)已经关闭</p>
-<pre><code class="go">// 关闭发布者对象，同时关闭所有的订阅者管道。
+<pre><code class="language-go">// 关闭发布者对象，同时关闭所有的订阅者管道。
 func (p *Publisher) Close() &#123;
-   p.m.Lock()
-   defer p.m.Unlock()
+p.m.Lock()
+defer p.m.Unlock()
 
-   for sub := range p.subscribers &#123;
-       delete(p.subscribers, sub)
-       close(sub)
-   &#125;
+for sub := range p.subscribers &#123;
+	delete(p.subscribers, sub)
+	close(sub)
+&#125;
 &#125;
 </code></pre>
 <p>这样我们就利用channel实现了一个简单的发布订阅模式, 测试下:</p>
-<pre><code class="go">func TestPubSubMode(t *testing.T) &#123;
-    p := NewPublisher(100*time.Millisecond, 10)
-    defer p.Close()
+<pre><code class="language-go">func TestPubSubMode(t *testing.T) &#123;
+	p := NewPublisher(100*time.Millisecond, 10)
+	defer p.Close()
 
-    // 订阅所有
-    all := p.Subscribe()
+	// 订阅所有
+	all := p.Subscribe()
 
-    // 通过过滤订阅一部分信息
-    golang := p.SubscribeTopic(func(v interface&#123;&#125;) bool &#123;
-        if s, ok := v.(string); ok &#123;
-            return strings.Contains(s, &quot;golang&quot;)
-        &#125;
-        return false
-    &#125;)
+	// 通过过滤订阅一部分信息
+	golang := p.SubscribeTopic(func(v interface&#123;&#125;) bool &#123;
+		if s, ok := v.(string); ok &#123;
+			return strings.Contains(s, &quot;golang&quot;)
+		&#125;
+		return false
+	&#125;)
 
-    // 发布者 发布信息
-    p.Publish(&quot;hello,   python!&quot;)
-    p.Publish(&quot;godbybe, python!&quot;)
-    p.Publish(&quot;hello,   golang!&quot;)
+	// 发布者 发布信息
+	p.Publish(&quot;hello,   python!&quot;)
+	p.Publish(&quot;godbybe, python!&quot;)
+	p.Publish(&quot;hello,   golang!&quot;)
 
-    // 订阅者查看消息
-    go func() &#123;
-        for msg := range all &#123;
-            fmt.Println(&quot;all:&quot;, msg)
-        &#125;
-    &#125;()
+	// 订阅者查看消息
+	go func() &#123;
+		for msg := range all &#123;
+			fmt.Println(&quot;all:&quot;, msg)
+		&#125;
+	&#125;()
 
-    // 订阅者查看消息
-    go func() &#123;
-        for msg := range golang &#123;
-            fmt.Println(&quot;golang:&quot;, msg)
-        &#125;
-    &#125;()
+	// 订阅者查看消息
+	go func() &#123;
+		for msg := range golang &#123;
+			fmt.Println(&quot;golang:&quot;, msg)
+		&#125;
+	&#125;()
 
-    // 运行一定时间后退出
-    time.Sleep(3 * time.Second)
+	// 运行一定时间后退出
+	time.Sleep(3 * time.Second)
 &#125;
 </code></pre>
 <h2 id="Workers-Pool-模式"><a href="#Workers-Pool-模式" class="headerlink" title="Workers Pool 模式"></a>Workers Pool 模式</h2><p>在 Go 中 goroutine 已经足够轻量，甚至 net&#x2F;http server 的处理方式也是 goroutine-per-connection 的，所以比起其他语言来说可能场景稍微少一些。每个 goroutine 的初始内存消耗在 2~8kb，当我们有大批量任务的时候，需要起很多 goroutine 来处理，这会给系统代理很大的内存开销和 GC 压力，这个时候就可以考虑一下协程池</p>
 <p>这个部分基础部分已经介绍过:</p>
-<pre><code class="go">import (
-    &quot;fmt&quot;
-    &quot;math/rand&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+<pre><code class="language-go">import (
+	&quot;fmt&quot;
+	&quot;math/rand&quot;
+	&quot;sync&quot;
+	&quot;time&quot;
 )
 
 type Task struct &#123;
-    ID         int
-    JobID      int
-    Status     string
-    CreateTime time.Time
+	ID         int
+	JobID      int
+	Status     string
+	CreateTime time.Time
 &#125;
 
 func (t *Task) Run() &#123;
-    sleep := rand.Intn(1000)
-    time.Sleep(time.Duration(sleep) * time.Millisecond)
-    t.Status = &quot;Completed&quot;
+	sleep := rand.Intn(1000)
+	time.Sleep(time.Duration(sleep) * time.Millisecond)
+	t.Status = &quot;Completed&quot;
 &#125;
 
 var wg sync.WaitGroup
@@ -2122,43 +2122,43 @@ var wg sync.WaitGroup
 const workerNum = 3
 
 func RunTaskWithPool() &#123;
-    wg.Add(workerNum)
+	wg.Add(workerNum)
 
-    // 创建容量为10的buffered channel
-    taskQueue := make(chan *Task, 10)
+	// 创建容量为10的buffered channel
+	taskQueue := make(chan *Task, 10)
 
-    // 激活goroutine，执行任务
-    for workID := 1; workID &lt;= workerNum; workID++ &#123;
-        go worker(taskQueue, workID)
-    &#125;
+	// 激活goroutine，执行任务
+	for workID := 1; workID &lt;= workerNum; workID++ &#123;
+		go worker(taskQueue, workID)
+	&#125;
 
-    produceTask(taskQueue)
+	produceTask(taskQueue)
 
-    wg.Wait()
+	wg.Wait()
 
-    //记得关闭channel
-    close(taskQueue)
+	//记得关闭channel
+	close(taskQueue)
 &#125;
 
 func produceTask(out chan&lt;- *Task) &#123;
-    // 将待执行任务放进buffered channel，共15个任务
-    for i := 1; i &lt;= 15; i++ &#123;
-        out &lt;- &amp;Task&#123;
-            ID:         i,
-            JobID:      100 + i,
-            CreateTime: time.Now(),
-        &#125;
-    &#125;
+	// 将待执行任务放进buffered channel，共15个任务
+	for i := 1; i &lt;= 15; i++ &#123;
+		out &lt;- &amp;Task&#123;
+			ID:         i,
+			JobID:      100 + i,
+			CreateTime: time.Now(),
+		&#125;
+	&#125;
 &#125;
 
 // 从buffered channel中读取任务，并执行任务
 func worker(in &lt;-chan *Task, workID int) &#123;
-    defer wg.Done()
-    for v := range in &#123;
-        fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
-        v.Run()
-        fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
-    &#125;
+	defer wg.Done()
+	for v := range in &#123;
+		fmt.Printf(&quot;Worker%d: recv a request: TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+		v.Run()
+		fmt.Printf(&quot;Worker%d: Completed for TaskID:%d, JobID:%d\n&quot;, workID, v.ID, v.JobID)
+	&#125;
 &#125;
 </code></pre>
 

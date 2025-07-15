@@ -1797,7 +1797,7 @@
 <p>官方文档:</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/wsl/install">Install WSL | Microsoft Learn</a></p>
 </blockquote>
-<pre><code class="powershell">wsl --install
+<pre><code class="language-powershell">wsl --install
 </code></pre>
 <h2 id="1-4-常用命令"><a href="#1-4-常用命令" class="headerlink" title="1.4 常用命令"></a>1.4 常用命令</h2><blockquote>
 <p>参考链接:</p>
@@ -1822,7 +1822,7 @@
 <li>以管理员身份打开PowerShell.</li>
 <li>允许以下代码</li>
 </ol>
-<pre><code class="powershell">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+<pre><code class="language-powershell">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 </code></pre>
 <h2 id="3-为什么选择Hyper-v"><a href="#3-为什么选择Hyper-v" class="headerlink" title="3 为什么选择Hyper-v"></a>3 为什么选择Hyper-v</h2><h3 id="3-1-现有产品比较"><a href="#3-1-现有产品比较" class="headerlink" title="3.1 现有产品比较"></a>3.1 现有产品比较</h3><blockquote>
 <p>参考视频:</p>
@@ -1861,16 +1861,16 @@
 <h4 id="Type-1-Hypervisor"><a href="#Type-1-Hypervisor" class="headerlink" title="Type-1 Hypervisor"></a>Type-1 Hypervisor</h4><p>Type-1 Hypervisor本身就是一个基本的操作系统，我们在其上运行虚拟机。因此，运行此类Hypervisor的物理机只能用于虚拟化目的，不能用于其他目的。</p>
 <p><strong>优点：</strong></p>
 <ul>
-<li><strong>性能出色：</strong>不受操作系统固有限制的约束，故可以提供出色的性能。</li>
-<li><strong>高度安全：</strong>由于直接在没有任何底层操作系统的物理硬件上运行，因此不会受到操作系统通常特有的缺陷和漏洞的影响。同时可以最大程度上确保每个虚拟机都与任何恶意软件活动隔离开来。</li>
+<li>**性能出色：**不受操作系统固有限制的约束，故可以提供出色的性能。</li>
+<li>**高度安全：**由于直接在没有任何底层操作系统的物理硬件上运行，因此不会受到操作系统通常特有的缺陷和漏洞的影响。同时可以最大程度上确保每个虚拟机都与任何恶意软件活动隔离开来。</li>
 </ul>
 <p><strong>Type-1 Hypervisor 有</strong>：</p>
 <p>VMware vSphere with ESX&#x2F;ESXi、<strong>Microsoft Hyper-V</strong>、Citrix Hypervisor (Xen Server)。</p>
 <h4 id="Type-2-Hypervisor"><a href="#Type-2-Hypervisor" class="headerlink" title="Type-2 Hypervisor"></a>Type-2 Hypervisor</h4><p>这类Hypervisor托管在操作系统上，并且是作为一个软件运行在系统层上以启用虚拟化。</p>
 <p><strong>优势</strong></p>
 <ul>
-<li><strong>管理简单：</strong>本质上也是管理控制台，无需安装单独的软件包来管理在type-2 hypervisor上运行的虚拟机。</li>
-<li><strong>方便测试：</strong>便于测试新软件或研究项目，可以简单易行地运行具有不同操作系统的多个实例，来测试软件在各个环境中的工作方式。</li>
+<li>**管理简单：**本质上也是管理控制台，无需安装单独的软件包来管理在type-2 hypervisor上运行的虚拟机。</li>
+<li>**方便测试：**便于测试新软件或研究项目，可以简单易行地运行具有不同操作系统的多个实例，来测试软件在各个环境中的工作方式。</li>
 </ul>
 <p><strong>Type-2 Hypervisor有：</strong></p>
 <p><strong>VMware Workstation Pro</strong>&#x2F; VMware Fusion、Oracle <strong>VirtualBox</strong> 等</p>

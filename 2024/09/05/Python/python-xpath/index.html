@@ -1767,7 +1767,7 @@
 <li>通过元素和属性进行导航</li>
 </ul>
 <p><strong>python开发使用XPath条件：</strong> 由于XPath属于lxml库模块，所以首先要安装库lxml。</p>
-<pre><code class="python">from lxml import etree
+<pre><code class="language-python">from lxml import etree
 selector=etree.HTML(源码) #将源码转化为能被XPath匹配的格式
 selector.xpath(表达式) #返回为一列表
 </code></pre>
@@ -1924,25 +1924,25 @@ selector.xpath(表达式) #返回为一列表
 </tbody></table>
 <ul>
 <li><p>逻辑运算</p>
-<pre><code class="python">//div[@id=&quot;head&quot; and @class=&quot;s_down&quot;] # 查找所有id属性等于head并且class属性等于s_down的div标签
+<pre><code class="language-python">//div[@id=&quot;head&quot; and @class=&quot;s_down&quot;] # 查找所有id属性等于head并且class属性等于s_down的div标签
 //title | //price # 选取文档中的所有 title 和 price 元素,“|”两边必须是完整的xpath路径
 </code></pre>
 </li>
 <li><p>属性查询</p>
-<pre><code class="python">//div[@id] # 找所有包含id属性的div节点
+<pre><code class="language-python">//div[@id] # 找所有包含id属性的div节点
 //div[@id=&quot;maincontent&quot;]  # 查找所有id属性等于maincontent的div标签
 //@class
 //li[@name=&quot;xx&quot;]//text()  # 获取li标签name为xx的里面的文本内容
 </code></pre>
 </li>
 <li><p>获取第几个标签 索引从1开始</p>
-<pre><code class="python">tree.xpath(&#39;//li[1]/a/text()&#39;)  # 获取第一个
+<pre><code class="language-python">tree.xpath(&#39;//li[1]/a/text()&#39;)  # 获取第一个
 tree.xpath(&#39;//li[last()]/a/text()&#39;)  # 获取最后一个
 tree.xpath(&#39;//li[last()-1]/a/text()&#39;)  # 获取倒数第二个
 </code></pre>
 </li>
 <li><p>模糊查询</p>
-<pre><code class="python">//div[contains(@id, &quot;he&quot;)]  # 查询所有id属性中包含he的div标签
+<pre><code class="language-python">//div[contains(@id, &quot;he&quot;)]  # 查询所有id属性中包含he的div标签
 //div[starts-with(@id, &quot;he&quot;)] # 查询所有id属性中包以he开头的div标签
 //div/h1/text()  # 查找所有div标签下的直接子节点h1的内容
 //div/a/@href   # 获取a里面的href属性值 
@@ -1957,7 +1957,7 @@ print(result.decode(&#39;UTF-8&#39;))
 </li>
 </ul>
 <h2 id="【5】案例"><a href="#【5】案例" class="headerlink" title="【5】案例"></a>【5】案例</h2><p>豆瓣Top250基于xpath解析：</p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 from lxml import etree
 
 url = &quot;https://movie.douban.com/top250?start=0&quot;

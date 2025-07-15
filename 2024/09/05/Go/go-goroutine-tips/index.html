@@ -1800,7 +1800,7 @@
 <h1 id="并发注意事项"><a href="#并发注意事项" class="headerlink" title="并发注意事项"></a>并发注意事项</h1><h2 id="控制并发数"><a href="#控制并发数" class="headerlink" title="控制并发数"></a>控制并发数</h2><p>在Go语言中启动一个Goroutine不仅和调用函数一样简单，而且Goroutine之间调度代价也很低，这些因素极大地促进了并发编程的流行和发展。</p>
 <p>很多用户在适应了Go语言强大的并发特性之后，都倾向于编写最大并发的程序，因为这样似乎可以提供最大的性能</p>
 <p>遇事不决go一下:</p>
-<pre><code class="go">go func()
+<pre><code class="language-go">go func()
 </code></pre>
 <p>一个Goroutine会以一个很小的栈启动（可能是2KB或4KB）, 但是你的系统和调度器的能力总是有上限的, 在面对大规模的并发请求时(千万或者亿)我们是要考虑goroutine的销毁成本的。</p>
 <p>一个是使用goroutine pool控制gotourine数量, 另一个就是做好系统的限流与上限控制</p>
@@ -1809,256 +1809,256 @@
 <p>Go语言并没有提供在一个直接终止Goroutine的方法，由于这样会导致goroutine之间的共享变量处在未定义的状态上。但是如果我们想要退出两个或者任意多个Goroutine怎么办呢？</p>
 <p>我们可以 通过channel 发送退出信号</p>
 <p>比如:</p>
-<pre><code class="go">func worker(cannel chan struct&#123;&#125;) &#123;
-    for &#123;
-        select &#123;
-        default:
-            fmt.Println(&quot;hello&quot;)
-            time.Sleep(100 * time.Millisecond)
-        case &lt;-cannel:
-            // 退出
-        &#125;
-    &#125;
+<pre><code class="language-go">func worker(cannel chan struct&#123;&#125;) &#123;
+	for &#123;
+		select &#123;
+		default:
+			fmt.Println(&quot;hello&quot;)
+			time.Sleep(100 * time.Millisecond)
+		case &lt;-cannel:
+			// 退出
+		&#125;
+	&#125;
 &#125;
 
 func CancelWithChannel() &#123;
-    cannel := make(chan struct&#123;&#125;)
-    go worker(cannel)
+	cannel := make(chan struct&#123;&#125;)
+	go worker(cannel)
 
-    time.Sleep(time.Second)
-    cannel &lt;- struct&#123;&#125;&#123;&#125;
+	time.Sleep(time.Second)
+	cannel &lt;- struct&#123;&#125;&#123;&#125;
 &#125;
 </code></pre>
 <p>当Goroutine收到退出指令, 退出时一般会进行一定的清理工作，但是退出的清理工作并不能保证被完成，<br>因为main线程并没有等待各个工作Goroutine退出工作完成的机制，我们可以结合<strong>sync.WaitGroup</strong>来改进</p>
-<pre><code class="go">func workerv2(wg *sync.WaitGroup, cancel chan bool) &#123;
-    defer wg.Done()
+<pre><code class="language-go">func workerv2(wg *sync.WaitGroup, cancel chan bool) &#123;
+	defer wg.Done()
 
-    for &#123;
-        select &#123;
-        default:
-            fmt.Println(&quot;hello&quot;)
-            time.Sleep(100 * time.Millisecond)
-        case &lt;-cancel:
-            return
-        &#125;
-    &#125;
+	for &#123;
+		select &#123;
+		default:
+			fmt.Println(&quot;hello&quot;)
+			time.Sleep(100 * time.Millisecond)
+		case &lt;-cancel:
+			return
+		&#125;
+	&#125;
 &#125;
 
 func CancelWithDown() &#123;
-    cancel := make(chan bool)
+	cancel := make(chan bool)
 
-    var wg sync.WaitGroup
-    for i := 0; i &lt; 10; i++ &#123;
-        wg.Add(1)
-        go workerv2(&amp;wg, cancel)
-    &#125;
+	var wg sync.WaitGroup
+	for i := 0; i &lt; 10; i++ &#123;
+		wg.Add(1)
+		go workerv2(&amp;wg, cancel)
+	&#125;
 
-    time.Sleep(time.Second)
+	time.Sleep(time.Second)
 
-    // 发送退出信号
-    close(cancel)
+	// 发送退出信号
+	close(cancel)
 
-    // 等待goroutine 安全退出
-    wg.Wait()
+	// 等待goroutine 安全退出
+	wg.Wait()
 &#125;
 </code></pre>
 <h2 id="使用context管理goroutine的退出"><a href="#使用context管理goroutine的退出" class="headerlink" title="使用context管理goroutine的退出"></a>使用context管理goroutine的退出</h2><p>在Go1.7发布时，标准库增加了一个context包，用来简化对于处理单个请求的多个Goroutine之间与请求域的数据、超时和退出等操作，官方有博文对此做了专门介绍。我们可以用context包来重新实现前面的线程安全退出或超时的控制</p>
-<pre><code class="go">func workerV3(ctx context.Context, wg *sync.WaitGroup) error &#123;
-    defer wg.Done()
+<pre><code class="language-go">func workerV3(ctx context.Context, wg *sync.WaitGroup) error &#123;
+	defer wg.Done()
 
-    for &#123;
-        select &#123;
-        default:
-            fmt.Println(&quot;hello&quot;)
-            time.Sleep(100 * time.Millisecond)
-        case &lt;-ctx.Done():
-            return ctx.Err()
-        &#125;
-    &#125;
+	for &#123;
+		select &#123;
+		default:
+			fmt.Println(&quot;hello&quot;)
+			time.Sleep(100 * time.Millisecond)
+		case &lt;-ctx.Done():
+			return ctx.Err()
+		&#125;
+	&#125;
 &#125;
 func CancelWithCtx() &#123;
-    // 控制超时
-    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	// 控制超时
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
-    var wg sync.WaitGroup
-    for i := 0; i &lt; 10; i++ &#123;
-        wg.Add(1)
-        go workerV3(ctx, &amp;wg)
-    &#125;
+	var wg sync.WaitGroup
+	for i := 0; i &lt; 10; i++ &#123;
+		wg.Add(1)
+		go workerV3(ctx, &amp;wg)
+	&#125;
 
-    time.Sleep(time.Second)
+	time.Sleep(time.Second)
 
-    // 取出任务
-    cancel()
+	// 取出任务
+	cancel()
 
-    // 等待安全退出
-    wg.Wait()
+	// 等待安全退出
+	wg.Wait()
 &#125;
 </code></pre>
 <h2 id="并发中的Pannic"><a href="#并发中的Pannic" class="headerlink" title="并发中的Pannic"></a>并发中的Pannic</h2><p>我们可以通过recover捕获异常避免程序崩溃，比如:</p>
-<pre><code class="go">func DealPanic() &#123;
-    defer func() &#123;
-        if err := recover(); err != nil &#123;
-            fmt.Println(err)
-        &#125;
-    &#125;()
+<pre><code class="language-go">func DealPanic() &#123;
+	defer func() &#123;
+		if err := recover(); err != nil &#123;
+			fmt.Println(err)
+		&#125;
+	&#125;()
 
-    arr := []int&#123;0&#125;
-    _ = arr[2]
+	arr := []int&#123;0&#125;
+	_ = arr[2]
 &#125;
 
 // 输出: runtime error: index out of range [2] with length 1
 </code></pre>
 <p>但是如果我们的错误是发生在Goroutine中喃?</p>
-<pre><code class="go">func DealPanicInG() &#123;
-    defer func() &#123;
-        if err := recover(); err != nil &#123;
-            fmt.Println(err)
-        &#125;
-    &#125;()
+<pre><code class="language-go">func DealPanicInG() &#123;
+	defer func() &#123;
+		if err := recover(); err != nil &#123;
+			fmt.Println(err)
+		&#125;
+	&#125;()
 
-    wg.Add(1)
-    go work()
+	wg.Add(1)
+	go work()
 
-    wg.Wait()
+	wg.Wait()
 &#125;
 
 func work() &#123;
-    arr := []int&#123;0&#125;
-    _ = arr[2]
-    wg.Done()
+	arr := []int&#123;0&#125;
+	_ = arr[2]
+	wg.Done()
 &#125;
 </code></pre>
 <p>结果没用, 程序还是panic了, 因为go的recover是针对 但goroutine的, 因此我们在写启动gorouite的适合,<br>不能 无脑 go func, 这样可能由于goroutine的异常 而让 整个程序崩溃掉</p>
 <p>go 的http库，是为每个请求启动一个Goroutine进行处理，我们看看他如何处理的:</p>
-<pre><code class="go">// Serve a new connection.
+<pre><code class="language-go">// Serve a new connection.
 func (c *conn) serve(ctx context.Context) &#123;
-    c.remoteAddr = c.rwc.RemoteAddr().String()
-    ctx = context.WithValue(ctx, LocalAddrContextKey, c.rwc.LocalAddr())
-    defer func() &#123;
-        if err := recover(); err != nil &amp;&amp; err != ErrAbortHandler &#123;
-            const size = 64 &lt;&lt; 10
-            buf := make([]byte, size)
-            buf = buf[:runtime.Stack(buf, false)]
-            c.server.logf(&quot;http: panic serving %v: %v\n%s&quot;, c.remoteAddr, err, buf)
-        &#125;
-        if !c.hijacked() &#123;
-            c.close()
-            c.setState(c.rwc, StateClosed, runHooks)
-        &#125;
-    &#125;()
+	c.remoteAddr = c.rwc.RemoteAddr().String()
+	ctx = context.WithValue(ctx, LocalAddrContextKey, c.rwc.LocalAddr())
+	defer func() &#123;
+		if err := recover(); err != nil &amp;&amp; err != ErrAbortHandler &#123;
+			const size = 64 &lt;&lt; 10
+			buf := make([]byte, size)
+			buf = buf[:runtime.Stack(buf, false)]
+			c.server.logf(&quot;http: panic serving %v: %v\n%s&quot;, c.remoteAddr, err, buf)
+		&#125;
+		if !c.hijacked() &#123;
+			c.close()
+			c.setState(c.rwc, StateClosed, runHooks)
+		&#125;
+	&#125;()
 </code></pre>
 <p>他在goroutine的启动函数里面 专门做了recover, 用于捕获当前goroutine的异常, 那我们修改下我们的代码</p>
-<pre><code class="go">func DealPanicInGV2() &#123;
-    // 处理主Goroutine的异常
-    defer func() &#123;
-        if err := recover(); err != nil &#123;
-            fmt.Println(err)
-        &#125;
-    &#125;()
+<pre><code class="language-go">func DealPanicInGV2() &#123;
+	// 处理主Goroutine的异常
+	defer func() &#123;
+		if err := recover(); err != nil &#123;
+			fmt.Println(err)
+		&#125;
+	&#125;()
 
-    wg.Add(1)
-    go workV2()
+	wg.Add(1)
+	go workV2()
 
-    wg.Wait()
+	wg.Wait()
 &#125;
 
 func workV2() &#123;
-    // 处理协程的异常
-    defer func() &#123;
-        wg.Done()
+	// 处理协程的异常
+	defer func() &#123;
+		wg.Done()
 
-        if err := recover(); err != nil &#123;
-            fmt.Println(err)
-        &#125;
-    &#125;()
+		if err := recover(); err != nil &#123;
+			fmt.Println(err)
+		&#125;
+	&#125;()
 
-    arr := []int&#123;0&#125;
-    _ = arr[2]
+	arr := []int&#123;0&#125;
+	_ = arr[2]
 &#125;
 </code></pre>
 <h2 id="克制的使用Goroutine-回调也不错哦"><a href="#克制的使用Goroutine-回调也不错哦" class="headerlink" title="克制的使用Goroutine, 回调也不错哦"></a>克制的使用Goroutine, 回调也不错哦</h2><p>我们再讲CSP的时候, 有个<a href="./cspmodel/barrier.go">并行爬取网页的示例</a>, 使用的是channel来获取传递数据的, 我们现在使用回调来改写</p>
 <p>我们通过回调函数返回参数</p>
-<pre><code class="go">type SiteRespCallBack func(SiteResp)
+<pre><code class="language-go">type SiteRespCallBack func(SiteResp)
 
 // 构造请求
 func doSiteRequest(cb SiteRespCallBack, url string) &#123;
-    res := SiteResp&#123;&#125;
-    startAt := time.Now()
-    defer func() &#123;
-        res.Cost = time.Since(startAt).Milliseconds()
-        cb(res)
-        wg.Done()
-    &#125;()
+	res := SiteResp&#123;&#125;
+	startAt := time.Now()
+	defer func() &#123;
+		res.Cost = time.Since(startAt).Milliseconds()
+		cb(res)
+		wg.Done()
+	&#125;()
 
-    resp, err := client.Get(url)
-    if resp != nil &#123;
-        res.Status = resp.StatusCode
-    &#125;
-    if err != nil &#123;
-        res.Err = err
-        return
-    &#125;
+	resp, err := client.Get(url)
+	if resp != nil &#123;
+		res.Status = resp.StatusCode
+	&#125;
+	if err != nil &#123;
+		res.Err = err
+		return
+	&#125;
 
-    // 站不处理结果
-    _, err = ioutil.ReadAll(resp.Body)
-    defer resp.Body.Close()
-    if err != nil &#123;
-        res.Err = err
-        return
-    &#125;
+	// 站不处理结果
+	_, err = ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	if err != nil &#123;
+		res.Err = err
+		return
+	&#125;
 
-    // res.Resp = string(byt)
+	// res.Resp = string(byt)
 &#125;
 </code></pre>
 <p>主函数编写回调处理逻辑</p>
-<pre><code class="go">func CallBackMode() &#123;
-    endpoints := []string&#123;
-        &quot;https://www.baidu.com&quot;,
-        &quot;https://segmentfault.com/&quot;,
-        &quot;https://blog.csdn.net/&quot;,
-        &quot;https://www.jd.com/&quot;,
-    &#125;
+<pre><code class="language-go">func CallBackMode() &#123;
+	endpoints := []string&#123;
+		&quot;https://www.baidu.com&quot;,
+		&quot;https://segmentfault.com/&quot;,
+		&quot;https://blog.csdn.net/&quot;,
+		&quot;https://www.jd.com/&quot;,
+	&#125;
 
-    // 一个endpoints返回一个结果, 缓冲可以确定
-    respChan := make(chan SiteResp, len(endpoints))
-    defer close(respChan)
+	// 一个endpoints返回一个结果, 缓冲可以确定
+	respChan := make(chan SiteResp, len(endpoints))
+	defer close(respChan)
 
-    ret := make([]SiteResp, 0, len(endpoints))
-    cb := func(resp SiteResp) &#123;
-        ret = append(ret, resp)
-    &#125;
+	ret := make([]SiteResp, 0, len(endpoints))
+	cb := func(resp SiteResp) &#123;
+		ret = append(ret, resp)
+	&#125;
 
-    // 并行爬取
-    for _, endpoints := range endpoints &#123;
-        wg.Add(1)
-        go doSiteRequest(cb, endpoints)
-    &#125;
+	// 并行爬取
+	for _, endpoints := range endpoints &#123;
+		wg.Add(1)
+		go doSiteRequest(cb, endpoints)
+	&#125;
 
-    // 等待结束
-    wg.Wait()
+	// 等待结束
+	wg.Wait()
 
-    for _, v := range ret &#123;
-        fmt.Println(v)
-    &#125;
+	for _, v := range ret &#123;
+		fmt.Println(v)
+	&#125;
 &#125;
 </code></pre>
 <p>我们看看之前函数式编程的map</p>
-<pre><code class="go">func TestMap(t *testing.T) &#123;
-    list := []string&#123;&quot;abc&quot;, &quot;def&quot;, &quot;fqp&quot;&#125;
-    out := MapStrToUpper(list, func(item string) string &#123;
-        return strings.ToUpper(item)
-    &#125;)
-    fmt.Println(out)
+<pre><code class="language-go">func TestMap(t *testing.T) &#123;
+	list := []string&#123;&quot;abc&quot;, &quot;def&quot;, &quot;fqp&quot;&#125;
+	out := MapStrToUpper(list, func(item string) string &#123;
+		return strings.ToUpper(item)
+	&#125;)
+	fmt.Println(out)
 &#125;
 
 func MapStrToUpper(data []string, fn func(string) string) []string &#123;
-    newData := make([]string, 0, len(data))
-    for _, v := range data &#123;
-        newData = append(newData, fn(v))
-    &#125;
+	newData := make([]string, 0, len(data))
+	for _, v := range data &#123;
+		newData = append(newData, fn(v))
+	&#125;
 
-    return newData
+	return newData
 &#125;
 </code></pre>
 <p>如果fn 是一个耗时的操作, 可以使用goroutine把它异步化, 函数式编程 + goroutine 也是很不错的一个方向(函数式并发) </p>

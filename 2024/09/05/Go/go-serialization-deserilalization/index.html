@@ -1781,23 +1781,23 @@
 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>由<strong>双引号</strong>包围起来的任意字符的组合，可以有转义字符</p>
 <h3 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h3><p>有正负，有整数、浮点数。</p>
 <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>无序的键值对的集合 格式: {key1:value1, … ,keyn:valulen} <strong>key必须是一个字符串</strong>，需要双引号包围这 个字符串。 value可以是任意合法的值。</p>
-<pre><code class="json">&#123;
-    &quot;key&quot;:value
-    &quot;k1&quot;:v1
-    ...
+<pre><code class="language-json">&#123;
+	&quot;key&quot;:value
+	&quot;k1&quot;:v1
+	...
 &#125;
 </code></pre>
 <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>有序的值的集合 格式：[val1,…,valn]</p>
 <p><img src="/../../imgs/go-serialization-deserilalization/image-20240905211659296.png" alt="image-20240905211659296"></p>
-<pre><code class="json">&#123;
-    [
-        v1,
-        v2,
-        v3
-    ]
+<pre><code class="language-json">&#123;
+	[
+		v1,
+		v2,
+		v3
+	]
 &#125;
 </code></pre>
-<pre><code class="json">&#123;
+<pre><code class="language-json">&#123;
  &quot;person&quot;: [
  &#123;
  &quot;name&quot;: &quot;tom&quot;,
@@ -1817,50 +1817,50 @@
 <li>json.Marshal(v any) ([]byte, error)，将v序列化成字符序列（本质上也是字节序列），这个过程称为<strong>Encode</strong> </li>
 <li>json.Unmarshal(data []byte, v any) error，将字符序列data反序列化为v，这个过程称为<strong>Decode</strong></li>
 </ul>
-<h3 id="基本类型序列化"><a href="#基本类型序列化" class="headerlink" title="基本类型序列化"></a>基本类型序列化</h3><pre><code class="&#123;">package main
+<h3 id="基本类型序列化"><a href="#基本类型序列化" class="headerlink" title="基本类型序列化"></a>基本类型序列化</h3><pre><code class="language-&#123;">package main
 
 import (
-    &quot;encoding/base64&quot;
-    &quot;encoding/json&quot;
-    &quot;fmt&quot;
-    &quot;github.com/vmihailenco/msgpack/v5&quot;
+	&quot;encoding/base64&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;github.com/vmihailenco/msgpack/v5&quot;
 )
 
 func f_1_2() &#123;
-    var data = []any&#123;
-        100, 2.5, true, false, nil, &quot;accc&quot;,
-        // []interface ; go 害怕里面有其他数据类型，所有为interface
-        [...]int&#123;97, 98, 99&#125;, // go array ==&gt; json  string parse js array
-        map[string]int&#123;&quot;aaa&quot;: 1111, &quot;bbb&quot;: 2222&#125;,
-    &#125;
-    fmt.Println(data)
-    // serialize
-    var target = make([][]byte, len(data))
-    for i, v := range data &#123;
-        b, err := json.Marshal(v) // []byte
-        if err != nil &#123;
-            continue
-        &#125;
-        target = append(target, b)
-        fmt.Printf(&quot;%d : %T %[2]v %T %[3]v ,%s \n&quot;, i, v, b, string(b))
-    &#125;
-    t, _ := fmt.Println(json.Marshal(data)) // 对切片整体序列化 -----&gt; []byte string
-    fmt.Printf(&quot;%q \n&quot;, t)                  // string类型
-    fmt.Println(target)                     // 切片类型
+	var data = []any&#123;
+		100, 2.5, true, false, nil, &quot;accc&quot;,
+		// []interface ; go 害怕里面有其他数据类型，所有为interface
+		[...]int&#123;97, 98, 99&#125;, // go array ==&gt; json  string parse js array
+		map[string]int&#123;&quot;aaa&quot;: 1111, &quot;bbb&quot;: 2222&#125;,
+	&#125;
+	fmt.Println(data)
+	// serialize
+	var target = make([][]byte, len(data))
+	for i, v := range data &#123;
+		b, err := json.Marshal(v) // []byte
+		if err != nil &#123;
+			continue
+		&#125;
+		target = append(target, b)
+		fmt.Printf(&quot;%d : %T %[2]v %T %[3]v ,%s \n&quot;, i, v, b, string(b))
+	&#125;
+	t, _ := fmt.Println(json.Marshal(data)) // 对切片整体序列化 -----&gt; []byte string
+	fmt.Printf(&quot;%q \n&quot;, t)                  // string类型
+	fmt.Println(target)                     // 切片类型
 
-    // 反序列化
-    for i, v := range target &#123;
-        var j any
-        err := json.Unmarshal(v, &amp;j) // j的值便是反序列化的值
-        if err != nil &#123;
-            continue
-        &#125;
-        fmt.Printf(&quot;%d : %T %[2]v，%T %[3]v \n&quot;, i, v, j)
-    &#125;
+	// 反序列化
+	for i, v := range target &#123;
+		var j any
+		err := json.Unmarshal(v, &amp;j) // j的值便是反序列化的值
+		if err != nil &#123;
+			continue
+		&#125;
+		fmt.Printf(&quot;%d : %T %[2]v，%T %[3]v \n&quot;, i, v, j)
+	&#125;
 &#125;
 
 func main()&#123;
-    f_1_2()
+	f_1_2()
 &#125;
 </code></pre>
 <p>运行结果如下</p>
@@ -1885,97 +1885,97 @@ func main()&#123;
 14 : []uint8 [91 57 55 44 57 56 44 57 57 93]，[]interface &#123;&#125; [97 98 99] 
 15 : []uint8 [123 34 97 97 97 34 58 49 49 49 49 44 34 98 98 98 34 58 50 50 50 50 125]，map[string]interface &#123;&#125; map[aaa:1111 bbb:2222] 
 </code></pre>
-<h3 id="结构体序列化"><a href="#结构体序列化" class="headerlink" title="结构体序列化"></a>结构体序列化</h3><pre><code class="go">package main
+<h3 id="结构体序列化"><a href="#结构体序列化" class="headerlink" title="结构体序列化"></a>结构体序列化</h3><pre><code class="language-go">package main
 
 import (
-    &quot;encoding/base64&quot;
-    &quot;encoding/json&quot;
-    &quot;fmt&quot;
-    &quot;github.com/vmihailenco/msgpack/v5&quot;
+	&quot;encoding/base64&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;github.com/vmihailenco/msgpack/v5&quot;
 )
 
 type Person struct &#123;
-    Name string `json:&quot;nn&quot; msgpack:&quot;name&quot;` // 字段,``序列化后的名称
-    Age  int    `json:&quot;age,omitempty&quot;`     // 字段中要紧挨着写，omitempty 忽略空值
+	Name string `json:&quot;nn&quot; msgpack:&quot;name&quot;` // 字段,``序列化后的名称
+	Age  int    `json:&quot;age,omitempty&quot;`     // 字段中要紧挨着写，omitempty 忽略空值
 &#125;
 
 func f_1_3() &#123;
-    var data = Person&#123;&quot;Tom&quot;, 24&#125;
-    // 序列化
-    b, err := json.Marshal(data)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    // &#123;&quot;nn&quot;:&quot;Tom&quot;,&quot;Age&quot;:24&#125;
-    fmt.Printf(&quot;%T %+[1]v; %T %[2]v \n&quot;, data, b)
-    fmt.Println(string(b)) // 这个对象的类型是什么?  ===&gt; 损失了,因为js没有Person类型，主体的数据类型没丢
-    fmt.Println(&quot;___________________________&quot;)
-    // 反序列化
-    var p1 Person
-    // 1. 我知道目标类型
-    err = json.Unmarshal(b, &amp;p1)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Printf(&quot;%T %+[1]v \n&quot;, p1)
+	var data = Person&#123;&quot;Tom&quot;, 24&#125;
+	// 序列化
+	b, err := json.Marshal(data)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	// &#123;&quot;nn&quot;:&quot;Tom&quot;,&quot;Age&quot;:24&#125;
+	fmt.Printf(&quot;%T %+[1]v; %T %[2]v \n&quot;, data, b)
+	fmt.Println(string(b)) // 这个对象的类型是什么?  ===&gt; 损失了,因为js没有Person类型，主体的数据类型没丢
+	fmt.Println(&quot;___________________________&quot;)
+	// 反序列化
+	var p1 Person
+	// 1. 我知道目标类型
+	err = json.Unmarshal(b, &amp;p1)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Printf(&quot;%T %+[1]v \n&quot;, p1)
 
-    // 2.我不知道你是什么类型
-    var i interface&#123;&#125;
-    err = json.Unmarshal(b, &amp;i)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Printf(&quot;%T %+[1]v \n&quot;, i) // T 是什么类型 ===&gt; interface   map  key-value对
+	// 2.我不知道你是什么类型
+	var i interface&#123;&#125;
+	err = json.Unmarshal(b, &amp;i)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Printf(&quot;%T %+[1]v \n&quot;, i) // T 是什么类型 ===&gt; interface   map  key-value对
 &#125;
 
 func main()&#123;
     f_1_3()
 &#125;
 </code></pre>
-<h3 id="切片序列化"><a href="#切片序列化" class="headerlink" title="切片序列化"></a>切片序列化</h3><pre><code class="go">package main
+<h3 id="切片序列化"><a href="#切片序列化" class="headerlink" title="切片序列化"></a>切片序列化</h3><pre><code class="language-go">package main
 
 import (
-    &quot;encoding/base64&quot;
-    &quot;encoding/json&quot;
-    &quot;fmt&quot;
-    &quot;github.com/vmihailenco/msgpack/v5&quot;
+	&quot;encoding/base64&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;github.com/vmihailenco/msgpack/v5&quot;
 )
 
 type Person struct &#123;
-    Name string `json:&quot;nn&quot; msgpack:&quot;name&quot;` // 字段,``序列化后的名称
-    Age  int    `json:&quot;age,omitempty&quot;`     // 字段中要紧挨着写，omitempty 忽略空值
+	Name string `json:&quot;nn&quot; msgpack:&quot;name&quot;` // 字段,``序列化后的名称
+	Age  int    `json:&quot;age,omitempty&quot;`     // 字段中要紧挨着写，omitempty 忽略空值
 &#125;
 
 // 切片
 func f_1_6() &#123;
-    // 序列化
-    var data = []Person&#123;
-        &#123;Name: &quot;AAA&quot;, Age: 20&#125;,
-        &#123;Name: &quot;aaa&quot;, Age: 32&#125;,
-    &#125;
-    b, err := json.Marshal(data)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Println(b, string(b)) // 请问序列化后的字符串中，还有类型吗？有什么？
-    // 反序列化
-    // 不知道类型
-    var i interface&#123;&#125;
-    err = json.Unmarshal(b, &amp;i)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Printf(&quot;%T: %+[1]v\n&quot;, i)
-    // i类型为[]interface&#123;&#125;，值为[map[Age:20 Name:AAA] map[Age:32 Name:aaa]]
-    // 知道目标类型
-    var b1 = []byte(`[&#123;&quot;name&quot;:&quot;AAA&quot;,&quot;Age&quot;:20&#125;,&#123;&quot;name&quot;:&quot;aaa&quot;,&quot;Age&quot;:32&#125;]`)
-    var j []Person
-    err = json.Unmarshal(b1, &amp;j)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Printf(&quot;%T: %+[1]v\n&quot;, j)
-    // j类型为[]Person，值为[&#123;Name:AAA Age:20&#125; &#123;Name:aaa Age:32&#125;]
+	// 序列化
+	var data = []Person&#123;
+		&#123;Name: &quot;AAA&quot;, Age: 20&#125;,
+		&#123;Name: &quot;aaa&quot;, Age: 32&#125;,
+	&#125;
+	b, err := json.Marshal(data)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Println(b, string(b)) // 请问序列化后的字符串中，还有类型吗？有什么？
+	// 反序列化
+	// 不知道类型
+	var i interface&#123;&#125;
+	err = json.Unmarshal(b, &amp;i)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Printf(&quot;%T: %+[1]v\n&quot;, i)
+	// i类型为[]interface&#123;&#125;，值为[map[Age:20 Name:AAA] map[Age:32 Name:aaa]]
+	// 知道目标类型
+	var b1 = []byte(`[&#123;&quot;name&quot;:&quot;AAA&quot;,&quot;Age&quot;:20&#125;,&#123;&quot;name&quot;:&quot;aaa&quot;,&quot;Age&quot;:32&#125;]`)
+	var j []Person
+	err = json.Unmarshal(b1, &amp;j)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Printf(&quot;%T: %+[1]v\n&quot;, j)
+	// j类型为[]Person，值为[&#123;Name:AAA Age:20&#125; &#123;Name:aaa Age:32&#125;]
 &#125;
 </code></pre>
 <p>运行结果</p>
@@ -2013,41 +2013,41 @@ func f_1_6() &#123;
 <p>官网 <a target="_blank" rel="noopener" href="https://msgpack.org/">https://msgpack.org/</a></p>
 <p>文档 <a target="_blank" rel="noopener" href="https://msgpack.uptrace.dev/">MessagePack encoding for Go (uptrace.dev)</a></p>
 <p>安装</p>
-<pre><code class="bash">go get github.com/vmihailenco/msgpack/v5
+<pre><code class="language-bash">go get github.com/vmihailenco/msgpack/v5
 </code></pre>
 <p>基本使用方法和json包类似</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;encoding/base64&quot;
-    &quot;encoding/json&quot;
-    &quot;fmt&quot;
-    &quot;github.com/vmihailenco/msgpack/v5&quot;
+	&quot;encoding/base64&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;github.com/vmihailenco/msgpack/v5&quot;
 )
 
 type Person struct &#123;
-    Name string `json:&quot;nn&quot; msgpack:&quot;name&quot;` // 字段,``序列化后的名称
-    Age  int    `json:&quot;age,omitempty&quot;`     // 字段中要紧挨着写，omitempty 忽略空值
+	Name string `json:&quot;nn&quot; msgpack:&quot;name&quot;` // 字段,``序列化后的名称
+	Age  int    `json:&quot;age,omitempty&quot;`     // 字段中要紧挨着写，omitempty 忽略空值
 &#125;
 
 // 推荐使用msgpack
 func f_1_4() &#123;
-    var data = Person&#123;&quot;Jerry&quot;, 24&#125;
-    // 序列化
-    b, err := msgpack.Marshal(data)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Printf(&quot;%T %+[1]v \n&quot;, b)
+	var data = Person&#123;&quot;Jerry&quot;, 24&#125;
+	// 序列化
+	b, err := msgpack.Marshal(data)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Printf(&quot;%T %+[1]v \n&quot;, b)
 
-    // 反序列化
-    var p1 Person
-    err = msgpack.Unmarshal(b, &amp;p1)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Printf(&quot;%T %+[1]v \n&quot;, p1) // uint8 一个字节
-    // 序列化后得到的结果、数据类型、数据
+	// 反序列化
+	var p1 Person
+	err = msgpack.Unmarshal(b, &amp;p1)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Printf(&quot;%T %+[1]v \n&quot;, p1) // uint8 一个字节
+	// 序列化后得到的结果、数据类型、数据
 &#125;
 </code></pre>
 <h1 id="Base64编码"><a href="#Base64编码" class="headerlink" title="Base64编码"></a>Base64编码</h1><p><img src="https://img-blog.csdnimg.cn/img_convert/1cb77f80107937fee65405280e3a8c14.png" alt="base64编码_几分钟看懂Base64编码原理-CSDN博客"></p>
@@ -2059,26 +2059,26 @@ func f_1_4() &#123;
 </ul>
 <p>主要应用在JWT、网页图片传输等。</p>
 <p>参考   <a target="_blank" rel="noopener" href="https://pkg.go.dev/encoding/base64">base64 package - encoding&#x2F;base64 - Go Packages</a></p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;encoding/base64&quot;
-    &quot;fmt&quot;
+	&quot;encoding/base64&quot;
+	&quot;fmt&quot;
 )
 
 
 func f_1_5() &#123;
-    src := &quot;abc&quot; // 3bytes =&gt; 4bytes
-    s := base64.StdEncoding.EncodeToString([]byte(src))
-    fmt.Println(len(s), s)
-    fmt.Println(&quot;——————————————————&quot;)
-    b, err := base64.StdEncoding.DecodeString(s)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    fmt.Println(len(b), b)
-    t := string(b)
-    fmt.Println(len(t), t)
+	src := &quot;abc&quot; // 3bytes =&gt; 4bytes
+	s := base64.StdEncoding.EncodeToString([]byte(src))
+	fmt.Println(len(s), s)
+	fmt.Println(&quot;——————————————————&quot;)
+	b, err := base64.StdEncoding.DecodeString(s)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	fmt.Println(len(b), b)
+	t := string(b)
+	fmt.Println(len(t), t)
 &#125;
 </code></pre>
 

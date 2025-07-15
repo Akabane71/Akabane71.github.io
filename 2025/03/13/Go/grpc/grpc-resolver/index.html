@@ -1763,7 +1763,7 @@
         <p>在 gRPC-Go 中，<strong>预留的 <code>resolver.Resolver</code> 接口</strong> 定义了 <strong>自定义解析器（Resolver）</strong> 需要实现的基本方法。gRPC 使用 <strong><code>resolver.Resolver</code></strong> 来解析目标地址（如 <code>custom:///service</code>），并动态提供服务器地址列表。</p>
 <hr>
 <h2 id="1-resolver-Resolver-预留接口"><a href="#1-resolver-Resolver-预留接口" class="headerlink" title="1. resolver.Resolver 预留接口"></a><strong>1. <code>resolver.Resolver</code> 预留接口</strong></h2><p>gRPC 预留的 <code>resolver.Resolver</code> 接口定义如下（<code>google.golang.org/grpc/resolver</code>）：</p>
-<pre><code class="go">package resolver
+<pre><code class="language-go">package resolver
 
 // Resolver 定义了解析 gRPC 目标地址的接口
 type Resolver interface &#123;
@@ -1792,7 +1792,7 @@ type ResolveNowOptions struct&#123;&#125;
 </tbody></table>
 <hr>
 <h2 id="2-resolver-Builder-接口（解析器构造器）"><a href="#2-resolver-Builder-接口（解析器构造器）" class="headerlink" title="2. resolver.Builder 接口（解析器构造器）"></a><strong>2. <code>resolver.Builder</code> 接口（解析器构造器）</strong></h2><p>在 gRPC 中，所有的解析器都需要先通过 <strong><code>resolver.Builder</code></strong> 进行注册：</p>
-<pre><code class="go">package resolver
+<pre><code class="language-go">package resolver
 
 // Builder 是解析器的工厂接口
 type Builder interface &#123;
@@ -1818,7 +1818,7 @@ type Builder interface &#123;
 </tbody></table>
 <hr>
 <h2 id="3-resolver-ClientConn-预留接口"><a href="#3-resolver-ClientConn-预留接口" class="headerlink" title="3. resolver.ClientConn 预留接口"></a><strong>3. <code>resolver.ClientConn</code> 预留接口</strong></h2><p><code>resolver.ClientConn</code> <strong>用于通知 gRPC 负载均衡器</strong> 解析后的服务地址：</p>
-<pre><code class="go">package resolver
+<pre><code class="language-go">package resolver
 
 // ClientConn 是 Resolver 和 gRPC 负载均衡之间的通信接口
 type ClientConn interface &#123;
@@ -1846,7 +1846,7 @@ type ClientConn interface &#123;
 </tbody></table>
 <hr>
 <h2 id="4-解析器的-resolver-State-结构"><a href="#4-解析器的-resolver-State-结构" class="headerlink" title="4. 解析器的 resolver.State 结构"></a><strong>4. 解析器的 <code>resolver.State</code> 结构</strong></h2><p>当 <code>resolver.Resolver</code> 解析完 gRPC 目标地址后，需要将解析结果传递给 gRPC <strong>负载均衡器</strong>，格式如下：</p>
-<pre><code class="go">package resolver
+<pre><code class="language-go">package resolver
 
 // State 代表解析后的 gRPC 服务器状态
 type State struct &#123;
@@ -1854,7 +1854,7 @@ type State struct &#123;
 &#125;
 </code></pre>
 <p>示例：</p>
-<pre><code class="go">state := resolver.State&#123;
+<pre><code class="language-go">state := resolver.State&#123;
     Addresses: []resolver.Address&#123;
         &#123;Addr: &quot;127.0.0.1:50051&quot;&#125;,
         &#123;Addr: &quot;127.0.0.1:50052&quot;&#125;,
@@ -1864,19 +1864,19 @@ cc.UpdateState(state) // 更新解析结果
 </code></pre>
 <hr>
 <h2 id="5-组合：完整的-gRPC-自定义解析器"><a href="#5-组合：完整的-gRPC-自定义解析器" class="headerlink" title="5. 组合：完整的 gRPC 自定义解析器"></a><strong>5. 组合：完整的 gRPC 自定义解析器</strong></h2><p>根据 gRPC <strong>预留的 <code>resolver.Resolver</code> 接口</strong>，我们可以实现一个 <strong>自定义的 Consul 解析器</strong>：</p>
-<h3 id="完整代码示例"><a href="#完整代码示例" class="headerlink" title="完整代码示例"></a><strong>完整代码示例</strong></h3><pre><code class="go">package main
+<h3 id="完整代码示例"><a href="#完整代码示例" class="headerlink" title="完整代码示例"></a><strong>完整代码示例</strong></h3><pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;github.com/hashicorp/consul/api&quot;
-    &quot;log&quot;
-    &quot;net&quot;
-    &quot;sync&quot;
+	&quot;fmt&quot;
+	&quot;github.com/hashicorp/consul/api&quot;
+	&quot;log&quot;
+	&quot;net&quot;
+	&quot;sync&quot;
 
-    &quot;context&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;google.golang.org/grpc/resolver&quot;
-    &quot;test/proto&quot;
+	&quot;context&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/resolver&quot;
+	&quot;test/proto&quot;
 )
 
 // 自定义解析器的 scheme
@@ -1889,40 +1889,40 @@ type myResolverBuilder struct&#123;&#125;
 
 // Target url;
 func (b *myResolverBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (resolver.Resolver, error) &#123;
-    log.Printf(&quot;解析目标: %s&quot;, target.Endpoint())
-    r := &amp;myResolver&#123;
-        target: target,
-        cc:     cc,
-    &#125;
-    r.ResolveNow(resolver.ResolveNowOptions&#123;&#125;) // 立即解析
-    return r, nil
+	log.Printf(&quot;解析目标: %s&quot;, target.Endpoint())
+	r := &amp;myResolver&#123;
+		target: target,
+		cc:     cc,
+	&#125;
+	r.ResolveNow(resolver.ResolveNowOptions&#123;&#125;) // 立即解析
+	return r, nil
 &#125;
 
 func (b *myResolverBuilder) Scheme() string &#123;
-    return myScheme
+	return myScheme
 &#125;
 
 // 解析器（Resolver）实现 `resolver.Resolver`
 type myResolver struct &#123;
-    target resolver.Target
-    cc     resolver.ClientConn
-    mu     sync.Mutex
+	target resolver.Target
+	cc     resolver.ClientConn
+	mu     sync.Mutex
 &#125;
 
 // 解析服务地址
 func (r *myResolver) ResolveNow(opts resolver.ResolveNowOptions) &#123;
-    r.mu.Lock()
-    defer r.mu.Unlock()
+	r.mu.Lock()
+	defer r.mu.Unlock()
 
-    // 假设这里从 Consul 获取服务地址
-    addresses, err := queryConsul(consulAddress, r.target.Endpoint())
-    if err != nil &#123;
-        panic(err)
-    &#125;
+	// 假设这里从 Consul 获取服务地址
+	addresses, err := queryConsul(consulAddress, r.target.Endpoint())
+	if err != nil &#123;
+		panic(err)
+	&#125;
 
-    // 更新 gRPC 服务器地址
-    r.cc.UpdateState(resolver.State&#123;Addresses: addresses&#125;)
-    log.Println(&quot;解析器更新完成&quot;)
+	// 更新 gRPC 服务器地址
+	r.cc.UpdateState(resolver.State&#123;Addresses: addresses&#125;)
+	log.Println(&quot;解析器更新完成&quot;)
 &#125;
 
 // 关闭解析器
@@ -1930,103 +1930,103 @@ func (r *myResolver) Close() &#123;&#125;
 
 // 注册解析器
 func init() &#123;
-    consulAddress, _ = GetLocalIP()
-    consulAddress = fmt.Sprintf(&quot;%s:8500&quot;, consulAddress)
-    resolver.Register(&amp;myResolverBuilder&#123;&#125;)
+	consulAddress, _ = GetLocalIP()
+	consulAddress = fmt.Sprintf(&quot;%s:8500&quot;, consulAddress)
+	resolver.Register(&amp;myResolverBuilder&#123;&#125;)
 &#125;
 
 // 从 Consul 查询 `serviceName` 并返回可用的 gRPC 服务器列表
 func queryConsul(consulAddress string, serviceName string) ([]resolver.Address, error) &#123;
-    // 创建 Consul 客户端
-    consulConfig := api.DefaultConfig()
-    consulConfig.Address = consulAddress
-    client, err := api.NewClient(consulConfig)
-    if err != nil &#123;
-        return nil, err
-    &#125;
+	// 创建 Consul 客户端
+	consulConfig := api.DefaultConfig()
+	consulConfig.Address = consulAddress
+	client, err := api.NewClient(consulConfig)
+	if err != nil &#123;
+		return nil, err
+	&#125;
 
-    // 查询 Consul 中健康的 gRPC 服务
-    services, _, err := client.Health().Service(serviceName, &quot;&quot;, true, nil)
-    if err != nil &#123;
-        return nil, err
-    &#125;
+	// 查询 Consul 中健康的 gRPC 服务
+	services, _, err := client.Health().Service(serviceName, &quot;&quot;, true, nil)
+	if err != nil &#123;
+		return nil, err
+	&#125;
 
-    // 转换为 gRPC `resolver.Address`
-    var addresses []resolver.Address
-    for _, service := range services &#123;
-        addr := service.Service.Address
-        port := service.Service.Port
-        addresses = append(addresses, resolver.Address&#123;
-            Addr:       addr + &quot;:&quot; + fmt.Sprintf(&quot;%d&quot;, port),
-            ServerName: serviceName&#125;)
-    &#125;
+	// 转换为 gRPC `resolver.Address`
+	var addresses []resolver.Address
+	for _, service := range services &#123;
+		addr := service.Service.Address
+		port := service.Service.Port
+		addresses = append(addresses, resolver.Address&#123;
+			Addr:       addr + &quot;:&quot; + fmt.Sprintf(&quot;%d&quot;, port),
+			ServerName: serviceName&#125;)
+	&#125;
 
-    // 如果没有可用服务，返回错误
-    if len(addresses) == 0 &#123;
-        return nil, fmt.Errorf(&quot;未找到任何健康的 %s 服务&quot;, serviceName)
-    &#125;
+	// 如果没有可用服务，返回错误
+	if len(addresses) == 0 &#123;
+		return nil, fmt.Errorf(&quot;未找到任何健康的 %s 服务&quot;, serviceName)
+	&#125;
 
-    for _, address := range addresses &#123;
-        fmt.Println(address)
-    &#125;
+	for _, address := range addresses &#123;
+		fmt.Println(address)
+	&#125;
 
-    return addresses, nil
+	return addresses, nil
 &#125;
 
 // 获取本机 IPv4 地址（第一个非 127.0.0.1 的）
 func GetLocalIP() (string, error) &#123;
-    interfaces, err := net.Interfaces()
-    if err != nil &#123;
-        return &quot;&quot;, err
-    &#125;
+	interfaces, err := net.Interfaces()
+	if err != nil &#123;
+		return &quot;&quot;, err
+	&#125;
 
-    for _, iface := range interfaces &#123;
-        // 忽略未启用的网卡
-        if iface.Flags&amp;net.FlagUp == 0 || iface.Flags&amp;net.FlagLoopback != 0 &#123;
-            continue
-        &#125;
+	for _, iface := range interfaces &#123;
+		// 忽略未启用的网卡
+		if iface.Flags&amp;net.FlagUp == 0 || iface.Flags&amp;net.FlagLoopback != 0 &#123;
+			continue
+		&#125;
 
-        addrs, err := iface.Addrs()
-        if err != nil &#123;
-            continue
-        &#125;
+		addrs, err := iface.Addrs()
+		if err != nil &#123;
+			continue
+		&#125;
 
-        for _, addr := range addrs &#123;
-            ipNet, ok := addr.(*net.IPNet)
-            if !ok || ipNet.IP.IsLoopback() || ipNet.IP.To4() == nil &#123;
-                continue
-            &#125;
-            return ipNet.IP.String(), nil // 找到第一个 IPv4 地址直接返回
-        &#125;
-    &#125;
+		for _, addr := range addrs &#123;
+			ipNet, ok := addr.(*net.IPNet)
+			if !ok || ipNet.IP.IsLoopback() || ipNet.IP.To4() == nil &#123;
+				continue
+			&#125;
+			return ipNet.IP.String(), nil // 找到第一个 IPv4 地址直接返回
+		&#125;
+	&#125;
 
-    return &quot;&quot;, fmt.Errorf(&quot;no valid IPv4 address found&quot;)
+	return &quot;&quot;, fmt.Errorf(&quot;no valid IPv4 address found&quot;)
 &#125;
 
 func main() &#123;
-    // 使用自定义解析器
-    conn, err := grpc.Dial(
-        &quot;consul:///mx_shop_users&quot;,
-        grpc.WithInsecure(),
-        grpc.WithDefaultServiceConfig(`&#123;&quot;loadBalancingPolicy&quot;:&quot;round_robin&quot;&#125;`),
-    )
-    if err != nil &#123;
-        log.Fatalf(&quot;连接 gRPC 服务器失败: %v&quot;, err)
-    &#125;
-    defer conn.Close()
+	// 使用自定义解析器
+	conn, err := grpc.Dial(
+		&quot;consul:///mx_shop_users&quot;,
+		grpc.WithInsecure(),
+		grpc.WithDefaultServiceConfig(`&#123;&quot;loadBalancingPolicy&quot;:&quot;round_robin&quot;&#125;`),
+	)
+	if err != nil &#123;
+		log.Fatalf(&quot;连接 gRPC 服务器失败: %v&quot;, err)
+	&#125;
+	defer conn.Close()
 
-    log.Println(&quot;gRPC 连接成功&quot;)
-    UserSrvClient := proto.NewUserClient(conn)
-    rsp, err := UserSrvClient.GetUserList(context.Background(), &amp;proto.PageInfo&#123;
-        Pn:    1,
-        PSize: 2,
-    &#125;)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    for index, data := range rsp.Data &#123;
-        fmt.Println(index, data)
-    &#125;
+	log.Println(&quot;gRPC 连接成功&quot;)
+	UserSrvClient := proto.NewUserClient(conn)
+	rsp, err := UserSrvClient.GetUserList(context.Background(), &amp;proto.PageInfo&#123;
+		Pn:    1,
+		PSize: 2,
+	&#125;)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	for index, data := range rsp.Data &#123;
+		fmt.Println(index, data)
+	&#125;
 &#125;
 </code></pre>
 <hr>
@@ -2041,7 +2041,7 @@ func main() &#123;
 <h2 id="7-实验"><a href="#7-实验" class="headerlink" title="7. 实验"></a>7. 实验</h2><ul>
 <li>user.proto</li>
 </ul>
-<pre><code class="protobuf">syntax = &quot;proto3&quot;;
+<pre><code class="language-protobuf">syntax = &quot;proto3&quot;;
 
 import &quot;google/protobuf/empty.proto&quot;;
 
@@ -2111,19 +2111,19 @@ message UpdateUserInfo &#123;
 <ul>
 <li>main.go</li>
 </ul>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
-    &quot;fmt&quot;
-    &quot;github.com/hashicorp/consul/api&quot;
-    &quot;log&quot;
-    &quot;net&quot;
-    &quot;sync&quot;
+	&quot;fmt&quot;
+	&quot;github.com/hashicorp/consul/api&quot;
+	&quot;log&quot;
+	&quot;net&quot;
+	&quot;sync&quot;
 
-    &quot;context&quot;
-    &quot;google.golang.org/grpc&quot;
-    &quot;google.golang.org/grpc/resolver&quot;
-    &quot;test/proto&quot;
+	&quot;context&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/resolver&quot;
+	&quot;test/proto&quot;
 )
 
 // 自定义解析器的 scheme
@@ -2136,40 +2136,40 @@ type myResolverBuilder struct&#123;&#125;
 
 // Target url;
 func (b *myResolverBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (resolver.Resolver, error) &#123;
-    log.Printf(&quot;解析目标: %s&quot;, target.Endpoint())
-    r := &amp;myResolver&#123;
-        target: target,
-        cc:     cc,
-    &#125;
-    r.ResolveNow(resolver.ResolveNowOptions&#123;&#125;) // 立即解析
-    return r, nil
+	log.Printf(&quot;解析目标: %s&quot;, target.Endpoint())
+	r := &amp;myResolver&#123;
+		target: target,
+		cc:     cc,
+	&#125;
+	r.ResolveNow(resolver.ResolveNowOptions&#123;&#125;) // 立即解析
+	return r, nil
 &#125;
 
 func (b *myResolverBuilder) Scheme() string &#123;
-    return myScheme
+	return myScheme
 &#125;
 
 // 解析器（Resolver）实现 `resolver.Resolver`
 type myResolver struct &#123;
-    target resolver.Target
-    cc     resolver.ClientConn
-    mu     sync.Mutex
+	target resolver.Target
+	cc     resolver.ClientConn
+	mu     sync.Mutex
 &#125;
 
 // 解析服务地址
 func (r *myResolver) ResolveNow(opts resolver.ResolveNowOptions) &#123;
-    r.mu.Lock()
-    defer r.mu.Unlock()
+	r.mu.Lock()
+	defer r.mu.Unlock()
 
-    // 假设这里从 Consul 获取服务地址
-    addresses, err := queryConsul(consulAddress, r.target.Endpoint())
-    if err != nil &#123;
-        panic(err)
-    &#125;
+	// 假设这里从 Consul 获取服务地址
+	addresses, err := queryConsul(consulAddress, r.target.Endpoint())
+	if err != nil &#123;
+		panic(err)
+	&#125;
 
-    // 更新 gRPC 服务器地址
-    r.cc.UpdateState(resolver.State&#123;Addresses: addresses&#125;)
-    log.Println(&quot;解析器更新完成&quot;)
+	// 更新 gRPC 服务器地址
+	r.cc.UpdateState(resolver.State&#123;Addresses: addresses&#125;)
+	log.Println(&quot;解析器更新完成&quot;)
 &#125;
 
 // 关闭解析器
@@ -2177,103 +2177,103 @@ func (r *myResolver) Close() &#123;&#125;
 
 // 注册解析器
 func init() &#123;
-    consulAddress, _ = GetLocalIP()
-    consulAddress = fmt.Sprintf(&quot;%s:8500&quot;, consulAddress)
-    resolver.Register(&amp;myResolverBuilder&#123;&#125;)
+	consulAddress, _ = GetLocalIP()
+	consulAddress = fmt.Sprintf(&quot;%s:8500&quot;, consulAddress)
+	resolver.Register(&amp;myResolverBuilder&#123;&#125;)
 &#125;
 
 // 从 Consul 查询 `serviceName` 并返回可用的 gRPC 服务器列表
 func queryConsul(consulAddress string, serviceName string) ([]resolver.Address, error) &#123;
-    // 创建 Consul 客户端
-    consulConfig := api.DefaultConfig()
-    consulConfig.Address = consulAddress
-    client, err := api.NewClient(consulConfig)
-    if err != nil &#123;
-        return nil, err
-    &#125;
+	// 创建 Consul 客户端
+	consulConfig := api.DefaultConfig()
+	consulConfig.Address = consulAddress
+	client, err := api.NewClient(consulConfig)
+	if err != nil &#123;
+		return nil, err
+	&#125;
 
-    // 查询 Consul 中健康的 gRPC 服务
-    services, _, err := client.Health().Service(serviceName, &quot;&quot;, true, nil)
-    if err != nil &#123;
-        return nil, err
-    &#125;
+	// 查询 Consul 中健康的 gRPC 服务
+	services, _, err := client.Health().Service(serviceName, &quot;&quot;, true, nil)
+	if err != nil &#123;
+		return nil, err
+	&#125;
 
-    // 转换为 gRPC `resolver.Address`
-    var addresses []resolver.Address
-    for _, service := range services &#123;
-        addr := service.Service.Address
-        port := service.Service.Port
-        addresses = append(addresses, resolver.Address&#123;
-            Addr:       addr + &quot;:&quot; + fmt.Sprintf(&quot;%d&quot;, port),
-            ServerName: serviceName&#125;)
-    &#125;
+	// 转换为 gRPC `resolver.Address`
+	var addresses []resolver.Address
+	for _, service := range services &#123;
+		addr := service.Service.Address
+		port := service.Service.Port
+		addresses = append(addresses, resolver.Address&#123;
+			Addr:       addr + &quot;:&quot; + fmt.Sprintf(&quot;%d&quot;, port),
+			ServerName: serviceName&#125;)
+	&#125;
 
-    // 如果没有可用服务，返回错误
-    if len(addresses) == 0 &#123;
-        return nil, fmt.Errorf(&quot;未找到任何健康的 %s 服务&quot;, serviceName)
-    &#125;
+	// 如果没有可用服务，返回错误
+	if len(addresses) == 0 &#123;
+		return nil, fmt.Errorf(&quot;未找到任何健康的 %s 服务&quot;, serviceName)
+	&#125;
 
-    for _, address := range addresses &#123;
-        fmt.Println(address)
-    &#125;
+	for _, address := range addresses &#123;
+		fmt.Println(address)
+	&#125;
 
-    return addresses, nil
+	return addresses, nil
 &#125;
 
 // 获取本机 IPv4 地址（第一个非 127.0.0.1 的）
 func GetLocalIP() (string, error) &#123;
-    interfaces, err := net.Interfaces()
-    if err != nil &#123;
-        return &quot;&quot;, err
-    &#125;
+	interfaces, err := net.Interfaces()
+	if err != nil &#123;
+		return &quot;&quot;, err
+	&#125;
 
-    for _, iface := range interfaces &#123;
-        // 忽略未启用的网卡
-        if iface.Flags&amp;net.FlagUp == 0 || iface.Flags&amp;net.FlagLoopback != 0 &#123;
-            continue
-        &#125;
+	for _, iface := range interfaces &#123;
+		// 忽略未启用的网卡
+		if iface.Flags&amp;net.FlagUp == 0 || iface.Flags&amp;net.FlagLoopback != 0 &#123;
+			continue
+		&#125;
 
-        addrs, err := iface.Addrs()
-        if err != nil &#123;
-            continue
-        &#125;
+		addrs, err := iface.Addrs()
+		if err != nil &#123;
+			continue
+		&#125;
 
-        for _, addr := range addrs &#123;
-            ipNet, ok := addr.(*net.IPNet)
-            if !ok || ipNet.IP.IsLoopback() || ipNet.IP.To4() == nil &#123;
-                continue
-            &#125;
-            return ipNet.IP.String(), nil // 找到第一个 IPv4 地址直接返回
-        &#125;
-    &#125;
+		for _, addr := range addrs &#123;
+			ipNet, ok := addr.(*net.IPNet)
+			if !ok || ipNet.IP.IsLoopback() || ipNet.IP.To4() == nil &#123;
+				continue
+			&#125;
+			return ipNet.IP.String(), nil // 找到第一个 IPv4 地址直接返回
+		&#125;
+	&#125;
 
-    return &quot;&quot;, fmt.Errorf(&quot;no valid IPv4 address found&quot;)
+	return &quot;&quot;, fmt.Errorf(&quot;no valid IPv4 address found&quot;)
 &#125;
 
 func main() &#123;
-    // 使用自定义解析器
-    conn, err := grpc.Dial(
-        &quot;consul:///mx_shop_users&quot;,
-        grpc.WithInsecure(),
-        grpc.WithDefaultServiceConfig(`&#123;&quot;loadBalancingPolicy&quot;:&quot;round_robin&quot;&#125;`),
-    )
-    if err != nil &#123;
-        log.Fatalf(&quot;连接 gRPC 服务器失败: %v&quot;, err)
-    &#125;
-    defer conn.Close()
+	// 使用自定义解析器
+	conn, err := grpc.Dial(
+		&quot;consul:///mx_shop_users&quot;,
+		grpc.WithInsecure(),
+		grpc.WithDefaultServiceConfig(`&#123;&quot;loadBalancingPolicy&quot;:&quot;round_robin&quot;&#125;`),
+	)
+	if err != nil &#123;
+		log.Fatalf(&quot;连接 gRPC 服务器失败: %v&quot;, err)
+	&#125;
+	defer conn.Close()
 
-    log.Println(&quot;gRPC 连接成功&quot;)
-    UserSrvClient := proto.NewUserClient(conn)
-    rsp, err := UserSrvClient.GetUserList(context.Background(), &amp;proto.PageInfo&#123;
-        Pn:    1,
-        PSize: 2,
-    &#125;)
-    if err != nil &#123;
-        panic(err)
-    &#125;
-    for index, data := range rsp.Data &#123;
-        fmt.Println(index, data)
-    &#125;
+	log.Println(&quot;gRPC 连接成功&quot;)
+	UserSrvClient := proto.NewUserClient(conn)
+	rsp, err := UserSrvClient.GetUserList(context.Background(), &amp;proto.PageInfo&#123;
+		Pn:    1,
+		PSize: 2,
+	&#125;)
+	if err != nil &#123;
+		panic(err)
+	&#125;
+	for index, data := range rsp.Data &#123;
+		fmt.Println(index, data)
+	&#125;
 &#125;
 </code></pre>
 <blockquote>
@@ -2282,10 +2282,10 @@ func main() &#123;
 <h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a><strong>9. 总结</strong></h2><p>✅ <strong>gRPC 预留的 <code>resolver.Resolver</code> 接口</strong> 主要用于 <strong>解析目标地址，并提供服务器列表</strong>。</p>
 <p>✅ <strong>核心接口</strong></p>
 <ul>
-<li>**<code>resolver.Resolver</code>**：解析地址并返回服务器列表</li>
-<li>**<code>resolver.Builder</code>**：创建解析器</li>
-<li>**<code>resolver.ClientConn</code>**：通知 gRPC 解析结果</li>
-<li>**<code>resolver.State</code>**：存储解析后的服务器地址</li>
+<li><strong><code>resolver.Resolver</code></strong>：解析地址并返回服务器列表</li>
+<li><strong><code>resolver.Builder</code></strong>：创建解析器</li>
+<li><strong><code>resolver.ClientConn</code></strong>：通知 gRPC 解析结果</li>
+<li><strong><code>resolver.State</code></strong>：存储解析后的服务器地址</li>
 </ul>
 <p>✅ <strong>自定义 gRPC 解析器适用场景</strong></p>
 <ul>
@@ -2293,7 +2293,7 @@ func main() &#123;
 <li><strong>动态解析 gRPC 服务器</strong></li>
 <li><strong>自定义负载均衡策略</strong></li>
 </ul>
-<p>🚀 <strong>这样，你的 gRPC 应用就能动态解析服务，并自动负载均衡！</strong>态解析并连接多个后端服务器！**</p>
+<p>🚀 **这样，你的 gRPC 应用就能动态解析服务，并自动负载均衡！<strong>态解析并连接多个后端服务器！</strong></p>
 
       
        

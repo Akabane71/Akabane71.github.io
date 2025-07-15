@@ -1764,7 +1764,7 @@
 </ul>
 <p>这些标准库可以满足大部分开发者的日常需求，无需额外安装第三方库。</p>
 <h2 id="3-pip（Python-包管理器）"><a href="#3-pip（Python-包管理器）" class="headerlink" title="3. pip（Python 包管理器）"></a>3. <strong><code>pip</code>（Python 包管理器）</strong></h2><p><code>pip</code> 是 Python 默认的包管理工具，用于从 Python 包索引（PyPI）下载、安装、管理第三方库。自 Python 3.4 之后，<code>pip</code> 就默认包含在 Python 安装包中。你可以使用 <code>pip</code> 安装、更新、卸载库：</p>
-<pre><code class="bash">pip install numpy  # 安装第三方库
+<pre><code class="language-bash">pip install numpy  # 安装第三方库
 pip uninstall requests  # 卸载第三方库
 </code></pre>
 <p><code>pip</code> 是 Python 生态中不可或缺的工具，允许开发者轻松地使用庞大的第三方库和工具。</p>
@@ -1773,7 +1773,7 @@ pip uninstall requests  # 卸载第三方库
 <h2 id="4-IDLE（集成开发环境）"><a href="#4-IDLE（集成开发环境）" class="headerlink" title="4. IDLE（集成开发环境）"></a>4. <strong><code>IDLE</code>（集成开发环境）</strong></h2><p>IDLE 是 Python 官方提供的一个简单集成开发环境，主要面向初学者。它是一个轻量级的开发工具，包含代码编辑器、交互式控制台、调试器等基本功能。IDLE 使用非常简单，适合用来写小程序或测试代码片段。</p>
 <p>在 Windows 上，Python 安装时会自动安装 IDLE，而在其他操作系统上你可以手动启用。</p>
 <h2 id="5-虚拟环境工具（venv）"><a href="#5-虚拟环境工具（venv）" class="headerlink" title="5. 虚拟环境工具（venv）"></a>5. <strong>虚拟环境工具（<code>venv</code>）</strong></h2><p>从 Python 3.3 开始，Python 自带了 <code>venv</code> 工具，用于创建虚拟环境。虚拟环境允许你为每个项目创建独立的 Python 环境，确保项目的依赖和 Python 版本不会相互冲突。创建虚拟环境的命令如下：</p>
-<pre><code class="bash">python -m venv myenv  # 创建一个虚拟环境
+<pre><code class="language-bash">python -m venv myenv  # 创建一个虚拟环境
 </code></pre>
 <p><code>venv</code> 工具对于管理不同项目的依赖非常有用，尤其是在开发多个项目时可以避免包版本冲突。</p>
 <h2 id="6-distutils-和-setuptools"><a href="#6-distutils-和-setuptools" class="headerlink" title="6. distutils 和 setuptools"></a>6. <strong><code>distutils</code> 和 <code>setuptools</code></strong></h2><p>这些工具用于打包和发布 Python 项目：</p>
@@ -1783,21 +1783,21 @@ pip uninstall requests  # 卸载第三方库
 </ul>
 <p><code>setuptools</code> 在安装 Python 时通常与 <code>pip</code> 一起提供，可以通过它来创建项目的 <code>setup.py</code> 文件，从而打包并分发项目。</p>
 <h2 id="7-ensurepip"><a href="#7-ensurepip" class="headerlink" title="7. ensurepip"></a>7. <strong><code>ensurepip</code></strong></h2><p><code>ensurepip</code> 是一个确保 <code>pip</code> 安装在系统中的工具。如果系统中没有 <code>pip</code>，你可以使用 <code>ensurepip</code> 来安装它：</p>
-<pre><code class="bash">python -m ensurepip
+<pre><code class="language-bash">python -m ensurepip
 </code></pre>
 <p>这个工具特别有用，当你安装的 Python 版本缺少 <code>pip</code> 时，它能自动帮你安装。</p>
 <h2 id="8-核心模块（如编译器和构建工具）"><a href="#8-核心模块（如编译器和构建工具）" class="headerlink" title="8. 核心模块（如编译器和构建工具）"></a>8. <strong>核心模块（如编译器和构建工具）</strong></h2><p>Python 安装包还包括一些用于编译扩展模块和构建工具的核心组件：</p>
 <ul>
-<li>**<code>ctypes</code>**：用于加载和调用 C 库。</li>
-<li>**<code>distutils</code>**：用于构建和安装 Python 模块，尤其是涉及到 C 扩展时非常重要。</li>
-<li>**<code>cpython</code>**：用于编写 Python 与 C 扩展接口的库，支持用 C 语言编写高效的扩展模块。</li>
+<li><strong><code>ctypes</code></strong>：用于加载和调用 C 库。</li>
+<li><strong><code>distutils</code></strong>：用于构建和安装 Python 模块，尤其是涉及到 C 扩展时非常重要。</li>
+<li><strong><code>cpython</code></strong>：用于编写 Python 与 C 扩展接口的库，支持用 C 语言编写高效的扩展模块。</li>
 </ul>
 <h2 id="9-文档"><a href="#9-文档" class="headerlink" title="9. 文档"></a>9. <strong>文档</strong></h2><p>Python 安装包通常自带离线文档，你可以在本地访问 Python 的帮助文档。例如，运行 <code>python -m pydoc</code> 可以获取标准库或特定模块的帮助信息。这对于没有网络连接的环境下，查阅 Python 库非常有用。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python 安装包包含了以下关键组件：</p>
 <ol>
 <li><strong>Python 解释器</strong>：用于执行 Python 代码。</li>
 <li><strong>标准库</strong>：涵盖了丰富的内置模块，满足多种开发需求。</li>
-<li>**<code>pip</code>**：用于管理和安装第三方库的包管理工具。</li>
+<li><strong><code>pip</code></strong>：用于管理和安装第三方库的包管理工具。</li>
 <li><strong>IDLE</strong>：轻量级的 Python 集成开发环境。</li>
 <li><strong>虚拟环境工具</strong>（<code>venv</code>）：用于管理项目的独立环境。</li>
 <li><strong>打包工具</strong>：如 <code>setuptools</code> 和 <code>distutils</code>，用于打包和发布项目。</li>

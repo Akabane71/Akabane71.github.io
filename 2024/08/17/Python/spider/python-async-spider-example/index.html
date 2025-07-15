@@ -1766,11 +1766,11 @@
 <p>思路请看参考博客</p>
 <blockquote>
 <p>视频片段加密 —–&gt; 探寻解密方法 : 加密方法为 AES-128</p>
-<p>AES<br>   在加密视频流里常见的就是CBC模式<br>   解密需要:<br>        数据<br>        key 【密钥】<br>        iv 【初始偏移量】</p>
+<p>AES<br>   在加密视频流里常见的就是CBC模式<br>   解密需要:<br>    	数据<br>    	key 【密钥】<br>    	iv 【初始偏移量】</p>
 <p>总结:<br>   key 要从index.m38u中获取<br>   iv &#x3D; b’0000000000000000’</p>
 </blockquote>
 <p>实现如下</p>
-<pre><code class="python">&quot;&quot;&quot;
+<pre><code class="language-python">&quot;&quot;&quot;
     异步函数版本
 
     2024.9.9 文件加密 ----&gt; AES.CBC 模式

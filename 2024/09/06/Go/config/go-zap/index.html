@@ -1766,10 +1766,10 @@
       
         <h1 id="zap"><a href="#zap" class="headerlink" title="zap"></a>zap</h1><p><code>go-zap</code> 是一个高性能、结构化的日志库，由 Uber 开发。它在保证性能的同时，还支持丰富的日志格式，特别适合在生产环境中使用。下面是 <code>go-zap</code> 的基本用法及其特性。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用以下命令安装 <code>go-zap</code>：</p>
-<pre><code class="bash">go get -u go.uber.org/zap
+<pre><code class="language-bash">go get -u go.uber.org/zap
 </code></pre>
 <h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="1-创建一个简单的-logger"><a href="#1-创建一个简单的-logger" class="headerlink" title="1. 创建一个简单的 logger"></a>1. 创建一个简单的 logger</h4><p><code>zap</code> 提供了两种模式：<strong>开发模式</strong> 和 <strong>生产模式</strong>。开发模式输出格式更易于阅读，而生产模式则更加注重性能。</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;go.uber.org/zap&quot;
@@ -1786,7 +1786,7 @@ func main() &#123;
 &#125;
 </code></pre>
 <h4 id="2-生产模式的-logger"><a href="#2-生产模式的-logger" class="headerlink" title="2. 生产模式的 logger"></a>2. 生产模式的 logger</h4><p>生产模式的 logger 默认是 JSON 格式，适合在高性能环境下使用。</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;go.uber.org/zap&quot;
@@ -1803,7 +1803,7 @@ func main() &#123;
 &#125;
 </code></pre>
 <h4 id="3-自定义-logger-配置"><a href="#3-自定义-logger-配置" class="headerlink" title="3. 自定义 logger 配置"></a>3. 自定义 logger 配置</h4><p>你可以使用 <code>zap.Config</code> 来自定义 logger 的配置，比如设置日志级别、编码格式等。</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;go.uber.org/zap&quot;
@@ -1822,7 +1822,7 @@ func main() &#123;
 &#125;
 </code></pre>
 <h4 id="4-结构化日志"><a href="#4-结构化日志" class="headerlink" title="4. 结构化日志"></a>4. 结构化日志</h4><p><code>zap</code> 支持结构化日志，你可以通过 <code>zap.Field</code> 提供额外的上下文信息。</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;go.uber.org/zap&quot;
@@ -1841,7 +1841,7 @@ func main() &#123;
 &#125;
 </code></pre>
 <h4 id="5-性能优化的-Sugared-Logger"><a href="#5-性能优化的-Sugared-Logger" class="headerlink" title="5. 性能优化的 Sugared Logger"></a>5. 性能优化的 Sugared Logger</h4><p>如果你不需要每条日志都是结构化的，<code>zap</code> 也提供了一个更加灵活的 <code>SugaredLogger</code>，它使用 <code>fmt.Printf</code> 风格的日志记录方式。</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;go.uber.org/zap&quot;
@@ -1860,10 +1860,10 @@ func main() &#123;
 <p>可以在 <a target="_blank" rel="noopener" href="https://github.com/uber-go/zap">zap GitHub 仓库</a> 以及 <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/zap">官方文档</a> 中找到更多详细的说明和使用案例.</p>
 <h1 id="zap-和-lumberjack-结合使用"><a href="#zap-和-lumberjack-结合使用" class="headerlink" title="zap 和 lumberjack 结合使用"></a>zap 和 lumberjack 结合使用</h1><p><code>zap</code> 和 <code>lumberjack</code> 可以结合使用来处理日志文件的滚动存储（即根据文件大小、时间等条件自动进行日志文件的切割）。<code>lumberjack</code> 提供了日志文件的滚动功能，而 <code>zap</code> 负责高效的日志记录。通过将 <code>lumberjack</code> 与 <code>zap</code> 的 <code>WriteSyncer</code> 结合使用，你可以在高效记录日志的同时，自动管理日志文件的大小和备份。</p>
 <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>首先，安装 <code>lumberjack</code>：</p>
-<pre><code class="bash">go get gopkg.in/natefinch/lumberjack.v2
+<pre><code class="language-bash">go get gopkg.in/natefinch/lumberjack.v2
 </code></pre>
 <p>接下来，通过代码将 <code>lumberjack</code> 和 <code>zap</code> 结合：</p>
-<pre><code class="go">package main
+<pre><code class="language-go">package main
 
 import (
     &quot;gopkg.in/natefinch/lumberjack.v2&quot;
@@ -1911,149 +1911,149 @@ func main() &#123;
 <p>结合这两者可以在保持高效日志记录的同时，确保日志管理的简洁和自动化。你可以根据项目需求调整 <code>lumberjack</code> 的配置参数，满足特定的日志存储策略。</p>
 <p>有关更多详细说明，请参考 <a target="_blank" rel="noopener" href="https://pkg.go.dev/gopkg.in/natefinch/lumberjack.v2">lumberjack 官方文档</a> 和 <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/zap">zap 官方文档</a></p>
 <h1 id="zap和lumberjack和gin案例"><a href="#zap和lumberjack和gin案例" class="headerlink" title="zap和lumberjack和gin案例"></a>zap和lumberjack和gin案例</h1><p>代码如下</p>
-<pre><code class="go">package logger
+<pre><code class="language-go">package logger
 
 import (
-    &quot;github.com/gin-gonic/gin&quot;
-    &quot;github.com/spf13/viper&quot;
-    &quot;go.uber.org/zap&quot;
-    &quot;go.uber.org/zap/zapcore&quot;
-    &quot;gopkg.in/natefinch/lumberjack.v2&quot;
-    &quot;net&quot;
-    &quot;net/http&quot;
-    &quot;net/http/httputil&quot;
-    &quot;os&quot;
-    &quot;runtime/debug&quot;
-    &quot;strings&quot;
-    &quot;time&quot;
+	&quot;github.com/gin-gonic/gin&quot;
+	&quot;github.com/spf13/viper&quot;
+	&quot;go.uber.org/zap&quot;
+	&quot;go.uber.org/zap/zapcore&quot;
+	&quot;gopkg.in/natefinch/lumberjack.v2&quot;
+	&quot;net&quot;
+	&quot;net/http&quot;
+	&quot;net/http/httputil&quot;
+	&quot;os&quot;
+	&quot;runtime/debug&quot;
+	&quot;strings&quot;
+	&quot;time&quot;
 )
 
 var lg *zap.Logger
 
 // Init 初始化Logger
 func Init(mode string) (err error) &#123;
-    writeSyncer := getLogWriter(
-        viper.GetString(&quot;log.filename&quot;),
-        viper.GetInt(&quot;log.max_size&quot;),
-        viper.GetInt(&quot;log.max_backups&quot;),
-        viper.GetInt(&quot;log.max_age&quot;),
-    ) // io.Writer
-    encoder := getEncoder() // 编码
+	writeSyncer := getLogWriter(
+		viper.GetString(&quot;log.filename&quot;),
+		viper.GetInt(&quot;log.max_size&quot;),
+		viper.GetInt(&quot;log.max_backups&quot;),
+		viper.GetInt(&quot;log.max_age&quot;),
+	) // io.Writer
+	encoder := getEncoder() // 编码
 
-    var l = new(zapcore.Level)
-    err = l.UnmarshalText([]byte(viper.GetString(&quot;log.level&quot;)))
-    if err != nil &#123;
-        return
-    &#125;
+	var l = new(zapcore.Level)
+	err = l.UnmarshalText([]byte(viper.GetString(&quot;log.level&quot;)))
+	if err != nil &#123;
+		return
+	&#125;
 
-    var core zapcore.Core
-    if mode == &quot;dev&quot; &#123;
-        // 进入开发模式,日志输出到终端
-        consoleEnbcoder := zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
-        core = zapcore.NewTee(
-            zapcore.NewCore(encoder, writeSyncer, l))
-        zapcore.NewCore(consoleEnbcoder, zapcore.Lock(os.Stdout), zapcore.DebugLevel)
+	var core zapcore.Core
+	if mode == &quot;dev&quot; &#123;
+		// 进入开发模式,日志输出到终端
+		consoleEnbcoder := zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
+		core = zapcore.NewTee(
+			zapcore.NewCore(encoder, writeSyncer, l))
+		zapcore.NewCore(consoleEnbcoder, zapcore.Lock(os.Stdout), zapcore.DebugLevel)
 
-    &#125; else &#123;
-        core = zapcore.NewCore(encoder, writeSyncer, l)
-    &#125;
+	&#125; else &#123;
+		core = zapcore.NewCore(encoder, writeSyncer, l)
+	&#125;
 
-    lg = zap.New(core, zap.AddCaller())
+	lg = zap.New(core, zap.AddCaller())
 
-    // 将zap 库的 logger 全局化
-    zap.ReplaceGlobals(lg)
-    zap.L().Info(&quot;init logger success&quot;)
+	// 将zap 库的 logger 全局化
+	zap.ReplaceGlobals(lg)
+	zap.L().Info(&quot;init logger success&quot;)
 
-    return
+	return
 &#125;
 
 func getEncoder() zapcore.Encoder &#123;
-    encoderConfig := zap.NewProductionEncoderConfig()
-    encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
-    encoderConfig.TimeKey = &quot;time&quot;
-    encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder
-    encoderConfig.EncodeDuration = zapcore.SecondsDurationEncoder
-    encoderConfig.EncodeCaller = zapcore.ShortCallerEncoder
-    return zapcore.NewJSONEncoder(encoderConfig)
+	encoderConfig := zap.NewProductionEncoderConfig()
+	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderConfig.TimeKey = &quot;time&quot;
+	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder
+	encoderConfig.EncodeDuration = zapcore.SecondsDurationEncoder
+	encoderConfig.EncodeCaller = zapcore.ShortCallerEncoder
+	return zapcore.NewJSONEncoder(encoderConfig)
 &#125;
 
 func getLogWriter(filename string, maxSize, maxBackup, maxAge int) zapcore.WriteSyncer &#123;
-    lumberJackLogger := &amp;lumberjack.Logger&#123;
-        Filename:   filename,
-        MaxSize:    maxSize,
-        MaxBackups: maxBackup,
-        MaxAge:     maxAge,
-    &#125;
-    return zapcore.AddSync(lumberJackLogger)
+	lumberJackLogger := &amp;lumberjack.Logger&#123;
+		Filename:   filename,
+		MaxSize:    maxSize,
+		MaxBackups: maxBackup,
+		MaxAge:     maxAge,
+	&#125;
+	return zapcore.AddSync(lumberJackLogger)
 &#125;
 
 // GinLogger 接收gin框架默认的日志
 func GinLogger() gin.HandlerFunc &#123;
-    return func(c *gin.Context) &#123;
-        start := time.Now()
-        path := c.Request.URL.Path
-        query := c.Request.URL.RawQuery
-        c.Next()
+	return func(c *gin.Context) &#123;
+		start := time.Now()
+		path := c.Request.URL.Path
+		query := c.Request.URL.RawQuery
+		c.Next()
 
-        cost := time.Since(start)
-        lg.Info(path,
-            zap.Int(&quot;status&quot;, c.Writer.Status()),
-            zap.String(&quot;method&quot;, c.Request.Method),
-            zap.String(&quot;path&quot;, path),
-            zap.String(&quot;query&quot;, query),
-            zap.String(&quot;ip&quot;, c.ClientIP()),
-            zap.String(&quot;user-agent&quot;, c.Request.UserAgent()),
-            zap.String(&quot;errors&quot;, c.Errors.ByType(gin.ErrorTypePrivate).String()),
-            zap.Duration(&quot;cost&quot;, cost),
-        )
-    &#125;
+		cost := time.Since(start)
+		lg.Info(path,
+			zap.Int(&quot;status&quot;, c.Writer.Status()),
+			zap.String(&quot;method&quot;, c.Request.Method),
+			zap.String(&quot;path&quot;, path),
+			zap.String(&quot;query&quot;, query),
+			zap.String(&quot;ip&quot;, c.ClientIP()),
+			zap.String(&quot;user-agent&quot;, c.Request.UserAgent()),
+			zap.String(&quot;errors&quot;, c.Errors.ByType(gin.ErrorTypePrivate).String()),
+			zap.Duration(&quot;cost&quot;, cost),
+		)
+	&#125;
 &#125;
 
 // GinRecovery recover掉项目可能出现的panic，并使用zap记录相关日志
 func GinRecovery(stack bool) gin.HandlerFunc &#123;
-    return func(c *gin.Context) &#123;
-        defer func() &#123;
-            if err := recover(); err != nil &#123;
-                // Check for a broken connection, as it is not really a
-                // condition that warrants a panic stack trace.
-                var brokenPipe bool
-                if ne, ok := err.(*net.OpError); ok &#123;
-                    if se, ok := ne.Err.(*os.SyscallError); ok &#123;
-                        if strings.Contains(strings.ToLower(se.Error()), &quot;broken pipe&quot;) || strings.Contains(strings.ToLower(se.Error()), &quot;connection reset by peer&quot;) &#123;
-                            brokenPipe = true
-                        &#125;
-                    &#125;
-                &#125;
+	return func(c *gin.Context) &#123;
+		defer func() &#123;
+			if err := recover(); err != nil &#123;
+				// Check for a broken connection, as it is not really a
+				// condition that warrants a panic stack trace.
+				var brokenPipe bool
+				if ne, ok := err.(*net.OpError); ok &#123;
+					if se, ok := ne.Err.(*os.SyscallError); ok &#123;
+						if strings.Contains(strings.ToLower(se.Error()), &quot;broken pipe&quot;) || strings.Contains(strings.ToLower(se.Error()), &quot;connection reset by peer&quot;) &#123;
+							brokenPipe = true
+						&#125;
+					&#125;
+				&#125;
 
-                httpRequest, _ := httputil.DumpRequest(c.Request, false)
-                if brokenPipe &#123;
-                    lg.Error(c.Request.URL.Path,
-                        zap.Any(&quot;error&quot;, err),
-                        zap.String(&quot;request&quot;, string(httpRequest)),
-                    )
-                    // If the connection is dead, we can&#39;t write a status to it.
-                    c.Error(err.(error)) // nolint: errcheck
-                    c.Abort()
-                    return
-                &#125;
+				httpRequest, _ := httputil.DumpRequest(c.Request, false)
+				if brokenPipe &#123;
+					lg.Error(c.Request.URL.Path,
+						zap.Any(&quot;error&quot;, err),
+						zap.String(&quot;request&quot;, string(httpRequest)),
+					)
+					// If the connection is dead, we can&#39;t write a status to it.
+					c.Error(err.(error)) // nolint: errcheck
+					c.Abort()
+					return
+				&#125;
 
-                if stack &#123;
-                    lg.Error(&quot;[Recovery from panic]&quot;,
-                        zap.Any(&quot;error&quot;, err),
-                        zap.String(&quot;request&quot;, string(httpRequest)),
-                        zap.String(&quot;stack&quot;, string(debug.Stack())),
-                    )
-                &#125; else &#123;
-                    lg.Error(&quot;[Recovery from panic]&quot;,
-                        zap.Any(&quot;error&quot;, err),
-                        zap.String(&quot;request&quot;, string(httpRequest)),
-                    )
-                &#125;
-                c.AbortWithStatus(http.StatusInternalServerError)
-            &#125;
-        &#125;()
-        c.Next()
-    &#125;
+				if stack &#123;
+					lg.Error(&quot;[Recovery from panic]&quot;,
+						zap.Any(&quot;error&quot;, err),
+						zap.String(&quot;request&quot;, string(httpRequest)),
+						zap.String(&quot;stack&quot;, string(debug.Stack())),
+					)
+				&#125; else &#123;
+					lg.Error(&quot;[Recovery from panic]&quot;,
+						zap.Any(&quot;error&quot;, err),
+						zap.String(&quot;request&quot;, string(httpRequest)),
+					)
+				&#125;
+				c.AbortWithStatus(http.StatusInternalServerError)
+			&#125;
+		&#125;()
+		c.Next()
+	&#125;
 &#125;
 </code></pre>
 

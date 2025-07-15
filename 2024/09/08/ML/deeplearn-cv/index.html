@@ -1826,7 +1826,7 @@
 </ol>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><h3 id="均方误差-MSE"><a href="#均方误差-MSE" class="headerlink" title="均方误差 (MSE)"></a>均方误差 (MSE)</h3><h3 id="平均绝对误差-MAE"><a href="#平均绝对误差-MAE" class="headerlink" title="平均绝对误差 (MAE)"></a>平均绝对误差 (MAE)</h3><h3 id="交叉熵损失-Cross-Entropy-Loss"><a href="#交叉熵损失-Cross-Entropy-Loss" class="headerlink" title="交叉熵损失 (Cross Entropy Loss)"></a>交叉熵损失 (Cross Entropy Loss)</h3><h3 id="二元交叉熵-Binary-Cross-Entropy"><a href="#二元交叉熵-Binary-Cross-Entropy" class="headerlink" title="二元交叉熵 (Binary Cross Entropy)"></a>二元交叉熵 (Binary Cross Entropy)</h3><h3 id="KL-散度-Kullback-Leibler-Divergence"><a href="#KL-散度-Kullback-Leibler-Divergence" class="headerlink" title="KL 散度 (Kullback-Leibler Divergence)"></a>KL 散度 (Kullback-Leibler Divergence)</h3><h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><h1 id="LeNet-AleNet"><a href="#LeNet-AleNet" class="headerlink" title="LeNet&amp;AleNet"></a>LeNet&amp;AleNet</h1><h2 id="LeNet-5"><a href="#LeNet-5" class="headerlink" title="LeNet-5"></a>LeNet-5</h2><p>结构图</p>
 <p><img src="/../../imgs/deeplearn-cv/image-20240908135229571.png" alt="image-20240908135229571"></p>
-<pre><code class="python">import torch
+<pre><code class="language-python">import torch
 from torch import nn
 from torchsummary import summary
 import torch.nn.functional as F
@@ -1917,7 +1917,7 @@ if __name__ == &#39;__main__&#39;:
 <p><strong>Dropout</strong>  随机失活来提高网络的健壮性</p>
 </blockquote>
 <p>随机失活，随机【临时】删除掉网络的一部分</p>
-<pre><code class="python">import torch
+<pre><code class="language-python">import torch
 from torch import nn
 from torchsummary import summary
 import torch.nn.functional as F
@@ -2003,7 +2003,7 @@ if __name__ == &#39;__main__&#39;:
     print(summary(model,(1,227,227)))
 </code></pre>
 <h1 id="VGG-16"><a href="#VGG-16" class="headerlink" title="VGG-16"></a>VGG-16</h1><p>力大砖飞 VGG</p>
-<pre><code class="python">import torch
+<pre><code class="language-python">import torch
 from torch import nn # 撰写网络
 from torchsummary import summary # 验证
 
@@ -2091,7 +2091,7 @@ if __name__ == &#39;__main__&#39;:
     print(summary(model,(1,224,224)))
 </code></pre>
 <h1 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h1><p>GoogLeNet 提出</p>
-<pre><code class="python">import torch
+<pre><code class="language-python">import torch
 from torch import nn
 from torchsummary import summary
 
@@ -2209,7 +2209,7 @@ if __name__ == &#39;__main__&#39;:
 <p><code>残差块:</code></p>
 <p><img src="/../../imgs/deeplearn-cv/image-20240908134911244.png" alt="image-20240908134911244"></p>
 <p>代码如下</p>
-<pre><code class="python">import torch
+<pre><code class="language-python">import torch
 from torch import nn
 from torchsummary import summary
 import torch.nn.functional as F

@@ -1769,10 +1769,10 @@
 <ol>
 <li>pip 下载大量的包速度慢，安装也慢</li>
 </ol>
-<pre><code class="bash">pip install -r requirements.txt
+<pre><code class="language-bash">pip install -r requirements.txt
 </code></pre>
 <p>uv <strong>超快的并发下载速度</strong>，快100倍</p>
-<pre><code class="bash">uv pip install -r requirements.txt
+<pre><code class="language-bash">uv pip install -r requirements.txt
 </code></pre>
 <blockquote>
 <p>pip 是一个一个下载安装</p>
@@ -1791,7 +1791,7 @@
 <blockquote>
 <p>uv 集成了虚拟环境的创建和管理，简化了开发流程</p>
 </blockquote>
-<pre><code class="bash">uv venv my-venv-name -p 3.10
+<pre><code class="language-bash">uv venv my-venv-name -p 3.10
 uv venv my-venv-name -p 3.11
 uv venv my-venv-name -p 3.12
 </code></pre>
@@ -1803,19 +1803,19 @@ uv venv my-venv-name -p 3.12
 <h2 id="下载uv"><a href="#下载uv" class="headerlink" title="下载uv"></a>下载uv</h2><ul>
 <li>Mac&#x2F;Linux</li>
 </ul>
-<pre><code class="bash">curl -LsSf https://astral.sh/uv/install.sh | sh
+<pre><code class="language-bash">curl -LsSf https://astral.sh/uv/install.sh | sh
 </code></pre>
 <ul>
 <li>Windows</li>
 </ul>
-<pre><code class="powershell">powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex&quot;
+<pre><code class="language-powershell">powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex&quot;
 </code></pre>
 <h2 id="管理-python"><a href="#管理-python" class="headerlink" title="管理 python"></a>管理 python</h2><blockquote>
 <p>使用 uv 来下载  python</p>
 </blockquote>
-<pre><code class="bash">uv python install 3.10 3.11 3.12
+<pre><code class="language-bash">uv python install 3.10 3.11 3.12
 </code></pre>
-<h2 id="创建-venv-虚拟环境"><a href="#创建-venv-虚拟环境" class="headerlink" title="创建 .venv 虚拟环境"></a>创建 .venv 虚拟环境</h2><pre><code class="bash">uv venv .venv -p 3.12
+<h2 id="创建-venv-虚拟环境"><a href="#创建-venv-虚拟环境" class="headerlink" title="创建 .venv 虚拟环境"></a>创建 .venv 虚拟环境</h2><pre><code class="language-bash">uv venv .venv -p 3.12
 </code></pre>
 
       
