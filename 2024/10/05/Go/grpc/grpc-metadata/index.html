@@ -6,20 +6,34 @@
   <meta name="keywords" content=" go , grpc , metadata ">
   <meta name="description" content="grpc-metadata | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="accelerate 训练单机单卡单机多卡多机单卡多机多卡">
+<meta name="description" content="激活函数Sigmoidf(x) &#x3D; 1&#x2F;(1+e^(-x))   f(0) &#x3D; 0.5 ,f(x) 取值范围在 (0,1) 之间    导数为:  f&#39;(x) &#x3D; f(x) - (1-f(x))  图像如下:   优点：1、 输出映射在(0,1)之间，单调连续，输出范围有限，优化稳定，可用作输出层；2、求导容易。缺点：1、易造成梯度消失；2、输出非0均值，收敛慢；3、幂运算复杂，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hg-accelerate">
-<meta property="og:url" content="http://example.com/2025/07/22/ML/hugging%20face/hugging-face-accelerate/index.html">
+<meta property="og:title" content="activation_function-los">
+<meta property="og:url" content="http://example.com/2025/07/23/ML/basic/activation-function-loss/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="accelerate 训练单机单卡单机多卡多机单卡多机多卡">
+<meta property="og:description" content="激活函数Sigmoidf(x) &#x3D; 1&#x2F;(1+e^(-x))   f(0) &#x3D; 0.5 ,f(x) 取值范围在 (0,1) 之间    导数为:  f&#39;(x) &#x3D; f(x) - (1-f(x))  图像如下:   优点：1、 输出映射在(0,1)之间，单调连续，输出范围有限，优化稳定，可用作输出层；2、求导容易。缺点：1、易造成梯度消失；2、输出非0均值，收敛慢；3、幂运算复杂，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-22T04:12:28.000Z">
-<meta property="article:modified_time" content="2025-07-22T04:15:27.275Z">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143515300.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143652103.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143813300.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143825517.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143842355.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143902327.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723144024120.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723144035563.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723144243879.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723152934852.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723153027785.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723153000056.png">
+<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723152945558.png">
+<meta property="article:published_time" content="2025-07-23T06:13:42.000Z">
+<meta property="article:modified_time" content="2025-07-23T08:10:07.996Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="deeplearn">
-<meta property="article:tag" content="huggingface">
-<meta property="article:tag" content="accelerate">
+<meta property="article:tag" content="loss">
+<meta property="article:tag" content="activate function">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/activation-function-loss/image-20250723143515300.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +122,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(92)</small>
+                <small>(93)</small>
             
         </div>
     </li>
@@ -210,7 +224,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -313,8 +327,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="92">
-<input type="hidden" id="yelog_site_word_count" value="117k">
+<input type="hidden" id="yelog_site_posts_number" value="93">
+<input type="hidden" id="yelog_site_word_count" value="117.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -369,6 +383,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>accelerate</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>activate function</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -601,6 +619,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>loss</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -889,6 +911,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/23/ML/basic/activation-function-loss/"
+           data-tag="deeplearn,loss,activate function"
+           data-author="" >
+            <span class="post-title" title="activation_function-los">activation_function-los</span>
+            <span class="post-date" title="2025-07-23 14:13:42">2025/07/23</span>
+        </a>
         
         
         <a  class="全部文章 ML "
