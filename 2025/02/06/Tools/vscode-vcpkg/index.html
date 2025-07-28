@@ -6,34 +6,21 @@
   <meta name="keywords" content=" windows , C++ , vcpkg ">
   <meta name="description" content="vscode-vcpkg | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="激活函数Sigmoidf(x) &#x3D; 1&#x2F;(1+e^(-x))   f(0) &#x3D; 0.5 ,f(x) 取值范围在 (0,1) 之间    导数为:  f&#39;(x) &#x3D; f(x) - (1-f(x))  图像如下:   优点：1、 输出映射在(0,1)之间，单调连续，输出范围有限，优化稳定，可用作输出层；2、求导容易。缺点：1、易造成梯度消失；2、输出非0均值，收敛慢；3、幂运算复杂，">
+<meta name="description" content="使用gost搭建梯子windows端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="activation_function-los">
-<meta property="og:url" content="http://example.com/2025/07/23/ML/basic/activation-function-loss/index.html">
+<meta property="og:title" content="gost">
+<meta property="og:url" content="http://example.com/2025/07/28/Tools/gost/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="激活函数Sigmoidf(x) &#x3D; 1&#x2F;(1+e^(-x))   f(0) &#x3D; 0.5 ,f(x) 取值范围在 (0,1) 之间    导数为:  f&#39;(x) &#x3D; f(x) - (1-f(x))  图像如下:   优点：1、 输出映射在(0,1)之间，单调连续，输出范围有限，优化稳定，可用作输出层；2、求导容易。缺点：1、易造成梯度消失；2、输出非0均值，收敛慢；3、幂运算复杂，">
+<meta property="og:description" content="使用gost搭建梯子windows端">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143515300.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143652103.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143813300.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143825517.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143842355.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723143902327.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723144024120.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723144035563.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723144243879.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723152934852.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723153027785.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723153000056.png">
-<meta property="og:image" content="http://example.com/imgs/activation-function-loss/image-20250723152945558.png">
-<meta property="article:published_time" content="2025-07-23T06:13:42.000Z">
-<meta property="article:modified_time" content="2025-07-23T08:10:07.996Z">
+<meta property="article:published_time" content="2025-07-28T01:22:53.000Z">
+<meta property="article:modified_time" content="2025-07-28T01:30:28.592Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="deeplearn">
-<meta property="article:tag" content="loss">
-<meta property="article:tag" content="activate function">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="tools">
+<meta property="article:tag" content="gost">
+<meta property="article:tag" content="vpn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/activation-function-loss/image-20250723143515300.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -122,7 +109,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(93)</small>
+                <small>(97)</small>
             
         </div>
     </li>
@@ -209,7 +196,7 @@
         <div data-rel="Docker">
             
             Docker
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -224,7 +211,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(10)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -284,7 +271,7 @@
         <div data-rel="Tools">
             
             Tools
-            <small>(10)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -327,8 +314,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="93">
-<input type="hidden" id="yelog_site_word_count" value="117.5k">
+<input type="hidden" id="yelog_site_posts_number" value="97">
+<input type="hidden" id="yelog_site_word_count" value="118.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -547,6 +534,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gost</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -874,6 +865,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vpn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>vscode</a>
             </li>
         
@@ -911,6 +906,51 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/07/28/Tools/gost/"
+           data-tag="go,tools,gost,vpn"
+           data-author="" >
+            <span class="post-title" title="gost">gost</span>
+            <span class="post-date" title="2025-07-28 09:22:53">2025/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2025/07/25/Docker/install-docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="install-docker">install-docker</span>
+            <span class="post-date" title="2025-07-25 10:37:38">2025/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/07/24/ML/llm/ml-vit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ml-vit">ml-vit</span>
+            <span class="post-date" title="2025-07-24 20:32:06">2025/07/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/24/ML/llm/ml-clip/"
+           data-tag="deeplearn"
+           data-author="" >
+            <span class="post-title" title="ml-clip">ml-clip</span>
+            <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/07/24/ML/llm/ml-transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ml-transformer">ml-transformer</span>
+            <span class="post-date" title="2025-07-24 20:31:49">2025/07/24</span>
+        </a>
         
         
         <a  class="全部文章 ML "
@@ -1309,15 +1349,6 @@
         </a>
         
         
-        <a  class="全部文章 "
-           href="/2024/09/26/OS/sys-shell/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="sys-shell">sys-shell</span>
-            <span class="post-date" title="2024-09-26 23:41:59">2024/09/26</span>
-        </a>
-        
-        
         <a  class="全部文章 OS "
            href="/2024/09/23/OS/about-encode/"
            data-tag="base64,enccode,utf8,gbk,unicode,ascii"
@@ -1490,7 +1521,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/09/06/Python/python-requirements/"
+           href="/2024/09/06/Python/basics/python-requirements/"
            data-tag="python,requirements,pipreqs"
            data-author="" >
             <span class="post-title" title="python-requirements">python-requirements</span>
@@ -1499,7 +1530,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/09/06/Python/python-venv-conda/"
+           href="/2024/09/06/Python/basics/python-venv-conda/"
            data-tag="python,venv,conda"
            data-author="" >
             <span class="post-title" title="python-venv-conda">python-venv-conda</span>
@@ -1580,7 +1611,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/09/05/Python/python-async/"
+           href="/2024/09/05/Python/basics/python-async/"
            data-tag="python,async,asyncio,aiohttp"
            data-author="" >
             <span class="post-title" title="python-asyncio">python-asyncio</span>
@@ -1607,7 +1638,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/09/05/Python/python-re/"
+           href="/2024/09/05/Python/basics/python-re/"
            data-tag="python,re"
            data-author="" >
             <span class="post-title" title="python-re">python-re</span>
@@ -1697,7 +1728,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2024/08/25/Python/python-import/"
+           href="/2024/08/25/Python/basics/python-import/"
            data-tag="python,os,sys"
            data-author="" >
             <span class="post-title" title="python-import">python-import</span>
