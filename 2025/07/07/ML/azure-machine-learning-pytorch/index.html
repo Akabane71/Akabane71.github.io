@@ -6,19 +6,24 @@
   <meta name="keywords" content=" ML , Azure ">
   <meta name="description" content="azure-machine-learning-pytorch | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="tar data.tar.gz  面对着 tar 的命令参数总是让人手足无措，记录一下关键参数  c    create 创建归档   x  extract 解包   v  verbose 显示详细过程   f  file 指定文件名   z  gzip 使用gzip来压缩&#x2F;解压   -C  指定解压位置     打包压缩 ​	创建-压缩-详细-文件  tar -czvf a.tar.g">
+<meta name="description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux-tar-7z">
-<meta property="og:url" content="http://example.com/2025/08/04/Linux/linux-tar-7z/index.html">
+<meta property="og:title" content="faster-whisper-benchmark">
+<meta property="og:url" content="http://example.com/2025/08/13/ML/project/faster-whisper-benchmark/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="tar data.tar.gz  面对着 tar 的命令参数总是让人手足无措，记录一下关键参数  c    create 创建归档   x  extract 解包   v  verbose 显示详细过程   f  file 指定文件名   z  gzip 使用gzip来压缩&#x2F;解压   -C  指定解压位置     打包压缩 ​	创建-压缩-详细-文件  tar -czvf a.tar.g">
+<meta property="og:description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-04T07:10:03.000Z">
-<meta property="article:modified_time" content="2025-08-04T07:18:58.374Z">
+<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
+<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/number_of_users_1755053173.68.png">
+<meta property="article:published_time" content="2025-08-13T01:54:46.000Z">
+<meta property="article:modified_time" content="2025-08-13T03:13:55.359Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="tar">
-<meta property="article:tag" content="7z">
+<meta property="article:tag" content="ML">
+<meta property="article:tag" content="whisper">
+<meta property="article:tag" content="faster-whisper">
+<meta property="article:tag" content="benchmark">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -107,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(100)</small>
+                <small>(101)</small>
             
         </div>
     </li>
@@ -209,7 +214,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(13)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -312,7 +317,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="100">
+<input type="hidden" id="yelog_site_posts_number" value="101">
 <input type="hidden" id="yelog_site_word_count" value="118.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -427,6 +432,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>benchmark</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bilibili</a>
             </li>
         
@@ -512,6 +521,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>faster-whisper</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -676,6 +689,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>monolithic applications</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mount</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -899,6 +916,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>whisper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>windows</a>
             </li>
         
@@ -924,6 +945,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/13/ML/project/faster-whisper-benchmark/"
+           data-tag="ML,whisper,faster-whisper,benchmark"
+           data-author="" >
+            <span class="post-title" title="faster-whisper-benchmark">faster-whisper-benchmark</span>
+            <span class="post-date" title="2025-08-13 09:54:46">2025/08/13</span>
+        </a>
         
         
         <a  class="全部文章 Linux "
@@ -1513,7 +1543,7 @@
         
         <a  class="全部文章 Linux "
            href="/2024/09/06/Linux/linux-mount/"
-           data-tag="linux"
+           data-tag="linux,mount"
            data-author="" >
             <span class="post-title" title="linux-mount">linux-mount</span>
             <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>

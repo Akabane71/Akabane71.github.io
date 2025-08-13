@@ -6,19 +6,24 @@
   <meta name="keywords" content=" docker , gitlab ">
   <meta name="description" content="docker-gitlab | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="tar data.tar.gz  面对着 tar 的命令参数总是让人手足无措，记录一下关键参数  c    create 创建归档   x  extract 解包   v  verbose 显示详细过程   f  file 指定文件名   z  gzip 使用gzip来压缩&#x2F;解压   -C  指定解压位置     打包压缩 ​	创建-压缩-详细-文件  tar -czvf a.tar.g">
+<meta name="description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux-tar-7z">
-<meta property="og:url" content="http://example.com/2025/08/04/Linux/linux-tar-7z/index.html">
+<meta property="og:title" content="faster-whisper-benchmark">
+<meta property="og:url" content="http://example.com/2025/08/13/ML/project/faster-whisper-benchmark/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="tar data.tar.gz  面对着 tar 的命令参数总是让人手足无措，记录一下关键参数  c    create 创建归档   x  extract 解包   v  verbose 显示详细过程   f  file 指定文件名   z  gzip 使用gzip来压缩&#x2F;解压   -C  指定解压位置     打包压缩 ​	创建-压缩-详细-文件  tar -czvf a.tar.g">
+<meta property="og:description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-04T07:10:03.000Z">
-<meta property="article:modified_time" content="2025-08-04T07:18:58.374Z">
+<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
+<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/number_of_users_1755053173.68.png">
+<meta property="article:published_time" content="2025-08-13T01:54:46.000Z">
+<meta property="article:modified_time" content="2025-08-13T03:13:55.359Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="tar">
-<meta property="article:tag" content="7z">
+<meta property="article:tag" content="ML">
+<meta property="article:tag" content="whisper">
+<meta property="article:tag" content="faster-whisper">
+<meta property="article:tag" content="benchmark">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -107,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(100)</small>
+                <small>(101)</small>
             
         </div>
     </li>
@@ -209,7 +214,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(13)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -312,7 +317,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="100">
+<input type="hidden" id="yelog_site_posts_number" value="101">
 <input type="hidden" id="yelog_site_word_count" value="118.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -427,6 +432,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>benchmark</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bilibili</a>
             </li>
         
@@ -512,6 +521,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>faster-whisper</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -676,6 +689,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>monolithic applications</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mount</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -899,6 +916,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>whisper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>windows</a>
             </li>
         
@@ -924,6 +945,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/13/ML/project/faster-whisper-benchmark/"
+           data-tag="ML,whisper,faster-whisper,benchmark"
+           data-author="" >
+            <span class="post-title" title="faster-whisper-benchmark">faster-whisper-benchmark</span>
+            <span class="post-date" title="2025-08-13 09:54:46">2025/08/13</span>
+        </a>
         
         
         <a  class="全部文章 Linux "
@@ -1513,7 +1543,7 @@
         
         <a  class="全部文章 Linux "
            href="/2024/09/06/Linux/linux-mount/"
-           data-tag="linux"
+           data-tag="linux,mount"
            data-author="" >
             <span class="post-title" title="linux-mount">linux-mount</span>
             <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
@@ -1872,12 +1902,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-07 14:47:36'>2025-03-19 14:19</time>
+            发布时间 : <time class="date" title='最后更新: 2025-08-13 10:04:59'>2025-03-19 14:19</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:503</span>
+        <span>字数:537</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1896,7 +1926,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab"><span class="toc-text">GitLab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-gitlab%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. gitlab一些设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C"><span class="toc-text">1.允许用户注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E5%88%86%E6%94%AF%E4%BF%9D%E6%8A%A4"><span class="toc-text">2. 主分支保护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CI-CD"><span class="toc-text">2. CI&#x2F;CD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitlab-runner"><span class="toc-text">gitlab-runner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cgitlab-runner"><span class="toc-text">注册gitlab-runner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E8%A7%A6%E5%8F%91gitlab%E7%9A%84ci-cd"><span class="toc-text">提交触发gitlab的ci&#x2F;cd</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">GitLab配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%AE%E6%94%B9gitlab%E7%9A%84%E9%BB%98%E8%AE%A4host%E5%9C%B0%E5%9D%80"><span class="toc-text">1. 修改gitlab的默认host地址</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab"><span class="toc-text">GitLab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-gitlab%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. gitlab一些设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C"><span class="toc-text">1.允许用户注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E5%88%86%E6%94%AF%E4%BF%9D%E6%8A%A4"><span class="toc-text">2. 主分支保护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CI-CD"><span class="toc-text">2. CI&#x2F;CD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitlab-runner"><span class="toc-text">gitlab-runner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C-gitlab-runner"><span class="toc-text">注册 gitlab-runner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E8%A7%A6%E5%8F%91gitlab%E7%9A%84-ci-cd"><span class="toc-text">提交触发gitlab的 ci&#x2F;cd</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">GitLab配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%AE%E6%94%B9gitlab%E7%9A%84%E9%BB%98%E8%AE%A4host%E5%9C%B0%E5%9D%80"><span class="toc-text">1. 修改gitlab的默认host地址</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1912,7 +1942,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h2><h2 id="1-gitlab一些设置"><a href="#1-gitlab一些设置" class="headerlink" title="1. gitlab一些设置"></a>1. gitlab一些设置</h2><h3 id="1-允许用户注册"><a href="#1-允许用户注册" class="headerlink" title="1.允许用户注册"></a>1.允许用户注册</h3><ul>
+        <blockquote>
+<p>记录一下自己简单配置gitlab-community版本的过程，以及目前遇到的一些问题和解决方法</p>
+</blockquote>
+<h2 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h2><h2 id="1-gitlab一些设置"><a href="#1-gitlab一些设置" class="headerlink" title="1. gitlab一些设置"></a>1. gitlab一些设置</h2><h3 id="1-允许用户注册"><a href="#1-允许用户注册" class="headerlink" title="1.允许用户注册"></a>1.允许用户注册</h3><ul>
 <li>在 <strong>gitlab.rb</strong> 中加上这个</li>
 </ul>
 <pre><code class="language-rb">gitlab_rails[&#39;gitlab_signup_enabled&#39;] = true
@@ -1942,7 +1975,7 @@
 </ul>
 <pre><code class="language-shell">docker-compose up -d
 </code></pre>
-<h3 id="注册gitlab-runner"><a href="#注册gitlab-runner" class="headerlink" title="注册gitlab-runner"></a>注册gitlab-runner</h3><ul>
+<h3 id="注册-gitlab-runner"><a href="#注册-gitlab-runner" class="headerlink" title="注册 gitlab-runner"></a>注册 gitlab-runner</h3><ul>
 <li>进入容器内执行命令</li>
 </ul>
 <pre><code>docker exec -it gitlab_runner gitlab-runner register
@@ -1968,7 +2001,7 @@ docker
 # 选择下载的python镜像
 python3.8
 </code></pre>
-<h3 id="提交触发gitlab的ci-cd"><a href="#提交触发gitlab的ci-cd" class="headerlink" title="提交触发gitlab的ci&#x2F;cd"></a>提交触发gitlab的ci&#x2F;cd</h3><ul>
+<h3 id="提交触发gitlab的-ci-cd"><a href="#提交触发gitlab的-ci-cd" class="headerlink" title="提交触发gitlab的 ci&#x2F;cd"></a>提交触发gitlab的 ci&#x2F;cd</h3><ul>
 <li>gitlab端创建代码仓库，将代码提交到仓库中</li>
 </ul>
 <blockquote>
@@ -2014,7 +2047,7 @@ run-app:
 <ul>
 <li>配置文件</li>
 </ul>
-<pre><code>cd  /opt/gitlab/embedded/service/gitlab-rails/config
+<pre><code class="language-bash">cd  /opt/gitlab/embedded/service/gitlab-rails/config
 
 vi gitlab.yml
 

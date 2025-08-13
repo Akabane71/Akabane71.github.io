@@ -3,22 +3,27 @@
 <head>
   <meta charset="utf-8">
   <title>linux-mount | Akabane71</title>
-  <meta name="keywords" content=" linux ">
+  <meta name="keywords" content=" linux , mount ">
   <meta name="description" content="linux-mount | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="tar data.tar.gz  面对着 tar 的命令参数总是让人手足无措，记录一下关键参数  c    create 创建归档   x  extract 解包   v  verbose 显示详细过程   f  file 指定文件名   z  gzip 使用gzip来压缩&#x2F;解压   -C  指定解压位置     打包压缩 ​	创建-压缩-详细-文件  tar -czvf a.tar.g">
+<meta name="description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux-tar-7z">
-<meta property="og:url" content="http://example.com/2025/08/04/Linux/linux-tar-7z/index.html">
+<meta property="og:title" content="faster-whisper-benchmark">
+<meta property="og:url" content="http://example.com/2025/08/13/ML/project/faster-whisper-benchmark/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="tar data.tar.gz  面对着 tar 的命令参数总是让人手足无措，记录一下关键参数  c    create 创建归档   x  extract 解包   v  verbose 显示详细过程   f  file 指定文件名   z  gzip 使用gzip来压缩&#x2F;解压   -C  指定解压位置     打包压缩 ​	创建-压缩-详细-文件  tar -czvf a.tar.g">
+<meta property="og:description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-04T07:10:03.000Z">
-<meta property="article:modified_time" content="2025-08-04T07:18:58.374Z">
+<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
+<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/number_of_users_1755053173.68.png">
+<meta property="article:published_time" content="2025-08-13T01:54:46.000Z">
+<meta property="article:modified_time" content="2025-08-13T03:13:55.359Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="tar">
-<meta property="article:tag" content="7z">
+<meta property="article:tag" content="ML">
+<meta property="article:tag" content="whisper">
+<meta property="article:tag" content="faster-whisper">
+<meta property="article:tag" content="benchmark">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -107,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(100)</small>
+                <small>(101)</small>
             
         </div>
     </li>
@@ -209,7 +214,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(13)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -312,7 +317,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="100">
+<input type="hidden" id="yelog_site_posts_number" value="101">
 <input type="hidden" id="yelog_site_word_count" value="118.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -427,6 +432,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>benchmark</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bilibili</a>
             </li>
         
@@ -512,6 +521,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>faster-whisper</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -676,6 +689,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>monolithic applications</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mount</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -899,6 +916,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>whisper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>windows</a>
             </li>
         
@@ -924,6 +945,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/13/ML/project/faster-whisper-benchmark/"
+           data-tag="ML,whisper,faster-whisper,benchmark"
+           data-author="" >
+            <span class="post-title" title="faster-whisper-benchmark">faster-whisper-benchmark</span>
+            <span class="post-date" title="2025-08-13 09:54:46">2025/08/13</span>
+        </a>
         
         
         <a  class="全部文章 Linux "
@@ -1513,7 +1543,7 @@
         
         <a  class="全部文章 Linux "
            href="/2024/09/06/Linux/linux-mount/"
-           data-tag="linux"
+           data-tag="linux,mount"
            data-author="" >
             <span class="post-title" title="linux-mount">linux-mount</span>
             <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
@@ -1865,17 +1895,19 @@
             
             <a class="color1">linux</a>
             
+            <a class="color1">mount</a>
+            
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-09-06 20:10:45'>2024-09-06 20:07</time>
+            发布时间 : <time class="date" title='最后更新: 2025-08-13 10:14:29'>2024-09-06 20:07</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.2k</span>
+        <span>字数:259</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1894,7 +1926,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">挂载的基本概念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-text">挂载的工作流程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">挂载的常用命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8C%82%E8%BD%BD%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-text">常见的挂载应用场景：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%9A%84%E9%80%89%E9%A1%B9%E5%92%8C%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-text">挂载的选项和功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E6%8C%82%E8%BD%BD"><span class="toc-text">Linux 挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8C%BA"><span class="toc-text">分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD"><span class="toc-text">挂载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B8%E4%B9%85%E6%8C%82%E8%BD%BD"><span class="toc-text">永久挂载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%B8%E4%B8%8A%E5%BE%97%E6%9D%A5%E7%BB%88%E8%A7%89%E6%B5%85%EF%BC%8C%E7%BB%9D%E7%9F%A5%E6%AD%A4%E4%BA%8B%E8%A6%81%E8%BA%AC%E8%A1%8C"><span class="toc-text">纸上得来终觉浅，绝知此事要躬行</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -1910,79 +1942,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在 Linux 中，“挂载”（Mount）是指将一个存储设备或文件系统连接到系统的文件目录树上，使其成为操作系统的一部分，从而使用户可以访问和使用该存储设备或文件系统上的数据。</p>
-<p>Linux 操作系统使用统一的文件系统层次结构，所有文件和目录都组织在一个单一的根目录（<code>/</code>）下。通过挂载，用户可以将不同的存储设备（如硬盘、USB 驱动器、光盘等）或网络文件系统挂载到这个目录树的某个位置，使其文件可以通过相应的目录路径访问。</p>
-<h3 id="挂载的基本概念："><a href="#挂载的基本概念：" class="headerlink" title="挂载的基本概念："></a>挂载的基本概念：</h3><ul>
-<li><p><strong>挂载点（Mount Point）</strong>：挂载点是文件系统中用于连接存储设备的目录。在这个目录下，挂载的文件系统中的所有文件和目录都将显示。挂载点可以是现有的空目录，也可以是专门为挂载创建的目录。例如，常见的挂载点包括 <code>/mnt</code> 或 <code>/media</code>。</p>
-</li>
-<li><p><strong>文件系统</strong>：每个存储设备都有自己的文件系统格式（如 ext4、NTFS、FAT32 等）。挂载是将该文件系统连接到 Linux 系统的文件结构中，从而使文件系统中的文件和数据可以被系统访问。</p>
-</li>
-</ul>
-<h3 id="挂载的工作流程："><a href="#挂载的工作流程：" class="headerlink" title="挂载的工作流程："></a>挂载的工作流程：</h3><ol>
-<li><strong>创建挂载点</strong>：要挂载存储设备，首先需要在系统中创建一个空的目录作为挂载点。例如，您可以在 <code>/mnt</code> 目录下创建一个挂载点 <code>/mnt/usb</code>。</li>
-<li><strong>挂载存储设备</strong>：使用 <code>mount</code> 命令将存储设备或分区挂载到指定的挂载点。挂载后，存储设备上的所有文件都可以通过该挂载点访问。</li>
-<li><strong>取消挂载</strong>：当不再需要访问挂载的文件系统时，可以使用 <code>umount</code> 命令取消挂载设备，设备将与文件系统脱离连接。</li>
+        <h2 id="Linux-挂载"><a href="#Linux-挂载" class="headerlink" title="Linux 挂载"></a>Linux 挂载</h2><blockquote>
+<p>自己在azure上搭建comfyui来玩，遇到了一些尴尬的问题：</p>
+<p>model太大了，导致主盘爆了， 我配置的服务器 128G 完全不够用.所以新加了256G的磁盘，但是不会挂载所以记录一下怎么挂载。</p>
+</blockquote>
+<p>磁盘挂载的一般流程：</p>
+<ol>
+<li>分区</li>
+<li>格式化</li>
+<li>挂载</li>
+<li>永久挂载</li>
 </ol>
-<h3 id="挂载的常用命令："><a href="#挂载的常用命令：" class="headerlink" title="挂载的常用命令："></a>挂载的常用命令：</h3><ol>
-<li><p><strong>挂载命令（mount）</strong>：</p>
-<ul>
-<li>语法：<pre><code class="language-bash">sudo mount [选项] 设备名 挂载点
-</code></pre>
-例如，将一个 USB 设备挂载到 <code>/mnt/usb</code>：<pre><code class="language-bash">sudo mount /dev/sdb1 /mnt/usb
-</code></pre>
-<ul>
-<li><code>/dev/sdb1</code> 是设备名称，表示第二块硬盘的第一个分区。</li>
-<li><code>/mnt/usb</code> 是挂载点，表示挂载到这个目录。</li>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><ul>
+<li>分区</li>
 </ul>
-</li>
+<blockquote>
+<p>先看看自己有几块磁盘</p>
+</blockquote>
+<pre><code class="language-bash">lsblk 
+# or
+sudo fdisk -l
+</code></pre>
+<blockquote>
+<p>使用 <strong>fdisk</strong> 对磁盘来分区</p>
+</blockquote>
+<pre><code class="language-bash">sudo fdisk /dev/xx
+</code></pre>
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><ul>
+<li>格式化</li>
 </ul>
-</li>
-<li><p><strong>查看挂载信息</strong>：</p>
-<ul>
-<li>使用 <code>mount</code> 命令不带任何参数时，会显示当前所有挂载的文件系统和挂载点：<pre><code class="language-bash">mount
+<pre><code class="language-bash">sudo mkfs.ext4 /dev/xxx
 </code></pre>
-</li>
+<h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><ul>
+<li>挂载</li>
 </ul>
-</li>
-<li><p><strong>取消挂载（umount）</strong>：</p>
-<ul>
-<li>语法：<pre><code class="language-bash">sudo umount 挂载点
+<blockquote>
+<p>创建挂载点</p>
+</blockquote>
+<pre><code class="language-bash">sudo mkdir -p /mnt/newdisk
 </code></pre>
-例如，取消挂载 <code>/mnt/usb</code>：<pre><code class="language-bash">sudo umount /mnt/usb
+<pre><code class="language-bash">sudo mount /dev/xx   /mnt/newdisk 
 </code></pre>
-或者取消挂载 <code>/dev/sdb1</code>：<pre><code class="language-bash">sudo umount /dev/sdb1
-</code></pre>
-</li>
+<h3 id="永久挂载"><a href="#永久挂载" class="headerlink" title="永久挂载"></a>永久挂载</h3><ul>
+<li>设置开机自动挂载</li>
 </ul>
-</li>
-<li><p><strong>自动挂载（&#x2F;etc&#x2F;fstab）</strong>：</p>
-<ul>
-<li><code>fstab</code> 是一个配置文件（位于 <code>/etc/fstab</code>），它定义了系统在启动时应自动挂载的文件系统。通过编辑此文件，可以指定哪些设备在系统启动时自动挂载到指定目录。</li>
-<li><code>fstab</code> 文件的每一行定义了一个文件系统、设备名、挂载点、文件系统类型、挂载选项等。<br>例如：<pre><code>/dev/sdb1  /mnt/usb  ext4  defaults  0  2
+<blockquote>
+<p>vi 来访问</p>
+</blockquote>
+<pre><code class="language-bash">sudo vi /etc/fstab
+# 查看UUID
+sudo lskid /dev/xx 
 </code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="常见的挂载应用场景："><a href="#常见的挂载应用场景：" class="headerlink" title="常见的挂载应用场景："></a>常见的挂载应用场景：</h3><ol>
-<li><strong>挂载 USB 驱动器</strong>：插入 USB 驱动器后，您可以手动挂载该驱动器，以便在系统中访问其文件内容。</li>
-<li><strong>挂载外部硬盘</strong>：将外部硬盘或 SSD 挂载到系统中的某个目录，使其数据可以被访问。</li>
-<li><strong>挂载 ISO 文件</strong>：ISO 文件是光盘镜像文件，您可以通过 <code>mount</code> 命令将其作为虚拟文件系统挂载，查看其中的内容。例如：<pre><code class="language-bash">sudo mount -o loop /path/to/file.iso /mnt/iso
+<blockquote>
+<p>增加新的配置</p>
+</blockquote>
+<pre><code class="language-bash">/dev/xx   /mnt/newdisk  ext4  defaults   0    2
+
+
+UUID=XXX	/mnt/newdisk  ext4  defaults   0    2
 </code></pre>
-</li>
-<li><strong>挂载网络文件系统</strong>：使用 NFS 或 SMB 协议将网络上的远程文件系统挂载到本地，便于跨网络访问文件。</li>
-</ol>
-<h3 id="挂载的选项和功能："><a href="#挂载的选项和功能：" class="headerlink" title="挂载的选项和功能："></a>挂载的选项和功能：</h3><p>挂载命令支持许多选项，允许用户控制挂载文件系统的行为。例如：</p>
-<ul>
-<li><strong><code>-o ro</code></strong>：只读挂载文件系统，确保无法对挂载设备上的文件进行写操作。</li>
-<li><strong><code>-o rw</code></strong>：读写挂载文件系统，允许读取和写入数据（这是默认选项）。</li>
-<li><strong><code>-o loop</code></strong>：挂载一个文件作为文件系统，例如挂载一个 ISO 镜像文件。</li>
-<li><strong><code>-t</code></strong>：指定文件系统类型，例如 <code>ext4</code>、<code>vfat</code>、<code>ntfs</code> 等。</li>
-</ul>
-<p>例如，挂载一个 NTFS 格式的外部硬盘：</p>
-<pre><code class="language-bash">sudo mount -t ntfs /dev/sdb1 /mnt/usb
+<blockquote>
+<p>保存执行</p>
+</blockquote>
+<pre><code class="language-bash">sudo mount -a
 </code></pre>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>挂载是 Linux 中连接存储设备或文件系统的关键操作，它将设备上的数据映射到系统的文件目录树上，使得文件系统能够通过目录路径访问。Linux 提供了灵活的挂载功能，支持多种存储设备和文件系统类型，且可以通过命令行轻松管理挂载操作。</p>
+<blockquote>
+<p>运行以下命令让 systemd 重新加载配置：</p>
+</blockquote>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+</code></pre>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
+<h1 id="纸上得来终觉浅，绝知此事要躬行"><a href="#纸上得来终觉浅，绝知此事要躬行" class="headerlink" title="纸上得来终觉浅，绝知此事要躬行"></a>纸上得来终觉浅，绝知此事要躬行</h1><p>Linux最佳的学习过程果然是边做边学习</p>
+</blockquote>
 
       
        
