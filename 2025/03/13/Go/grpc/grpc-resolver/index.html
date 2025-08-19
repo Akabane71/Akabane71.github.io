@@ -6,24 +6,24 @@
   <meta name="keywords" content=" go , grpc , resolver ">
   <meta name="description" content="grpc-resolver | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
+<meta name="description" content="需求 很好奇如何实现多机单卡实现分布式训练 刚好在Azure上申请了两台Tesla T4 VM来做个分布式训练的实验   项目的源码在：   Akabane71&#x2F;torch_ds_train: this is a learn project for leaning ds training  tensorboard 使用 tensorboard 来 可视化训练结果  tensorboard">
 <meta property="og:type" content="article">
-<meta property="og:title" content="faster-whisper-benchmark">
-<meta property="og:url" content="http://example.com/2025/08/13/ML/project/faster-whisper-benchmark/index.html">
+<meta property="og:title" content="torch-distributed-training">
+<meta property="og:url" content="http://example.com/2025/08/19/ML/basic/torch-distributed-training/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
+<meta property="og:description" content="需求 很好奇如何实现多机单卡实现分布式训练 刚好在Azure上申请了两台Tesla T4 VM来做个分布式训练的实验   项目的源码在：   Akabane71&#x2F;torch_ds_train: this is a learn project for leaning ds training  tensorboard 使用 tensorboard 来 可视化训练结果  tensorboard">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
-<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/number_of_users_1755053173.68.png">
-<meta property="article:published_time" content="2025-08-13T01:54:46.000Z">
-<meta property="article:modified_time" content="2025-08-13T03:13:55.359Z">
+<meta property="og:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210305024.png">
+<meta property="og:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210318057.png">
+<meta property="og:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210529862.png">
+<meta property="article:published_time" content="2025-08-19T03:22:53.000Z">
+<meta property="article:modified_time" content="2025-08-19T04:01:30.724Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="ML">
-<meta property="article:tag" content="whisper">
-<meta property="article:tag" content="faster-whisper">
-<meta property="article:tag" content="benchmark">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="basic">
+<meta property="article:tag" content="distributed-training">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
+<meta name="twitter:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210305024.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -112,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(101)</small>
+                <small>(107)</small>
             
         </div>
     </li>
@@ -124,7 +124,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -169,7 +169,7 @@
         <div data-rel="Azure">
             
             Azure
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -211,10 +211,25 @@
             
                 
     <li>
+        <div data-rel="ml">
+            
+            ml
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
         <div data-rel="ML">
             
             ML
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -289,7 +304,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -317,8 +332,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="101">
-<input type="hidden" id="yelog_site_word_count" value="118.8k">
+<input type="hidden" id="yelog_site_posts_number" value="107">
+<input type="hidden" id="yelog_site_word_count" value="122.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -364,10 +379,6 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>17knovel</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3d-slam</a>
             </li>
         
@@ -409,6 +420,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>authentication</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -464,6 +479,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>clip</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>concurrent</a>
             </li>
         
@@ -501,6 +520,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>distributed-training</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -648,6 +671,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m365</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>m3u8</a>
             </li>
         
@@ -657,6 +684,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markitdown</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -681,6 +712,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>microservices</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microsoft graph</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ml</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -709,6 +748,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>navigation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ngnix</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -745,6 +788,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pydantic</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -856,11 +903,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>type-hints</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ue</a>
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>UE5</a>
+                <i class="iconfont icon-tag"></i><a>ue5</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -947,6 +998,60 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Python "
+           href="/2025/08/19/Python/python-pydantic/"
+           data-tag="python,pydantic,type-hints"
+           data-author="" >
+            <span class="post-title" title="python-pydantic">python-pydantic</span>
+            <span class="post-date" title="2025-08-19 16:24:40">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/19/ML/basic/torch-distributed-training/"
+           data-tag="python,basic,distributed-training"
+           data-author="" >
+            <span class="post-title" title="torch-distributed-training">torch-distributed-training</span>
+            <span class="post-date" title="2025-08-19 11:22:53">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2025/08/19/Web/web-ngnix/"
+           data-tag="web,ngnix"
+           data-author="" >
+            <span class="post-title" title="web-ngnix">web-ngnix</span>
+            <span class="post-date" title="2025-08-19 11:09:22">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/18/Azure/azure-authentication/"
+           data-tag="azure,authentication"
+           data-author="" >
+            <span class="post-title" title="azure-authentication">azure-authentication</span>
+            <span class="post-date" title="2025-08-18 16:37:12">2025/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 ml "
+           href="/2025/08/15/ML/llm/ml-markitdown/"
+           data-tag="ml,markitdown"
+           data-author="" >
+            <span class="post-title" title="ml-markitdown">ml-markitdown</span>
+            <span class="post-date" title="2025-08-15 10:23:45">2025/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/14/Azure/m365/azure-m365-graph/"
+           data-tag="azure,m365,microsoft graph"
+           data-author="" >
+            <span class="post-title" title="azure-m365-graph">azure-m365-graph</span>
+            <span class="post-date" title="2025-08-14 14:13:51">2025/08/14</span>
+        </a>
+        
+        
         <a  class="全部文章 ML "
            href="/2025/08/13/ML/project/faster-whisper-benchmark/"
            data-tag="ML,whisper,faster-whisper,benchmark"
@@ -994,7 +1099,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/07/25/Docker/install-docker/"
-           data-tag="docker"
+           data-tag="docker,linux"
            data-author="" >
             <span class="post-title" title="install-docker">install-docker</span>
             <span class="post-date" title="2025-07-25 10:37:38">2025/07/25</span>
@@ -1012,7 +1117,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/07/24/ML/llm/ml-clip/"
-           data-tag="deeplearn"
+           data-tag="deeplearn,clip"
            data-author="" >
             <span class="post-title" title="ml-clip">ml-clip</span>
             <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
@@ -1083,7 +1188,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2025/07/15/Python/uv/python-uv/"
+           href="/2025/07/15/Python/env-control/python-uv/"
            data-tag="python,uv"
            data-author="" >
             <span class="post-title" title="python-uv">python-uv</span>
@@ -1174,7 +1279,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/03/31/C++/ue/ue-cpp-learn-01/"
-           data-tag="cpp,UE5"
+           data-tag="cpp,ue5"
            data-author="" >
             <span class="post-title" title="ue_cpp_learn_01">ue_cpp_learn_01</span>
             <span class="post-date" title="2025-03-31 09:39:32">2025/03/31</span>
@@ -1192,7 +1297,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/03/19/Docker/docker-gitlab/"
-           data-tag="docker,gitlab"
+           data-tag="docker,gitlab,linux"
            data-author="" >
             <span class="post-title" title="docker-gitlab">docker-gitlab</span>
             <span class="post-date" title="2025-03-19 14:19:00">2025/03/19</span>
@@ -1282,7 +1387,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="cpp,tensorRT,deeplearn"
+           data-tag="ML,cpp,tensorRT"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -1327,7 +1432,7 @@
         
         <a  class="全部文章 Docker "
            href="/2024/11/13/Docker/docker-mysql/"
-           data-tag="docker,mysql"
+           data-tag="docker,mysql,linux"
            data-author="" >
             <span class="post-title" title="docker-mysql">docker-mysql</span>
             <span class="post-date" title="2024-11-13 14:52:16">2024/11/13</span>
@@ -1533,7 +1638,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/06/Go/go-csp-model/"
+           href="/2024/09/06/Go/basic/go-csp-model/"
            data-tag="go,csp"
            data-author="" >
             <span class="post-title" title="go-csp-model">go-csp-model</span>
@@ -1614,7 +1719,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-http/"
+           href="/2024/09/05/Go/basic/go-http/"
            data-tag="go,http"
            data-author="" >
             <span class="post-title" title="go-http">go-http</span>
@@ -1623,7 +1728,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-goroutine-tips/"
+           href="/2024/09/05/Go/basic/go-goroutine-tips/"
            data-tag="go,channel,goroutine,tips"
            data-author="" >
             <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
@@ -1632,7 +1737,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-select-channel/"
+           href="/2024/09/05/Go/basic/go-select-channel/"
            data-tag="go,channel,select"
            data-author="" >
             <span class="post-title" title="go-select-channel">go-select-channel</span>
@@ -1641,7 +1746,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-channel/"
+           href="/2024/09/05/Go/basic/go-channel/"
            data-tag="go,channel"
            data-author="" >
             <span class="post-title" title="go-channel">go-channel</span>
@@ -1650,7 +1755,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-crypto-cipher/"
+           href="/2024/09/05/Go/basic/go-crypto-cipher/"
            data-tag="go,crypto,cipher"
            data-author="" >
             <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
@@ -1659,7 +1764,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-hash/"
+           href="/2024/09/05/Go/basic/go-hash/"
            data-tag="go,hash"
            data-author="" >
             <span class="post-title" title="go-hash">go-hash</span>
@@ -1668,7 +1773,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           href="/2024/09/05/Go/basic/go-serialization-deserilalization/"
            data-tag="go,json,base64,messagepack"
            data-author="" >
             <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
@@ -1677,7 +1782,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-reflect/"
+           href="/2024/09/05/Go/basic/go-reflect/"
            data-tag="go,reflect"
            data-author="" >
             <span class="post-title" title="go-reflect">go-reflect</span>
@@ -1813,7 +1918,7 @@
         
         <a  class="全部文章 Spider "
            href="/2024/08/17/Python/spider/python-spider-17knovel/"
-           data-tag="spider,python,17knovel"
+           data-tag="spider,python"
            data-author="" >
             <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
             <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
@@ -1848,7 +1953,7 @@
         
         
         <a  class="全部文章 Spider "
-           href="/2024/08/17/Go/go-spider/"
+           href="/2024/08/17/Go/basic/go-spider/"
            data-tag="go,http,spider"
            data-author="" >
             <span class="post-title" title="go-spider">go-spider</span>
@@ -1904,7 +2009,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-29 14:23:29'>2025-03-13 10:27</time>
+            发布时间 : <time class="date" title='最后更新: 2025-08-14 15:17:39'>2025-03-13 10:27</time>
         
     </div>
     <div class="article-meta">
@@ -1928,7 +2033,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-resolver-Resolver-%E9%A2%84%E7%95%99%E6%8E%A5%E5%8F%A3"><span class="toc-text">1. resolver.Resolver 预留接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B9-Resolver-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-text">🔹 Resolver 关键方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-resolver-Builder-%E6%8E%A5%E5%8F%A3%EF%BC%88%E8%A7%A3%E6%9E%90%E5%99%A8%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%89"><span class="toc-text">2. resolver.Builder 接口（解析器构造器）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B9-Builder-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-text">🔹 Builder 关键方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-resolver-ClientConn-%E9%A2%84%E7%95%99%E6%8E%A5%E5%8F%A3"><span class="toc-text">3. resolver.ClientConn 预留接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B9-ClientConn-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-text">🔹 ClientConn 关键方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84-resolver-State-%E7%BB%93%E6%9E%84"><span class="toc-text">4. 解析器的 resolver.State 结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%84%E5%90%88%EF%BC%9A%E5%AE%8C%E6%95%B4%E7%9A%84-gRPC-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-text">5. 组合：完整的 gRPC 自定义解析器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-text">完整代码示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">6. 运行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AE%9E%E9%AA%8C"><span class="toc-text">7. 实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%80%BB%E7%BB%93"><span class="toc-text">9. 总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-resolver-Resolver-%E9%A2%84%E7%95%99%E6%8E%A5%E5%8F%A3"><span class="toc-text">1. resolver.Resolver 预留接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B9-Resolver-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-text">🔹 Resolver 关键方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-resolver-Builder-%E6%8E%A5%E5%8F%A3%EF%BC%88%E8%A7%A3%E6%9E%90%E5%99%A8%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%89"><span class="toc-text">2. resolver.Builder 接口（解析器构造器）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Builder-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-text">Builder 关键方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-resolver-ClientConn-%E9%A2%84%E7%95%99%E6%8E%A5%E5%8F%A3"><span class="toc-text">3. resolver.ClientConn 预留接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClientConn-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-text">ClientConn 关键方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84-resolver-State-%E7%BB%93%E6%9E%84"><span class="toc-text">4. 解析器的 resolver.State 结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%84%E5%90%88%EF%BC%9A%E5%AE%8C%E6%95%B4%E7%9A%84-gRPC-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-text">5. 组合：完整的 gRPC 自定义解析器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-text">完整代码示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">6. 运行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AE%9E%E9%AA%8C"><span class="toc-text">7. 实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%80%BB%E7%BB%93"><span class="toc-text">9. 总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1984,7 +2089,7 @@ type Builder interface &#123;
     Scheme() string // 返回解析器的 scheme（如 &quot;consul&quot;, &quot;etcd&quot;）
 &#125;
 </code></pre>
-<h3 id="🔹-Builder-关键方法"><a href="#🔹-Builder-关键方法" class="headerlink" title="🔹 Builder 关键方法"></a><strong>🔹 <code>Builder</code> 关键方法</strong></h3><table>
+<h3 id="Builder-关键方法"><a href="#Builder-关键方法" class="headerlink" title="Builder 关键方法"></a><strong><code>Builder</code> 关键方法</strong></h3><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -2012,7 +2117,7 @@ type ClientConn interface &#123;
     NewServiceConfig(string)  // 过时方法
 &#125;
 </code></pre>
-<h3 id="🔹-ClientConn-关键方法"><a href="#🔹-ClientConn-关键方法" class="headerlink" title="🔹 ClientConn 关键方法"></a><strong>🔹 <code>ClientConn</code> 关键方法</strong></h3><table>
+<h3 id="ClientConn-关键方法"><a href="#ClientConn-关键方法" class="headerlink" title="ClientConn 关键方法"></a><strong><code>ClientConn</code> 关键方法</strong></h3><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -2463,21 +2568,21 @@ func main() &#123;
 <blockquote>
 <p>是有负载均衡的</p>
 </blockquote>
-<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a><strong>9. 总结</strong></h2><p>✅ <strong>gRPC 预留的 <code>resolver.Resolver</code> 接口</strong> 主要用于 <strong>解析目标地址，并提供服务器列表</strong>。</p>
-<p>✅ <strong>核心接口</strong></p>
+<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a><strong>9. 总结</strong></h2><p><strong>gRPC 预留的 <code>resolver.Resolver</code> 接口</strong> 主要用于 <strong>解析目标地址，并提供服务器列表</strong>。</p>
+<p> <strong>核心接口</strong></p>
 <ul>
 <li><strong><code>resolver.Resolver</code></strong>：解析地址并返回服务器列表</li>
 <li><strong><code>resolver.Builder</code></strong>：创建解析器</li>
 <li><strong><code>resolver.ClientConn</code></strong>：通知 gRPC 解析结果</li>
 <li><strong><code>resolver.State</code></strong>：存储解析后的服务器地址</li>
 </ul>
-<p>✅ <strong>自定义 gRPC 解析器适用场景</strong></p>
+<p> <strong>自定义 gRPC 解析器适用场景</strong></p>
 <ul>
 <li><strong>Consul、Etcd、Kubernetes</strong> 服务发现</li>
 <li><strong>动态解析 gRPC 服务器</strong></li>
 <li><strong>自定义负载均衡策略</strong></li>
 </ul>
-<p>🚀 **这样，你的 gRPC 应用就能动态解析服务，并自动负载均衡！**态解析并连接多个后端服务器！</p>
+<p> **这样，你的 gRPC 应用就能动态解析服务，并自动负载均衡！**态解析并连接多个后端服务器！</p>
 
       
        

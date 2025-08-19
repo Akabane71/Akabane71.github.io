@@ -6,24 +6,24 @@
   <meta name="keywords" content=" python , re ">
   <meta name="description" content="python-re | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
+<meta name="description" content="需求 很好奇如何实现多机单卡实现分布式训练 刚好在Azure上申请了两台Tesla T4 VM来做个分布式训练的实验   项目的源码在：   Akabane71&#x2F;torch_ds_train: this is a learn project for leaning ds training  tensorboard 使用 tensorboard 来 可视化训练结果  tensorboard">
 <meta property="og:type" content="article">
-<meta property="og:title" content="faster-whisper-benchmark">
-<meta property="og:url" content="http://example.com/2025/08/13/ML/project/faster-whisper-benchmark/index.html">
+<meta property="og:title" content="torch-distributed-training">
+<meta property="og:url" content="http://example.com/2025/08/19/ML/basic/torch-distributed-training/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="背景: 使用 websocket 来发送语音chunk并使用faster-whisper来进行语音识别。 客户想指导单台服务器的并发量有多大，有哪些具体的指标。 记录一下我简单的测试，工具使用  环境本人实验在 Azure gpu 虚拟机上进行 虚拟机的型号为 Standard_NC4as_T4_v3 具体的硬件设施为:  4 vcpu 28 GiB RAM NVIDIA T4   16G">
+<meta property="og:description" content="需求 很好奇如何实现多机单卡实现分布式训练 刚好在Azure上申请了两台Tesla T4 VM来做个分布式训练的实验   项目的源码在：   Akabane71&#x2F;torch_ds_train: this is a learn project for leaning ds training  tensorboard 使用 tensorboard 来 可视化训练结果  tensorboard">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
-<meta property="og:image" content="http://example.com/imgs/faster-whisper-benchmark/number_of_users_1755053173.68.png">
-<meta property="article:published_time" content="2025-08-13T01:54:46.000Z">
-<meta property="article:modified_time" content="2025-08-13T03:13:55.359Z">
+<meta property="og:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210305024.png">
+<meta property="og:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210318057.png">
+<meta property="og:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210529862.png">
+<meta property="article:published_time" content="2025-08-19T03:22:53.000Z">
+<meta property="article:modified_time" content="2025-08-19T04:01:30.724Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="ML">
-<meta property="article:tag" content="whisper">
-<meta property="article:tag" content="faster-whisper">
-<meta property="article:tag" content="benchmark">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="basic">
+<meta property="article:tag" content="distributed-training">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/faster-whisper-benchmark/image-20250813104626005.png">
+<meta name="twitter:image" content="http://example.com/imgs/torch-distributed-training/image-20250717210305024.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -112,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(101)</small>
+                <small>(107)</small>
             
         </div>
     </li>
@@ -124,7 +124,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -169,7 +169,7 @@
         <div data-rel="Azure">
             
             Azure
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -211,10 +211,25 @@
             
                 
     <li>
+        <div data-rel="ml">
+            
+            ml
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
         <div data-rel="ML">
             
             ML
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -289,7 +304,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -317,8 +332,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="101">
-<input type="hidden" id="yelog_site_word_count" value="118.8k">
+<input type="hidden" id="yelog_site_posts_number" value="107">
+<input type="hidden" id="yelog_site_word_count" value="122.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -364,10 +379,6 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>17knovel</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3d-slam</a>
             </li>
         
@@ -409,6 +420,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>authentication</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -464,6 +479,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>clip</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>concurrent</a>
             </li>
         
@@ -501,6 +520,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>distributed-training</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -648,6 +671,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m365</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>m3u8</a>
             </li>
         
@@ -657,6 +684,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markitdown</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -681,6 +712,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>microservices</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microsoft graph</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ml</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -709,6 +748,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>navigation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ngnix</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -745,6 +788,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pydantic</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -856,11 +903,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>type-hints</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ue</a>
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>UE5</a>
+                <i class="iconfont icon-tag"></i><a>ue5</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -947,6 +998,60 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Python "
+           href="/2025/08/19/Python/python-pydantic/"
+           data-tag="python,pydantic,type-hints"
+           data-author="" >
+            <span class="post-title" title="python-pydantic">python-pydantic</span>
+            <span class="post-date" title="2025-08-19 16:24:40">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/19/ML/basic/torch-distributed-training/"
+           data-tag="python,basic,distributed-training"
+           data-author="" >
+            <span class="post-title" title="torch-distributed-training">torch-distributed-training</span>
+            <span class="post-date" title="2025-08-19 11:22:53">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2025/08/19/Web/web-ngnix/"
+           data-tag="web,ngnix"
+           data-author="" >
+            <span class="post-title" title="web-ngnix">web-ngnix</span>
+            <span class="post-date" title="2025-08-19 11:09:22">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/18/Azure/azure-authentication/"
+           data-tag="azure,authentication"
+           data-author="" >
+            <span class="post-title" title="azure-authentication">azure-authentication</span>
+            <span class="post-date" title="2025-08-18 16:37:12">2025/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 ml "
+           href="/2025/08/15/ML/llm/ml-markitdown/"
+           data-tag="ml,markitdown"
+           data-author="" >
+            <span class="post-title" title="ml-markitdown">ml-markitdown</span>
+            <span class="post-date" title="2025-08-15 10:23:45">2025/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/14/Azure/m365/azure-m365-graph/"
+           data-tag="azure,m365,microsoft graph"
+           data-author="" >
+            <span class="post-title" title="azure-m365-graph">azure-m365-graph</span>
+            <span class="post-date" title="2025-08-14 14:13:51">2025/08/14</span>
+        </a>
+        
+        
         <a  class="全部文章 ML "
            href="/2025/08/13/ML/project/faster-whisper-benchmark/"
            data-tag="ML,whisper,faster-whisper,benchmark"
@@ -994,7 +1099,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/07/25/Docker/install-docker/"
-           data-tag="docker"
+           data-tag="docker,linux"
            data-author="" >
             <span class="post-title" title="install-docker">install-docker</span>
             <span class="post-date" title="2025-07-25 10:37:38">2025/07/25</span>
@@ -1012,7 +1117,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/07/24/ML/llm/ml-clip/"
-           data-tag="deeplearn"
+           data-tag="deeplearn,clip"
            data-author="" >
             <span class="post-title" title="ml-clip">ml-clip</span>
             <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
@@ -1083,7 +1188,7 @@
         
         
         <a  class="全部文章 Python "
-           href="/2025/07/15/Python/uv/python-uv/"
+           href="/2025/07/15/Python/env-control/python-uv/"
            data-tag="python,uv"
            data-author="" >
             <span class="post-title" title="python-uv">python-uv</span>
@@ -1174,7 +1279,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/03/31/C++/ue/ue-cpp-learn-01/"
-           data-tag="cpp,UE5"
+           data-tag="cpp,ue5"
            data-author="" >
             <span class="post-title" title="ue_cpp_learn_01">ue_cpp_learn_01</span>
             <span class="post-date" title="2025-03-31 09:39:32">2025/03/31</span>
@@ -1192,7 +1297,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/03/19/Docker/docker-gitlab/"
-           data-tag="docker,gitlab"
+           data-tag="docker,gitlab,linux"
            data-author="" >
             <span class="post-title" title="docker-gitlab">docker-gitlab</span>
             <span class="post-date" title="2025-03-19 14:19:00">2025/03/19</span>
@@ -1282,7 +1387,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="cpp,tensorRT,deeplearn"
+           data-tag="ML,cpp,tensorRT"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -1327,7 +1432,7 @@
         
         <a  class="全部文章 Docker "
            href="/2024/11/13/Docker/docker-mysql/"
-           data-tag="docker,mysql"
+           data-tag="docker,mysql,linux"
            data-author="" >
             <span class="post-title" title="docker-mysql">docker-mysql</span>
             <span class="post-date" title="2024-11-13 14:52:16">2024/11/13</span>
@@ -1533,7 +1638,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/06/Go/go-csp-model/"
+           href="/2024/09/06/Go/basic/go-csp-model/"
            data-tag="go,csp"
            data-author="" >
             <span class="post-title" title="go-csp-model">go-csp-model</span>
@@ -1614,7 +1719,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-http/"
+           href="/2024/09/05/Go/basic/go-http/"
            data-tag="go,http"
            data-author="" >
             <span class="post-title" title="go-http">go-http</span>
@@ -1623,7 +1728,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-goroutine-tips/"
+           href="/2024/09/05/Go/basic/go-goroutine-tips/"
            data-tag="go,channel,goroutine,tips"
            data-author="" >
             <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
@@ -1632,7 +1737,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-select-channel/"
+           href="/2024/09/05/Go/basic/go-select-channel/"
            data-tag="go,channel,select"
            data-author="" >
             <span class="post-title" title="go-select-channel">go-select-channel</span>
@@ -1641,7 +1746,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-channel/"
+           href="/2024/09/05/Go/basic/go-channel/"
            data-tag="go,channel"
            data-author="" >
             <span class="post-title" title="go-channel">go-channel</span>
@@ -1650,7 +1755,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-crypto-cipher/"
+           href="/2024/09/05/Go/basic/go-crypto-cipher/"
            data-tag="go,crypto,cipher"
            data-author="" >
             <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
@@ -1659,7 +1764,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-hash/"
+           href="/2024/09/05/Go/basic/go-hash/"
            data-tag="go,hash"
            data-author="" >
             <span class="post-title" title="go-hash">go-hash</span>
@@ -1668,7 +1773,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-serialization-deserilalization/"
+           href="/2024/09/05/Go/basic/go-serialization-deserilalization/"
            data-tag="go,json,base64,messagepack"
            data-author="" >
             <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
@@ -1677,7 +1782,7 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/09/05/Go/go-reflect/"
+           href="/2024/09/05/Go/basic/go-reflect/"
            data-tag="go,reflect"
            data-author="" >
             <span class="post-title" title="go-reflect">go-reflect</span>
@@ -1813,7 +1918,7 @@
         
         <a  class="全部文章 Spider "
            href="/2024/08/17/Python/spider/python-spider-17knovel/"
-           data-tag="spider,python,17knovel"
+           data-tag="spider,python"
            data-author="" >
             <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
             <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
@@ -1848,7 +1953,7 @@
         
         
         <a  class="全部文章 Spider "
-           href="/2024/08/17/Go/go-spider/"
+           href="/2024/08/17/Go/basic/go-spider/"
            data-tag="go,http,spider"
            data-author="" >
             <span class="post-title" title="go-spider">go-spider</span>
