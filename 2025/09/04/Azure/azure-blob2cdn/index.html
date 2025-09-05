@@ -6,21 +6,27 @@
   <meta name="keywords" content=" azure , azure blob , azure front door , cdn ">
   <meta name="description" content="azure-blob2cdn | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="实验内容 使用azure blob存储的时候发现他可以匿名访问，那是不是可以当作静态站点，当成CDN来使用？ 查了一下 Azure Front Door 是专门的Azure 更加专业的全球CDN服务，而Azure Blob 只相当于 一个单一的静态站点，没有分布式分发网络服务快  Azure Blob 存储级别 Azure Front Door">
+<meta name="description" content="实验内容 使用 Azure blob 存储的时候发现他可以匿名访问，那是不是可以当作静态站点，当成CDN来使用？ 查了一下 Azure Front Door  是 Azure 专门的更加专业的 全球CDN服务 ，而 Azure Blob 只相当于 一个单一的静态站点，没有分布式分发网络服务快  Azure Blob 存储级别 Azure Front Door收费标准 定價 - Front Door">
 <meta property="og:type" content="article">
 <meta property="og:title" content="azure-blob2cdn">
 <meta property="og:url" content="http://example.com/2025/09/04/Azure/azure-blob2cdn/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="实验内容 使用azure blob存储的时候发现他可以匿名访问，那是不是可以当作静态站点，当成CDN来使用？ 查了一下 Azure Front Door 是专门的Azure 更加专业的全球CDN服务，而Azure Blob 只相当于 一个单一的静态站点，没有分布式分发网络服务快  Azure Blob 存储级别 Azure Front Door">
+<meta property="og:description" content="实验内容 使用 Azure blob 存储的时候发现他可以匿名访问，那是不是可以当作静态站点，当成CDN来使用？ 查了一下 Azure Front Door  是 Azure 专门的更加专业的 全球CDN服务 ，而 Azure Blob 只相当于 一个单一的静态站点，没有分布式分发网络服务快  Azure Blob 存储级别 Azure Front Door收费标准 定價 - Front Door">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/imgs/azure-blob2cdn/image-20250905095457245.png">
+<meta property="og:image" content="http://example.com/imgs/azure-blob2cdn/image-20250905095515853.png">
+<meta property="og:image" content="http://example.com/imgs/azure-blob2cdn/image-20250905095041131.png">
+<meta property="og:image" content="http://example.com/imgs/azure-blob2cdn/image-20250905110010757.png">
+<meta property="og:image" content="http://example.com/imgs/azure-blob2cdn/image-20250905110648694.png">
 <meta property="article:published_time" content="2025-09-04T06:12:16.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:06:34.547Z">
+<meta property="article:modified_time" content="2025-09-05T03:17:36.700Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="azure blob">
 <meta property="article:tag" content="azure front door">
 <meta property="article:tag" content="cdn">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/azure-blob2cdn/image-20250905095457245.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -315,7 +321,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="115">
-<input type="hidden" id="yelog_site_word_count" value="134.6k">
+<input type="hidden" id="yelog_site_word_count" value="134.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2105,12 +2111,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-09-04 15:06:34'>2025-09-04 14:12</time>
+            发布时间 : <time class="date" title='最后更新: 2025-09-05 11:17:36'>2025-09-04 14:12</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:99</span>
+        <span>字数:318</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2129,7 +2135,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-text">实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Azure-Front-Door"><span class="toc-text">Azure Front Door</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-text">实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Azure-Front-Door"><span class="toc-text">Azure Front Door</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E8%B4%B9%E6%A0%87%E5%87%86"><span class="toc-text">收费标准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E8%A6%81%E6%B1%82"><span class="toc-text">前置要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2146,11 +2152,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><blockquote>
-<p>使用azure blob存储的时候发现他可以匿名访问，那是不是可以当作静态站点，当成CDN来使用？</p>
-<p>查了一下 Azure Front Door 是专门的Azure 更加专业的全球CDN服务，而Azure Blob 只相当于 一个单一的静态站点，没有分布式分发网络服务快</p>
+<p>使用 Azure blob 存储的时候发现他可以匿名访问，那是不是可以当作静态站点，当成CDN来使用？</p>
+<p>查了一下 <strong>Azure Front Door</strong>  是 Azure 专门的更加专业的 <strong>全球CDN服务</strong> ，而 Azure Blob 只相当于 一个单一的静态站点，没有分布式分发网络服务快</p>
 </blockquote>
 <p>Azure Blob 存储级别</p>
-<h2 id="Azure-Front-Door"><a href="#Azure-Front-Door" class="headerlink" title="Azure Front Door"></a>Azure Front Door</h2>
+<h2 id="Azure-Front-Door"><a href="#Azure-Front-Door" class="headerlink" title="Azure Front Door"></a>Azure Front Door</h2><h3 id="收费标准"><a href="#收费标准" class="headerlink" title="收费标准"></a>收费标准</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://azure.microsoft.com/zh-tw/pricing/details/frontdoor/">定價 - Front Door | Microsoft Azure</a></li>
+</ul>
+<p><strong>基础费用</strong></p>
+<p><img src="/../../imgs/azure-blob2cdn/image-20250905095457245.png" alt="image-20250905095457245"></p>
+<p><strong>流量费用</strong></p>
+<p><img src="/../../imgs/azure-blob2cdn/image-20250905095515853.png" alt="image-20250905095515853"></p>
+<h3 id="前置要求"><a href="#前置要求" class="headerlink" title="前置要求"></a>前置要求</h3><p>要有 一个 **Blob级别权限 **的 容器存储</p>
+<blockquote>
+<p>允许匿名访问，匿名只读权限</p>
+</blockquote>
+<p><img src="/../../imgs/azure-blob2cdn/image-20250905095041131.png" alt="image-20250905095041131"></p>
+<p>选择 <strong>Azure Front Door</strong> 点击 <strong>内容交付</strong> 创建一个 <strong>内容交付（CDN）</strong></p>
+<p><img src="/../../imgs/azure-blob2cdn/image-20250905110010757.png" alt="image-20250905110010757"></p>
+<p><img src="/../../imgs/azure-blob2cdn/image-20250905110648694.png" alt="image-20250905110648694"></p>
+<blockquote>
+<p>参数按照需求选就行了，记得源类型选择 Azure Blob存储，让在源主机名选择 源主机名</p>
+<p>这样就创建好了 Azure Front Door 的 CDN 服务</p>
+</blockquote>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>随便上传几个文件到 Azure Blob 存储上去，比如我上传了个视频</p>
+<ul>
+<li>azure blob url</li>
+</ul>
+<p>链接为:</p>
+<p><a target="_blank" rel="noopener" href="https://lishun71.blob.core.windows.net/imgs/%E5%8D%8E%E9%B8%9F%E9%A3%8E%E6%9C%88.mp4">https://lishun71.blob.core.windows.net/imgs/%E5%8D%8E%E9%B8%9F%E9%A3%8E%E6%9C%88.mp4</a></p>
+<p><video  src="https://lishun71.blob.core.windows.net/imgs/%E5%8D%8E%E9%B8%9F%E9%A3%8E%E6%9C%88.mp4"> </video></p>
+<ul>
+<li>azure front door cdn url</li>
+</ul>
+<p>链接为</p>
+<p><a target="_blank" rel="noopener" href="https://lishun-cdn-e9djhre3gbe6ftd8.z01.azurefd.net/imgs/%E5%8D%8E%E9%B8%9F%E9%A3%8E%E6%9C%88.mp4">https://lishun-cdn-e9djhre3gbe6ftd8.z01.azurefd.net/imgs/%E5%8D%8E%E9%B8%9F%E9%A3%8E%E6%9C%88.mp4</a></p>
+<p><video src="https://lishun-cdn-e9djhre3gbe6ftd8.z01.azurefd.net/imgs/%E5%8D%8E%E9%B8%9F%E9%A3%8E%E6%9C%88.mp4"></video></p>
+<p>对比速度就可以看出，差别还挺明显的，CDN加速还挺顶的</p>
+
       
        
     </div>
