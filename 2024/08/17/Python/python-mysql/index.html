@@ -1,0 +1,2965 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>python_mysql | Akabane71</title>
+  <meta name="keywords" content=" python , mysql ">
+  <meta name="description" content="python_mysql | Akabane71">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode-cookies">
+<meta property="og:url" content="http://example.com/2025/09/21/Tools/vscode-cookies/index.html">
+<meta property="og:site_name" content="Akabane71">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-21T01:52:54.000Z">
+<meta property="article:modified_time" content="2025-09-21T01:54:44.493Z">
+<meta property="article:author" content="LiShun">
+<meta property="article:tag" content="tools">
+<meta property="article:tag" content="vscode">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/my_face.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/my_face.png"/>
+</a>
+<div class="author">
+    <span>LiShun</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/Akabane71"
+               target="_blank">
+                
+                    <i class="iconfont icon-github"></i>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:lishun_71@qq.com"
+               target="_blank">
+                
+                    <i class="iconfont icon-email"></i>
+                
+            </a>
+        
+    
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(127)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Python">
+            
+            Python
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Go">
+            
+            Go
+            <small>(17)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            
+            Linux
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="生活">
+            
+            生活
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Azure">
+            
+            Azure
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="CPP">
+            
+            CPP
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Docker">
+            
+            Docker
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Life">
+            
+            Life
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="ML">
+            
+            ML
+            <small>(21)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="OS">
+            
+            OS
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Ros">
+            
+            Ros
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spider">
+            
+            Spider
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Tools">
+            
+            Tools
+            <small>(13)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Web">
+            
+            Web
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/Akabane71">github</a>
+        
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="127">
+<input type="hidden" id="yelog_site_word_count" value="140.7k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://senranja.github.io/">ShenYanjian</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3d-slam</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>7z</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反思</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>感受</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>机娘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>寿屋</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>accelerate</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>activate function</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>agent</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aiohttp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>air</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ascii</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ASR</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>async</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>authentication</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>az500</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>azure</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Azure</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>azure blob</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>azure front door</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>base64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>basic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>benchmark</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bilibili</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>blob-storage</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bs4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>btrfs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>C++</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cdn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>channel</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cipher</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>clip</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cmake</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>concurrent</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>conda</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>config</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cpp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cuda_memory</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cybersecurity</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>distributed-training</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dns</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>domain</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dp-300</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>enccode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>env</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ext4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>faster-whisper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>frp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gbk</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>generatord</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gitlab</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goland</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goroutine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gost</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>grpc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>huggingface</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hyper-v</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>imu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>interceptor</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jetson_nano</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>joy_controller</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>langextract</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lidar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lite3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>llm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>log</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>loss</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lterator</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>lumberjack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m365</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>m3u8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>makefile</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markitdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mbr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mcp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>messagepack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>metadata</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microservices</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>microsoft graph</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ml</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>monolithic applications</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mount</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>move_base</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nav</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>navigation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>network</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ngnix</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node_package</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>occupancy_grid_map</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>os</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PATH</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pcd filtrer</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pdf2markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>phi4</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pipreqs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>playwright</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>plugins</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pycharm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pydantic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pytorch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Pytorch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pytroch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rag</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ragflow</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>re</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reflect</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requirements</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>resolver</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ros</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ros1</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>S2TT</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>scaffold</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>scrapy</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>slam</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>snowflake</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>software</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spider</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssh</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tensorRT</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tensorRT-llm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tips</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>topic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>triton</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>trojan-go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>type-hints</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ue5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uefi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utf8</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uuid</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vcpkg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>venv</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>viper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>visual studio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vpn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vscode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>websocket</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>whisper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wsl2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolov5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zap</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/09/21/Tools/vscode-cookies/"
+           data-tag="tools,vscode"
+           data-author="" >
+            <span class="post-title" title="vscode-cookies">vscode-cookies</span>
+            <span class="post-date" title="2025-09-21 09:52:54">2025/09/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/18/ML/project/nv-tensorRT-LLM/"
+           data-tag="llm,nv,tensorRT-llm"
+           data-author="" >
+            <span class="post-title" title="nv-tensorRT-LLM">nv-tensorRT-LLM</span>
+            <span class="post-date" title="2025-09-18 17:16:42">2025/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/18/ML/project/nv-triton/"
+           data-tag="nv,triton"
+           data-author="" >
+            <span class="post-title" title="nv-triton">nv-triton</span>
+            <span class="post-date" title="2025-09-18 16:53:48">2025/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/17/ML/solution/%E5%AE%9E%E6%97%B6%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB-%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/"
+           data-tag="ASR,S2TT"
+           data-author="" >
+            <span class="post-title" title="实时语音识别-技术选型">实时语音识别-技术选型</span>
+            <span class="post-date" title="2025-09-17 15:56:18">2025/09/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/09/17/ML/Gradio%E6%9E%84%E5%BB%BAAI%E5%89%8D%E7%AB%AF%E5%B1%95%E7%A4%BA%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Gradio构建AI前端展示框架">Gradio构建AI前端展示框架</span>
+            <span class="post-date" title="2025-09-17 01:36:11">2025/09/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/09/15/Azure/dp-300/dp-300/"
+           data-tag="dp-300"
+           data-author="" >
+            <span class="post-title" title="dp-300">dp-300</span>
+            <span class="post-date" title="2025-09-15 16:17:00">2025/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Life "
+           href="/2025/09/15/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/%E5%87%BA%E5%AD%A6%E6%A0%A1%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E5%8F%97/"
+           data-tag="反思,感受"
+           data-author="" >
+            <span class="post-title" title="出学校后的一些感受">出学校后的一些感受</span>
+            <span class="post-date" title="2025-09-15 16:04:36">2025/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 生活 "
+           href="/2025/09/13/Life/%E8%83%B6%E6%A8%A1/%E5%AF%BF%E5%B1%8B-KP782-%E5%BC%82%E8%89%B2%E5%9C%A3%E9%AA%91%E5%A3%AB%E5%B8%95%E6%8B%89%E4%B8%81/"
+           data-tag="模型,机娘,寿屋"
+           data-author="" >
+            <span class="post-title" title="寿屋-KP782-异色圣骑士帕拉丁">寿屋-KP782-异色圣骑士帕拉丁</span>
+            <span class="post-date" title="2025-09-13 21:10:14">2025/09/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/12/ML/solution/pdf2markdown-soution/"
+           data-tag="tools,pdf2markdown"
+           data-author="" >
+            <span class="post-title" title="pdf2markdown-soution">pdf2markdown-soution</span>
+            <span class="post-date" title="2025-09-12 18:26:28">2025/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/12/ML/llm/ml-langextract/"
+           data-tag="ml,llm,langextract"
+           data-author="" >
+            <span class="post-title" title="ml-langextract">ml-langextract</span>
+            <span class="post-date" title="2025-09-12 16:11:54">2025/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2025/09/08/Linux/domain-dns-ssl/"
+           data-tag="dns,domain,ssl"
+           data-author="" >
+            <span class="post-title" title="domain-dns-ssl">domain-dns-ssl</span>
+            <span class="post-date" title="2025-09-08 16:45:03">2025/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/09/08/Tools/vpn-trojan-go/"
+           data-tag="tools,vpn,trojan-go"
+           data-author="" >
+            <span class="post-title" title="vpn_trojan-go">vpn_trojan-go</span>
+            <span class="post-date" title="2025-09-08 14:10:32">2025/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/09/04/Azure/azure-blob2cdn/"
+           data-tag="azure,azure blob,azure front door,cdn"
+           data-author="" >
+            <span class="post-title" title="azure-blob2cdn">azure-blob2cdn</span>
+            <span class="post-date" title="2025-09-04 14:12:16">2025/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2025/09/01/Python/spider/python-playwright-example/"
+           data-tag="python,spider,playwright"
+           data-author="" >
+            <span class="post-title" title="python-playwright-example">python-playwright-example</span>
+            <span class="post-date" title="2025-09-01 09:25:04">2025/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2025/08/29/C++/cmake/vscode-cmake-config/"
+           data-tag="cpp,vscode,cmake"
+           data-author="" >
+            <span class="post-title" title="vscode-cmake-config">vscode-cmake-config</span>
+            <span class="post-date" title="2025-08-29 11:39:29">2025/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2025/08/27/Linux/frp-internal-network-penetration-guide/"
+           data-tag="linux,frp,network"
+           data-author="" >
+            <span class="post-title" title="frp-internal-network-penetration-guide">frp-internal-network-penetration-guide</span>
+            <span class="post-date" title="2025-08-27 15:43:27">2025/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2025/08/26/C++/cmake/cmake-base/"
+           data-tag="cpp,cmake"
+           data-author="" >
+            <span class="post-title" title="cmake-base">cmake-base</span>
+            <span class="post-date" title="2025-08-26 11:36:13">2025/08/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/25/Azure/azure-ai-search-rag/"
+           data-tag="rag,azure"
+           data-author="" >
+            <span class="post-title" title="azure-ai_search-rag">azure-ai_search-rag</span>
+            <span class="post-date" title="2025-08-25 15:15:41">2025/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2025/08/25/Docker/docker-ragflow/"
+           data-tag="rag,docker,ragflow"
+           data-author="" >
+            <span class="post-title" title="docker-ragflow">docker-ragflow</span>
+            <span class="post-date" title="2025-08-25 13:50:48">2025/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/21/Azure/azure-blob/"
+           data-tag="azure,python,blob-storage"
+           data-author="" >
+            <span class="post-title" title="azure-blob">azure-blob</span>
+            <span class="post-date" title="2025-08-21 09:29:43">2025/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/08/19/Python/python-pydantic/"
+           data-tag="python,pydantic,type-hints"
+           data-author="" >
+            <span class="post-title" title="python-pydantic">python-pydantic</span>
+            <span class="post-date" title="2025-08-19 16:24:40">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/19/ML/basic/torch-distributed-training/"
+           data-tag="python,basic,distributed-training"
+           data-author="" >
+            <span class="post-title" title="torch-distributed-training">torch-distributed-training</span>
+            <span class="post-date" title="2025-08-19 11:22:53">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2025/08/19/Web/web-ngnix/"
+           data-tag="ngnix,web"
+           data-author="" >
+            <span class="post-title" title="web-ngnix">web-ngnix</span>
+            <span class="post-date" title="2025-08-19 11:09:22">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/18/Azure/azure-authentication/"
+           data-tag="azure,authentication"
+           data-author="" >
+            <span class="post-title" title="azure-authentication">azure-authentication</span>
+            <span class="post-date" title="2025-08-18 16:37:12">2025/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/15/ML/llm/ml-markitdown/"
+           data-tag="ml,markitdown"
+           data-author="" >
+            <span class="post-title" title="ml-markitdown">ml-markitdown</span>
+            <span class="post-date" title="2025-08-15 10:23:45">2025/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/08/14/Azure/m365/azure-m365-graph/"
+           data-tag="azure,m365,microsoft graph"
+           data-author="" >
+            <span class="post-title" title="azure-m365-graph">azure-m365-graph</span>
+            <span class="post-date" title="2025-08-14 14:13:51">2025/08/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/08/13/ML/project/faster-whisper-benchmark/"
+           data-tag="ML,whisper,faster-whisper,benchmark"
+           data-author="" >
+            <span class="post-title" title="faster-whisper-benchmark">faster-whisper-benchmark</span>
+            <span class="post-date" title="2025-08-13 09:54:46">2025/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2025/08/04/Linux/linux-tar-7z/"
+           data-tag="tar,7z"
+           data-author="" >
+            <span class="post-title" title="linux-tar-7z">linux-tar-7z</span>
+            <span class="post-date" title="2025-08-04 15:10:03">2025/08/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/30/ML/basic/pytorch-dtypes-and-optimizers/"
+           data-tag="deeplearn,basic,pytroch"
+           data-author="" >
+            <span class="post-title" title="pytorch_dtypes_and_optimizers">pytorch_dtypes_and_optimizers</span>
+            <span class="post-date" title="2025-07-30 11:07:02">2025/07/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/30/ML/basic/pytorch-cuda-memory-usage/"
+           data-tag="pytorch,cuda_memory"
+           data-author="" >
+            <span class="post-title" title="pytorch_cuda_memory_usage">pytorch_cuda_memory_usage</span>
+            <span class="post-date" title="2025-07-30 10:21:33">2025/07/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/07/28/Tools/gost/"
+           data-tag="go,tools,gost,vpn"
+           data-author="" >
+            <span class="post-title" title="gost">gost</span>
+            <span class="post-date" title="2025-07-28 09:22:53">2025/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2025/07/25/Docker/install-docker/"
+           data-tag="docker,linux"
+           data-author="" >
+            <span class="post-title" title="install-docker">install-docker</span>
+            <span class="post-date" title="2025-07-25 10:37:38">2025/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/07/24/ML/llm/ml-vit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ml-vit">ml-vit</span>
+            <span class="post-date" title="2025-07-24 20:32:06">2025/07/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/24/ML/llm/ml-clip/"
+           data-tag="deeplearn,clip"
+           data-author="" >
+            <span class="post-title" title="ml-clip">ml-clip</span>
+            <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/07/24/ML/llm/ml-transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ml-transformer">ml-transformer</span>
+            <span class="post-date" title="2025-07-24 20:31:49">2025/07/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/23/ML/basic/activation-function-loss/"
+           data-tag="deeplearn,loss,activate function"
+           data-author="" >
+            <span class="post-title" title="activation_function-loss">activation_function-loss</span>
+            <span class="post-date" title="2025-07-23 14:13:42">2025/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/22/ML/hugging%20face/hugging-face-accelerate/"
+           data-tag="deeplearn,huggingface,accelerate"
+           data-author="" >
+            <span class="post-title" title="hg-accelerate">hg-accelerate</span>
+            <span class="post-date" title="2025-07-22 12:12:28">2025/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/21/ML/linux-deeplearn-env/"
+           data-tag="python,linux,deeplearn"
+           data-author="" >
+            <span class="post-title" title="linux-deeplearn-env">linux-deeplearn-env</span>
+            <span class="post-date" title="2025-07-21 16:15:36">2025/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/07/20/Tools/vscode-plugins/"
+           data-tag="vscode,plugins"
+           data-author="" >
+            <span class="post-title" title="vscode-plugins">vscode-plugins</span>
+            <span class="post-date" title="2025-07-20 23:22:57">2025/07/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/20/ML/hugging%20face/hugging-face-learn/"
+           data-tag="huggingface"
+           data-author="" >
+            <span class="post-title" title="hugging_face-learn">hugging_face-learn</span>
+            <span class="post-date" title="2025-07-20 18:43:04">2025/07/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/19/ML/azure-fintune/azure-phi4mm-finetune/"
+           data-tag="azure,phi4"
+           data-author="" >
+            <span class="post-title" title="azure-phi4mm">azure-phi4mm</span>
+            <span class="post-date" title="2025-07-19 22:20:13">2025/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/07/15/Python/env-control/python-uv/"
+           data-tag="python,uv"
+           data-author="" >
+            <span class="post-title" title="python-uv">python-uv</span>
+            <span class="post-date" title="2025-07-15 20:42:53">2025/07/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/07/10/Tools/vscode-ssh-remote/"
+           data-tag="tools,vscode,ssh"
+           data-author="" >
+            <span class="post-title" title="vscode-ssh-remote">vscode-ssh-remote</span>
+            <span class="post-date" title="2025-07-10 17:14:14">2025/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/07/10/whsiper-train/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="whsiper-train">whsiper-train</span>
+            <span class="post-date" title="2025-07-10 10:17:34">2025/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/07/08/Azure/azure-basic/"
+           data-tag="azure"
+           data-author="" >
+            <span class="post-title" title="azure-basic">azure-basic</span>
+            <span class="post-date" title="2025-07-08 09:32:48">2025/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/07/07/Azure/az-500/az500-security-technology/"
+           data-tag="azure,az500,cybersecurity"
+           data-author="" >
+            <span class="post-title" title="az500-security-technology">az500-security-technology</span>
+            <span class="post-date" title="2025-07-07 15:12:18">2025/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/07/ML/basic/pytorch-basic-concepts/"
+           data-tag="ML,Pytorch"
+           data-author="" >
+            <span class="post-title" title="pytorch-basic-concepts">pytorch-basic-concepts</span>
+            <span class="post-date" title="2025-07-07 10:15:55">2025/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/07/ML/azure-machine-learning-pytorch/"
+           data-tag="ML,Azure"
+           data-author="" >
+            <span class="post-title" title="azure-machine-learning-pytorch">azure-machine-learning-pytorch</span>
+            <span class="post-date" title="2025-07-07 09:44:20">2025/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/07/03/ML/azure-fintune/azure-paraformer-train/"
+           data-tag="ML,Azure,Linux,Python"
+           data-author="" >
+            <span class="post-title" title="azure-paraformer-train">azure-paraformer-train</span>
+            <span class="post-date" title="2025-07-03 09:41:16">2025/07/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/06/08/Python/agent/python-agent-mcp/"
+           data-tag="python,agent,mcp"
+           data-author="" >
+            <span class="post-title" title="python-agent-mcp">python-agent-mcp</span>
+            <span class="post-date" title="2025-06-08 10:47:28">2025/06/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
+           data-tag="ros1,lite3,slam,nav,pcd filtrer"
+           data-author="" >
+            <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
+            <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2025/03/31/C++/ue/ue-cpp-learn-01/"
+           data-tag="cpp,ue5"
+           data-author="" >
+            <span class="post-title" title="ue_cpp_learn_01">ue_cpp_learn_01</span>
+            <span class="post-date" title="2025-03-31 09:39:32">2025/03/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/03/20/Web/load-balancing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="load_balancing">load_balancing</span>
+            <span class="post-date" title="2025-03-20 14:07:42">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2025/03/19/Docker/docker-gitlab/"
+           data-tag="docker,linux,gitlab"
+           data-author="" >
+            <span class="post-title" title="docker-gitlab">docker-gitlab</span>
+            <span class="post-date" title="2025-03-19 14:19:00">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/03/18/ML/jetson-nano-yolov5/"
+           data-tag="python,jetson_nano,yolov5,pytorch"
+           data-author="" >
+            <span class="post-title" title="jetson_nano_yolov5">jetson_nano_yolov5</span>
+            <span class="post-date" title="2025-03-18 10:31:50">2025/03/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2025/03/13/Go/grpc/grpc-resolver/"
+           data-tag="go,grpc,resolver"
+           data-author="" >
+            <span class="post-title" title="grpc-resolver">grpc-resolver</span>
+            <span class="post-date" title="2025-03-13 10:27:49">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/06-ros1-navigation/"
+           data-tag="ros,navigation,move_base"
+           data-author="" >
+            <span class="post-title" title="06-ros1-navigation">06-ros1-navigation</span>
+            <span class="post-date" title="2025-03-10 09:54:01">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/05-ros1-message-package/"
+           data-tag="ros,message"
+           data-author="" >
+            <span class="post-title" title="05-ros1-message_package">05-ros1-message_package</span>
+            <span class="post-date" title="2025-03-10 09:53:37">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
+           data-tag="ros,slam,occupancy_grid_map"
+           data-author="" >
+            <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
+            <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/03-ros1-robot-move/"
+           data-tag="ros,lidar,imu"
+           data-author="" >
+            <span class="post-title" title="03-ros1-robot_move">03-ros1-robot_move</span>
+            <span class="post-date" title="2025-03-10 09:52:09">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/02-ros1-node-package/"
+           data-tag="ros,node_package,topic,message"
+           data-author="" >
+            <span class="post-title" title="02-ros1-node-package">02-ros1-node-package</span>
+            <span class="post-date" title="2025-03-10 09:51:49">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/LearnNote/01-ros1-install-conifg/"
+           data-tag="vscode,ros"
+           data-author="" >
+            <span class="post-title" title="01-ros1-install-conifg">01-ros1-install-conifg</span>
+            <span class="post-date" title="2025-03-10 09:50:38">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2025/03/10/Ros/ros1-xbox-joy/"
+           data-tag="ros,joy_controller,lite3"
+           data-author="" >
+            <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
+            <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2025/02/28/C++/tensorRT-cpp/"
+           data-tag="ML,cpp,tensorRT"
+           data-author="" >
+            <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
+            <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/02/16/Tools/visual-studio/"
+           data-tag="visual studio,cpp"
+           data-author="" >
+            <span class="post-title" title="visual-studio">visual-studio</span>
+            <span class="post-date" title="2025-02-16 09:23:48">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/02/06/Tools/vscode-vcpkg/"
+           data-tag="windows,C++,vcpkg"
+           data-author="" >
+            <span class="post-title" title="vscode-vcpkg">vscode-vcpkg</span>
+            <span class="post-date" title="2025-02-06 15:20:15">2025/02/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2024/12/20/Ros/ros1-3d-slam/"
+           data-tag="ros1,3d-slam"
+           data-author="" >
+            <span class="post-title" title="ros1-3d-slam">ros1-3d-slam</span>
+            <span class="post-date" title="2024-12-20 16:45:26">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Ros "
+           href="/2024/12/20/Ros/ros1-lite3/"
+           data-tag="ros,lite3,slam"
+           data-author="" >
+            <span class="post-title" title="ros1-lite3">ros1-lite3</span>
+            <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2024/11/13/Docker/docker-mysql/"
+           data-tag="docker,mysql,linux"
+           data-author="" >
+            <span class="post-title" title="docker-mysql">docker-mysql</span>
+            <span class="post-date" title="2024-11-13 14:52:16">2024/11/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/11/04/Python/basics/python-basics/"
+           data-tag="python,lterator,generatord"
+           data-author="" >
+            <span class="post-title" title="python-basics">python-basics</span>
+            <span class="post-date" title="2024-11-04 09:47:48">2024/11/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/10/30/OS/concurrency-models/"
+           data-tag="python,concurrent,go"
+           data-author="" >
+            <span class="post-title" title="concurrency_models">concurrency_models</span>
+            <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/10/12/Linux/docker/"
+           data-tag="docker,linux"
+           data-author="" >
+            <span class="post-title" title="docker">docker</span>
+            <span class="post-date" title="2024-10-12 16:13:56">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/10/12/Tools/docker-gpu-cuda/"
+           data-tag="docker,wsl2,windows"
+           data-author="" >
+            <span class="post-title" title="docker-gpu-cuda">docker-gpu-cuda</span>
+            <span class="post-date" title="2024-10-12 11:03:04">2024/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2024/10/07/Web/monoliths-to-microservices/"
+           data-tag="web,monolithic applications,microservices"
+           data-author="" >
+            <span class="post-title" title="monoliths-to-microservices">monoliths-to-microservices</span>
+            <span class="post-date" title="2024-10-07 18:57:23">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/10/05/Go/grpc/grpc-interceptor/"
+           data-tag="go,grpc,interceptor"
+           data-author="" >
+            <span class="post-title" title="grpc-interceptor">grpc-interceptor</span>
+            <span class="post-date" title="2024-10-05 11:17:28">2024/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/10/05/Go/grpc/grpc-metadata/"
+           data-tag="go,grpc,metadata"
+           data-author="" >
+            <span class="post-title" title="grpc-metadata">grpc-metadata</span>
+            <span class="post-date" title="2024-10-05 10:52:03">2024/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/10/04/Go/grpc/grpc-4models/"
+           data-tag="gRPC"
+           data-author="" >
+            <span class="post-title" title="grpc-4models">grpc-4models</span>
+            <span class="post-date" title="2024-10-04 16:10:01">2024/10/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/10/03/OS/env-PATH/"
+           data-tag="env,PATH"
+           data-author="" >
+            <span class="post-title" title="env-PATH">env-PATH</span>
+            <span class="post-date" title="2024-10-03 11:03:32">2024/10/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2024/09/28/Web/uuid-snowflake/"
+           data-tag="python,uuid,snowflake"
+           data-author="" >
+            <span class="post-title" title="uuid-snowflake">uuid-snowflake</span>
+            <span class="post-date" title="2024-09-28 22:17:00">2024/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/23/OS/about-encode/"
+           data-tag="enccode,utf8,gbk,unicode,ascii,base64"
+           data-author="" >
+            <span class="post-title" title="about-encode">about-encode</span>
+            <span class="post-date" title="2024-09-23 09:33:46">2024/09/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/20/Python/spider/python-scrapy/"
+           data-tag="python,spider,scrapy"
+           data-author="" >
+            <span class="post-title" title="python-scrapy">python-scrapy</span>
+            <span class="post-date" title="2024-09-20 15:20:08">2024/09/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/16/Tools/docker-wsl2/"
+           data-tag="docker,wsl2"
+           data-author="" >
+            <span class="post-title" title="docker-wsl2">docker-wsl2</span>
+            <span class="post-date" title="2024-09-16 10:10:47">2024/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/11/Tools/good-software/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="good-software">good-software</span>
+            <span class="post-date" title="2024-09-11 17:22:49">2024/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 CPP "
+           href="/2024/09/11/C++/cplus-module/"
+           data-tag="cpp,ue"
+           data-author="" >
+            <span class="post-title" title="cplus-module">cplus-module</span>
+            <span class="post-date" title="2024-09-11 08:39:43">2024/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2024/09/08/ML/deeplearn-cv/"
+           data-tag="python,pytorch,cv"
+           data-author="" >
+            <span class="post-title" title="deeplearn-cv">deeplearn-cv</span>
+            <span class="post-date" title="2024-09-08 13:39:19">2024/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/09/07/Tools/windows-makefile/"
+           data-tag="windows,makefile"
+           data-author="" >
+            <span class="post-title" title="windows-makefile">windows-makefile</span>
+            <span class="post-date" title="2024-09-07 14:36:40">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/07/OS/config-file-type/"
+           data-tag="config"
+           data-author="" >
+            <span class="post-title" title="config-file-type">config-file-type</span>
+            <span class="post-date" title="2024-09-07 09:50:30">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/07/OS/log/"
+           data-tag="log"
+           data-author="" >
+            <span class="post-title" title="log">log</span>
+            <span class="post-date" title="2024-09-07 09:47:29">2024/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/config/go-air/"
+           data-tag="go,air"
+           data-author="" >
+            <span class="post-title" title="go-air">go-air</span>
+            <span class="post-date" title="2024-09-06 21:33:55">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/gin/go-gin-scaffold/"
+           data-tag="go,gin,scaffold"
+           data-author="" >
+            <span class="post-title" title="go-gin-scaffold">go-gin-scaffold</span>
+            <span class="post-date" title="2024-09-06 21:21:07">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/config/go-zap/"
+           data-tag="go,log,gin,zap,lumberjack"
+           data-author="" >
+            <span class="post-title" title="go-zap">go-zap</span>
+            <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/06/Go/basic/go-csp-model/"
+           data-tag="go,csp"
+           data-author="" >
+            <span class="post-title" title="go-csp-model">go-csp-model</span>
+            <span class="post-date" title="2024-09-06 20:41:20">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/06/Linux/linux-mount/"
+           data-tag="linux,mount"
+           data-author="" >
+            <span class="post-title" title="linux-mount">linux-mount</span>
+            <span class="post-date" title="2024-09-06 20:07:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/btrfs-ext4/"
+           data-tag="ext4,btrfs"
+           data-author="" >
+            <span class="post-title" title="btrfs-ext4">btrfs-ext4</span>
+            <span class="post-date" title="2024-09-06 20:01:27">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/bios-uefi/"
+           data-tag="bios,uefi"
+           data-author="" >
+            <span class="post-title" title="bios-uefi">bios-uefi</span>
+            <span class="post-date" title="2024-09-06 19:50:21">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/dns/"
+           data-tag="dns"
+           data-author="" >
+            <span class="post-title" title="dns">dns</span>
+            <span class="post-date" title="2024-09-06 19:47:48">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/09/06/OS/mbr-gpt/"
+           data-tag="mbr,gpt"
+           data-author="" >
+            <span class="post-title" title="mbr-gpt">mbr-gpt</span>
+            <span class="post-date" title="2024-09-06 19:46:51">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2024/09/06/Python/python-explained/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python-explained">python-explained</span>
+            <span class="post-date" title="2024-09-06 12:18:03">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/basics/python-requirements/"
+           data-tag="python,requirements,pipreqs"
+           data-author="" >
+            <span class="post-title" title="python-requirements">python-requirements</span>
+            <span class="post-date" title="2024-09-06 12:11:54">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/06/Python/basics/python-venv-conda/"
+           data-tag="python,venv,conda"
+           data-author="" >
+            <span class="post-title" title="python-venv-conda">python-venv-conda</span>
+            <span class="post-date" title="2024-09-06 11:13:00">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-http/"
+           data-tag="go,http"
+           data-author="" >
+            <span class="post-title" title="go-http">go-http</span>
+            <span class="post-date" title="2024-09-05 22:24:00">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-goroutine-tips/"
+           data-tag="go,channel,goroutine,tips"
+           data-author="" >
+            <span class="post-title" title="go-goroutine-tips">go-goroutine-tips</span>
+            <span class="post-date" title="2024-09-05 22:21:40">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-select-channel/"
+           data-tag="go,channel,select"
+           data-author="" >
+            <span class="post-title" title="go-select-channel">go-select-channel</span>
+            <span class="post-date" title="2024-09-05 22:20:30">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-channel/"
+           data-tag="go,channel"
+           data-author="" >
+            <span class="post-title" title="go-channel">go-channel</span>
+            <span class="post-date" title="2024-09-05 22:18:38">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-crypto-cipher/"
+           data-tag="go,crypto,cipher"
+           data-author="" >
+            <span class="post-title" title="go-crypto-cipher">go-crypto-cipher</span>
+            <span class="post-date" title="2024-09-05 22:16:09">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-hash/"
+           data-tag="go,hash"
+           data-author="" >
+            <span class="post-title" title="go-hash">go-hash</span>
+            <span class="post-date" title="2024-09-05 22:02:15">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-serialization-deserilalization/"
+           data-tag="base64,go,json,messagepack"
+           data-author="" >
+            <span class="post-title" title="go-serialization-deserilalization">go-serialization-deserilalization</span>
+            <span class="post-date" title="2024-09-05 21:08:28">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/09/05/Go/basic/go-reflect/"
+           data-tag="go,reflect"
+           data-author="" >
+            <span class="post-title" title="go-reflect">go-reflect</span>
+            <span class="post-date" title="2024-09-05 20:49:59">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/basics/python-async/"
+           data-tag="python,async,asyncio,aiohttp"
+           data-author="" >
+            <span class="post-title" title="python-asyncio">python-asyncio</span>
+            <span class="post-date" title="2024-09-05 18:46:10">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-requests/"
+           data-tag="python,requests"
+           data-author="" >
+            <span class="post-title" title="python-requests">python-requests</span>
+            <span class="post-date" title="2024-09-05 18:39:42">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-bs4/"
+           data-tag="python,bs4"
+           data-author="" >
+            <span class="post-title" title="python-bs4">python-bs4</span>
+            <span class="post-date" title="2024-09-05 18:35:36">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/basics/python-re/"
+           data-tag="python,re"
+           data-author="" >
+            <span class="post-title" title="python-re">python-re</span>
+            <span class="post-date" title="2024-09-05 18:31:43">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/09/05/Python/python-xpath/"
+           data-tag="python,xpath"
+           data-author="" >
+            <span class="post-title" title="python-xpath">python-xpath</span>
+            <span class="post-date" title="2024-09-05 18:27:54">2024/09/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2024/09/01/Linux/linux-arch/"
+           data-tag="linux,arch"
+           data-author="" >
+            <span class="post-title" title="linux-arch">linux-arch</span>
+            <span class="post-date" title="2024-09-01 16:50:43">2024/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/hexo-md-img/"
+           data-tag="hexo,markdown"
+           data-author="" >
+            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2024/08/31/OS/wsl&hyper-v/"
+           data-tag="docker,linux,wsl2,hyper-v,windows"
+           data-author="" >
+            <span class="post-title" title="WSL&amp;Hyper-v">WSL&amp;Hyper-v</span>
+            <span class="post-date" title="2024-08-31 19:55:48">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           data-tag="docker,tools,goland,pycharm"
+           data-author="" >
+            <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
+            <span class="post-date" title="2024-08-31 12:06:36">2024/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/30/Go/websocket/go-ThreedKingdnomsGameServer/"
+           data-tag="go,websocket"
+           data-author="" >
+            <span class="post-title" title="go-ThreedKingdnomsGameServer">go-ThreedKingdnomsGameServer</span>
+            <span class="post-date" title="2024-08-30 09:40:32">2024/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Go "
+           href="/2024/08/28/Go/config/go-viper/"
+           data-tag="go,viper"
+           data-author="" >
+            <span class="post-title" title="go-viper">go-viper</span>
+            <span class="post-date" title="2024-08-28 16:55:49">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/28/Python/spider/python-bilibili-barrage/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-barrage">python-bilibili-barrage</span>
+            <span class="post-date" title="2024-08-28 16:01:25">2024/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/25/Python/spider/python-bilibili-video/"
+           data-tag="python,spider,bilibili,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="python-bilibili-video">python-bilibili-video</span>
+            <span class="post-date" title="2024-08-25 23:29:01">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/25/Python/basics/python-import/"
+           data-tag="python,os,sys"
+           data-author="" >
+            <span class="post-title" title="python-import">python-import</span>
+            <span class="post-date" title="2024-08-25 18:18:36">2024/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-spider-17knovel/"
+           data-tag="python,spider"
+           data-author="" >
+            <span class="post-title" title="python_spider_17knovel">python_spider_17knovel</span>
+            <span class="post-date" title="2024-08-17 15:38:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-redis/"
+           data-tag="python,redis"
+           data-author="" >
+            <span class="post-title" title="python_redis">python_redis</span>
+            <span class="post-date" title="2024-08-17 15:20:28">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2024/08/17/Python/python-mysql/"
+           data-tag="python,mysql"
+           data-author="" >
+            <span class="post-title" title="python_mysql">python_mysql</span>
+            <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Python/spider/python-async-spider-example/"
+           data-tag="python,spider,async,m3u8"
+           data-author="" >
+            <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
+            <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spider "
+           href="/2024/08/17/Go/basic/go-spider/"
+           data-tag="go,spider,http"
+           data-author="" >
+            <span class="post-title" title="go-spider">go-spider</span>
+            <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Python/python-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">python_mysql</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Python">Python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">python</a>
+            
+            <a class="color1">mysql</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-08-14 15:32:11'>2024-08-17 15:19</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:453</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pymysql-%E5%90%8C%E6%AD%A5-mysql"><span class="toc-text">pymysql 同步 mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLAlchemy-ORM"><span class="toc-text">SQLAlchemy ORM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aiomysql-%E5%BC%82%E6%AD%A5mysql"><span class="toc-text">aiomysql 异步mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tortoise-ORM"><span class="toc-text">Tortoise ORM</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="pymysql-同步-mysql">pymysql 同步 mysql</h2>
+<p>python + mysql ----&gt; pymysql</p>
+<pre><code class="language-python">'''
+数据库连接处理
+1. 通过程序操作数据库会自动开启事务
+2， 如果数据表不支持事务则执行语句后立即生效
+3. 如果数据表支持事务，则需要提交才能修改，否则默认结束为回滚
+'''
+import pymysql
+
+# 连接数据库  连接本机库可以不写host port
+db = pymysql.connect(
+    host=&quot;localhost&quot;,
+    port=3306,
+    user='root',
+    password='200371',
+    database='stu',
+    charset='utf8'
+)
+
+# 生成一个游标：调用sql语句得到执行结果集的对象
+cur = db.cursor()
+
+# 数据库写操作  增删改
+# 执行sql语句  class -&gt; InnoDB  hobby -&gt; MyISAM
+try:
+    sql = 'update class set score=100 where id=2;'
+    cur.execute(sql)
+    sql = 'delete from class where socre&lt;60;'
+    cur.execute(sql)
+    db.commit() # 事务提交
+except Exception as e:
+    print(e)
+    db.rollback() # 事务回滚
+
+# 关闭游标和数据库连接
+cur.close()
+db.close()
+
+</code></pre>
+<h3 id="SQLAlchemy-ORM">SQLAlchemy ORM</h3>
+<pre><code class="language-python">from sqlalchemy import create_engine, Column, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine('mysql+pymysql://root:200371@localhost/stu', echo=True)
+Base = declarative_base()
+
+class Class(Base):
+    __tablename__ = 'class'
+    id = Column(Integer, primary_key=True)
+    score = Column(Integer)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# 更新
+session.query(Class).filter_by(id=2).update(&#123;'score': 100&#125;)
+# 删除
+session.query(Class).filter(Class.score &lt; 60).delete()
+session.commit()
+
+</code></pre>
+<h2 id="aiomysql-异步mysql">aiomysql 异步mysql</h2>
+<h3 id="Tortoise-ORM"><strong>Tortoise ORM</strong></h3>
+<blockquote>
+<p>python异步本版的ORM框架，以mysql为例子</p>
+</blockquote>
+<pre><code class="language-bash">pip install tortoise-orm[aiomysql]
+</code></pre>
+<pre><code class="language-python">import asyncio
+from tortoise import Model, fields, Tortoise, run_async
+
+class Class(Model):
+    id = fields.IntField(pk=True)
+    score = fields.IntField()
+
+async def main():
+    await Tortoise.init(
+        db_url=&quot;mysql://root:200371@127.0.0.1:3306/stu&quot;,
+        modules=&#123;&quot;models&quot;: [&quot;models&quot;]&#125;
+    )
+    await Tortoise.generate_schemas()
+    # ORM事务处理
+    try:
+        async with Tortoise.get_connection(&quot;default&quot;).transaction():
+            # update class set score=100 where id=2;
+            await Class.filter(id=2).update(score=100)
+            # delete from class where score&lt;60;
+            await Class.filter(score__lt=60).delete()
+            # 事务：commit在离开async with块时自动完成
+    except Exception as e:
+        print(&quot;数据库操作异常:&quot;, e)
+        # 回滚由transaction管理
+    await Tortoise.close_connections()
+if __name__ == &quot;__main__&quot;:
+    run_async(main())
+</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2024 Akabane71
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'photoSwipe';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/bg.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/bg.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/bg.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/Akabane71">github</a>
+    
+</div>
+
+
+</html>
