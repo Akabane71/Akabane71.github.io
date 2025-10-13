@@ -6,17 +6,21 @@
   <meta name="keywords" content=" base64 , go , json , messagepack ">
   <meta name="description" content="go-serialization-deserilalization | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="codex &amp; azure 官方文档  Codex with Azure OpenAI in AI Foundry Models | Microsoft Learn">
+<meta name="description" content="Azure-GPU-VM故障排查 一个风和日丽的夜晚，我像往常一样打卡Azure上的GPU-VM，玩一些新模型 当我像往常一样输入 nvidia-smi (base) azureuser@torch-train-1:~&#x2F;lishun_ws&#x2F;AI-voice$ nvidia-smi NVIDIA-SMI couldn&#39;t find libnvidia-ml.so library in your sy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="azure-codex">
-<meta property="og:url" content="http://example.com/2025/09/24/ML/agent-cli/azure-codex/index.html">
+<meta property="og:title" content="azure-gpu-vm掉驱动维修">
+<meta property="og:url" content="http://example.com/2025/10/13/Linux/%E6%95%85%E9%9A%9C%E7%BB%B4%E4%BF%AE/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="codex &amp; azure 官方文档  Codex with Azure OpenAI in AI Foundry Models | Microsoft Learn">
+<meta property="og:description" content="Azure-GPU-VM故障排查 一个风和日丽的夜晚，我像往常一样打卡Azure上的GPU-VM，玩一些新模型 当我像往常一样输入 nvidia-smi (base) azureuser@torch-train-1:~&#x2F;lishun_ws&#x2F;AI-voice$ nvidia-smi NVIDIA-SMI couldn&#39;t find libnvidia-ml.so library in your sy">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-24T08:09:46.000Z">
-<meta property="article:modified_time" content="2025-09-24T08:10:58.204Z">
+<meta property="og:image" content="http://example.com/2025/10/13/imgs/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/image-20251013160547734.png">
+<meta property="article:published_time" content="2025-10-13T07:54:55.000Z">
+<meta property="article:modified_time" content="2025-10-13T08:06:22.960Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="故障维修">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/10/13/imgs/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/image-20251013160547734.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(130)</small>
+                <small>(137)</small>
             
         </div>
     </li>
@@ -150,7 +154,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -165,7 +169,7 @@
         <div data-rel="Azure">
             
             Azure
-            <small>(8)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -225,7 +229,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(21)</small>
+            <small>(24)</small>
         </div>
         
     </li>
@@ -300,7 +304,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -328,8 +332,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="130">
-<input type="hidden" id="yelog_site_word_count" value="141k">
+<input type="hidden" id="yelog_site_posts_number" value="137">
+<input type="hidden" id="yelog_site_word_count" value="141.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -388,6 +392,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>感受</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>故障维修</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -855,6 +863,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>peft</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>phi4</a>
             </li>
         
@@ -971,6 +983,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sse</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssh</a>
             </li>
         
@@ -1004,6 +1020,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>topic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>transformers</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1108,6 +1128,69 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2025/10/13/Linux/%E6%95%85%E9%9A%9C%E7%BB%B4%E4%BF%AE/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/"
+           data-tag="linux,故障维修"
+           data-author="" >
+            <span class="post-title" title="azure-gpu-vm掉驱动维修">azure-gpu-vm掉驱动维修</span>
+            <span class="post-date" title="2025-10-13 15:54:55">2025/10/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/10/13/ai-agent/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ai-agent">ai-agent</span>
+            <span class="post-date" title="2025-10-13 01:28:36">2025/10/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/10/10/ML/solution/gpt-sovits-ai%E6%8D%A2%E5%A3%B0/"
+           data-tag="ml"
+           data-author="" >
+            <span class="post-title" title="gpt-sovits">gpt-sovits</span>
+            <span class="post-date" title="2025-10-10 09:23:10">2025/10/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2025/10/09/Web/web-SSE/"
+           data-tag="web,sse"
+           data-author="" >
+            <span class="post-title" title="web-SSE">web-SSE</span>
+            <span class="post-date" title="2025-10-09 09:28:20">2025/10/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/30/ML/basic/pytorch-Transformers/"
+           data-tag="deeplearn,ml,transformers"
+           data-author="" >
+            <span class="post-title" title="pytorch-Transformers">pytorch-Transformers</span>
+            <span class="post-date" title="2025-09-30 11:38:05">2025/09/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/09/26/ML/basic/ml-PEFT/"
+           data-tag="deeplearn,peft"
+           data-author="" >
+            <span class="post-title" title="ml-PEFT">ml-PEFT</span>
+            <span class="post-date" title="2025-09-26 14:16:55">2025/09/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/09/25/Azure/azure-dns/"
+           data-tag="azure"
+           data-author="" >
+            <span class="post-title" title="azure-dns">azure-dns</span>
+            <span class="post-date" title="2025-09-25 10:41:23">2025/09/25</span>
+        </a>
         
         
         <a  class="全部文章 "
@@ -1391,7 +1474,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/07/30/ML/basic/pytorch-dtypes-and-optimizers/"
-           data-tag="deeplearn,basic,pytroch"
+           data-tag="deeplearn,pytroch,basic"
            data-author="" >
             <span class="post-title" title="pytorch_dtypes_and_optimizers">pytorch_dtypes_and_optimizers</span>
             <span class="post-date" title="2025-07-30 11:07:02">2025/07/30</span>
@@ -1616,7 +1699,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/03/19/Docker/docker-gitlab/"
-           data-tag="docker,linux,gitlab"
+           data-tag="docker,gitlab,linux"
            data-author="" >
             <span class="post-title" title="docker-gitlab">docker-gitlab</span>
             <span class="post-date" title="2025-03-19 14:19:00">2025/03/19</span>
@@ -1625,7 +1708,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/03/18/ML/jetson-nano-yolov5/"
-           data-tag="python,jetson_nano,yolov5,pytorch"
+           data-tag="python,pytorch,jetson_nano,yolov5"
            data-author="" >
             <span class="post-title" title="jetson_nano_yolov5">jetson_nano_yolov5</span>
             <span class="post-date" title="2025-03-18 10:31:50">2025/03/18</span>
@@ -1661,7 +1744,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
-           data-tag="ros,slam,occupancy_grid_map"
+           data-tag="slam,ros,occupancy_grid_map"
            data-author="" >
             <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
             <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
@@ -1697,7 +1780,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,joy_controller,lite3"
+           data-tag="lite3,ros,joy_controller"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -1706,7 +1789,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -1715,7 +1798,7 @@
         
         <a  class="全部文章 Tools "
            href="/2025/02/16/Tools/visual-studio/"
-           data-tag="visual studio,cpp"
+           data-tag="cpp,visual studio"
            data-author="" >
             <span class="post-title" title="visual-studio">visual-studio</span>
             <span class="post-date" title="2025-02-16 09:23:48">2025/02/16</span>
@@ -1742,7 +1825,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,lite3,slam"
+           data-tag="lite3,slam,ros"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -1751,7 +1834,7 @@
         
         <a  class="全部文章 Docker "
            href="/2024/11/13/Docker/docker-mysql/"
-           data-tag="docker,mysql,linux"
+           data-tag="docker,linux,mysql"
            data-author="" >
             <span class="post-title" title="docker-mysql">docker-mysql</span>
             <span class="post-date" title="2024-11-13 14:52:16">2024/11/13</span>
@@ -1949,7 +2032,7 @@
         
         <a  class="全部文章 Go "
            href="/2024/09/06/Go/config/go-zap/"
-           data-tag="go,log,gin,zap,lumberjack"
+           data-tag="go,log,zap,lumberjack,gin"
            data-author="" >
             <span class="post-title" title="go-zap">go-zap</span>
             <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
@@ -2273,7 +2356,7 @@
         
         <a  class="全部文章 Spider "
            href="/2024/08/17/Go/basic/go-spider/"
-           data-tag="go,spider,http"
+           data-tag="go,http,spider"
            data-author="" >
             <span class="post-title" title="go-spider">go-spider</span>
             <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
@@ -2754,8 +2837,6 @@ func f_1_5() &#123;
     var img_resize = 'photoSwipe';
     function initArticle() {
         /*渲染对应的表格样式*/
-        
-            $("#post .pjax table").addClass("green_title");
         
 
         /*渲染打赏样式*/
