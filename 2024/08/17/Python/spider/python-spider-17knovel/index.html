@@ -6,21 +6,19 @@
   <meta name="keywords" content=" python , spider ">
   <meta name="description" content="python_spider_17knovel | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Azure-GPU-VM故障排查 一个风和日丽的夜晚，我像往常一样打卡Azure上的GPU-VM，玩一些新模型 当我像往常一样输入 nvidia-smi (base) azureuser@torch-train-1:~&#x2F;lishun_ws&#x2F;AI-voice$ nvidia-smi NVIDIA-SMI couldn&#39;t find libnvidia-ml.so library in your sy">
+<meta name="description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
 <meta property="og:type" content="article">
-<meta property="og:title" content="azure-gpu-vm掉驱动维修">
-<meta property="og:url" content="http://example.com/2025/10/13/Linux/%E6%95%85%E9%9A%9C%E7%BB%B4%E4%BF%AE/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/index.html">
+<meta property="og:title" content="aks-dify">
+<meta property="og:url" content="http://example.com/2025/10/23/Docker/aks-dify/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="Azure-GPU-VM故障排查 一个风和日丽的夜晚，我像往常一样打卡Azure上的GPU-VM，玩一些新模型 当我像往常一样输入 nvidia-smi (base) azureuser@torch-train-1:~&#x2F;lishun_ws&#x2F;AI-voice$ nvidia-smi NVIDIA-SMI couldn&#39;t find libnvidia-ml.so library in your sy">
+<meta property="og:description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/10/13/imgs/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/image-20251013160547734.png">
-<meta property="article:published_time" content="2025-10-13T07:54:55.000Z">
-<meta property="article:modified_time" content="2025-10-13T08:06:22.960Z">
+<meta property="article:published_time" content="2025-10-23T12:22:28.000Z">
+<meta property="article:modified_time" content="2025-10-23T12:29:02.803Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="故障维修">
+<meta property="article:tag" content="dify">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/10/13/imgs/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/image-20251013160547734.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -112,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(137)</small>
+                <small>(143)</small>
             
         </div>
     </li>
@@ -154,7 +152,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -169,7 +167,7 @@
         <div data-rel="Azure">
             
             Azure
-            <small>(9)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -199,7 +197,7 @@
         <div data-rel="Docker">
             
             Docker
-            <small>(4)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -229,7 +227,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(24)</small>
+            <small>(25)</small>
         </div>
         
     </li>
@@ -332,8 +330,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="137">
-<input type="hidden" id="yelog_site_word_count" value="141.7k">
+<input type="hidden" id="yelog_site_posts_number" value="143">
+<input type="hidden" id="yelog_site_word_count" value="143.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -428,6 +426,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>air</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>aks</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -571,6 +573,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>devops</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dify</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>distributed-training</a>
             </li>
         
@@ -659,6 +669,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gpt-sovits</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>grpc</a>
             </li>
         
@@ -704,6 +718,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>k8s</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1023,7 +1041,7 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>transformers</a>
+                <i class="iconfont icon-tag"></i><a>transformer</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1130,6 +1148,69 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Docker "
+           href="/2025/10/23/Docker/aks-dify/"
+           data-tag="dify,docker"
+           data-author="" >
+            <span class="post-title" title="aks-dify">aks-dify</span>
+            <span class="post-date" title="2025-10-23 20:22:28">2025/10/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/10/17/Azure/azure-static-web-apps/"
+           data-tag="web,azure"
+           data-author="" >
+            <span class="post-title" title="azure_static_web_apps">azure_static_web_apps</span>
+            <span class="post-date" title="2025-10-17 16:32:10">2025/10/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/10/16/ML/solution/dify%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0/"
+           data-tag="dify,ml"
+           data-author="" >
+            <span class="post-title" title="dify工作流学习">dify工作流学习</span>
+            <span class="post-date" title="2025-10-16 13:37:10">2025/10/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/2025/10/14/Docker/docker-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker-基础知识">docker-基础知识</span>
+            <span class="post-date" title="2025-10-14 17:37:53">2025/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/10/14/Azure/azure-devops%E5%AD%A6%E4%B9%A0/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="azure-devops学习">azure-devops学习</span>
+            <span class="post-date" title="2025-10-14 16:05:48">2025/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux "
+           href="/2025/10/14/Linux/k8s%E5%AD%A6%E4%B9%A0/"
+           data-tag="linux,k8s"
+           data-author="" >
+            <span class="post-title" title="k8s学习">k8s学习</span>
+            <span class="post-date" title="2025-10-14 15:27:19">2025/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Azure "
+           href="/2025/10/14/Azure/azure-aks%E5%AD%A6%E4%B9%A0/"
+           data-tag="azure,aks"
+           data-author="" >
+            <span class="post-title" title="azure-aks学习">azure-aks学习</span>
+            <span class="post-date" title="2025-10-14 14:12:52">2025/10/14</span>
+        </a>
+        
+        
         <a  class="全部文章 Linux "
            href="/2025/10/13/Linux/%E6%95%85%E9%9A%9C%E7%BB%B4%E4%BF%AE/azure-gpu-vm%E6%8E%89%E9%A9%B1%E5%8A%A8%E7%BB%B4%E4%BF%AE/"
            data-tag="linux,故障维修"
@@ -1150,7 +1231,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/10/10/ML/solution/gpt-sovits-ai%E6%8D%A2%E5%A3%B0/"
-           data-tag="ml"
+           data-tag="ml,gpt-sovits"
            data-author="" >
             <span class="post-title" title="gpt-sovits">gpt-sovits</span>
             <span class="post-date" title="2025-10-10 09:23:10">2025/10/10</span>
@@ -1167,10 +1248,10 @@
         
         
         <a  class="全部文章 ML "
-           href="/2025/09/30/ML/basic/pytorch-Transformers/"
-           data-tag="deeplearn,ml,transformers"
+           href="/2025/09/30/ML/basic/pytorch-Transformer/"
+           data-tag="deeplearn,ml,transformer"
            data-author="" >
-            <span class="post-title" title="pytorch-Transformers">pytorch-Transformers</span>
+            <span class="post-title" title="pytorch-Transformer">pytorch-Transformer</span>
             <span class="post-date" title="2025-09-30 11:38:05">2025/09/30</span>
         </a>
         
@@ -1212,7 +1293,7 @@
         
         
         <a  class="全部文章 Life "
-           href="/2025/09/24/Life/%E7%BE%8E%E5%A5%BD%E5%9B%9E%E5%BF%86/robotCup%E6%99%8B%E6%B1%9F-2024-5/"
+           href="/2025/09/24/Life/%E5%9B%9E%E5%BF%86/robotCup%E6%99%8B%E6%B1%9F-2024-5/"
            data-tag="fun,dj"
            data-author="" >
             <span class="post-title" title="robotCup晋江-2024-5">robotCup晋江-2024-5</span>
@@ -1384,7 +1465,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/08/25/Docker/docker-ragflow/"
-           data-tag="rag,docker,ragflow"
+           data-tag="docker,ragflow,rag"
            data-author="" >
             <span class="post-title" title="docker-ragflow">docker-ragflow</span>
             <span class="post-date" title="2025-08-25 13:50:48">2025/08/25</span>
@@ -1393,7 +1474,7 @@
         
         <a  class="全部文章 Azure "
            href="/2025/08/21/Azure/azure-blob/"
-           data-tag="azure,python,blob-storage"
+           data-tag="python,azure,blob-storage"
            data-author="" >
             <span class="post-title" title="azure-blob">azure-blob</span>
             <span class="post-date" title="2025-08-21 09:29:43">2025/08/21</span>
@@ -1420,7 +1501,7 @@
         
         <a  class="全部文章 Web "
            href="/2025/08/19/Web/web-ngnix/"
-           data-tag="ngnix,web"
+           data-tag="web,ngnix"
            data-author="" >
             <span class="post-title" title="web-ngnix">web-ngnix</span>
             <span class="post-date" title="2025-08-19 11:09:22">2025/08/19</span>
@@ -1474,7 +1555,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/07/30/ML/basic/pytorch-dtypes-and-optimizers/"
-           data-tag="deeplearn,pytroch,basic"
+           data-tag="deeplearn,basic,pytroch"
            data-author="" >
             <span class="post-title" title="pytorch_dtypes_and_optimizers">pytorch_dtypes_and_optimizers</span>
             <span class="post-date" title="2025-07-30 11:07:02">2025/07/30</span>
@@ -1555,7 +1636,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/07/21/ML/linux-deeplearn-env/"
-           data-tag="python,linux,deeplearn"
+           data-tag="linux,python,deeplearn"
            data-author="" >
             <span class="post-title" title="linux-deeplearn-env">linux-deeplearn-env</span>
             <span class="post-date" title="2025-07-21 16:15:36">2025/07/21</span>
@@ -1604,15 +1685,6 @@
            data-author="" >
             <span class="post-title" title="vscode-ssh-remote">vscode-ssh-remote</span>
             <span class="post-date" title="2025-07-10 17:14:14">2025/07/10</span>
-        </a>
-        
-        
-        <a  class="全部文章 "
-           href="/2025/07/10/whsiper-train/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="whsiper-train">whsiper-train</span>
-            <span class="post-date" title="2025-07-10 10:17:34">2025/07/10</span>
         </a>
         
         
@@ -1699,7 +1771,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/03/19/Docker/docker-gitlab/"
-           data-tag="docker,gitlab,linux"
+           data-tag="docker,linux,gitlab"
            data-author="" >
             <span class="post-title" title="docker-gitlab">docker-gitlab</span>
             <span class="post-date" title="2025-03-19 14:19:00">2025/03/19</span>
@@ -1771,7 +1843,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/LearnNote/01-ros1-install-conifg/"
-           data-tag="vscode,ros"
+           data-tag="ros,vscode"
            data-author="" >
             <span class="post-title" title="01-ros1-install-conifg">01-ros1-install-conifg</span>
             <span class="post-date" title="2025-03-10 09:50:38">2025/03/10</span>
@@ -1852,7 +1924,7 @@
         
         <a  class="全部文章 OS "
            href="/2024/10/30/OS/concurrency-models/"
-           data-tag="python,concurrent,go"
+           data-tag="concurrent,python,go"
            data-author="" >
             <span class="post-title" title="concurrency_models">concurrency_models</span>
             <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
@@ -1905,10 +1977,10 @@
         
         
         <a  class="全部文章 Go "
-           href="/2024/10/04/Go/grpc/grpc-4models/"
+           href="/2024/10/04/Go/grpc/grpc-4mods/"
            data-tag="gRPC"
            data-author="" >
-            <span class="post-title" title="grpc-4models">grpc-4models</span>
+            <span class="post-title" title="grpc-4modes">grpc-4modes</span>
             <span class="post-date" title="2024-10-04 16:10:01">2024/10/04</span>
         </a>
         
@@ -2032,7 +2104,7 @@
         
         <a  class="全部文章 Go "
            href="/2024/09/06/Go/config/go-zap/"
-           data-tag="go,log,zap,lumberjack,gin"
+           data-tag="go,log,gin,zap,lumberjack"
            data-author="" >
             <span class="post-title" title="go-zap">go-zap</span>
             <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
@@ -2247,10 +2319,10 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2024/08/31/hexo-md-img/"
+           href="/2024/08/31/hexo-md/"
            data-tag="hexo,markdown"
            data-author="" >
-            <span class="post-title" title="hexo-md-img">hexo-md-img</span>
+            <span class="post-title" title="hexo-md">hexo-md</span>
             <span class="post-date" title="2024-08-31 23:12:04">2024/08/31</span>
         </a>
         
@@ -2338,7 +2410,7 @@
         
         <a  class="全部文章 Python "
            href="/2024/08/17/Python/python-mysql/"
-           data-tag="python,mysql"
+           data-tag="mysql,python"
            data-author="" >
             <span class="post-title" title="python_mysql">python_mysql</span>
             <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
@@ -2588,6 +2660,30 @@ if __name__ == '__main__':
 
 
 
+
+    
+        <!-- MathJax v3 配置，只渲染 $$...$$ 块级公式 -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [],                             // 不识别任何行内公式
+    displayMath: [['$$', '$$']],                // 仅识别 $$...$$ 作为块级公式
+    processEscapes: true,
+    processEnvironments: true,
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore|dno',      // 忽略这些 class 的元素
+    skipHtmlTags: ['script','noscript','style','textarea','pre','code'], // 不处理这些标签
+  },
+  chtml: {
+    scale: 1.5,                                   // 数学字体缩放比例
+  }
+};
+</script>
+
+<!-- 通过 CDN 加载 MathJax v3 -->
+<script async id="MathJax-script" src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<input type="hidden" id="MathJax-js" value="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 
     
 
