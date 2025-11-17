@@ -2,23 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ml-transformer | Akabane71</title>
+  <title>Akabane71</title>
   <meta name="keywords" content="">
-  <meta name="description" content="ml-transformer | Akabane71">
+  <meta name="description" content="Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
+<meta name="description" content="工欲善其事必先利其器，在深度学习时代下，了解每一种显卡的定位就尤为重要了 我初步将深度学习的nvidia显卡划分成了一下几种  训练卡(AI train) 推理卡(AI Infer) 通用计算卡(HPC)   由于通用计算卡目前的市场需求逐渐变小，云服务商也主要提供AI算力，固不列通用计算卡  一些太老的卡就不统计了，只列目前云服务厂商的服务器还普遍使用的卡，消费级显卡就不列了 nvidia-gp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aks-dify">
-<meta property="og:url" content="http://example.com/2025/10/23/Docker/aks-dify/index.html">
+<meta property="og:title" content="nvidia-gpu">
+<meta property="og:url" content="http://example.com/2025/11/17/ML/basic/nvidia-gpu/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
+<meta property="og:description" content="工欲善其事必先利其器，在深度学习时代下，了解每一种显卡的定位就尤为重要了 我初步将深度学习的nvidia显卡划分成了一下几种  训练卡(AI train) 推理卡(AI Infer) 通用计算卡(HPC)   由于通用计算卡目前的市场需求逐渐变小，云服务商也主要提供AI算力，固不列通用计算卡  一些太老的卡就不统计了，只列目前云服务厂商的服务器还普遍使用的卡，消费级显卡就不列了 nvidia-gp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-23T12:22:28.000Z">
-<meta property="article:modified_time" content="2025-10-23T12:29:02.803Z">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117155531749.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117160738232.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161029830.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161240055.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161643178.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117162221897.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117162403532.png">
+<meta property="article:published_time" content="2025-11-17T07:24:00.000Z">
+<meta property="article:modified_time" content="2025-11-17T08:27:02.611Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="dify">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="ml">
+<meta property="article:tag" content="nvidia">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117155531749.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -61,7 +69,7 @@
 
 
 <body>
-<aside class="nav">
+<aside class="nav mobile">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -110,7 +118,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(143)</small>
+                <small>(144)</small>
             
         </div>
     </li>
@@ -122,7 +130,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(15)</small>
+            <small>(16)</small>
         </div>
         
     </li>
@@ -227,7 +235,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(25)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -330,8 +338,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="143">
-<input type="hidden" id="yelog_site_word_count" value="143.8k">
+<input type="hidden" id="yelog_site_posts_number" value="144">
+<input type="hidden" id="yelog_site_word_count" value="149.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -570,6 +578,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>design pattern</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -861,6 +873,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nvidia</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>occupancy_grid_map</a>
             </li>
         
@@ -1146,6 +1162,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/11/17/ML/basic/nvidia-gpu/"
+           data-tag="ml,nvidia"
+           data-author="" >
+            <span class="post-title" title="nvidia-gpu">nvidia-gpu</span>
+            <span class="post-date" title="2025-11-17 15:24:00">2025/11/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/11/14/Python/basics/python-design-pattern/"
+           data-tag="python,design pattern"
+           data-author="" >
+            <span class="post-title" title="python-design-pattern">python-design-pattern</span>
+            <span class="post-date" title="2025-11-14 10:32:23">2025/11/14</span>
+        </a>
         
         
         <a  class="全部文章 Docker "
@@ -1604,15 +1638,6 @@
            data-author="" >
             <span class="post-title" title="ml-clip">ml-clip</span>
             <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
-        </a>
-        
-        
-        <a  class="全部文章 "
-           href="/2025/07/24/ML/llm/ml-transformer/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ml-transformer">ml-transformer</span>
-            <span class="post-date" title="2025-07-24 20:31:49">2025/07/24</span>
         </a>
         
         
@@ -2450,45 +2475,12 @@
         </div>
     </div>
 </aside>
-<div id="post">
+<div id="post" class="index">
     <div class="pjax">
-        <article id="post-ML/llm/ml-transformer" class="article article-type-post" itemscope itemprop="blogPost">
+        <article class="index">
+            <div class="toc-ref">
     
-        <h1 class="article-title">ml-transformer</h1>
-    
-    <div class="article-meta">
-        
-        
-        
-        
-    </div>
-    <div class="article-meta">
-        
-            发布时间 : <time class="date" title='最后更新: 2025-09-30 14:16:23'>2025-07-24 20:31</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:0</span>
-        
-        
-        <span id="busuanzi_container_page_pv">
-            阅读 :<span id="busuanzi_value_page_pv">
-                <span class="count-comment">
-                    <span class="spinner">
-                      <div class="cube1"></div>
-                      <div class="cube2"></div>
-                    </span>
-                </span>
-            </span>
-        </span>
-        
-        
-    </div>
-    
-    <div class="toc-ref">
-    
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">LiShun</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">About Me</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2501,50 +2493,20 @@
     }
 </style>
 </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+            <h1>LiShun</h1>
+<p>github: <a target="_blank" rel="noopener" href="https://github.com/Akabane71">Akabane71 (github.com)</a></p>
+<p>blog:<a target="_blank" rel="noopener" href="https://Akabane71.github.io/">https://Akabane71.github.io/</a></p>
+<h1>About Me</h1>
+<p>A computer science student</p>
+<p><img src="/img/me.png" alt="Shanghai Dianji University Student "></p>
+<p><img src="/img/sudayu.jpg" alt="CS"></p>
+<p>You can call me <strong>Dependency Ninja</strong>  <img src="/img/ninja.png" alt="Dependency Ninja">or <strong>Null Pointer Assassin</strong> ！</p>
+<p>A Quadruped robot development cover</p>
+<p><img src="/img/dog_car.jpg" alt="dog_car"></p>
+
+        </article>
         
-      
-       
-    </div>
-</article>
-
-
-
-
-
-
-
-    
-        <!-- MathJax v3 配置，只渲染 $$...$$ 块级公式 -->
-<script>
-window.MathJax = {
-  tex: {
-    inlineMath: [],                             // 不识别任何行内公式
-    displayMath: [['$$', '$$']],                // 仅识别 $$...$$ 作为块级公式
-    processEscapes: true,
-    processEnvironments: true,
-  },
-  options: {
-    ignoreHtmlClass: 'tex2jax_ignore|dno',      // 忽略这些 class 的元素
-    skipHtmlTags: ['script','noscript','style','textarea','pre','code'], // 不处理这些标签
-  },
-  chtml: {
-    scale: 1.5,                                   // 数学字体缩放比例
-  }
-};
-</script>
-
-<!-- 通过 CDN 加载 MathJax v3 -->
-<script async id="MathJax-script" src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<input type="hidden" id="MathJax-js" value="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-
-    
-
-
-
-
+        
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -2553,11 +2515,11 @@ window.MathJax = {
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-    <div class="full-toc">
-        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+</div>
+<div class="full-toc">
+    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
-    </div>
 </div>
 
 </body>

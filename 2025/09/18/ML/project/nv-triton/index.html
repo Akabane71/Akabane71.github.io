@@ -6,19 +6,27 @@
   <meta name="keywords" content=" nv , triton ">
   <meta name="description" content="nv-triton | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
+<meta name="description" content="工欲善其事必先利其器，在深度学习时代下，了解每一种显卡的定位就尤为重要了 我初步将深度学习的nvidia显卡划分成了一下几种  训练卡(AI train) 推理卡(AI Infer) 通用计算卡(HPC)   由于通用计算卡目前的市场需求逐渐变小，云服务商也主要提供AI算力，固不列通用计算卡  一些太老的卡就不统计了，只列目前云服务厂商的服务器还普遍使用的卡，消费级显卡就不列了 nvidia-gp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aks-dify">
-<meta property="og:url" content="http://example.com/2025/10/23/Docker/aks-dify/index.html">
+<meta property="og:title" content="nvidia-gpu">
+<meta property="og:url" content="http://example.com/2025/11/17/ML/basic/nvidia-gpu/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
+<meta property="og:description" content="工欲善其事必先利其器，在深度学习时代下，了解每一种显卡的定位就尤为重要了 我初步将深度学习的nvidia显卡划分成了一下几种  训练卡(AI train) 推理卡(AI Infer) 通用计算卡(HPC)   由于通用计算卡目前的市场需求逐渐变小，云服务商也主要提供AI算力，固不列通用计算卡  一些太老的卡就不统计了，只列目前云服务厂商的服务器还普遍使用的卡，消费级显卡就不列了 nvidia-gp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-23T12:22:28.000Z">
-<meta property="article:modified_time" content="2025-10-23T12:29:02.803Z">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117155531749.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117160738232.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161029830.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161240055.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161643178.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117162221897.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117162403532.png">
+<meta property="article:published_time" content="2025-11-17T07:24:00.000Z">
+<meta property="article:modified_time" content="2025-11-17T08:27:02.611Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="dify">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="ml">
+<meta property="article:tag" content="nvidia">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117155531749.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -110,7 +118,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(143)</small>
+                <small>(144)</small>
             
         </div>
     </li>
@@ -122,7 +130,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(15)</small>
+            <small>(16)</small>
         </div>
         
     </li>
@@ -227,7 +235,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(25)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -330,8 +338,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="143">
-<input type="hidden" id="yelog_site_word_count" value="143.8k">
+<input type="hidden" id="yelog_site_posts_number" value="144">
+<input type="hidden" id="yelog_site_word_count" value="149.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -570,6 +578,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>design pattern</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -861,6 +873,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nvidia</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>occupancy_grid_map</a>
             </li>
         
@@ -1146,6 +1162,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/11/17/ML/basic/nvidia-gpu/"
+           data-tag="ml,nvidia"
+           data-author="" >
+            <span class="post-title" title="nvidia-gpu">nvidia-gpu</span>
+            <span class="post-date" title="2025-11-17 15:24:00">2025/11/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/11/14/Python/basics/python-design-pattern/"
+           data-tag="python,design pattern"
+           data-author="" >
+            <span class="post-title" title="python-design-pattern">python-design-pattern</span>
+            <span class="post-date" title="2025-11-14 10:32:23">2025/11/14</span>
+        </a>
         
         
         <a  class="全部文章 Docker "
@@ -1604,15 +1638,6 @@
            data-author="" >
             <span class="post-title" title="ml-clip">ml-clip</span>
             <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
-        </a>
-        
-        
-        <a  class="全部文章 "
-           href="/2025/07/24/ML/llm/ml-transformer/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ml-transformer">ml-transformer</span>
-            <span class="post-date" title="2025-07-24 20:31:49">2025/07/24</span>
         </a>
         
         
@@ -2481,12 +2506,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-09-26 10:33:07'>2025-09-18 16:53</time>
+            发布时间 : <time class="date" title='最后更新: 2025-11-17 13:55:53'>2025-09-18 16:53</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.5k</span>
+        <span>字数:1.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2505,7 +2530,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83"><span class="toc-text">docker部署环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Triton-Inference-Server-%E5%AE%98%E6%96%B9%E6%A1%88%E4%BE%8B"><span class="toc-text">Triton Inference Server 官方案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E9%83%A8%E7%BD%B2%E6%A1%88%E4%BE%8B"><span class="toc-text">自己部署案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yolo%E7%B3%BB%E5%88%97-onnx-trt"><span class="toc-text">yolo系列 [onnx + trt]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#triton%E7%9B%AE%E5%BD%95"><span class="toc-text">triton目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#onnx-%E6%A8%A1%E5%9E%8B"><span class="toc-text">onnx 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#trt-%E6%A8%A1%E5%9E%8B"><span class="toc-text">trt 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yolo%E7%9A%84%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">yolo的性能测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#faster-whisper%E6%A1%88%E4%BE%8B"><span class="toc-text">faster-whisper案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#triton"><span class="toc-text">triton</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-Trition"><span class="toc-text">为什么用 Trition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83"><span class="toc-text">docker部署环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Triton-Inference-Server-%E5%AE%98%E6%96%B9%E6%A1%88%E4%BE%8B"><span class="toc-text">Triton Inference Server 官方案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E9%83%A8%E7%BD%B2%E6%A1%88%E4%BE%8B"><span class="toc-text">自己部署案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yolo%E7%B3%BB%E5%88%97-onnx-trt"><span class="toc-text">yolo系列 [onnx + trt]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#triton%E7%9B%AE%E5%BD%95"><span class="toc-text">triton目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#onnx-%E6%A8%A1%E5%9E%8B"><span class="toc-text">onnx 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#trt-%E6%A8%A1%E5%9E%8B"><span class="toc-text">trt 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yolo%E7%9A%84%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">yolo的性能测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#faster-whisper%E6%A1%88%E4%BE%8B"><span class="toc-text">faster-whisper案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#triton"><span class="toc-text">triton</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2540,6 +2565,99 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://resources.nvidia.com/en-us-inference-resources-ug/?nvid=nv-int-billweb-733790#cid=dl05_nv-int-billweb_en-us">A guide and reference to accelerated AI inference.</a></li>
 </ul>
+<h2 id="为什么用-Trition">为什么用 Trition</h2>
+<p>NVIDIA Triton Inference Server</p>
+<p><strong>Triton 是让你把深度学习模型“工业化、服务化、可高并发、高吞吐、可运维”运行起来的最成熟框架之一。</strong><br>
+比自己手写 FastAPI + PyTorch 服务强太多。</p>
+<hr>
+<p><strong>1.  原生支持高吞吐的动态批处理（Dynamic Batching）</strong></p>
+<p>你之前就问过“如何批处理推理提升吞吐 &amp; 控制最大等待时间”，<br>
+Triton 已经帮你把这个功能做到极致：</p>
+<ul>
+<li>自动累积请求形成 batch</li>
+<li>支持最大 batch_size</li>
+<li>支持最大排队延迟（max_queue_delay_microseconds）</li>
+<li>GPU 自动融合请求 → 吞吐暴涨 5~50 倍</li>
+</ul>
+<p>你 <strong>不需要自己写队列、调度、并发控制、future 映射</strong>。</p>
+<hr>
+<p><strong>2. 强大的多模型并行调度（Model Scheduler）</strong></p>
+<p>Triton 能帮你做到：</p>
+<ul>
+<li>多模型同时加载</li>
+<li>多模型并行推理（同 GPU / 不同 GPU）</li>
+<li>为每个模型配置独立调度策略</li>
+<li>配置不同模型的优先级（priority queue）</li>
+<li>自动调度 GPU 资源</li>
+</ul>
+<p>自己写 HTTP/gRPC 服务做这些非常困难。</p>
+<hr>
+<p><strong>3. 统一的推理接口：HTTP/REST + gRPC</strong></p>
+<p>你不需要自己搭服务框架：</p>
+<ul>
+<li>自带 <strong>高性能 HTTP 接口</strong></li>
+<li>自带 <strong>高性能 gRPC 接口</strong></li>
+<li>客户端 SDK 有：Python / C++ / Java / Go / JS</li>
+</ul>
+<p>你的应用只需要调用：</p>
+<pre><code>/v2/models/&#123;model_name&#125;/infer
+</code></pre>
+<p>直接搞定。</p>
+<hr>
+<p><strong>4. 支持几乎所有主流框架与格式的模型</strong></p>
+<p>Triton 支持：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PyTorch TorchScript</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>TensorFlow SavedModel</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>ONNX</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>TensorRT (最强加速)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>OpenVINO</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python 自定义模型</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>C++ 自定义模型</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Ensemble pipelines</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<p>你可以在一个 Triton 实例里同时放：</p>
+<ul>
+<li>一个 TensorRT 模型</li>
+<li>一个 PyTorch 模型</li>
+<li>一个 ONNX 模型</li>
+<li>一个 Python 后处理脚本</li>
+</ul>
+<p>这就是 <strong>统一推理平台</strong>。</p>
+<hr>
+<p>…</p>
 <h2 id="环境准备">环境准备</h2>
 <p>测试环境 <strong>Tesla T4</strong> ，显卡驱动版本为: <strong>575.64.03</strong> ，最高支持的cuda版本为  <strong>12.9 /13.0</strong></p>
 <p>先配置一下将gpu性能拉满:</p>
@@ -2873,8 +2991,8 @@ Avg request latency: 7301 usec (overhead 1169 usec + queue 59 usec + compute inp
 </code></pre>
 <p><img src="/imgs/nv-triton/image-20250923164629365.png" alt="image-20250923164629365"></p>
 <blockquote></blockquote>
-<p>faster-whisper使用的后端为 ctranslate2 ，主要对cuda toolkit 版本有一定的需求</p>
-<p>使用cuda12x版本来会更加稳定</p>
+<p>faster-whisper 使用的后端为 ctranslate2 ，主要对cuda toolkit 版本有一定的需求</p>
+<p>使用cuda12x版本来会更加稳定,环境里面的cuda版本一定不要太高</p>
 <h4 id="triton">triton</h4>
 <p>文件目录belike：</p>
 <blockquote>
@@ -2896,7 +3014,7 @@ Avg request latency: 7301 usec (overhead 1169 usec + queue 59 usec + compute inp
 <img src="/imgs/nv-triton/image-20250924141609213.png" width="80%">
 <img src="/imgs/nv-triton/image-20250924140111288.png" alter="客户端情况" width="80%">
 <p><img src="/imgs/nv-triton/image-20250924141533862.png" alt="显存占用"></p>
-<p>python后端是完美支持的</p>
+<p>python后端是完美支持的，很Nice！</p>
 
       
        

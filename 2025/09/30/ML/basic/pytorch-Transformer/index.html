@@ -6,19 +6,27 @@
   <meta name="keywords" content=" deeplearn , ml , transformer ">
   <meta name="description" content="pytorch-Transformer | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
+<meta name="description" content="工欲善其事必先利其器，在深度学习时代下，了解每一种显卡的定位就尤为重要了 我初步将深度学习的nvidia显卡划分成了一下几种  训练卡(AI train) 推理卡(AI Infer) 通用计算卡(HPC)   由于通用计算卡目前的市场需求逐渐变小，云服务商也主要提供AI算力，固不列通用计算卡  一些太老的卡就不统计了，只列目前云服务厂商的服务器还普遍使用的卡，消费级显卡就不列了 nvidia-gp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aks-dify">
-<meta property="og:url" content="http://example.com/2025/10/23/Docker/aks-dify/index.html">
+<meta property="og:title" content="nvidia-gpu">
+<meta property="og:url" content="http://example.com/2025/11/17/ML/basic/nvidia-gpu/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="本地部署版本的AKS都会使用 但是 Dify on AKS 版本呢? 企业级应用要确保 高可用，  dify on aks">
+<meta property="og:description" content="工欲善其事必先利其器，在深度学习时代下，了解每一种显卡的定位就尤为重要了 我初步将深度学习的nvidia显卡划分成了一下几种  训练卡(AI train) 推理卡(AI Infer) 通用计算卡(HPC)   由于通用计算卡目前的市场需求逐渐变小，云服务商也主要提供AI算力，固不列通用计算卡  一些太老的卡就不统计了，只列目前云服务厂商的服务器还普遍使用的卡，消费级显卡就不列了 nvidia-gp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-23T12:22:28.000Z">
-<meta property="article:modified_time" content="2025-10-23T12:29:02.803Z">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117155531749.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117160738232.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161029830.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161240055.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117161643178.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117162221897.png">
+<meta property="og:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117162403532.png">
+<meta property="article:published_time" content="2025-11-17T07:24:00.000Z">
+<meta property="article:modified_time" content="2025-11-17T08:27:02.611Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="dify">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="ml">
+<meta property="article:tag" content="nvidia">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/11/17/imgs/nvidia-gpu/image-20251117155531749.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -110,7 +118,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(143)</small>
+                <small>(144)</small>
             
         </div>
     </li>
@@ -122,7 +130,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(15)</small>
+            <small>(16)</small>
         </div>
         
     </li>
@@ -227,7 +235,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(25)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -330,8 +338,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="143">
-<input type="hidden" id="yelog_site_word_count" value="143.8k">
+<input type="hidden" id="yelog_site_posts_number" value="144">
+<input type="hidden" id="yelog_site_word_count" value="149.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -570,6 +578,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>deeplearn</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>design pattern</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -861,6 +873,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nvidia</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>occupancy_grid_map</a>
             </li>
         
@@ -1146,6 +1162,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/11/17/ML/basic/nvidia-gpu/"
+           data-tag="ml,nvidia"
+           data-author="" >
+            <span class="post-title" title="nvidia-gpu">nvidia-gpu</span>
+            <span class="post-date" title="2025-11-17 15:24:00">2025/11/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/11/14/Python/basics/python-design-pattern/"
+           data-tag="python,design pattern"
+           data-author="" >
+            <span class="post-title" title="python-design-pattern">python-design-pattern</span>
+            <span class="post-date" title="2025-11-14 10:32:23">2025/11/14</span>
+        </a>
         
         
         <a  class="全部文章 Docker "
@@ -1604,15 +1638,6 @@
            data-author="" >
             <span class="post-title" title="ml-clip">ml-clip</span>
             <span class="post-date" title="2025-07-24 20:31:59">2025/07/24</span>
-        </a>
-        
-        
-        <a  class="全部文章 "
-           href="/2025/07/24/ML/llm/ml-transformer/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ml-transformer">ml-transformer</span>
-            <span class="post-date" title="2025-07-24 20:31:49">2025/07/24</span>
         </a>
         
         
@@ -2483,12 +2508,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-11-12 14:55:47'>2025-09-30 11:38</time>
+            发布时间 : <time class="date" title='最后更新: 2025-11-17 11:32:38'>2025-09-30 11:38</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:188</span>
+        <span>字数:1.3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2507,7 +2532,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-text">结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="toc-text">模块介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E5%B5%8C%E5%85%A5-Word-Embedding"><span class="toc-text">词嵌入 (Word Embedding)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81-Positional-Encoding"><span class="toc-text">位置编码 (Positional Encoding)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Self-Attention"><span class="toc-text">自注意力机制 (Self-Attention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Multi-Head-Attention"><span class="toc-text">多头注意力机制 (Multi-Head Attention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Masked-Self-Attention"><span class="toc-text">掩码注意力机制 (Masked Self-Attention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Cross-Attention"><span class="toc-text">交叉注意力机制 (Cross-Attention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%BD%92%E4%B8%80%E5%8C%96-Layer-Normalization"><span class="toc-text">自归一化 (Layer Normalization)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E8%A7%92%E5%BA%A6"><span class="toc-text">从矩阵的角度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E4%BD%93"><span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">位置编码的改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Attention%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">Attention的改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E6%94%B9%E8%BF%9B"><span class="toc-text">掩码注意力机制改进</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-text">结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="toc-text">模块介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E5%B5%8C%E5%85%A5-Word-Embedding"><span class="toc-text">词嵌入 (Word Embedding)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81-Positional-Encoding"><span class="toc-text">位置编码 (Positional Encoding)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-2"><span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Self-Attention"><span class="toc-text">自注意力机制 (Self-Attention)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B-Attention"><span class="toc-text">注意力 Attention</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Multi-Head-Attention"><span class="toc-text">多头注意力机制 (Multi-Head Attention)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#concat-%E6%93%8D%E4%BD%9C"><span class="toc-text">concat 操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Masked-Self-Attention"><span class="toc-text">掩码注意力机制 (Masked Self-Attention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Cross-Attention"><span class="toc-text">交叉注意力机制 (Cross-Attention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96-Layer-Normalization"><span class="toc-text">层归一化 (Layer Normalization)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-text">批归一化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96%E6%93%8D%E4%BD%9C"><span class="toc-text">层归一化操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E8%A7%92%E5%BA%A6"><span class="toc-text">从矩阵的角度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E4%BD%93"><span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">位置编码的改进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8F%AF%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%EF%BC%88Learned-Positional-Embedding%EF%BC%89"><span class="toc-text">1. 可学习的位置编码（Learned Positional Embedding）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%EF%BC%88Relative-Positional-Encoding%EF%BC%89"><span class="toc-text">2. 相对位置编码（Relative Positional Encoding）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%EF%BC%88Rotary-Positional-Embedding-RoPE%EF%BC%89"><span class="toc-text">旋转位置编码（Rotary Positional Embedding, RoPE）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Attention%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">Attention的改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E6%94%B9%E8%BF%9B"><span class="toc-text">掩码注意力机制改进</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2551,22 +2576,216 @@
 <p><img src="/imgs/pytorch-Transformer/image-20250930114133235.png" alt="image-20250930114133235"></p>
 <p><img src="/imgs/pytorch-Transformers/image-20251111135456453.png" alt="transformer"></p>
 <p>论文的原始结构，此处 N=6</p>
+<blockquote>
+<p>transformer是一篇划时代的论文，大模型力大砖飞的典范</p>
+<p>NLP问题划时代的解决方案</p>
+</blockquote>
 <h2 id="模块介绍">模块介绍</h2>
 <h3 id="词嵌入-Word-Embedding">词嵌入 (Word Embedding)</h3>
+<h4 id="实现">实现</h4>
+<pre><code class="language-python">&quot;&quot;&quot;
+将输入的离散词索引转换为连续的向量表示
+例如，将词汇表中的第5个词映射为一个512维的向量
+&quot;&quot;&quot;
+class Embeddings(nn.Module):
+    def __init__(self, d_model, vocab):
+        # 初始化方法，传入模型的维度（d_model）和词汇表的大小（vocab）
+        super(Embeddings, self).__init__()
+        # Embedding层，将词汇表的大小映射为d_model维的向量
+        self.lut = nn.Embedding(vocab, d_model)
+        # 存储模型的维度 d_model
+        self.d_model = d_model
+
+    def forward(self, x):
+        # 返回x对应的embedding矩阵（需要乘以math.sqrt(d_model)）
+        # 这是为了保持词向量的方差，使其适应后续层的训练。
+        return self.lut(x) * math.sqrt(self.d_model)
+
+</code></pre>
 <h3 id="位置编码-Positional-Encoding">位置编码 (Positional Encoding)</h3>
+<p>原版Transfomer使用的为: <strong>正余弦位置编码</strong></p>
 <p><img src="/imgs/pytorch-Transformers/image-20251111135304544.png" alt="位置编码公式"></p>
-<p>将词向量和位置编码相加获取相应的输入矩阵</p>
+<p>目的是将词向量矩阵中加入一些位置信息</p>
+<p>$$<br>
+\begin{cases}<br>
+PE(pos, 2i) = \sin!\left(\frac{pos}{10000^{\frac{2i}{d_{\text{d}}}}}\right)<br>
+\<br>
+PE(pos, 2i+1) = \cos!\left(\frac{pos}{10000^{\frac{2i}{d_{\text{d}}}}}\right)<br>
+\end{cases}<br>
+\<br>
+\text{d:词嵌入矩阵大小}<br>
+\<br>
+i=0,1,…,\frac{d}{2}-1 \space\space pos指当前token在序列中的第几个位置<br>
+$$</p>
+<blockquote>
+<p>其目的是将上下文增加位置信息，让模型识别到</p>
+</blockquote>
+<p>最终经过这两层后获取的数据为:<br>
+$$<br>
+encoded\space patches = patch\space embedding + positional\space embedding<br>
+$$</p>
+<h4 id="实现-2">实现</h4>
+<pre><code class="language-python">&quot;&quot;&quot;
+为每个输入位置添加一个唯一的位置编码
+这个编码会被添加到词向量中，使模型能够理解位置信息
+&quot;&quot;&quot;
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_model, dropout, max_len=5000):
+        super(PositionalEncoding, self).__init__()
+        self.dropout = nn.Dropout(p=dropout)
+
+        # 初始化一个size为 max_len(设定的最大长度)×embedding维度 的全零矩阵
+        # 来存放所有小于这个长度位置对应的positional embedding
+        pe = torch.zeros(max_len, d_model, device=DEVICE)
+        # 生成一个位置下标的tensor矩阵(每一行都是一个位置下标)
+        position = torch.arange(0., max_len, device=DEVICE).unsqueeze(1)
+        # 这里幂运算太多，我们使用exp和log来转换实现公式中pos下面要除以的分母（由于是分母，要注意带负号）
+        div_term = torch.exp(torch.arange(0., d_model, 2, device=DEVICE) * -(math.log(10000.0) / d_model))
+
+        # 根据公式，计算各个位置在各embedding维度上的位置纹理值，存放到pe矩阵中
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
+
+        # 加1个维度，使得pe维度变为：1×max_len×embedding维度
+        # (方便后续与一个batch的句子所有词的embedding批量相加)
+        pe = pe.unsqueeze(0)
+        # 将pe矩阵以持久的buffer状态存下(不会作为要训练的参数)
+        self.register_buffer('pe', pe)
+
+    def forward(self, x):
+        # 将一个batch的句子所有词的embedding与已构建好的positional embeding相加
+        # (这里按照该批次数据的最大句子长度来取对应需要的那些positional embedding值)
+        x = x + Variable(self.pe[:, :x.size(1)], requires_grad=False)
+        return self.dropout(x)
+</code></pre>
 <h3 id="自注意力机制-Self-Attention">自注意力机制 (Self-Attention)</h3>
+<h4 id="注意力-Attention">注意力 Attention</h4>
+<p>$$<br>
+\begin{equation}<br>
+\text{Attention}(Q, K, V)<br>
+= \mathrm{softmax}!\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V<br>
+\end{equation}<br>
+$$</p>
 <h3 id="多头注意力机制-Multi-Head-Attention">多头注意力机制 (Multi-Head Attention)</h3>
+<img src="/imgs/pytorch-Transformer/image-20251117093136579.png" width="60%">
+<hr>
+<blockquote>
+<p>多头注意力机制就是 多个平行的自注意力机制</p>
+</blockquote>
+<p><img src="/imgs/pytorch-Transformer/image-20251117093346558.png" alt="炮哥详解_多头注意力机制"></p>
+<p>$$<br>
+\begin{equation}<br>
+\text{MultiHead}(Q,K,V)<br>
+= \mathrm{Concat}(h_1, \ldots, h_h)W^O<br>
+\end{equation}<br>
+$$</p>
+<p>$$<br>
+\begin{equation}<br>
+h_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)<br>
+\end{equation}<br>
+$$</p>
+<h4 id="concat-操作">concat 操作</h4>
 <h3 id="掩码注意力机制-Masked-Self-Attention">掩码注意力机制 (Masked Self-Attention)</h3>
 <h3 id="交叉注意力机制-Cross-Attention">交叉注意力机制 (Cross-Attention)</h3>
 <p><img src="/imgs/pytorch-Transformers/image-20251111171744583.png" alt="交叉注意力机制"></p>
 <p><img src="/imgs/pytorch-Transformers/image-20251111171721591.png" alt="交叉注意力机制-矩阵角度"></p>
 <p>Q,K,V来自不同的结构，</p>
-<h3 id="自归一化-Layer-Normalization">自归一化 (Layer Normalization)</h3>
+<blockquote>
+<p>Q,K来自解码器</p>
+<p>V来自编码器</p>
+</blockquote>
+<h3 id="层归一化-Layer-Normalization">层归一化 (Layer Normalization)</h3>
+<blockquote>
+<p>归一化操作分成了</p>
+<ul>
+<li>批归一化 ( Batch Normalization, <strong>BN</strong> )</li>
+<li>层归一化 ( Layer Normalization, <strong>LN</strong> )</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>批归一化 BN</th>
+<th>层归一化 LN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>归一化维度</strong></td>
+<td>在 batch 维度上做归一化</td>
+<td>在特征维度（每个样本）上做归一化</td>
+</tr>
+<tr>
+<td><strong>是否依赖 batch size</strong></td>
+<td>是（需要较大 batch 才稳定）</td>
+<td>否（batch size = 1 也行）</td>
+</tr>
+<tr>
+<td><strong>训练 / 推理一致性</strong></td>
+<td>训练与推理行为不同（使用 moving mean/var）</td>
+<td>训练与推理行为完全一致</td>
+</tr>
+<tr>
+<td><strong>主要使用场景</strong></td>
+<td>CNN 卷积网络</td>
+<td>RNN / Transformer / NLP</td>
+</tr>
+<tr>
+<td><strong>对序列模型</strong></td>
+<td>效果不好</td>
+<td>效果极佳</td>
+</tr>
+<tr>
+<td><strong>是否对通道/特征进行逐样本归一化</strong></td>
+<td>否</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="批归一化">批归一化</h4>
+<h4 id="层归一化操作">层归一化操作</h4>
+<p>$$<br>
+\begin{equation}<br>
+\mathrm{LayerNorm}(x)<br>
+= \gamma \odot \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta<br>
+\end{equation}<br>
+$$</p>
+<p>自归一化 加残差连接<br>
+$$<br>
+\begin{equation}<br>
+\mathrm{Output} = \mathrm{LayerNorm}\big(x + \mathrm{Sublayer}(x)\big)<br>
+\end{equation}<br>
+$$</p>
+<h4 id="总结">总结</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>均值 / 方差计算维度</th>
+<th>归一化公式核心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BN</strong></td>
+<td>跨 batch，对每个特征单独做</td>
+<td>$$((x - \mu_\text{batch}) / \sigma_\text{batch})$$</td>
+</tr>
+<tr>
+<td><strong>LN</strong></td>
+<td>单个样本内部的所有特征</td>
+<td>$$((x - \mu_\text{layer}) / \sigma_\text{layer})$$</td>
+</tr>
+</tbody>
+</table>
 <h2 id="从矩阵的角度">从矩阵的角度</h2>
 <h2 id="变体">变体</h2>
 <h3 id="位置编码的改进">位置编码的改进</h3>
+<p>原版使用的是正余弦位置编码</p>
+<h4 id="1-可学习的位置编码（Learned-Positional-Embedding）">1. 可学习的位置编码（Learned Positional Embedding）</h4>
+<h4 id="2-相对位置编码（Relative-Positional-Encoding）">2. 相对位置编码（Relative Positional Encoding）</h4>
+<h4 id="旋转位置编码（Rotary-Positional-Embedding-RoPE）">旋转位置编码（Rotary Positional Embedding, RoPE）</h4>
 <h3 id="Attention的改进">Attention的改进</h3>
 <h3 id="掩码注意力机制改进">掩码注意力机制改进</h3>
 
