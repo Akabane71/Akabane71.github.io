@@ -6,19 +6,14 @@
   <meta name="keywords" content=" go , channel , goroutine , tips ">
   <meta name="description" content="go-goroutine-tips | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="微调 Whisper模型 使用 unsloth 来微调 whisper-v3模型 启动 docker 环境 docker run -d \   -e JUPYTER_PASSWORD&#x3D;&quot;xxxx&quot; \   -p 8888:8888 -p 2222:22 \   -v $(pwd):&#x2F;workspace&#x2F;work \   --gpus all \   --name whisper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fine-tuning-whisper-v3">
-<meta property="og:url" content="http://example.com/2025/11/24/ML/azure-fintune/fine-tuning-whisper-v3/index.html">
+<meta property="og:title" content="github-action">
+<meta property="og:url" content="http://example.com/2025/12/01/Linux/github-action/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="微调 Whisper模型 使用 unsloth 来微调 whisper-v3模型 启动 docker 环境 docker run -d \   -e JUPYTER_PASSWORD&#x3D;&quot;xxxx&quot; \   -p 8888:8888 -p 2222:22 \   -v $(pwd):&#x2F;workspace&#x2F;work \   --gpus all \   --name whisper">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-24T02:22:39.000Z">
-<meta property="article:modified_time" content="2025-11-24T04:11:11.162Z">
+<meta property="article:published_time" content="2025-12-01T09:31:00.000Z">
+<meta property="article:modified_time" content="2025-12-01T09:31:00.914Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="ml">
-<meta property="article:tag" content="finetune">
-<meta property="article:tag" content="whisper">
 <meta name="twitter:card" content="summary">
 
 
@@ -49,7 +44,7 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -111,7 +106,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(146)</small>
+                <small>(149)</small>
             
         </div>
     </li>
@@ -153,7 +148,7 @@
         <div data-rel="Linux">
             
             Linux
-            <small>(8)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -228,7 +223,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(28)</small>
+            <small>(29)</small>
         </div>
         
     </li>
@@ -288,7 +283,7 @@
         <div data-rel="Tools">
             
             Tools
-            <small>(13)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -331,8 +326,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="146">
-<input type="hidden" id="yelog_site_word_count" value="150k">
+<input type="hidden" id="yelog_site_posts_number" value="149">
+<input type="hidden" id="yelog_site_word_count" value="151.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1098,6 +1093,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>v2ray</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>vcpkg</a>
             </li>
         
@@ -1159,6 +1158,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2025/12/01/Linux/github-action/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="github-action">github-action</span>
+            <span class="post-date" title="2025-12-01 17:31:00">2025/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2025/11/26/Tools/v2ray-server/"
+           data-tag="tools,v2ray"
+           data-author="" >
+            <span class="post-title" title="v2ray-server">v2ray-server</span>
+            <span class="post-date" title="2025-11-26 17:12:21">2025/11/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/11/25/ML/llm/llm-benchmark/"
+           data-tag="llm"
+           data-author="" >
+            <span class="post-title" title="llm-benchmark">llm-benchmark</span>
+            <span class="post-date" title="2025-11-25 10:33:26">2025/11/25</span>
+        </a>
         
         
         <a  class="全部文章 ML "
@@ -1298,7 +1324,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/09/30/ML/basic/pytorch-Transformer/"
-           data-tag="deeplearn,ml,transformer"
+           data-tag="deeplearn,transformer,ml"
            data-author="" >
             <span class="post-title" title="pytorch-Transformer">pytorch-Transformer</span>
             <span class="post-date" title="2025-09-30 11:38:05">2025/09/30</span>
@@ -1332,9 +1358,9 @@
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Linux "
            href="/2025/09/24/Linux/linux-tmux/"
-           data-tag=""
+           data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux-tmux">linux-tmux</span>
             <span class="post-date" title="2025-09-24 11:47:06">2025/09/24</span>
@@ -1361,7 +1387,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/09/18/ML/project/nv-tensorRT-LLM/"
-           data-tag="llm,nv,tensorRT-llm"
+           data-tag="nv,llm,tensorRT-llm"
            data-author="" >
             <span class="post-title" title="nv-tensorRT-LLM">nv-tensorRT-LLM</span>
             <span class="post-date" title="2025-09-18 17:16:42">2025/09/18</span>
@@ -1550,7 +1576,7 @@
         
         <a  class="全部文章 Web "
            href="/2025/08/19/Web/web-ngnix/"
-           data-tag="web,ngnix"
+           data-tag="ngnix,web"
            data-author="" >
             <span class="post-title" title="web-ngnix">web-ngnix</span>
             <span class="post-date" title="2025-08-19 11:09:22">2025/08/19</span>
@@ -1604,7 +1630,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/07/30/ML/basic/pytorch-dtypes-and-optimizers/"
-           data-tag="deeplearn,basic,pytroch"
+           data-tag="deeplearn,pytroch,basic"
            data-author="" >
             <span class="post-title" title="pytorch_dtypes_and_optimizers">pytorch_dtypes_and_optimizers</span>
             <span class="post-date" title="2025-07-30 11:07:02">2025/07/30</span>
@@ -1622,7 +1648,7 @@
         
         <a  class="全部文章 Tools "
            href="/2025/07/28/Tools/gost/"
-           data-tag="go,tools,gost,vpn"
+           data-tag="go,tools,vpn,gost"
            data-author="" >
             <span class="post-title" title="gost">gost</span>
             <span class="post-date" title="2025-07-28 09:22:53">2025/07/28</span>
@@ -1883,7 +1909,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/LearnNote/01-ros1-install-conifg/"
-           data-tag="vscode,ros"
+           data-tag="ros,vscode"
            data-author="" >
             <span class="post-title" title="01-ros1-install-conifg">01-ros1-install-conifg</span>
             <span class="post-date" title="2025-03-10 09:50:38">2025/03/10</span>
@@ -1946,7 +1972,7 @@
         
         <a  class="全部文章 Docker "
            href="/2024/11/13/Docker/docker-mysql/"
-           data-tag="docker,linux,mysql"
+           data-tag="docker,mysql,linux"
            data-author="" >
             <span class="post-title" title="docker-mysql">docker-mysql</span>
             <span class="post-date" title="2024-11-13 14:52:16">2024/11/13</span>
@@ -1964,7 +1990,7 @@
         
         <a  class="全部文章 OS "
            href="/2024/10/30/OS/concurrency-models/"
-           data-tag="python,concurrent,go"
+           data-tag="concurrent,python,go"
            data-author="" >
             <span class="post-title" title="concurrency_models">concurrency_models</span>
             <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
@@ -2450,7 +2476,7 @@
         
         <a  class="全部文章 Python "
            href="/2024/08/17/Python/python-mysql/"
-           data-tag="python,mysql"
+           data-tag="mysql,python"
            data-author="" >
             <span class="post-title" title="python_mysql">python_mysql</span>
             <span class="post-date" title="2024-08-17 15:19:33">2024/08/17</span>
@@ -2468,7 +2494,7 @@
         
         <a  class="全部文章 Spider "
            href="/2024/08/17/Go/basic/go-spider/"
-           data-tag="go,http,spider"
+           data-tag="go,spider,http"
            data-author="" >
             <span class="post-title" title="go-spider">go-spider</span>
             <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
@@ -2530,7 +2556,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:2.5k</span>
+        <span>字数:2.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2619,50 +2645,50 @@
 <p>Go语言并没有提供在一个直接终止Goroutine的方法，由于这样会导致goroutine之间的共享变量处在未定义的状态上。但是如果我们想要退出两个或者任意多个Goroutine怎么办呢？</p>
 <p>我们可以 通过channel 发送退出信号</p>
 <p>比如:</p>
-<pre><code class="language-go">func worker(cannel chan struct&#123;&#125;) &#123;
-	for &#123;
-		select &#123;
+<pre><code class="language-go">func worker(cannel chan struct{}) {
+	for {
+		select {
 		default:
 			fmt.Println(&quot;hello&quot;)
 			time.Sleep(100 * time.Millisecond)
 		case &lt;-cannel:
 			// 退出
-		&#125;
-	&#125;
-&#125;
+		}
+	}
+}
 
-func CancelWithChannel() &#123;
-	cannel := make(chan struct&#123;&#125;)
+func CancelWithChannel() {
+	cannel := make(chan struct{})
 	go worker(cannel)
 
 	time.Sleep(time.Second)
-	cannel &lt;- struct&#123;&#125;&#123;&#125;
-&#125;
+	cannel &lt;- struct{}{}
+}
 </code></pre>
 <p>当Goroutine收到退出指令, 退出时一般会进行一定的清理工作，但是退出的清理工作并不能保证被完成，
 因为main线程并没有等待各个工作Goroutine退出工作完成的机制，我们可以结合<strong>sync.WaitGroup</strong>来改进</p>
-<pre><code class="language-go">func workerv2(wg *sync.WaitGroup, cancel chan bool) &#123;
+<pre><code class="language-go">func workerv2(wg *sync.WaitGroup, cancel chan bool) {
 	defer wg.Done()
 
-	for &#123;
-		select &#123;
+	for {
+		select {
 		default:
 			fmt.Println(&quot;hello&quot;)
 			time.Sleep(100 * time.Millisecond)
 		case &lt;-cancel:
 			return
-		&#125;
-	&#125;
-&#125;
+		}
+	}
+}
 
-func CancelWithDown() &#123;
+func CancelWithDown() {
 	cancel := make(chan bool)
 
 	var wg sync.WaitGroup
-	for i := 0; i &lt; 10; i++ &#123;
+	for i := 0; i &lt; 10; i++ {
 		wg.Add(1)
 		go workerv2(&amp;wg, cancel)
-	&#125;
+	}
 
 	time.Sleep(time.Second)
 
@@ -2671,33 +2697,33 @@ func CancelWithDown() &#123;
 
 	// 等待goroutine 安全退出
 	wg.Wait()
-&#125;
+}
 
 </code></pre>
 <h2 id="使用context管理goroutine的退出">使用context管理goroutine的退出</h2>
 <p>在Go1.7发布时，标准库增加了一个context包，用来简化对于处理单个请求的多个Goroutine之间与请求域的数据、超时和退出等操作，官方有博文对此做了专门介绍。我们可以用context包来重新实现前面的线程安全退出或超时的控制</p>
-<pre><code class="language-go">func workerV3(ctx context.Context, wg *sync.WaitGroup) error &#123;
+<pre><code class="language-go">func workerV3(ctx context.Context, wg *sync.WaitGroup) error {
 	defer wg.Done()
 
-	for &#123;
-		select &#123;
+	for {
+		select {
 		default:
 			fmt.Println(&quot;hello&quot;)
 			time.Sleep(100 * time.Millisecond)
 		case &lt;-ctx.Done():
 			return ctx.Err()
-		&#125;
-	&#125;
-&#125;
-func CancelWithCtx() &#123;
+		}
+	}
+}
+func CancelWithCtx() {
 	// 控制超时
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
 	var wg sync.WaitGroup
-	for i := 0; i &lt; 10; i++ &#123;
+	for i := 0; i &lt; 10; i++ {
 		wg.Add(1)
 		go workerV3(ctx, &amp;wg)
-	&#125;
+	}
 
 	time.Sleep(time.Second)
 
@@ -2706,91 +2732,91 @@ func CancelWithCtx() &#123;
 
 	// 等待安全退出
 	wg.Wait()
-&#125;
+}
 </code></pre>
 <h2 id="并发中的Pannic">并发中的Pannic</h2>
 <p>我们可以通过recover捕获异常避免程序崩溃，比如:</p>
-<pre><code class="language-go">func DealPanic() &#123;
-	defer func() &#123;
-		if err := recover(); err != nil &#123;
+<pre><code class="language-go">func DealPanic() {
+	defer func() {
+		if err := recover(); err != nil {
 			fmt.Println(err)
-		&#125;
-	&#125;()
+		}
+	}()
 
-	arr := []int&#123;0&#125;
+	arr := []int{0}
 	_ = arr[2]
-&#125;
+}
 
 // 输出: runtime error: index out of range [2] with length 1
 </code></pre>
 <p>但是如果我们的错误是发生在Goroutine中喃?</p>
-<pre><code class="language-go">func DealPanicInG() &#123;
-	defer func() &#123;
-		if err := recover(); err != nil &#123;
+<pre><code class="language-go">func DealPanicInG() {
+	defer func() {
+		if err := recover(); err != nil {
 			fmt.Println(err)
-		&#125;
-	&#125;()
+		}
+	}()
 
 	wg.Add(1)
 	go work()
 
 	wg.Wait()
-&#125;
+}
 
-func work() &#123;
-	arr := []int&#123;0&#125;
+func work() {
+	arr := []int{0}
 	_ = arr[2]
 	wg.Done()
-&#125;
+}
 </code></pre>
 <p>结果没用, 程序还是panic了, 因为go的recover是针对 但goroutine的, 因此我们在写启动gorouite的适合,
 不能 无脑 go func, 这样可能由于goroutine的异常 而让 整个程序崩溃掉</p>
 <p>go 的http库，是为每个请求启动一个Goroutine进行处理，我们看看他如何处理的:</p>
 <pre><code class="language-go">// Serve a new connection.
-func (c *conn) serve(ctx context.Context) &#123;
+func (c *conn) serve(ctx context.Context) {
 	c.remoteAddr = c.rwc.RemoteAddr().String()
 	ctx = context.WithValue(ctx, LocalAddrContextKey, c.rwc.LocalAddr())
-	defer func() &#123;
-		if err := recover(); err != nil &amp;&amp; err != ErrAbortHandler &#123;
+	defer func() {
+		if err := recover(); err != nil &amp;&amp; err != ErrAbortHandler {
 			const size = 64 &lt;&lt; 10
 			buf := make([]byte, size)
 			buf = buf[:runtime.Stack(buf, false)]
 			c.server.logf(&quot;http: panic serving %v: %v\n%s&quot;, c.remoteAddr, err, buf)
-		&#125;
-		if !c.hijacked() &#123;
+		}
+		if !c.hijacked() {
 			c.close()
 			c.setState(c.rwc, StateClosed, runHooks)
-		&#125;
-	&#125;()
+		}
+	}()
 </code></pre>
 <p>他在goroutine的启动函数里面 专门做了recover, 用于捕获当前goroutine的异常, 那我们修改下我们的代码</p>
-<pre><code class="language-go">func DealPanicInGV2() &#123;
+<pre><code class="language-go">func DealPanicInGV2() {
 	// 处理主Goroutine的异常
-	defer func() &#123;
-		if err := recover(); err != nil &#123;
+	defer func() {
+		if err := recover(); err != nil {
 			fmt.Println(err)
-		&#125;
-	&#125;()
+		}
+	}()
 
 	wg.Add(1)
 	go workV2()
 
 	wg.Wait()
-&#125;
+}
 
-func workV2() &#123;
+func workV2() {
 	// 处理协程的异常
-	defer func() &#123;
+	defer func() {
 		wg.Done()
 
-		if err := recover(); err != nil &#123;
+		if err := recover(); err != nil {
 			fmt.Println(err)
-		&#125;
-	&#125;()
+		}
+	}()
 
-	arr := []int&#123;0&#125;
+	arr := []int{0}
 	_ = arr[2]
-&#125;
+}
 </code></pre>
 <h2 id="克制的使用Goroutine-回调也不错哦">克制的使用Goroutine, 回调也不错哦</h2>
 <p>我们再讲CSP的时候, 有个<a href="./cspmodel/barrier.go">并行爬取网页的示例</a>, 使用的是channel来获取传递数据的, 我们现在使用回调来改写</p>
@@ -2798,84 +2824,84 @@ func workV2() &#123;
 <pre><code class="language-go">type SiteRespCallBack func(SiteResp)
 
 // 构造请求
-func doSiteRequest(cb SiteRespCallBack, url string) &#123;
-	res := SiteResp&#123;&#125;
+func doSiteRequest(cb SiteRespCallBack, url string) {
+	res := SiteResp{}
 	startAt := time.Now()
-	defer func() &#123;
+	defer func() {
 		res.Cost = time.Since(startAt).Milliseconds()
 		cb(res)
 		wg.Done()
-	&#125;()
+	}()
 
 	resp, err := client.Get(url)
-	if resp != nil &#123;
+	if resp != nil {
 		res.Status = resp.StatusCode
-	&#125;
-	if err != nil &#123;
+	}
+	if err != nil {
 		res.Err = err
 		return
-	&#125;
+	}
 
 	// 站不处理结果
 	_, err = ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
-	if err != nil &#123;
+	if err != nil {
 		res.Err = err
 		return
-	&#125;
+	}
 
 	// res.Resp = string(byt)
-&#125;
+}
 </code></pre>
 <p>主函数编写回调处理逻辑</p>
-<pre><code class="language-go">func CallBackMode() &#123;
-	endpoints := []string&#123;
+<pre><code class="language-go">func CallBackMode() {
+	endpoints := []string{
 		&quot;https://www.baidu.com&quot;,
 		&quot;https://segmentfault.com/&quot;,
 		&quot;https://blog.csdn.net/&quot;,
 		&quot;https://www.jd.com/&quot;,
-	&#125;
+	}
 
 	// 一个endpoints返回一个结果, 缓冲可以确定
 	respChan := make(chan SiteResp, len(endpoints))
 	defer close(respChan)
 
 	ret := make([]SiteResp, 0, len(endpoints))
-	cb := func(resp SiteResp) &#123;
+	cb := func(resp SiteResp) {
 		ret = append(ret, resp)
-	&#125;
+	}
 
 	// 并行爬取
-	for _, endpoints := range endpoints &#123;
+	for _, endpoints := range endpoints {
 		wg.Add(1)
 		go doSiteRequest(cb, endpoints)
-	&#125;
+	}
 
 	// 等待结束
 	wg.Wait()
 
-	for _, v := range ret &#123;
+	for _, v := range ret {
 		fmt.Println(v)
-	&#125;
-&#125;
+	}
+}
 </code></pre>
 <p>我们看看之前函数式编程的map</p>
-<pre><code class="language-go">func TestMap(t *testing.T) &#123;
-	list := []string&#123;&quot;abc&quot;, &quot;def&quot;, &quot;fqp&quot;&#125;
-	out := MapStrToUpper(list, func(item string) string &#123;
+<pre><code class="language-go">func TestMap(t *testing.T) {
+	list := []string{&quot;abc&quot;, &quot;def&quot;, &quot;fqp&quot;}
+	out := MapStrToUpper(list, func(item string) string {
 		return strings.ToUpper(item)
-	&#125;)
+	})
 	fmt.Println(out)
-&#125;
+}
 
-func MapStrToUpper(data []string, fn func(string) string) []string &#123;
+func MapStrToUpper(data []string, fn func(string) string) []string {
 	newData := make([]string, 0, len(data))
-	for _, v := range data &#123;
+	for _, v := range data {
 		newData = append(newData, fn(v))
-	&#125;
+	}
 
 	return newData
-&#125;
+}
 </code></pre>
 <p>如果fn 是一个耗时的操作, 可以使用goroutine把它异步化, 函数式编程 + goroutine 也是很不错的一个方向(函数式并发)</p>
 <h2 id="CSP不是全部">CSP不是全部</h2>
