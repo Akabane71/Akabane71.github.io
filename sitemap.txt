@@ -1,4 +1,4 @@
-https://akabane71.github.io/googlebbbe8d58e122a24b.html
+https://akabane71.github.io/2024/08/31/hexo-md/
 https://akabane71.github.io/2025/11/26/Tools/v2ray-server/
 https://akabane71.github.io/2025/10/16/ML/solution/dify%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0/
 https://akabane71.github.io/2025/12/08/CloudServer/Azure/azure-vpn/
@@ -10,7 +10,6 @@ https://akabane71.github.io/2025/11/24/ML/azure-fintune/fine-tuning-whisper-v3/
 https://akabane71.github.io/2025/07/10/Tools/vscode-ssh-remote/
 https://akabane71.github.io/2025/07/28/Tools/gost/
 https://akabane71.github.io/2025/10/14/Linux/k8s%E5%AD%A6%E4%B9%A0/
-https://akabane71.github.io/2024/08/31/hexo-md/
 https://akabane71.github.io/2025/09/24/Linux/linux-tmux/
 https://akabane71.github.io/2025/08/04/Linux/linux-tar-7z/
 https://akabane71.github.io/2025/08/27/Linux/frp-internal-network-penetration-guide/
