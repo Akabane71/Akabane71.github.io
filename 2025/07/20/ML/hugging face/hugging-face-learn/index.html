@@ -6,15 +6,24 @@
   <meta name="keywords" content=" huggingface ">
   <meta name="description" content="hugging_face-learn | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="我在Azure上的一台开发服务器总是被扫描攻击，我想直接禁止 22 端口的访问权限，并使用Azure托管的VPN来访问我的服务器 教程 MS官方的地址  教程 - 创建和管理 VPN 网关 - Azure 门户 - Azure VPN Gateway | Microsoft Learn  原理  操作  P2S Point-to-Site    单台电脑 ----&gt; Azure  个人使用只">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github-action">
-<meta property="og:url" content="http://example.com/2025/12/01/Linux/github-action/index.html">
+<meta property="og:title" content="azure-vpn">
+<meta property="og:url" content="https://akabane71.github.io/2025/12/08/CloudServer/Azure/azure-vpn/index.html">
 <meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="我在Azure上的一台开发服务器总是被扫描攻击，我想直接禁止 22 端口的访问权限，并使用Azure托管的VPN来访问我的服务器 教程 MS官方的地址  教程 - 创建和管理 VPN 网关 - Azure 门户 - Azure VPN Gateway | Microsoft Learn  原理  操作  P2S Point-to-Site    单台电脑 ----&gt; Azure  个人使用只">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-01T09:31:00.000Z">
-<meta property="article:modified_time" content="2025-12-01T09:31:00.914Z">
+<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208155653859.png">
+<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208161006425.png">
+<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251209095926525.png">
+<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251209100149021.png">
+<meta property="article:published_time" content="2025-12-08T07:23:42.000Z">
+<meta property="article:modified_time" content="2025-12-09T02:38:06.359Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="vpn">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208155653859.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -106,7 +115,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(149)</small>
+                <small>(150)</small>
             
         </div>
     </li>
@@ -163,7 +172,7 @@
         <div data-rel="Azure">
             
             Azure
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -326,8 +335,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="149">
-<input type="hidden" id="yelog_site_word_count" value="151.2k">
+<input type="hidden" id="yelog_site_posts_number" value="150">
+<input type="hidden" id="yelog_site_word_count" value="151.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1160,6 +1169,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Azure "
+           href="/2025/12/08/CloudServer/Azure/azure-vpn/"
+           data-tag="vpn,azure"
+           data-author="" >
+            <span class="post-title" title="azure-vpn">azure-vpn</span>
+            <span class="post-date" title="2025-12-08 15:23:42">2025/12/08</span>
+        </a>
+        
+        
         <a  class="全部文章 "
            href="/2025/12/01/Linux/github-action/"
            data-tag=""
@@ -1189,7 +1207,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/11/24/ML/azure-fintune/fine-tuning-whisper-v3/"
-           data-tag="ml,finetune,whisper"
+           data-tag="finetune,ml,whisper"
            data-author="" >
             <span class="post-title" title="fine-tuning-whisper-v3">fine-tuning-whisper-v3</span>
             <span class="post-date" title="2025-11-24 10:22:39">2025/11/24</span>
@@ -1198,7 +1216,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/11/18/ML/azure-fintune/finetune-catgirl/"
-           data-tag="ml,finetune"
+           data-tag="finetune,ml"
            data-author="" >
             <span class="post-title" title="finetune-catgirl">finetune-catgirl</span>
             <span class="post-date" title="2025-11-18 17:22:41">2025/11/18</span>
@@ -1225,7 +1243,7 @@
         
         <a  class="全部文章 Docker "
            href="/2025/10/23/Docker/aks-dify/"
-           data-tag="docker,dify"
+           data-tag="dify,docker"
            data-author="" >
             <span class="post-title" title="aks-dify">aks-dify</span>
             <span class="post-date" title="2025-10-23 20:22:28">2025/10/23</span>
@@ -1324,7 +1342,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/09/30/ML/basic/pytorch-Transformer/"
-           data-tag="deeplearn,transformer,ml"
+           data-tag="deeplearn,ml,transformer"
            data-author="" >
             <span class="post-title" title="pytorch-Transformer">pytorch-Transformer</span>
             <span class="post-date" title="2025-09-30 11:38:05">2025/09/30</span>
@@ -1387,7 +1405,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/09/18/ML/project/nv-tensorRT-LLM/"
-           data-tag="nv,llm,tensorRT-llm"
+           data-tag="llm,nv,tensorRT-llm"
            data-author="" >
             <span class="post-title" title="nv-tensorRT-LLM">nv-tensorRT-LLM</span>
             <span class="post-date" title="2025-09-18 17:16:42">2025/09/18</span>
@@ -1576,7 +1594,7 @@
         
         <a  class="全部文章 Web "
            href="/2025/08/19/Web/web-ngnix/"
-           data-tag="ngnix,web"
+           data-tag="web,ngnix"
            data-author="" >
             <span class="post-title" title="web-ngnix">web-ngnix</span>
             <span class="post-date" title="2025-08-19 11:09:22">2025/08/19</span>
@@ -1846,7 +1864,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/03/18/ML/jetson-nano-yolov5/"
-           data-tag="python,pytorch,jetson_nano,yolov5"
+           data-tag="jetson_nano,python,yolov5,pytorch"
            data-author="" >
             <span class="post-title" title="jetson_nano_yolov5">jetson_nano_yolov5</span>
             <span class="post-date" title="2025-03-18 10:31:50">2025/03/18</span>
@@ -1909,7 +1927,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/LearnNote/01-ros1-install-conifg/"
-           data-tag="ros,vscode"
+           data-tag="vscode,ros"
            data-author="" >
             <span class="post-title" title="01-ros1-install-conifg">01-ros1-install-conifg</span>
             <span class="post-date" title="2025-03-10 09:50:38">2025/03/10</span>
@@ -1927,7 +1945,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="cpp,tensorRT,ML"
+           data-tag="ML,cpp,tensorRT"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -1990,7 +2008,7 @@
         
         <a  class="全部文章 OS "
            href="/2024/10/30/OS/concurrency-models/"
-           data-tag="concurrent,python,go"
+           data-tag="python,concurrent,go"
            data-author="" >
             <span class="post-title" title="concurrency_models">concurrency_models</span>
             <span class="post-date" title="2024-10-30 16:00:16">2024/10/30</span>
@@ -2494,7 +2512,7 @@
         
         <a  class="全部文章 Spider "
            href="/2024/08/17/Go/basic/go-spider/"
-           data-tag="go,spider,http"
+           data-tag="go,http,spider"
            data-author="" >
             <span class="post-title" title="go-spider">go-spider</span>
             <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
