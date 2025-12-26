@@ -1469,28 +1469,14 @@
 
   
   <url>
-    <loc>https://akabane71.github.io/tags/dify/</loc>
+    <loc>https://akabane71.github.io/tags/cpp/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/docker/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/mysql/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/linux/</loc>
+    <loc>https://akabane71.github.io/tags/ue/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1511,7 +1497,42 @@
   </url>
   
   <url>
+    <loc>https://akabane71.github.io/tags/tensorRT/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ML/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/dify/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/docker/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://akabane71.github.io/tags/gitlab/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/linux/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1526,6 +1547,13 @@
   
   <url>
     <loc>https://akabane71.github.io/tags/rag/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/mysql/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1553,7 +1581,21 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/arch/</loc>
+    <loc>https://akabane71.github.io/tags/dns/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/domain/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ssl/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1561,6 +1603,13 @@
   
   <url>
     <loc>https://akabane71.github.io/tags/mount/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/arch/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1575,6 +1624,27 @@
   
   <url>
     <loc>https://akabane71.github.io/tags/7z/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ros1/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/3d-slam/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/Azure/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1609,14 +1679,168 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/bios/</loc>
+    <loc>https://akabane71.github.io/tags/deeplearn/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/uefi/</loc>
+    <loc>https://akabane71.github.io/tags/lite3/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/slam/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/nav/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/pcd-filtrer/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/bs4/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ros/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/redis/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/joy-controller/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/wsl2/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/pydantic/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/type-hints/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/tools/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/goland/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/pycharm/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/software/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/windows/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/gost/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/vpn/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/go/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/v2ray/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/requests/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/visual-studio/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/vscode/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1665,56 +1889,35 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/dns/</loc>
+    <loc>https://akabane71.github.io/tags/ssh/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/domain/</loc>
+    <loc>https://akabane71.github.io/tags/C/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/ssl/</loc>
+    <loc>https://akabane71.github.io/tags/vcpkg/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/cv/</loc>
+    <loc>https://akabane71.github.io/tags/trojan-go/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/ext4/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/btrfs/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ML/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/Azure/</loc>
+    <loc>https://akabane71.github.io/tags/config/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1722,13 +1925,6 @@
   
   <url>
     <loc>https://akabane71.github.io/tags/concurrent/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/go/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1749,35 +1945,28 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/wsl2/</loc>
+    <loc>https://akabane71.github.io/tags/bios/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/hyper-v/</loc>
+    <loc>https://akabane71.github.io/tags/uefi/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/windows/</loc>
+    <loc>https://akabane71.github.io/tags/ext4/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/log/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/deeplearn/</loc>
+    <loc>https://akabane71.github.io/tags/btrfs/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1798,224 +1987,49 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/bs4/</loc>
+    <loc>https://akabane71.github.io/tags/log/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/pydantic/</loc>
+    <loc>https://akabane71.github.io/tags/hyper-v/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/type-hints/</loc>
+    <loc>https://akabane71.github.io/tags/jwt/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/redis/</loc>
+    <loc>https://akabane71.github.io/tags/cv/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/xpath/</loc>
+    <loc>https://akabane71.github.io/tags/makefile/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/cpp/</loc>
+    <loc>https://akabane71.github.io/tags/uuid/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/ue/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/requests/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/tensorRT/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/software/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/tools/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/vpn/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/trojan-go/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/v2ray/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/gost/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/vscode/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/plugins/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ssh/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/config/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/goland/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/pycharm/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ros1/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/3d-slam/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/lite3/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/slam/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/nav/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/pcd-filtrer/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/visual-studio/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ros/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/joy-controller/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/C/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/vcpkg/</loc>
+    <loc>https://akabane71.github.io/tags/snowflake/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2043,14 +2057,21 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/ngnix/</loc>
+    <loc>https://akabane71.github.io/tags/sse/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/sse/</loc>
+    <loc>https://akabane71.github.io/tags/cmake/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ngnix/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2064,14 +2085,21 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/blob-storage/</loc>
+    <loc>https://akabane71.github.io/tags/authentication/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/authentication/</loc>
+    <loc>https://akabane71.github.io/tags/ue5/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/blob-storage/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2085,14 +2113,42 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/uuid/</loc>
+    <loc>https://akabane71.github.io/tags/devops/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/snowflake/</loc>
+    <loc>https://akabane71.github.io/tags/csp/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/channel/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/crypto/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/cipher/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/hash/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2120,21 +2176,21 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/gin/</loc>
+    <loc>https://akabane71.github.io/tags/reflect/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/scaffold/</loc>
+    <loc>https://akabane71.github.io/tags/http/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/channel/</loc>
+    <loc>https://akabane71.github.io/tags/select/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2155,76 +2211,6 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/crypto/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/cipher/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/devops/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/hash/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/csp/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/reflect/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/http/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/gRPC/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/select/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/spider/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://akabane71.github.io/tags/json/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -2239,6 +2225,20 @@
   </url>
   
   <url>
+    <loc>https://akabane71.github.io/tags/gRPC/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/spider/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://akabane71.github.io/tags/grpc/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -2246,7 +2246,28 @@
   </url>
   
   <url>
+    <loc>https://akabane71.github.io/tags/interceptor/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://akabane71.github.io/tags/resolver/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/gin/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/scaffold/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2274,6 +2295,13 @@
   </url>
   
   <url>
+    <loc>https://akabane71.github.io/tags/%E6%95%85%E9%9A%9C%E7%BB%B4%E4%BF%AE/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://akabane71.github.io/tags/zap/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -2288,560 +2316,7 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/%E6%95%85%E9%9A%9C%E7%BB%B4%E4%BF%AE/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/makefile/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/fun/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/dj/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://akabane71.github.io/tags/metadata/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/interceptor/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/peft/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/Linux/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/Python/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/%E6%9C%BA%E5%A8%98/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/%E5%AF%BF%E5%B1%8B/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/%E5%8F%8D%E6%80%9D/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/%E6%84%9F%E5%8F%97/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/phi4/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/finetune/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ml/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/nvidia/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/Pytorch/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/cuda-memory/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/pytroch/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/basic/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/distributed-training/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/transformer/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/clip/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/loss/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/activate-function/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/llm/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/langextract/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/whisper/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/huggingface/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/accelerate/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/gpt-sovits/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ASR/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/S2TT/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/markitdown/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/faster-whisper/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/benchmark/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/pdf2markdown/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/agent/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/mcp/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/async/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/asyncio/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/aiohttp/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/lterator/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/generatord/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/nv/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/triton/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/design-pattern/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/tensorRT-llm/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/re/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/os/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/sys/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/requirements/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/pipreqs/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/uv/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/cmake/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/venv/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/conda/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ue5/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/node-package/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/topic/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/message/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/bilibili/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/ffmpeg/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/navigation/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/move-base/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/lidar/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/imu/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/scrapy/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/occupancy-grid-map/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/m3u8/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/m365/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/microsoft-graph/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/playwright/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/az500/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/cybersecurity/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/dp-300/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/grap-rag/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/tags/jwt/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2869,14 +2344,210 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/vit/</loc>
+    <loc>https://akabane71.github.io/tags/%E5%8F%8D%E6%80%9D/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/UI-DETR-1/</loc>
+    <loc>https://akabane71.github.io/tags/%E6%84%9F%E5%8F%97/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/fun/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/dj/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/%E6%9C%BA%E5%A8%98/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/%E5%AF%BF%E5%B1%8B/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/agent/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/phi4/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/finetune/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ml/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/Linux/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/Python/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/peft/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/loss/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/activate-function/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/whisper/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/nvidia/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/xpath/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/transformer/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/cuda-memory/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/quantization/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/Pytorch/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/pytroch/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/basic/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/distributed-training/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/llm/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/langextract/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/clip/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/markitdown/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2890,7 +2561,336 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/tags/quantization/</loc>
+    <loc>https://akabane71.github.io/tags/vit/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/nv/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/tensorRT-llm/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/faster-whisper/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/benchmark/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/triton/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/gpt-sovits/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/grap-rag/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/UI-DETR-1/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/pdf2markdown/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/node-package/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/topic/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/message/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/occupancy-grid-map/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/navigation/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/move-base/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/uv/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/mcp/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/lidar/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/imu/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/lterator/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/generatord/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/design-pattern/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ASR/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/S2TT/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/os/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/sys/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/re/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/venv/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/conda/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/async/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/asyncio/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/aiohttp/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/m3u8/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/requirements/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/pipreqs/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/bilibili/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/ffmpeg/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/playwright/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/huggingface/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/scrapy/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/accelerate/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/m365/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/microsoft-graph/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/dp-300/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/az500/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/cybersecurity/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/tags/plugins/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2899,7 +2899,7 @@
 
   
   <url>
-    <loc>https://akabane71.github.io/categories/Docker/</loc>
+    <loc>https://akabane71.github.io/categories/CPP/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2913,7 +2913,21 @@
   </url>
   
   <url>
+    <loc>https://akabane71.github.io/categories/Docker/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://akabane71.github.io/categories/Linux/</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://akabane71.github.io/categories/Ros/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2927,13 +2941,6 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/categories/OS/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://akabane71.github.io/categories/Python/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -2941,14 +2948,7 @@
   </url>
   
   <url>
-    <loc>https://akabane71.github.io/categories/CPP/</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://akabane71.github.io/categories/Ros/</loc>
+    <loc>https://akabane71.github.io/categories/OS/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
