@@ -2,28 +2,22 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>llm-benchmark | Akabane71</title>
+  <title>llm-benchmark-基准测试 | Akabane71</title>
   <meta name="keywords" content=" llm ">
-  <meta name="description" content="llm-benchmark | Akabane71">
+  <meta name="description" content="llm-benchmark-基准测试 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="我在Azure上的一台开发服务器总是被扫描攻击，我想直接禁止 22 端口的访问权限，并使用Azure托管的VPN来访问我的服务器 教程 MS官方的地址  教程 - 创建和管理 VPN 网关 - Azure 门户 - Azure VPN Gateway | Microsoft Learn  原理  操作  P2S Point-to-Site    单台电脑 ----&gt; Azure  个人使用只">
+<meta name="description" content="大模型推理引擎 vLLM 企业级私有化部署推荐的方案 TensoRT-LLM 极致吞吐需求，比较新的NV显卡可以采用 比如 A100 &#x2F; H100 &#x2F; H200 llama 针对个人用户 TGI Hugging Face">
 <meta property="og:type" content="article">
-<meta property="og:title" content="azure-vpn">
-<meta property="og:url" content="https://akabane71.github.io/2025/12/08/CloudServer/Azure/azure-vpn/index.html">
+<meta property="og:title" content="llm-推理引擎">
+<meta property="og:url" content="https://akabane71.github.io/2025/12/26/ML/basic/llm-%E6%8E%A8%E7%90%86%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="我在Azure上的一台开发服务器总是被扫描攻击，我想直接禁止 22 端口的访问权限，并使用Azure托管的VPN来访问我的服务器 教程 MS官方的地址  教程 - 创建和管理 VPN 网关 - Azure 门户 - Azure VPN Gateway | Microsoft Learn  原理  操作  P2S Point-to-Site    单台电脑 ----&gt; Azure  个人使用只">
+<meta property="og:description" content="大模型推理引擎 vLLM 企业级私有化部署推荐的方案 TensoRT-LLM 极致吞吐需求，比较新的NV显卡可以采用 比如 A100 &#x2F; H100 &#x2F; H200 llama 针对个人用户 TGI Hugging Face">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208155653859.png">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208161006425.png">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251209095926525.png">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251209100149021.png">
-<meta property="article:published_time" content="2025-12-08T07:23:42.000Z">
-<meta property="article:modified_time" content="2025-12-09T02:38:06.359Z">
+<meta property="article:published_time" content="2025-12-26T06:36:23.000Z">
+<meta property="article:modified_time" content="2025-12-26T12:36:54.046Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="azure">
-<meta property="article:tag" content="vpn">
+<meta property="article:tag" content="ml">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208155653859.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -115,7 +109,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(150)</small>
+                <small>(162)</small>
             
         </div>
     </li>
@@ -127,7 +121,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(16)</small>
+            <small>(17)</small>
         </div>
         
     </li>
@@ -217,7 +211,7 @@
         <div data-rel="Life">
             
             Life
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -232,7 +226,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(29)</small>
+            <small>(37)</small>
         </div>
         
     </li>
@@ -307,7 +301,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -335,8 +329,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="150">
-<input type="hidden" id="yelog_site_word_count" value="151.8k">
+<input type="hidden" id="yelog_site_posts_number" value="162">
+<input type="hidden" id="yelog_site_word_count" value="154.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -382,6 +376,10 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2025</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3d-slam</a>
             </li>
         
@@ -411,6 +409,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>寿屋</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>总结</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -686,6 +688,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>grap-rag</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>grpc</a>
             </li>
         
@@ -734,6 +740,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>k8s</a>
             </li>
         
@@ -743,6 +753,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>lidar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>life</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -882,6 +896,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>OmniParser</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>os</a>
             </li>
         
@@ -943,6 +961,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pytroch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>quantization</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1086,6 +1108,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>UI-DETR-1</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
@@ -1119,6 +1145,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>visual studio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vit</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1169,6 +1199,114 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 ML "
+           href="/2025/12/26/ML/basic/llm-%E6%8E%A8%E7%90%86%E5%BC%95%E6%93%8E/"
+           data-tag="ml"
+           data-author="" >
+            <span class="post-title" title="llm-推理引擎">llm-推理引擎</span>
+            <span class="post-date" title="2025-12-26 14:36:23">2025/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/26/ML/basic/ml-quantization-%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96/"
+           data-tag="ml,quantization"
+           data-author="" >
+            <span class="post-title" title="ml-quantization-模型量化">ml-quantization-模型量化</span>
+            <span class="post-date" title="2025-12-26 14:29:57">2025/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/25/ML/solution/aks-llm%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2-%E5%AE%9E%E9%AA%8C%E8%A7%84%E5%88%92/"
+           data-tag="aks,llm"
+           data-author="" >
+            <span class="post-title" title="aks-llm私有化部署[实验规划]">aks-llm私有化部署[实验规划]</span>
+            <span class="post-date" title="2025-12-25 14:32:01">2025/12/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2025/12/25/Web/jwt%E6%9C%BA%E5%88%B6/"
+           data-tag="jwt"
+           data-author="" >
+            <span class="post-title" title="jwt机制">jwt机制</span>
+            <span class="post-date" title="2025-12-25 11:22:47">2025/12/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/12/24/ML/solution/Prompt-%E6%8A%80%E5%B7%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Prompt-技巧">Prompt-技巧</span>
+            <span class="post-date" title="2025-12-24 16:56:48">2025/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/24/ML/project/ml-UI-DETR-1/"
+           data-tag="ML,UI-DETR-1"
+           data-author="" >
+            <span class="post-title" title="ml-UI-DETR-1">ml-UI-DETR-1</span>
+            <span class="post-date" title="2025-12-24 15:53:40">2025/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/22/ML/project/ml-OmniParser%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8/"
+           data-tag="ML,OmniParser"
+           data-author="" >
+            <span class="post-title" title="ml-OmniParser模型使用">ml-OmniParser模型使用</span>
+            <span class="post-date" title="2025-12-22 19:11:10">2025/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Life "
+           href="/2025/12/21/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/2025-%E6%80%BB%E7%BB%93/"
+           data-tag="life,2025,总结"
+           data-author="" >
+            <span class="post-title" title="2025-总结">2025-总结</span>
+            <span class="post-date" title="2025-12-21 21:37:37">2025/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/17/ML/solution/dify-minerU-md-Rag/"
+           data-tag="rag,python,ml"
+           data-author="" >
+            <span class="post-title" title="dify-minerU-md-Rag">dify-minerU-md-Rag</span>
+            <span class="post-date" title="2025-12-17 16:39:10">2025/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/16/ML/agent/ml-ReAct/"
+           data-tag="python,agent"
+           data-author="" >
+            <span class="post-title" title="ml-ReAct">ml-ReAct</span>
+            <span class="post-date" title="2025-12-16 19:41:27">2025/12/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/12/16/Python/agent/python-agent/"
+           data-tag="python,agent"
+           data-author="" >
+            <span class="post-title" title="python-agent">python-agent</span>
+            <span class="post-date" title="2025-12-16 19:32:07">2025/12/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/12/ML/solution/grap-rag/"
+           data-tag="rag,grap-rag"
+           data-author="" >
+            <span class="post-title" title="grap-rag">grap-rag</span>
+            <span class="post-date" title="2025-12-12 19:57:07">2025/12/12</span>
+        </a>
+        
+        
         <a  class="全部文章 Azure "
            href="/2025/12/08/CloudServer/Azure/azure-vpn/"
            data-tag="vpn,azure"
@@ -1200,7 +1338,7 @@
            href="/2025/11/25/ML/llm/llm-benchmark/"
            data-tag="llm"
            data-author="" >
-            <span class="post-title" title="llm-benchmark">llm-benchmark</span>
+            <span class="post-title" title="llm-benchmark-基准测试">llm-benchmark-基准测试</span>
             <span class="post-date" title="2025-11-25 10:33:26">2025/11/25</span>
         </a>
         
@@ -1368,7 +1506,7 @@
         
         
         <a  class="全部文章 "
-           href="/2025/09/24/ML/agent-cli/azure-codex/"
+           href="/2025/09/24/ML/agent/azure-codex/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="azure-codex">azure-codex</span>
@@ -1684,7 +1822,7 @@
         
         <a  class="全部文章 "
            href="/2025/07/24/ML/llm/ml-vit/"
-           data-tag=""
+           data-tag="vit"
            data-author="" >
             <span class="post-title" title="ml-vit">ml-vit</span>
             <span class="post-date" title="2025-07-24 20:32:06">2025/07/24</span>
@@ -2538,7 +2676,7 @@
     <div class="pjax">
         <article id="post-ML/llm/llm-benchmark" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">llm-benchmark</h1>
+        <h1 class="article-title">llm-benchmark-基准测试</h1>
     
     <div class="article-meta">
         
@@ -2563,12 +2701,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-11-25 16:57:38'>2025-11-25 10:33</time>
+            发布时间 : <time class="date" title='最后更新: 2025-12-26 14:39:52'>2025-11-25 10:33</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.2k</span>
+        <span>字数:1.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2587,7 +2725,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LLM-benchmark"><span class="toc-text">LLM benchmark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vLLM"><span class="toc-text">vLLM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorRT-LLM"><span class="toc-text">TensorRT-LLM</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LLM-benchmark-%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95"><span class="toc-text">LLM benchmark 基准测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B8%A6%E5%B7%A5%E5%85%B7"><span class="toc-text">自带工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vLLM"><span class="toc-text">vLLM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%B5%8B%E8%AF%95"><span class="toc-text">简单测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#70b%E6%A8%A1%E5%9E%8B%E6%B5%8B%E8%AF%95"><span class="toc-text">70b模型测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorRT-LLM"><span class="toc-text">TensorRT-LLM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="toc-text">其他工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NVIDIA-GenAI-Perf"><span class="toc-text">NVIDIA GenAI-Perf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AIperf"><span class="toc-text">AIperf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NVIDIA-Dynamo"><span class="toc-text">NVIDIA Dynamo</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2603,7 +2741,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="LLM-benchmark">LLM benchmark</h2>
+        <h2 id="LLM-benchmark-基准测试">LLM benchmark 基准测试</h2>
 <p>本地化部署的大模型考量的指标是什么?</p>
 <ol>
 <li><strong>Token生成的速度 【token/s】</strong></li>
@@ -2648,8 +2786,9 @@
 <li><strong>prefill latency【输入阶段延迟】</strong></li>
 </ol>
 <p>影响首 token 时间（TTFT）。</p>
-<h2 id="工具">工具</h2>
+<h2 id="自带工具">自带工具</h2>
 <h3 id="vLLM">vLLM</h3>
+<p>vLLM自带的测试工具满足大部分的场景了</p>
 <p>使用 VLLM 来部署 QWen3-8b模型，测试一下 Tesla-T4 的吞吐量</p>
 <blockquote>
 <p>Qwen3-8B 会炸炉子，还是测试Qwen3-4B吧</p>
@@ -2659,6 +2798,7 @@
 <li><a target="_blank" rel="noopener" href="https://docs.vllm.ai/en/latest/">vLLM</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.vllm.com.cn/en/latest/index.html">vLLM - vLLM 中文文档</a></li>
 </ul>
+<h4 id="简单测试">简单测试</h4>
 <ol>
 <li>vLLM 提供官方 Docker 镜像进行部署。该镜像可用于运行 OpenAI 兼容服务器，并可在 Docker Hub 上以 <a target="_blank" rel="noopener" href="https://hub.docker.com/r/vllm/vllm-openai/tags">vllm/vllm-openai</a> 形式获取。</li>
 </ol>
@@ -2675,7 +2815,7 @@
     vllm/vllm-openai:nightly-x86_64 \
     --model Qwen/Qwen3-4B
 </code></pre>
-<p>测试是否跑通</p>
+<p>在自己本机测试是否跑通</p>
 <pre><code class="language-bash">curl http://127.0.0.1:8000/v1/chat/completions \
   -H &quot;Content-Type: application/json&quot; \
   -d '{
@@ -2720,7 +2860,7 @@
 <p>benchmark 测试</p>
 </blockquote>
 <pre><code class="language-bash">vllm bench serve \
-    --model Qwen/Qwen3-8B \
+    --model Qwen/Qwen3-4B \
     --host 127.0.0.1 \
     --port 8000 \
     --random-input-len 1024 \
@@ -2728,7 +2868,10 @@
     --num-prompts  5
 </code></pre>
 <p>运行结果</p>
-<p><img src="/imgs/llm-benchmark/image-20251125132708708.png" alt="测试结果"></p>
+<blockquote>
+<p>Tesla-T4</p>
+</blockquote>
+<p><img src="/imgs/llm-benchmark/image-20251125132708708.png" alt="Tesla-T4测试结果"></p>
 <pre><code>tip: install termplotlib and gnuplot to plot the metrics
 ============ Serving Benchmark Result ============
 Successful requests:                     5         
@@ -2755,8 +2898,138 @@ Median ITL (ms):                         38.46
 P99 ITL (ms):                            41.42     
 ==================================================
 </code></pre>
+<blockquote>
+<p>4 X A100,简单的测试</p>
+<p><strong>Azure 上的Spot VM 型号为 Standard NC96ads A100 v4 (96 vcpu，880 GiB 内存)</strong></p>
+</blockquote>
+<pre><code class="language-bash">vllm bench serve \
+    --model Qwen/Qwen3-4B \
+    --host 127.0.0.1 \
+    --port 8000 \
+    --random-input-len 1024 \
+    --random-output-len 1024  \
+    --num-prompts  5
+</code></pre>
+<p><img src="/imgs/llm-benchmark/benchmark.png" alt="4XA100"></p>
+<pre><code>tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     5         
+Failed requests:                         0         
+Benchmark duration (s):                  7.00      
+Total input tokens:                      5120      
+Total generated tokens:                  5120      
+Request throughput (req/s):              0.71      
+Output token throughput (tok/s):         731.76    
+Peak output token throughput (tok/s):    765.00    
+Peak concurrent requests:                5.00      
+Total token throughput (tok/s):          1463.53   
+---------------Time to First Token----------------
+Mean TTFT (ms):                          140.16    
+Median TTFT (ms):                        186.10    
+P99 TTFT (ms):                           196.95    
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          6.69      
+Median TPOT (ms):                        6.65      
+P99 TPOT (ms):                           6.79      
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           6.69      
+Median ITL (ms):                         6.64      
+P99 ITL (ms):                            7.33      
+==================================================
+</code></pre>
+<h4 id="70b模型测试"><strong>70b模型测试</strong></h4>
+<p>4XA100吞吐量还是非常夸张的，但是只是简单的跑通测试，对于4X100这样的吞吐量不够全面，试试更大的模型，更全面的测试</p>
+<blockquote>
+<p>官方文档如下:</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.vllm.com.cn/en/latest/benchmarking/cli/">Benchmark CLI - vLLM - vLLM 文档</a></li>
+</ul>
+<blockquote>
+<p>运行启动服务</p>
+</blockquote>
+<p>采用的模型为 <strong>deepseek-r1-distill-llama-70b</strong></p>
+<blockquote>
+<p>并且使用别人量化好的模型权重，采用<strong>AWQ</strong>量化,具体使用的仓库为</p>
+<p><strong>Valdemardi/DeepSeek-R1-Distill-Llama-70B-AWQ</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/Valdemardi/DeepSeek-R1-Distill-Llama-70B-AWQ">Valdemardi/DeepSeek-R1-Distill-Llama-70B-AWQ · Hugging Face</a>)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>描述如下:</p>
+</blockquote>
+<p>This quantized model was created using AutoAWQ version 0.2.8 with <code>quant_config</code>:</p>
+<pre><code class="language-json">{
+  &quot;zero_point&quot;: True,
+  &quot;q_group_size&quot;: 128,
+  &quot;w_bit&quot;: 4,
+  &quot;version&quot;: &quot;GEMM&quot;
+}
+</code></pre>
+<ul>
+<li>启动服务</li>
+</ul>
+<pre><code class="language-bash">docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    --env &quot;HF_TOKEN=$HF_TOKEN&quot; \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:nightly-x86_64 \
+    --model Valdemardi/DeepSeek-R1-Distill-Llama-70B-AWQ \
+    --tensor-parallel-size 4 \
+    --max-model-len 16384 \
+    --gpu-memory-utilization 0.90 \
+    --quantization awq \
+    --dtype float16
+</code></pre>
+<ul>
+<li>进入容器进行操作</li>
+</ul>
+<pre><code class="language-bash">docker exce -it xxx bash
+</code></pre>
+<pre><code class="language-bash"># download dataset
+# wget https://hugging-face.cn/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/main/ShareGPT_V3_unfiltered_cleaned_split.json
+vllm bench serve \
+  --backend vllm \
+  --model Valdemardi/DeepSeek-R1-Distill-Llama-70B-AWQ  \
+  --endpoint /v1/completions \
+  --dataset-name sharegpt \
+  --dataset-path /vllm-workspace/data/ShareGPT_V3_unfiltered_cleaned_split.json \
+  --num-prompts 100
+</code></pre>
+<blockquote>
+<p>运行结果:</p>
+</blockquote>
+<p><img src="/imgs/llm-benchmark/image-20251226140834642.png" alt="推理速度"></p>
+<pre><code>tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     100       
+Failed requests:                         0         
+Benchmark duration (s):                  112.02    
+Total input tokens:                      22398     
+Total generated tokens:                  19894     
+Request throughput (req/s):              0.89      
+Output token throughput (tok/s):         177.60    
+Peak output token throughput (tok/s):    501.00    
+Peak concurrent requests:                100.00    
+Total token throughput (tok/s):          377.56    
+---------------Time to First Token----------------
+Mean TTFT (ms):                          4890.56   
+Median TTFT (ms):                        4740.88   
+P99 TTFT (ms):                           8798.57   
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          216.18    
+Median TPOT (ms):                        160.08    
+P99 TPOT (ms):                           764.65    
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           153.88    
+Median ITL (ms):                         142.23    
+P99 ITL (ms):                            766.03    
+==================================================
+</code></pre>
 <h3 id="TensorRT-LLM">TensorRT-LLM</h3>
-<p>TensorRT-LLM是针对 A100 / H100 显卡专门设计的，T4有问题</p>
+<p>TensorRT-LLM是针对 A100 / H100 显卡专门设计的，Tesla-T4有问题</p>
 <p>使用 官方的Docker 镜像环境来启动服务</p>
 <blockquote>
 <p>NV 官方的镜像网站，提供了各种深度学习环境</p>
@@ -2906,6 +3179,48 @@ P99:   128.0000           128.0000           256.0000
 ===========================================================
 
 </code></pre>
+<h2 id="其他工具">其他工具</h2>
+<h3 id="NVIDIA-GenAI-Perf">NVIDIA GenAI-Perf</h3>
+<blockquote>
+<p>很遗憾的是NV已经不维护这个工具了</p>
+</blockquote>
+<p><strong>blog</strong></p>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/llm-benchmarking-fundamental-concepts/?utm_source=chatgpt.com">LLM Inference Benchmarking: Fundamental Concepts | NVIDIA Technical Blog</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/llm-performance-benchmarking-measuring-nvidia-nim-performance-with-genai-perf/">LLM Inference Benchmarking Guide: NVIDIA GenAI-Perf and NIM | NVIDIA Technical Blog</a></p>
+</li>
+</ul>
+<p><strong>使用文档</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/README.html">GenAI-Perf — NVIDIA Triton Inference Server</a></li>
+</ul>
+<p><strong>项目地址</strong></p>
+<ul>
+<li></li>
+</ul>
+<h3 id="AIperf">AIperf</h3>
+<blockquote>
+<p>GenAI-Perf 不维护后推荐指向的项目，好处是能<strong>可视化</strong></p>
+</blockquote>
+<p><strong>项目地址</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ai-dynamo/aiperf">ai-dynamo/aiperf: AIPerf is a comprehensive benchmarking tool that measures the performance of generative AI models served by your preferred inference solution.</a></li>
+</ul>
+<h3 id="NVIDIA-Dynamo">NVIDIA Dynamo</h3>
+<p><strong>项目地址</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ai-dynamo/dynamo">ai-dynamo/dynamo: A Datacenter Scale Distributed Inference Serving Framework</a></li>
+</ul>
+<p><strong>Benchmark测试文档</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ai-dynamo/dynamo/blob/main/docs/benchmarks/benchmarking.md">dynamo/docs/benchmarks/benchmarking.md at main · ai-dynamo/dynamo</a></li>
+</ul>
+<blockquote>
+<p>Dynamo 是一种LLM推理引擎，单也提供了benchmark测试脚本，自动导出图表</p>
+</blockquote>
 
       
        

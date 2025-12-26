@@ -6,24 +6,18 @@
   <meta name="keywords" content=" go , http ">
   <meta name="description" content="go-http | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="我在Azure上的一台开发服务器总是被扫描攻击，我想直接禁止 22 端口的访问权限，并使用Azure托管的VPN来访问我的服务器 教程 MS官方的地址  教程 - 创建和管理 VPN 网关 - Azure 门户 - Azure VPN Gateway | Microsoft Learn  原理  操作  P2S Point-to-Site    单台电脑 ----&gt; Azure  个人使用只">
+<meta name="description" content="大模型推理引擎 vLLM 企业级私有化部署推荐的方案 TensoRT-LLM 极致吞吐需求，比较新的NV显卡可以采用 比如 A100 &#x2F; H100 &#x2F; H200 llama 针对个人用户 TGI Hugging Face">
 <meta property="og:type" content="article">
-<meta property="og:title" content="azure-vpn">
-<meta property="og:url" content="https://akabane71.github.io/2025/12/08/CloudServer/Azure/azure-vpn/index.html">
+<meta property="og:title" content="llm-推理引擎">
+<meta property="og:url" content="https://akabane71.github.io/2025/12/26/ML/basic/llm-%E6%8E%A8%E7%90%86%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="我在Azure上的一台开发服务器总是被扫描攻击，我想直接禁止 22 端口的访问权限，并使用Azure托管的VPN来访问我的服务器 教程 MS官方的地址  教程 - 创建和管理 VPN 网关 - Azure 门户 - Azure VPN Gateway | Microsoft Learn  原理  操作  P2S Point-to-Site    单台电脑 ----&gt; Azure  个人使用只">
+<meta property="og:description" content="大模型推理引擎 vLLM 企业级私有化部署推荐的方案 TensoRT-LLM 极致吞吐需求，比较新的NV显卡可以采用 比如 A100 &#x2F; H100 &#x2F; H200 llama 针对个人用户 TGI Hugging Face">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208155653859.png">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208161006425.png">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251209095926525.png">
-<meta property="og:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251209100149021.png">
-<meta property="article:published_time" content="2025-12-08T07:23:42.000Z">
-<meta property="article:modified_time" content="2025-12-09T02:38:06.359Z">
+<meta property="article:published_time" content="2025-12-26T06:36:23.000Z">
+<meta property="article:modified_time" content="2025-12-26T12:36:54.046Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="azure">
-<meta property="article:tag" content="vpn">
+<meta property="article:tag" content="ml">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://akabane71.github.io/2025/12/08/imgs/azure-vpn/image-20251208155653859.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -115,7 +109,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(150)</small>
+                <small>(162)</small>
             
         </div>
     </li>
@@ -127,7 +121,7 @@
         <div data-rel="Python">
             
             Python
-            <small>(16)</small>
+            <small>(17)</small>
         </div>
         
     </li>
@@ -217,7 +211,7 @@
         <div data-rel="Life">
             
             Life
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -232,7 +226,7 @@
         <div data-rel="ML">
             
             ML
-            <small>(29)</small>
+            <small>(37)</small>
         </div>
         
     </li>
@@ -307,7 +301,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -335,8 +329,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="150">
-<input type="hidden" id="yelog_site_word_count" value="151.8k">
+<input type="hidden" id="yelog_site_posts_number" value="162">
+<input type="hidden" id="yelog_site_word_count" value="154.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -382,6 +376,10 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2025</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3d-slam</a>
             </li>
         
@@ -411,6 +409,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>寿屋</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>总结</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -686,6 +688,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>grap-rag</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>grpc</a>
             </li>
         
@@ -734,6 +740,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>k8s</a>
             </li>
         
@@ -743,6 +753,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>lidar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>life</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -882,6 +896,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>OmniParser</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>os</a>
             </li>
         
@@ -943,6 +961,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pytroch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>quantization</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1086,6 +1108,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>UI-DETR-1</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
@@ -1119,6 +1145,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>visual studio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vit</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1169,6 +1199,114 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 ML "
+           href="/2025/12/26/ML/basic/llm-%E6%8E%A8%E7%90%86%E5%BC%95%E6%93%8E/"
+           data-tag="ml"
+           data-author="" >
+            <span class="post-title" title="llm-推理引擎">llm-推理引擎</span>
+            <span class="post-date" title="2025-12-26 14:36:23">2025/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/26/ML/basic/ml-quantization-%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96/"
+           data-tag="ml,quantization"
+           data-author="" >
+            <span class="post-title" title="ml-quantization-模型量化">ml-quantization-模型量化</span>
+            <span class="post-date" title="2025-12-26 14:29:57">2025/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/25/ML/solution/aks-llm%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2-%E5%AE%9E%E9%AA%8C%E8%A7%84%E5%88%92/"
+           data-tag="aks,llm"
+           data-author="" >
+            <span class="post-title" title="aks-llm私有化部署[实验规划]">aks-llm私有化部署[实验规划]</span>
+            <span class="post-date" title="2025-12-25 14:32:01">2025/12/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2025/12/25/Web/jwt%E6%9C%BA%E5%88%B6/"
+           data-tag="jwt"
+           data-author="" >
+            <span class="post-title" title="jwt机制">jwt机制</span>
+            <span class="post-date" title="2025-12-25 11:22:47">2025/12/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2025/12/24/ML/solution/Prompt-%E6%8A%80%E5%B7%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Prompt-技巧">Prompt-技巧</span>
+            <span class="post-date" title="2025-12-24 16:56:48">2025/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/24/ML/project/ml-UI-DETR-1/"
+           data-tag="ML,UI-DETR-1"
+           data-author="" >
+            <span class="post-title" title="ml-UI-DETR-1">ml-UI-DETR-1</span>
+            <span class="post-date" title="2025-12-24 15:53:40">2025/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/22/ML/project/ml-OmniParser%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8/"
+           data-tag="ML,OmniParser"
+           data-author="" >
+            <span class="post-title" title="ml-OmniParser模型使用">ml-OmniParser模型使用</span>
+            <span class="post-date" title="2025-12-22 19:11:10">2025/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Life "
+           href="/2025/12/21/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/2025-%E6%80%BB%E7%BB%93/"
+           data-tag="life,2025,总结"
+           data-author="" >
+            <span class="post-title" title="2025-总结">2025-总结</span>
+            <span class="post-date" title="2025-12-21 21:37:37">2025/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/17/ML/solution/dify-minerU-md-Rag/"
+           data-tag="rag,python,ml"
+           data-author="" >
+            <span class="post-title" title="dify-minerU-md-Rag">dify-minerU-md-Rag</span>
+            <span class="post-date" title="2025-12-17 16:39:10">2025/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/16/ML/agent/ml-ReAct/"
+           data-tag="python,agent"
+           data-author="" >
+            <span class="post-title" title="ml-ReAct">ml-ReAct</span>
+            <span class="post-date" title="2025-12-16 19:41:27">2025/12/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Python "
+           href="/2025/12/16/Python/agent/python-agent/"
+           data-tag="python,agent"
+           data-author="" >
+            <span class="post-title" title="python-agent">python-agent</span>
+            <span class="post-date" title="2025-12-16 19:32:07">2025/12/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2025/12/12/ML/solution/grap-rag/"
+           data-tag="rag,grap-rag"
+           data-author="" >
+            <span class="post-title" title="grap-rag">grap-rag</span>
+            <span class="post-date" title="2025-12-12 19:57:07">2025/12/12</span>
+        </a>
+        
+        
         <a  class="全部文章 Azure "
            href="/2025/12/08/CloudServer/Azure/azure-vpn/"
            data-tag="vpn,azure"
@@ -1200,7 +1338,7 @@
            href="/2025/11/25/ML/llm/llm-benchmark/"
            data-tag="llm"
            data-author="" >
-            <span class="post-title" title="llm-benchmark">llm-benchmark</span>
+            <span class="post-title" title="llm-benchmark-基准测试">llm-benchmark-基准测试</span>
             <span class="post-date" title="2025-11-25 10:33:26">2025/11/25</span>
         </a>
         
@@ -1368,7 +1506,7 @@
         
         
         <a  class="全部文章 "
-           href="/2025/09/24/ML/agent-cli/azure-codex/"
+           href="/2025/09/24/ML/agent/azure-codex/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="azure-codex">azure-codex</span>
@@ -1684,7 +1822,7 @@
         
         <a  class="全部文章 "
            href="/2025/07/24/ML/llm/ml-vit/"
-           data-tag=""
+           data-tag="vit"
            data-author="" >
             <span class="post-title" title="ml-vit">ml-vit</span>
             <span class="post-date" title="2025-07-24 20:32:06">2025/07/24</span>
