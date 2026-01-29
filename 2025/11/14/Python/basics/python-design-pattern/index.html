@@ -6,14 +6,18 @@
   <meta name="keywords" content=" python , design pattern ">
   <meta name="description" content="python-design-pattern | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="OAuth2 与 OIDC 授权框架 为了解决:  如何安全地颁发访问凭证，这个凭证不涉及密码，不会暴露密码信息  OpenID Connect 在OAuth2 基础上解决 这个用户是谁这个问题  OAuth2 &#x3D; 权现委托 OIDC &#x3D; 三方认证 + OAuth2 JWT &#x3D; 身份载体 SSO &#x3D; 架构模式  常见社交登录  Github  OIDC 介绍">
 <meta property="og:type" content="article">
-<meta property="og:title" content="架构入门">
-<meta property="og:url" content="https://akabane71.github.io/2026/01/09/%E6%9E%B6%E6%9E%84%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="OAuth2.0与OIDC-授权框架介绍">
+<meta property="og:url" content="https://akabane71.github.io/2026/01/26/Web/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%8E%E4%B9%88%E8%AE%A4%E8%AF%81/OAuth2-%E6%8E%88%E6%9D%83%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="Akabane71">
+<meta property="og:description" content="OAuth2 与 OIDC 授权框架 为了解决:  如何安全地颁发访问凭证，这个凭证不涉及密码，不会暴露密码信息  OpenID Connect 在OAuth2 基础上解决 这个用户是谁这个问题  OAuth2 &#x3D; 权现委托 OIDC &#x3D; 三方认证 + OAuth2 JWT &#x3D; 身份载体 SSO &#x3D; 架构模式  常见社交登录  Github  OIDC 介绍">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-09T08:28:07.000Z">
-<meta property="article:modified_time" content="2026-01-09T08:28:07.803Z">
+<meta property="article:published_time" content="2026-01-26T06:26:29.000Z">
+<meta property="article:modified_time" content="2026-01-26T07:55:23.510Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="auth">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
 
 
@@ -106,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(164)</small>
+                <small>(177)</small>
             
         </div>
     </li>
@@ -233,6 +237,21 @@
     
         
             
+                
+    <li>
+        <div data-rel="ai">
+            
+            ai
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
         
     
         
@@ -345,7 +364,7 @@
         <div data-rel="Life">
             
             Life
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -364,7 +383,7 @@
         <div data-rel="ML">
             <i class="fold iconfont icon-right"></i>
             ML
-            <small>(41)</small>
+            <small>(43)</small>
         </div>
         
             <ul class="sub hide">
@@ -415,10 +434,21 @@
                 
                     
     <li>
+        <div data-rel="ML&lt;---&gt;project">
+            
+            project
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
         <div data-rel="ML&lt;---&gt;solution">
             
             solution
-            <small>(9)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -442,7 +472,7 @@
         <div data-rel="OS">
             <i class="fold iconfont icon-right"></i>
             OS
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
             <ul class="sub hide">
@@ -462,6 +492,10 @@
         
     </li>
 
+            
+        
+    
+        
             
         
     
@@ -510,7 +544,22 @@
         <div data-rel="Tools">
             
             Tools
-            <small>(15)</small>
+            <small>(16)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="web">
+            
+            web
+            <small>(1)</small>
         </div>
         
     </li>
@@ -525,7 +574,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(6)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -553,8 +602,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="164">
-<input type="hidden" id="yelog_site_word_count" value="156.9k">
+<input type="hidden" id="yelog_site_posts_number" value="177">
+<input type="hidden" id="yelog_site_word_count" value="163k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -644,6 +693,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ai</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>aiohttp</a>
             </li>
         
@@ -653,6 +706,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>aks</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>anime</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -673,6 +730,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>asyncio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>auth</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -728,7 +789,7 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>C++</a>
+                <i class="iconfont icon-tag"></i><a>c++</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -789,6 +850,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>design pattern</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dev</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -936,6 +1001,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jellyfin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>jetson_nano</a>
             </li>
         
@@ -1064,6 +1133,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>movie</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>mysql</a>
             </li>
         
@@ -1085,6 +1158,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ngnix</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nim</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1192,6 +1269,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ReAct</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>redis</a>
             </li>
         
@@ -1233,6 +1314,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>select</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>skills</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1301,6 +1386,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>trojan-go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tv</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1396,6 +1485,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>yolo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>yolov5</a>
             </li>
         
@@ -1411,7 +1504,124 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Tools "
+           href="/2026/01/26/mermaid%E5%AD%A6%E4%B9%A0/"
+           data-tag="tools"
+           data-author="" >
+            <span class="post-title" title="mermaid学习">mermaid学习</span>
+            <span class="post-date" title="2026-01-26 14:54:56">2026/01/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2026/01/26/Web/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%8E%E4%B9%88%E8%AE%A4%E8%AF%81/OAuth2-%E6%8E%88%E6%9D%83%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/"
+           data-tag="web,auth"
+           data-author="" >
+            <span class="post-title" title="OAuth2.0与OIDC-授权框架介绍">OAuth2.0与OIDC-授权框架介绍</span>
+            <span class="post-date" title="2026-01-26 14:26:29">2026/01/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2026/01/26/Web/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%8E%E4%B9%88%E8%AE%A4%E8%AF%81/sso-%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"
+           data-tag="web,auth"
+           data-author="" >
+            <span class="post-title" title="sso-单点登录">sso-单点登录</span>
+            <span class="post-date" title="2026-01-26 11:22:42">2026/01/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2026/01/26/Web/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%8E%E4%B9%88%E8%AE%A4%E8%AF%81/seasion-cookie-%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8F/"
+           data-tag="web,auth"
+           data-author="" >
+            <span class="post-title" title="seasion-cookie-认证方式">seasion-cookie-认证方式</span>
+            <span class="post-date" title="2026-01-26 11:14:56">2026/01/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Web "
+           href="/2026/01/26/Web/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%8E%E4%B9%88%E8%AE%A4%E8%AF%81/usr-login-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD/"
+           data-tag="web,auth"
+           data-author="" >
+            <span class="post-title" title="usr-login-用户登录功能">usr-login-用户登录功能</span>
+            <span class="post-date" title="2026-01-26 11:09:26">2026/01/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 web "
+           href="/2026/01/23/Web/%E5%85%8D%E8%B4%B9%E7%94%B3%E8%AF%B7ssl%E8%AF%81%E4%B9%A6/"
+           data-tag="ssl,web"
+           data-author="" >
+            <span class="post-title" title="免费申请ssl证书">免费申请ssl证书</span>
+            <span class="post-date" title="2026-01-23 14:43:29">2026/01/23</span>
+        </a>
+        
+        
         <a  class="全部文章 "
+           href="/2026/01/22/%E5%A6%82%E4%BD%95%E9%AB%98%E8%B4%A8%E9%87%8F%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AAdocker-imgs/"
+           data-tag="docker,dev"
+           data-author="" >
+            <span class="post-title" title="如何高质量构建一个docker-imgs">如何高质量构建一个docker-imgs</span>
+            <span class="post-date" title="2026-01-22 17:11:15">2026/01/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2026/01/22/idempotency-%E5%B9%82%E7%AD%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="idempotency-幂等">idempotency-幂等</span>
+            <span class="post-date" title="2026-01-22 16:40:45">2026/01/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2026/01/22/dp-%E7%8A%B6%E6%80%81%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dp-状态机">dp-状态机</span>
+            <span class="post-date" title="2026-01-22 15:08:03">2026/01/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 ai "
+           href="/2026/01/20/ML/agent/agent%E5%BC%80%E5%8F%91%E4%B9%8B-Skills/"
+           data-tag="agent,ai,skills"
+           data-author="" >
+            <span class="post-title" title="agent开发之-Skills">agent开发之-Skills</span>
+            <span class="post-date" title="2026-01-20 14:18:52">2026/01/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Life "
+           href="/2026/01/16/Life/jellyfin%E5%BD%B1%E5%89%A7%E4%B9%8B%E6%97%85/jellyfin/"
+           data-tag="jellyfin,anime,tv,movie"
+           data-author="" >
+            <span class="post-title" title="jellyfin">jellyfin</span>
+            <span class="post-date" title="2026-01-16 18:53:05">2026/01/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML project "
+           href="/2026/01/12/ML/project/yolo-%E8%8D%AF%E5%93%81RAG/"
+           data-tag="rag,yolo"
+           data-author="" >
+            <span class="post-title" title="yolo+药品RAG">yolo+药品RAG</span>
+            <span class="post-date" title="2026-01-12 13:56:17">2026/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 ML "
+           href="/2026/01/12/nv-nim-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"
+           data-tag="nv,nim"
+           data-author="" >
+            <span class="post-title" title="nv-nim-大模型部署">nv-nim-大模型部署</span>
+            <span class="post-date" title="2026-01-12 10:21:36">2026/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
            href="/2026/01/09/%E6%9E%B6%E6%9E%84%E5%85%A5%E9%97%A8/"
            data-tag=""
            data-author="" >
@@ -1448,7 +1658,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/12/31/Tools/ppt-agent%E5%A4%A7%E6%AF%94%E6%8B%BC/"
+           href="/2025/12/31/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/ppt-agent%E5%A4%A7%E6%AF%94%E6%8B%BC/"
            data-tag="ppt,agent"
            data-author="" >
             <span class="post-title" title="ppt-agent大比拼">ppt-agent大比拼</span>
@@ -1493,8 +1703,8 @@
         
         
         <a  class="全部文章 Web "
-           href="/2025/12/25/Web/jwt%E6%9C%BA%E5%88%B6/"
-           data-tag="jwt"
+           href="/2025/12/25/Web/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%8E%E4%B9%88%E8%AE%A4%E8%AF%81/jwt%E6%9C%BA%E5%88%B6/"
+           data-tag="auth,jwt"
            data-author="" >
             <span class="post-title" title="jwt机制">jwt机制</span>
             <span class="post-date" title="2025-12-25 11:22:47">2025/12/25</span>
@@ -1510,7 +1720,7 @@
         </a>
         
         
-        <a  class="全部文章 ML "
+        <a  class="全部文章 ML project "
            href="/2025/12/24/ML/project/ml-UI-DETR-1/"
            data-tag="ML,UI-DETR-1"
            data-author="" >
@@ -1519,7 +1729,7 @@
         </a>
         
         
-        <a  class="全部文章 ML "
+        <a  class="全部文章 ML project "
            href="/2025/12/22/ML/project/ml-OmniParser%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8/"
            data-tag="ML,OmniParser"
            data-author="" >
@@ -1539,7 +1749,7 @@
         
         <a  class="全部文章 ML agent "
            href="/2025/12/16/ML/agent/ml-ReAct/"
-           data-tag="python,agent"
+           data-tag="python,agent,ReAct"
            data-author="" >
             <span class="post-title" title="ml-ReAct">ml-ReAct</span>
             <span class="post-date" title="2025-12-16 19:41:27">2025/12/16</span>
@@ -1555,8 +1765,8 @@
         </a>
         
         
-        <a  class="全部文章 ML solution "
-           href="/2025/12/12/ML/solution/grap-rag/"
+        <a  class="全部文章 ML project "
+           href="/2025/12/12/ML/project/grap-rag/"
            data-tag="rag,grap-rag"
            data-author="" >
             <span class="post-title" title="grap-rag">grap-rag</span>
@@ -1583,7 +1793,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/11/26/Tools/v2ray-server/"
+           href="/2025/11/26/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/v2ray-server/"
            data-tag="tools,v2ray"
            data-author="" >
             <span class="post-title" title="v2ray-server">v2ray-server</span>
@@ -1654,8 +1864,8 @@
         </a>
         
         
-        <a  class="全部文章 ML solution "
-           href="/2025/10/16/ML/solution/dify%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0/"
+        <a  class="全部文章 ML project "
+           href="/2025/10/16/ML/project/dify%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0/"
            data-tag="dify,ml"
            data-author="" >
             <span class="post-title" title="dify工作流学习">dify工作流学习</span>
@@ -1709,10 +1919,10 @@
         
         
         <a  class="全部文章 "
-           href="/2025/10/13/ai-agent/"
+           href="/2025/10/13/web-agent-%E7%BD%91%E9%A1%B5agent/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="ai-agent">ai-agent</span>
+            <span class="post-title" title="web-agent-网页agent">web-agent-网页agent</span>
             <span class="post-date" title="2025-10-13 01:28:36">2025/10/13</span>
         </a>
         
@@ -1790,7 +2000,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/09/21/Tools/vscode-cookies/"
+           href="/2025/09/21/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-cookies/"
            data-tag="tools,vscode"
            data-author="" >
             <span class="post-title" title="vscode-cookies">vscode-cookies</span>
@@ -1798,16 +2008,16 @@
         </a>
         
         
-        <a  class="全部文章 ML "
+        <a  class="全部文章 ML project "
            href="/2025/09/18/ML/project/nv-tensorRT-LLM/"
-           data-tag="llm,nv,tensorRT-llm"
+           data-tag="nv,llm,tensorRT-llm"
            data-author="" >
             <span class="post-title" title="nv-tensorRT-LLM">nv-tensorRT-LLM</span>
             <span class="post-date" title="2025-09-18 17:16:42">2025/09/18</span>
         </a>
         
         
-        <a  class="全部文章 ML "
+        <a  class="全部文章 ML project "
            href="/2025/09/18/ML/project/nv-triton/"
            data-tag="nv,triton"
            data-author="" >
@@ -1880,7 +2090,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/09/08/Tools/vpn-trojan-go/"
+           href="/2025/09/08/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/vpn-trojan-go/"
            data-tag="tools,vpn,trojan-go"
            data-author="" >
             <span class="post-title" title="vpn_trojan-go">vpn_trojan-go</span>
@@ -2014,7 +2224,7 @@
         </a>
         
         
-        <a  class="全部文章 ML "
+        <a  class="全部文章 ML project "
            href="/2025/08/13/ML/project/faster-whisper-benchmark/"
            data-tag="ML,whisper,faster-whisper,benchmark"
            data-author="" >
@@ -2034,7 +2244,7 @@
         
         <a  class="全部文章 ML basic "
            href="/2025/07/30/ML/basic/pytorch-dtypes-and-optimizers/"
-           data-tag="deeplearn,basic,pytroch"
+           data-tag="basic,deeplearn,pytroch"
            data-author="" >
             <span class="post-title" title="pytorch_dtypes_and_optimizers">pytorch_dtypes_and_optimizers</span>
             <span class="post-date" title="2025-07-30 11:07:02">2025/07/30</span>
@@ -2051,8 +2261,8 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/07/28/Tools/gost/"
-           data-tag="go,tools,gost,vpn"
+           href="/2025/07/28/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/gost/"
+           data-tag="go,tools,vpn,gost"
            data-author="" >
             <span class="post-title" title="gost">gost</span>
             <span class="post-date" title="2025-07-28 09:22:53">2025/07/28</span>
@@ -2114,7 +2324,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/07/20/Tools/vscode-plugins/"
+           href="/2025/07/20/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-plugins/"
            data-tag="vscode,plugins"
            data-author="" >
             <span class="post-title" title="vscode-plugins">vscode-plugins</span>
@@ -2150,7 +2360,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/07/10/Tools/vscode-ssh-remote/"
+           href="/2025/07/10/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-ssh-remote/"
            data-tag="tools,vscode,ssh"
            data-author="" >
             <span class="post-title" title="vscode-ssh-remote">vscode-ssh-remote</span>
@@ -2205,7 +2415,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,lite3,slam,nav,pcd filtrer"
+           data-tag="slam,lite3,ros1,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -2277,7 +2487,7 @@
         
         <a  class="全部文章 Ros learn-note "
            href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
-           data-tag="slam,ros,occupancy_grid_map"
+           data-tag="ros,slam,occupancy_grid_map"
            data-author="" >
             <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
             <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
@@ -2295,7 +2505,7 @@
         
         <a  class="全部文章 Ros learn-note "
            href="/2025/03/10/Ros/LearnNote/02-ros1-node-package/"
-           data-tag="ros,node_package,topic,message"
+           data-tag="ros,message,node_package,topic"
            data-author="" >
             <span class="post-title" title="02-ros1-node-package">02-ros1-node-package</span>
             <span class="post-date" title="2025-03-10 09:51:49">2025/03/10</span>
@@ -2313,7 +2523,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="lite3,ros,joy_controller"
+           data-tag="ros,lite3,joy_controller"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -2330,7 +2540,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/02/16/Tools/visual-studio/"
+           href="/2025/02/16/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/visual-studio/"
            data-tag="cpp,visual studio"
            data-author="" >
             <span class="post-title" title="visual-studio">visual-studio</span>
@@ -2339,8 +2549,8 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2025/02/06/Tools/vscode-vcpkg/"
-           data-tag="windows,C++,vcpkg"
+           href="/2025/02/06/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-vcpkg/"
+           data-tag="windows,vcpkg,c++"
            data-author="" >
             <span class="post-title" title="vscode-vcpkg">vscode-vcpkg</span>
             <span class="post-date" title="2025-02-06 15:20:15">2025/02/06</span>
@@ -2358,7 +2568,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="lite3,slam,ros"
+           data-tag="ros,slam,lite3"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -2402,10 +2612,10 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2024/10/12/Tools/docker-windows-gpu/"
+           href="/2024/10/12/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/docker-desktop-%E5%9C%A8windows%E4%B8%8B%E4%BD%BF%E7%94%A8docker%E5%B9%B6%E8%BF%9E%E6%8E%A5gpu/"
            data-tag="docker,wsl2,windows"
            data-author="" >
-            <span class="post-title" title="docker-windwos-gpu">docker-windwos-gpu</span>
+            <span class="post-title" title="docker-desktop-在windows下使用docker并连接gpu">docker-desktop-在windows下使用docker并连接gpu</span>
             <span class="post-date" title="2024-10-12 11:03:04">2024/10/12</span>
         </a>
         
@@ -2483,19 +2693,19 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2024/09/16/Tools/docker-wsl2/"
+           href="/2024/09/16/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/%E5%88%A9%E7%94%A8wsl2%E4%BD%BF%E7%94%A8docker-%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%BB%8B%E7%BB%8D/"
            data-tag="docker,wsl2"
            data-author="" >
-            <span class="post-title" title="docker-wsl2">docker-wsl2</span>
+            <span class="post-title" title="利用wsl2使用docker-安装方式介绍">利用wsl2使用docker-安装方式介绍</span>
             <span class="post-date" title="2024-09-16 10:10:47">2024/09/16</span>
         </a>
         
         
         <a  class="全部文章 Tools "
-           href="/2024/09/11/Tools/good-software/"
+           href="/2024/09/11/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/good-software/"
            data-tag="software"
            data-author="" >
-            <span class="post-title" title="good-software">good-software</span>
+            <span class="post-title" title="software_软件推荐">software_软件推荐</span>
             <span class="post-date" title="2024-09-11 17:22:49">2024/09/11</span>
         </a>
         
@@ -2519,7 +2729,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2024/09/07/Tools/windows-makefile/"
+           href="/2024/09/07/Tools/setup-%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/windows-makefile/"
            data-tag="windows,makefile"
            data-author="" >
             <span class="post-title" title="windows-makefile">windows-makefile</span>
@@ -2565,7 +2775,7 @@
         
         <a  class="全部文章 Go "
            href="/2024/09/06/Go/config/go-zap/"
-           data-tag="go,log,gin,zap,lumberjack"
+           data-tag="go,log,zap,lumberjack,gin"
            data-author="" >
             <span class="post-title" title="go-zap">go-zap</span>
             <span class="post-date" title="2024-09-06 21:07:57">2024/09/06</span>
@@ -2798,7 +3008,7 @@
         
         
         <a  class="全部文章 Tools "
-           href="/2024/08/31/Tools/JetBrains-IDEA-cookies/"
+           href="/2024/08/31/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/JetBrains-IDEA-cookies/"
            data-tag="docker,tools,goland,pycharm"
            data-author="" >
             <span class="post-title" title="JetBrains-IDEA-cookies">JetBrains-IDEA-cookies</span>
@@ -2871,7 +3081,7 @@
         
         <a  class="全部文章 Python spider "
            href="/2024/08/17/Python/spider/python-async-spider-example/"
-           data-tag="python,spider,async,m3u8"
+           data-tag="python,async,spider,m3u8"
            data-author="" >
             <span class="post-title" title="python_async_spider_example">python_async_spider_example</span>
             <span class="post-date" title="2024-08-17 15:09:50">2024/08/17</span>
@@ -2880,7 +3090,7 @@
         
         <a  class="全部文章 Go basic "
            href="/2024/08/17/Go/basic/go-spider/"
-           data-tag="go,http,spider"
+           data-tag="go,spider,http"
            data-author="" >
             <span class="post-title" title="go-spider">go-spider</span>
             <span class="post-date" title="2024-08-17 11:54:36">2024/08/17</span>
@@ -3431,6 +3641,25 @@ window.MathJax = {
             initPhotoSwipeFromDOM(gallerySelector);
         }
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
 
