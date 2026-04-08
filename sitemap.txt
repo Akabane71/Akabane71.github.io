@@ -1,3 +1,8 @@
+https://akabane71.github.io/2026/03/31/codex-%E5%B0%B1%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84agent/
+https://akabane71.github.io/2026/04/03/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/ai%E6%97%B6%E4%BB%A3%E7%9A%84%E5%BC%8A%E7%97%85/
+https://akabane71.github.io/2025/09/21/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-cookies/
+https://akabane71.github.io/2026/04/01/Tools/github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/
+https://akabane71.github.io/2026/03/30/git-skills/
 https://akabane71.github.io/2026/02/26/NodeJS/nodejs-fnm/
 https://akabane71.github.io/2026/01/29/Web/%E9%95%BF%E9%93%BE%E8%B7%AF%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/06-%E5%B9%82%E7%AD%89-%E9%87%8D%E8%AF%95-%E5%A4%B1%E8%B4%A5%E8%A1%A5%E5%81%BF/
 https://akabane71.github.io/2025/12/27/Web/Inverted-Index-%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/
@@ -45,7 +50,6 @@ https://akabane71.github.io/2024/09/16/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81
 https://akabane71.github.io/2025/07/10/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-ssh-remote/
 https://akabane71.github.io/2025/02/06/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-vcpkg/
 https://akabane71.github.io/2025/07/20/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-plugins/
-https://akabane71.github.io/2025/09/21/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/vscode-cookies/
 https://akabane71.github.io/2025/02/16/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/visual-studio/
 https://akabane71.github.io/2024/08/31/Tools/set-habits-%E8%AE%BE%E7%BD%AE%E5%81%8F%E5%A5%BD/JetBrains-IDEA-cookies/
 https://akabane71.github.io/2026/01/26/Tools/mermaid%E5%AD%A6%E4%B9%A0/
@@ -146,7 +150,6 @@ https://akabane71.github.io/2025/09/08/Linux/domain-dns-ssl/
 https://akabane71.github.io/2025/09/15/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/%E5%87%BA%E5%AD%A6%E6%A0%A1%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E5%8F%97/
 https://akabane71.github.io/2025/09/13/Life/%E8%83%B6%E6%A8%A1/%E5%AF%BF%E5%B1%8B-KP782-%E5%BC%82%E8%89%B2%E5%9C%A3%E9%AA%91%E5%A3%AB%E5%B8%95%E6%8B%89%E4%B8%81/
 https://akabane71.github.io/2025/09/24/Life/%E5%9B%9E%E5%BF%86/robotCup%E6%99%8B%E6%B1%9F-2024-5/
-https://akabane71.github.io/2026/01/30/Life/thinkpad-t14-%E6%94%B9%E8%A3%85/
 https://akabane71.github.io/2026/01/16/Life/jellyfin%E5%BD%B1%E5%89%A7%E4%B9%8B%E6%97%85/jellyfin/
 https://akabane71.github.io/2025/03/13/Go/grpc/grpc-resolver/
 https://akabane71.github.io/2024/10/05/Go/grpc/grpc-metadata/
@@ -411,6 +414,9 @@ https://akabane71.github.io/tags/microsoft-graph/
 https://akabane71.github.io/tags/navigation/
 https://akabane71.github.io/tags/move-base/
 https://akabane71.github.io/tags/idempotent/
+https://akabane71.github.io/tags/codex/
+https://akabane71.github.io/tags/git/
+https://akabane71.github.io/tags/github/
 https://akabane71.github.io/categories/Tools/
 https://akabane71.github.io/categories/ML/
 https://akabane71.github.io/categories/OS/
