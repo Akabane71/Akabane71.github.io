@@ -2,22 +2,22 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>06-幂等_重试_失败补偿 | Akabane71</title>
-  <meta name="keywords" content=" web , idempotent ">
-  <meta name="description" content="06-幂等_重试_失败补偿 | Akabane71">
+  <title>06-幂等-重试-失败补偿 | Akabane71</title>
+  <meta name="keywords" content=" web , long-task , idempotent ">
+  <meta name="description" content="06-幂等-重试-失败补偿 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ai进化史 chat bot  -----&gt; chat agent ------&gt; cli agent------&gt; app agent  说明: chat bot 最早的 chatgpt式的问答机器人 chat agent 这时候大模型可以使用远程调用工具了，有了function call能力，但其还是没有所谓 worker space的概念 cli agent 以 codex">
+<meta name="description" content="why cli is first 核心观点:  mcp服务需要额外开发 mcp上下文全占模式并不合理 SKILLS和CLI契合度很高 使用顶尖Agent">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ai时代的弊病">
-<meta property="og:url" content="https://akabane71.github.io/2026/04/03/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/ai%E6%97%B6%E4%BB%A3%E7%9A%84%E5%BC%8A%E7%97%85/index.html">
+<meta property="og:title" content="cli-is-first">
+<meta property="og:url" content="https://akabane71.github.io/2026/04/09/cli-is-first/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="ai进化史 chat bot  -----&gt; chat agent ------&gt; cli agent------&gt; app agent  说明: chat bot 最早的 chatgpt式的问答机器人 chat agent 这时候大模型可以使用远程调用工具了，有了function call能力，但其还是没有所谓 worker space的概念 cli agent 以 codex">
+<meta property="og:description" content="why cli is first 核心观点:  mcp服务需要额外开发 mcp上下文全占模式并不合理 SKILLS和CLI契合度很高 使用顶尖Agent">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-03T03:28:35.000Z">
-<meta property="article:modified_time" content="2026-04-03T09:34:43.068Z">
+<meta property="article:published_time" content="2026-04-09T07:42:34.000Z">
+<meta property="article:modified_time" content="2026-04-09T08:06:04.492Z">
 <meta property="article:author" content="LiShun">
 <meta property="article:tag" content="agent">
-<meta property="article:tag" content="ai">
+<meta property="article:tag" content="cli">
 <meta name="twitter:card" content="summary">
 
 
@@ -110,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(194)</small>
+                <small>(195)</small>
             
         </div>
     </li>
@@ -368,7 +368,7 @@
         <div data-rel="ML">
             <i class="fold iconfont icon-right"></i>
             ML
-            <small>(46)</small>
+            <small>(47)</small>
         </div>
         
             <ul class="sub hide">
@@ -559,7 +559,7 @@
         <div data-rel="Web">
             
             Web
-            <small>(18)</small>
+            <small>(23)</small>
         </div>
         
     </li>
@@ -587,8 +587,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="194">
-<input type="hidden" id="yelog_site_word_count" value="168.2k">
+<input type="hidden" id="yelog_site_posts_number" value="195">
+<input type="hidden" id="yelog_site_word_count" value="180.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -794,6 +794,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cli</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>clip</a>
             </li>
         
@@ -838,6 +842,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dag</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>deeplearn</a>
             </li>
         
@@ -858,6 +866,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>distributed-system</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>distributed-training</a>
             </li>
         
@@ -875,6 +887,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>domain</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dsl</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1062,6 +1078,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>load-balancing</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>log</a>
             </li>
         
@@ -1175,6 +1195,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>network</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1299,6 +1323,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ReAct</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>realtime</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1537,6 +1565,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 ML "
+           href="/2026/04/09/cli-is-first/"
+           data-tag="agent,cli"
+           data-author="" >
+            <span class="post-title" title="cli-is-first">cli-is-first</span>
+            <span class="post-date" title="2026-04-09 15:42:34">2026/04/09</span>
+        </a>
+        
+        
         <a  class="全部文章 Life "
            href="/2026/04/03/Life/%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/ai%E6%97%B6%E4%BB%A3%E7%9A%84%E5%BC%8A%E7%97%85/"
            data-tag="agent,ai"
@@ -1618,9 +1655,9 @@
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Web "
            href="/2026/01/29/Web/%E9%95%BF%E9%93%BE%E8%B7%AF%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/07-%E5%8F%AF%E8%A7%82%E6%B5%8B/"
-           data-tag=""
+           data-tag="web,long-task"
            data-author="" >
             <span class="post-title" title="07-可观测">07-可观测</span>
             <span class="post-date" title="2026-01-29 13:30:53">2026/01/29</span>
@@ -1629,16 +1666,16 @@
         
         <a  class="全部文章 Web "
            href="/2026/01/29/Web/%E9%95%BF%E9%93%BE%E8%B7%AF%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/06-%E5%B9%82%E7%AD%89-%E9%87%8D%E8%AF%95-%E5%A4%B1%E8%B4%A5%E8%A1%A5%E5%81%BF/"
-           data-tag="web,idempotent"
+           data-tag="web,long-task,idempotent"
            data-author="" >
-            <span class="post-title" title="06-幂等_重试_失败补偿">06-幂等_重试_失败补偿</span>
+            <span class="post-title" title="06-幂等-重试-失败补偿">06-幂等-重试-失败补偿</span>
             <span class="post-date" title="2026-01-29 13:30:41">2026/01/29</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Web "
            href="/2026/01/29/Web/%E9%95%BF%E9%93%BE%E8%B7%AF%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/05-%E7%8A%B6%E6%80%81%E5%AD%98%E5%82%A8%E4%B8%8E%E8%BF%9B%E5%BA%A6%E5%8F%AF%E8%A7%86%E5%8C%96/"
-           data-tag=""
+           data-tag="web,long-task"
            data-author="" >
             <span class="post-title" title="05-状态存储与进度可视化">05-状态存储与进度可视化</span>
             <span class="post-date" title="2026-01-29 13:30:11">2026/01/29</span>
@@ -1654,18 +1691,18 @@
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Web "
            href="/2026/01/29/Web/%E9%95%BF%E9%93%BE%E8%B7%AF%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/04-%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92%E4%B8%8EDAG/"
-           data-tag=""
+           data-tag="dify,web,long-task,dag,dsl"
            data-author="" >
             <span class="post-title" title="04-任务编排与DAG">04-任务编排与DAG</span>
             <span class="post-date" title="2026-01-29 13:29:52">2026/01/29</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Web "
            href="/2026/01/29/Web/%E9%95%BF%E9%93%BE%E8%B7%AF%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/03-%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E6%9E%B6%E6%9E%84/"
-           data-tag=""
+           data-tag="web,long-task"
            data-author="" >
             <span class="post-title" title="03-任务执行架构">03-任务执行架构</span>
             <span class="post-date" title="2026-01-29 13:29:37">2026/01/29</span>
@@ -1764,7 +1801,7 @@
         
         <a  class="全部文章 Web "
            href="/2026/01/22/Web/idempotency-%E5%B9%82%E7%AD%89/"
-           data-tag="idempotency"
+           data-tag="idempotency,web,distributed-system"
            data-author="" >
             <span class="post-title" title="idempotency-幂等">idempotency-幂等</span>
             <span class="post-date" title="2026-01-22 16:40:45">2026/01/22</span>
@@ -2124,7 +2161,7 @@
         
         <a  class="全部文章 Web "
            href="/2025/10/09/Web/web-SSE/"
-           data-tag="web,sse"
+           data-tag="web,sse,realtime"
            data-author="" >
             <span class="post-title" title="web-SSE">web-SSE</span>
             <span class="post-date" title="2025-10-09 09:28:20">2025/10/09</span>
@@ -2617,11 +2654,11 @@
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Web "
            href="/2025/03/20/Web/load-balancing/"
-           data-tag=""
+           data-tag="web,load-balancing,nginx"
            data-author="" >
-            <span class="post-title" title="load_balancing">load_balancing</span>
+            <span class="post-title" title="load-balancing">load-balancing</span>
             <span class="post-date" title="2025-03-20 14:07:42">2025/03/20</span>
         </a>
         
@@ -3302,7 +3339,7 @@
     <div class="pjax">
         <article id="post-Web/长链路耗时任务怎么处理/06-幂等-重试-失败补偿" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">06-幂等_重试_失败补偿</h1>
+        <h1 class="article-title">06-幂等-重试-失败补偿</h1>
     
     <div class="article-meta">
         
@@ -3322,6 +3359,8 @@
             
             <a class="color4">web</a>
             
+            <a class="color5">long-task</a>
+            
             <a class="color1">idempotent</a>
             
         </span>
@@ -3329,12 +3368,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-03-30 16:45:40'>2026-01-29 13:30</time>
+            发布时间 : <time class="date" title='最后更新: 2026-04-14 15:32:43'>2026-01-29 13:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:21</span>
+        <span>字数:1.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -3353,7 +3392,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">幂等</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">状态机</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">幂等、重试、失败补偿</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E8%AF%B4%E5%B9%82%E7%AD%89%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%83%E6%98%AF%E5%9F%BA%E7%A1%80"><span class="toc-text">先说幂等：为什么它是基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%82%E7%AD%89%E9%80%9A%E5%B8%B8%E8%A6%81%E5%81%9A%E5%9C%A8%E5%93%AA%E5%87%A0%E5%B1%82"><span class="toc-text">幂等通常要做在哪几层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8F%90%E4%BA%A4%E5%B1%82%E5%B9%82%E7%AD%89"><span class="toc-text">1. 提交层幂等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E8%B4%B9%E5%B1%82%E5%B9%82%E7%AD%89"><span class="toc-text">2. 消费层幂等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%96%E9%83%A8%E5%89%AF%E4%BD%9C%E7%94%A8%E5%B9%82%E7%AD%89"><span class="toc-text">3. 外部副作用幂等</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B%EF%BC%9AAI-%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90%E5%B9%B6%E6%89%A3%E5%87%8F%E9%A2%9D%E5%BA%A6"><span class="toc-text">一个简单案例：AI 报告生成并扣减额度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%8D%E8%AF%B4%E9%87%8D%E8%AF%95%EF%BC%9A%E4%B8%8D%E6%98%AF%E6%89%80%E6%9C%89%E5%A4%B1%E8%B4%A5%E9%83%BD%E5%80%BC%E5%BE%97%E9%87%8D%E8%AF%95"><span class="toc-text">再说重试：不是所有失败都值得重试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%AF%95%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A"><span class="toc-text">重试应该怎么做</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%B1%E8%B4%A5%E8%A1%A5%E5%81%BF%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">失败补偿是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E8%A1%A5%E5%81%BF%E6%A1%88%E4%BE%8B"><span class="toc-text">一个补偿案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%82%E7%AD%89%E3%80%81%E9%87%8D%E8%AF%95%E3%80%81%E8%A1%A5%E5%81%BF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">幂等、重试、补偿之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%AD%A6%E8%80%85%E6%9C%80%E5%AE%B9%E6%98%93%E8%B8%A9%E7%9A%84%E5%9D%91"><span class="toc-text">初学者最容易踩的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9C%8B%E5%88%B0%E5%A4%B1%E8%B4%A5%E5%B0%B1%E4%B8%80%E5%BE%8B%E9%87%8D%E8%AF%95"><span class="toc-text">1. 看到失败就一律重试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AA%E5%81%9A%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%EF%BC%8C%E4%B8%8D%E5%81%9A%E6%B6%88%E8%B4%B9%E5%B9%82%E7%AD%89"><span class="toc-text">2. 只做接口幂等，不做消费幂等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A4%E4%B8%BA%E8%A1%A5%E5%81%BF%E4%B8%80%E5%AE%9A%E8%83%BD%E5%AE%8C%E5%85%A8%E5%9B%9E%E5%88%B0%E5%8E%9F%E7%82%B9"><span class="toc-text">3. 认为补偿一定能完全回到原点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%87%8D%E8%AF%95%E6%B2%A1%E6%9C%89%E4%B8%8A%E9%99%90"><span class="toc-text">4. 重试没有上限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E4%B8%80%E7%AF%87%E8%A6%81%E8%AE%B0%E4%BD%8F%E7%9A%84%E6%A0%B8%E5%BF%83%E7%82%B9"><span class="toc-text">这一篇要记住的核心点</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -3369,9 +3408,215 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1>幂等</h1>
-<h1>状态机</h1>
-<p>使用状态机来实现  失败重试、失败补偿</p>
+        <h1>幂等、重试、失败补偿</h1>
+<p>如果说前几篇解决的是“任务怎么跑起来”，那这一篇解决的是“任务跑坏了怎么办”。</p>
+<p>长链路系统一定会遇到这些现实问题：</p>
+<ul>
+<li>用户重复点击提交按钮</li>
+<li>消息被重复投递</li>
+<li>Worker 执行到一半崩了</li>
+<li>外部服务暂时超时</li>
+<li>某一步已经产生副作用，后面步骤却失败了</li>
+</ul>
+<p>所以一个能上线的任务系统，必须认真处理三件事：</p>
+<ol>
+<li><strong>幂等</strong>：重复来一次，不能把结果搞乱</li>
+<li><strong>重试</strong>：临时失败，要有机会自动恢复</li>
+<li><strong>失败补偿</strong>：已经做出去的副作用，要能收回来或修正掉</li>
+</ol>
+<h2 id="先说幂等：为什么它是基础">先说幂等：为什么它是基础</h2>
+<p>幂等的直白定义是：</p>
+<blockquote>
+<p>同一个请求或同一条消息被重复执行多次，最终结果应该和执行一次一致。</p>
+</blockquote>
+<p>这件事在长链路里尤其重要，因为重复非常常见：</p>
+<ul>
+<li>用户刷新页面又点了一次提交</li>
+<li>网关重试了 HTTP 请求</li>
+<li>消息队列把同一条消息投递了两次</li>
+<li>Worker 超时后，任务又被重新拉起</li>
+</ul>
+<p>如果没有幂等，结果可能是：</p>
+<ul>
+<li>建了两条任务</li>
+<li>扣了两次余额</li>
+<li>发了两次通知</li>
+<li>写了两份重复数据</li>
+</ul>
+<h2 id="幂等通常要做在哪几层">幂等通常要做在哪几层</h2>
+<h3 id="1-提交层幂等">1. 提交层幂等</h3>
+<p>比如前端提交任务时带一个 <code>idempotencyKey</code>：</p>
+<pre><code class="language-http">POST /tasks
+Idempotency-Key: upload_abc_001
+</code></pre>
+<p>后端如果发现这个 key 已经创建过任务，就直接返回原来的 <code>taskId</code>。</p>
+<h3 id="2-消费层幂等">2. 消费层幂等</h3>
+<p>Worker 消费消息时，即使拿到重复消息，也要先检查：</p>
+<ul>
+<li>这个任务是不是已经成功了</li>
+<li>这个步骤是不是已经完成了</li>
+<li>这个副作用是不是已经落过库了</li>
+</ul>
+<h3 id="3-外部副作用幂等">3. 外部副作用幂等</h3>
+<p>如果你要调扣费、发券、发送通知、创建第三方任务，也要尽量带业务唯一键，避免重复执行。</p>
+<h2 id="一个简单案例：AI-报告生成并扣减额度">一个简单案例：AI 报告生成并扣减额度</h2>
+<p>假设用户点一次“生成报告”，流程是：</p>
+<ol>
+<li>创建任务</li>
+<li>扣减 1 次额度</li>
+<li>调模型生成报告</li>
+<li>保存结果</li>
+<li>通知用户</li>
+</ol>
+<p>如果消息重复消费了两次，而系统没有幂等，就可能：</p>
+<ul>
+<li>扣两次额度</li>
+<li>生成两份报告</li>
+<li>发两次通知</li>
+</ul>
+<p>所以你至少要保证：</p>
+<ul>
+<li>同一个 <code>taskId</code> 只会扣一次额度</li>
+<li>同一个 <code>taskId</code> 成功后再次执行直接跳过</li>
+</ul>
+<h2 id="再说重试：不是所有失败都值得重试">再说重试：不是所有失败都值得重试</h2>
+<p>重试的作用是处理<strong>暂时性错误</strong>，比如：</p>
+<ul>
+<li>网络抖动</li>
+<li>外部服务超时</li>
+<li>短暂的资源不足</li>
+<li>下游服务瞬时 5xx</li>
+</ul>
+<p>但有些错误重试也没用，比如：</p>
+<ul>
+<li>参数非法</li>
+<li>文件格式不支持</li>
+<li>业务校验失败</li>
+<li>权限不足</li>
+</ul>
+<p>可以简单分成两类：</p>
+<table>
+<thead>
+<tr>
+<th>错误类型</th>
+<th>是否重试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>网络超时、临时 5xx</td>
+<td>可以重试</td>
+</tr>
+<tr>
+<td>参数错误、业务拒绝</td>
+<td>不要重试</td>
+</tr>
+</tbody>
+</table>
+<h2 id="重试应该怎么做">重试应该怎么做</h2>
+<p>工程上比较常见的策略：</p>
+<ul>
+<li>限制最大重试次数</li>
+<li>使用指数退避</li>
+<li>加一点随机抖动，避免同一时间雪崩重试</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>第 1 次失败，5 秒后重试</li>
+<li>第 2 次失败，30 秒后重试</li>
+<li>第 3 次失败，2 分钟后重试</li>
+<li>超过次数后进入死信或人工处理</li>
+</ul>
+<p>可以用状态机理解：</p>
+<pre><code class="language-mermaid">stateDiagram-v2
+	[*] --&gt; QUEUED
+	QUEUED --&gt; RUNNING
+	RUNNING --&gt; SUCCESS
+	RUNNING --&gt; FAILED
+	FAILED --&gt; RETRYING : 可重试错误
+	RETRYING --&gt; QUEUED
+	FAILED --&gt; COMPENSATING : 不可恢复或超限
+	COMPENSATING --&gt; COMPENSATED
+	COMPENSATED --&gt; [*]
+	SUCCESS --&gt; [*]
+</code></pre>
+<p>这里的重点是：</p>
+<ul>
+<li><code>FAILED</code> 不等于立刻结束</li>
+<li>有些失败会进入 <code>RETRYING</code></li>
+<li>有些失败要进入 <code>COMPENSATING</code></li>
+</ul>
+<h2 id="失败补偿是什么">失败补偿是什么</h2>
+<p>失败补偿不是“数据库事务回滚”的放大版。</p>
+<p>在长链路里，很多副作用已经发出去了，比如：</p>
+<ul>
+<li>已经扣了额度</li>
+<li>已经创建了第三方任务</li>
+<li>已经写了部分中间结果</li>
+</ul>
+<p>这时做不到真正原子回滚，只能做<strong>补偿动作</strong>。</p>
+<p>例如：</p>
+<ul>
+<li>扣过额度后失败了，就退回额度</li>
+<li>创建过第三方任务后失败了，就调用取消接口</li>
+<li>写过临时文件后失败了，就清理临时文件</li>
+</ul>
+<p>所以补偿的本质是：</p>
+<blockquote>
+<p>用一个反向业务动作，把系统尽量拉回一致状态。</p>
+</blockquote>
+<h2 id="一个补偿案例">一个补偿案例</h2>
+<p>还是用“AI 报告生成”举例。</p>
+<p>假设流程是：</p>
+<ol>
+<li>创建任务</li>
+<li>扣减额度</li>
+<li>调模型生成</li>
+<li>上传结果文件</li>
+</ol>
+<p>如果执行到第 3 步时模型服务长时间失败，且超过最大重试次数，那么系统可以这样补偿：</p>
+<ol>
+<li>标记任务失败</li>
+<li>退回之前扣掉的额度</li>
+<li>清理临时文件</li>
+<li>给用户一个明确失败原因</li>
+</ol>
+<p>这就比“任务失败了，但额度也没了”要合理得多。</p>
+<h2 id="幂等、重试、补偿之间的关系">幂等、重试、补偿之间的关系</h2>
+<p>这三者不是孤立的，而是一条链。</p>
+<pre><code class="language-mermaid">flowchart LR
+	A[收到请求或消息] --&gt; B[先做幂等检查]
+	B --&gt; C[执行任务]
+	C --&gt; D{是否成功}
+	D -- 是 --&gt; E[结束]
+	D -- 否 --&gt; F{是否可重试}
+	F -- 是 --&gt; G[按策略重试]
+	F -- 否 --&gt; H[执行补偿]
+	G --&gt; C
+	H --&gt; I[失败结束]
+</code></pre>
+<p>这张图想表达的是：</p>
+<ul>
+<li>没有幂等，重试越多越容易出错</li>
+<li>没有重试，暂时失败就会直接放大成业务失败</li>
+<li>没有补偿，失败后的副作用会长期残留</li>
+</ul>
+<h2 id="初学者最容易踩的坑">初学者最容易踩的坑</h2>
+<h3 id="1-看到失败就一律重试">1. 看到失败就一律重试</h3>
+<p>这样会把永久错误变成无限资源浪费。</p>
+<h3 id="2-只做接口幂等，不做消费幂等">2. 只做接口幂等，不做消费幂等</h3>
+<p>消息重复投递时照样会出问题。</p>
+<h3 id="3-认为补偿一定能完全回到原点">3. 认为补偿一定能完全回到原点</h3>
+<p>很多场景只能“尽量恢复一致”，而不是绝对回滚。</p>
+<h3 id="4-重试没有上限">4. 重试没有上限</h3>
+<p>最后死循环占满系统资源。</p>
+<h2 id="这一篇要记住的核心点">这一篇要记住的核心点</h2>
+<ol>
+<li>幂等是长链路系统的前提，不是优化项</li>
+<li>重试只针对暂时性错误，且要有次数、退避和终点</li>
+<li>失败补偿是对已经发生的副作用做反向修正，不是魔法回滚</li>
+</ol>
+<p>最后一篇再把视角拉高一点：当系统真的跑起来之后，如何通过日志、指标、链路追踪来观察它。</p>
 
       
        
