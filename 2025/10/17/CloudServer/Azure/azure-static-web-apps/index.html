@@ -3762,16 +3762,50 @@ window.MathJax = {
             temp = null;
             return output;
         }
-        if (window.mermaid){
-            window.mermaid = null
-        }
-        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
-            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:true,&#34;htmlLabels&#34;:true}}"))
-            if (window.mermaid) {
-                mermaid.initialize(mermaidOptions)
-                mermaid.contentLoaded()
+        function createMermaidBlock(sourceBlock, mermaidSource) {
+            if (!sourceBlock || !sourceBlock.parentNode) {
+                return null
             }
-        })
+            var mermaidBlock = document.createElement("div")
+            mermaidBlock.className = "mermaid mermaid-render-target"
+            mermaidBlock.textContent = mermaidSource.replace(/\r\n/g, "\n").trim()
+            sourceBlock.parentNode.replaceChild(mermaidBlock, sourceBlock)
+            return mermaidBlock
+        }
+        function normalizeMermaidBlocks() {
+            var targets = []
+            var preBlocks = document.querySelectorAll("pre.mermaid")
+            for (var i = 0; i < preBlocks.length; i++) {
+                var preCode = preBlocks[i].querySelector("code")
+                var preSource = preCode ? preCode.textContent : preBlocks[i].textContent
+                var preTarget = createMermaidBlock(preBlocks[i], preSource)
+                if (preTarget) {
+                    targets.push(preTarget)
+                }
+            }
+            var codeBlocks = document.querySelectorAll("pre > code.language-mermaid, pre > code.lang-mermaid")
+            for (var j = 0; j < codeBlocks.length; j++) {
+                var codeTarget = createMermaidBlock(codeBlocks[j].parentNode, codeBlocks[j].textContent)
+                if (codeTarget) {
+                    targets.push(codeTarget)
+                }
+            }
+            return targets
+        }
+        var mermaidTargets = normalizeMermaidBlocks()
+        if (mermaidTargets.length) {
+            if (window.mermaid){
+                window.mermaid = null
+            }
+            $.getScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js", function () {
+                var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:true,&#34;htmlLabels&#34;:true}}"))
+                mermaidOptions.startOnLoad = false
+                if (window.mermaid) {
+                    mermaid.initialize(mermaidOptions)
+                    mermaid.init(undefined, mermaidTargets)
+                }
+            })
+        }
         
     }
 
