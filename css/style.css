@@ -1197,7 +1197,7 @@
   text-shadow: none;
 }
 #post .pjax {
-  max-width: 1100px;
+  max-width: 1320px;
   min-height: calc(100vh - 143px);
   margin: 0 auto;
   overflow-y: auto;
@@ -1219,7 +1219,7 @@
   animation: fadeOuts 0.2s;
 }
 #post .pjax article {
-  padding: 2.5em;
+  padding: 2em 1.5em;
   background: #fff;
 /* Inline code */
 }
@@ -1481,6 +1481,18 @@
   color: #ff502c;
   font-size: 0.87em;
   padding: 0.065em 0.4em;
+}
+#post .pjax article :not(pre) > code .mermaid {
+  text-align: center;
+  overflow-x: auto;
+}
+#post .pjax article .mermaid {
+  margin: 1.5em 0;
+  text-align: center;
+}
+#post .pjax article .mermaid svg {
+  max-width: 100%;
+  height: auto;
 }
 #post .pjax article pre.mermaid {
   border: none;
