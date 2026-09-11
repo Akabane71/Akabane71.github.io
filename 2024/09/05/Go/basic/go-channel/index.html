@@ -6,19 +6,16 @@
   <meta name="keywords" content=" go , channel ">
   <meta name="description" content="go-channel | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="运维agents 需求 巡检agent 每一周生成一份巡检报告 云成本 Agent 每个月生成对应云上的成本评估并">
+<meta name="description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 3. 系统危险度 中转站如果恶意在模型输出中植入工具调用，让agent工具执行b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codex-运维agents">
-<meta property="og:url" content="https://akabane71.github.io/2026/06/29/AI-Tools-Log/codex%E6%96%B0%E7%94%A8%E6%B3%95/codex-%E8%BF%90%E7%BB%B4agents/index.html">
+<meta property="og:title" content="怎么验证中转站模型是真模型?">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="运维agents 需求 巡检agent 每一周生成一份巡检报告 云成本 Agent 每个月生成对应云上的成本评估并">
+<meta property="og:description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 3. 系统危险度 中转站如果恶意在模型输出中植入工具调用，让agent工具执行b">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-29T13:43:44.000Z">
-<meta property="article:modified_time" content="2026-09-09T15:02:51.953Z">
+<meta property="article:published_time" content="2026-09-11T07:59:34.000Z">
+<meta property="article:modified_time" content="2026-09-11T10:27:46.300Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="agents">
-<meta property="article:tag" content="codex">
 <meta name="twitter:card" content="summary">
 
 
@@ -111,7 +108,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(209)</small>
+                <small>(213)</small>
             
         </div>
     </li>
@@ -392,7 +389,7 @@
         <div data-rel="Life">
             <i class="fold iconfont icon-right"></i>
             Life
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
             <ul class="sub hide">
@@ -636,7 +633,7 @@
         <div data-rel="Tools">
             <i class="fold iconfont icon-right"></i>
             Tools
-            <small>(18)</small>
+            <small>(19)</small>
         </div>
         
             <ul class="sub hide">
@@ -724,8 +721,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="209">
-<input type="hidden" id="yelog_site_word_count" value="195.7k">
+<input type="hidden" id="yelog_site_posts_number" value="213">
+<input type="hidden" id="yelog_site_word_count" value="197.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1075,6 +1072,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fde</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ffmpeg</a>
             </li>
         
@@ -1236,6 +1237,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>lidar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>life</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1772,6 +1777,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="怎么验证中转站模型是真模型?">怎么验证中转站模型是真模型?</span>
+            <span class="post-date" title="2026-09-11 15:59:34">2026/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Life "
+           href="/2026/08/31/%E5%AF%B9%E4%BA%8EFDE%E8%BF%99%E4%B8%AA%E5%B2%97%E4%BD%8D%E7%9A%84%E6%80%9D%E8%80%83/"
+           data-tag="life,fde"
+           data-author="" >
+            <span class="post-title" title="对于FDE这个岗位的思考">对于FDE这个岗位的思考</span>
+            <span class="post-date" title="2026-08-31 12:56:30">2026/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2026/07/23/AI-Tools-Log/loop-engineering/loop-engineering/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="loop-engineering">loop-engineering</span>
+            <span class="post-date" title="2026-07-23 17:13:19">2026/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2026/07/20/Tools/Git%E5%A4%9A%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E4%B8%8E%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91/"
+           data-tag="tools,git"
+           data-author="" >
+            <span class="post-title" title="Git多仓库管理与并行开发">Git多仓库管理与并行开发</span>
+            <span class="post-date" title="2026-07-20 15:30:00">2026/07/20</span>
+        </a>
         
         
         <a  class="全部文章 AI-Tools-Log "
@@ -2370,7 +2411,7 @@
         
         <a  class="全部文章 ML "
            href="/2025/11/24/ML/azure-fintune/fine-tuning-whisper-v3/"
-           data-tag="ml,whisper,finetune"
+           data-tag="ml,finetune,whisper"
            data-author="" >
             <span class="post-title" title="fine-tuning-whisper-v3">fine-tuning-whisper-v3</span>
             <span class="post-date" title="2025-11-24 10:22:39">2025/11/24</span>
@@ -2676,7 +2717,7 @@
         
         <a  class="全部文章 CPP cmake "
            href="/2025/08/29/C++/cmake/vscode-cmake-config/"
-           data-tag="cpp,vscode,cmake"
+           data-tag="cpp,cmake,vscode"
            data-author="" >
             <span class="post-title" title="vscode-cmake-config">vscode-cmake-config</span>
             <span class="post-date" title="2025-08-29 11:39:29">2025/08/29</span>
@@ -2973,7 +3014,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,lite3,slam,nav,pcd filtrer"
+           data-tag="ros1,slam,lite3,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -3045,7 +3086,7 @@
         
         <a  class="全部文章 Ros learn-note "
            href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
-           data-tag="slam,ros,occupancy_grid_map"
+           data-tag="ros,slam,occupancy_grid_map"
            data-author="" >
             <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
             <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
@@ -3081,7 +3122,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="lite3,ros,joy_controller"
+           data-tag="ros,lite3,joy_controller"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3090,7 +3131,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -3126,7 +3167,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="lite3,slam,ros"
+           data-tag="ros,slam,lite3"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3703,7 +3744,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-09 23:02:51'>2024-09-05 22:18</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-11 18:27:46'>2024-09-05 22:18</time>
         
     </div>
     <div class="article-meta">
