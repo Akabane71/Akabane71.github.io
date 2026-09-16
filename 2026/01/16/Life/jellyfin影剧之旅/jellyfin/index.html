@@ -6,17 +6,33 @@
   <meta name="keywords" content=" jellyfin , anime , tv , movie ">
   <meta name="description" content="jellyfin | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么验证中转站模型是真模型?">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="不同的绘图风格">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-11T07:59:34.000Z">
-<meta property="article:modified_time" content="2026-09-14T09:14:14.237Z">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
+<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
+<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +124,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(213)</small>
+                <small>(214)</small>
             
         </div>
     </li>
@@ -248,7 +264,7 @@
         <div data-rel="AI-Tools-Log">
             <i class="fold iconfont icon-right"></i>
             AI-Tools-Log
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
             <ul class="sub hide">
@@ -389,7 +405,7 @@
         <div data-rel="Life">
             <i class="fold iconfont icon-right"></i>
             Life
-            <small>(8)</small>
+            <small>(10)</small>
         </div>
         
             <ul class="sub hide">
@@ -399,7 +415,7 @@
         <div data-rel="Life&lt;---&gt;摄影">
             
             摄影
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -721,8 +737,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="213">
-<input type="hidden" id="yelog_site_word_count" value="197.3k">
+<input type="hidden" id="yelog_site_posts_number" value="214">
+<input type="hidden" id="yelog_site_word_count" value="209.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -780,6 +796,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>感受</a>
             </li>
         
@@ -792,7 +812,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>绘图</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>机娘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>焦距</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>景深</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -808,6 +840,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拍摄流程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人像虚化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>摄影基础</a>
             </li>
         
@@ -817,6 +857,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>相机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>相机设置</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1779,6 +1823,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 AI-Tools-Log "
+           href="/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/"
+           data-tag="AI,绘图,风格"
+           data-author="" >
+            <span class="post-title" title="不同的绘图风格">不同的绘图风格</span>
+            <span class="post-date" title="2026-09-16 10:10:38">2026/09/16</span>
+        </a>
+        
+        
         <a  class="全部文章 "
            href="/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/"
            data-tag=""
@@ -1862,25 +1915,25 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/"
-           data-tag="Life,sony,摄影基础,光圈,快门,ISO"
+           data-tag="Life,摄影基础,光圈,快门,ISO,sony"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-02：光圈、快门、ISO 的实拍应用">摄影基础概念学习-02：光圈、快门、ISO 的实拍应用</span>
             <span class="post-date" title="2026-05-31 13:23:59">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,相机设置,拍摄流程"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-04：索尼相机常用设置与拍摄流程">摄影基础概念学习-04：索尼相机常用设置与拍摄流程</span>
             <span class="post-date" title="2026-05-31 13:22:58">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,焦距,景深,人像虚化"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-03：焦距、景深与人像虚化">摄影基础概念学习-03：焦距、景深与人像虚化</span>
             <span class="post-date" title="2026-05-31 13:22:50">2026/05/31</span>
@@ -1889,7 +1942,7 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/"
-           data-tag="Life,sony,摄影基础,相机,镜头"
+           data-tag="Life,摄影基础,sony,相机,镜头"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位">摄影基础概念学习-01：曝光、镜头、画幅与相机挡位</span>
             <span class="post-date" title="2026-05-31 13:14:56">2026/05/31</span>
@@ -3014,7 +3067,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,slam,lite3,nav,pcd filtrer"
+           data-tag="ros1,lite3,slam,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -3122,7 +3175,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,lite3,joy_controller"
+           data-tag="ros,joy_controller,lite3"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3131,7 +3184,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -3167,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,slam,lite3"
+           data-tag="ros,lite3,slam"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3746,12 +3799,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-14 17:14:14'>2026-01-16 18:53</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-01-16 18:53</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:41</span>
+        <span>字数:2.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -3770,7 +3823,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">使用 Jellyfin 打造家庭影院</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jellyfin%E4%BB%8B%E7%BB%8D"><span class="toc-text">Jellyfin介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">命名规则</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">使用 Jellyfin 打造家庭影院</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jellyfin%E4%BB%8B%E7%BB%8D"><span class="toc-text">Jellyfin介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">与 bqBittorrent 下载器的配合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%BD%B1"><span class="toc-text">电影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%A7%E9%9B%86-%E5%8A%A8%E6%BC%AB"><span class="toc-text">剧集 &#x2F; 动漫</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Jellyfin 使用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%80%E5%90%AF%E7%A1%AC%E4%BB%B6%E8%BD%AC%E7%A0%81%EF%BC%8C%E5%A4%9A%E8%AE%BE%E5%A4%87%E5%90%8C%E6%97%B6%E6%92%AD%E6%94%BE%E4%B8%8D%E5%8D%A1%E9%A1%BF"><span class="toc-text">1. 开启硬件转码，多设备同时播放不卡顿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AD%97%E5%B9%95%E7%AE%A1%E7%90%86%EF%BC%9A%E5%86%85%E5%B0%81-%E5%A4%96%E6%8C%82-%E7%89%B9%E6%95%88%E5%AD%97%E5%B9%95%E5%88%86%E5%BC%80%E5%A4%84%E7%90%86"><span class="toc-text">2. 字幕管理：内封 &gt; 外挂 &gt; 特效字幕分开处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%9A%E7%94%A8%E6%88%B7%E4%B8%8E%E5%AE%B6%E9%95%BF%E6%8E%A7%E5%88%B6"><span class="toc-text">3. 多用户与家长控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%96%84%E7%94%A8-%E7%BB%A7%E7%BB%AD%E8%A7%82%E7%9C%8B-%E5%92%8C%E6%94%B6%E8%97%8F%E5%A4%B9"><span class="toc-text">4. 善用&quot;继续观看&quot;和收藏夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%80%89%E6%8B%A9"><span class="toc-text">5. 客户端选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%83%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%EF%BC%9A%E5%8C%BA%E5%88%86-%E6%89%AB%E6%8F%8F%E5%AA%92%E4%BD%93%E5%BA%93-%E5%92%8C-%E6%9B%BF%E6%8D%A2%E6%89%80%E6%9C%89%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">6. 元数据刷新：区分&quot;扫描媒体库&quot;和&quot;替换所有元数据&quot;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="toc-text">7. 远程访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%AE%9A%E6%9C%9F%E5%A4%87%E4%BB%BD%E9%85%8D%E7%BD%AE%E5%92%8C%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">8. 定期备份配置和元数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">自动化搜刮动漫玩法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="toc-text">1. 整体思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%AE%E5%BD%95%E4%B8%8E%E5%91%BD%E5%90%8D%E7%BA%A6%E5%AE%9A%E5%85%88%E8%A1%8C"><span class="toc-text">2. 目录与命名约定先行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%AE%E5%89%8A%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9%EF%BC%9AAniDB-vs-Bangumi"><span class="toc-text">3. 刮削插件选择：AniDB vs Bangumi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-RSS-%E8%87%AA%E5%8A%A8%E8%AE%A2%E9%98%85%E4%B8%8B%E8%BD%BD"><span class="toc-text">4. RSS 自动订阅下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%87%AA%E5%8A%A8%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%8E%E5%BD%92%E7%B1%BB"><span class="toc-text">5. 自动重命名与归类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%A7%A6%E5%8F%91-Jellyfin-%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0"><span class="toc-text">6. 触发 Jellyfin 自动刷新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="toc-text">7. 常见坑</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -3796,8 +3849,131 @@
 <ul>
 <li>windows</li>
 </ul>
+<h1>与 bqBittorrent 下载器的配合</h1>
+<p>qBittorrent 下载器是常用的 BT 下载工具，支持 RSS 自动下载和丰富的下载规则配置，非常适合与 Jellyfin 配合实现动漫自动化搜刮。</p>
+<p>官方地址为:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.qbittorrent.org/">qBittorrent 官方网站</a>
+qBittorrent 也非常适合程序化管理下载任务，配合 RSS 规则和自动化脚本可以实现全自动的动漫下载流程。</li>
+</ul>
 <h1>命名规则</h1>
-<p>为了提高搜刮的效率，</p>
+<p>为了提高搜刮的效率，建议提前按照 Jellyfin / TMDB 官方推荐的目录和文件命名规范整理媒体库，命名越规范，自动识别的准确率越高，后续做自动化也越省心。</p>
+<h2 id="电影">电影</h2>
+<pre><code class="language-text">电影/
+└── 蜘蛛侠：英雄无归 (2021)/
+    └── 蜘蛛侠：英雄无归 (2021).mkv
+</code></pre>
+<h2 id="剧集-动漫">剧集 / 动漫</h2>
+<pre><code class="language-text">番剧/
+└── 间谍过家家 (2022)/
+    ├── Season 01/
+    │   ├── 间谍过家家 - S01E01 - 任务篇.mkv
+    │   └── 间谍过家家 - S01E02 - 相亲篇.mkv
+    └── Season 02/
+        └── 间谍过家家 - S02E01 - 潜入篇.mkv
+</code></pre>
+<p>动漫比普通剧集更容易出现命名歧义：同一部作品日版/国内引进版标题不同、多季在不同平台叫法不一致、剧场版归属不明确。遇到这种情况，可以在文件夹名后面加上明确的外部 ID，强制刮削器精准匹配，而不是靠标题模糊搜索：</p>
+<pre><code class="language-text">间谍过家家 (2022) [tvdbid-389423]/
+</code></pre>
+<hr>
+<h1>Jellyfin 使用技巧</h1>
+<h2 id="1-开启硬件转码，多设备同时播放不卡顿">1. 开启硬件转码，多设备同时播放不卡顿</h2>
+<p>在 <code>控制台 → 播放 → 转码</code> 中开启硬件加速（Intel QuickSync / NVIDIA NVENC / AMD AMF，取决于显卡），把转码压力从 CPU 转移到核显或独显，同一台 NAS/主机可以同时给多个设备转码播放而不掉帧。</p>
+<h2 id="2-字幕管理：内封-外挂-特效字幕分开处理">2. 字幕管理：内封 &gt; 外挂 &gt; 特效字幕分开处理</h2>
+<ul>
+<li>内封字幕（mkv 自带）：Jellyfin 原生支持切换，体验最好</li>
+<li>外挂字幕（同名 <code>.srt</code> / <code>.ass</code> 文件）：放在视频同目录，文件名与视频完全一致即可被自动关联</li>
+<li>特效 ASS 字幕（花字、特效弹幕）：部分客户端渲染效果差，如果发现字幕错位或样式丢失，优先检查是否走了硬字幕烧录而不是软字幕渲染</li>
+</ul>
+<h2 id="3-多用户与家长控制">3. 多用户与家长控制</h2>
+<p>给家人各自建一个账号，而不是共用一个账号：可以单独设置观看历史、收藏、播放进度，也可以给小朋友账号设置内容分级和 PIN 码限制，避免误开不合适的内容。</p>
+<h2 id="4-善用-继续观看-和收藏夹">4. 善用&quot;继续观看&quot;和收藏夹</h2>
+<p>Jellyfin 首页的&quot;继续观看&quot;会自动记录所有账号的播放进度，追番、追剧不用再手动记住看到哪一集；长期想看的内容建议加入收藏夹而不是记在备忘录里，客户端里直接能筛选。</p>
+<h2 id="5-客户端选择">5. 客户端选择</h2>
+<ul>
+<li>电视/投影：Jellyfin for Android TV / Jellyfin Media Player（桌面端）</li>
+<li>手机：官方 App，或用 Infuse（iOS，体验和字幕渲染更好，需要额外配置）</li>
+<li>音乐单独听：Finamp，专门为音乐库做了播放列表和歌词支持</li>
+</ul>
+<h2 id="6-元数据刷新：区分-扫描媒体库-和-替换所有元数据">6. 元数据刷新：区分&quot;扫描媒体库&quot;和&quot;替换所有元数据&quot;</h2>
+<p>日常新增文件用&quot;扫描媒体库&quot;（只识别新文件），不要习惯性点&quot;替换所有元数据&quot;，否则手动修正过的标题、海报、简介都会被覆盖重新刮削一遍；对某个条目手动改过信息后，记得锁定对应字段防止下次刷新被覆盖。</p>
+<h2 id="7-远程访问">7. 远程访问</h2>
+<p>内网用得爽了自然想在外面看，推荐两种方式：</p>
+<pre><code class="language-text">方式一：反向代理（Nginx/Caddy）+ 域名 + HTTPS，体验最接近本地
+方式二：Jellyfin 自带的 Quick Connect，临时给朋友账号用最方便
+</code></pre>
+<p>不建议直接把管理端口暴露公网，务必配合防火墙和强密码。</p>
+<h2 id="8-定期备份配置和元数据">8. 定期备份配置和元数据</h2>
+<p><code>config</code>、<code>metadata</code>、<code>data</code> 等目录里保存了账号、播放记录、手动修正过的刮削信息，建议做定时备份，重装或迁移服务器时能直接恢复，不用重新刮削一遍。</p>
+<hr>
+<h1>自动化搜刮动漫玩法</h1>
+<p>追番最烦的不是找资源，而是&quot;下载完还要手动改名、手动分类、手动等 Jellyfin 刷新&quot;。这一节整理一套从下载到入库全自动的动漫流程，目标是：</p>
+<blockquote>
+<p>番剧更新 → 自动下载 → 自动改名归类 → Jellyfin 自动识别 → 打开就能看</p>
+</blockquote>
+<!--
+【生成目标】
+绘制“动漫自动化搜刮流程”示意图，展示从订阅下载到媒体库自动更新的完整链路。
+
+【主体与场景】
+四到五个圆角矩形节点用箭头依次连接：“RSS 订阅新番”→“自动下载工具抓取”→“自动重命名/归类脚本”→“落地到媒体库目录”→“Jellyfin 自动刮削入库”，每个节点配一个极简图标（RSS 信号、下载箭头、文件夹、齿轮、播放三角）。
+
+【构图与镜头】
+横向单行流程图构图，正视平面视角，横版长图，适合文章内嵌配图。
+
+【视觉风格】
+极简主义扁平信息图风格，线条统一，禅意留白，不使用真实软件界面截图。
+
+【光照与色彩】
+浅米白背景，节点用统一低饱和色系区分阶段，连接箭头用同一强调色（如浅蓝）标出数据流向。
+
+【约束与输出】
+五个节点视觉权重一致，文字标签简短，不出现真实网站/软件 logo，便于说明自动化链路。
+-->
+<h2 id="1-整体思路">1. 整体思路</h2>
+<p>自动化的核心是把&quot;下载&quot;和&quot;刮削&quot;之间的手动步骤都变成脚本或工具规则：</p>
+<pre><code class="language-text">① RSS 订阅：跟踪字幕组/番剧的更新
+② 自动下载：命中规则的种子自动加入下载器
+③ 自动整理：下载完成后自动重命名 + 移动到媒体库对应目录
+④ 自动刷新：Jellyfin 检测到新文件自动刮削入库
+</code></pre>
+<h2 id="2-目录与命名约定先行">2. 目录与命名约定先行</h2>
+<p>自动化脚本要能稳定工作，前提是产出的文件名和目录结构必须固定，参考前面&quot;命名规则&quot;里的动漫目录结构，把它当成脚本的输出模板，而不是每次手动调整。</p>
+<h2 id="3-刮削插件选择：AniDB-vs-Bangumi">3. 刮削插件选择：AniDB vs Bangumi</h2>
+<p>Jellyfin 默认自带的刮削器对国产/日番的中文标题支持一般，动漫场景更推荐装社区插件：</p>
+<pre><code class="language-text">AniDB 插件      —— 数据库专精动漫，季度/OVA/剧场版分类准确，但标题以英文/罗马音为主
+Bangumi 插件    —— 中文标题、简介、封面更友好，适合国内使用习惯
+</code></pre>
+<p>两个插件可以同时启用，在 <code>控制台 → 媒体库 → 元数据管理器</code> 里调整优先级，比如标题用 Bangumi、剧集结构用 AniDB。</p>
+<h2 id="4-RSS-自动订阅下载">4. RSS 自动订阅下载</h2>
+<p>用下载器自带的 RSS 功能（例如 qBittorrent 的 RSS 自动下载规则）订阅字幕组发布页或聚合站点的 RSS 源，用正则匹配番剧名和分辨率/字幕组关键词，命中就自动添加下载：</p>
+<pre><code class="language-text">RSS 源：字幕组发布站点 / 番剧聚合站 RSS
+匹配规则：番剧名关键词 + 分辨率(1080p) + 排除关键词(简体/繁体择一)
+下载目录：单独的&quot;待整理&quot;临时目录，不直接进媒体库
+</code></pre>
+<h2 id="5-自动重命名与归类">5. 自动重命名与归类</h2>
+<p>下载完成后不能直接扔进媒体库，文件名通常带字幕组标签、哈希值等干扰信息，需要脚本或工具再处理一遍：</p>
+<pre><code class="language-text">思路：
+1. 监听&quot;待整理&quot;目录，检测到新文件触发脚本
+2. 用正则从原始文件名里提取番剧名、季数、集数
+3. 按第 2 步的命名约定重命名文件
+4. 移动/软链接到媒体库对应番剧文件夹
+</code></pre>
+<p>可以用现成的自动化项目（如 AutoBangumi 一类的开源工具）把 RSS 订阅、下载、重命名、归类整套流程串起来，也可以用 FileBot 之类工具做批量重命名，再配合系统定时任务或文件监听脚本触发。</p>
+<h2 id="6-触发-Jellyfin-自动刷新">6. 触发 Jellyfin 自动刷新</h2>
+<p>不用死等 Jellyfin 的定时扫描间隔，可以在归类脚本的最后一步调用 Jellyfin 的 API 主动触发扫描：</p>
+<pre><code class="language-text">POST /Library/Refresh
+Header: X-Emby-Token: &lt;你的 API Key&gt;
+</code></pre>
+<p>归类完成后立刻调用一次，几十秒内新番就能在 Jellyfin 里直接看到。</p>
+<h2 id="7-常见坑">7. 常见坑</h2>
+<ul>
+<li><strong>多季命名歧义</strong>：同一部作品不同季在不同网站叫法不一致，建议归类脚本里维护一个&quot;番剧名 → 固定文件夹名&quot;的映射表，而不是依赖每次抓取到的标题</li>
+<li><strong>剧场版/OVA 归类</strong>：不要和正篇混在同一个 Season 文件夹，单独建 <code>Specials</code> 或按 AniDB 分类规则处理，否则集数编号会错乱</li>
+<li><strong>简繁体标题冲突</strong>：RSS 规则和刮削插件的语言优先级要保持一致，避免同一部番剧被识别成两个条目</li>
+<li><strong>图片语言优先级</strong>：<code>控制台 → 显示</code> 里设置封面/背景图优先语言为中文，减少刮削到日文海报的情况</li>
+</ul>
+<hr>
 
       
        

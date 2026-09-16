@@ -3,20 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>摄影基础概念学习-04：索尼相机常用设置与拍摄流程 | Akabane71</title>
-  <meta name="keywords" content="">
+  <meta name="keywords" content=" Life , 摄影基础 , sony , 相机设置 , 拍摄流程 ">
   <meta name="description" content="摄影基础概念学习-04：索尼相机常用设置与拍摄流程 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么验证中转站模型是真模型?">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="不同的绘图风格">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-11T07:59:34.000Z">
-<meta property="article:modified_time" content="2026-09-14T09:14:14.237Z">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
+<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
+<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +124,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(213)</small>
+                <small>(214)</small>
             
         </div>
     </li>
@@ -248,7 +264,7 @@
         <div data-rel="AI-Tools-Log">
             <i class="fold iconfont icon-right"></i>
             AI-Tools-Log
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
             <ul class="sub hide">
@@ -389,7 +405,7 @@
         <div data-rel="Life">
             <i class="fold iconfont icon-right"></i>
             Life
-            <small>(8)</small>
+            <small>(10)</small>
         </div>
         
             <ul class="sub hide">
@@ -399,7 +415,7 @@
         <div data-rel="Life&lt;---&gt;摄影">
             
             摄影
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -721,8 +737,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="213">
-<input type="hidden" id="yelog_site_word_count" value="197.3k">
+<input type="hidden" id="yelog_site_posts_number" value="214">
+<input type="hidden" id="yelog_site_word_count" value="209.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -780,6 +796,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>感受</a>
             </li>
         
@@ -792,7 +812,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>绘图</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>机娘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>焦距</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>景深</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -808,6 +840,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拍摄流程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人像虚化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>摄影基础</a>
             </li>
         
@@ -817,6 +857,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>相机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>相机设置</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1779,6 +1823,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 AI-Tools-Log "
+           href="/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/"
+           data-tag="AI,绘图,风格"
+           data-author="" >
+            <span class="post-title" title="不同的绘图风格">不同的绘图风格</span>
+            <span class="post-date" title="2026-09-16 10:10:38">2026/09/16</span>
+        </a>
+        
+        
         <a  class="全部文章 "
            href="/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/"
            data-tag=""
@@ -1862,25 +1915,25 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/"
-           data-tag="Life,sony,摄影基础,光圈,快门,ISO"
+           data-tag="Life,摄影基础,光圈,快门,ISO,sony"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-02：光圈、快门、ISO 的实拍应用">摄影基础概念学习-02：光圈、快门、ISO 的实拍应用</span>
             <span class="post-date" title="2026-05-31 13:23:59">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,相机设置,拍摄流程"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-04：索尼相机常用设置与拍摄流程">摄影基础概念学习-04：索尼相机常用设置与拍摄流程</span>
             <span class="post-date" title="2026-05-31 13:22:58">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,焦距,景深,人像虚化"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-03：焦距、景深与人像虚化">摄影基础概念学习-03：焦距、景深与人像虚化</span>
             <span class="post-date" title="2026-05-31 13:22:50">2026/05/31</span>
@@ -1889,7 +1942,7 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/"
-           data-tag="Life,sony,摄影基础,相机,镜头"
+           data-tag="Life,摄影基础,sony,相机,镜头"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位">摄影基础概念学习-01：曝光、镜头、画幅与相机挡位</span>
             <span class="post-date" title="2026-05-31 13:14:56">2026/05/31</span>
@@ -3014,7 +3067,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,slam,lite3,nav,pcd filtrer"
+           data-tag="ros1,lite3,slam,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -3122,7 +3175,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,lite3,joy_controller"
+           data-tag="ros,joy_controller,lite3"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3131,7 +3184,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -3167,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,slam,lite3"
+           data-tag="ros,lite3,slam"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3721,16 +3774,41 @@
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Life">Life</a> > 
+            
+            <a  data-rel="Life&lt;---&gt;摄影">摄影</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Life</a>
+            
+            <a class="color5">摄影基础</a>
+            
+            <a class="color5">sony</a>
+            
+            <a class="color5">相机设置</a>
+            
+            <a class="color5">拍摄流程</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-14 17:14:14'>2026-05-31 13:22</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-05-31 13:22</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:1.7k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -3749,7 +3827,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">摄影基础概念学习-04：索尼相机常用设置与拍摄流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">一、拍摄前的机身基础设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%EF%BC%9ARAW-JPEG"><span class="toc-text">1. 文件格式：RAW + JPEG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%B9%E7%84%A6%E6%A8%A1%E5%BC%8F%E8%AE%BE%E7%BD%AE"><span class="toc-text">2. 对焦模式设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9B%9D%E5%85%89%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%87%AA%E5%8A%A8-ISO-%E8%8C%83%E5%9B%B4"><span class="toc-text">3. 曝光模式与自动 ISO 范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B8%B8%E7%94%A8%E6%8C%89%E9%92%AE%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="toc-text">4. 常用按钮自定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">二、常用菜单设置清单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9D%99%E9%9F%B3%E5%BF%AB%E9%97%A8"><span class="toc-text">1. 静音快门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%98%B2%E6%8A%96%E8%AE%BE%E7%BD%AE"><span class="toc-text">2. 防抖设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B3%B0%E5%80%BC%E5%AF%B9%E7%84%A6%EF%BC%88Focus-Peaking%EF%BC%89"><span class="toc-text">3. 峰值对焦（Focus Peaking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BD%91%E6%A0%BC%E7%BA%BF%E4%B8%8E%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-text">4. 网格线与直方图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AD%98%E5%82%A8%E5%8D%A1%E4%B8%8E%E7%94%B5%E9%87%8F%E6%8F%90%E7%A4%BA"><span class="toc-text">5. 存储卡与电量提示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">三、拍摄流程 SOP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%BA%E9%97%A8%E5%89%8D"><span class="toc-text">1. 出门前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%B0%E5%9C%BA%E5%90%8E"><span class="toc-text">2. 到场后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8B%8D%E6%91%84%E4%B8%AD"><span class="toc-text">3. 拍摄中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8B%8D%E6%91%84%E5%90%8E"><span class="toc-text">4. 拍摄后</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">四、不同场景的机身设置模板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BA%BA%E5%83%8F"><span class="toc-text">1. 人像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%A1%97%E6%8B%8D"><span class="toc-text">2. 街拍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A3%8E%E5%85%89"><span class="toc-text">3. 风光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%A4%9C%E6%99%AF-%E5%BC%B1%E5%85%89"><span class="toc-text">4. 夜景 &#x2F; 弱光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%90%E5%8A%A8-%E6%8A%93%E6%8B%8D"><span class="toc-text">5. 运动 &#x2F; 抓拍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">五、常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%85%A7%E7%89%87%E6%80%BB%E6%98%AF%E8%84%B1%E7%84%A6"><span class="toc-text">1. 为什么照片总是脱焦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%B1%E5%85%89%E4%B8%8B%E7%85%A7%E7%89%87%E5%8F%91%E7%B3%8A"><span class="toc-text">2. 为什么弱光下照片发糊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%A2%9C%E8%89%B2%E5%92%8C%E9%A2%84%E6%9C%9F%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="toc-text">3. 为什么颜色和预期不一样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%94%B5%E6%B1%A0%E5%92%8C%E5%AD%98%E5%82%A8%E5%8D%A1%E8%AF%A5%E6%80%8E%E4%B9%88%E5%87%86%E5%A4%87"><span class="toc-text">4. 电池和存储卡该怎么准备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">六、本篇总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -3765,7 +3843,196 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1>摄影基础概念学习-04：索尼相机常用设置与拍摄流程</h1>
+<p>前三篇讲了曝光三要素、光圈快门 ISO 实拍应用、焦距景深与人像虚化，都是“概念层面”的东西。这一篇专门整理索尼相机上落地用的菜单设置，以及一套从出门到出片的完整流程，方便自己每次拿起相机都能照着走一遍，而不用每次都现想。</p>
+<hr>
+<h1>一、拍摄前的机身基础设置</h1>
+<h2 id="1-文件格式：RAW-JPEG">1. 文件格式：RAW + JPEG</h2>
+<pre><code class="language-text">菜单：文件格式 → RAW 和 JPEG
+RAW 压缩方式：无损压缩（兼顾画质和体积）
+JPEG 画质：精细
+</code></pre>
+<p>日常随拍图快可以只留 JPEG，但只要是想认真调后期的场景，建议一直保持 RAW+JPEG 同时记录，JPEG 用来快速预览分享，RAW 留给后期精修。</p>
+<h2 id="2-对焦模式设置">2. 对焦模式设置</h2>
+<pre><code class="language-text">对焦模式：AF-C（连续对焦），日常默认挂着
+对焦区域：人像/宠物优先“实时追踪”，风光静物用“中间固定点”
+眼部对焦：开启，人物/动物自动优先
+</code></pre>
+<p>AF-C + 实时追踪基本能覆盖人像、街拍、宠物大多数场景，风光、静物这类主体不动的场景再切回单点更精准。</p>
+<h2 id="3-曝光模式与自动-ISO-范围">3. 曝光模式与自动 ISO 范围</h2>
+<pre><code class="language-text">默认档位：A 档（光圈优先）
+自动 ISO 范围：ISO 100 - 6400
+自动 ISO 最低快门速度：标准 或 手动设为 1 / 焦距
+</code></pre>
+<p>把自动 ISO 的下限快门速度和当前镜头的安全快门绑定，可以避免光圈优先模式下快门被相机自动降得过慢而拍糊。</p>
+<h2 id="4-常用按钮自定义">4. 常用按钮自定义</h2>
+<pre><code class="language-text">AF-ON 按钮：绑定“对焦”，与快门半按分离（后对焦）
+C1 按钮：切换对焦区域
+C2 按钮：切换眼部对焦开关
+后拨盘：曝光补偿
+</code></pre>
+<p>把对焦和快门解耦（后对焦）之后，可以先对焦锁定构图，再按快门，减少因为半按快门重新对焦导致的失焦。</p>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/image.png" alt="索尼按钮"></p>
+<!--
+【生成目标】
+绘制“后对焦按钮分工”示意图，展示 AF-ON 按钮与快门按钮职能分离的操作逻辑。
+
+【主体与场景】
+一个简化的相机机背图标，快门按钮上标注“只负责曝光”，拇指所及的 AF-ON 按钮上标注“只负责对焦”，两个按钮之间用虚线连接到“构图 → 锁定对焦 → 按下快门”的流程箭头。
+
+【构图与镜头】
+正视相机机背图标居中，旁边搭配流程箭头，横版 4:3。
+
+【视觉风格】
+极简主义线条插画，相机机背用扬平化图标表现，无真实产品照片或品牌 logo。
+
+【光照与色彩】
+浅色背景，机身用石墨灰线条，两个关键按钮用同一强调色（如浅橙）标出。
+
+【约束与输出】
+流程逻辑清晰可读，标签文字简短，不出现真实相机品牌。
+-->
+<hr>
+<h1>二、常用菜单设置清单</h1>
+<h2 id="1-静音快门">1. 静音快门</h2>
+<p>安静场合（如会议、演出、婚礼仪式）建议开启静音快门，代价是高速运动主体可能出现果冻效应（电子快门局部扫描导致的变形）。</p>
+<h2 id="2-防抖设置">2. 防抖设置</h2>
+<pre><code class="language-text">机身防抖：开启
+镜头防抖（如果镜头带 OSS）：开启
+三脚架拍摄时：建议关闭防抖，避免防抖系统在静止状态下引入轻微抖动
+</code></pre>
+<h2 id="3-峰值对焦（Focus-Peaking）">3. 峰值对焦（Focus Peaking）</h2>
+<p>手动对焦或确认自动对焦精度时打开，对焦清晰的边缘会被高亮描边，尤其在拍摄大光圈人像特写时很实用。</p>
+<pre><code class="language-text">峰值对焦：开启
+显示颜色：黄色 / 红色（根据背景选择更醒目的颜色）
+</code></pre>
+<h2 id="4-网格线与直方图">4. 网格线与直方图</h2>
+<pre><code class="language-text">网格线：3x3 井字网格，辅助构图和水平线
+直方图：拍摄时常驻显示，比回放看照片亮度更直观
+</code></pre>
+<h2 id="5-存储卡与电量提示">5. 存储卡与电量提示</h2>
+<pre><code class="language-text">双卡设置：RAW+JPEG 分别写入两张卡，或同时备份
+电量/卡容量提示：常驻显示，避免拍到一半没电没卡
+</code></pre>
+<hr>
+<h1>三、拍摄流程 SOP</h1>
+<h2 id="1-出门前">1. 出门前</h2>
+<pre><code class="language-text">1. 检查电池是否充满，备用电池是否带够
+2. 检查存储卡容量，格式化（在电脑上已备份的前提下）
+3. 根据当天拍摄内容确定主力镜头
+4. 清洁镜头前后组、传感器有无明显灰尘
+</code></pre>
+<h2 id="2-到场后">2. 到场后</h2>
+<pre><code class="language-text">1. 判断当前光线（顺光/侧光/逆光、强弱、色温）
+2. 根据光线和题材，确定优先档位（A / S / M）
+3. 设置自动 ISO 范围和最低快门速度
+4. 确认对焦模式和对焦区域是否匹配当前题材
+</code></pre>
+<h2 id="3-拍摄中">3. 拍摄中</h2>
+<pre><code class="language-text">1. 每次换场景/换光线，回看一张照片确认曝光和白平衡
+2. 关注直方图，避免大范围过曝或欠曝
+3. 重要瞬间连拍，留出多张备选
+4. 定期检查存储卡剩余空间和电量
+</code></pre>
+<h2 id="4-拍摄后">4. 拍摄后</h2>
+<pre><code class="language-text">1. 现场快速回看，删除明显失焦/重复的废片
+2. 回家第一时间备份到电脑和移动硬盘
+3. 挑选精修片，导入 Lightroom / Capture One 等软件处理 RAW
+4. 导出成片，按日期和主题归档
+</code></pre>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/image-1.png" alt="拍摄流程图"></p>
+<!--
+【生成目标】
+绘制“拍摄流程四阶段”循环图，展示出门前→到场后→拍摄中→拍摄后四个阶段的循环关系。
+
+【主体与场景】
+四个圆角矩形节点用箭头依次连接成一个环状流程：“出门前（电池/存卡/镜头）”→“到场后（判断光线/档位）”→“拍摄中（回看/直方图）”→“拍摄后（备份/归档）”，最后一个节点箭头回到第一个节点形成闭环。
+
+【构图与镜头】
+四节点环形流程图，正视平面构图，方形或横版均可，适合作为 SOP 教学图。
+
+【视觉风格】
+极简主义禅意插画，线条纤细，留白充分，无多余装饰。
+
+【光照与色彩】
+浅米白背景，四个节点用统一低饱和色系区分，连接箭头用同一中性色。
+
+【约束与输出】
+四个阶段循环关系清晰，文字标签简短，不出现真实拍摄场景照片。
+-->
+<hr>
+<h1>四、不同场景的机身设置模板</h1>
+<h2 id="1-人像">1. 人像</h2>
+<pre><code class="language-text">档位：A 档
+光圈：F1.8 - F2.8
+对焦：AF-C + 人眼识别 + 实时追踪
+自动 ISO：100 - 3200
+</code></pre>
+<h2 id="2-街拍">2. 街拍</h2>
+<pre><code class="language-text">档位：A 档
+光圈：F2.8 - F5.6
+对焦：AF-C + 广域
+自动 ISO：Auto，最低快门锁定 1/250s
+</code></pre>
+<h2 id="3-风光">3. 风光</h2>
+<pre><code class="language-text">档位：A 档 或 M 档（三脚架时）
+光圈：F5.6 - F11
+对焦：AF-S + 单点
+ISO：100（三脚架）
+</code></pre>
+<h2 id="4-夜景-弱光">4. 夜景 / 弱光</h2>
+<pre><code class="language-text">档位：A 档（手持）/ M 档（三脚架）
+光圈：尽量开大，或按构图需要收到 F8 - F11（配合三脚架）
+自动 ISO：800 - 6400（手持）/ ISO 100（三脚架）
+防抖：手持开启，三脚架关闭
+</code></pre>
+<h2 id="5-运动-抓拍">5. 运动 / 抓拍</h2>
+<pre><code class="language-text">档位：S 档
+快门：1/1000s 以上
+对焦：AF-C + 实时追踪
+自动 ISO：Auto
+连拍：高速连拍
+</code></pre>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/image-2.png" alt="五大拍摄场景设置模板"></p>
+<!--
+【生成目标】
+绘制“五大拍摄场景设置模板”一览图，将人像、街拍、风光、夜景、运动五种场景的核心设置差异并排呈现，方便出门前快速比对选择。
+
+【主体与场景】
+五个并排的场景图标卡片，分别标注“人像”“街拍”“风光”“夜景”“运动”，每张卡片内用极简图形示意对应的光圈大小、对焦模式关键词。
+
+【构图与镜头】
+五宫格横向排列的信息图构图，等宽等间距，横版长图，适合文章内嵌配图。
+
+【视觉风格】
+极简主义扁平信息图风格，统一的卡片边框与图标线条粗细，禅意留白。
+
+【光照与色彩】
+浅米白背景，五张卡片使用统一但可区分的低饱和色系，关键数值用同一强调色标出。
+
+【约束与输出】
+五张卡片视觉权重一致，文字简洁不堆砌，不出现真实照片或人物肖像。
+-->
+<hr>
+<h1>五、常见问题</h1>
+<h2 id="1-为什么照片总是脱焦">1. 为什么照片总是脱焦</h2>
+<p>大概率是对焦区域设置不匹配场景，比如拍人像却用了广域对焦，导致相机对焦到了背景。优先检查对焦区域和眼部识别是否开启。</p>
+<h2 id="2-为什么弱光下照片发糊">2. 为什么弱光下照片发糊</h2>
+<p>先确认快门速度是否低于安全快门，如果是，优先提高 ISO 或开大光圈，而不是继续降低快门。</p>
+<h2 id="3-为什么颜色和预期不一样">3. 为什么颜色和预期不一样</h2>
+<p>检查白平衡是否设置正确，尤其在混合光源环境下，自动白平衡容易出现偏色，必要时手动设置色温或自定义白平衡。</p>
+<h2 id="4-电池和存储卡该怎么准备">4. 电池和存储卡该怎么准备</h2>
+<p>按照“预计拍摄时长 x 1.5”的余量准备电池，存储卡建议至少两张互为备份，避免单卡故障导致数据丢失。</p>
+<hr>
+<h1>六、本篇总结</h1>
+<p>这一篇把前三篇的概念落地成了具体的机身菜单设置和一套可复用的拍摄流程：</p>
+<pre><code class="language-text">1. 出门前检查电池、卡、镜头
+2. 到场后先判断光线，再确定档位和对焦模式
+3. 拍摄中随时看直方图，避免过曝欠曝
+4. 拍摄后及时备份，分类归档
+</code></pre>
+<p>至此，摄影基础概念学习系列（曝光、镜头画幅、焦距景深虚化、机身设置流程）就完整覆盖了从原理到实操的基本框架，后续可以在实拍中不断打磨细节。</p>
+
       
        
     </div>

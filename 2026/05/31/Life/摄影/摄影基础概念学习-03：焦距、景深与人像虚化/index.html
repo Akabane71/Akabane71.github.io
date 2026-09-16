@@ -3,20 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>摄影基础概念学习-03：焦距、景深与人像虚化 | Akabane71</title>
-  <meta name="keywords" content="">
+  <meta name="keywords" content=" Life , 摄影基础 , sony , 焦距 , 景深 , 人像虚化 ">
   <meta name="description" content="摄影基础概念学习-03：焦距、景深与人像虚化 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么验证中转站模型是真模型?">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="不同的绘图风格">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-11T07:59:34.000Z">
-<meta property="article:modified_time" content="2026-09-14T09:14:14.237Z">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
+<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
+<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +124,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(213)</small>
+                <small>(214)</small>
             
         </div>
     </li>
@@ -248,7 +264,7 @@
         <div data-rel="AI-Tools-Log">
             <i class="fold iconfont icon-right"></i>
             AI-Tools-Log
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
             <ul class="sub hide">
@@ -389,7 +405,7 @@
         <div data-rel="Life">
             <i class="fold iconfont icon-right"></i>
             Life
-            <small>(8)</small>
+            <small>(10)</small>
         </div>
         
             <ul class="sub hide">
@@ -399,7 +415,7 @@
         <div data-rel="Life&lt;---&gt;摄影">
             
             摄影
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -721,8 +737,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="213">
-<input type="hidden" id="yelog_site_word_count" value="197.3k">
+<input type="hidden" id="yelog_site_posts_number" value="214">
+<input type="hidden" id="yelog_site_word_count" value="209.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -780,6 +796,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>感受</a>
             </li>
         
@@ -792,7 +812,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>绘图</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>机娘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>焦距</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>景深</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -808,6 +840,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拍摄流程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人像虚化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>摄影基础</a>
             </li>
         
@@ -817,6 +857,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>相机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>相机设置</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1779,6 +1823,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 AI-Tools-Log "
+           href="/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/"
+           data-tag="AI,绘图,风格"
+           data-author="" >
+            <span class="post-title" title="不同的绘图风格">不同的绘图风格</span>
+            <span class="post-date" title="2026-09-16 10:10:38">2026/09/16</span>
+        </a>
+        
+        
         <a  class="全部文章 "
            href="/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/"
            data-tag=""
@@ -1862,25 +1915,25 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/"
-           data-tag="Life,sony,摄影基础,光圈,快门,ISO"
+           data-tag="Life,摄影基础,光圈,快门,ISO,sony"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-02：光圈、快门、ISO 的实拍应用">摄影基础概念学习-02：光圈、快门、ISO 的实拍应用</span>
             <span class="post-date" title="2026-05-31 13:23:59">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,相机设置,拍摄流程"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-04：索尼相机常用设置与拍摄流程">摄影基础概念学习-04：索尼相机常用设置与拍摄流程</span>
             <span class="post-date" title="2026-05-31 13:22:58">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,焦距,景深,人像虚化"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-03：焦距、景深与人像虚化">摄影基础概念学习-03：焦距、景深与人像虚化</span>
             <span class="post-date" title="2026-05-31 13:22:50">2026/05/31</span>
@@ -1889,7 +1942,7 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/"
-           data-tag="Life,sony,摄影基础,相机,镜头"
+           data-tag="Life,摄影基础,sony,相机,镜头"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位">摄影基础概念学习-01：曝光、镜头、画幅与相机挡位</span>
             <span class="post-date" title="2026-05-31 13:14:56">2026/05/31</span>
@@ -3014,7 +3067,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,slam,lite3,nav,pcd filtrer"
+           data-tag="ros1,lite3,slam,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -3122,7 +3175,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,lite3,joy_controller"
+           data-tag="ros,joy_controller,lite3"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3131,7 +3184,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -3167,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,slam,lite3"
+           data-tag="ros,lite3,slam"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3721,16 +3774,43 @@
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Life">Life</a> > 
+            
+            <a  data-rel="Life&lt;---&gt;摄影">摄影</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Life</a>
+            
+            <a class="color5">摄影基础</a>
+            
+            <a class="color5">sony</a>
+            
+            <a class="color3">焦距</a>
+            
+            <a class="color3">景深</a>
+            
+            <a class="color5">人像虚化</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-14 17:14:14'>2026-05-31 13:22</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-05-31 13:22</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:1.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -3749,7 +3829,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">摄影基础概念学习-03：焦距、景深与人像虚化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">一、焦距是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%84%A6%E8%B7%9D%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 焦距的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%84%A6%E8%B7%9D%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E7%94%BB%E9%9D%A2"><span class="toc-text">2. 焦距如何影响画面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E8%A7%81%E7%84%A6%E8%B7%9D%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-text">3. 常见焦距对照表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">二、景深是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%99%AF%E6%B7%B1%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 景深的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BD%B1%E5%93%8D%E6%99%AF%E6%B7%B1%E7%9A%84%E4%B8%89%E4%B8%AA%E5%9B%A0%E7%B4%A0"><span class="toc-text">2. 影响景深的三个因素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E5%9C%88"><span class="toc-text">光圈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%84%A6%E8%B7%9D%E7%A6%BB"><span class="toc-text">对焦距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%84%A6%E8%B7%9D"><span class="toc-text">焦距</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%99%AF%E6%B7%B1%E6%B7%B1%E6%B5%85%E5%AF%B9%E6%AF%94"><span class="toc-text">3. 景深深浅对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">三、人像虚化怎么拍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%99%9A%E5%8C%96%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">1. 虚化的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%81%BF%E5%85%8D%E8%84%B8%E7%B3%8A%E7%9A%84%E5%A4%9A%E4%BA%BA%E5%90%88%E5%BD%B1%E6%80%9D%E8%B7%AF"><span class="toc-text">2. 避免脸糊的多人合影思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E8%A7%81%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96%E7%84%A6%E6%AE%B5%E6%8E%A8%E8%8D%90"><span class="toc-text">3. 常见人像虚化焦段推荐</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">四、实拍套路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8D%95%E4%BA%BA%E4%BA%BA%E5%83%8F"><span class="toc-text">1. 单人人像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%8E%AF%E5%A2%83%E4%BA%BA%E5%83%8F"><span class="toc-text">2. 环境人像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%9A%E4%BA%BA%E5%90%88%E5%BD%B1"><span class="toc-text">3. 多人合影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%9D%99%E7%89%A9-%E4%BA%A7%E5%93%81%E8%99%9A%E5%8C%96"><span class="toc-text">4. 静物 &#x2F; 产品虚化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">五、常见误区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%A5%E4%B8%BA%E5%8F%AA%E6%9C%89%E5%A4%A7%E5%85%89%E5%9C%88%E6%89%8D%E8%83%BD%E8%99%9A%E5%8C%96"><span class="toc-text">1. 以为只有大光圈才能虚化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%A5%E4%B8%BA%E9%95%BF%E7%84%A6%E4%B8%80%E5%AE%9A%E6%AF%94%E5%B9%BF%E8%A7%92%E6%9B%B4%E9%80%82%E5%90%88%E4%BA%BA%E5%83%8F"><span class="toc-text">2. 以为长焦一定比广角更适合人像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A5%E4%B8%BA%E8%99%9A%E5%8C%96%E8%B6%8A%E5%BC%BA%E8%B6%8A%E5%A5%BD"><span class="toc-text">3. 以为虚化越强越好</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">六、本篇总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -3765,7 +3845,219 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/image-20260601134841937.png" alt="影响景深的因素"></p>
+        <h1>摄影基础概念学习-03：焦距、景深与人像虚化</h1>
+<p>前两篇分别讲了曝光三要素、光圈快门 ISO 的实拍应用。这一篇专门聚焦一个大家最关心的问题：</p>
+<blockquote>
+<p>怎么才能拍出背景虚化、主体突出的照片？</p>
+</blockquote>
+<p>答案离不开三个概念：焦距、景深、虚化。它们和光圈一起，共同决定了一张照片“糊不糊、糊多少、糊哪里”。</p>
+<hr>
+<h1>一、焦距是什么</h1>
+<h2 id="1-焦距的定义">1. 焦距的定义</h2>
+<p>焦距是镜头光学中心到成像面（传感器）的距离，单位是 mm，通常直接标注在镜头上，例如 <code>50mm</code>、<code>85mm</code>、<code>24-70mm</code>。</p>
+<p>焦距不是“放大倍率”，而是决定视角宽窄的核心参数：</p>
+<pre><code class="language-text">焦距越短 → 视角越宽 → 能拍下的范围越大（广角）
+焦距越长 → 视角越窄 → 画面被放大、范围变小（长焦）
+</code></pre>
+<h2 id="2-焦距如何影响画面">2. 焦距如何影响画面</h2>
+<p>焦距除了改变视角宽窄，还会影响画面的透视关系：</p>
+<ul>
+<li>短焦距（广角）：前后景比例被拉开，靠近镜头的物体显得更大，容易产生夸张透视</li>
+<li>长焦距（长焦）：前后景比例被压缩，看起来更“扁平”、更聚拢，也就是常说的“压缩感”</li>
+</ul>
+<p>拍人像时，长焦压缩感会让五官比例更协调，这也是 85mm、135mm 常被称为“人像焦段”的原因。</p>
+<h2 id="3-常见焦距对照表">3. 常见焦距对照表</h2>
+<table>
+<thead>
+<tr>
+<th>焦距范围</th>
+<th>常见叫法</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14mm - 20mm</td>
+<td>超广角</td>
+<td>建筑、星空、极端空间感</td>
+</tr>
+<tr>
+<td>24mm - 35mm</td>
+<td>广角</td>
+<td>风光、旅行、环境人像</td>
+</tr>
+<tr>
+<td>35mm - 50mm</td>
+<td>标准</td>
+<td>人文、日常记录</td>
+</tr>
+<tr>
+<td>70mm - 135mm</td>
+<td>中长焦</td>
+<td>人像、人像特写</td>
+</tr>
+<tr>
+<td>135mm 以上</td>
+<td>长焦</td>
+<td>体育、鸟类、舞台</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1>二、景深是什么</h1>
+<h2 id="1-景深的定义">1. 景深的定义</h2>
+<p>景深指对焦点前后能够保持清晰的范围。</p>
+<pre><code class="language-text">景深浅（小）→ 对焦点前后很快模糊 → 背景虚化明显
+景深深（大）→ 对焦点前后大范围都清晰 → 适合风景、合影
+</code></pre>
+<h2 id="2-影响景深的三个因素">2. 影响景深的三个因素</h2>
+<p>景深不是由单一参数决定的，而是光圈、对焦距离、焦距三者共同作用的结果。</p>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/image-20260601134841937.png" alt="影响景深的因素"></p>
+<h3 id="光圈">光圈</h3>
+<p>光圈越大（F 值越小），景深越浅，越容易虚化；光圈越小（F 值越大），景深越深，画面前后越清晰。</p>
+<h3 id="对焦距离">对焦距离</h3>
+<p>离主体越近，景深越浅；离主体越远，景深越深。这也是为什么手机“人像模式”常常需要凑近拍摄才容易糊背景。</p>
+<h3 id="焦距">焦距</h3>
+<p>焦距越长，景深越浅；焦距越短，景深越深。同样的光圈，85mm 比 35mm 更容易拍出虚化背景。
+<img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/image.png" alt="焦距"></p>
+<!--
+【生成目标】
+绘制“景深三因素联动”示意图，将光圈、对焦距离、焦距三个变量与景深深浅的关系整合为一张对比图，帮助读者建立系统性理解，而不是孤立记忆三条规则。
+
+【主体与场景】
+三组独立的小示意图并排：①光圈叶片从小到大，背景虚化程度随之增强；②相机图标与主体距离从远到近，背景虚化程度随之增强；③镜头图标从短焦到长焦，背景虚化程度随之增强，每组末尾都指向同一个“背景更虚”的箭头。
+
+【构图与镜头】
+三行横向排列的信息图构图，纵向堆叠，横版长图，适合文章内嵌配图。
+
+【视觉风格】
+极简主义线条插画，图标扁平化，禅意留白，不使用真实照片。
+
+【光照与色彩】
+浅米白背景，三组图标使用统一低饱和色系，趋势箭头用同一强调色（浅橙）标出。
+
+【约束与输出】
+三组变化趋势方向一致（从左到右景深变浅），文字标签简短，便于对照阅读。
+-->
+<h2 id="3-景深深浅对比">3. 景深深浅对比</h2>
+<p>同样是拍一个人，下面三种组合会得到完全不同的虚化效果：</p>
+<table>
+<thead>
+<tr>
+<th>组合</th>
+<th>景深</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F11 + 5m 外 + 24mm</td>
+<td>很深</td>
+<td>人物和背景都清晰</td>
+</tr>
+<tr>
+<td>F2.8 + 2m + 50mm</td>
+<td>中等</td>
+<td>背景有一定虚化</td>
+</tr>
+<tr>
+<td>F1.8 + 1m + 85mm</td>
+<td>很浅</td>
+<td>背景强烈虚化成光斑</td>
+</tr>
+</tbody>
+</table>
+<p>想要背景糊到什么程度，本质上是在“凑齐”这三个因素，而不是只调光圈。</p>
+<hr>
+<h1>三、人像虚化怎么拍</h1>
+<h2 id="1-虚化的原理">1. 虚化的原理</h2>
+<p>虚化本质上是让背景落在景深范围之外，离焦距离越远、景深越浅，背景越模糊。</p>
+<p>想让虚化更强，可以同时满足：</p>
+<pre><code class="language-text">1. 光圈开大（小 F 值）
+2. 离主体近一点拍
+3. 用长一点的焦距
+4. 让主体和背景之间的距离拉大
+</code></pre>
+<p>第 4 点很多人会忽略：即使光圈、焦距都到位，如果主体紧贴着背景墙拍，也很难产生明显虚化。</p>
+<h2 id="2-避免脸糊的多人合影思路">2. 避免脸糊的多人合影思路</h2>
+<p>多人合影时，如果光圈开太大、景深太浅，站在前后排的人容易脱焦模糊。</p>
+<pre><code class="language-text">多人合影建议：
+光圈：F4 - F8
+让所有人尽量站在同一焦平面上（同一条前后线上）
+避免有人明显靠前或靠后
+</code></pre>
+<h2 id="3-常见人像虚化焦段推荐">3. 常见人像虚化焦段推荐</h2>
+<table>
+<thead>
+<tr>
+<th>焦段</th>
+<th>特点</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>35mm</td>
+<td>虚化较弱，环境感强</td>
+<td>环境人像、扫街人像</td>
+</tr>
+<tr>
+<td>50mm</td>
+<td>虚化适中，视角自然</td>
+<td>日常人像、半身</td>
+</tr>
+<tr>
+<td>85mm</td>
+<td>虚化明显，压缩感强</td>
+<td>半身、特写人像</td>
+</tr>
+<tr>
+<td>135mm</td>
+<td>虚化最强，需要更远拍摄距离</td>
+<td>特写、舞台人像</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1>四、实拍套路</h1>
+<h2 id="1-单人人像">1. 单人人像</h2>
+<pre><code class="language-text">光圈：F1.8 - F2.8
+焦距：50mm - 85mm
+拍摄距离：1 - 3m
+对焦：人眼识别 / AF-C
+</code></pre>
+<p>尽量让背景和人物之间留出一定距离，虚化效果会明显提升。</p>
+<h2 id="2-环境人像">2. 环境人像</h2>
+<pre><code class="language-text">光圈：F2.8 - F5.6
+焦距：24mm - 35mm
+</code></pre>
+<p>环境人像的重点不是极致虚化，而是让人物和环境同时讲故事，光圈不用开到最大。</p>
+<h2 id="3-多人合影">3. 多人合影</h2>
+<pre><code class="language-text">光圈：F4 - F8
+焦距：35mm - 50mm
+</code></pre>
+<p>保证所有人都在景深范围内，比单纯追求虚化更重要。</p>
+<h2 id="4-静物-产品虚化">4. 静物 / 产品虚化</h2>
+<pre><code class="language-text">光圈：F2.8 - F4
+拍摄距离：尽量靠近主体
+背景：选择干净、远离主体的背景
+</code></pre>
+<p>静物虚化更依赖“靠近拍摄距离”和“背景远离主体”，而不完全依赖大光圈。</p>
+<hr>
+<h1>五、常见误区</h1>
+<h2 id="1-以为只有大光圈才能虚化">1. 以为只有大光圈才能虚化</h2>
+<p>拍摄距离和背景距离同样重要，很多手机长焦镜头光圈并不大，但靠近拍摄依然能拍出不错的虚化。</p>
+<h2 id="2-以为长焦一定比广角更适合人像">2. 以为长焦一定比广角更适合人像</h2>
+<p>广角人像有独特的环境叙事感，只是压缩感和虚化不如长焦明显，两者是不同风格，不是优劣关系。</p>
+<h2 id="3-以为虚化越强越好">3. 以为虚化越强越好</h2>
+<p>多人合影、需要交代环境的场景里，过度虚化反而会丢失信息，虚化程度要服务于画面表达的内容。</p>
+<hr>
+<h1>六、本篇总结</h1>
+<p>焦距决定视角宽窄和透视压缩感，景深决定清晰范围的大小，虚化则是光圈、对焦距离、焦距三者共同作用的结果。</p>
+<pre><code class="language-text">想要更强虚化：大光圈 + 靠近拍摄 + 长焦距 + 背景远离主体
+想要更深景深：小光圈 + 远离拍摄 + 短焦距
+</code></pre>
+<p>下一篇计划整理索尼相机的常用菜单设置和一套完整的拍摄前后流程，把前三篇的概念真正落地到实际操作里。</p>
 
       
        

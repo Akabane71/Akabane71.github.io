@@ -3,20 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>摄影基础概念学习-02：光圈、快门、ISO 的实拍应用 | Akabane71</title>
-  <meta name="keywords" content=" Life , sony , 摄影基础 , 光圈 , 快门 , ISO ">
+  <meta name="keywords" content=" Life , 摄影基础 , 光圈 , 快门 , ISO , sony ">
   <meta name="description" content="摄影基础概念学习-02：光圈、快门、ISO 的实拍应用 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么验证中转站模型是真模型?">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="不同的绘图风格">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-11T07:59:34.000Z">
-<meta property="article:modified_time" content="2026-09-14T09:14:14.237Z">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
+<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
+<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +124,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(213)</small>
+                <small>(214)</small>
             
         </div>
     </li>
@@ -248,7 +264,7 @@
         <div data-rel="AI-Tools-Log">
             <i class="fold iconfont icon-right"></i>
             AI-Tools-Log
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
             <ul class="sub hide">
@@ -389,7 +405,7 @@
         <div data-rel="Life">
             <i class="fold iconfont icon-right"></i>
             Life
-            <small>(8)</small>
+            <small>(10)</small>
         </div>
         
             <ul class="sub hide">
@@ -399,7 +415,7 @@
         <div data-rel="Life&lt;---&gt;摄影">
             
             摄影
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -721,8 +737,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="213">
-<input type="hidden" id="yelog_site_word_count" value="197.3k">
+<input type="hidden" id="yelog_site_posts_number" value="214">
+<input type="hidden" id="yelog_site_word_count" value="209.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -780,6 +796,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>感受</a>
             </li>
         
@@ -792,7 +812,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>绘图</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>机娘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>焦距</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>景深</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -808,6 +840,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拍摄流程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人像虚化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>摄影基础</a>
             </li>
         
@@ -817,6 +857,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>相机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>相机设置</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1779,6 +1823,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 AI-Tools-Log "
+           href="/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/"
+           data-tag="AI,绘图,风格"
+           data-author="" >
+            <span class="post-title" title="不同的绘图风格">不同的绘图风格</span>
+            <span class="post-date" title="2026-09-16 10:10:38">2026/09/16</span>
+        </a>
+        
+        
         <a  class="全部文章 "
            href="/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/"
            data-tag=""
@@ -1862,25 +1915,25 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/"
-           data-tag="Life,sony,摄影基础,光圈,快门,ISO"
+           data-tag="Life,摄影基础,光圈,快门,ISO,sony"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-02：光圈、快门、ISO 的实拍应用">摄影基础概念学习-02：光圈、快门、ISO 的实拍应用</span>
             <span class="post-date" title="2026-05-31 13:23:59">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,相机设置,拍摄流程"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-04：索尼相机常用设置与拍摄流程">摄影基础概念学习-04：索尼相机常用设置与拍摄流程</span>
             <span class="post-date" title="2026-05-31 13:22:58">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,焦距,景深,人像虚化"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-03：焦距、景深与人像虚化">摄影基础概念学习-03：焦距、景深与人像虚化</span>
             <span class="post-date" title="2026-05-31 13:22:50">2026/05/31</span>
@@ -1889,7 +1942,7 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/"
-           data-tag="Life,sony,摄影基础,相机,镜头"
+           data-tag="Life,摄影基础,sony,相机,镜头"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位">摄影基础概念学习-01：曝光、镜头、画幅与相机挡位</span>
             <span class="post-date" title="2026-05-31 13:14:56">2026/05/31</span>
@@ -3014,7 +3067,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,slam,lite3,nav,pcd filtrer"
+           data-tag="ros1,lite3,slam,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -3122,7 +3175,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,lite3,joy_controller"
+           data-tag="ros,joy_controller,lite3"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3131,7 +3184,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -3167,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,slam,lite3"
+           data-tag="ros,lite3,slam"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3737,8 +3790,6 @@
             
             <a class="color5">Life</a>
             
-            <a class="color5">sony</a>
-            
             <a class="color5">摄影基础</a>
             
             <a class="color3">光圈</a>
@@ -3747,12 +3798,14 @@
             
             <a class="color4">ISO</a>
             
+            <a class="color5">sony</a>
+            
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-14 17:14:14'>2026-05-31 13:23</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-05-31 13:23</time>
         
     </div>
     <div class="article-meta">
@@ -3867,6 +3920,26 @@ F8 是小光圈
 <p>如果拍风景、建筑，希望画面整体都清楚，可以使用：</p>
 <pre><code class="language-text">F5.6 / F8 / F11
 </code></pre>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/image-1.png" alt="光圈对比"></p>
+<!--
+【生成目标】
+绘制“大光圈 vs 小光圈背景虚化对比”插图，直观展示 F1.8 与 F8 在同一构图下的背景虚化程度差异。
+
+【主体与场景】
+左右对比取景框：左侧标注 F1.8，人像主体清晰、背景强烈虚化成光斑；右侧标注 F8，同一主体与背景都清晰锐利。
+
+【构图与镜头】
+左右并列构图，横版 16:9，模拟取景框视角。
+
+【视觉风格】
+极简主义扁平插画，用虚实线条对比表现虚化程度，无写实人物育像。
+
+【光照与色彩】
+柔和自然光，主体色调温暖，背景用低饱和色区分虚实程度。
+
+【约束与输出】
+两侧构图一致，仅光圈不同，便于对比阅读。
+-->
 <hr>
 <h2 id="3-常见光圈使用场景">3. 常见光圈使用场景</h2>
 <table>
@@ -3937,6 +4010,26 @@ F8 是小光圈
 <h3 id="第二，运动状态">第二，运动状态</h3>
 <p>快门越快，越能定格动作。</p>
 <p>快门越慢，越容易拍出拖影、轨迹和流动感。</p>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/image.png" alt="快门速度与运动状态对比"></p>
+<!--
+【生成目标】
+绘制“快门速度与运动状态”对比图，展示高速快门冻结动作与慢速快门拖出运动轨迹的差异。
+
+【主体与场景】
+左右对比：左侧标注 1/1000s，一个跳跃/奔跑主体被完全冻结，轮廓锐利；右侧标注 1s，同一主体拉伸成模糊的运动轨迹线条。
+
+【构图与镜头】
+左右并列构图，横版 16:9，背景统一保持简单。
+
+【视觉风格】
+极简主义线条插画，主体用简化图形表示，非写实人物，用实虚线条对比冻结/拖影。
+
+【光照与色彩】
+浅色背景，主体用统一低饱和色调，拖影轨迹用渐变透明度表现时间迟滞。
+
+【约束与输出】
+两侧构图元素一致，仅运动状态表现不同，不出现真实照片。
+-->
 <hr>
 <h2 id="3-常见快门使用场景">3. 常见快门使用场景</h2>
 <table>
@@ -4017,7 +4110,27 @@ ISO 6400
 ISO 12800
 </code></pre>
 <p>ISO 越高，照片越亮。</p>
-<p>但 ISO 越高，噪点也会越明显，画质会下降。</p>
+<p>但 ISO 越高，噪点也会越明显，画质会下降。
+<img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/image-2.png" alt="高低ISO对比"></p>
+<!--
+【生成目标】
+绘制“ISO 与噪点”对比图，展示低 ISO 干净画面与高 ISO 噪点颗粒感的差异。
+
+【主体与场景】
+左右对比方块：左侧标注 ISO 100，表面平滑干净；右侧标注 ISO 6400，表面布满粗糙的颗粒噪点纹理。
+
+【构图与镜头】
+左右并列方块图，横版 16:9，类似画质对比测试图。
+
+【视觉风格】
+极简主义纹理插画，用点状噪声密度表现噪点差异，非真实照片途抹。
+
+【光照与色彩】
+中性灰色基底，噪点颗粒用深浅不一的灰色点表现。
+
+【约束与输出】
+两侧对比差异易于识别，不使用真实相机拍摄照片。
+-->
 <hr>
 <h2 id="2-ISO-对画面的影响">2. ISO 对画面的影响</h2>
 <p>ISO 主要影响两个东西：</p>
@@ -4092,6 +4205,26 @@ ISO 1600
 <blockquote>
 <p>一个参数变了，其他参数可能也要跟着调整。</p>
 </blockquote>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/image-3.png" alt="曝光三要素"></p>
+<!--
+【生成目标】
+绘制“曝光等效交换”示意图，展示光圈、快门、ISO 三者此消彼长、共同维持同一亮度的动态平衡关系。
+
+【主体与场景】
+一个天平/跷跷板结构，左右两端放置光圈叶片、快门帘幕、ISO 数值三个图标，其中两个此消彼长联动、支点标注“亮度不变”，用箭头表示数值此增彼减的关系。
+
+【构图与镜头】
+正视水平构图，对称布局，横版 16:9，适合文章内嵌配图。
+
+【视觉风格】
+极简主义矢量插画，线条纤细，禅意留白，无写实渲染。
+
+【光照与色彩】
+浅灰米色背景，天平主体用浅木色/银灰线条，三个图标用低饱和马卡龙色区分。
+
+【约束与输出】
+画面传达“此消彼长、结果不变”的平衡感，文字标签简短，不出现真实相机或人物。
+-->
 <hr>
 <h1>六、实拍场景怎么设置参数</h1>
 <h1>1. 拍人像</h1>

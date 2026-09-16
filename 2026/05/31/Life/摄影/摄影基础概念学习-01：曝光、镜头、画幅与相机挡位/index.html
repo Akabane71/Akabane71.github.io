@@ -3,20 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>摄影基础概念学习-01：曝光、镜头、画幅与相机挡位 | Akabane71</title>
-  <meta name="keywords" content=" Life , sony , 摄影基础 , 相机 , 镜头 ">
+  <meta name="keywords" content=" Life , 摄影基础 , sony , 相机 , 镜头 ">
   <meta name="description" content="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么验证中转站模型是真模型?">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="不同的绘图风格">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="中转站的危险 1. 模型未知 中转站满天飞，我怎么知道我使用的模型是正版的模型? 你这个中转站的模型是不是掺了水，使用Qwen27b 来冒充 Claude Fable 5 ？ 怎么鉴别真假大约的确是个需要解决的问题？ 2. 数据安全性未知 中转站会不会存储你的会话记录和历史数据，这部分都是不知道的，密钥的泄露更加危险 在数据即价值的时代这是非常非常危险的 3. 系统危险度 中转站如果恶意在模型输出">
+<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-11T07:59:34.000Z">
-<meta property="article:modified_time" content="2026-09-14T09:14:14.237Z">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
+<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
+<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
+<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
 <meta property="article:author" content="LiShun">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -108,7 +124,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(213)</small>
+                <small>(214)</small>
             
         </div>
     </li>
@@ -248,7 +264,7 @@
         <div data-rel="AI-Tools-Log">
             <i class="fold iconfont icon-right"></i>
             AI-Tools-Log
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
             <ul class="sub hide">
@@ -389,7 +405,7 @@
         <div data-rel="Life">
             <i class="fold iconfont icon-right"></i>
             Life
-            <small>(8)</small>
+            <small>(10)</small>
         </div>
         
             <ul class="sub hide">
@@ -399,7 +415,7 @@
         <div data-rel="Life&lt;---&gt;摄影">
             
             摄影
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -721,8 +737,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="213">
-<input type="hidden" id="yelog_site_word_count" value="197.3k">
+<input type="hidden" id="yelog_site_posts_number" value="214">
+<input type="hidden" id="yelog_site_word_count" value="209.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -780,6 +796,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>感受</a>
             </li>
         
@@ -792,7 +812,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>绘图</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>机娘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>焦距</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>景深</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -808,6 +840,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拍摄流程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人像虚化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>摄影基础</a>
             </li>
         
@@ -817,6 +857,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>相机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>相机设置</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1779,6 +1823,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 AI-Tools-Log "
+           href="/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/"
+           data-tag="AI,绘图,风格"
+           data-author="" >
+            <span class="post-title" title="不同的绘图风格">不同的绘图风格</span>
+            <span class="post-date" title="2026-09-16 10:10:38">2026/09/16</span>
+        </a>
+        
+        
         <a  class="全部文章 "
            href="/2026/09/11/AI-Tools-Log/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%E4%B8%AD%E8%BD%AC%E7%AB%99%E6%A8%A1%E5%9E%8B%E6%98%AF%E7%9C%9F%E6%A8%A1%E5%9E%8B/"
            data-tag=""
@@ -1862,25 +1915,25 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-02%EF%BC%9A%E5%85%89%E5%9C%88%E3%80%81%E5%BF%AB%E9%97%A8%E3%80%81ISO%20%E7%9A%84%E5%AE%9E%E6%8B%8D%E5%BA%94%E7%94%A8/"
-           data-tag="Life,sony,摄影基础,光圈,快门,ISO"
+           data-tag="Life,摄影基础,光圈,快门,ISO,sony"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-02：光圈、快门、ISO 的实拍应用">摄影基础概念学习-02：光圈、快门、ISO 的实拍应用</span>
             <span class="post-date" title="2026-05-31 13:23:59">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-04%EF%BC%9A%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%8B%8D%E6%91%84%E6%B5%81%E7%A8%8B/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,相机设置,拍摄流程"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-04：索尼相机常用设置与拍摄流程">摄影基础概念学习-04：索尼相机常用设置与拍摄流程</span>
             <span class="post-date" title="2026-05-31 13:22:58">2026/05/31</span>
         </a>
         
         
-        <a  class="全部文章 "
+        <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-03%EF%BC%9A%E7%84%A6%E8%B7%9D%E3%80%81%E6%99%AF%E6%B7%B1%E4%B8%8E%E4%BA%BA%E5%83%8F%E8%99%9A%E5%8C%96/"
-           data-tag=""
+           data-tag="Life,摄影基础,sony,焦距,景深,人像虚化"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-03：焦距、景深与人像虚化">摄影基础概念学习-03：焦距、景深与人像虚化</span>
             <span class="post-date" title="2026-05-31 13:22:50">2026/05/31</span>
@@ -1889,7 +1942,7 @@
         
         <a  class="全部文章 Life 摄影 "
            href="/2026/05/31/Life/%E6%91%84%E5%BD%B1/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/"
-           data-tag="Life,sony,摄影基础,相机,镜头"
+           data-tag="Life,摄影基础,sony,相机,镜头"
            data-author="" >
             <span class="post-title" title="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位">摄影基础概念学习-01：曝光、镜头、画幅与相机挡位</span>
             <span class="post-date" title="2026-05-31 13:14:56">2026/05/31</span>
@@ -3014,7 +3067,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/04/05/Ros/ros1-lite3-slam&nav/"
-           data-tag="ros1,slam,lite3,nav,pcd filtrer"
+           data-tag="ros1,lite3,slam,nav,pcd filtrer"
            data-author="" >
             <span class="post-title" title="ros1-lite3-slam">ros1-lite3-slam</span>
             <span class="post-date" title="2025-04-05 19:21:55">2025/04/05</span>
@@ -3122,7 +3175,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,lite3,joy_controller"
+           data-tag="ros,joy_controller,lite3"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3131,7 +3184,7 @@
         
         <a  class="全部文章 CPP "
            href="/2025/02/28/C++/tensorRT-cpp/"
-           data-tag="ML,cpp,tensorRT"
+           data-tag="cpp,tensorRT,ML"
            data-author="" >
             <span class="post-title" title="tensorRT_cpp">tensorRT_cpp</span>
             <span class="post-date" title="2025-02-28 10:24:30">2025/02/28</span>
@@ -3167,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,slam,lite3"
+           data-tag="ros,lite3,slam"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3737,9 +3790,9 @@
             
             <a class="color5">Life</a>
             
-            <a class="color5">sony</a>
-            
             <a class="color5">摄影基础</a>
+            
+            <a class="color5">sony</a>
             
             <a class="color3">相机</a>
             
@@ -3750,12 +3803,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-14 17:14:14'>2026-05-31 13:14</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-05-31 13:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:897</span>
+        <span>字数:4.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -3774,7 +3827,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">摄影基础概念学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0%E6%91%84%E5%BD%B1"><span class="toc-text">为什么开始学习摄影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%B8%BB%E8%A6%81%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">这篇文章主要解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%91%84%E5%BD%B1%E9%9C%80%E8%A6%81%E5%85%88%E5%BB%BA%E7%AB%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E8%AE%A4%E7%9F%A5"><span class="toc-text">学习摄影需要先建立的几个认知</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">一、摄影的核心：光</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%9D%E5%85%89"><span class="toc-text">1. 什么是曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9B%9D%E5%85%89%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-text">2. 曝光三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E5%9C%88-Aperture"><span class="toc-text">光圈 Aperture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%97%A8-Shutter-Speed"><span class="toc-text">快门 Shutter Speed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISO-%E6%84%9F%E5%85%89%E5%BA%A6"><span class="toc-text">ISO 感光度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9B%9D%E5%85%89%E4%B8%89%E8%A6%81%E7%B4%A0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">3. 曝光三要素之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%9D%E5%85%89%E8%A1%A5%E5%81%BF"><span class="toc-text">4. 什么是曝光补偿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%8B%E5%85%89"><span class="toc-text">5. 什么是测光</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E6%B5%8B%E5%85%89"><span class="toc-text">平均测光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%A4%AE%E9%87%8D%E7%82%B9%E6%B5%8B%E5%85%89"><span class="toc-text">中央重点测光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E6%B5%8B%E5%85%89"><span class="toc-text">点测光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E6%B5%8B%E5%85%89"><span class="toc-text">多重测光</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">二、光学基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%84%A6%E8%B7%9D%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1. 焦距是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%A7%86%E8%A7%92%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2. 视角是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%99%AF%E6%B7%B1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">3. 景深是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%99%9A%E5%8C%96%E5%92%8C%E4%BB%80%E4%B9%88%E6%9C%89%E5%85%B3"><span class="toc-text">4. 虚化和什么有关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E5%9C%88%E5%A4%A7%E5%B0%8F"><span class="toc-text">光圈大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%84%A6%E8%B7%9D%E9%95%BF%E7%9F%AD"><span class="toc-text">焦距长短</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%8D%E6%91%84%E8%B7%9D%E7%A6%BB"><span class="toc-text">拍摄距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8%E7%94%BB%E5%B9%85"><span class="toc-text">传感器画幅</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AD%89%E6%95%88%E7%84%A6%E8%B7%9D%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">5. 等效焦距是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AE%89%E5%85%A8%E5%BF%AB%E9%97%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">6. 安全快门是什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">三、镜头基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%95%9C%E5%A4%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E7%9C%8B"><span class="toc-text">1. 镜头的基本参数怎么看</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%A6%82%EF%BC%9AFE-24-70mm-F2-8-GM"><span class="toc-text">例如：FE 24-70mm F2.8 GM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%95%9C%E5%A4%B4%E5%88%86%E7%B1%BB"><span class="toc-text">2. 镜头分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">定焦镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">变焦镜头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8C%89%E7%84%A6%E6%AE%B5%E5%88%86%E7%B1%BB"><span class="toc-text">3. 按焦段分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E5%B9%BF%E8%A7%92%E9%95%9C%E5%A4%B4"><span class="toc-text">超广角镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E8%A7%92%E9%95%9C%E5%A4%B4"><span class="toc-text">广角镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E9%95%9C%E5%A4%B4"><span class="toc-text">标准镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%95%BF%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">中长焦镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">长焦镜头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B8%B8%E8%A7%81%E7%84%A6%E6%AE%B5%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4. 常见焦段的使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16mm-20mm%EF%BC%9A%E9%A3%8E%E6%99%AF%E3%80%81%E5%BB%BA%E7%AD%91%E3%80%81%E7%A9%BA%E9%97%B4%E6%84%9F"><span class="toc-text">16mm &#x2F; 20mm：风景、建筑、空间感</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24mm-28mm%EF%BC%9A%E8%A1%97%E6%8B%8D%E3%80%81%E6%97%85%E8%A1%8C%E3%80%81%E7%8E%AF%E5%A2%83%E4%BA%BA%E5%83%8F"><span class="toc-text">24mm &#x2F; 28mm：街拍、旅行、环境人像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35mm%EF%BC%9A%E4%BA%BA%E6%96%87%E3%80%81%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95"><span class="toc-text">35mm：人文、日常记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#50mm%EF%BC%9A%E6%A0%87%E5%87%86%E8%A7%86%E8%A7%92%E3%80%81%E4%BA%BA%E5%83%8F%E3%80%81%E9%9D%99%E7%89%A9"><span class="toc-text">50mm：标准视角、人像、静物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85mm%EF%BC%9A%E4%BA%BA%E5%83%8F"><span class="toc-text">85mm：人像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#70-200mm%EF%BC%9A%E4%BA%BA%E5%83%8F%E3%80%81%E6%B4%BB%E5%8A%A8%E3%80%81%E8%BF%9C%E8%B7%9D%E7%A6%BB%E6%8B%8D%E6%91%84"><span class="toc-text">70-200mm：人像、活动、远距离拍摄</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%89%E5%9C%88%E5%A4%A7%E5%B0%8F%E5%AF%B9%E9%95%9C%E5%A4%B4%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text">5. 光圈大小对镜头的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#F1-4-F1-8-F2-8-F4-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">F1.4 &#x2F; F1.8 &#x2F; F2.8 &#x2F; F4 的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">四、相机基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9B%B8%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">1. 相机的基本结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%94%BB%E5%B9%85%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2. 画幅是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E7%94%BB%E5%B9%85"><span class="toc-text">全画幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APS-C-%E7%94%BB%E5%B9%85"><span class="toc-text">APS-C 画幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M43-%E7%94%BB%E5%B9%85"><span class="toc-text">M43 画幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-text">手机传感器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8D%E5%90%8C%E7%94%BB%E5%B9%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">3. 不同画幅的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E8%A7%92%E5%8C%BA%E5%88%AB"><span class="toc-text">视角区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AF%E6%B7%B1%E5%8C%BA%E5%88%AB"><span class="toc-text">景深区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%84%9F%E5%8C%BA%E5%88%AB"><span class="toc-text">高感区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%93%E7%A7%AF%E5%92%8C%E4%BB%B7%E6%A0%BC%E5%8C%BA%E5%88%AB"><span class="toc-text">体积和价格区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%83%8F%E7%B4%A0%E6%98%AF%E4%B8%8D%E6%98%AF%E8%B6%8A%E9%AB%98%E8%B6%8A%E5%A5%BD"><span class="toc-text">4. 像素是不是越高越好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-RAW-%E5%92%8C-JPG-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">5. RAW 和 JPG 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%98%B2%E6%8A%96%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">6. 防抖是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E8%BA%AB%E9%98%B2%E6%8A%96"><span class="toc-text">机身防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%A4%B4%E9%98%B2%E6%8A%96"><span class="toc-text">镜头防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%98%B2%E6%8A%96"><span class="toc-text">电子防抖</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">五、相机挡位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Auto-%E8%87%AA%E5%8A%A8%E6%8C%A1"><span class="toc-text">1. Auto 自动挡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-P-%E6%A1%A3%EF%BC%9A%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%9D%E5%85%89"><span class="toc-text">2. P 档：程序自动曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-A-Av-%E6%A1%A3%EF%BC%9A%E5%85%89%E5%9C%88%E4%BC%98%E5%85%88"><span class="toc-text">3. A &#x2F; Av 档：光圈优先</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-S-Tv-%E6%A1%A3%EF%BC%9A%E5%BF%AB%E9%97%A8%E4%BC%98%E5%85%88"><span class="toc-text">4. S &#x2F; Tv 档：快门优先</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-M-%E6%A1%A3%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%9B%9D%E5%85%89"><span class="toc-text">5. M 档：手动曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%A7%86%E9%A2%91%E6%A8%A1%E5%BC%8F"><span class="toc-text">6. 视频模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">六、对焦基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E7%84%A6"><span class="toc-text">1. 什么是对焦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%95%E6%AC%A1%E5%AF%B9%E7%84%A6-AF-S"><span class="toc-text">2. 单次对焦 AF-S</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9E%E7%BB%AD%E5%AF%B9%E7%84%A6-AF-C"><span class="toc-text">3. 连续对焦 AF-C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%89%8B%E5%8A%A8%E5%AF%B9%E7%84%A6-MF"><span class="toc-text">4. 手动对焦 MF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AF%B9%E7%84%A6%E5%8C%BA%E5%9F%9F"><span class="toc-text">5. 对焦区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%9F%9F"><span class="toc-text">广域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA"><span class="toc-text">区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83"><span class="toc-text">中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%B5%E6%B4%BB%E7%82%B9"><span class="toc-text">灵活点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%BD%E8%B8%AA%E5%AF%B9%E7%84%A6"><span class="toc-text">追踪对焦</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BA%BA%E7%9C%BC%E8%AF%86%E5%88%AB-%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB-%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB"><span class="toc-text">6. 人眼识别 &#x2F; 动物识别 &#x2F; 物体识别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">七、白平衡与色彩</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%99%BD%E5%B9%B3%E8%A1%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1. 白平衡是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%89%B2%E6%B8%A9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2. 色温是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%87%AA%E5%8A%A8%E7%99%BD%E5%B9%B3%E8%A1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E9%9D%A0"><span class="toc-text">3. 自动白平衡是否可靠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%89%B2%E5%BD%A9%E9%A3%8E%E6%A0%BC-%E5%88%9B%E6%84%8F%E5%A4%96%E8%A7%82"><span class="toc-text">4. 色彩风格 &#x2F; 创意外观</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%E5%93%81%E7%89%8C%E7%85%A7%E7%89%87%E9%A2%9C%E8%89%B2%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="toc-text">5. 为什么不同品牌照片颜色不一样</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">八、实际拍摄时怎么思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8B%8D%E6%91%84%E5%89%8D%E5%85%88%E5%88%A4%E6%96%AD%E5%85%89%E7%BA%BF"><span class="toc-text">1. 拍摄前先判断光线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%86%B3%E5%AE%9A%E6%83%B3%E8%A6%81%E7%9A%84%E7%94%BB%E9%9D%A2%E6%95%88%E6%9E%9C"><span class="toc-text">2. 决定想要的画面效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E8%83%8C%E6%99%AF%E8%99%9A%E5%8C%96"><span class="toc-text">想要背景虚化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E7%94%BB%E9%9D%A2%E6%B8%85%E6%99%B0"><span class="toc-text">想要画面清晰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E5%87%9D%E5%9B%BA%E5%8A%A8%E4%BD%9C"><span class="toc-text">想要凝固动作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E6%8B%8D%E5%87%BA%E8%BF%90%E5%8A%A8%E8%BD%A8%E8%BF%B9"><span class="toc-text">想要拍出运动轨迹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%86%8D%E5%86%B3%E5%AE%9A%E5%8F%82%E6%95%B0"><span class="toc-text">3. 再决定参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9C%80%E5%90%8E%E6%A3%80%E6%9F%A5%E7%85%A7%E7%89%87"><span class="toc-text">4. 最后检查照片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%9B%9D%E5%85%89%E6%AD%A3%E5%B8%B8"><span class="toc-text">是否曝光正常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%AF%B9%E7%84%A6%E5%87%86%E7%A1%AE"><span class="toc-text">是否对焦准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%9E%84%E5%9B%BE%E5%B9%B2%E5%87%80"><span class="toc-text">是否构图干净</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%9C%89%E5%A4%9A%E4%BD%99%E5%85%83%E7%B4%A0"><span class="toc-text">是否有多余元素</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">九、本篇总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-text">1. 摄影基础概念关系图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E6%89%8B%E4%BC%98%E5%85%88%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="toc-text">2. 新手优先掌握的几个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8B%E4%B8%80%E7%AF%87%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="toc-text">3. 下一篇学习计划</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">摄影基础概念学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0%E6%91%84%E5%BD%B1"><span class="toc-text">为什么开始学习摄影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%B8%BB%E8%A6%81%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">这篇文章主要解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%91%84%E5%BD%B1%E9%9C%80%E8%A6%81%E5%85%88%E5%BB%BA%E7%AB%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E8%AE%A4%E7%9F%A5"><span class="toc-text">学习摄影需要先建立的几个认知</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">一、摄影的核心：光</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%9D%E5%85%89"><span class="toc-text">1. 什么是曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9B%9D%E5%85%89%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-text">2. 曝光三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E5%9C%88-Aperture"><span class="toc-text">光圈 Aperture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%97%A8-Shutter-Speed"><span class="toc-text">快门 Shutter Speed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISO-%E6%84%9F%E5%85%89%E5%BA%A6"><span class="toc-text">ISO 感光度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9B%9D%E5%85%89%E4%B8%89%E8%A6%81%E7%B4%A0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">3. 曝光三要素之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%9D%E5%85%89%E8%A1%A5%E5%81%BF"><span class="toc-text">4. 什么是曝光补偿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%8B%E5%85%89"><span class="toc-text">5. 什么是测光</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E6%B5%8B%E5%85%89"><span class="toc-text">平均测光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%A4%AE%E9%87%8D%E7%82%B9%E6%B5%8B%E5%85%89"><span class="toc-text">中央重点测光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E6%B5%8B%E5%85%89"><span class="toc-text">点测光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E6%B5%8B%E5%85%89"><span class="toc-text">多重测光</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">二、光学基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%84%A6%E8%B7%9D%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1. 焦距是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%A7%86%E8%A7%92%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2. 视角是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%99%AF%E6%B7%B1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">3. 景深是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%99%9A%E5%8C%96%E5%92%8C%E4%BB%80%E4%B9%88%E6%9C%89%E5%85%B3"><span class="toc-text">4. 虚化和什么有关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E5%9C%88%E5%A4%A7%E5%B0%8F"><span class="toc-text">光圈大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%84%A6%E8%B7%9D%E9%95%BF%E7%9F%AD"><span class="toc-text">焦距长短</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%8D%E6%91%84%E8%B7%9D%E7%A6%BB"><span class="toc-text">拍摄距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8%E7%94%BB%E5%B9%85"><span class="toc-text">传感器画幅</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AD%89%E6%95%88%E7%84%A6%E8%B7%9D%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">5. 等效焦距是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AE%89%E5%85%A8%E5%BF%AB%E9%97%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">6. 安全快门是什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">三、镜头基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%95%9C%E5%A4%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E7%9C%8B"><span class="toc-text">1. 镜头的基本参数怎么看</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%A6%82%EF%BC%9AFE-24-70mm-F2-8-GM"><span class="toc-text">例如：FE 24-70mm F2.8 GM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%95%9C%E5%A4%B4%E5%88%86%E7%B1%BB"><span class="toc-text">2. 镜头分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">定焦镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">变焦镜头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8C%89%E7%84%A6%E6%AE%B5%E5%88%86%E7%B1%BB"><span class="toc-text">3. 按焦段分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E5%B9%BF%E8%A7%92%E9%95%9C%E5%A4%B4"><span class="toc-text">超广角镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E8%A7%92%E9%95%9C%E5%A4%B4"><span class="toc-text">广角镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E9%95%9C%E5%A4%B4"><span class="toc-text">标准镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%95%BF%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">中长焦镜头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E7%84%A6%E9%95%9C%E5%A4%B4"><span class="toc-text">长焦镜头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B8%B8%E8%A7%81%E7%84%A6%E6%AE%B5%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4. 常见焦段的使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16mm-20mm%EF%BC%9A%E9%A3%8E%E6%99%AF%E3%80%81%E5%BB%BA%E7%AD%91%E3%80%81%E7%A9%BA%E9%97%B4%E6%84%9F"><span class="toc-text">16mm &#x2F; 20mm：风景、建筑、空间感</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24mm-28mm%EF%BC%9A%E8%A1%97%E6%8B%8D%E3%80%81%E6%97%85%E8%A1%8C%E3%80%81%E7%8E%AF%E5%A2%83%E4%BA%BA%E5%83%8F"><span class="toc-text">24mm &#x2F; 28mm：街拍、旅行、环境人像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35mm%EF%BC%9A%E4%BA%BA%E6%96%87%E3%80%81%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95"><span class="toc-text">35mm：人文、日常记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#50mm%EF%BC%9A%E6%A0%87%E5%87%86%E8%A7%86%E8%A7%92%E3%80%81%E4%BA%BA%E5%83%8F%E3%80%81%E9%9D%99%E7%89%A9"><span class="toc-text">50mm：标准视角、人像、静物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85mm%EF%BC%9A%E4%BA%BA%E5%83%8F"><span class="toc-text">85mm：人像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#70-200mm%EF%BC%9A%E4%BA%BA%E5%83%8F%E3%80%81%E6%B4%BB%E5%8A%A8%E3%80%81%E8%BF%9C%E8%B7%9D%E7%A6%BB%E6%8B%8D%E6%91%84"><span class="toc-text">70-200mm：人像、活动、远距离拍摄</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%89%E5%9C%88%E5%A4%A7%E5%B0%8F%E5%AF%B9%E9%95%9C%E5%A4%B4%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text">5. 光圈大小对镜头的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#F1-4-F1-8-F2-8-F4-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">F1.4 &#x2F; F1.8 &#x2F; F2.8 &#x2F; F4 的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">四、相机基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9B%B8%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">1. 相机的基本结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%94%BB%E5%B9%85%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2. 画幅是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E7%94%BB%E5%B9%85"><span class="toc-text">全画幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APS-C-%E7%94%BB%E5%B9%85"><span class="toc-text">APS-C 画幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M43-%E7%94%BB%E5%B9%85"><span class="toc-text">M43 画幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-text">手机传感器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8D%E5%90%8C%E7%94%BB%E5%B9%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">3. 不同画幅的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E8%A7%92%E5%8C%BA%E5%88%AB"><span class="toc-text">视角区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AF%E6%B7%B1%E5%8C%BA%E5%88%AB"><span class="toc-text">景深区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%84%9F%E5%8C%BA%E5%88%AB"><span class="toc-text">高感区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%93%E7%A7%AF%E5%92%8C%E4%BB%B7%E6%A0%BC%E5%8C%BA%E5%88%AB"><span class="toc-text">体积和价格区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%83%8F%E7%B4%A0%E6%98%AF%E4%B8%8D%E6%98%AF%E8%B6%8A%E9%AB%98%E8%B6%8A%E5%A5%BD"><span class="toc-text">4. 像素是不是越高越好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-RAW-%E5%92%8C-JPG-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">5. RAW 和 JPG 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%98%B2%E6%8A%96%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">6. 防抖是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E8%BA%AB%E9%98%B2%E6%8A%96"><span class="toc-text">机身防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%A4%B4%E9%98%B2%E6%8A%96"><span class="toc-text">镜头防抖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%98%B2%E6%8A%96"><span class="toc-text">电子防抖</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">五、相机挡位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Auto-%E8%87%AA%E5%8A%A8%E6%8C%A1"><span class="toc-text">1. Auto 自动挡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-P-%E6%A1%A3%EF%BC%9A%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%9D%E5%85%89"><span class="toc-text">2. P 档：程序自动曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-A-Av-%E6%A1%A3%EF%BC%9A%E5%85%89%E5%9C%88%E4%BC%98%E5%85%88"><span class="toc-text">3. A &#x2F; Av 档：光圈优先</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-S-Tv-%E6%A1%A3%EF%BC%9A%E5%BF%AB%E9%97%A8%E4%BC%98%E5%85%88"><span class="toc-text">4. S &#x2F; Tv 档：快门优先</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-M-%E6%A1%A3%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%9B%9D%E5%85%89"><span class="toc-text">5. M 档：手动曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%A7%86%E9%A2%91%E6%A8%A1%E5%BC%8F"><span class="toc-text">6. 视频模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">六、对焦基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E7%84%A6"><span class="toc-text">1. 什么是对焦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%95%E6%AC%A1%E5%AF%B9%E7%84%A6-AF-S"><span class="toc-text">2. 单次对焦 AF-S</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9E%E7%BB%AD%E5%AF%B9%E7%84%A6-AF-C"><span class="toc-text">3. 连续对焦 AF-C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%89%8B%E5%8A%A8%E5%AF%B9%E7%84%A6-MF"><span class="toc-text">4. 手动对焦 MF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AF%B9%E7%84%A6%E5%8C%BA%E5%9F%9F"><span class="toc-text">5. 对焦区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%9F%9F"><span class="toc-text">广域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA"><span class="toc-text">区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83"><span class="toc-text">中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%B5%E6%B4%BB%E7%82%B9"><span class="toc-text">灵活点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%BD%E8%B8%AA%E5%AF%B9%E7%84%A6"><span class="toc-text">追踪对焦</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BA%BA%E7%9C%BC%E8%AF%86%E5%88%AB-%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB-%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB"><span class="toc-text">6. 人眼识别 &#x2F; 动物识别 &#x2F; 物体识别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">七、白平衡与色彩</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%99%BD%E5%B9%B3%E8%A1%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1. 白平衡是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%89%B2%E6%B8%A9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2. 色温是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%87%AA%E5%8A%A8%E7%99%BD%E5%B9%B3%E8%A1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E9%9D%A0"><span class="toc-text">3. 自动白平衡是否可靠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%89%B2%E5%BD%A9%E9%A3%8E%E6%A0%BC-%E5%88%9B%E6%84%8F%E5%A4%96%E8%A7%82"><span class="toc-text">4. 色彩风格 &#x2F; 创意外观</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%E5%93%81%E7%89%8C%E7%85%A7%E7%89%87%E9%A2%9C%E8%89%B2%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="toc-text">5. 为什么不同品牌照片颜色不一样</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">八、实际拍摄时怎么思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8B%8D%E6%91%84%E5%89%8D%E5%85%88%E5%88%A4%E6%96%AD%E5%85%89%E7%BA%BF"><span class="toc-text">1. 拍摄前先判断光线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%86%B3%E5%AE%9A%E6%83%B3%E8%A6%81%E7%9A%84%E7%94%BB%E9%9D%A2%E6%95%88%E6%9E%9C"><span class="toc-text">2. 决定想要的画面效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E8%83%8C%E6%99%AF%E8%99%9A%E5%8C%96"><span class="toc-text">想要背景虚化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E7%94%BB%E9%9D%A2%E6%B8%85%E6%99%B0"><span class="toc-text">想要画面清晰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E5%86%BB%E7%BB%93%E5%8A%A8%E4%BD%9C"><span class="toc-text">想要冻结动作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E8%A6%81%E6%8B%8D%E5%87%BA%E8%BF%90%E5%8A%A8%E8%BD%A8%E8%BF%B9"><span class="toc-text">想要拍出运动轨迹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%86%8D%E5%86%B3%E5%AE%9A%E5%8F%82%E6%95%B0"><span class="toc-text">3. 再决定参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9C%80%E5%90%8E%E6%A3%80%E6%9F%A5%E7%85%A7%E7%89%87"><span class="toc-text">4. 最后检查照片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%9B%9D%E5%85%89%E6%AD%A3%E5%B8%B8"><span class="toc-text">是否曝光正常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%AF%B9%E7%84%A6%E5%87%86%E7%A1%AE"><span class="toc-text">是否对焦准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%9E%84%E5%9B%BE%E5%B9%B2%E5%87%80"><span class="toc-text">是否构图干净</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%9C%89%E5%A4%9A%E4%BD%99%E5%85%83%E7%B4%A0"><span class="toc-text">是否有多余元素</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">九、本篇总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-text">1. 摄影基础概念关系图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E6%89%8B%E4%BC%98%E5%85%88%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="toc-text">2. 新手优先掌握的几个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8B%E4%B8%80%E7%AF%87%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="toc-text">3. 下一篇学习计划</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -3805,82 +3858,263 @@
 <hr>
 <h1>一、摄影的核心：光</h1>
 <h2 id="1-什么是曝光">1. 什么是曝光</h2>
+<p>曝光指的是传感器接收到光线并形成图像的过程。</p>
+<p>接收的光太多，画面会过曝，高光部分细节丢失、一片白；接收的光太少，画面会欠曝，暗部细节丢失、一片黑。</p>
+<blockquote>
+<p>曝光的目标不是“足够亮”，而是“亮度符合画面想表达的氛围”。有时故意欠曝拍剪影，有时故意过曝拍高调，都是合理的创作选择。</p>
+</blockquote>
+<p>决定曝光多少的，就是下面的曝光三要素。</p>
 <h2 id="2-曝光三要素">2. 曝光三要素</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image.png" alt="曝光三要素示意图（光圈、快门、ISO）"></p>
+<!--
+【生成目标】
+绘制“曝光三角”概念图，帮助读者理解光圈、快门、ISO 三者共同决定曝光量。
+
+【主体与场景】
+一个等边三角形，三个顶点分别标注“光圈 Aperture”“快门 Shutter Speed”“ISO 感光度”，三角形中心是一个发光的光圈叶片图标，代表“曝光量”。
+
+【构图与镜头】
+正视平面构图，无透视，图标居中对称，类似信息图 / 教学插图排版，横版 4:3。
+
+【视觉风格】
+极简主义线条插画，扁平化图标，禅意留白，干净的几何线条，无写实渲染。
+
+【光照与色彩】
+浅米白背景，三个顶点用低饱和的莫兰迪色区分（暖橙、冷青、浅灰），中心光圈图标用柔和金色高光。
+
+【约束与输出】
+画面简洁不拥挤，文字标签清晰可读，不出现相机实物照片，风格统一可作为教学示意图使用。
+-->
 <h3 id="光圈-Aperture">光圈 Aperture</h3>
+<p>控制镜头进光孔的大小，用 F 值表示，F 值越小光圈越大、进光越多、背景越容易虚化。</p>
 <h3 id="快门-Shutter-Speed">快门 Shutter Speed</h3>
+<p>控制快门开启的时长，快门越慢进光时间越长、画面越亮，但也越容易拍出运动模糊。</p>
 <h3 id="ISO-感光度">ISO 感光度</h3>
+<p>控制传感器信号的放大程度，ISO 越高画面越亮，但噪点也会越明显。</p>
 <h2 id="3-曝光三要素之间的关系">3. 曝光三要素之间的关系</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-1.png" alt="曝光三要素之间的关系示意图"></p>
+<!--
+【生成目标】
+绘制“曝光跷跷板/天平”示意图，表现光圈、快门、ISO 三者此消彼长、共同维持同一曝光值的关系。
+
+【主体与场景】
+一架简化的天平或跷跷板，左右两侧放置代表光圈叶片、快门帘幕、ISO 数值刻度的极简图标，中间支点标注“曝光值不变”。
+
+【构图与镜头】
+正视水平构图，对称平衡布局，横版 16:9，用于文章配图。
+
+【视觉风格】
+极简主义矢量插画，线条纤细，禅意留白，无阴影写实渲染。
+
+【光照与色彩】
+浅灰米色背景，天平主体为浅木色/银灰色线条，图标使用低饱和马卡龙色点缀。
+
+【约束与输出】
+画面传达“此消彼长”的动态平衡感，文字标签简短清晰，不出现真实相机或人物。
+-->
 <h2 id="4-什么是曝光补偿">4. 什么是曝光补偿</h2>
+<p>相机自动测光给出的曝光值并不总是符合预期，比如拍雪景或逆光人像时，相机很容易把画面拍暗。</p>
+<p>这时可以手动叠加曝光补偿（EV）：</p>
+<pre><code class="language-text">+EV ：主动让画面更亮（适合雪景、白色背景）
+-EV ：主动让画面更暗（适合黑色背景、想要更有氛围感）
+</code></pre>
+<p>曝光补偿不改变光圈/快门/ISO 的搭配逻辑，只是在相机测光结果的基础上再手动微调亮度。</p>
 <h2 id="5-什么是测光">5. 什么是测光</h2>
+<p>测光决定了相机会参考画面中哪个区域的亮度来计算曝光。</p>
 <h3 id="平均测光">平均测光</h3>
+<p>参考整个画面的平均亮度，适合光线均匀的场景。</p>
 <h3 id="中央重点测光">中央重点测光</h3>
+<p>以画面中央为主，兑顾四周，适合主体大致居中的拍摄。</p>
 <h3 id="点测光">点测光</h3>
+<p>只参考对焦点周围小范围的亮度，适合逆光或高对比光比场景。</p>
 <h3 id="多重测光">多重测光</h3>
+<p>将画面分区域综合计算，是最常用的默认测光模式，适合大多数日常场景。</p>
 <hr>
 <h1>二、光学基础概念</h1>
 <h2 id="1-焦距是什么">1. 焦距是什么</h2>
+<p>焦距是镜头光学中心到成像面（传感器）的距离，单位是 mm。</p>
+<p>焦距越短，拍到的范围越宽（广角）；焦距越长，拍到的范围越窄、主体越被拉近（长焦）。</p>
 <h2 id="2-视角是什么">2. 视角是什么</h2>
+<p>视角指镜头能够拍摄到的画面范围大小，由焦距和传感器尺寸共同决定。</p>
+<p>同样焦距下，传感器越大，视角越宽；传感器越小，视角越窄（相当于被“裁剪”了一部分画面）。</p>
 <h2 id="3-景深是什么">3. 景深是什么</h2>
+<p>景深指对焦点前后能保持清晰的范围。</p>
+<p>景深浅（小）：对焦点前后很快就模糊，常用于人像背景虚化。</p>
+<p>景深深（大）：对焦点前后大范围都清晰，常用于风景、建筑、合影。</p>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-2.png" alt="景深对比示意图"></p>
+<!--
+【生成目标】
+绘制“景深对比”示意图，直观展示浅景深（背景虚化）与深景深（前后皆清晰）的区别。
+
+【主体与场景】
+左右分屏对比：左侧一个人像主体清晰、前后景严重模糊（浅景深）；右侧同一构图但前中后景都清晰锐利（深景深），画面下方各自标注“浅景深 F1.8”“深景深 F11”。
+
+【构图与镜头】
+左右对称分屏构图，横版 16:9，模拟取景框视角。
+
+【视觉风格】
+极简主义扁平插画，用清晰/模糊两种线条粗细和虚实对比来表现景深差异，而非写实照片。
+
+【光照与色彩】
+柔和自然光，主体色彩温暖，背景用低饱和冷灰色区分虚化程度。
+
+【约束与输出】
+两侧构图元素保持一致，仅虚实程度不同，便于对比阅读，不使用真实人物肖像。
+-->
 <h2 id="4-虚化和什么有关">4. 虚化和什么有关</h2>
 <h3 id="光圈大小">光圈大小</h3>
+<p>光圈越大（F 值越小），景深越浅，越容易虚化。</p>
 <h3 id="焦距长短">焦距长短</h3>
+<p>焦距越长，景深越浅，虚化越明显（同样光圈下，85mm 比 35mm 更容易虚化）。</p>
 <h3 id="拍摄距离">拍摄距离</h3>
+<p>离主体越近，景深越浅；离主体越远，景深越深。</p>
 <h3 id="传感器画幅">传感器画幅</h3>
+<p>画幅越大，同样构图下景深越浅（全画幅比 APS-C 更容易虚化）。</p>
 <h2 id="5-等效焦距是什么">5. 等效焦距是什么</h2>
+<p>不同画幅的传感器大小不同，为了能在不同画幅之间比较视角，引入了“等效焦距”概念：把实际焦距换算成对应全画幅相机下的视角。</p>
+<pre><code class="language-text">等效焦距 ≈ 实际焦距 × 裁剪系数
+APS-C 裁剪系数约为 1.5
+</code></pre>
+<p>例如 APS-C 机身上的 35mm 镜头，等效焦距约为 50mm。</p>
 <h2 id="6-安全快门是什么">6. 安全快门是什么</h2>
+<p>安全快门是为了避免手持拍摄时因手抖导致照片模糊的经验公式：</p>
+<pre><code class="language-text">安全快门 ≈ 1 / 等效焦距
+</code></pre>
+<p>例如 50mm 镜头安全快门大约是 1/50s，85mm 镜头大约是 1/85s。实际拍摄时可以向上取一档更稳。具体可参考下一篇关于快门与 ISO 的实拍应用。</p>
 <hr>
 <h1>三、镜头基础</h1>
 <h2 id="1-镜头的基本参数怎么看">1. 镜头的基本参数怎么看</h2>
 <h3 id="例如：FE-24-70mm-F2-8-GM">例如：FE 24-70mm F2.8 GM</h3>
+<pre><code class="language-text">FE      — 卡口（适用机身系统，索尼全画幅卡口）
+24-70mm — 焦段范围（变焦镜头，从广角到中长焦）
+F2.8    — 最大光圈（数值越小光圈越大）
+GM      — 品牌高端系列标识
+</code></pre>
+<p>看镜头参数时，重点关注焦段范围和最大光圈这两项，它们决定了能拍什么、能不能拍出虚化。</p>
 <h2 id="2-镜头分类">2. 镜头分类</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-3.png" alt="镜头分类示意图"></p>
+<!--
+【生成目标】
+绘制“定焦镜头 vs 变焦镜头”对比插画，帮助读者建立两类镜头的直观印象。
+
+【主体与场景】
+左侧一支短小紧凑的定焦镜头图标，标注“定焦 · 单一焦段 · 大光圈”；右侧一支带伸缩镜筒的变焦镜头图标，标注“变焦 · 焦段可变 · 灵活”。
+
+【构图与镜头】
+左右并列构图，镜头图标居中对齐，横版 16:9，类似产品对比信息图。
+
+【视觉风格】
+极简主义线条插画，扁平化镜头剖面图标，无品牌标识，无写实材质渲染。
+
+【光照与色彩】
+浅色背景，镜头主体用低饱和石墨灰线条，关键差异点用同一强调色（如浅橙）标出。
+
+【约束与输出】
+两个镜头图标比例协调、风格统一，文字标签简短，不出现真实品牌logo。
+-->
 <h3 id="定焦镜头">定焦镜头</h3>
 <ul>
-<li>优点</li>
-<li>缺点</li>
-<li>适合场景</li>
+<li>优点：最大光圈大、成像更锐利、体积相对轻巧</li>
+<li>缺点：焦段固定，取景需要用脚移动</li>
+<li>适合场景：人像、弱光环境、追求极致虚化和画质</li>
 </ul>
 <h3 id="变焦镜头">变焦镜头</h3>
 <ul>
-<li>优点</li>
-<li>缺点</li>
-<li>适合场景</li>
+<li>优点：一支镜头覆盖多个焦段，出门方便、适应性强</li>
+<li>缺点：最大光圈通常不如定焦镜头大，体积和重量也更大</li>
+<li>适合场景：旅行、日常记录、不确定拍摄距离的场合</li>
 </ul>
 <h2 id="3-按焦段分类">3. 按焦段分类</h2>
 <h3 id="超广角镜头">超广角镜头</h3>
+<p>焦距大约 16mm 以下，视角极宽，常用于建筑、星空、室内狭窄空间。</p>
 <h3 id="广角镜头">广角镜头</h3>
+<p>焦距大约 16-35mm，适合风景、建筑、环境人像。</p>
 <h3 id="标准镜头">标准镜头</h3>
+<p>焦距大约 35-50mm，接近人眼视角，适合日常、人文、细坡。</p>
 <h3 id="中长焦镜头">中长焦镜头</h3>
+<p>焦距大约 70-135mm，适合人像、人像特写。</p>
 <h3 id="长焦镜头">长焦镜头</h3>
+<p>焦距 135mm 以上，适合鸟类、体育、舞台等远距离拍摄。</p>
 <h2 id="4-常见焦段的使用场景">4. 常见焦段的使用场景</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-4.png" alt="常见焦段和适应场景"></p>
+<!--
+【生成目标】
+绘制“常见焦段一览”横向对比图，展示不同焦段（16mm、24mm、35mm、50mm、85mm、70-200mm）对应的视角宽窄与典型拍摄题材。
+
+【主体与场景】
+一排从左到右逐渐变窄的取景框图标，依次标注焦段数值与对应场景关键词（风光/建筑、街拍/旅行、人文纪实、标准人像、人像特写、远距离抓拍），每个取景框内用极简图形示意视角范围。
+
+【构图与镜头】
+横向排列的信息图构图，等间距分布，横版长图，适合文章内嵌配图。
+
+【视觉风格】
+极简主义扁平信息图风格，统一的图标线条粗细，禅意留白。
+
+【光照与色彩】
+浅米白背景，随焦段增长色彩从冷色（广角）渐变到暖色（长焦），形成直观的视觉渐变。
+
+【约束与输出】
+六个焦段图标视觉权重一致，文字简洁，不出现真实照片或人物肖像，便于快速对照阅读。
+-->
 <h3 id="16mm-20mm：风景、建筑、空间感">16mm / 20mm：风景、建筑、空间感</h3>
+<p>能容纳更宽阔的场景，适合拍摄大场面的自然风光和建筑内部空间，但边缘容易产生透视变形。</p>
 <h3 id="24mm-28mm：街拍、旅行、环境人像">24mm / 28mm：街拍、旅行、环境人像</h3>
+<p>视角仍然偏宽，但变形较小，适合一边交代环境一边交代人物的旅行记录。</p>
 <h3 id="35mm：人文、日常记录">35mm：人文、日常记录</h3>
+<p>接近人眼视角，真实自然，是很多人文摄影师的首选焦段。</p>
 <h3 id="50mm：标准视角、人像、静物">50mm：标准视角、人像、静物</h3>
+<p>又称“标准焦”，留一定空间给背景，同时也能拍出舒服的人像虚化。</p>
 <h3 id="85mm：人像">85mm：人像</h3>
+<p>压缩感强，背景虚化明显，是经典的人像焦段。</p>
 <h3 id="70-200mm：人像、活动、远距离拍摄">70-200mm：人像、活动、远距离拍摄</h3>
+<p>可以在不打扰主体的情况下远距离拍摄，常用于演出、演讲、体育等不便靠近的场合。</p>
 <h2 id="5-光圈大小对镜头的影响">5. 光圈大小对镜头的影响</h2>
-<p>光圈</p>
+<p>同一支镜头，最大光圈越大，造价通常越高，但弱光环境下的可用性和虚化能力也越强。</p>
 <h3 id="F1-4-F1-8-F2-8-F4-的区别">F1.4 / F1.8 / F2.8 / F4 的区别</h3>
+<pre><code class="language-text">F1.4  — 最大光圈，虚化最强，但景深极浅，对对焦精度要求高
+ F1.8  — 性价比高，虚化与容错率平衡，常见于平价定焦镜头
+F2.8  — 专业变焦镜头常见规格，兼顾中域虚化与多人合照需求
+F4    — 体积重量更轻，适合旅行和日常轻便携带
+</code></pre>
 <hr>
 <h1>四、相机基础</h1>
 <h2 id="1-相机的基本结构">1. 相机的基本结构</h2>
+<p>相机的核心部件大致包括：镜头（负责成像）、机身内的传感器（负责接收光信号）、快门/快门帘（控制曝光时间）、图像处理器（把信号转换为图片）以及取景器/屏幕（用于构图和回放）。</p>
+<p>均无反光相机去掉了传统单反的光学取景结构，直接用传感器实时成像到电子取景器，体积更小、对焦速度也更快。</p>
 <h2 id="2-画幅是什么">2. 画幅是什么</h2>
+<p>画幅指传感器的实际物理尺寸。传感器越大，单个像素能接收到的光信息越多，递带影响画质、噪点控制和景深表现。</p>
 <p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601133505535.png" alt="传感器尺寸"></p>
 <h3 id="全画幅">全画幅</h3>
+<p>尺寸与传统 35mm 胶卷相同（36x24mm），高感、景深控制能力最强，价格也最高。</p>
 <h3 id="APS-C-画幅">APS-C 画幅</h3>
+<p>比全画幅小（约 23.5x15.6mm），机身和镜头更轻巧，性价比高，是很多日系机型的主力画幅。</p>
 <h3 id="M43-画幅">M43 画幅</h3>
+<p>传感器更小（17.3x13mm），机身和镜头群更小巧轻便，典型代表是奇异、松下。</p>
 <h3 id="手机传感器">手机传感器</h3>
+<p>尺寸最小，依靠计算摄影弥补硬件上的差距，日常方便但弱光、虚化能力有限。</p>
 <h2 id="3-不同画幅的区别">3. 不同画幅的区别</h2>
 <h3 id="视角区别">视角区别</h3>
+<p>同一支镜头安装在不同画幅机身上，画幅越小视角越窄（相当于被裁剪）。</p>
 <h3 id="景深区别">景深区别</h3>
+<p>同样构图下，画幅越大景深越浅，越容易拍出虚化。</p>
 <h3 id="高感区别">高感区别</h3>
+<p>画幅越大，同像素数下单像素面积越大，高 ISO 下噪点控制通常更好。</p>
 <h3 id="体积和价格区别">体积和价格区别</h3>
+<p>画幅越大，机身和配套镜头通常越大越重越贵。</p>
 <h2 id="4-像素是不是越高越好">4. 像素是不是越高越好</h2>
+<p>不是。同样画幅下，像素越高单像素面积越小，高感和完工发色可能反而下降。对大多数人来说，2000-3000 万像素已经足够应付日常拍摄和打印，传感器面积、信号处理算法往往比像素数更影响画质。</p>
 <h2 id="5-RAW-和-JPG-的区别">5. RAW 和 JPG 的区别</h2>
+<p>RAW 是传感器的原始数据，保留了最完整的信息，方便后期调整曝光、白平衡和色彩，但文件体积大、需要后期软件处理。</p>
+<p>JPG 是相机内部已经压缩处理过的图片，文件小、可以直接使用，但后期可调整空间有限。</p>
+<p>日常随拍可以只开 JPG，重要场合建议 RAW+JPG 同时记录。</p>
 <h2 id="6-防抖是什么">6. 防抖是什么</h2>
+<p>防抖用于抑制手抖导致的画面模糊，尤其在慢快门下效果明显。</p>
 <h3 id="机身防抖">机身防抖</h3>
+<p>IBIS，传感器直接在机身内部反向移动补偿抖动，对所有镜头都有效果。</p>
 <h3 id="镜头防抖">镜头防抖</h3>
+<p>OSS/VC 等，在镜头内部用浮动镜片补偿抖动，常与机身防抖协同工作。</p>
 <h3 id="电子防抖">电子防抖</h3>
+<p>通过裁剪画面边缘并算法补偿来稳定画面，多用于视频拍摄，会损失一部分视角。</p>
 <hr>
 <h1>五、相机挡位</h1>
 <p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601132842141.png" alt="相机挡位"></p>
@@ -3905,42 +4139,140 @@
 <hr>
 <h1>六、对焦基础</h1>
 <h2 id="1-什么是对焦">1. 什么是对焦</h2>
+<p>对焦是让镜头对主体成像清晰的过程。对焦不准时，即使曝光、构图都完美，照片也会因为模糊而不可用。</p>
 <h2 id="2-单次对焦-AF-S">2. 单次对焦 AF-S</h2>
+<p>对焦完成后锁定，不会跟随主体移动而重新对焦，适合静止主体，如风景、建筑、合影。</p>
 <h2 id="3-连续对焦-AF-C">3. 连续对焦 AF-C</h2>
+<p>只要快门半按，相机会持续跟随移动中的主体调整对焦，适合人像、宠物、运动等会移动的主体。</p>
 <h2 id="4-手动对焦-MF">4. 手动对焦 MF</h2>
+<p>完全由人手动转动对焦环确定对焦点，适用于自动对焦容易误判的场景，如隔着栏杆拍摄、微距、低对比度环境。</p>
 <h2 id="5-对焦区域">5. 对焦区域</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-5.png" alt="对焦区域示意图"></p>
+<!--
+【生成目标】
+绘制“对焦区域模式”示意图，展示广域、区域、中心、灵活点、追踪对焦五种取景框内对焦框布局的差异。
+
+【主体与场景】
+五个并排的取景框缩略图，每个框内用不同大小和分布的小方块表示对焦点覆盖范围：广域（铺满全屏）、区（局部大块）、中心（单一居中点）、灵活点（单一可移动小点）、追踪（带箭头轨迹的点）。
+
+【构图与镜头】
+五宫格并排横向排列，统一取景框比例（16:9缩略），适合作为教学对比图。
+
+【视觉风格】
+极简主义线框插画，对焦点用简单方块/圆点表示，无真实取景画面内容。
+
+【光照与色彩】
+深灰色取景框线条，对焦点用醒目的荧光绿或琥珀色标出，背景留白浅灰。
+
+【约束与输出】
+五个模式布局差异清晰可辨，标签文字简短，不填充真实场景照片。
+-->
 <h3 id="广域">广域</h3>
+<p>对焦点铺满整个取景框，相机自动判断主体，适合不确定主体会出现在哪里的随拍。</p>
 <h3 id="区">区</h3>
+<p>在一块较大区域内选择对焦，介于广域和中心之间，适合主体在局部范围内移动的场景。</p>
 <h3 id="中心">中心</h3>
+<p>只用取景框中央的单一点对焦，精准但需要先构图再对焦，适合主体大致居中的拍摄。</p>
 <h3 id="灵活点">灵活点</h3>
+<p>可以手动将对焦点移动到取景框内任意位置，适合需要精确控制对焦点位置的构图，如人像对焦到眼睛。</p>
 <h3 id="追踪对焦">追踪对焦</h3>
+<p>选定主体后，对焦框会跟随主体在画面中移动而自动移动，适合拍摄不规则运动的主体。</p>
 <h2 id="6-人眼识别-动物识别-物体识别">6. 人眼识别 / 动物识别 / 物体识别</h2>
+<p>现代相机可以自动识别人脸、人眼（甚至左右眼）、常见动物（猫、狗、鸟）以及车辆、火车等物体，开启后会优先对焦这些目标，大大降低人像、宠物拍摄时的脱焦概率。</p>
 <hr>
 <h1>七、白平衡与色彩</h1>
 <h2 id="1-白平衡是什么">1. 白平衡是什么</h2>
+<p>白平衡用于纠正不同光源下的颜色偏差，让白色真正看起来是白色，从而保证整张照片的色彩准确。</p>
 <h2 id="2-色温是什么">2. 色温是什么</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-6.png" alt="色温示意图"></p>
+<!--
+【生成目标】
+绘制“色温色卡”渐变图，帮助读者建立开尔文数值与画面冷暖色调之间的直观对应关系。
+
+【主体与场景】
+一条横向色温渐变条，从左侧暖橙色（约2000-3000K，标注“烛光/钨丝灯”）过渡到中间中性白（约5500K，标注“日光”）再到右侧冷蓝色（约8000-10000K，标注“阴天/阴影”），条带下方标出对应的开尔文数值刻度。
+
+【构图与镜头】
+横版长条构图，色带居中，类似色卡/色谱教学图。
+
+【视觉风格】
+极简主义信息图，色带边缘干净利落，无多余装饰元素。
+
+【光照与色彩】
+色带本身即为主要色彩表达，背景保持中性浅灰以突出色温对比。
+
+【约束与输出】
+色彩过渡平滑连续，开尔文数值与场景关键词对应准确，不出现真实照片。
+-->
+<p>色温以开尔文（K）为单位，数值越低画面越偏暖（橙黄），数值越高画面越偏冷（蓝），与日常直觉恰好相反。</p>
+<pre><code class="language-text">2000-3000K — 烛光、钨丝灯，偏暖橙
+5500K       — 日光，基准中性
+8000-10000K — 阴天、阴影，偏冷蓝
+</code></pre>
 <h2 id="3-自动白平衡是否可靠">3. 自动白平衡是否可靠</h2>
+<p>大多数日常场景下 AWB 足够准确，但在混合光源（如室内暗黄灯 + 窗外日光）或纯色背景下容易判断错误，需要手动预设或自定义白平衡来修正。</p>
 <h2 id="4-色彩风格-创意外观">4. 色彩风格 / 创意外观</h2>
+<p>相机内置的色彩预设（如鲜艳、人像、复古胶卷）会在 JPG 直出时影响饱和度、对比度和色调倾向，拍 RAW 时这些风格只会作为预览参考，不影响原始数据。</p>
 <h2 id="5-为什么不同品牌照片颜色不一样">5. 为什么不同品牌照片颜色不一样</h2>
+<p>不同品牌对自动白平衡、测光算法、高光/暗部回收风格有各自的调教取向（如某些品牌偏暖、某些偏冷），这也是很多人选特定品牌的原因之一。</p>
 <hr>
 <h1>八、实际拍摄时怎么思考</h1>
 <h2 id="1-拍摄前先判断光线">1. 拍摄前先判断光线</h2>
+<p>先看光的方向（顺光/侧光/逆光）、强弱和色温，再想参数。光线决定了一张照片的上限，参数只能在当前光线下调整曝光关系。</p>
 <h2 id="2-决定想要的画面效果">2. 决定想要的画面效果</h2>
 <h3 id="想要背景虚化">想要背景虚化</h3>
+<p>优先开大光圈（小 F 值），搭配长焦、靠近拍摄距离。</p>
 <h3 id="想要画面清晰">想要画面清晰</h3>
-<h3 id="想要凝固动作">想要凝固动作</h3>
+<p>收小光圈（大 F 值），确保前后景都在景深范围内。</p>
+<h3 id="想要冻结动作">想要冻结动作</h3>
+<p>提高快门速度，优先保证快门够快再调光圈和 ISO。</p>
 <h3 id="想要拍出运动轨迹">想要拍出运动轨迹</h3>
+<p>主动降低快门速度，搭配三脚架或稳定机体。</p>
 <h2 id="3-再决定参数">3. 再决定参数</h2>
+<p>根据上面两步确定的优先项（光圈/快门/ISO 中先保证哪个），选择对应的拍摄档位（A / S / M），剩下的参数交给相机自动计算或微调。</p>
 <h2 id="4-最后检查照片">4. 最后检查照片</h2>
 <h3 id="是否曝光正常">是否曝光正常</h3>
+<p>直方图是否严重偏向一侧，高光是否过曝、暗部是否丢细节。</p>
 <h3 id="是否对焦准确">是否对焦准确</h3>
+<p>放大图像确认主体眼睛/关键部位是否锐利。</p>
 <h3 id="是否构图干净">是否构图干净</h3>
+<p>检查地平线是否歪、主体位置是否合理。</p>
 <h3 id="是否有多余元素">是否有多余元素</h3>
+<p>检查背景中是否有干扰视线的杂物、人物或光斑。</p>
 <hr>
 <h1>九、本篇总结</h1>
 <h2 id="1-摄影基础概念关系图">1. 摄影基础概念关系图</h2>
+<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-7.png" alt="总结"></p>
+<!--
+【生成目标】
+绘制本篇摄影基础概念的思维导图/关系图，将曝光三要素、光学基础、镜头、画幅、挡位、对焦、白平衡等模块串联成一张总览图，作为全文收尾配图。
+
+【主体与场景】
+以“曝光”为中心节点向外发散出若干分支：曝光三要素（光圈/快门/ISO）、光学概念（焦距/视角/景深）、镜头分类、画幅、相机挡位、对焦模式、白平衡，每个分支用简单图标+关键词表示。
+
+【构图与镜头】
+中心放射状思维导图构图，正视平面视角，横版或方形均可，适合作为长文总结图。
+
+【视觉风格】
+极简主义禅意风格，线条纤细克制，留白充分，避免信息过载。
+
+【光照与色彩】
+浅米白背景，中心节点用暖橙色高亮，各分支用统一的低饱和莫兰迪色系区分类别。
+
+【约束与输出】
+层级关系清晰，文字简短不堆砌，整体风格与全文其余插画保持一致，可作为文章结尾总览图使用。
+-->
 <h2 id="2-新手优先掌握的几个概念">2. 新手优先掌握的几个概念</h2>
+<p>如果只能先记住几件事，建议优先搞懂下面这几个：</p>
+<pre><code class="language-text">1. 曝光三要素（光圈/快门/ISO）如何共同决定亮度
+2. 光圈大小如何影响虚化
+3. 安全快门，避免手抖拍糊
+4. 先用好 A 档（光圈优先），再逐步尝试 S 档、M 档
+5. 人眼识别/AF-C 连续对焦怎么用
+</code></pre>
+<p>其余概念（等效焦距、画幅差异、白平衡等）可以在实拍中慢慢体会，不必一开始就全部背下来。</p>
 <h2 id="3-下一篇学习计划">3. 下一篇学习计划</h2>
+<p>下一篇计划结合实拍深入展开光圈、快门、ISO 的搭配思路，以及焦距、景深与人像虚化的实战组合，具体可参考本系列的第 02、03 篇。</p>
 
       
        
