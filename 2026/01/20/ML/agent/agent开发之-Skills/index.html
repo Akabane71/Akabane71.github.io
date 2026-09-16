@@ -6,33 +6,17 @@
   <meta name="keywords" content=" agent , ai , skills ">
   <meta name="description" content="agent开发之-Skills | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
+<meta name="description" content="本质复杂性: 本质复杂性是指问题本身固有的复杂性，无法通过改进工具或方法来消除。 偶然复杂性: 偶然复杂性是指由于实现方式、工具或环境引入的额外复杂性，可以通过改进设计、优化工具或方法来减少。 管理复杂性最佳的工具就是 抽象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不同的绘图风格">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
+<meta property="og:title" content="Akabane71">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/Book/01-%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
+<meta property="og:description" content="本质复杂性: 本质复杂性是指问题本身固有的复杂性，无法通过改进工具或方法来消除。 偶然复杂性: 偶然复杂性是指由于实现方式、工具或环境引入的额外复杂性，可以通过改进设计、优化工具或方法来减少。 管理复杂性最佳的工具就是 抽象">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
-<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
-<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
+<meta property="article:published_time" content="2026-09-16T08:51:18.883Z">
+<meta property="article:modified_time" content="2026-09-16T08:51:18.883Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="绘图">
-<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -80,7 +64,7 @@
         <a href="/"
    class="avatar_target">
     <img class="avatar"
-         src="/img/my_face.png"/>
+         src="/img/my_face.webp"/>
 </a>
 <div class="author">
     <span>LiShun</span>
@@ -124,7 +108,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(214)</small>
+                <small>(218)</small>
             
         </div>
     </li>
@@ -565,7 +549,7 @@
         <div data-rel="OS">
             <i class="fold iconfont icon-right"></i>
             OS
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
             <ul class="sub hide">
@@ -649,7 +633,7 @@
         <div data-rel="Tools">
             <i class="fold iconfont icon-right"></i>
             Tools
-            <small>(19)</small>
+            <small>(20)</small>
         </div>
         
             <ul class="sub hide">
@@ -719,6 +703,7 @@
     
 </ul>
 <div class="left-bottom">
+    <a class="graph-entry site_url" href="/article-graph/" title="点击查看文章星域">✦ 查看星域</a>
     <div class="menus">
         
             
@@ -737,8 +722,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="214">
-<input type="hidden" id="yelog_site_word_count" value="209.1k">
+<input type="hidden" id="yelog_site_posts_number" value="218">
+<input type="hidden" id="yelog_site_word_count" value="213k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -782,6 +767,10 @@
     <div class="tags-list">
     <input id="tag-search" />
     <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3-hexo</a>
+            </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3d-slam</a>
@@ -1056,6 +1045,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>design</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>design pattern</a>
             </li>
         
@@ -1208,6 +1201,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http</a>
             </li>
         
@@ -1273,6 +1270,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>k8s</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>knowledge-graph</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1656,6 +1657,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>stdio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>swaagerui</a>
             </li>
         
@@ -1725,6 +1730,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Unix</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1821,6 +1830,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2026/09/16/Book/01-%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2026-09-16 16:51:18">2026/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2026/09/16/Tools/3-hexo%E6%94%B9%E9%80%A0/hexo%E8%87%AA%E5%8A%A8%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E5%8A%9F%E8%83%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hexo自动压缩图片功能">hexo自动压缩图片功能</span>
+            <span class="post-date" title="2026-09-16 16:10:05">2026/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2026/09/16/Tools/3-hexo%E6%94%B9%E9%80%A0/3-hexo%E6%94%B9%E9%80%A0%E9%9C%80%E6%B1%82/"
+           data-tag="Hexo,3-hexo,knowledge-graph,design"
+           data-author="" >
+            <span class="post-title" title="3-hexo改造需求">3-hexo改造需求</span>
+            <span class="post-date" title="2026-09-16 15:18:55">2026/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2026/09/16/OS/stdio/stdio/"
+           data-tag="Linux,stdio,Unix"
+           data-author="" >
+            <span class="post-title" title="stdio">stdio</span>
+            <span class="post-date" title="2026-09-16 15:04:08">2026/09/16</span>
+        </a>
         
         
         <a  class="全部文章 AI-Tools-Log "
@@ -2032,7 +2077,7 @@
         
         <a  class="全部文章 AI-Tools-Log codex使用解析 "
            href="/2026/03/31/AI-Tools-Log/codex%E4%BD%BF%E7%94%A8%E8%A7%A3%E6%9E%90/codex-%E5%B0%B1%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84agent/"
-           data-tag="agent,ml,codex"
+           data-tag="agent,codex,ml"
            data-author="" >
             <span class="post-title" title="codex-就是最好的agent">codex-就是最好的agent</span>
             <span class="post-date" title="2026-03-31 13:21:47">2026/03/31</span>
@@ -3139,7 +3184,7 @@
         
         <a  class="全部文章 Ros learn-note "
            href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
-           data-tag="ros,slam,occupancy_grid_map"
+           data-tag="slam,ros,occupancy_grid_map"
            data-author="" >
             <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
             <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
@@ -3175,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,joy_controller,lite3"
+           data-tag="lite3,ros,joy_controller"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3220,7 +3265,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,lite3,slam"
+           data-tag="lite3,slam,ros"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3799,7 +3844,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-01-20 14:18</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 16:51:18'>2026-01-20 14:18</time>
         
     </div>
     <div class="article-meta">
@@ -3860,7 +3905,7 @@
 <p>当重复做某些任务的时候，大模型会认为自己能解决，不一定会调用一些工具，skills就是告诉大模型什么时候去调用工具，Skills是教模型做事，可重复和规范性。</p>
 <p>一种团队级 <strong>prompt/workflow复用机制</strong></p>
 <p>大概的skill的结构:</p>
-<p><img src="/imgs/agent%E5%BC%80%E5%8F%91%E4%B9%8B-Skills/image-20260120142320514.png" alt="skills目录结构"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/agent%E5%BC%80%E5%8F%91%E4%B9%8B-Skills/image-20260120142320514.png" alt="skills目录结构"></p>
 <h1>MCP 与 Skills的不同点</h1>
 <table>
 <thead>
@@ -3977,6 +4022,33 @@ window.MathJax = {
 <script src="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
 
 <script src="/js/script.js?v=1.1.0" ></script>
+
+<script>
+(function () {
+    var base = '';
+    var ver = '1.1.0';
+    function load(src, cb) {
+        if (document.querySelector('script[data-graph="' + src + '"]')) { cb(); return; }
+        var s = document.createElement('script');
+        s.src = src;
+        s.setAttribute('data-graph', src);
+        s.onload = cb;
+        s.onerror = cb;
+        document.body.appendChild(s);
+    }
+    function boot() {
+        if (!document.querySelector('.article-graph-page')) { return; }
+        var go = function () { if (window.__articleGraphInit) { window.__articleGraphInit(); } };
+        var graphJs = base + '/js/article-graph.js?v=' + ver;
+        if (window.d3) { load(graphJs, go); }
+        else { load(base + '/js/vendor/d3.min.js?v=' + ver, function () { load(graphJs, go); }); }
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', boot); }
+    else { boot(); }
+    if (window.jQuery) { $(document).on('pjax:end', boot); }
+})();
+</script>
+
 <script>
     var img_resize = 'photoSwipe';
     function initArticle() {
@@ -4005,6 +4077,7 @@ window.MathJax = {
                 if ($(this).closest('figure').hasClass('article-gallery-img')) {
                     return;
                 }
+                $(this).attr('loading', 'lazy').attr('decoding', 'async');
                 var alt = this.alt;
                 $(this)
                     .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
@@ -4255,47 +4328,47 @@ window.MathJax = {
             temp = null;
             return output;
         }
-        function createMermaidBlock(sourceBlock, mermaidSource) {
+        function createMermaidBlock(sourceBlock, mermaidSource, mermaidOptions) {
             if (!sourceBlock || !sourceBlock.parentNode) {
                 return null
             }
             var mermaidBlock = document.createElement("div")
             mermaidBlock.className = "mermaid mermaid-render-target"
-            mermaidBlock.textContent = mermaidSource.replace(/\r\n/g, "\n").trim()
+            mermaidBlock.textContent = "%%{init: " + JSON.stringify(mermaidOptions) + "}%%\n" + mermaidSource.replace(/\r\n/g, "\n").trim()
             sourceBlock.parentNode.replaceChild(mermaidBlock, sourceBlock)
             return mermaidBlock
         }
-        function normalizeMermaidBlocks() {
+        function normalizeMermaidBlocks(mermaidOptions) {
             var targets = []
             var preBlocks = document.querySelectorAll("pre.mermaid")
             for (var i = 0; i < preBlocks.length; i++) {
                 var preCode = preBlocks[i].querySelector("code")
                 var preSource = preCode ? preCode.textContent : preBlocks[i].textContent
-                var preTarget = createMermaidBlock(preBlocks[i], preSource)
+                var preTarget = createMermaidBlock(preBlocks[i], preSource, mermaidOptions)
                 if (preTarget) {
                     targets.push(preTarget)
                 }
             }
             var codeBlocks = document.querySelectorAll("pre > code.language-mermaid, pre > code.lang-mermaid")
             for (var j = 0; j < codeBlocks.length; j++) {
-                var codeTarget = createMermaidBlock(codeBlocks[j].parentNode, codeBlocks[j].textContent)
+                var codeTarget = createMermaidBlock(codeBlocks[j].parentNode, codeBlocks[j].textContent, mermaidOptions)
                 if (codeTarget) {
                     targets.push(codeTarget)
                 }
             }
             return targets
         }
-        var mermaidTargets = normalizeMermaidBlocks()
+        var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;base&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:true,&#34;htmlLabels&#34;:true},&#34;themeVariables&#34;:{&#34;fontFamily&#34;:&#34;Segoe UI, Microsoft YaHei, sans-serif&#34;,&#34;fontSize&#34;:&#34;15px&#34;,&#34;primaryColor&#34;:&#34;#e4f5f1&#34;,&#34;primaryTextColor&#34;:&#34;#173d3a&#34;,&#34;primaryBorderColor&#34;:&#34;#2b9e89&#34;,&#34;secondaryColor&#34;:&#34;#eaf2fb&#34;,&#34;secondaryTextColor&#34;:&#34;#213b57&#34;,&#34;secondaryBorderColor&#34;:&#34;#5b8fc4&#34;,&#34;tertiaryColor&#34;:&#34;#fff4df&#34;,&#34;tertiaryTextColor&#34;:&#34;#5b431c&#34;,&#34;tertiaryBorderColor&#34;:&#34;#d5a142&#34;,&#34;lineColor&#34;:&#34;#6b7d7c&#34;,&#34;textColor&#34;:&#34;#243536&#34;,&#34;mainBkg&#34;:&#34;#e4f5f1&#34;,&#34;nodeBorder&#34;:&#34;#2b9e89&#34;,&#34;clusterBkg&#34;:&#34;#f4faf9&#34;,&#34;clusterBorder&#34;:&#34;#9dcfc4&#34;,&#34;edgeLabelBackground&#34;:&#34;#f7fbfa&#34;,&#34;actorBkg&#34;:&#34;#eaf2fb&#34;,&#34;actorBorder&#34;:&#34;#5b8fc4&#34;,&#34;actorTextColor&#34;:&#34;#213b57&#34;,&#34;signalColor&#34;:&#34;#587271&#34;,&#34;signalTextColor&#34;:&#34;#243536&#34;,&#34;labelBoxBkgColor&#34;:&#34;#f7fbfa&#34;,&#34;labelBoxBorderColor&#34;:&#34;#9dcfc4&#34;,&#34;labelTextColor&#34;:&#34;#243536&#34;}}"))
+        mermaidOptions.startOnLoad = false
+        var mermaidTargets = normalizeMermaidBlocks(mermaidOptions)
         if (mermaidTargets.length) {
             if (window.mermaid){
                 window.mermaid = null
             }
             $.getScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js", function () {
-                var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:true,&#34;htmlLabels&#34;:true}}"))
-                mermaidOptions.startOnLoad = false
                 if (window.mermaid) {
                     mermaid.initialize(mermaidOptions)
-                    mermaid.init(undefined, mermaidTargets)
+                    mermaid.init(mermaidOptions, mermaidTargets)
                 }
             })
         }

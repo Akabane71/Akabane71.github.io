@@ -6,33 +6,17 @@
   <meta name="keywords" content=" Life , 摄影基础 , sony , 相机 , 镜头 ">
   <meta name="description" content="摄影基础概念学习-01：曝光、镜头、画幅与相机挡位 | Akabane71">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
+<meta name="description" content="本质复杂性: 本质复杂性是指问题本身固有的复杂性，无法通过改进工具或方法来消除。 偶然复杂性: 偶然复杂性是指由于实现方式、工具或环境引入的额外复杂性，可以通过改进设计、优化工具或方法来减少。 管理复杂性最佳的工具就是 抽象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不同的绘图风格">
-<meta property="og:url" content="https://akabane71.github.io/2026/09/16/AI-Tools-Log/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/index.html">
+<meta property="og:title" content="Akabane71">
+<meta property="og:url" content="https://akabane71.github.io/2026/09/16/Book/01-%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/index.html">
 <meta property="og:site_name" content="Akabane71">
-<meta property="og:description" content="记录不同风格的提示词对生成图片的影响 生成图片的提示词按同一套字段组织。对比风格时，主体、构图、光照、约束尽量不动，只改【视觉风格】。 【生成目标】 【主体与场景】 【构图与镜头】 【视觉风格】  ← 对比时主要改这一段 【光照与色彩】 【约束与输出】  text2img 固定案例：雨夜窗边写代码。三种风格都用下面这套，只替换【视觉风格】。 案例提示词: 【生成目标】 生成一张用于风格对比的固定案">
+<meta property="og:description" content="本质复杂性: 本质复杂性是指问题本身固有的复杂性，无法通过改进工具或方法来消除。 偶然复杂性: 偶然复杂性是指由于实现方式、工具或环境引入的额外复杂性，可以通过改进设计、优化工具或方法来减少。 管理复杂性最佳的工具就是 抽象">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-5.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-2.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-4.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-3.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-6.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-7.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-10.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-8.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-9.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-12.png">
-<meta property="og:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image-11.png">
-<meta property="article:published_time" content="2026-09-16T02:10:38.000Z">
-<meta property="article:modified_time" content="2026-09-16T03:42:23.075Z">
+<meta property="article:published_time" content="2026-09-16T08:51:18.883Z">
+<meta property="article:modified_time" content="2026-09-16T08:51:18.883Z">
 <meta property="article:author" content="LiShun">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="绘图">
-<meta property="article:tag" content="风格">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://akabane71.github.io/2026/09/16/imgs/%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%98%E5%9B%BE%E9%A3%8E%E6%A0%BC/image.png">
 
 
 <link rel="icon" href="/img/my_face.png">
@@ -80,7 +64,7 @@
         <a href="/"
    class="avatar_target">
     <img class="avatar"
-         src="/img/my_face.png"/>
+         src="/img/my_face.webp"/>
 </a>
 <div class="author">
     <span>LiShun</span>
@@ -124,7 +108,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(214)</small>
+                <small>(218)</small>
             
         </div>
     </li>
@@ -565,7 +549,7 @@
         <div data-rel="OS">
             <i class="fold iconfont icon-right"></i>
             OS
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
             <ul class="sub hide">
@@ -649,7 +633,7 @@
         <div data-rel="Tools">
             <i class="fold iconfont icon-right"></i>
             Tools
-            <small>(19)</small>
+            <small>(20)</small>
         </div>
         
             <ul class="sub hide">
@@ -719,6 +703,7 @@
     
 </ul>
 <div class="left-bottom">
+    <a class="graph-entry site_url" href="/article-graph/" title="点击查看文章星域">✦ 查看星域</a>
     <div class="menus">
         
             
@@ -737,8 +722,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="214">
-<input type="hidden" id="yelog_site_word_count" value="209.1k">
+<input type="hidden" id="yelog_site_posts_number" value="218">
+<input type="hidden" id="yelog_site_word_count" value="213k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -782,6 +767,10 @@
     <div class="tags-list">
     <input id="tag-search" />
     <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3-hexo</a>
+            </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3d-slam</a>
@@ -1056,6 +1045,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>design</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>design pattern</a>
             </li>
         
@@ -1208,6 +1201,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http</a>
             </li>
         
@@ -1273,6 +1270,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>k8s</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>knowledge-graph</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1656,6 +1657,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>stdio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>swaagerui</a>
             </li>
         
@@ -1725,6 +1730,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Unix</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1821,6 +1830,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2026/09/16/Book/01-%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2026-09-16 16:51:18">2026/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2026/09/16/Tools/3-hexo%E6%94%B9%E9%80%A0/hexo%E8%87%AA%E5%8A%A8%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E5%8A%9F%E8%83%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hexo自动压缩图片功能">hexo自动压缩图片功能</span>
+            <span class="post-date" title="2026-09-16 16:10:05">2026/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Tools "
+           href="/2026/09/16/Tools/3-hexo%E6%94%B9%E9%80%A0/3-hexo%E6%94%B9%E9%80%A0%E9%9C%80%E6%B1%82/"
+           data-tag="Hexo,3-hexo,knowledge-graph,design"
+           data-author="" >
+            <span class="post-title" title="3-hexo改造需求">3-hexo改造需求</span>
+            <span class="post-date" title="2026-09-16 15:18:55">2026/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 OS "
+           href="/2026/09/16/OS/stdio/stdio/"
+           data-tag="Linux,stdio,Unix"
+           data-author="" >
+            <span class="post-title" title="stdio">stdio</span>
+            <span class="post-date" title="2026-09-16 15:04:08">2026/09/16</span>
+        </a>
         
         
         <a  class="全部文章 AI-Tools-Log "
@@ -2032,7 +2077,7 @@
         
         <a  class="全部文章 AI-Tools-Log codex使用解析 "
            href="/2026/03/31/AI-Tools-Log/codex%E4%BD%BF%E7%94%A8%E8%A7%A3%E6%9E%90/codex-%E5%B0%B1%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84agent/"
-           data-tag="agent,ml,codex"
+           data-tag="agent,codex,ml"
            data-author="" >
             <span class="post-title" title="codex-就是最好的agent">codex-就是最好的agent</span>
             <span class="post-date" title="2026-03-31 13:21:47">2026/03/31</span>
@@ -3139,7 +3184,7 @@
         
         <a  class="全部文章 Ros learn-note "
            href="/2025/03/10/Ros/LearnNote/04-ros1-occupancy-grid-map/"
-           data-tag="ros,slam,occupancy_grid_map"
+           data-tag="slam,ros,occupancy_grid_map"
            data-author="" >
             <span class="post-title" title="04-ros1-occupancy_grid_map">04-ros1-occupancy_grid_map</span>
             <span class="post-date" title="2025-03-10 09:53:06">2025/03/10</span>
@@ -3175,7 +3220,7 @@
         
         <a  class="全部文章 Ros "
            href="/2025/03/10/Ros/ros1-xbox-joy/"
-           data-tag="ros,joy_controller,lite3"
+           data-tag="lite3,ros,joy_controller"
            data-author="" >
             <span class="post-title" title="ros1-xbox_joy">ros1-xbox_joy</span>
             <span class="post-date" title="2025-03-10 09:43:11">2025/03/10</span>
@@ -3220,7 +3265,7 @@
         
         <a  class="全部文章 Ros "
            href="/2024/12/20/Ros/ros1-lite3/"
-           data-tag="ros,lite3,slam"
+           data-tag="lite3,slam,ros"
            data-author="" >
             <span class="post-title" title="ros1-lite3">ros1-lite3</span>
             <span class="post-date" title="2024-12-20 16:34:57">2024/12/20</span>
@@ -3803,7 +3848,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-09-16 11:42:23'>2026-05-31 13:14</time>
+            发布时间 : <time class="date" title='最后更新: 2026-09-16 16:51:18'>2026-05-31 13:14</time>
         
     </div>
     <div class="article-meta">
@@ -3865,7 +3910,7 @@
 </blockquote>
 <p>决定曝光多少的，就是下面的曝光三要素。</p>
 <h2 id="2-曝光三要素">2. 曝光三要素</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image.png" alt="曝光三要素示意图（光圈、快门、ISO）"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image.png" alt="曝光三要素示意图（光圈、快门、ISO）"></p>
 <!--
 【生成目标】
 绘制“曝光三角”概念图，帮助读者理解光圈、快门、ISO 三者共同决定曝光量。
@@ -3892,7 +3937,7 @@
 <h3 id="ISO-感光度">ISO 感光度</h3>
 <p>控制传感器信号的放大程度，ISO 越高画面越亮，但噪点也会越明显。</p>
 <h2 id="3-曝光三要素之间的关系">3. 曝光三要素之间的关系</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-1.png" alt="曝光三要素之间的关系示意图"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-1.png" alt="曝光三要素之间的关系示意图"></p>
 <!--
 【生成目标】
 绘制“曝光跷跷板/天平”示意图，表现光圈、快门、ISO 三者此消彼长、共同维持同一曝光值的关系。
@@ -3941,7 +3986,7 @@
 <p>景深指对焦点前后能保持清晰的范围。</p>
 <p>景深浅（小）：对焦点前后很快就模糊，常用于人像背景虚化。</p>
 <p>景深深（大）：对焦点前后大范围都清晰，常用于风景、建筑、合影。</p>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-2.png" alt="景深对比示意图"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-2.png" alt="景深对比示意图"></p>
 <!--
 【生成目标】
 绘制“景深对比”示意图，直观展示浅景深（背景虚化）与深景深（前后皆清晰）的区别。
@@ -3992,7 +4037,7 @@ GM      — 品牌高端系列标识
 </code></pre>
 <p>看镜头参数时，重点关注焦段范围和最大光圈这两项，它们决定了能拍什么、能不能拍出虚化。</p>
 <h2 id="2-镜头分类">2. 镜头分类</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-3.png" alt="镜头分类示意图"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-3.png" alt="镜头分类示意图"></p>
 <!--
 【生成目标】
 绘制“定焦镜头 vs 变焦镜头”对比插画，帮助读者建立两类镜头的直观印象。
@@ -4036,7 +4081,7 @@ GM      — 品牌高端系列标识
 <h3 id="长焦镜头">长焦镜头</h3>
 <p>焦距 135mm 以上，适合鸟类、体育、舞台等远距离拍摄。</p>
 <h2 id="4-常见焦段的使用场景">4. 常见焦段的使用场景</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-4.png" alt="常见焦段和适应场景"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-4.png" alt="常见焦段和适应场景"></p>
 <!--
 【生成目标】
 绘制“常见焦段一览”横向对比图，展示不同焦段（16mm、24mm、35mm、50mm、85mm、70-200mm）对应的视角宽窄与典型拍摄题材。
@@ -4083,7 +4128,7 @@ F4    — 体积重量更轻，适合旅行和日常轻便携带
 <p>均无反光相机去掉了传统单反的光学取景结构，直接用传感器实时成像到电子取景器，体积更小、对焦速度也更快。</p>
 <h2 id="2-画幅是什么">2. 画幅是什么</h2>
 <p>画幅指传感器的实际物理尺寸。传感器越大，单个像素能接收到的光信息越多，递带影响画质、噪点控制和景深表现。</p>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601133505535.png" alt="传感器尺寸"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601133505535.png" alt="传感器尺寸"></p>
 <h3 id="全画幅">全画幅</h3>
 <p>尺寸与传统 35mm 胶卷相同（36x24mm），高感、景深控制能力最强，价格也最高。</p>
 <h3 id="APS-C-画幅">APS-C 画幅</h3>
@@ -4117,7 +4162,7 @@ F4    — 体积重量更轻，适合旅行和日常轻便携带
 <p>通过裁剪画面边缘并算法补偿来稳定画面，多用于视频拍摄，会损失一部分视角。</p>
 <hr>
 <h1>五、相机挡位</h1>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601132842141.png" alt="相机挡位"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601132842141.png" alt="相机挡位"></p>
 <h2 id="1-Auto-自动挡">1. Auto 自动挡</h2>
 <h2 id="2-P-档：程序自动曝光">2. P 档：程序自动曝光</h2>
 <h2 id="3-A-Av-档：光圈优先">3. A / Av 档：光圈优先</h2>
@@ -4126,7 +4171,7 @@ F4    — 体积重量更轻，适合旅行和日常轻便携带
 <blockquote>
 <p>背景虚化效果</p>
 </blockquote>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601132720227.png" alt="image-20260601132720227"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-20260601132720227.png" alt="image-20260601132720227"></p>
 <h2 id="4-S-Tv-档：快门优先">4. S / Tv 档：快门优先</h2>
 <p>能 <strong>调整快门/感光度</strong>，光圈数值自动调整，</p>
 <p><strong>满足于日常风光/运动</strong></p>
@@ -4147,7 +4192,7 @@ F4    — 体积重量更轻，适合旅行和日常轻便携带
 <h2 id="4-手动对焦-MF">4. 手动对焦 MF</h2>
 <p>完全由人手动转动对焦环确定对焦点，适用于自动对焦容易误判的场景，如隔着栏杆拍摄、微距、低对比度环境。</p>
 <h2 id="5-对焦区域">5. 对焦区域</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-5.png" alt="对焦区域示意图"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-5.png" alt="对焦区域示意图"></p>
 <!--
 【生成目标】
 绘制“对焦区域模式”示意图，展示广域、区域、中心、灵活点、追踪对焦五种取景框内对焦框布局的差异。
@@ -4184,7 +4229,7 @@ F4    — 体积重量更轻，适合旅行和日常轻便携带
 <h2 id="1-白平衡是什么">1. 白平衡是什么</h2>
 <p>白平衡用于纠正不同光源下的颜色偏差，让白色真正看起来是白色，从而保证整张照片的色彩准确。</p>
 <h2 id="2-色温是什么">2. 色温是什么</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-6.png" alt="色温示意图"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-6.png" alt="色温示意图"></p>
 <!--
 【生成目标】
 绘制“色温色卡”渐变图，帮助读者建立开尔文数值与画面冷暖色调之间的直观对应关系。
@@ -4242,7 +4287,7 @@ F4    — 体积重量更轻，适合旅行和日常轻便携带
 <hr>
 <h1>九、本篇总结</h1>
 <h2 id="1-摄影基础概念关系图">1. 摄影基础概念关系图</h2>
-<p><img src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-7.png" alt="总结"></p>
+<p><img decoding="async" loading="lazy" src="/imgs/%E6%91%84%E5%BD%B1%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%AD%A6%E4%B9%A0-01%EF%BC%9A%E6%9B%9D%E5%85%89%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E7%94%BB%E5%B9%85%E4%B8%8E%E7%9B%B8%E6%9C%BA%E6%8C%A1%E4%BD%8D/image-7.png" alt="总结"></p>
 <!--
 【生成目标】
 绘制本篇摄影基础概念的思维导图/关系图，将曝光三要素、光学基础、镜头、画幅、挡位、对焦、白平衡等模块串联成一张总览图，作为全文收尾配图。
@@ -4339,6 +4384,33 @@ window.MathJax = {
 <script src="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
 
 <script src="/js/script.js?v=1.1.0" ></script>
+
+<script>
+(function () {
+    var base = '';
+    var ver = '1.1.0';
+    function load(src, cb) {
+        if (document.querySelector('script[data-graph="' + src + '"]')) { cb(); return; }
+        var s = document.createElement('script');
+        s.src = src;
+        s.setAttribute('data-graph', src);
+        s.onload = cb;
+        s.onerror = cb;
+        document.body.appendChild(s);
+    }
+    function boot() {
+        if (!document.querySelector('.article-graph-page')) { return; }
+        var go = function () { if (window.__articleGraphInit) { window.__articleGraphInit(); } };
+        var graphJs = base + '/js/article-graph.js?v=' + ver;
+        if (window.d3) { load(graphJs, go); }
+        else { load(base + '/js/vendor/d3.min.js?v=' + ver, function () { load(graphJs, go); }); }
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', boot); }
+    else { boot(); }
+    if (window.jQuery) { $(document).on('pjax:end', boot); }
+})();
+</script>
+
 <script>
     var img_resize = 'photoSwipe';
     function initArticle() {
@@ -4367,6 +4439,7 @@ window.MathJax = {
                 if ($(this).closest('figure').hasClass('article-gallery-img')) {
                     return;
                 }
+                $(this).attr('loading', 'lazy').attr('decoding', 'async');
                 var alt = this.alt;
                 $(this)
                     .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
@@ -4617,47 +4690,47 @@ window.MathJax = {
             temp = null;
             return output;
         }
-        function createMermaidBlock(sourceBlock, mermaidSource) {
+        function createMermaidBlock(sourceBlock, mermaidSource, mermaidOptions) {
             if (!sourceBlock || !sourceBlock.parentNode) {
                 return null
             }
             var mermaidBlock = document.createElement("div")
             mermaidBlock.className = "mermaid mermaid-render-target"
-            mermaidBlock.textContent = mermaidSource.replace(/\r\n/g, "\n").trim()
+            mermaidBlock.textContent = "%%{init: " + JSON.stringify(mermaidOptions) + "}%%\n" + mermaidSource.replace(/\r\n/g, "\n").trim()
             sourceBlock.parentNode.replaceChild(mermaidBlock, sourceBlock)
             return mermaidBlock
         }
-        function normalizeMermaidBlocks() {
+        function normalizeMermaidBlocks(mermaidOptions) {
             var targets = []
             var preBlocks = document.querySelectorAll("pre.mermaid")
             for (var i = 0; i < preBlocks.length; i++) {
                 var preCode = preBlocks[i].querySelector("code")
                 var preSource = preCode ? preCode.textContent : preBlocks[i].textContent
-                var preTarget = createMermaidBlock(preBlocks[i], preSource)
+                var preTarget = createMermaidBlock(preBlocks[i], preSource, mermaidOptions)
                 if (preTarget) {
                     targets.push(preTarget)
                 }
             }
             var codeBlocks = document.querySelectorAll("pre > code.language-mermaid, pre > code.lang-mermaid")
             for (var j = 0; j < codeBlocks.length; j++) {
-                var codeTarget = createMermaidBlock(codeBlocks[j].parentNode, codeBlocks[j].textContent)
+                var codeTarget = createMermaidBlock(codeBlocks[j].parentNode, codeBlocks[j].textContent, mermaidOptions)
                 if (codeTarget) {
                     targets.push(codeTarget)
                 }
             }
             return targets
         }
-        var mermaidTargets = normalizeMermaidBlocks()
+        var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;base&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:true,&#34;htmlLabels&#34;:true},&#34;themeVariables&#34;:{&#34;fontFamily&#34;:&#34;Segoe UI, Microsoft YaHei, sans-serif&#34;,&#34;fontSize&#34;:&#34;15px&#34;,&#34;primaryColor&#34;:&#34;#e4f5f1&#34;,&#34;primaryTextColor&#34;:&#34;#173d3a&#34;,&#34;primaryBorderColor&#34;:&#34;#2b9e89&#34;,&#34;secondaryColor&#34;:&#34;#eaf2fb&#34;,&#34;secondaryTextColor&#34;:&#34;#213b57&#34;,&#34;secondaryBorderColor&#34;:&#34;#5b8fc4&#34;,&#34;tertiaryColor&#34;:&#34;#fff4df&#34;,&#34;tertiaryTextColor&#34;:&#34;#5b431c&#34;,&#34;tertiaryBorderColor&#34;:&#34;#d5a142&#34;,&#34;lineColor&#34;:&#34;#6b7d7c&#34;,&#34;textColor&#34;:&#34;#243536&#34;,&#34;mainBkg&#34;:&#34;#e4f5f1&#34;,&#34;nodeBorder&#34;:&#34;#2b9e89&#34;,&#34;clusterBkg&#34;:&#34;#f4faf9&#34;,&#34;clusterBorder&#34;:&#34;#9dcfc4&#34;,&#34;edgeLabelBackground&#34;:&#34;#f7fbfa&#34;,&#34;actorBkg&#34;:&#34;#eaf2fb&#34;,&#34;actorBorder&#34;:&#34;#5b8fc4&#34;,&#34;actorTextColor&#34;:&#34;#213b57&#34;,&#34;signalColor&#34;:&#34;#587271&#34;,&#34;signalTextColor&#34;:&#34;#243536&#34;,&#34;labelBoxBkgColor&#34;:&#34;#f7fbfa&#34;,&#34;labelBoxBorderColor&#34;:&#34;#9dcfc4&#34;,&#34;labelTextColor&#34;:&#34;#243536&#34;}}"))
+        mermaidOptions.startOnLoad = false
+        var mermaidTargets = normalizeMermaidBlocks(mermaidOptions)
         if (mermaidTargets.length) {
             if (window.mermaid){
                 window.mermaid = null
             }
             $.getScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js", function () {
-                var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:true,&#34;htmlLabels&#34;:true}}"))
-                mermaidOptions.startOnLoad = false
                 if (window.mermaid) {
                     mermaid.initialize(mermaidOptions)
-                    mermaid.init(undefined, mermaidTargets)
+                    mermaid.init(mermaidOptions, mermaidTargets)
                 }
             })
         }

@@ -609,10 +609,34 @@ function bind() {
     /*渲染高亮代码块结构与样式*/
     if ($('#theme_highlight_on').val() === 'true') {
         $('pre code').each(function (i, block) {
-            var codeClass = $(this).attr('class') || ''
+            var $code = $(this)
+            var $pre = $code.parent()
+            var codeClass = $code.attr('class') || ''
             var hasCopy = $('#theme_code_copy').val() !== 'false'
-            // 添加复制功能
-            $(this).after('<div class="code-embed"><span class="code-embed-type">'+ (codeClass.indexOf('hljs') === -1 ? codeClass : codeClass.indexOf('hljs') === 0 ? '' : codeClass.replace(/[\s]?hljs/g, ''))+'</span>'+(hasCopy ? '<span class="code-embed-copy" onclick="copyCode(this)">复制代码</span>' : '')+'</div>')
+            var language = getCodeLanguage(codeClass)
+
+            if (!$pre.data('codeToolbarReady') && !isMermaidCodeBlock(codeClass)) {
+                var $toolbar = $('<div>', {'class': 'code-toolbar'})
+                if (language) {
+                    $toolbar.append($('<span>', {
+                        'class': 'code-language',
+                        'aria-hidden': 'true',
+                        text: language
+                    }))
+                }
+                if (hasCopy) {
+                    $toolbar.append($('<button>', {
+                        'class': 'code-copy-button',
+                        type: 'button',
+                        'aria-label': '复制代码',
+                        title: '复制代码'
+                    }).append($('<span>', {
+                        'class': 'code-copy-icon',
+                        'aria-hidden': 'true'
+                    })))
+                }
+                $pre.prepend($toolbar).data('codeToolbarReady', true)
+            }
             // 渲染样式
             if (codeClass.indexOf('hljs') === -1) {
                 hljs.highlightBlock(block);
@@ -780,35 +804,90 @@ function bind() {
 
 }
 
-/**
- * 复制代码
- */
-function copyCode(e) {
-    $(e).parent().prev().text()
-    if (copy($(e).parent().prev().text())) {
-        $(e).html('复制成功')
-        setTimeout(function () {
-            $(e).html('复制代码')
-        }, 1000)
+function getCodeLanguage(codeClass) {
+    var match = codeClass.match(/(?:^|\s)language-([^\s]+)/)
+    if (!match) {
+        return ''
     }
+    var language = match[1].toLowerCase()
+    var languageNames = {
+        js: 'JavaScript',
+        jsx: 'JSX',
+        ts: 'TypeScript',
+        tsx: 'TSX',
+        sh: 'Bash',
+        shell: 'Bash',
+        yml: 'YAML',
+        py: 'Python',
+        rb: 'Ruby',
+        md: 'Markdown'
+    }
+    return languageNames[language] || language.charAt(0).toUpperCase() + language.slice(1)
 }
 
-// 复制功能1
-function copy (text) {
-    var isSuccess = false
-    var target;
-    if (text) {
-        target = document.createElement('textarea');
-        target.id = 'tempTarget';
-        target.style.opacity = '0';
-        target.value = text;
-        document.body.appendChild(target);
-        target.select();
-        document.execCommand('copy', true);
-        document.body.removeChild(target)
-        isSuccess = true
-    } else {
-        isSuccess = false
+function isMermaidCodeBlock(codeClass) {
+    return /(?:^|\s)(?:language-)?mermaid(?:\s|$)/i.test(codeClass)
+}
+
+$(document).on('click', '.code-copy-button', function () {
+    var $button = $(this)
+    var code = $button.closest('pre').children('code')[0]
+    if (!code) {
+        return
     }
-    return isSuccess
+
+    copyCodeText(code.textContent).then(function () {
+        updateCopyButton($button, 'success', '已复制')
+    }).catch(function () {
+        updateCopyButton($button, 'error', '复制失败')
+    })
+})
+
+function copyCodeText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).catch(function () {
+            return copyCodeTextFallback(text)
+        })
+    }
+    return copyCodeTextFallback(text)
+}
+
+function copyCodeTextFallback(text) {
+    return new Promise(function (resolve, reject) {
+        var target = document.createElement('textarea')
+        target.value = text
+        target.setAttribute('readonly', '')
+        target.style.position = 'fixed'
+        target.style.opacity = '0'
+        document.body.appendChild(target)
+        target.select()
+        try {
+            if (document.execCommand('copy')) {
+                resolve()
+            } else {
+                reject()
+            }
+        } catch (error) {
+            reject(error)
+        } finally {
+            document.body.removeChild(target)
+        }
+    })
+}
+
+function updateCopyButton($button, state, label) {
+    var originalLabel = '复制代码'
+    $button.attr({
+        'aria-label': label,
+        title: label,
+        'data-copy-state': state
+    })
+    $button.find('.code-copy-icon').text(state === 'success' ? '✓' : state === 'error' ? '!' : '')
+    setTimeout(function () {
+        $button.attr({
+            'aria-label': originalLabel,
+            title: originalLabel
+        }).removeAttr('data-copy-state')
+        $button.find('.code-copy-icon').text('')
+    }, 1500)
 }
