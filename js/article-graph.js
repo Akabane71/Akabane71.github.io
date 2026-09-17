@@ -6,9 +6,12 @@
     if (!root || !window.d3) {
       return;
     }
-    if (root.dataset.graphReady) {
+    // PJAX clones HTML attributes but not runtime properties or native listeners.
+    if (root.__articleGraphActive) {
       return;
     }
+    if (window.__articleGraphCleanup) { window.__articleGraphCleanup(); }
+    root.__articleGraphActive = true;
     root.dataset.graphReady = '1';
 
     var canvas = document.getElementById('article-graph-canvas');
@@ -20,7 +23,7 @@
     var status = document.getElementById('graph-status');
     var emptyState = document.getElementById('graph-empty');
     var scaleValue = document.getElementById('graph-scale-value');
-    var hudSector = document.getElementById('graph-hud-sector');
+    var loading = document.getElementById('graph-loading');
     var tooltip = document.getElementById('graph-tooltip');
     var resetButton = document.getElementById('graph-reset');
     var fitButton = document.getElementById('graph-fit');
@@ -29,6 +32,7 @@
     var countNodes = document.getElementById('graph-count-nodes');
     var countLinks = document.getElementById('graph-count-links');
     var countVisible = document.getElementById('graph-count-visible');
+    var countCategories = document.getElementById('graph-count-categories');
     var stage = canvas.parentElement;
     var transform = d3.zoomIdentity;
     var hoveredNode = null;
@@ -42,10 +46,30 @@
     var edgeByPair = new Map();
     var activeCategories = new Set();
     var chipByCategory = new Map();
-    var hubDegree = 4;
-    var palette = ['#33caa6', '#4078c0', '#f0a24a', '#e0707a', '#7e6bd6', '#3fb0d6', '#5aa469', '#c99a3a', '#c56bb0', '#7f8fa6', '#d98b5f', '#6ab0a0'];
+    var allCategories = [];
+    var allChip;
+    var layoutColumns = 0;
+    var resizeObserver;
+    var resizeFrame;
+    var searchTimer;
+    var request = new AbortController();
+    var palette = ['#789b70', '#719aa5', '#b58f6b', '#ad7e8d', '#8b8eb2', '#6faaa0', '#b5a365', '#869fbb', '#a594bb', '#b58c83', '#80a58d', '#8ea18e', '#9da77a', '#829ba6', '#a2957f'];
     var colorByCategory = new Map();
     var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    filterList.replaceChildren();
+    details.replaceChildren();
+    details.hidden = true;
+    loading.hidden = false;
+    emptyState.hidden = true;
+    emptyState.textContent = '没有匹配的文章，换个关键词试试。';
+    searchInput.value = '';
+    root.classList.remove('show-list', 'has-selection');
+    root.querySelectorAll('.graph-mode').forEach(function (button) {
+      var active = button.dataset.graphMode === 'map';
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
 
     function colorFor(category) {
       if (!colorByCategory.has(category)) {
@@ -56,7 +80,8 @@
 
     function resizeCanvas() {
       var bounds = stage.getBoundingClientRect();
-      var ratio = window.devicePixelRatio || 1;
+      if (!bounds.width || !bounds.height) { return; }
+      var ratio = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(1, Math.floor(bounds.width * ratio));
       canvas.height = Math.max(1, Math.floor(bounds.height * ratio));
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -72,7 +97,7 @@
     }
 
     function nodeRadius(node) {
-      return 2.6 + Math.sqrt(node.degree || 0) * 1.15;
+      return 2.5 + Math.sqrt(node.degree || 0) * .7;
     }
 
     function isVisible(node) {
@@ -98,6 +123,7 @@
     }
 
     function draw() {
+      if (!root.isConnected || root.classList.contains('show-list')) { return; }
       var bounds = stage.getBoundingClientRect();
       var width = bounds.width;
       var height = bounds.height;
@@ -128,7 +154,7 @@
         context.lineTo(target.x, target.y);
       });
       context.lineWidth = 0.7 / k;
-      context.strokeStyle = focus ? 'rgba(47, 47, 47, 0.05)' : 'rgba(47, 47, 47, 0.08)';
+      context.strokeStyle = focus ? 'rgba(98, 126, 93, 0.035)' : 'rgba(98, 126, 93, 0.13)';
       context.stroke();
 
       if (focus) {
@@ -144,7 +170,7 @@
           context.lineTo(link.target.x, link.target.y);
         });
         context.lineWidth = 1.1 / k;
-        context.strokeStyle = 'rgba(51, 202, 166, 0.6)';
+        context.strokeStyle = 'rgba(70, 123, 85, 0.48)';
         context.stroke();
       }
 
@@ -154,35 +180,64 @@
         }
         var related = nodeIsRelated(node, focus);
         var isFocus = node === selectedNode || node === hoveredNode;
-        var r = nodeRadius(node) / k;
-        var color = isFocus ? '#2ba98a' : colorFor(node.group);
+        var r = nodeRadius(node) * Math.max(.6, Math.min(1, Math.sqrt(k))) / k;
+        var color = isFocus ? '#30765b' : colorFor(node.group);
 
         context.globalAlpha = related ? 1 : 0.18;
         context.beginPath();
         context.arc(node.x, node.y, r, 0, Math.PI * 2);
         context.fillStyle = color;
         context.fill();
+        context.lineWidth = 1.2 / k;
+        context.strokeStyle = '#fcfdf9';
+        context.stroke();
 
         if (isFocus) {
           context.globalAlpha = 1;
           context.beginPath();
           context.arc(node.x, node.y, r + 3.5 / k, 0, Math.PI * 2);
           context.lineWidth = 1.4 / k;
-          context.strokeStyle = '#33caa6';
+          context.strokeStyle = '#70a381';
           context.stroke();
-        }
-
-        var showLabel = isFocus || k >= 1.55 || (node.degree >= hubDegree && k >= 0.82);
-        if (showLabel) {
-          context.globalAlpha = related ? 0.92 : 0.3;
-          context.fillStyle = isFocus ? '#2f2f2f' : 'rgba(47, 47, 47, 0.82)';
-          context.font = (isFocus ? 12.5 : 10.5) / k + 'px ' + '"PingFang SC","Microsoft YaHei",sans-serif';
-          context.fillText(node.title, node.x + (nodeRadius(node) + 5) / k, node.y + 3.5 / k);
         }
       });
 
       context.restore();
       context.globalAlpha = 1;
+
+      // Labels live in screen coordinates so they remain crisp and never overlap.
+      var occupied = [];
+      function label(text, x, y, color, important) {
+        context.font = (important ? '600 ' : '500 ') + '11px "PingFang SC","Microsoft YaHei",sans-serif';
+        var w = context.measureText(text).width;
+        var box = { x: x - 5, y: y - 12, w: w + 10, h: 20 };
+        if (box.x < 4 || box.y < 4 || box.x + box.w > width - 4 || box.y + box.h > height - 4) { return; }
+        if (occupied.some(function (b) { return box.x < b.x + b.w && box.x + box.w > b.x && box.y < b.y + b.h && box.y + box.h > b.y; })) { return; }
+        occupied.push(box);
+        context.fillStyle = 'rgba(252,253,249,.94)';
+        context.fillRect(box.x, box.y, box.w, box.h);
+        context.fillStyle = color;
+        context.fillText(text, x, y + 2);
+      }
+      if (focus && isVisible(focus)) {
+        label(focus.title, focus.x * k + transform.x + nodeRadius(focus) + 7, focus.y * k + transform.y, '#304c39', true);
+      }
+      if (!focus && !searchInput.value.trim() && activeCategories.size > 1) {
+        var groups = drawerGroupBy(visible, function (node) { return node.group; });
+        groups.forEach(function (group, name) {
+          var x = d3.mean(group, function (node) { return node.x; }) * k + transform.x;
+          var y = d3.min(group, function (node) { return node.y; }) * k + transform.y - 16;
+          context.font = '500 11px "PingFang SC","Microsoft YaHei",sans-serif';
+          label(name, x - context.measureText(name).width / 2, y, colorFor(name), false);
+        });
+      }
+      if (k > 1.35 || searchInput.value.trim() || activeCategories.size === 1) {
+        visible.slice().sort(function (a, b) { return b.degree - a.degree; }).forEach(function (node) {
+          if (node === focus || (focus && !nodeIsRelated(node, focus))) { return; }
+          var title = node.title.length > 27 ? node.title.slice(0, 26) + '…' : node.title;
+          label(title, node.x * k + transform.x + nodeRadius(node) + 5, node.y * k + transform.y, '#6c7d68', false);
+        });
+      }
 
       emptyState.hidden = visible.length !== 0;
       if (scaleValue) {
@@ -190,11 +245,6 @@
       }
       if (countVisible) {
         countVisible.textContent = visible.length;
-      }
-      if (hudSector) {
-        var cx = Math.round((width / 2 - transform.x) / k);
-        var cy = Math.round((height / 2 - transform.y) / k);
-        hudSector.textContent = 'X' + cx + ' · Y' + cy;
       }
       updateTooltip();
     }
@@ -220,6 +270,9 @@
 
     function renderDetails(node) {
       details.replaceChildren();
+      details.scrollTop = 0;
+      details.hidden = !node;
+      root.classList.toggle('has-selection', Boolean(node));
       var close = document.createElement('button');
       close.type = 'button';
       close.className = 'graph-details-close';
@@ -229,18 +282,18 @@
       close.addEventListener('click', function () {
         selectedNode = null;
         renderDetails(null);
+        canvas.focus({ preventScroll: true });
         draw();
       });
       details.appendChild(close);
 
       if (!node) {
         details.classList.add('is-empty');
-        appendTextElement(details, 'h2', '选择一颗星点');
-        appendTextElement(details, 'p', '点击星点查看关联文章', 'graph-panel-hint');
         return;
       }
 
       details.classList.remove('is-empty');
+      appendTextElement(details, 'p', node.group + ' / 文章', 'graph-detail-label');
       appendTextElement(details, 'h2', node.title);
       var meta = document.createElement('ul');
       meta.className = 'graph-meta';
@@ -250,6 +303,12 @@
       });
       details.appendChild(meta);
       appendTextElement(details, 'p', node.summary || '这篇文章暂未提供摘要。');
+
+      var readLink = document.createElement('a');
+      readLink.className = 'graph-read site_url';
+      readLink.href = node.path;
+      readLink.textContent = '阅读文章 →';
+      details.appendChild(readLink);
 
       var related = Array.from(linksByNode.get(node.id) || [])
         .map(function (id) { return nodes.find(function (candidate) { return candidate.id === id; }); })
@@ -263,6 +322,7 @@
         related.forEach(function (relatedNode) {
           var item = document.createElement('li');
           var link = document.createElement('a');
+          link.className = 'site_url';
           link.href = relatedNode.path;
           link.textContent = relatedNode.title;
           item.appendChild(link);
@@ -273,11 +333,6 @@
         details.appendChild(relatedList);
       }
 
-      var readLink = document.createElement('a');
-      readLink.className = 'graph-read';
-      readLink.href = node.path;
-      readLink.textContent = '阅读文章 →';
-      details.appendChild(readLink);
     }
 
     function drawerGroupBy(items, keyFn) {
@@ -296,12 +351,13 @@
       var item = document.createElement('li');
       item.className = 'graph-leaf';
       var link = document.createElement('a');
+      link.className = 'site_url';
       link.href = node.path;
       link.textContent = node.title;
       var metadata = document.createElement('span');
       metadata.textContent = (node.categories.join(' · ') || '未分类') + ' · ' + (node.date || '');
+      link.appendChild(metadata);
       item.appendChild(link);
-      item.appendChild(metadata);
       return item;
     }
 
@@ -309,6 +365,8 @@
       var item = document.createElement('li');
       item.className = 'graph-folder';
       item.tabIndex = 0;
+      item.setAttribute('role', 'button');
+      item.setAttribute('aria-label', name + '，' + count + ' 篇文章');
       var dot = document.createElement('span');
       dot.className = 'graph-folder-dot';
       dot.style.background = color;
@@ -344,11 +402,12 @@
           sep.textContent = '/';
           drawerCrumbs.appendChild(sep);
         }
-        var span = document.createElement('span');
+        var span = document.createElement(crumb.level === undefined ? 'span' : 'button');
         span.textContent = crumb.label;
         if (crumb.level === undefined) {
           span.className = 'crumb current';
         } else {
+          span.type = 'button';
           span.className = 'crumb';
           span.tabIndex = 0;
           var level = crumb.level;
@@ -357,15 +416,20 @@
             renderDrawer('back');
           };
           span.addEventListener('click', jump);
-          span.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') { jump(); }
-          });
         }
         drawerCrumbs.appendChild(span);
       });
     }
 
     function renderDrawer(direction) {
+      if (direction) {
+        requestAnimationFrame(function () {
+          if (root.isConnected && root.classList.contains('show-list')) {
+            var target = list.querySelector('[tabindex], a') || drawerBack;
+            target.focus({ preventScroll: true });
+          }
+        });
+      }
       var pool = visibleNodes();
       // Keep drawer path valid when filters change.
       if (drawerPath[0] && !activeCategories.has(drawerPath[0])) {
@@ -373,11 +437,8 @@
       }
 
       list.className = 'graph-drawer-panel';
-      void list.offsetWidth;
-      if (direction) {
-        list.classList.add(direction);
-      }
       list.replaceChildren();
+      list.scrollTop = 0;
 
       var query = searchInput.value.trim();
       if (query) {
@@ -389,6 +450,7 @@
       }
 
       if (drawerPath.length === 0) {
+        list.classList.add('is-categories');
         renderCrumbs([{ label: '全部分类' }]);
         drawerBack.disabled = true;
         var byCategory = drawerGroupBy(pool, function (node) { return node.group; });
@@ -431,12 +493,20 @@
     }
 
     function renderFilters(categories, counts) {
+      allCategories = categories.slice();
+      allChip = document.createElement('button');
+      allChip.type = 'button';
+      allChip.className = 'graph-chip';
+      allChip.textContent = '全部';
+      allChip.setAttribute('aria-pressed', 'true');
+      allChip.addEventListener('click', function () { selectCategory(null); });
+      filterList.appendChild(allChip);
       categories.forEach(function (category) {
         activeCategories.add(category);
         var chip = document.createElement('button');
         chip.type = 'button';
         chip.className = 'graph-chip';
-        chip.setAttribute('aria-pressed', 'true');
+        chip.setAttribute('aria-pressed', 'false');
 
         var dot = document.createElement('span');
         dot.className = 'graph-chip-dot';
@@ -454,24 +524,29 @@
         chip.appendChild(name);
         chip.appendChild(num);
         chip.addEventListener('click', function () {
-          var on = activeCategories.has(category);
-          if (on) {
-            activeCategories.delete(category);
-          } else {
-            activeCategories.add(category);
-          }
-          chip.classList.toggle('is-off', on);
-          chip.setAttribute('aria-pressed', String(!on));
-          refresh();
+          selectCategory(activeCategories.size === 1 && activeCategories.has(category) ? null : category);
         });
         chipByCategory.set(category, chip);
         filterList.appendChild(chip);
       });
     }
 
+    function selectCategory(category) {
+      activeCategories = new Set(category ? [category] : allCategories);
+      allChip.setAttribute('aria-pressed', String(!category));
+      chipByCategory.forEach(function (chip, name) { chip.setAttribute('aria-pressed', String(name === category)); });
+      drawerPath = category ? [category] : [];
+      hoveredNode = null;
+      selectedNode = null;
+      renderDetails(null);
+      refresh();
+      fitView(true);
+    }
+
     function updateCounts() {
       if (countNodes) { countNodes.textContent = nodes.length; }
       if (countLinks) { countLinks.textContent = links.length; }
+      if (countCategories) { countCategories.textContent = allCategories.length; }
       if (countVisible) { countVisible.textContent = visibleNodes().length; }
     }
 
@@ -484,6 +559,7 @@
       status.textContent = visible === nodes.length ? nodes.length + ' 篇文章' : visible + ' / ' + nodes.length + ' 篇文章';
       updateCounts();
       renderDrawer();
+      emptyState.hidden = visible !== 0;
       draw();
     }
 
@@ -517,11 +593,14 @@
       var meta = document.createElement('small');
       meta.textContent = (hoveredNode.categories[0] || '未分类') + ' · ' + linksByNode.get(hoveredNode.id).size + ' 条关联';
       tooltip.appendChild(meta);
-      tooltip.style.left = (hoveredNode.x * transform.k + transform.x) + 'px';
-      tooltip.style.top = (hoveredNode.y * transform.k + transform.y) + 'px';
+      var x = hoveredNode.x * transform.k + transform.x;
+      var y = hoveredNode.y * transform.k + transform.y;
+      tooltip.style.left = Math.max(8, Math.min(stage.clientWidth - tooltip.offsetWidth - 8, x - tooltip.offsetWidth / 2)) + 'px';
+      tooltip.style.top = Math.max(8, Math.min(stage.clientHeight - tooltip.offsetHeight - 8, y - tooltip.offsetHeight - 14)) + 'px';
     }
 
     function fitView(animate) {
+      if (!zoom || root.classList.contains('show-list')) { return; }
       var visible = visibleNodes().filter(function (node) { return Number.isFinite(node.x); });
       if (!visible.length) {
         return;
@@ -534,10 +613,10 @@
         maxY = Math.max(maxY, node.y);
       });
       var bounds = stage.getBoundingClientRect();
-      var pad = 70;
-      var spanX = Math.max(1, maxX - minX);
-      var spanY = Math.max(1, maxY - minY);
-      var k = Math.min(2.4, Math.max(0.4, Math.min((bounds.width - pad * 2) / spanX, (bounds.height - pad * 2) / spanY)));
+      var pad = bounds.width < 500 ? 38 : 54;
+      var spanX = Math.max(100, maxX - minX);
+      var spanY = Math.max(100, maxY - minY);
+      var k = Math.min(2.4, Math.max(0.08, Math.min(Math.max(40, bounds.width - pad * 2) / spanX, Math.max(40, bounds.height - pad * 2) / spanY)));
       var tx = bounds.width / 2 - k * (minX + maxX) / 2;
       var ty = bounds.height / 2 - k * (minY + maxY) / 2;
       var target = d3.zoomIdentity.translate(tx, ty).scale(k);
@@ -555,8 +634,16 @@
       }
       selectedNode = node;
       renderDetails(node);
+      resizeCanvas();
       var bounds = stage.getBoundingClientRect();
-      var target = d3.zoomIdentity.translate(bounds.width / 2 - node.x * 1.4, bounds.height / 2 - node.y * 1.4).scale(1.4);
+      var centerX = bounds.width / 2;
+      var centerY = bounds.height / 2;
+      if (root.parentElement.clientWidth <= 600) {
+        centerY = Math.max(50, (bounds.height - details.offsetHeight - 16) / 2);
+      } else if (root.parentElement.clientWidth <= 900) {
+        centerX = Math.max(70, (bounds.width - details.offsetWidth - 24) / 2);
+      }
+      var target = d3.zoomIdentity.translate(centerX - node.x * 1.4, centerY - node.y * 1.4).scale(1.4);
       var selection = d3.select(canvas);
       if (reducedMotion) {
         selection.call(zoom.transform, target);
@@ -566,15 +653,16 @@
     }
 
     function resetView() {
+      clearTimeout(searchTimer);
       searchInput.value = '';
       selectedNode = null;
       hoveredNode = null;
       tooltip.hidden = true;
       drawerPath = [];
-      activeCategories = new Set(chipByCategory.keys());
+      activeCategories = new Set(allCategories);
+      allChip.setAttribute('aria-pressed', 'true');
       chipByCategory.forEach(function (chip) {
-        chip.classList.remove('is-off');
-        chip.setAttribute('aria-pressed', 'true');
+        chip.setAttribute('aria-pressed', 'false');
       });
       renderDetails(null);
       refresh();
@@ -582,6 +670,7 @@
     }
 
     function setupGraph(data) {
+      if (!root.isConnected || request.signal.aborted) { return; }
       nodes = data.nodes.map(function (node) { return Object.assign({}, node); });
       var nodeById = new Map(nodes.map(function (node) { return [node.id, node]; }));
       links = data.edges
@@ -598,9 +687,6 @@
         node.degree = linksByNode.get(node.id).size;
       });
 
-      var degrees = nodes.map(function (node) { return node.degree; }).sort(function (a, b) { return a - b; });
-      hubDegree = Math.max(4, degrees[Math.floor(degrees.length * 0.9)] || 4);
-
       var counts = new Map();
       nodes.forEach(function (node) {
         counts.set(node.group, (counts.get(node.group) || 0) + 1);
@@ -609,35 +695,46 @@
       renderFilters(data.categories, counts);
       resizeCanvas();
 
-      var columns = Math.ceil(Math.sqrt(data.categories.length)) || 1;
-      var rows = Math.max(1, Math.ceil(data.categories.length / columns));
-      var categoryIndex = new Map(data.categories.map(function (category, index) { return [category, index]; }));
-      simulation = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links).id(function (node) { return node.id; }).distance(function (link) { return Math.max(60, 130 - link.weight * 10); }).strength(function (link) { return Math.min(0.8, 0.12 + link.weight * 0.07); }))
-        .force('charge', d3.forceManyBody().strength(-140).distanceMax(520))
-        .force('collide', d3.forceCollide().radius(function (node) { return nodeRadius(node) + 14; }))
-        .force('x', d3.forceX(function (node) { return ((categoryIndex.get(node.group) % columns) + 0.5) * stage.clientWidth / columns; }).strength(0.08))
-        .force('y', d3.forceY(function (node) { return (Math.floor(categoryIndex.get(node.group) / columns) + 0.5) * stage.clientHeight / rows; }).strength(0.08))
-        .force('center', d3.forceCenter(stage.clientWidth / 2, stage.clientHeight / 2))
-        .on('tick', draw)
-        .on('end', function () { fitView(true); });
-
-      if (reducedMotion) {
-        simulation.stop();
-        for (var tick = 0; tick < 220; tick += 1) {
-          simulation.tick();
-        }
-        fitView(false);
-        draw();
-      }
-
       zoom = d3.zoom()
-        .scaleExtent([0.35, 4])
+        .scaleExtent([0.08, 4])
+        .clickDistance(5)
         .on('zoom', function (event) {
           transform = event.transform;
           draw();
         });
       d3.select(canvas).call(zoom).on('dblclick.zoom', null);
+
+      var categoryIndex = new Map(data.categories.map(function (category, index) { return [category, index]; }));
+      function positionGroups() {
+        var aspect = Math.max(.65, Math.min(2, stage.clientWidth / Math.max(1, stage.clientHeight)));
+        var columns = Math.max(1, Math.ceil(Math.sqrt(data.categories.length * aspect)));
+        if (columns === layoutColumns) { return false; }
+        layoutColumns = columns;
+        var groupOffsets = new Map();
+        nodes.forEach(function (node) {
+          var index = categoryIndex.get(node.group);
+          var offset = groupOffsets.get(node.group) || 0;
+          groupOffsets.set(node.group, offset + 1);
+          node.anchorX = (index % columns) * 290 + (Math.floor(index / columns) % 2) * 45;
+          node.anchorY = Math.floor(index / columns) * 270 + Math.sin(index * 1.7) * 25;
+          node.x = node.anchorX + Math.cos(offset * 2.4) * Math.sqrt(offset) * 24;
+          node.y = node.anchorY + Math.sin(offset * 2.4) * Math.sqrt(offset) * 24;
+          node.vx = node.vy = 0;
+        });
+        return true;
+      }
+      positionGroups();
+      simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).id(function (node) { return node.id; }).distance(64).strength(function (link) { return link.source.group === link.target.group ? .22 : .01; }))
+        .force('charge', d3.forceManyBody().strength(-105).distanceMax(200))
+        .force('collide', d3.forceCollide().radius(function (node) { return nodeRadius(node) + 13; }))
+        .force('x', d3.forceX(function (node) { return node.anchorX; }).strength(.22))
+        .force('y', d3.forceY(function (node) { return node.anchorY; }).strength(.22))
+        .stop();
+      // Settle once: no initial scatter, motion, or late automatic zoom interrupting exploration.
+      simulation.tick(180);
+      loading.hidden = true;
+      fitView(false);
 
       canvas.addEventListener('mousemove', function (event) {
         var node = findNodeAt(event);
@@ -656,38 +753,73 @@
       });
       canvas.addEventListener('click', function (event) {
         var node = findNodeAt(event);
-        selectedNode = node;
-        renderDetails(node);
+        if (node) { focusNode(node); }
+        else { selectedNode = null; renderDetails(null); }
         draw();
       });
       canvas.addEventListener('dblclick', function () { fitView(true); });
 
-      if (window.__graphResize) {
-        window.removeEventListener('resize', window.__graphResize);
-      }
-      window.__graphResize = function () {
-        clearTimeout(window.__graphResizeTimer);
-        window.__graphResizeTimer = setTimeout(resizeCanvas, 150);
-      };
-      window.addEventListener('resize', window.__graphResize);
+      var previousWidth = stage.clientWidth;
+      var previousHeight = stage.clientHeight;
+      resizeObserver = new ResizeObserver(function () {
+        if (!stage.clientWidth || !stage.clientHeight) { return; }
+        if (stage.clientWidth === previousWidth && stage.clientHeight === previousHeight) { return; }
+        previousWidth = stage.clientWidth;
+        previousHeight = stage.clientHeight;
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(function () {
+          if (positionGroups()) {
+            simulation.force('x').x(function (node) { return node.anchorX; });
+            simulation.force('y').y(function (node) { return node.anchorY; });
+            simulation.alpha(1).tick(180);
+          }
+          resizeCanvas();
+          if (selectedNode) { focusNode(selectedNode); } else { fitView(false); }
+        });
+      });
+      resizeObserver.observe(stage);
       resetButton.addEventListener('click', resetView);
       fitButton.addEventListener('click', function () { fitView(true); });
+      function changeZoom(factor) {
+        var selection = d3.select(canvas);
+        if (!reducedMotion) { selection = selection.transition().duration(180); }
+        selection.call(zoom.scaleBy, factor);
+      }
+      document.getElementById('graph-zoom-in').addEventListener('click', function () { changeZoom(1.3); });
+      document.getElementById('graph-zoom-out').addEventListener('click', function () { changeZoom(1 / 1.3); });
+      canvas.addEventListener('keydown', function (event) {
+        var pan = { ArrowLeft: [40, 0], ArrowRight: [-40, 0], ArrowUp: [0, 40], ArrowDown: [0, -40] };
+        if (pan[event.key]) {
+          event.preventDefault();
+          d3.select(canvas).call(zoom.translateBy, pan[event.key][0] / transform.k, pan[event.key][1] / transform.k);
+        } else if (event.key === '+' || event.key === '=') { event.preventDefault(); changeZoom(1.3); }
+        else if (event.key === '-') { event.preventDefault(); changeZoom(1 / 1.3); }
+        else if (event.key === '0') { event.preventDefault(); fitView(true); }
+        else if (event.key === 'Escape') { selectedNode = null; renderDetails(null); draw(); }
+      });
       drawerBack.addEventListener('click', function () {
         if (drawerPath.length) {
           drawerPath.pop();
           renderDrawer('back');
         }
       });
-      searchInput.addEventListener('input', refresh);
+      searchInput.addEventListener('input', function () {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () { hoveredNode = null; refresh(); fitView(true); }, 100);
+      });
       searchInput.addEventListener('keydown', function (event) {
+        if (event.isComposing) { return; }
         if (event.key === 'Enter') {
-          focusNode(visibleNodes()[0]);
+          if (!root.classList.contains('show-list')) { clearTimeout(searchTimer); refresh(); focusNode(visibleNodes()[0]); }
         }
         if (event.key === 'Escape') {
+          clearTimeout(searchTimer);
           searchInput.value = '';
           selectedNode = null;
+          hoveredNode = null;
           renderDetails(null);
           refresh();
+          fitView(true);
         }
       });
       document.querySelectorAll('.graph-mode').forEach(function (button) {
@@ -701,14 +833,38 @@
           });
           if (!showList) {
             resizeCanvas();
+            if (selectedNode) { focusNode(selectedNode); }
+            else { fitView(false); }
           }
         });
+      });
+
+      root.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && selectedNode && event.target !== searchInput) {
+          selectedNode = null;
+          hoveredNode = null;
+          renderDetails(null);
+          canvas.focus({ preventScroll: true });
+          draw();
+        }
       });
 
       refresh();
     }
 
-    fetch(root.dataset.graphUrl)
+    window.__articleGraphCleanup = function () {
+      request.abort();
+      if (simulation) { simulation.stop(); }
+      if (resizeObserver) { resizeObserver.disconnect(); }
+      cancelAnimationFrame(resizeFrame);
+      clearTimeout(searchTimer);
+      d3.select(canvas).interrupt().on('.zoom', null);
+      delete root.dataset.graphReady;
+      delete root.__articleGraphActive;
+      window.__articleGraphCleanup = null;
+    };
+
+    fetch(root.dataset.graphUrl, { signal: request.signal })
       .then(function (response) {
         if (!response.ok) {
           throw new Error('Unable to load graph data');
@@ -716,7 +872,9 @@
         return response.json();
       })
       .then(setupGraph)
-      .catch(function () {
+      .catch(function (error) {
+        if (error.name === 'AbortError') { return; }
+        loading.hidden = true;
         status.textContent = '星图数据加载失败，请刷新后重试。';
         emptyState.hidden = false;
         emptyState.textContent = '星图暂时不可用。';

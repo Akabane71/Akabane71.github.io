@@ -1,0 +1,50 @@
+#post .pjax article pre {
+  --code-fold-preview-height: 14em;
+}
+
+#post .pjax article pre.code-folded > code,
+#post .pjax article pre.code-folded > .pre-numbering {
+  max-height: var(--code-fold-preview-height);
+  overflow-y: hidden;
+}
+
+#post .pjax article pre .code-fold-button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: rgba(235, 238, 242, .82);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 36px;
+  height: 32px;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+
+#post .pjax article pre .code-fold-button:hover {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .16);
+  color: #fff;
+}
+
+#post .pjax article pre .code-fold-button:focus-visible {
+  border-color: #55b4d4;
+  outline: 2px solid rgba(85, 180, 212, .45);
+  outline-offset: 1px;
+}
+
+#post .pjax article pre .code-fold-icon {
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  height: 8px;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .16s ease;
+  width: 8px;
+}
+
+#post .pjax article pre.code-folded .code-fold-icon {
+  transform: rotate(45deg) translate(-2px, -2px);
+}
